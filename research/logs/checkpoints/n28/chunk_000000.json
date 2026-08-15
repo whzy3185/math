@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "git_commit": "0b041e4871ad8e222905a78832006711afea4cc7",
+  "baseline_git_commit": "0b041e4871ad8e222905a78832006711afea4cc7",
+  "n": 28,
+  "defect_count": 0,
+  "expected_shell_q_bracelets": 1,
+  "chunk_index": 0,
+  "first_canonical_q": 0,
+  "last_canonical_q": 0,
+  "first_alpha": -1,
+  "last_alpha": 1,
+  "completed_states": 2,
+  "completed_q_bracelets": 1,
+  "represented_q_vectors": 1,
+  "rayleigh_certified": 1,
+  "exact_fallbacks": 0,
+  "counterexamples": 0,
+  "counterexample_records": [],
+  "fallback_records": [],
+  "optimizer_exact_check": {
+    "charpoly_A2": "x**28 - 112*x**27 + 5992*x**26 - 203896*x**25 + 4957316*x**24 - 91712880*x**23 + 1342605908*x**22 - 15967290928*x**21 + 157164591150*x**20 - 1297759935640*x**19 + 9079918570716*x**18 - 54225439451456*x**17 + 277872992962922*x**16 - 1226199300132072*x**15 + 4669326476980588*x**14 - 15354764388460952*x**13 + 43578477922049301*x**12 - 106535736812856232*x**11 + 223575696340941392*x**10 - 400711451657357288*x**9 + 608963023320070622*x**8 - 777014513917514128*x**7 + 821350646464868548*x**6 - 706104961727780440*x**5 + 480923253597761569*x**4 - 249581425930824904*x**3 + 92679690870742360*x**2 - 21924172499667872*x + 2481570490452496",
+    "threshold_root_interval": [
+      "11309018584810/1458890577649",
+      "58331249466139/7524871375041"
+    ],
+    "multiplicity": 4
+  },
+  "top_near_minimizers": [
+    {
+      "canonical_q_code": 0,
+      "alpha": 1,
+      "defect_count": 0,
+      "dihedral_orbit_size": 1,
+      "numeric_rho_preview": 2.8284271247461916,
+      "numeric_gap_preview": 0.0442228290508333,
+      "distance_to_period4_Q_pattern": 7,
+      "exact_Rayleigh_certificate": {
+        "numerator": 8,
+        "denominator": 1,
+        "value": "8"
+      }
+    }
+  ],
+  "best_numeric_by_period4_distance": [
+    {
+      "canonical_q_code": 0,
+      "alpha": 1,
+      "defect_count": 0,
+      "dihedral_orbit_size": 1,
+      "numeric_rho_preview": 2.8284271247461916,
+      "numeric_gap_preview": 0.0442228290508333,
+      "distance_to_period4_Q_pattern": 7,
+      "exact_Rayleigh_certificate": {
+        "numerator": 8,
+        "denominator": 1,
+        "value": "8"
+      }
+    }
+  ],
+  "ordered_input_sha256": "7e1e575ddf6d68831421c6434962b41791bd7d2b5019d6b59598c35c6b1cecc8",
+  "ordered_certificate_sha256": "40af13205964682d3cd01c8a8f123e74ac34e824e3b1b26451dbafa1d93ccd4c",
+  "previous_chain_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "chain_sha256": "a658a1b789142ae98cdce7c8d81c91681da2db9ead29ca5b023b681658705cfa",
+  "elapsed_seconds": 0.9313271045684814,
+  "content_sha256": "13a3a00a8327cbf9fde46e6fd6c99f80cd2251531b361916c890c646b34a2cab"
+}

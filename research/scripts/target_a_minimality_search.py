@@ -22,6 +22,7 @@ import subprocess
 import sys
 import time
 from fractions import Fraction
+from functools import lru_cache
 from pathlib import Path
 from typing import Any, Iterable, Iterator
 
@@ -79,6 +80,23 @@ N26_SHELL_COUNTS = {
     22: 328,
     24: 13,
     26: 1,
+}
+N28_SHELL_COUNTS = {
+    0: 1,
+    2: 14,
+    4: 413,
+    6: 6916,
+    8: 56021,
+    10: 235378,
+    12: 544802,
+    14: 718146,
+    16: 544802,
+    18: 235378,
+    20: 56021,
+    22: 6916,
+    24: 413,
+    26: 14,
+    28: 1,
 }
 
 
@@ -171,6 +189,8 @@ def expected_search_space(n: int) -> dict[str, Any]:
         raise SearchAbort("SEARCH_SPACE_MISMATCH", "n=24 Burnside constants disagree")
     if n == 26 and shells != N26_SHELL_COUNTS:
         raise SearchAbort("SEARCH_SPACE_MISMATCH", "n=26 Burnside constants disagree")
+    if n == 28 and shells != N28_SHELL_COUNTS:
+        raise SearchAbort("SEARCH_SPACE_MISMATCH", "n=28 Burnside constants disagree")
     q_bracelets = sum(shells.values())
     return {
         "shell_counts": shells,
@@ -280,6 +300,7 @@ def _basic_near_minimizer(
     rho: float,
     threshold_rho: float,
     bound: Fraction,
+    period4_distance: int,
 ) -> dict[str, Any]:
     return {
         "canonical_q_code": code,
@@ -288,6 +309,7 @@ def _basic_near_minimizer(
         "dihedral_orbit_size": orbit_size,
         "numeric_rho_preview": rho,
         "numeric_gap_preview": rho - threshold_rho,
+        "distance_to_period4_Q_pattern": period4_distance,
         "exact_Rayleigh_certificate": {
             "numerator": bound.numerator,
             "denominator": bound.denominator,
@@ -305,17 +327,53 @@ def cyclic_gaps(positions: list[int], n: int) -> list[int]:
     ]
 
 
+@lru_cache(maxsize=None)
+def _period4_pattern_codes(n: int) -> tuple[int, ...]:
+    """Return the distinct dihedral images of the length-n (+---)... code."""
+    mask = (1 << n) - 1
+    base = sum(1 << index for index in range(0, n, 4))
+    reflected = 0
+    for index in range(n):
+        if (base >> index) & 1:
+            reflected |= 1 << (n - 1 - index)
+
+    def rotate(code: int, shift: int) -> int:
+        if shift == 0:
+            return code
+        return ((code << shift) | (code >> (n - shift))) & mask
+
+    return tuple(
+        sorted(
+            {rotate(base, shift) for shift in range(n)}
+            | {rotate(reflected, shift) for shift in range(n)}
+        )
+    )
+
+
+def distance_to_period4_q_code(code: int, n: int) -> int:
+    return min((code ^ pattern).bit_count() for pattern in _period4_pattern_codes(n))
+
+
 def distance_to_period4_q_pattern(q: tuple[int, ...]) -> int:
     """Minimum Hamming distance to (+---)... under D_n."""
-    n = len(q)
-    base = tuple(1 if index % 4 == 0 else -1 for index in range(n))
-    distances = []
-    for shift in range(n):
-        rotated = tuple(base[(index - shift) % n] for index in range(n))
-        reflected = tuple(base[(-index - shift) % n] for index in range(n))
-        distances.append(sum(left != right for left, right in zip(q, rotated)))
-        distances.append(sum(left != right for left, right in zip(q, reflected)))
-    return min(distances)
+    code = sum(1 << index for index, value in enumerate(q) if value == 1)
+    return distance_to_period4_q_code(code, len(q))
+
+
+def validate_period4_diagnostic(n: int, code: int, distance: int) -> None:
+    if n == 28 and code.bit_count() % 2 == 0 and distance == 0:
+        raise SearchAbort(
+            "DIAGNOSTIC_PARITY_ERROR",
+            "an admissible n=28 Q state has impossible period-4 distance zero",
+        )
+
+
+def _update_best_by_distance(
+    best: dict[int, dict[str, Any]], item: dict[str, Any]
+) -> None:
+    distance = int(item["distance_to_period4_Q_pattern"])
+    if distance not in best or _top_key(item) < _top_key(best[distance]):
+        best[distance] = item
 
 
 def _expand_near_minimizer(n: int, item: dict[str, Any]) -> dict[str, Any]:
@@ -331,7 +389,9 @@ def _expand_near_minimizer(n: int, item: dict[str, Any]) -> dict[str, Any]:
         "tau": list(tau),
         "defect_positions": positions,
         "cyclic_defect_gaps": cyclic_gaps(positions, n),
-        "distance_to_period4_Q_pattern": distance_to_period4_q_pattern(q),
+        "distance_to_period4_Q_pattern": item.get(
+            "distance_to_period4_Q_pattern", distance_to_period4_q_pattern(q)
+        ),
         **exact_even_traces(matrix),
     }
 
@@ -570,6 +630,9 @@ def _counterexample_record(
         "integer_adjacency_matrix": matrix.tolist(),
         "integer_adjacency_square": (matrix @ matrix).tolist(),
         "characteristic_polynomial": str(exact_matrix.charpoly().as_expr()),
+        "characteristic_polynomial_A2": str(
+            (exact_matrix * exact_matrix).charpoly().as_expr()
+        ),
         "threshold_squared_interval": [
             str(threshold_lower),
             str(threshold_upper),
@@ -647,9 +710,23 @@ def run_minimality_search(
         )
 
     top_heap: list[tuple[float, int, int, dict[str, Any]]] = []
+    best_by_distance: dict[int, dict[str, Any]] = {}
     for chunk in chunks:
         for item in chunk.get("top_near_minimizers", []):
             _push_top(top_heap, item)
+        diagnostic_records = chunk.get(
+            "best_numeric_by_period4_distance",
+            chunk.get("top_near_minimizers", []),
+        )
+        for item in diagnostic_records:
+            if "distance_to_period4_Q_pattern" not in item:
+                item = {
+                    **item,
+                    "distance_to_period4_Q_pattern": distance_to_period4_q_code(
+                        int(item["canonical_q_code"]), n
+                    ),
+                }
+            _update_best_by_distance(best_by_distance, item)
 
     threshold_expr = threshold_squared(n)
     threshold_lower, threshold_upper = rational_interval(threshold_expr, digits=25)
@@ -682,6 +759,7 @@ def run_minimality_search(
             "input_digest": hashlib.sha256(),
             "certificate_digest": hashlib.sha256(),
             "top_heap": [],
+            "best_by_distance": {},
         }
 
     def flush_chunk() -> None:
@@ -722,6 +800,10 @@ def run_minimality_search(
             "fallback_records": current["fallback_records"],
             "optimizer_exact_check": current["optimizer_exact_check"],
             "top_near_minimizers": _sorted_top(current["top_heap"]),
+            "best_numeric_by_period4_distance": [
+                current["best_by_distance"][distance]
+                for distance in sorted(current["best_by_distance"])
+            ],
             "ordered_input_sha256": input_sha,
             "ordered_certificate_sha256": certificate_sha,
             "previous_chain_sha256": previous_chain,
@@ -757,6 +839,8 @@ def run_minimality_search(
                 "STATE_CONSTRUCTION_ERROR",
                 f"roundtrip failed for Q={code}, alpha={alpha}",
             )
+        period4_distance = distance_to_period4_q_code(code, n)
+        validate_period4_diagnostic(n, code, period4_distance)
 
         encoded_input = _input_bytes(state)
         current["input_digest"].update(encoded_input)
@@ -788,9 +872,12 @@ def run_minimality_search(
                 rho,
                 threshold_rho,
                 bound,
+                period4_distance,
             )
             _push_top(top_heap, near_item)
             _push_top(current["top_heap"], near_item)
+            _update_best_by_distance(best_by_distance, near_item)
+            _update_best_by_distance(current["best_by_distance"], near_item)
             if bound >= threshold_upper:
                 rayleigh_certified += 1
                 current["rayleigh_certified"] += 1
@@ -879,6 +966,10 @@ def run_minimality_search(
     expanded_top = [
         _expand_near_minimizer(n, item) for item in _sorted_top(top_heap)
     ]
+    expanded_best_by_distance = [
+        _expand_near_minimizer(n, best_by_distance[distance])
+        for distance in sorted(best_by_distance)
+    ]
     completion = Fraction(completed_states, expected["spectral_states"])
     script_path = Path(__file__).resolve()
     generator_path = script_path.with_name("target_a_bracelets.py")
@@ -927,6 +1018,7 @@ def run_minimality_search(
         "fallback_records": fallback_records,
         "counterexamples": counterexamples,
         "top_near_minimizers": expanded_top,
+        "best_numeric_by_period4_distance": expanded_best_by_distance,
         "near_minimizer_ranking_status": "OBSERVED_NUMERIC_ORDER_ONLY",
         "checkpoint_chunks": len(chunks),
         "checkpoint_manifest_sha256": manifest_sha256,

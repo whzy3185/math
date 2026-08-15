@@ -130,3 +130,16 @@
 - **证据等级：** `n=26` 全 quotient 搜索、optimizer 等号和全部非 optimizer 排除为 **Verified/PASS**。`n=32` 是否为最小反例仍为 **UNRESOLVED**，因为 `n=28,30` 尚未检查。
 - **产物：** `research/logs/target_a_search_n26.json`、`research/logs/checkpoints/n26/`、`research/experiments/TARGET_A_N26_RESULT.md`。结果 JSON SHA-256 为 `9cb022a9bc7ba5e2ad7d8d1d0427ec3073a64aae60a09ef032f0a2286875f815`；checkpoint manifest SHA-256 为 `59d106f91ff5bd457e25c1676233970ee46382e4ace7c8e41b7769b85d5b140d`。
 - **下一步：** Task 35 仅执行 `n=28` 完整搜索；本任务没有启动 `n=28,30`。
+
+---
+
+## 2026-08-15 — Target A Task 35：n=28 生产级完整搜索
+
+- **研究对象：** C029 Conjecture 3 在 `n=28` 的完整有限验证。
+- **做了什么：** 冻结既有 quotient 与 exact-decision pipeline；新增 `n=28` Burnside 硬门、period-4 distance-0 parity guard 和全流 `best_numeric_by_period4_distance` 诊断。正式搜索前默认/minimality/generator tests 通过，并只读重放 `n=24,26` 的计数、游标、输入/证书摘要、optimizer、零反例和最终链。正式搜索后再次只读重放全部 250 个 `n=28` chunks。
+- **得到什么：** `VERIFIED_NO_COUNTEREXAMPLE_AT_N28`。2,405,236/2,405,236 个 Q-bracelets、4,810,472/4,810,472 个谱状态全部完成，恢复 536,870,912 个 switching classes。optimizer 精确等于阈值；其余 4,810,471 个状态全部 `RAYLEIGH_CERTIFIED`，exact fallback 0、反例 0。因此 Conjecture 3 对 `n=28` 成立，严格有限验证范围扩展到所有偶数 `n=8,10,...,28`。
+- **新发现：** n=28 没有非法 distance-0 记录。OBSERVED numeric 最低非 optimizer 为 `Q-code=4460817, d=6, alpha=-1`，缺陷间隔 `4,4,4,6,4,6`，period-4 distance 为 5，数值 gap 约 `0.02631274`。distance-1 类最佳为 `Q-code=1118481, alpha=-1`，gap 约 `0.03165537`，并非整体最低。自动日志表给出 n=24/26/28 的最佳 observed distance 为 0/1/5。
+- **哪些失败：** 首次组合 n=24/n=26 双重放命令因过度压缩的一行 Python 和 shell 引号各发生一次解析失败；均未读取完成或改写 checkpoint。改用仓库外临时只读脚本后，两组重放全部 PASS，临时脚本随即删除。没有数学、搜索或 checkpoint 失败。
+- **证据等级：** `n=28` 全 quotient 搜索、optimizer 等号和全部非 optimizer 排除为 **Verified/PASS**。period-4 表仅为 **Observed**。`n=32` 是否为最小反例仍为 **UNRESOLVED**，因为 `n=30` 尚未检查。
+- **产物：** `research/logs/target_a_search_n28.json`、`research/logs/checkpoints/n28/`、`research/experiments/TARGET_A_N28_RESULT.md`、`research/logs/target_a_period4_diagnostic_n24_28.json`。结果 JSON SHA-256 为 `07644fbae5bbb93da64bc9d532a1a4a41bc38d013dd96ab2b19524f0fe524269`；checkpoint manifest SHA-256 为 `e1d1411f0563915c282651d12858c77671b5a8153ac2b47357373d7963b2fc91`。
+- **下一步：** Task 36 仅执行 `n=30` 完整搜索；本任务没有启动 `n=30`。
