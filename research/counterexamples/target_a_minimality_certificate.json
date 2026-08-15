@@ -1,0 +1,497 @@
+{
+  "schema_version": 1,
+  "conjecture": {
+    "id": "C029",
+    "domain": "even n >= 8",
+    "domain_spec_file": "research/conjectures/TARGET_A_SPEC.md",
+    "domain_spec_sha256": "b484e44ba3975f61229c83702843e370a51d78767053d871480c3f4e3da37e97",
+    "failure_condition": "rho(A_sigma) < rho_-(n)"
+  },
+  "claim": {
+    "smallest_counterexample_order": 32,
+    "status": "SMALLEST_COUNTEREXAMPLE_VERIFIED"
+  },
+  "finite_no_counterexample_orders": [
+    {
+      "n": 8,
+      "method": "raw_switching_class_exhaustion",
+      "source_file": "research/logs/target_a_reproduction_n8_18.json",
+      "source_sha256": "141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e",
+      "source_selector": "results[n=8]",
+      "expected_search_space": {
+        "switching_classes": 512
+      },
+      "completed_search_space": {
+        "switching_classes": 512
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "serialized_records": 2
+      },
+      "rayleigh_certified": 510,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": null,
+      "checkpoint_manifest_sha256": null,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 10,
+      "method": "raw_switching_class_exhaustion",
+      "source_file": "research/logs/target_a_reproduction_n8_18.json",
+      "source_sha256": "141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e",
+      "source_selector": "results[n=10]",
+      "expected_search_space": {
+        "switching_classes": 2048
+      },
+      "completed_search_space": {
+        "switching_classes": 2048
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "serialized_records": 2
+      },
+      "rayleigh_certified": 2046,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": null,
+      "checkpoint_manifest_sha256": null,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 12,
+      "method": "raw_switching_class_exhaustion",
+      "source_file": "research/logs/target_a_reproduction_n8_18.json",
+      "source_sha256": "141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e",
+      "source_selector": "results[n=12]",
+      "expected_search_space": {
+        "switching_classes": 8192
+      },
+      "completed_search_space": {
+        "switching_classes": 8192
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "serialized_records": 2
+      },
+      "rayleigh_certified": 8190,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": null,
+      "checkpoint_manifest_sha256": null,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 14,
+      "method": "raw_switching_class_exhaustion",
+      "source_file": "research/logs/target_a_reproduction_n8_18.json",
+      "source_sha256": "141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e",
+      "source_selector": "results[n=14]",
+      "expected_search_space": {
+        "switching_classes": 32768
+      },
+      "completed_search_space": {
+        "switching_classes": 32768
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "serialized_records": 2
+      },
+      "rayleigh_certified": 32766,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": null,
+      "checkpoint_manifest_sha256": null,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 16,
+      "method": "raw_switching_class_exhaustion",
+      "source_file": "research/logs/target_a_reproduction_n8_18.json",
+      "source_sha256": "141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e",
+      "source_selector": "results[n=16]",
+      "expected_search_space": {
+        "switching_classes": 131072
+      },
+      "completed_search_space": {
+        "switching_classes": 131072
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "serialized_records": 2
+      },
+      "rayleigh_certified": 131070,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": null,
+      "checkpoint_manifest_sha256": null,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 18,
+      "method": "raw_switching_class_exhaustion",
+      "source_file": "research/logs/target_a_reproduction_n8_18.json",
+      "source_sha256": "141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e",
+      "source_selector": "results[n=18]",
+      "expected_search_space": {
+        "switching_classes": 524288
+      },
+      "completed_search_space": {
+        "switching_classes": 524288
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "serialized_records": 2
+      },
+      "rayleigh_certified": 524286,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": null,
+      "checkpoint_manifest_sha256": null,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 20,
+      "method": "raw_switching_class_exhaustion",
+      "source_file": "research/logs/target_a_search_n20.json",
+      "source_sha256": "20a0d812a268d51c4c52188c63827732216815f20901ef83ad680816d82fbcc4",
+      "source_selector": "results[n=20]",
+      "expected_search_space": {
+        "switching_classes": 2097152
+      },
+      "completed_search_space": {
+        "switching_classes": 2097152
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "serialized_records": 2
+      },
+      "rayleigh_certified": 2097150,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": null,
+      "checkpoint_manifest_sha256": null,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 22,
+      "method": "full_(Q,alpha)/D_n_quotient_exhaustion",
+      "source_file": "research/logs/target_a_flux_search_n22.json",
+      "source_sha256": "588c5998a83d01c0db9cbc81d0551cbd04d66823c58ce7f506b259e8125264be",
+      "source_selector": "top-level result",
+      "expected_search_space": {
+        "q_orbits": 48734,
+        "spectral_states": 97468,
+        "represented_switching_classes": 8388608
+      },
+      "completed_search_space": {
+        "q_orbits": 48734,
+        "spectral_states": 97468,
+        "represented_switching_classes": 8388608
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "ESTABLISHED_BY_DISTINGUISHED_THRESHOLD_DEFINITION",
+        "serialized_in_historical_schema": false,
+        "optimizer_state": {
+          "defect_count": 0,
+          "alpha": -1
+        }
+      },
+      "rayleigh_certified": 97467,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": null,
+      "checkpoint_manifest_sha256": null,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 24,
+      "method": "production_direct_bracelet_quotient_exhaustion",
+      "source_file": "research/logs/target_a_search_n24.json",
+      "source_sha256": "3fea700914b3c2d8a08a26bbaf490432123ed1a877c231f0d53ddbdf8f394a51",
+      "source_selector": "top-level result",
+      "expected_search_space": {
+        "q_bracelets": 176906,
+        "spectral_states": 353812,
+        "represented_switching_classes": 33554432
+      },
+      "completed_search_space": {
+        "q_bracelets": 176906,
+        "spectral_states": 353812,
+        "represented_switching_classes": 33554432
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "optimizer": {
+          "defect_count": 0,
+          "canonical_q_code": 0,
+          "alpha": -1
+        },
+        "multiplicity": 4
+      },
+      "rayleigh_certified": 353811,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": "research/logs/checkpoints/n24/manifest.json",
+      "checkpoint_manifest_sha256": "978b38db75ccf8d05bd7bae76b28373d5a0b56655299ea2a65cc25722514a98b",
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 26,
+      "method": "production_direct_bracelet_quotient_exhaustion",
+      "source_file": "research/logs/target_a_search_n26.json",
+      "source_sha256": "9cb022a9bc7ba5e2ad7d8d1d0427ec3073a64aae60a09ef032f0a2286875f815",
+      "source_selector": "top-level result",
+      "expected_search_space": {
+        "q_bracelets": 649532,
+        "spectral_states": 1299064,
+        "represented_switching_classes": 134217728
+      },
+      "completed_search_space": {
+        "q_bracelets": 649532,
+        "spectral_states": 1299064,
+        "represented_switching_classes": 134217728
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "optimizer": {
+          "defect_count": 0,
+          "canonical_q_code": 0,
+          "alpha": -1
+        },
+        "multiplicity": 4
+      },
+      "rayleigh_certified": 1299063,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": "research/logs/checkpoints/n26/manifest.json",
+      "checkpoint_manifest_sha256": "59d106f91ff5bd457e25c1676233970ee46382e4ace7c8e41b7769b85d5b140d",
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 28,
+      "method": "production_direct_bracelet_quotient_exhaustion",
+      "source_file": "research/logs/target_a_search_n28.json",
+      "source_sha256": "07644fbae5bbb93da64bc9d532a1a4a41bc38d013dd96ab2b19524f0fe524269",
+      "source_selector": "top-level result",
+      "expected_search_space": {
+        "q_bracelets": 2405236,
+        "spectral_states": 4810472,
+        "represented_switching_classes": 536870912
+      },
+      "completed_search_space": {
+        "q_bracelets": 2405236,
+        "spectral_states": 4810472,
+        "represented_switching_classes": 536870912
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "optimizer": {
+          "defect_count": 0,
+          "canonical_q_code": 0,
+          "alpha": -1
+        },
+        "multiplicity": 4
+      },
+      "rayleigh_certified": 4810471,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": "research/logs/checkpoints/n28/manifest.json",
+      "checkpoint_manifest_sha256": "e1d1411f0563915c282651d12858c77671b5a8153ac2b47357373d7963b2fc91",
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    },
+    {
+      "n": 30,
+      "method": "production_direct_bracelet_quotient_exhaustion",
+      "source_file": "research/logs/target_a_search_n30.json",
+      "source_sha256": "34bbeba4b07723eff94eb8cc7b19f640ea2c07674e72cb5b91b3c74ba1a0b449",
+      "source_selector": "top-level result",
+      "expected_search_space": {
+        "q_bracelets": 8964800,
+        "spectral_states": 17929600,
+        "represented_switching_classes": 2147483648
+      },
+      "completed_search_space": {
+        "q_bracelets": 8964800,
+        "spectral_states": 17929600,
+        "represented_switching_classes": 2147483648
+      },
+      "completion_fraction": 1,
+      "optimizer_exact_check": {
+        "status": "PASS",
+        "optimizer": {
+          "defect_count": 0,
+          "canonical_q_code": 0,
+          "alpha": -1
+        },
+        "multiplicity": 4
+      },
+      "rayleigh_certified": 17929599,
+      "exact_fallbacks": 0,
+      "counterexamples": 0,
+      "checkpoint_manifest": "research/logs/checkpoints/n30/manifest.json",
+      "checkpoint_manifest_sha256": "56b0cc2c8d12da9d99ca49d66d136d7b40a517cb4211f8fed5eb7b69c83ec7d4",
+      "status": "VERIFIED_NO_COUNTEREXAMPLE"
+    }
+  ],
+  "required_orders_below_32": [
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24,
+    26,
+    28,
+    30
+  ],
+  "domain_coverage_complete": true,
+  "n32_counterexample": {
+    "n": 32,
+    "witness_file": "research/counterexamples/target_a_n32_period8.json",
+    "witness_sha256": "c5ecd532da469092ef98fe2385dfb69b8da542595f942cd88b881d985b72bc10",
+    "exact_certificate_file": "research/counterexamples/target_a_n32_period8_certificate.json",
+    "exact_certificate_sha256": "db1378c6a7e5ab8526890be41c929a60ee17675d920a5ca0c501f49d888e46b4",
+    "triangle_flux_period": [
+      1,
+      1,
+      -1,
+      1,
+      -1,
+      -1,
+      1,
+      -1
+    ],
+    "quadrilateral_flux_period": [
+      1,
+      -1,
+      -1,
+      -1
+    ],
+    "alpha": 1,
+    "exact_inequality": "rho(A)^2 < 1561/200 < rho_-(32)^2",
+    "status": "N32_COUNTEREXAMPLE_EXACT_PASS"
+  },
+  "checkpoint_replays": {
+    "source_file": "research/audit/target_a_minimality_checkpoint_replay.json",
+    "source_sha256": "bcfcb67f6b1e67f7d7ec36552c99aeebfcd8811a46ef697de7314b4ad2311d57",
+    "orders": [
+      24,
+      26,
+      28,
+      30
+    ],
+    "reports": [
+      {
+        "n": 24,
+        "result_status": "VERIFIED_NO_COUNTEREXAMPLE_AT_N24",
+        "checkpoint_chunks": 28,
+        "checks": {
+          "chunk_count": true,
+          "generator_cursor_exhausted": true,
+          "shell_counts": true,
+          "completed_q_bracelets": true,
+          "completed_spectral_states": true,
+          "represented_q_vectors": true,
+          "ordered_input_sha256": true,
+          "ordered_certificate_sha256": true,
+          "final_chain_sha256": true,
+          "optimizer_exact_check": true,
+          "exact_fallbacks": true,
+          "zero_counterexamples": true
+        },
+        "status": "PASS"
+      },
+      {
+        "n": 26,
+        "result_status": "VERIFIED_NO_COUNTEREXAMPLE_AT_N26",
+        "checkpoint_chunks": 76,
+        "checks": {
+          "chunk_count": true,
+          "generator_cursor_exhausted": true,
+          "shell_counts": true,
+          "completed_q_bracelets": true,
+          "completed_spectral_states": true,
+          "represented_q_vectors": true,
+          "ordered_input_sha256": true,
+          "ordered_certificate_sha256": true,
+          "final_chain_sha256": true,
+          "optimizer_exact_check": true,
+          "exact_fallbacks": true,
+          "zero_counterexamples": true
+        },
+        "status": "PASS"
+      },
+      {
+        "n": 28,
+        "result_status": "VERIFIED_NO_COUNTEREXAMPLE_AT_N28",
+        "checkpoint_chunks": 250,
+        "checks": {
+          "chunk_count": true,
+          "generator_cursor_exhausted": true,
+          "shell_counts": true,
+          "completed_q_bracelets": true,
+          "completed_spectral_states": true,
+          "represented_q_vectors": true,
+          "ordered_input_sha256": true,
+          "ordered_certificate_sha256": true,
+          "final_chain_sha256": true,
+          "optimizer_exact_check": true,
+          "exact_fallbacks": true,
+          "zero_counterexamples": true
+        },
+        "status": "PASS"
+      },
+      {
+        "n": 30,
+        "result_status": "VERIFIED_NO_COUNTEREXAMPLE_AT_N30",
+        "checkpoint_chunks": 908,
+        "checks": {
+          "chunk_count": true,
+          "generator_cursor_exhausted": true,
+          "shell_counts": true,
+          "completed_q_bracelets": true,
+          "completed_spectral_states": true,
+          "represented_q_vectors": true,
+          "ordered_input_sha256": true,
+          "ordered_certificate_sha256": true,
+          "final_chain_sha256": true,
+          "optimizer_exact_check": true,
+          "exact_fallbacks": true,
+          "zero_counterexamples": true
+        },
+        "status": "PASS"
+      }
+    ],
+    "status": "PASS"
+  },
+  "dependencies": {
+    "manifest_file": "research/audit/TARGET_A_MINIMALITY_DEPENDENCIES.json",
+    "manifest_sha256": "5bb4a6c39039bb76e41945c0c1f0dffd545b778c0230ce85d3f905bc197b284f"
+  },
+  "certificate_checker": {
+    "source_file": "research/scripts/verify_target_a_minimality_certificate.py",
+    "source_sha256": "48997c791be70f7f2cb5287981dea361494a589034b6e72f78dbcfddf102dbb1",
+    "success_output": "TARGET_A_MINIMALITY_CERTIFICATE_PASS"
+  },
+  "n32_certificate_checker": {
+    "source_file": "research/scripts/verify_target_a_n32_certificate.py",
+    "source_sha256": "cc61bdb44c29c5b415b155f4d8da0f25cb729b628a1dba79d86353b374b27de2",
+    "success_output": "N32_CERTIFICATE_PASS"
+  },
+  "overall_status": "PASS"
+}

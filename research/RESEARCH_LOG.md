@@ -156,3 +156,16 @@
 - **证据等级：** `n=30` 全 quotient 搜索、optimizer 等号和全部非 optimizer 排除为 **Verified/PASS**。项目状态为 **FINITE_RANGE_COMPLETE_THROUGH_N30**；本任务没有组装或宣称 `SMALLEST_COUNTEREXAMPLE_VERIFIED`。
 - **产物：** `research/logs/target_a_search_n30.json`、`research/logs/checkpoints/n30/`、`research/experiments/TARGET_A_N30_RESULT.md`、`research/logs/target_a_period4_diagnostic_n24_30.json`、`research/scripts/target_a_checkpoint_replay.py`。结果 JSON SHA-256 为 `34bbeba4b07723eff94eb8cc7b19f640ea2c07674e72cb5b91b3c74ba1a0b449`；checkpoint manifest SHA-256 为 `56b0cc2c8d12da9d99ca49d66d136d7b40a517cb4211f8fed5eb7b69c83ec7d4`。
 - **下一步：** Task 36A 仅汇编并独立审计偶数 `n=8,...,30` 的完整无反例证据与既有 `n=32` 精确 witness，形成最小反例证书；不新增谱搜索。
+
+---
+
+## 2026-08-15 — Target A Task 36A：最小反例阶数认证
+
+- **研究对象：** 独立审计 Target A 的完整有限排除链与冻结的 `n=32` 显式反例，并认证最小 admissible failure order。
+- **做了什么：** 从 `TARGET_A_SPEC.md` 的 Domain 规则程序生成 `8,10,...,30`，逐项读取而非信任 Markdown 摘要：`n=8,...,20` raw switching-class JSON、`n=22` full quotient JSON、`n=24,26,28,30` production result 与 manifests。重新计算全部依赖 SHA-256；两次只读重放四组 production checkpoints。新增不导入 witness constructor 的 `n=32` checker，直接重建 32 阶矩阵、flux 与 holonomy，独立重算 Bareiss 和有理 LDL 正定性及阈值代数比较。新增总证书、最小依赖 manifest、独立总 checker 与六类篡改负测。
+- **得到什么：** `SMALLEST_COUNTEREXAMPLE_VERIFIED`。Conjecture 3 的 admissible domain 恰为所有偶数 `n>=8`；完整精确计算排除全部 `n=8,10,...,30`；冻结 signing 在 `n=32` 满足 `rho(A)^2 < 1561/200 < rho_-(32)^2`。因此 `n=32` 是最小反例阶数。
+- **证据性质：** 最小性结论是 **有限范围 exhaustive exact computation + 显式 exact witness**，不是 computation-free proof。没有宣称 `n=32` 反例唯一、switching class 唯一、period-8 family 全局最优，或所有偶数 `n>=32` 均失败；无限族边界仍为 `8|n, n>=32`。
+- **哪些失败：** 无证据、checker、重放或数学失败。删除 `n=28`、篡改 `n=30` SHA、把首阶改为 34、修改 witness 边符号、把有限反例数改为 1、把 completion fraction 降到 1 以下的临时负测均按要求失败，未修改 committed evidence。
+- **验证：** `N32_CERTIFICATE_PASS`；`TARGET_A_MINIMALITY_CERTIFICATE_PASS`（状态升级前后各完整运行一次）；默认 36 项测试中 33 PASS、3 个既有慢测跳过；JSON parse、compileall 与 diff 检查 PASS。
+- **产物：** `research/counterexamples/target_a_minimality_certificate.json`（SHA-256 `1f20469033876569292de247344ba88eb0831c163e01c1441f1b75aa8bca95c7`）；`research/audit/TARGET_A_MINIMALITY_DEPENDENCIES.json`（SHA-256 `5bb4a6c39039bb76e41945c0c1f0dffd545b778c0230ce85d3f905bc197b284f`）；`research/audit/target_a_minimality_checkpoint_replay.json`（SHA-256 `bcfcb67f6b1e67f7d7ec36552c99aeebfcd8811a46ef697de7314b4ad2311d57`）；`research/proofs/TARGET_A_SMALLEST_COUNTEREXAMPLE.md`；两个独立 checker 及测试。
+- **下一步：** Task 37 从定义使用第二套实现独立重构 `n=32` witness；随后 Task 38 从零独立推导并审计 period-8 Floquet 行列式与证明。本任务不开始论文正文。

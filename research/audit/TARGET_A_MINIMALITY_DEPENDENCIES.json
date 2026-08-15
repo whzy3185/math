@@ -1,0 +1,96 @@
+{
+  "schema_version": 1,
+  "claim": "32 is the smallest admissible Target A counterexample order",
+  "dependencies": [
+    {
+      "path": "research/audit/target_a_minimality_checkpoint_replay.json",
+      "sha256": "bcfcb67f6b1e67f7d7ec36552c99aeebfcd8811a46ef697de7314b4ad2311d57",
+      "role": "saved four-order replay audit"
+    },
+    {
+      "path": "research/conjectures/TARGET_A_SPEC.md",
+      "sha256": "b484e44ba3975f61229c83702843e370a51d78767053d871480c3f4e3da37e97",
+      "role": "admissible domain and failure condition"
+    },
+    {
+      "path": "research/counterexamples/target_a_n32_period8.json",
+      "sha256": "c5ecd532da469092ef98fe2385dfb69b8da542595f942cd88b881d985b72bc10",
+      "role": "explicit n=32 witness"
+    },
+    {
+      "path": "research/counterexamples/target_a_n32_period8_certificate.json",
+      "sha256": "db1378c6a7e5ab8526890be41c929a60ee17675d920a5ca0c501f49d888e46b4",
+      "role": "exact n=32 inequality certificate"
+    },
+    {
+      "path": "research/logs/checkpoints/n24/manifest.json",
+      "sha256": "978b38db75ccf8d05bd7bae76b28373d5a0b56655299ea2a65cc25722514a98b",
+      "role": "checkpoint manifest n=24"
+    },
+    {
+      "path": "research/logs/checkpoints/n26/manifest.json",
+      "sha256": "59d106f91ff5bd457e25c1676233970ee46382e4ace7c8e41b7769b85d5b140d",
+      "role": "checkpoint manifest n=26"
+    },
+    {
+      "path": "research/logs/checkpoints/n28/manifest.json",
+      "sha256": "e1d1411f0563915c282651d12858c77671b5a8153ac2b47357373d7963b2fc91",
+      "role": "checkpoint manifest n=28"
+    },
+    {
+      "path": "research/logs/checkpoints/n30/manifest.json",
+      "sha256": "56b0cc2c8d12da9d99ca49d66d136d7b40a517cb4211f8fed5eb7b69c83ec7d4",
+      "role": "checkpoint manifest n=30"
+    },
+    {
+      "path": "research/logs/target_a_flux_search_n22.json",
+      "sha256": "588c5998a83d01c0db9cbc81d0551cbd04d66823c58ce7f506b259e8125264be",
+      "role": "finite quotient exclusion n=22"
+    },
+    {
+      "path": "research/logs/target_a_reproduction_n8_18.json",
+      "sha256": "141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e",
+      "role": "finite exclusion n=8..18"
+    },
+    {
+      "path": "research/logs/target_a_search_n20.json",
+      "sha256": "20a0d812a268d51c4c52188c63827732216815f20901ef83ad680816d82fbcc4",
+      "role": "finite exclusion n=20"
+    },
+    {
+      "path": "research/logs/target_a_search_n24.json",
+      "sha256": "3fea700914b3c2d8a08a26bbaf490432123ed1a877c231f0d53ddbdf8f394a51",
+      "role": "finite exclusion n=24"
+    },
+    {
+      "path": "research/logs/target_a_search_n26.json",
+      "sha256": "9cb022a9bc7ba5e2ad7d8d1d0427ec3073a64aae60a09ef032f0a2286875f815",
+      "role": "finite exclusion n=26"
+    },
+    {
+      "path": "research/logs/target_a_search_n28.json",
+      "sha256": "07644fbae5bbb93da64bc9d532a1a4a41bc38d013dd96ab2b19524f0fe524269",
+      "role": "finite exclusion n=28"
+    },
+    {
+      "path": "research/logs/target_a_search_n30.json",
+      "sha256": "34bbeba4b07723eff94eb8cc7b19f640ea2c07674e72cb5b91b3c74ba1a0b449",
+      "role": "finite exclusion n=30"
+    },
+    {
+      "path": "research/scripts/target_a_checkpoint_replay.py",
+      "sha256": "9cdc82a2f173279faf6644c49099a335eb19ff6092f02843a48535dd7071d7ba",
+      "role": "read-only checkpoint replay implementation"
+    },
+    {
+      "path": "research/scripts/verify_target_a_minimality_certificate.py",
+      "sha256": "48997c791be70f7f2cb5287981dea361494a589034b6e72f78dbcfddf102dbb1",
+      "role": "independent total checker"
+    },
+    {
+      "path": "research/scripts/verify_target_a_n32_certificate.py",
+      "sha256": "cc61bdb44c29c5b415b155f4d8da0f25cb729b628a1dba79d86353b374b27de2",
+      "role": "independent n=32 checker"
+    }
+  ]
+}

@@ -90,6 +90,7 @@ def replay_saved_search(n: int, research_root: Path = RESEARCH_ROOT) -> dict[str
 def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--n", type=int, nargs="+", required=True)
+    parser.add_argument("--output", type=Path)
     args = parser.parse_args()
     reports = [replay_saved_search(n) for n in args.n]
     payload = {
@@ -97,7 +98,13 @@ def main() -> None:
         "reports": reports,
         "status": "PASS" if all(item["status"] == "PASS" for item in reports) else "FAIL",
     }
-    print(json.dumps(payload, ensure_ascii=False, indent=2))
+    text = json.dumps(payload, ensure_ascii=False, indent=2) + "\n"
+    if args.output:
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        temporary = args.output.with_suffix(args.output.suffix + ".tmp")
+        temporary.write_text(text, encoding="utf-8")
+        temporary.replace(args.output)
+    print(text, end="")
     raise SystemExit(0 if payload["status"] == "PASS" else 1)
 
 

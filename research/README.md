@@ -8,9 +8,9 @@
 
 - 阶段：Target A——signed circulant 反例审计与论文整理
 - 状态：**DISPROVED**；已证明 period-8 无限反例族，覆盖所有 `8|n, n≥32`
-- 首个显式见证：`n=32`；有限验证已完整覆盖所有偶数 `8≤n≤30`
-- 最小性状态：**FINITE_RANGE_COMPLETE_THROUGH_N30**；尚未组装最小反例证书
-- 下一关卡：Task 36A 汇编并独立审计最小反例证书；不新增谱搜索
+- 首个且最小的反例阶数：`n=32`
+- 最小性状态：**SMALLEST_COUNTEREXAMPLE_VERIFIED**；有限穷举精确排除所有偶数 `8≤n≤30`，`n=32` 有显式精确证书
+- 下一关卡：Task 37 独立重构 `n=32` witness；随后 Task 38 从零审计 Floquet 行列式与证明
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围

@@ -3,7 +3,7 @@
 Target：C029
 
 Source：[Vaibhav Suvagiya, *Signed circulants at the Ramanujan bound*, arXiv:2607.18334](https://arxiv.org/abs/2607.18334), Conjecture 3
-规格状态：FORMALIZED；**DISPROVED**（2026-08-15）。
+规格状态：FORMALIZED；**DISPROVED — SMALLEST FAILURE n=32 VERIFIED**（2026-08-15）。
 
 ## Definition
 
@@ -161,8 +161,20 @@ Thus the claimed global lower bound is false for an infinite family.  The
 proof uses an 8 by 8 Floquet characteristic polynomial and exact rational
 positivity; see `research/proofs/TARGET_A_PERIOD8_FAMILY.md`.  The concrete
 `n=32, alpha=+1` witness also has an independent exact rational
-positive-definiteness certificate.  No claim is currently made that `n=32`
-is the smallest possible counterexample.
+positive-definiteness certificate.
+
+### Smallest counterexample order
+
+This project has exhaustively and exactly excluded counterexamples at every
+admissible order `n=8,10,...,30`.  The frozen `n=32` signing independently
+satisfies
+
+`rho(A)^2 < 1561/200 < rho_-(32)^2`.
+
+Because the admissible domain is exactly the even integers `n>=8`, `n=32` is
+the smallest counterexample order.  This minimality statement is
+**computationally certified by exhaustive exact finite verification plus an
+explicit exact witness**; it is not presented as a computation-free proof.
 
 From the source paper:
 
@@ -171,10 +183,12 @@ From the source paper:
 3. `α=+1` gives `2√2`, while `α=−1` gives `ρ_−(n)<2√2`;
 4. the same spectral conclusions hold at `n=8` with the paper's stated convention;
 5. the source paper reports exhaustive numerical checks for `n∈{8,10,12,14,16,18}` with agreement to `10^-9`.
-6. this project has independently reproduced `n∈{8,10,12,14,16,18}` with exact optimizer equality and rational Rayleigh exclusion certificates, and has additionally checked `n=20` by the same workflow.
+6. this project has independently reproduced `n∈{8,10,12,14,16,18,20}` with exact optimizer equality and rational Rayleigh exclusion certificates;
+7. quotient searches exactly exclude counterexamples at `n=22,24,26,28,30`, with immutable production checkpoints and read-only replay for `n=24,26,28,30`.
 
-Item 5 is **Observed/Reported** from the source.  Item 6 is **Verified** for
-the listed finite ranges, not a proof for all even `n`.
+Item 5 is **Observed/Reported** from the source. Items 6–7 are **Verified**
+finite computations. Together with the exact `n=32` witness they certify the
+smallest failure order, but they do not imply failure at every even `n>=32`.
 
 ## Exact verifier specification
 
@@ -209,11 +223,12 @@ verify_counterexample(c):
 
 Any implementation that silently falls back to floating-point eigenvalues is non-conforming.
 
-## Search boundary for the next stages
+## Audit boundary for the next stages
 
-The project has exhaustively verified `n=8,10,…,22`, with the `n=22` search
-performed on all 97,468 `(Q,alpha)/D_22` spectral states.  The conjecture is
-nevertheless false from `n=32` along the period-8 family above.  Remaining
-computational work concerns possible smaller counterexamples at
-`n=24,26,28,30`; it is a minimality study, not a test of whether the original
-conjecture survives.
+Minimality is complete: all admissible orders below 32 are excluded and the
+order-32 witness is exact. No larger spectral search is planned. The next
+gates are an independent definition-level reconstruction of the frozen
+`n=32` witness, followed by an independent derivation and proof audit of the
+period-8 Floquet determinant. The established infinite family remains exactly
+`8|n, n>=32`; no claim is made for every even `n>=32`, uniqueness at `n=32`,
+or global optimality of the period-8 family.

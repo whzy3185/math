@@ -89,9 +89,9 @@
 3. **定义域：** `C_n(1,2)` 的所有 `±1` signings。
 4. **结论：** `ρ(A_σ)≥ρ_-(n)`。
 5. **反例条件：** 某 signing 的谱半径严格小于 `ρ_-(n)`。
-6. **已知规模：** 浮点穷举 `n=8,10,…,18`。
-7. **起点：** exact 复现后搜索 `n=20`。
-8. **空间：** 论文约化为 `2^{n+1}` switching classes；`n=20` 约 2.1M。
+6. **已知规模：** 所有偶数 `n=8,10,…,30` 已完整精确排除反例；`n=32` 为显式精确反例。
+7. **最小性：** `n=32` 已由有限范围 exhaustive exact computation 与显式 exact witness 认证为最小反例阶数。
+8. **空间：** 论文约化为 `2^{n+1}` switching classes；大规模有限排除使用 `(Q,alpha)/D_n` quotient。
 9. **对称：** switching、dihedral automorphisms、global sign（谱半径不变）。
 10. **判定复杂度：** integer characteristic polynomial + algebraic root isolation；可精确。
 11. **策略：** exhaustive canonical classes；flux-structured enumeration；branch-and-bound；随机 signing 只作候选生成。
@@ -161,7 +161,7 @@
 
 | 角色 | ID | 状态 | 选择理由 |
 |---|---|---|---|
-| **Target A** | **C029** | **DISPROVED** | period-8 Floquet family gives counterexamples for every `8|n, n≥32`; independent exact `n=32` certificate completed. |
+| **Target A** | **C029** | **DISPROVED — SMALLEST FAILURE n=32 VERIFIED** | all admissible orders below 32 are exhaustively excluded; explicit exact `n=32` witness; period-8 family gives counterexamples for every `8|n, n≥32`. |
 | **Target B** | **C049** | SECONDARY | 符号计算可直接产生负整数系数证书，已知放宽版反例提示边界附近有攻击面。 |
 | **Target C** | **C030** | BACKLOG | 多项式恒等式反例证书短，适合独立 verifier；与 Target B 共用对称函数/组合基础设施。 |
 | **Target D** | **C040** | BACKLOG | 图/SAT 路线，首个参数窗口小，反例是有限邻接表。 |
@@ -169,4 +169,4 @@
 
 C025 保留为第一替补：价值很高且反例证书明确，但已有公开 exact computation，需先审计其代码和 `N=13` 资源成本。C037、C027 暂不设为主目标，因为“有限范围没有 witness”不能直接否证存在性命题。
 
-Target A 下一阶段仅做独立证明审计、最小反例范围检查与论文整理；在该审计完成前不把算力切换到其他目标的大规模搜索。
+Target A 已停止扩大计算规模。下一阶段依次做 `n=32` witness 的第二套定义级重构，以及 period-8 Floquet 行列式/证明的从零独立审计；当前不开始论文正文。
