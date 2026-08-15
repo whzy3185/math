@@ -10,7 +10,8 @@
 - 状态：**DISPROVED**；已证明 period-8 无限反例族，覆盖所有 `8|n, n≥32`
 - 首个且最小的反例阶数：`n=32`
 - 最小性状态：**SMALLEST_COUNTEREXAMPLE_VERIFIED**；有限穷举精确排除所有偶数 `8≤n≤30`，`n=32` 有显式精确证书
-- 下一关卡：Task 37 独立重构 `n=32` witness；随后 Task 38 从零审计 Floquet 行列式与证明
+- witness 审计：**N32_WITNESS_INDEPENDENTLY_RECONSTRUCTED**；第二套实现从 flux 定义在非平凡 gauge 中重构并证明 switching equivalence
+- 下一关卡：Task 38 从零推导并审计 period-8 Floquet reduction、行列式与证明
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围

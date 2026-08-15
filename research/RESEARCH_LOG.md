@@ -169,3 +169,16 @@
 - **验证：** `N32_CERTIFICATE_PASS`；`TARGET_A_MINIMALITY_CERTIFICATE_PASS`（状态升级前后各完整运行一次）；默认 36 项测试中 33 PASS、3 个既有慢测跳过；JSON parse、compileall 与 diff 检查 PASS。
 - **产物：** `research/counterexamples/target_a_minimality_certificate.json`（SHA-256 `1f20469033876569292de247344ba88eb0831c163e01c1441f1b75aa8bca95c7`）；`research/audit/TARGET_A_MINIMALITY_DEPENDENCIES.json`（SHA-256 `5bb4a6c39039bb76e41945c0c1f0dffd545b778c0230ce85d3f905bc197b284f`）；`research/audit/target_a_minimality_checkpoint_replay.json`（SHA-256 `bcfcb67f6b1e67f7d7ec36552c99aeebfcd8811a46ef697de7314b4ad2311d57`）；`research/proofs/TARGET_A_SMALLEST_COUNTEREXAMPLE.md`；两个独立 checker 及测试。
 - **下一步：** Task 37 从定义使用第二套实现独立重构 `n=32` witness；随后 Task 38 从零独立推导并审计 period-8 Floquet 行列式与证明。本任务不开始论文正文。
+
+---
+
+## 2026-08-15 — Target A Task 37：n=32 witness 第二套独立重构
+
+- **研究对象：** 从 `n=32`、period-8 triangle flux `(+,+,-,+,-,-,+,-)` 与 `alpha=+1` 出发，以不依赖现有 constructor/helper 的第二套实现重构显式反例，并审计其与冻结 witness 的 switching class 一致性。
+- **做了什么：** 选择非平凡确定性 gauge `a=(+,-,+,-,-,+,-,+)^4`，直接按定义 `b_i=tau_i a_i a_(i+1)` 得到 step-2 signs `(-,-,+,+,+,+,-,-)^4`；独立重建 32 阶整数邻接矩阵。脚本先原子写入 construction snapshot 并固定 SHA，之后才读取冻结 witness。由 step-1 方程从 `d_0=+1` 递归求得 `d=(+,+,-,-,+,-,-,+)^4`，逐边核对 32 条 step-1 与 32 条 step-2 方程，并直接验证完整 `A_ind=D A_frozen D`。
+- **得到什么：** `N32_WITNESS_INDEPENDENTLY_RECONSTRUCTED`。反向重建 `tau=(+,+,-,+,-,-,+,-)^4`、`Q=(+,-,-,-)^8`、`alpha=+1` 全部一致；`charpoly(A)` 与 `charpoly(A^2)` 均和冻结 witness 精确相同。新实现的 fraction-free Bareiss 与 rational LDL 各得 32 个正 pivot，exact algebraic comparison 再次证明 `rho(A_ind)^2 < 1561/200 < rho_-(32)^2`。
+- **独立性边界：** 新脚本只导入 Python 标准库与 SymPy；未导入 period-8 family、flux search、minimality search、reproduction、现有 witness constructor、Q/triangle reconstruction helper 或 `verify_target_a_n32_certificate.py`；未使用浮点本征值。它只审计具体 witness，不把 period-8 infinite-family proof 标为 independently audited。
+- **哪些失败：** 无构造、switching、矩阵、谱一致性或证书失败。临时负测修改一条冻结 step-2 边时 switching audit 按要求失败；修改 tau 输入时 reconstruction 按要求失败；未改写冻结 witness。
+- **验证：** Task 37 tests 11/11 PASS；默认 47 项中 44 PASS、3 个既有慢测跳过；Target A 聚焦 tests 34/34 PASS；`N32_CERTIFICATE_PASS`；`TARGET_A_MINIMALITY_CERTIFICATE_PASS`（含 `n=24,26,28,30` 只读重放）；JSON parse、compileall 与 diff 检查 PASS。
+- **产物：** `research/audit/target_a_n32_independent_reconstruction.json`（SHA-256 `53b9b117b074427134e7e8f71838d5b2af85930492e988a8c1d17d9542fd7b7a`）；`research/audit/n32_witness_reconstruction_audit.json`（SHA-256 `35a28ffb95cb1ab1e15838997b7fc9a696d7f69caa70a4aeafd50f653bc5c543`）；`research/audit/N32_WITNESS_RECONSTRUCTION.md`（SHA-256 `5836edf9b59c4fa926c53b69e8cfa9af18bf640f5e88d42590ded5afd32b7d1c`）；`research/scripts/target_a_n32_independent_reconstruction.py` 及测试。
+- **下一步：** Task 38 从零独立推导 period-8 Floquet reduction 与 determinant，并审计无限反例族证明。本任务没有开始论文正文、novelty audit 或任何新搜索。
