@@ -104,3 +104,16 @@
 - **证据等级：** `n<=22` 新旧完整有序流等同性和 `n=24,26,28,30` Burnside/覆盖核对为 **Verified/PASS**。本任务没有执行 `n>=24` 谱搜索，因此最小反例结论仍为 **UNRESOLVED**。
 - **产物：** `research/scripts/target_a_bracelets.py`、`research/scripts/target_a_direct_generator_audit.py`、`research/audit/DIRECT_BRACELET_GENERATOR_AUDIT.md`、`research/audit/direct_bracelet_generator_audit.json`。
 - **下一步：** Task 33B 仅执行完整 `n=24` 谱搜索，并使用已审计的 direct bracelet stream、defect-shell checkpoint 与精确证书链。
+
+---
+
+## 2026-08-15 — Target A Task 33B：n=24 生产级完整搜索
+
+- **研究对象：** C029 Conjecture 3 在 `n=24` 的完整有限验证。
+- **做了什么：** 新增 production minimality driver，仅流式调用已审计的 direct bracelet generator；启动谱计算前重新核对 Burnside 总数和每个 defect shell；对每个 `(Q,alpha)` 精确反向重构；用单次 dense eigendecomposition 提议整数向量，再以有理 Rayleigh 下界对认证阈值上界作严格比较；optimizer 单独使用最小多项式整除与根隔离；以 28 个不可变 chunk 保存输入/证书摘要、内容哈希和连续 hash chain，并完成无谱 resume 重放审计。
+- **得到什么：** `VERIFIED_NO_COUNTEREXAMPLE_AT_N24`。176,906/176,906 个 Q-bracelets、353,812/353,812 个谱状态全部完成，恢复 33,554,432 个 switching classes。optimizer 精确等于阈值；其余 353,811 个状态全部 `RAYLEIGH_CERTIFIED`，exact fallback 0、反例 0。因此 Conjecture 3 对 `n=24` 成立。
+- **新发现：** OBSERVED numeric top-100 中最低非 optimizer 为 `Q-code=1118481, d=6, alpha=-1`，缺陷位置 `0,4,8,12,16,20`，数值 gap 约 `0.00908278`。未做 exact second-minimum 排序。
+- **哪些失败：** 首轮成功完成后发现结果 JSON 未顶层保存实际使用的 `rho_-(24)^2` 有理隔离区间；补齐字段后从空 checkpoint 重新完整运行，输入摘要、证书摘要和最终链均与首轮一致。没有数学或搜索失败。
+- **证据等级：** `n=24` 全 quotient 搜索、optimizer 等号和全部非 optimizer 排除为 **Verified/PASS**。`n=32` 是否为最小反例仍为 **UNRESOLVED**，因为 `n=26,28,30` 尚未检查。
+- **产物：** `research/scripts/target_a_minimality_search.py`、`research/logs/target_a_search_n24.json`、`research/logs/checkpoints/n24/`、`research/experiments/TARGET_A_N24_RESULT.md`。结果 JSON SHA-256 为 `3fea700914b3c2d8a08a26bbaf490432123ed1a877c231f0d53ddbdf8f394a51`；checkpoint manifest SHA-256 为 `978b38db75ccf8d05bd7bae76b28373d5a0b56655299ea2a65cc25722514a98b`。
+- **下一步：** Task 34 仅执行 `n=26` 完整搜索；本任务没有启动 `n=26,28,30`。

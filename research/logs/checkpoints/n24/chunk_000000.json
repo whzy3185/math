@@ -1,0 +1,49 @@
+{
+  "schema_version": 1,
+  "git_commit": "9058177fd158ffbecf82798e247f3e0510243973",
+  "n": 24,
+  "defect_count": 0,
+  "expected_shell_q_bracelets": 1,
+  "chunk_index": 0,
+  "first_canonical_q": 0,
+  "last_canonical_q": 0,
+  "first_alpha": -1,
+  "last_alpha": 1,
+  "completed_states": 2,
+  "completed_q_bracelets": 1,
+  "represented_q_vectors": 1,
+  "rayleigh_certified": 1,
+  "exact_fallbacks": 0,
+  "counterexamples": 0,
+  "counterexample_records": [],
+  "fallback_records": [],
+  "optimizer_exact_check": {
+    "charpoly_A2": "x**24 - 96*x**23 + 4368*x**22 - 125360*x**21 + 2547816*x**20 - 39027552*x**19 + 468202448*x**18 - 4512448800*x**17 + 35559069912*x**16 - 231961531904*x**15 + 1263399274272*x**14 - 5778205344960*x**13 + 22263602556160*x**12 - 72349880225664*x**11 + 198112734261696*x**10 - 455698934770816*x**9 + 875680618894992*x**8 - 1393995106220544*x**7 + 1816062330809216*x**6 - 1902748252929024*x**5 + 1563225934611840*x**4 - 969276933259264*x**3 + 426239299508736*x**2 - 118418628163584*x + 15619442196736",
+    "threshold_root_interval": [
+      "73849452861677/9636011581006",
+      "77065035293260/10055586653667"
+    ],
+    "multiplicity": 4
+  },
+  "top_near_minimizers": [
+    {
+      "canonical_q_code": 0,
+      "alpha": 1,
+      "defect_count": 0,
+      "dihedral_orbit_size": 1,
+      "numeric_rho_preview": 2.8284271247461907,
+      "numeric_gap_preview": 0.06005170581417474,
+      "exact_Rayleigh_certificate": {
+        "numerator": 8,
+        "denominator": 1,
+        "value": "8"
+      }
+    }
+  ],
+  "ordered_input_sha256": "7e1e575ddf6d68831421c6434962b41791bd7d2b5019d6b59598c35c6b1cecc8",
+  "ordered_certificate_sha256": "47daed86830935ae7b89fdceb6b068189bfff22f3d9c7dbd015d6542482c3a96",
+  "previous_chain_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "chain_sha256": "4d3111c21b1a43f71a89e9dd5dcf2a10b723381e787bdf78d66905d1dda4e630",
+  "elapsed_seconds": 0.1840660572052002,
+  "content_sha256": "c2e65b446977fc7ad25dfaf4f83c72b85a9f2cbc5fa0af0e8c5868a313a81305"
+}

@@ -9,7 +9,7 @@
 - 阶段：Target A——signed circulant 反例审计与论文整理
 - 状态：**DISPROVED**；已证明 period-8 无限反例族，覆盖所有 `8|n, n≥32`
 - 首个显式见证：`n=32`；尚未证明它是全局最小反例
-- 下一关卡：constant-memory bracelet stream 审计已 PASS；Task 33B 完整搜索 `n=24`
+- 下一关卡：`n=24` 完整搜索已 PASS；Task 34 完整搜索 `n=26`
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围
