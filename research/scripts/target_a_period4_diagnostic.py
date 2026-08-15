@@ -1,4 +1,4 @@
-"""Build the observed n=24/26/28 period-4 diagnostic from saved logs."""
+"""Build the observed n=24/26/28/30 period-4 diagnostic from saved logs."""
 
 from __future__ import annotations
 
@@ -37,7 +37,7 @@ def _summary(item: dict[str, Any]) -> dict[str, Any]:
 
 def build_diagnostic(research_root: Path = RESEARCH_ROOT) -> dict[str, Any]:
     entries = []
-    for n in (24, 26, 28):
+    for n in (24, 26, 28, 30):
         path = research_root / "logs" / f"target_a_search_n{n}.json"
         result = json.loads(path.read_text(encoding="utf-8"))
         top = result["top_near_minimizers"]
@@ -48,16 +48,18 @@ def build_diagnostic(research_root: Path = RESEARCH_ROOT) -> dict[str, Any]:
             "source_sha256": _sha256(path),
             "best_observed_nonoptimizer": _summary(best),
         }
-        if n == 28:
+        if n in (28, 30):
             entry["best_observed_by_period4_distance"] = [
                 _summary(item)
                 for item in result["best_numeric_by_period4_distance"]
             ]
-            if any(
-                item["distance_to_period4_Q_pattern"] == 0
-                for item in result["top_near_minimizers"]
-            ):
-                raise AssertionError("n=28 top diagnostics contain impossible distance 0")
+        distances = {
+            _distance(item) for item in result["top_near_minimizers"]
+        }
+        if n == 28 and 0 in distances:
+            raise AssertionError("n=28 top diagnostics contain impossible distance 0")
+        if n == 30 and any(distance % 2 for distance in distances):
+            raise AssertionError("n=30 top diagnostics contain impossible odd distance")
         entries.append(entry)
     return {
         "schema_version": 1,

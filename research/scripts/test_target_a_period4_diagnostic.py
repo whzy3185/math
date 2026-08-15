@@ -37,6 +37,19 @@ class Period4DiagnosticTests(unittest.TestCase):
                 for item in entries[28]["best_observed_by_period4_distance"]
             },
         )
+        self.assertEqual(
+            entries[30]["best_observed_nonoptimizer"][
+                "distance_to_period4_Q_pattern"
+            ],
+            6,
+        )
+        self.assertEqual(
+            {0, 2, 4, 6, 8, 10, 12, 14, 16, 18, 20, 22},
+            {
+                item["distance_to_period4_Q_pattern"]
+                for item in entries[30]["best_observed_by_period4_distance"]
+            },
+        )
 
 
 if __name__ == "__main__":

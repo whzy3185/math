@@ -143,3 +143,16 @@
 - **证据等级：** `n=28` 全 quotient 搜索、optimizer 等号和全部非 optimizer 排除为 **Verified/PASS**。period-4 表仅为 **Observed**。`n=32` 是否为最小反例仍为 **UNRESOLVED**，因为 `n=30` 尚未检查。
 - **产物：** `research/logs/target_a_search_n28.json`、`research/logs/checkpoints/n28/`、`research/experiments/TARGET_A_N28_RESULT.md`、`research/logs/target_a_period4_diagnostic_n24_28.json`。结果 JSON SHA-256 为 `07644fbae5bbb93da64bc9d532a1a4a41bc38d013dd96ab2b19524f0fe524269`；checkpoint manifest SHA-256 为 `e1d1411f0563915c282651d12858c77671b5a8153ac2b47357373d7963b2fc91`。
 - **下一步：** Task 36 仅执行 `n=30` 完整搜索；本任务没有启动 `n=30`。
+
+---
+
+## 2026-08-15 — Target A Task 36：n=30 生产级完整搜索
+
+- **研究对象：** C029 Conjecture 3 在 `n=30` 的完整有限验证，以及偶数 `n=8,...,30` 的有限范围闭合。
+- **做了什么：** 增加 `n=30` Burnside 分层硬门；将 period-4 参照统一为从索引 0 开始的长度 `n` 截断，并按参照 defect 奇偶验证全流距离奇偶；新增可复用的只读 checkpoint replay 工具。正式搜索前默认与聚焦测试通过，并用该工具重放 `n=24,26,28`；正式搜索后独立重放全部 908 个 `n=30` chunks。扩展自动诊断表到 `n=24,26,28,30`。
+- **得到什么：** `VERIFIED_NO_COUNTEREXAMPLE_AT_N30`。8,964,800/8,964,800 个 Q-bracelets、17,929,600/17,929,600 个谱状态全部完成，恢复 536,870,912 个 Q-vectors 和 2,147,483,648 个 switching classes。optimizer 精确等于阈值；其余 17,929,599 个状态全部 `RAYLEIGH_CERTIFIED`，exact fallback 0、反例 0。因此 Conjecture 3 对 `n=30` 成立，严格有限验证范围闭合到所有偶数 `n=8,10,...,30`。
+- **新发现：** `n=30` period-4 参照 defect 数为 8，合法距离均为偶数，完整诊断观察到距离 `0,2,...,22`。OBSERVED numeric 最低非 optimizer 为 `Q-code=17843217, d=6, alpha=+1`，缺陷间隔 `4,6,4,6,4,6`，period-4 distance 为 6，数值 gap 约 `0.01882988`；distance 0 类并非整体最低。自动表中 `n=24/26/28/30` 最佳 observed distance 为 `0/1/5/6`。
+- **哪些失败：** 无数学、搜索、checkpoint 或重放失败。正式运行耗时 1,498.36 秒，峰值 RSS 122,224,640 bytes。
+- **证据等级：** `n=30` 全 quotient 搜索、optimizer 等号和全部非 optimizer 排除为 **Verified/PASS**。项目状态为 **FINITE_RANGE_COMPLETE_THROUGH_N30**；本任务没有组装或宣称 `SMALLEST_COUNTEREXAMPLE_VERIFIED`。
+- **产物：** `research/logs/target_a_search_n30.json`、`research/logs/checkpoints/n30/`、`research/experiments/TARGET_A_N30_RESULT.md`、`research/logs/target_a_period4_diagnostic_n24_30.json`、`research/scripts/target_a_checkpoint_replay.py`。结果 JSON SHA-256 为 `34bbeba4b07723eff94eb8cc7b19f640ea2c07674e72cb5b91b3c74ba1a0b449`；checkpoint manifest SHA-256 为 `56b0cc2c8d12da9d99ca49d66d136d7b40a517cb4211f8fed5eb7b69c83ec7d4`。
+- **下一步：** Task 36A 仅汇编并独立审计偶数 `n=8,...,30` 的完整无反例证据与既有 `n=32` 精确 witness，形成最小反例证书；不新增谱搜索。

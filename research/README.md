@@ -8,8 +8,9 @@
 
 - 阶段：Target A——signed circulant 反例审计与论文整理
 - 状态：**DISPROVED**；已证明 period-8 无限反例族，覆盖所有 `8|n, n≥32`
-- 首个显式见证：`n=32`；尚未证明它是全局最小反例
-- 下一关卡：`n=28` 完整搜索已 PASS；Task 36 完整搜索 `n=30`
+- 首个显式见证：`n=32`；有限验证已完整覆盖所有偶数 `8≤n≤30`
+- 最小性状态：**FINITE_RANGE_COMPLETE_THROUGH_N30**；尚未组装最小反例证书
+- 下一关卡：Task 36A 汇编并独立审计最小反例证书；不新增谱搜索
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围

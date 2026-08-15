@@ -149,9 +149,24 @@ class MinimalitySearchTests(unittest.TestCase):
             minimality.distance_to_period4_q_code(admissible_neighbor, 28), 1
         )
         with self.assertRaisesRegex(
-            minimality.SearchAbort, "impossible period-4 distance zero"
+            minimality.SearchAbort, "distance parity mismatch"
         ):
             minimality.validate_period4_diagnostic(28, admissible_neighbor, 0)
+
+    def test_n30_period4_parity_invariant(self) -> None:
+        ideal_code = minimality.period4_reference_code(30)
+        self.assertEqual(ideal_code.bit_count(), 8)
+        self.assertEqual(minimality.distance_to_period4_q_code(ideal_code, 30), 0)
+        minimality.validate_period4_diagnostic(30, ideal_code, 0)
+        admissible_neighbor = ideal_code ^ 1 ^ 2
+        self.assertEqual(admissible_neighbor.bit_count() % 2, 0)
+        distance = minimality.distance_to_period4_q_code(admissible_neighbor, 30)
+        self.assertEqual(distance % 2, 0)
+        minimality.validate_period4_diagnostic(30, admissible_neighbor, distance)
+        with self.assertRaisesRegex(
+            minimality.SearchAbort, "distance parity mismatch"
+        ):
+            minimality.validate_period4_diagnostic(30, admissible_neighbor, 1)
 
     def test_completion_count_gate(self) -> None:
         expected = minimality.expected_search_space(8)

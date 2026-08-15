@@ -98,6 +98,24 @@ N28_SHELL_COUNTS = {
     26: 14,
     28: 1,
 }
+N30_SHELL_COUNTS = {
+    0: 1,
+    2: 15,
+    4: 511,
+    6: 10133,
+    8: 98254,
+    10: 502303,
+    12: 1444147,
+    14: 2427036,
+    16: 2427036,
+    18: 1444147,
+    20: 502303,
+    22: 98254,
+    24: 10133,
+    26: 511,
+    28: 15,
+    30: 1,
+}
 
 
 class SearchAbort(RuntimeError):
@@ -191,6 +209,8 @@ def expected_search_space(n: int) -> dict[str, Any]:
         raise SearchAbort("SEARCH_SPACE_MISMATCH", "n=26 Burnside constants disagree")
     if n == 28 and shells != N28_SHELL_COUNTS:
         raise SearchAbort("SEARCH_SPACE_MISMATCH", "n=28 Burnside constants disagree")
+    if n == 30 and shells != N30_SHELL_COUNTS:
+        raise SearchAbort("SEARCH_SPACE_MISMATCH", "n=30 Burnside constants disagree")
     q_bracelets = sum(shells.values())
     return {
         "shell_counts": shells,
@@ -331,7 +351,7 @@ def cyclic_gaps(positions: list[int], n: int) -> list[int]:
 def _period4_pattern_codes(n: int) -> tuple[int, ...]:
     """Return the distinct dihedral images of the length-n (+---)... code."""
     mask = (1 << n) - 1
-    base = sum(1 << index for index in range(0, n, 4))
+    base = period4_reference_code(n)
     reflected = 0
     for index in range(n):
         if (base >> index) & 1:
@@ -350,6 +370,11 @@ def _period4_pattern_codes(n: int) -> tuple[int, ...]:
     )
 
 
+def period4_reference_code(n: int) -> int:
+    """The exact length-n truncation of the infinite (+---) pattern."""
+    return sum(1 << index for index in range(0, n, 4))
+
+
 def distance_to_period4_q_code(code: int, n: int) -> int:
     return min((code ^ pattern).bit_count() for pattern in _period4_pattern_codes(n))
 
@@ -361,10 +386,16 @@ def distance_to_period4_q_pattern(q: tuple[int, ...]) -> int:
 
 
 def validate_period4_diagnostic(n: int, code: int, distance: int) -> None:
-    if n == 28 and code.bit_count() % 2 == 0 and distance == 0:
+    pattern_weight = period4_reference_code(n).bit_count()
+    expected_distance_parity = (code.bit_count() + pattern_weight) % 2
+    if distance % 2 != expected_distance_parity:
         raise SearchAbort(
             "DIAGNOSTIC_PARITY_ERROR",
-            "an admissible n=28 Q state has impossible period-4 distance zero",
+            (
+                f"n={n} period-4 distance parity mismatch: "
+                f"Q weight {code.bit_count()}, pattern weight {pattern_weight}, "
+                f"distance {distance}"
+            ),
         )
 
 
@@ -825,6 +856,8 @@ def run_minimality_search(
         chunk_started = time.time()
 
     stopped_early = False
+    last_period4_code = None
+    last_period4_distance = None
     for state in states:
         defect_count, code, orbit_size, alpha = state
         if current is not None and defect_count != current["defect_count"]:
@@ -839,7 +872,12 @@ def run_minimality_search(
                 "STATE_CONSTRUCTION_ERROR",
                 f"roundtrip failed for Q={code}, alpha={alpha}",
             )
-        period4_distance = distance_to_period4_q_code(code, n)
+        if code != last_period4_code:
+            last_period4_code = code
+            last_period4_distance = distance_to_period4_q_code(code, n)
+        if last_period4_distance is None:
+            raise AssertionError("period-4 diagnostic cache was not initialized")
+        period4_distance = last_period4_distance
         validate_period4_diagnostic(n, code, period4_distance)
 
         encoded_input = _input_bytes(state)
@@ -1020,6 +1058,18 @@ def run_minimality_search(
         "top_near_minimizers": expanded_top,
         "best_numeric_by_period4_distance": expanded_best_by_distance,
         "near_minimizer_ranking_status": "OBSERVED_NUMERIC_ORDER_ONLY",
+        "period4_diagnostic": {
+            "convention": "exact length-n truncation of (+,-,-,-,...) at index 0",
+            "reference_code": period4_reference_code(n),
+            "reference_Q": [
+                1 if index % 4 == 0 else -1 for index in range(n)
+            ],
+            "reference_defect_count": period4_reference_code(n).bit_count(),
+            "distance": "minimum Hamming distance over rotations and reflections",
+            "distance_parity_rule": (
+                "distance parity equals Q-weight parity plus reference-weight parity"
+            ),
+        },
         "checkpoint_chunks": len(chunks),
         "checkpoint_manifest_sha256": manifest_sha256,
         "checkpoint_final_chain_sha256": previous_chain,

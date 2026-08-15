@@ -1,0 +1,67 @@
+{
+  "schema_version": 1,
+  "git_commit": "dce3da9a875c40f969352870c7e3b61f281c900e",
+  "baseline_git_commit": "dce3da9a875c40f969352870c7e3b61f281c900e",
+  "n": 30,
+  "defect_count": 0,
+  "expected_shell_q_bracelets": 1,
+  "chunk_index": 0,
+  "first_canonical_q": 0,
+  "last_canonical_q": 0,
+  "first_alpha": -1,
+  "last_alpha": 1,
+  "completed_states": 2,
+  "completed_q_bracelets": 1,
+  "represented_q_vectors": 1,
+  "rayleigh_certified": 1,
+  "exact_fallbacks": 0,
+  "counterexamples": 0,
+  "counterexample_records": [],
+  "fallback_records": [],
+  "optimizer_exact_check": {
+    "charpoly_A2": "x**30 - 120*x**29 + 6900*x**28 - 253180*x**27 + 6660810*x**26 - 133839384*x**25 + 2136474250*x**24 - 27824111700*x**23 + 301280594175*x**22 - 2750317535300*x**21 + 21388126944840*x**20 - 142804167160800*x**19 + 823429900545325*x**18 - 4117895178628500*x**17 + 17912091393694200*x**16 - 67886144973274280*x**15 + 224305894070451525*x**14 - 645828159259586700*x**13 + 1617786696404626400*x**12 - 3515980281136912500*x**11 + 6602356866427435515*x**10 - 10651004161019435700*x**9 + 14647758626811537450*x**8 - 16997040190604594100*x**7 + 16413785711155819025*x**6 - 12945149485979392344*x**5 + 8120057949983274480*x**4 - 3895015511238508800*x**3 + 1341389611462475520*x**2 - 295208283241175040*x + 31177298265051136",
+    "threshold_root_interval": [
+      "57389579899591/7373343560082",
+      "46620424917345/5989735600679"
+    ],
+    "multiplicity": 4
+  },
+  "top_near_minimizers": [
+    {
+      "canonical_q_code": 0,
+      "alpha": 1,
+      "defect_count": 0,
+      "dihedral_orbit_size": 1,
+      "numeric_rho_preview": 2.828427124746191,
+      "numeric_gap_preview": 0.038555063745397966,
+      "distance_to_period4_Q_pattern": 8,
+      "exact_Rayleigh_certificate": {
+        "numerator": 8,
+        "denominator": 1,
+        "value": "8"
+      }
+    }
+  ],
+  "best_numeric_by_period4_distance": [
+    {
+      "canonical_q_code": 0,
+      "alpha": 1,
+      "defect_count": 0,
+      "dihedral_orbit_size": 1,
+      "numeric_rho_preview": 2.828427124746191,
+      "numeric_gap_preview": 0.038555063745397966,
+      "distance_to_period4_Q_pattern": 8,
+      "exact_Rayleigh_certificate": {
+        "numerator": 8,
+        "denominator": 1,
+        "value": "8"
+      }
+    }
+  ],
+  "ordered_input_sha256": "7e1e575ddf6d68831421c6434962b41791bd7d2b5019d6b59598c35c6b1cecc8",
+  "ordered_certificate_sha256": "25df39ea89889c8012badc6e551de87a427236e075642a0d268a3013fc74e342",
+  "previous_chain_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "chain_sha256": "1fbaa2bc8bf249f905803c196a882058531e6aac8eb43cfd92d2bda71dc0163e",
+  "elapsed_seconds": 1.7599148750305176,
+  "content_sha256": "edd7287e6b94081a0203344fb90951ea923abcbb8f70077b166ccae3afc40975"
+}
