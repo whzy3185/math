@@ -246,3 +246,10 @@ Every final `target_a_search_nN.json` must include:
 Task 33 (`n=24`) may start only after
 `research/audit/QUOTIENT_COMPLETENESS_AUDIT.md` records `PASS`.  This plan
 does not authorize Task 33 by itself.
+
+Task 33A is now complete.  The independent direct stream passed exact ordered
+comparison with the reference generator for every even `n=8,...,22` and
+matched all Burnside totals and defect shells at `n=24,26,28,30`; see
+`research/audit/DIRECT_BRACELET_GENERATOR_AUDIT.md`.  Task 33B, the complete
+`n=24` spectral search, is the next authorized gate.  No `n>=24` spectral
+search was performed by Task 33A.

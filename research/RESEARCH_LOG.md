@@ -92,3 +92,15 @@
 - **哪些失败：** 无数学或枚举失败。识别出当前 visited-array generator 在 `n=30` 会预分配约 1 GiB，因此计划要求生产搜索前实现并再次审计 constant-memory bracelet stream。
 - **证据等级：** quotient 完整性数学论证和显式等价检查为 **Verified/PASS**；`n=24,26,28,30` 最小性结论仍为 **UNRESOLVED**。
 - **下一步：** 按 stop point 停在 Task 33 前；下一轮先实现并验证 direct bracelet stream，然后执行完整 `n=24` 搜索。
+
+---
+
+## 2026-08-15 — Target A Task 33A：constant-memory bracelet stream
+
+- **研究对象：** `n=24,26,28,30` 最小性搜索所需的生产级 Q-bracelet 枚举基础设施。
+- **做了什么：** 新增独立 fixed-weight FKM necklace 递归生成器，按反射最小方向合并为 binary bracelets，并由最小周期精确给出二面体轨道大小；保留旧 visited-array 生成器作为参考实现。完整逐项比较每个偶数 `n=8,...,22` 的 defect count、canonical Q-code 和 orbit size；对 `n=24,26,28,30` 流式核对 fixed-weight Burnside 分层、总数、轨道覆盖、稳定顺序、SHA-256 与峰值 traced memory。
+- **得到什么：** 审计总状态 `PASS`。`n=24,26,28,30` 的 Q-bracelet 数分别为 176,906、649,532、2,405,236、8,964,800，对应 353,812、1,299,064、4,810,472、17,929,600 个 `(Q,alpha)` 谱状态。峰值 traced memory 分别为 16,840、18,992、20,464、21,968 bytes；生成器不保留输出集或 `2^n` visited 表。
+- **哪些失败：** 无数学、计数或实现失败。启用 `tracemalloc` 的完整审计耗时 1,354.73 秒，其中 `n=30` 为 1,020.00 秒；这是一次性内存审计开销，不是谱搜索耗时。
+- **证据等级：** `n<=22` 新旧完整有序流等同性和 `n=24,26,28,30` Burnside/覆盖核对为 **Verified/PASS**。本任务没有执行 `n>=24` 谱搜索，因此最小反例结论仍为 **UNRESOLVED**。
+- **产物：** `research/scripts/target_a_bracelets.py`、`research/scripts/target_a_direct_generator_audit.py`、`research/audit/DIRECT_BRACELET_GENERATOR_AUDIT.md`、`research/audit/direct_bracelet_generator_audit.json`。
+- **下一步：** Task 33B 仅执行完整 `n=24` 谱搜索，并使用已审计的 direct bracelet stream、defect-shell checkpoint 与精确证书链。
