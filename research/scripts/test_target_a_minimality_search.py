@@ -128,6 +128,17 @@ class MinimalitySearchTests(unittest.TestCase):
                 signing = signing_from_q(code, 10, alpha)
                 self.assertEqual(q_code_from_signing(signing), (code, alpha))
 
+    def test_period4_distance_is_dihedral_and_diagnostic(self) -> None:
+        exact = tuple(1 if index % 4 == 0 else -1 for index in range(24))
+        rotated = exact[-5:] + exact[:-5]
+        reflected = tuple(reversed(exact))
+        self.assertEqual(minimality.distance_to_period4_q_pattern(exact), 0)
+        self.assertEqual(minimality.distance_to_period4_q_pattern(rotated), 0)
+        self.assertEqual(minimality.distance_to_period4_q_pattern(reflected), 0)
+        perturbed = list(exact)
+        perturbed[1] *= -1
+        self.assertEqual(minimality.distance_to_period4_q_pattern(tuple(perturbed)), 1)
+
     def test_completion_count_gate(self) -> None:
         expected = minimality.expected_search_space(8)
         status = minimality.determine_completion_status(

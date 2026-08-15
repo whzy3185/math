@@ -1,0 +1,1330 @@
+{
+  "schema_version": 1,
+  "git_commit": "35df4857f55f47a616049c33381a3e62b79d06be",
+  "baseline_git_commit": "35df4857f55f47a616049c33381a3e62b79d06be",
+  "n": 26,
+  "defect_count": 12,
+  "expected_shell_q_bracelets": 186616,
+  "chunk_index": 24,
+  "first_canonical_q": 1252595,
+  "last_canonical_q": 1391819,
+  "first_alpha": -1,
+  "last_alpha": 1,
+  "completed_states": 20000,
+  "completed_q_bracelets": 10000,
+  "represented_q_vectors": 519116,
+  "rayleigh_certified": 20000,
+  "exact_fallbacks": 0,
+  "counterexamples": 0,
+  "counterexample_records": [],
+  "fallback_records": [],
+  "optimizer_exact_check": null,
+  "top_near_minimizers": [
+    {
+      "canonical_q_code": 1390235,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.123430521739302,
+      "numeric_gap_preview": 0.34623847109560835,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9755818229308122742,
+        "denominator": 1000000000530501969,
+        "value": "9755818229308122742/1000000000530501969"
+      }
+    },
+    {
+      "canonical_q_code": 1390171,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.123893140394836,
+      "numeric_gap_preview": 0.34670108975114244,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9758708358711922802,
+        "denominator": 1000000000625699387,
+        "value": "9758708358711922802/1000000000625699387"
+      }
+    },
+    {
+      "canonical_q_code": 1366381,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.129163770923529,
+      "numeric_gap_preview": 0.3519717202798356,
+      "exact_Rayleigh_certificate": {
+        "numerator": 2447916477299217873,
+        "denominator": 250000000100506711,
+        "value": "2447916477299217873/250000000100506711"
+      }
+    },
+    {
+      "canonical_q_code": 1390235,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.130274821387055,
+      "numeric_gap_preview": 0.35308277074336125,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4899310230822249757,
+        "denominator": 500000000216088511,
+        "value": "4899310230822249757/500000000216088511"
+      }
+    },
+    {
+      "canonical_q_code": 1366637,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1302835328052887,
+      "numeric_gap_preview": 0.35309148216159514,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9798674999851054024,
+        "denominator": 1000000000418331873,
+        "value": "9798674999851054024/1000000000418331873"
+      }
+    },
+    {
+      "canonical_q_code": 1357467,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.133442223508997,
+      "numeric_gap_preview": 0.3562501728653036,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4909230087134891226,
+        "denominator": 500000000315771515,
+        "value": "4909230087134891226/500000000315771515"
+      }
+    },
+    {
+      "canonical_q_code": 1357403,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1355701705936156,
+      "numeric_gap_preview": 0.3583781199499221,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9831800305948073144,
+        "denominator": 1000000001142374763,
+        "value": "9831800305948073144/1000000001142374763"
+      }
+    },
+    {
+      "canonical_q_code": 1366381,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1364987285756953,
+      "numeric_gap_preview": 0.3593066779320018,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1967524855869612000,
+        "denominator": 200000000101469701,
+        "value": "1967524855869612000/200000000101469701"
+      }
+    },
+    {
+      "canonical_q_code": 1366637,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.137566756274624,
+      "numeric_gap_preview": 0.3603747056309303,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9844325143723304086,
+        "denominator": 999999999354311783,
+        "value": "9844325143723304086/999999999354311783"
+      }
+    },
+    {
+      "canonical_q_code": 1390171,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.13793040704323,
+      "numeric_gap_preview": 0.36073835639953655,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9846607229674649444,
+        "denominator": 999999999007592971,
+        "value": "9846607229674649444/999999999007592971"
+      }
+    },
+    {
+      "canonical_q_code": 1357467,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1410274364597592,
+      "numeric_gap_preview": 0.36383538581606567,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9866053352666585446,
+        "denominator": 999999999602031291,
+        "value": "9866053352666585446/999999999602031291"
+      }
+    },
+    {
+      "canonical_q_code": 1267291,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.146069383807571,
+      "numeric_gap_preview": 0.3688773331638773,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9897752572787203338,
+        "denominator": 1000000000510808227,
+        "value": "9897752572787203338/1000000000510808227"
+      }
+    },
+    {
+      "canonical_q_code": 1357403,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1479488070404447,
+      "numeric_gap_preview": 0.3707567563967511,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4954790841891076487,
+        "denominator": 499999999598105691,
+        "value": "4954790841891076487/499999999598105691"
+      }
+    },
+    {
+      "canonical_q_code": 1271387,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1490410606303385,
+      "numeric_gap_preview": 0.37184900998664494,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9916459606170734028,
+        "denominator": 1000000000467392651,
+        "value": "9916459606170734028/1000000000467392651"
+      }
+    },
+    {
+      "canonical_q_code": 1272923,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1490977762749774,
+      "numeric_gap_preview": 0.3719057256312839,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9916816814820284500,
+        "denominator": 1000000001036651357,
+        "value": "9916816814820284500/1000000001036651357"
+      }
+    },
+    {
+      "canonical_q_code": 1272235,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1494200699233033,
+      "numeric_gap_preview": 0.3722280192796097,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9918846771907730452,
+        "denominator": 999999999503170005,
+        "value": "9918846771907730452/999999999503170005"
+      }
+    },
+    {
+      "canonical_q_code": 1272219,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.149947537105451,
+      "numeric_gap_preview": 0.37275548646175727,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4961084741212626693,
+        "denominator": 499999999793823053,
+        "value": "4961084741212626693/499999999793823053"
+      }
+    },
+    {
+      "canonical_q_code": 1267291,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1499952908570665,
+      "numeric_gap_preview": 0.37280324021337297,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9922470327139054728,
+        "denominator": 999999999467607689,
+        "value": "9922470327139054728/999999999467607689"
+      }
+    },
+    {
+      "canonical_q_code": 1272987,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.150105762505188,
+      "numeric_gap_preview": 0.37291371186149425,
+      "exact_Rayleigh_certificate": {
+        "numerator": 708797593619373154,
+        "denominator": 71428571397639701,
+        "value": "708797593619373154/71428571397639701"
+      }
+    },
+    {
+      "canonical_q_code": 1272987,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1501468262549865,
+      "numeric_gap_preview": 0.372954775611293,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9923425018170366262,
+        "denominator": 999999999113814529,
+        "value": "9923425018170366262/999999999113814529"
+      }
+    },
+    {
+      "canonical_q_code": 1259099,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1516222662576703,
+      "numeric_gap_preview": 0.3744302156139767,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9932722910780030006,
+        "denominator": 1000000000161980707,
+        "value": "9932722910780030006/1000000000161980707"
+      }
+    },
+    {
+      "canonical_q_code": 1259163,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.151910766985891,
+      "numeric_gap_preview": 0.3747187163421972,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4967270737057516245,
+        "denominator": 499999999550731487,
+        "value": "4967270737057516245/499999999550731487"
+      }
+    },
+    {
+      "canonical_q_code": 1272027,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1519614734242323,
+      "numeric_gap_preview": 0.3747694227805387,
+      "exact_Rayleigh_certificate": {
+        "numerator": 2483715282400490395,
+        "denominator": 249999999991225412,
+        "value": "2483715282400490395/249999999991225412"
+      }
+    },
+    {
+      "canonical_q_code": 1271387,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.152295644429569,
+      "numeric_gap_preview": 0.3751035937858753,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1419566833194841406,
+        "denominator": 142857142892713519,
+        "value": "1419566833194841406/142857142892713519"
+      }
+    },
+    {
+      "canonical_q_code": 1272923,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1524247563281835,
+      "numeric_gap_preview": 0.37523270568448996,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4968890920727377245,
+        "denominator": 499999999856303356,
+        "value": "4968890920727377245/499999999856303356"
+      }
+    },
+    {
+      "canonical_q_code": 1366451,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.152810423585158,
+      "numeric_gap_preview": 0.3756183729414646,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4970106781082933679,
+        "denominator": 499999999753457879,
+        "value": "4970106781082933679/499999999753457879"
+      }
+    },
+    {
+      "canonical_q_code": 1271003,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.152898276344767,
+      "numeric_gap_preview": 0.3757062257010735,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4970383776285534377,
+        "denominator": 500000000583117239,
+        "value": "4970383776285534377/500000000583117239"
+      }
+    },
+    {
+      "canonical_q_code": 1271003,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.153035167415681,
+      "numeric_gap_preview": 0.37584311677198734,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9941630763951891556,
+        "denominator": 999999999697419713,
+        "value": "9941630763951891556/999999999697419713"
+      }
+    },
+    {
+      "canonical_q_code": 1272243,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.153144538678611,
+      "numeric_gap_preview": 0.37595248803491765,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1420331498412591528,
+        "denominator": 142857142959007391,
+        "value": "1420331498412591528/142857142959007391"
+      }
+    },
+    {
+      "canonical_q_code": 1272219,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1531954287497386,
+      "numeric_gap_preview": 0.376003378106045,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4971320707484001565,
+        "denominator": 500000000154876062,
+        "value": "4971320707484001565/500000000154876062"
+      }
+    },
+    {
+      "canonical_q_code": 1271219,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1534419010895642,
+      "numeric_gap_preview": 0.37624985044587067,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9944195819177963840,
+        "denominator": 999999999560607649,
+        "value": "9944195819177963840/999999999560607649"
+      }
+    },
+    {
+      "canonical_q_code": 1363355,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.153505830932106,
+      "numeric_gap_preview": 0.3763137802884122,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4972299514698297760,
+        "denominator": 500000000184713541,
+        "value": "4972299514698297760/500000000184713541"
+      }
+    },
+    {
+      "canonical_q_code": 1272411,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.153893510993581,
+      "numeric_gap_preview": 0.3767014603498873,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4973522138270795623,
+        "denominator": 499999999892137265,
+        "value": "4973522138270795623/499999999892137265"
+      }
+    },
+    {
+      "canonical_q_code": 1272235,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.154064009673331,
+      "numeric_gap_preview": 0.37687195902963744,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1243514972476061183,
+        "denominator": 125000000033823921,
+        "value": "1243514972476061183/125000000033823921"
+      }
+    },
+    {
+      "canonical_q_code": 1272027,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1546380666632197,
+      "numeric_gap_preview": 0.3774460160195261,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9951741334245457042,
+        "denominator": 1000000000261743187,
+        "value": "9951741334245457042/1000000000261743187"
+      }
+    },
+    {
+      "canonical_q_code": 1271499,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.154676727025786,
+      "numeric_gap_preview": 0.3774846763820925,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4975992624423955918,
+        "denominator": 499999999839719741,
+        "value": "4975992624423955918/499999999839719741"
+      }
+    },
+    {
+      "canonical_q_code": 1366829,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1547760703084595,
+      "numeric_gap_preview": 0.37758401966476596,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9952612057904154186,
+        "denominator": 1000000000413286487,
+        "value": "9952612057904154186/1000000000413286487"
+      }
+    },
+    {
+      "canonical_q_code": 1259163,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1548655847375136,
+      "numeric_gap_preview": 0.37767353409382,
+      "exact_Rayleigh_certificate": {
+        "numerator": 2488294212797012631,
+        "denominator": 249999999834898816,
+        "value": "2488294212797012631/249999999834898816"
+      }
+    },
+    {
+      "canonical_q_code": 1265051,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.155440384825865,
+      "numeric_gap_preview": 0.3782483341821714,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4978402012362328445,
+        "denominator": 500000000127282197,
+        "value": "4978402012362328445/500000000127282197"
+      }
+    },
+    {
+      "canonical_q_code": 1389787,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1555313543168944,
+      "numeric_gap_preview": 0.3783393036732008,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4978689069372719861,
+        "denominator": 500000000535704445,
+        "value": "4978689069372719861/500000000535704445"
+      }
+    },
+    {
+      "canonical_q_code": 1272155,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.155577877543433,
+      "numeric_gap_preview": 0.37838582689973954,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9957671742694151396,
+        "denominator": 1000000000145880679,
+        "value": "9957671742694151396/1000000000145880679"
+      }
+    },
+    {
+      "canonical_q_code": 1357019,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.155648316130482,
+      "numeric_gap_preview": 0.37845626548678846,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4979058150214735544,
+        "denominator": 500000000267737971,
+        "value": "4979058150214735544/500000000267737971"
+      }
+    },
+    {
+      "canonical_q_code": 1258715,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1557199121868345,
+      "numeric_gap_preview": 0.3785278615431409,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9958568162552782882,
+        "denominator": 999999999837356595,
+        "value": "9958568162552782882/999999999837356595"
+      }
+    },
+    {
+      "canonical_q_code": 1271219,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.155757159184105,
+      "numeric_gap_preview": 0.37856510854041137,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1659800541335500211,
+        "denominator": 166666666671206535,
+        "value": "1659800541335500211/166666666671206535"
+      }
+    },
+    {
+      "canonical_q_code": 1387931,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.156236814383636,
+      "numeric_gap_preview": 0.37904476373994234,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4980915416191491882,
+        "denominator": 500000000196370909,
+        "value": "4980915416191491882/500000000196370909"
+      }
+    },
+    {
+      "canonical_q_code": 1390189,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.156255398091478,
+      "numeric_gap_preview": 0.37906334744778425,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4980974066358719794,
+        "denominator": 499999999735786695,
+        "value": "4980974066358719794/499999999735786695"
+      }
+    },
+    {
+      "canonical_q_code": 1366829,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1564413800059965,
+      "numeric_gap_preview": 0.37924932936230293,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9963122188890405940,
+        "denominator": 1000000000348910863,
+        "value": "9963122188890405940/1000000000348910863"
+      }
+    },
+    {
+      "canonical_q_code": 1272411,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1564466889082743,
+      "numeric_gap_preview": 0.3792546382645807,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9963155703053864968,
+        "denominator": 1000000000314544109,
+        "value": "9963155703053864968/1000000000314544109"
+      }
+    },
+    {
+      "canonical_q_code": 1271507,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1564975160597433,
+      "numeric_gap_preview": 0.3793054654160497,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4981738283974624438,
+        "denominator": 499999999952722939,
+        "value": "4981738283974624438/499999999952722939"
+      }
+    },
+    {
+      "canonical_q_code": 1357019,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.156508353848144,
+      "numeric_gap_preview": 0.37931630320445064,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4981772488841017944,
+        "denominator": 499999999486574099,
+        "value": "4981772488841017944/499999999486574099"
+      }
+    },
+    {
+      "canonical_q_code": 1389787,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1565796508041433,
+      "numeric_gap_preview": 0.3793876001604497,
+      "exact_Rayleigh_certificate": {
+        "numerator": 766461160691005918,
+        "denominator": 76923076900783277,
+        "value": "766461160691005918/76923076900783277"
+      }
+    },
+    {
+      "canonical_q_code": 1366811,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1566700805715806,
+      "numeric_gap_preview": 0.37947802992788704,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9964566003403742196,
+        "denominator": 1000000000584867697,
+        "value": "9964566003403742196/1000000000584867697"
+      }
+    },
+    {
+      "canonical_q_code": 1366235,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.157045930767944,
+      "numeric_gap_preview": 0.3798538801242506,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4983469499746759703,
+        "denominator": 499999999524181315,
+        "value": "4983469499746759703/499999999524181315"
+      }
+    },
+    {
+      "canonical_q_code": 1259117,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1570740778161297,
+      "numeric_gap_preview": 0.37988202717243613,
+      "exact_Rayleigh_certificate": {
+        "numerator": 830593061719082229,
+        "denominator": 83333333398634899,
+        "value": "830593061719082229/83333333398634899"
+      }
+    },
+    {
+      "canonical_q_code": 1259099,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.157137952368749,
+      "numeric_gap_preview": 0.37994590172505527,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4983760025230209125,
+        "denominator": 500000000008692241,
+        "value": "4983760025230209125/500000000008692241"
+      }
+    },
+    {
+      "canonical_q_code": 1273011,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1571651338259286,
+      "numeric_gap_preview": 0.379973083182235,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9967691688821764506,
+        "denominator": 1000000000659698011,
+        "value": "9967691688821764506/1000000000659698011"
+      }
+    },
+    {
+      "canonical_q_code": 1271501,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.157189724192599,
+      "numeric_gap_preview": 0.37999767354890546,
+      "exact_Rayleigh_certificate": {
+        "numerator": 191689364385150518,
+        "denominator": 19230769218191265,
+        "value": "191689364385150518/19230769218191265"
+      }
+    },
+    {
+      "canonical_q_code": 1272243,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.157206112180626,
+      "numeric_gap_preview": 0.3800140615369325,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4983975214859891703,
+        "denominator": 499999999745638943,
+        "value": "4983975214859891703/499999999745638943"
+      }
+    },
+    {
+      "canonical_q_code": 1256859,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.157237959501742,
+      "numeric_gap_preview": 0.38004590885804834,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4984075768992707233,
+        "denominator": 500000000254143909,
+        "value": "4984075768992707233/500000000254143909"
+      }
+    },
+    {
+      "canonical_q_code": 1273003,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.15762788020068,
+      "numeric_gap_preview": 0.3804358295569865,
+      "exact_Rayleigh_certificate": {
+        "numerator": 2492653454325814267,
+        "denominator": 249999999686143238,
+        "value": "2492653454325814267/249999999686143238"
+      }
+    },
+    {
+      "canonical_q_code": 1259117,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1577466491985966,
+      "numeric_gap_preview": 0.38055459855490303,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9971363906552401448,
+        "denominator": 1000000000604474583,
+        "value": "9971363906552401448/1000000000604474583"
+      }
+    },
+    {
+      "canonical_q_code": 1366453,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.157861124832149,
+      "numeric_gap_preview": 0.3806690741884555,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4986043440262813794,
+        "denominator": 499999999839525091,
+        "value": "4986043440262813794/499999999839525091"
+      }
+    },
+    {
+      "canonical_q_code": 1355163,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1581531642797427,
+      "numeric_gap_preview": 0.3809611136360491,
+      "exact_Rayleigh_certificate": {
+        "numerator": 712423671510520115,
+        "denominator": 71428571371974802,
+        "value": "712423671510520115/71428571371974802"
+      }
+    },
+    {
+      "canonical_q_code": 1272155,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1581589601325057,
+      "numeric_gap_preview": 0.3809669094888122,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9973968022969597762,
+        "denominator": 1000000000551873799,
+        "value": "9973968022969597762/1000000000551873799"
+      }
+    },
+    {
+      "canonical_q_code": 1273235,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1581762720506035,
+      "numeric_gap_preview": 0.3809842214069099,
+      "exact_Rayleigh_certificate": {
+        "numerator": 3324692452983685204,
+        "denominator": 333333333119699571,
+        "value": "3324692452983685204/333333333119699571"
+      }
+    },
+    {
+      "canonical_q_code": 1390283,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.158182364818613,
+      "numeric_gap_preview": 0.3809903141749196,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9974115839137213436,
+        "denominator": 999999998965916423,
+        "value": "9974115839137213436/999999998965916423"
+      }
+    },
+    {
+      "canonical_q_code": 1366451,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.15834905182424,
+      "numeric_gap_preview": 0.3811570011805463,
+      "exact_Rayleigh_certificate": {
+        "numerator": 2493792181044917887,
+        "denominator": 249999999774955965,
+        "value": "2493792181044917887/249999999774955965"
+      }
+    },
+    {
+      "canonical_q_code": 1390189,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1583874050311356,
+      "numeric_gap_preview": 0.381195354387442,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9975410994853768762,
+        "denominator": 999999999458113373,
+        "value": "9975410994853768762/999999999458113373"
+      }
+    },
+    {
+      "canonical_q_code": 1271507,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1584668915566767,
+      "numeric_gap_preview": 0.38127484091298314,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1662652184405080027,
+        "denominator": 166666666689568187,
+        "value": "1662652184405080027/166666666689568187"
+      }
+    },
+    {
+      "canonical_q_code": 1273235,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1585153949566362,
+      "numeric_gap_preview": 0.3813233443129427,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1662703250193711427,
+        "denominator": 166666666683109030,
+        "value": "1662703250193711427/166666666683109030"
+      }
+    },
+    {
+      "canonical_q_code": 1271499,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1586542863825002,
+      "numeric_gap_preview": 0.38146223573880667,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4988548448453565721,
+        "denominator": 499999999800773020,
+        "value": "4988548448453565721/499999999800773020"
+      }
+    },
+    {
+      "canonical_q_code": 1265051,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1586876299514777,
+      "numeric_gap_preview": 0.3814955793077841,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9977307538259529256,
+        "denominator": 999999999463888079,
+        "value": "9977307538259529256/999999999463888079"
+      }
+    },
+    {
+      "canonical_q_code": 1272941,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1591014089497453,
+      "numeric_gap_preview": 0.38190935830605177,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1995984343418230672,
+        "denominator": 200000000101461411,
+        "value": "1995984343418230672/200000000101461411"
+      }
+    },
+    {
+      "canonical_q_code": 1387931,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.159139822087203,
+      "numeric_gap_preview": 0.38194777144350933,
+      "exact_Rayleigh_certificate": {
+        "numerator": 118811481184263839,
+        "denominator": 11904761909510607,
+        "value": "118811481184263839/11904761909510607"
+      }
+    },
+    {
+      "canonical_q_code": 1271451,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.159428465940383,
+      "numeric_gap_preview": 0.3822364152966893,
+      "exact_Rayleigh_certificate": {
+        "numerator": 1247748529496243141,
+        "denominator": 125000000057297537,
+        "value": "1247748529496243141/125000000057297537"
+      }
+    },
+    {
+      "canonical_q_code": 1273227,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1597445509230253,
+      "numeric_gap_preview": 0.38255250027933174,
+      "exact_Rayleigh_certificate": {
+        "numerator": 199679712446185045,
+        "denominator": 19999999990427682,
+        "value": "199679712446185045/19999999990427682"
+      }
+    },
+    {
+      "canonical_q_code": 1272475,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.159746484099803,
+      "numeric_gap_preview": 0.3825544334561095,
+      "exact_Rayleigh_certificate": {
+        "numerator": 554666546709428081,
+        "denominator": 55555555538798905,
+        "value": "554666546709428081/55555555538798905"
+      }
+    },
+    {
+      "canonical_q_code": 1258715,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1597714066656617,
+      "numeric_gap_preview": 0.38257935602196813,
+      "exact_Rayleigh_certificate": {
+        "numerator": 998415534628722004,
+        "denominator": 100000000039115271,
+        "value": "998415534628722004/100000000039115271"
+      }
+    },
+    {
+      "canonical_q_code": 1256859,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.15978462780995,
+      "numeric_gap_preview": 0.3825925771662564,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4992119447851415299,
+        "denominator": 500000000078061779,
+        "value": "4992119447851415299/500000000078061779"
+      }
+    },
+    {
+      "canonical_q_code": 1363355,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1598247613392716,
+      "numeric_gap_preview": 0.382632710695578,
+      "exact_Rayleigh_certificate": {
+        "numerator": 665632834856729254,
+        "denominator": 66666666669859243,
+        "value": "665632834856729254/66666666669859243"
+      }
+    },
+    {
+      "canonical_q_code": 1266907,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.160069006973345,
+      "numeric_gap_preview": 0.38287695632965146,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4993018063821132607,
+        "denominator": 499999999940355004,
+        "value": "4993018063821132607/499999999940355004"
+      }
+    },
+    {
+      "canonical_q_code": 1273003,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.160121051374952,
+      "numeric_gap_preview": 0.38292900073125846,
+      "exact_Rayleigh_certificate": {
+        "numerator": 2496591263450818391,
+        "denominator": 249999999861314312,
+        "value": "2496591263450818391/249999999861314312"
+      }
+    },
+    {
+      "canonical_q_code": 1271195,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1601484269822047,
+      "numeric_gap_preview": 0.3829563763385111,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9986538073303091158,
+        "denominator": 999999999273520635,
+        "value": "9986538073303091158/999999999273520635"
+      }
+    },
+    {
+      "canonical_q_code": 1273011,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1602059823148974,
+      "numeric_gap_preview": 0.3830139316712038,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9986901841845452690,
+        "denominator": 999999999117502369,
+        "value": "9986901841845452690/999999999117502369"
+      }
+    },
+    {
+      "canonical_q_code": 1357421,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.16024328999657,
+      "numeric_gap_preview": 0.3830512393528762,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4993568826731940389,
+        "denominator": 500000000074873030,
+        "value": "4993568826731940389/500000000074873030"
+      }
+    },
+    {
+      "canonical_q_code": 1272245,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1606396515422674,
+      "numeric_gap_preview": 0.3834476008985739,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9989643010913151724,
+        "denominator": 1000000000401608641,
+        "value": "9989643010913151724/1000000000401608641"
+      }
+    },
+    {
+      "canonical_q_code": 1386203,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.160656548155172,
+      "numeric_gap_preview": 0.38346449751147826,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4994874907180915851,
+        "denominator": 499999999948230218,
+        "value": "4994874907180915851/499999999948230218"
+      }
+    },
+    {
+      "canonical_q_code": 1366885,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 26,
+      "numeric_rho_preview": 3.1606837236126886,
+      "numeric_gap_preview": 0.383491672968995,
+      "exact_Rayleigh_certificate": {
+        "numerator": 3329973865868465310,
+        "denominator": 333333333229736423,
+        "value": "3329973865868465310/333333333229736423"
+      }
+    },
+    {
+      "canonical_q_code": 1255131,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.160852516852788,
+      "numeric_gap_preview": 0.38366046620909433,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9990988626518482388,
+        "denominator": 999999999321776107,
+        "value": "9990988626518482388/999999999321776107"
+      }
+    },
+    {
+      "canonical_q_code": 1273227,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.160893681528084,
+      "numeric_gap_preview": 0.38370163088439035,
+      "exact_Rayleigh_certificate": {
+        "numerator": 322298350675016648,
+        "denominator": 32258064532276547,
+        "value": "322298350675016648/32258064532276547"
+      }
+    },
+    {
+      "canonical_q_code": 1255131,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.160964938000522,
+      "numeric_gap_preview": 0.38377288735682846,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4995849673807414066,
+        "denominator": 500000000417655737,
+        "value": "4995849673807414066/500000000417655737"
+      }
+    },
+    {
+      "canonical_q_code": 1353435,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.161103670026256,
+      "numeric_gap_preview": 0.38391161938256246,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9992576404449428402,
+        "denominator": 999999999178987817,
+        "value": "9992576404449428402/999999999178987817"
+      }
+    },
+    {
+      "canonical_q_code": 1271509,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1612685685094517,
+      "numeric_gap_preview": 0.38407651786575814,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9993618966135869618,
+        "denominator": 1000000000389255137,
+        "value": "9993618966135869618/1000000000389255137"
+      }
+    },
+    {
+      "canonical_q_code": 1390283,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1613100588304937,
+      "numeric_gap_preview": 0.3841180081868001,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9993881287863455124,
+        "denominator": 999999999980048099,
+        "value": "9993881287863455124/999999999980048099"
+      }
+    },
+    {
+      "canonical_q_code": 1271131,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.161318728482141,
+      "numeric_gap_preview": 0.38412667783844734,
+      "exact_Rayleigh_certificate": {
+        "numerator": 4996968051693179800,
+        "denominator": 500000000016730957,
+        "value": "4996968051693179800/500000000016730957"
+      }
+    },
+    {
+      "canonical_q_code": 1271221,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1614095999816834,
+      "numeric_gap_preview": 0.3842175493379898,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9994510656236541850,
+        "denominator": 999999999737875087,
+        "value": "9994510656236541850/999999999737875087"
+      }
+    },
+    {
+      "canonical_q_code": 1357421,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.161992864975814,
+      "numeric_gap_preview": 0.38480081433212066,
+      "exact_Rayleigh_certificate": {
+        "numerator": 9998198879105364950,
+        "denominator": 1000000000094757749,
+        "value": "9998198879105364950/1000000000094757749"
+      }
+    },
+    {
+      "canonical_q_code": 1272475,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.162261377760775,
+      "numeric_gap_preview": 0.38506932711708153,
+      "exact_Rayleigh_certificate": {
+        "numerator": 999989701405873585,
+        "denominator": 99999999927811879,
+        "value": "999989701405873585/99999999927811879"
+      }
+    },
+    {
+      "canonical_q_code": 1271451,
+      "alpha": 1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.162278008031731,
+      "numeric_gap_preview": 0.3850859573880374,
+      "exact_Rayleigh_certificate": {
+        "numerator": 5000001102082443965,
+        "denominator": 500000000204187744,
+        "value": "5000001102082443965/500000000204187744"
+      }
+    },
+    {
+      "canonical_q_code": 1263323,
+      "alpha": -1,
+      "defect_count": 12,
+      "dihedral_orbit_size": 52,
+      "numeric_rho_preview": 3.1623309329291702,
+      "numeric_gap_preview": 0.38513888228547666,
+      "exact_Rayleigh_certificate": {
+        "numerator": 10000336917811006558,
+        "denominator": 999999998845072055,
+        "value": "10000336917811006558/999999998845072055"
+      }
+    }
+  ],
+  "ordered_input_sha256": "89648b89b089bdf825f9450b2e11b8805153d13c2909e7cba023a06c004efee1",
+  "ordered_certificate_sha256": "97181b74096d03e576bd2104bf25653228f05f93ab976054e67624e988d8f3ca",
+  "previous_chain_sha256": "fe4530f04f9500b9c81cbdaa93b1cef6672a8f21350836a2cd7d95e527c80511",
+  "chain_sha256": "bbb6f33595ececa8fe7f53dacfc724da22c02a89ec8dcd5edfcd7f570a8ac33a",
+  "elapsed_seconds": 1.2154192924499512,
+  "content_sha256": "4a81c26edc5ecd785993ac8bbd2780fc8ca130f75f5135a9653ec4b19f0838af"
+}

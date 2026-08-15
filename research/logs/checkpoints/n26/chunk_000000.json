@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "git_commit": "35df4857f55f47a616049c33381a3e62b79d06be",
+  "baseline_git_commit": "35df4857f55f47a616049c33381a3e62b79d06be",
+  "n": 26,
+  "defect_count": 0,
+  "expected_shell_q_bracelets": 1,
+  "chunk_index": 0,
+  "first_canonical_q": 0,
+  "last_canonical_q": 0,
+  "first_alpha": -1,
+  "last_alpha": 1,
+  "completed_states": 2,
+  "completed_q_bracelets": 1,
+  "represented_q_vectors": 1,
+  "rayleigh_certified": 1,
+  "exact_fallbacks": 0,
+  "counterexamples": 0,
+  "counterexample_records": [],
+  "fallback_records": [],
+  "optimizer_exact_check": {
+    "charpoly_A2": "x**26 - 104*x**25 + 5148*x**24 - 161460*x**23 + 3603470*x**22 - 60929544*x**21 + 811399550*x**20 - 8733966072*x**19 + 77383854613*x**18 - 571759088888*x**17 + 3556160850008*x**16 - 18743289150768*x**15 + 84089778888479*x**14 - 321958128783468*x**13 + 1052943757271042*x**12 - 2939275386707868*x**11 + 6986330635906232*x**10 - 14078759111802944*x**9 + 23898137158370098*x**8 - 33855839549940096*x**7 + 39516342557046953*x**6 - 37321985964892200*x**5 + 27796402207972814*x**4 - 15705720531129876*x**3 + 6324211697010753*x**2 - 1616135672757320*x + 196911505290256",
+    "threshold_root_interval": [
+      "28526207898435/3698556147368",
+      "26903365670087/3488147069469"
+    ],
+    "multiplicity": 4
+  },
+  "top_near_minimizers": [
+    {
+      "canonical_q_code": 0,
+      "alpha": 1,
+      "defect_count": 0,
+      "dihedral_orbit_size": 1,
+      "numeric_rho_preview": 2.8284271247461903,
+      "numeric_gap_preview": 0.051235074102496725,
+      "exact_Rayleigh_certificate": {
+        "numerator": 8,
+        "denominator": 1,
+        "value": "8"
+      }
+    }
+  ],
+  "ordered_input_sha256": "7e1e575ddf6d68831421c6434962b41791bd7d2b5019d6b59598c35c6b1cecc8",
+  "ordered_certificate_sha256": "0580dbe8c61a5ec0af61abaebefba85591c717a9e81aba737e172263375bca6a",
+  "previous_chain_sha256": "0000000000000000000000000000000000000000000000000000000000000000",
+  "chain_sha256": "d3ab02d2433c46cb2de77384cbcc20423e9b43cbe932da0701cbcf0ee4d785e1",
+  "elapsed_seconds": 3.378031015396118,
+  "content_sha256": "e4028b918d1a6005f5e4bb61c98fd6ce3935e3c35274859fb0eb9c3bc9b61104"
+}

@@ -64,6 +64,22 @@ N24_SHELL_COUNTS = {
     22: 12,
     24: 1,
 }
+N26_SHELL_COUNTS = {
+    0: 1,
+    2: 13,
+    4: 328,
+    6: 4576,
+    8: 30415,
+    10: 102817,
+    12: 186616,
+    14: 186616,
+    16: 102817,
+    18: 30415,
+    20: 4576,
+    22: 328,
+    24: 13,
+    26: 1,
+}
 
 
 class SearchAbort(RuntimeError):
@@ -153,6 +169,8 @@ def expected_search_space(n: int) -> dict[str, Any]:
     shells = fixed_weight_bracelet_counts(n)
     if n == 24 and shells != N24_SHELL_COUNTS:
         raise SearchAbort("SEARCH_SPACE_MISMATCH", "n=24 Burnside constants disagree")
+    if n == 26 and shells != N26_SHELL_COUNTS:
+        raise SearchAbort("SEARCH_SPACE_MISMATCH", "n=26 Burnside constants disagree")
     q_bracelets = sum(shells.values())
     return {
         "shell_counts": shells,
@@ -278,6 +296,28 @@ def _basic_near_minimizer(
     }
 
 
+def cyclic_gaps(positions: list[int], n: int) -> list[int]:
+    if not positions:
+        return []
+    return [
+        (positions[(index + 1) % len(positions)] - positions[index]) % n
+        for index in range(len(positions))
+    ]
+
+
+def distance_to_period4_q_pattern(q: tuple[int, ...]) -> int:
+    """Minimum Hamming distance to (+---)... under D_n."""
+    n = len(q)
+    base = tuple(1 if index % 4 == 0 else -1 for index in range(n))
+    distances = []
+    for shift in range(n):
+        rotated = tuple(base[(index - shift) % n] for index in range(n))
+        reflected = tuple(base[(-index - shift) % n] for index in range(n))
+        distances.append(sum(left != right for left, right in zip(q, rotated)))
+        distances.append(sum(left != right for left, right in zip(q, reflected)))
+    return min(distances)
+
+
 def _expand_near_minimizer(n: int, item: dict[str, Any]) -> dict[str, Any]:
     code = int(item["canonical_q_code"])
     alpha = int(item["alpha"])
@@ -290,6 +330,8 @@ def _expand_near_minimizer(n: int, item: dict[str, Any]) -> dict[str, Any]:
         "canonical_Q": list(q),
         "tau": list(tau),
         "defect_positions": positions,
+        "cyclic_defect_gaps": cyclic_gaps(positions, n),
+        "distance_to_period4_Q_pattern": distance_to_period4_q_pattern(q),
         **exact_even_traces(matrix),
     }
 
@@ -335,6 +377,7 @@ def _write_manifest(
         "schema_version": SCHEMA_VERSION,
         "n": n,
         "git_commit": git_commit,
+        "baseline_git_commit": git_commit,
         "status": status,
         "chunks": [
             {
@@ -368,6 +411,10 @@ def _load_and_validate_chunks(
         checks = {
             "schema": chunk.get("schema_version") == SCHEMA_VERSION,
             "git_commit": chunk.get("git_commit") == git_commit,
+            "baseline_git_commit": chunk.get(
+                "baseline_git_commit", chunk.get("git_commit")
+            )
+            == git_commit,
             "n": chunk.get("n") == n,
             "chunk_index": chunk.get("chunk_index") == expected_index,
             "known_shell": chunk.get("defect_count") in expected_shells,
@@ -404,7 +451,10 @@ def _load_and_validate_chunks(
         if (
             manifest.get("schema_version") != SCHEMA_VERSION
             or manifest.get("n") != n
-            or manifest.get("git_commit") != git_commit
+            or manifest.get("git_commit", manifest.get("baseline_git_commit"))
+            != git_commit
+            or manifest.get("baseline_git_commit", manifest.get("git_commit"))
+            != git_commit
         ):
             raise SearchAbort("CHECKPOINT_VALIDATION_FAIL", "manifest metadata mismatch")
         entries = manifest.get("chunks", [])
@@ -500,6 +550,8 @@ def _counterexample_record(
     vector: list[int],
     bound: Fraction,
     detail: dict[str, Any],
+    threshold_lower: Fraction,
+    threshold_upper: Fraction,
 ) -> dict[str, Any]:
     exact_matrix = signed_adjacency(signing)
     return {
@@ -516,7 +568,12 @@ def _counterexample_record(
         "dihedral_orbit_size": orbit_size,
         "signing": {"step1": list(signing.step1), "step2": list(signing.step2)},
         "integer_adjacency_matrix": matrix.tolist(),
+        "integer_adjacency_square": (matrix @ matrix).tolist(),
         "characteristic_polynomial": str(exact_matrix.charpoly().as_expr()),
+        "threshold_squared_interval": [
+            str(threshold_lower),
+            str(threshold_upper),
+        ],
         "integer_Rayleigh_vector": vector,
         "Rayleigh_certificate": str(bound),
         "exact_certificate": detail,
@@ -644,6 +701,7 @@ def run_minimality_search(
         payload = {
             "schema_version": SCHEMA_VERSION,
             "git_commit": git_commit,
+            "baseline_git_commit": git_commit,
             "n": n,
             "defect_count": current["defect_count"],
             "expected_shell_q_bracelets": expected["shell_counts"][
@@ -771,6 +829,8 @@ def run_minimality_search(
                         integer_vector,
                         bound,
                         detail,
+                        threshold_lower,
+                        threshold_upper,
                     )
                     counterexamples.append(candidate)
                     current["counterexample_records"].append(candidate)
@@ -823,9 +883,11 @@ def run_minimality_search(
     script_path = Path(__file__).resolve()
     generator_path = script_path.with_name("target_a_bracelets.py")
     return {
+        "schema_version": SCHEMA_VERSION,
         "n": n,
         "status": status,
         "git_commit": git_commit,
+        "baseline_git_commit": git_commit,
         "branch": branch,
         "command": shlex.join((sys.executable, *sys.argv)),
         "environment": {
@@ -834,6 +896,10 @@ def run_minimality_search(
             "numpy": np.__version__,
             "sympy": sp.__version__,
         },
+        "python": sys.version,
+        "platform": platform.platform(),
+        "numpy": np.__version__,
+        "sympy": sp.__version__,
         "expected_q_bracelets": expected["q_bracelets"],
         "completed_q_bracelets": completed_q_bracelets,
         "expected_spectral_states": expected["spectral_states"],
@@ -851,6 +917,8 @@ def run_minimality_search(
             str(threshold_lower),
             str(threshold_upper),
         ],
+        "threshold_squared_lower": str(threshold_lower),
+        "threshold_squared_upper": str(threshold_upper),
         "threshold_numeric_rho_preview": threshold_rho,
         "optimizer": {"defect_count": 0, "canonical_q_code": 0, "alpha": -1},
         "optimizer_exact_check": optimizer_exact_check,
@@ -863,6 +931,7 @@ def run_minimality_search(
         "checkpoint_chunks": len(chunks),
         "checkpoint_manifest_sha256": manifest_sha256,
         "checkpoint_final_chain_sha256": previous_chain,
+        "final_checkpoint_chain_sha256": previous_chain,
         "ordered_input_sha256": global_input_digest.hexdigest(),
         "ordered_certificate_sha256": certificate_manifest_digest.hexdigest(),
         "elapsed_seconds": time.time() - started,

@@ -117,3 +117,16 @@
 - **证据等级：** `n=24` 全 quotient 搜索、optimizer 等号和全部非 optimizer 排除为 **Verified/PASS**。`n=32` 是否为最小反例仍为 **UNRESOLVED**，因为 `n=26,28,30` 尚未检查。
 - **产物：** `research/scripts/target_a_minimality_search.py`、`research/logs/target_a_search_n24.json`、`research/logs/checkpoints/n24/`、`research/experiments/TARGET_A_N24_RESULT.md`。结果 JSON SHA-256 为 `3fea700914b3c2d8a08a26bbaf490432123ed1a877c231f0d53ddbdf8f394a51`；checkpoint manifest SHA-256 为 `978b38db75ccf8d05bd7bae76b28373d5a0b56655299ea2a65cc25722514a98b`。
 - **下一步：** Task 34 仅执行 `n=26` 完整搜索；本任务没有启动 `n=26,28,30`。
+
+---
+
+## 2026-08-15 — Target A Task 34：n=26 生产级完整搜索
+
+- **研究对象：** C029 Conjecture 3 在 `n=26` 的完整有限验证。
+- **做了什么：** 复用 Task 33B 的 direct-stream、roundtrip、exact optimizer、rational Rayleigh 与 immutable checkpoint pipeline；只增加 `n=26` 硬编码 Burnside 门、结果 provenance 字段和不参与判定的 period-4 Q-pattern 二面体 Hamming distance。修改后完整回归 `n=8,10,12`，并只读重放 `n=24` 的 28 个 chunks、输入摘要、证书摘要和最终链，全部一致后才启动正式搜索。
+- **得到什么：** `VERIFIED_NO_COUNTEREXAMPLE_AT_N26`。649,532/649,532 个 Q-bracelets、1,299,064/1,299,064 个谱状态全部完成，恢复 134,217,728 个 switching classes。optimizer 精确等于阈值；其余 1,299,063 个状态全部 `RAYLEIGH_CERTIFIED`，exact fallback 0、反例 0。因此 Conjecture 3 对 `n=26` 成立，严格有限验证范围扩展到所有偶数 `n=8,10,...,26`。
+- **新发现：** OBSERVED numeric top-100 中最低非 optimizer 为 `Q-code=1118481, d=6, alpha=+1`，缺陷间隔 `4,4,4,4,4,6`，到 period-4 Q-pattern 的二面体最小 Hamming distance 为 1，数值 gap 约 `0.03250783`。这与不能被 4 整除的有限尺寸 period-4 近似一致，但未作 exact ordering 或理论结论。
+- **哪些失败：** 无数学、搜索或 checkpoint 失败。正式运行后只读重放 76 个 chunks，再次验证完整 generator cursor、计数、输入/证书摘要、最终链、optimizer 和零反例。
+- **证据等级：** `n=26` 全 quotient 搜索、optimizer 等号和全部非 optimizer 排除为 **Verified/PASS**。`n=32` 是否为最小反例仍为 **UNRESOLVED**，因为 `n=28,30` 尚未检查。
+- **产物：** `research/logs/target_a_search_n26.json`、`research/logs/checkpoints/n26/`、`research/experiments/TARGET_A_N26_RESULT.md`。结果 JSON SHA-256 为 `9cb022a9bc7ba5e2ad7d8d1d0427ec3073a64aae60a09ef032f0a2286875f815`；checkpoint manifest SHA-256 为 `59d106f91ff5bd457e25c1676233970ee46382e4ace7c8e41b7769b85d5b140d`。
+- **下一步：** Task 35 仅执行 `n=28` 完整搜索；本任务没有启动 `n=28,30`。
