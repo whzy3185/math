@@ -182,3 +182,17 @@
 - **验证：** Task 37 tests 11/11 PASS；默认 47 项中 44 PASS、3 个既有慢测跳过；Target A 聚焦 tests 34/34 PASS；`N32_CERTIFICATE_PASS`；`TARGET_A_MINIMALITY_CERTIFICATE_PASS`（含 `n=24,26,28,30` 只读重放）；JSON parse、compileall 与 diff 检查 PASS。
 - **产物：** `research/audit/target_a_n32_independent_reconstruction.json`（SHA-256 `53b9b117b074427134e7e8f71838d5b2af85930492e988a8c1d17d9542fd7b7a`）；`research/audit/n32_witness_reconstruction_audit.json`（SHA-256 `35a28ffb95cb1ab1e15838997b7fc9a696d7f69caa70a4aeafd50f653bc5c543`）；`research/audit/N32_WITNESS_RECONSTRUCTION.md`（SHA-256 `5836edf9b59c4fa926c53b69e8cfa9af18bf640f5e88d42590ded5afd32b7d1c`）；`research/scripts/target_a_n32_independent_reconstruction.py` 及测试。
 - **下一步：** Task 38 从零独立推导 period-8 Floquet reduction 与 determinant，并审计无限反例族证明。本任务没有开始论文正文、novelty audit 或任何新搜索。
+
+---
+
+## 2026-08-15 — Target A Task 38：period-8 Floquet reduction 与 determinant 独立审计
+
+- **研究对象：** 从 period-8 triangle flux `(+,+,-,+,-,-,+,-)`、`n=8L` 与 twisted condition `x_(i+n)=alpha*x_i` 出发，建立不依赖旧 family helper 的有限矩阵到 `8 x 8` Floquet block 与特征行列式的第二条推导链。
+- **做了什么：** 从 Hamilton-cycle gauge 的 edge signs 重新推出 local operator，并对 `alpha=+-1` 直接比较 finite gauge 与 twisted-boundary 的 32 阶整数矩阵；按 `i=8m+r` 生成 32 条 residue/cell-shift transition；由 `u_m=z^m v` 推出 `z^L=alpha` 和 `|z|=1`，再直接从 transition table 生成 `H(z)`。以 cell shift 的正交特征基、8 维不变子空间和 `L*8=8L` 维数计数证明 direct sum；对 `L=4, alpha=+-1` 用 full charpoly 与 resultant block product 作 exact regression。
+- **得到什么：** `PERIOD8_FLOQUET_DETERMINANT_INDEPENDENTLY_AUDITED`。符号检查 `H(z)` 在单位圆上 Hermitian；SymPy determinant 与手写 fraction-free Bareiss 完全一致，自动出现 `x` 偶性和 `z -> z^-1` 对称。由 Laurent coefficients 和 Chebyshev recurrence 自动得到 `P_ind(y,c)=y^4-16y^3+(80-2c)y^2+(-128+16c)y+c^2-13c+38`；独立 snapshot 冻结后才读取旧 certificate，9 个非零 monomial coefficients 逐项一致。
+- **逻辑连接：** `z^L=alpha` 给出 `|z|=1` 和 `c=z+z^-1=2cos(theta) in [-2,2]`；Hermitian 性保证 eigenvalue `lambda` 为实数，因此 `det(lambda I-H)=0` 严格推出 `P(lambda^2,c)=0` 且 `lambda^2>=0`。同一 `H(z)` 与 `alpha` 无关，`alpha` 只选择 admissible roots。
+- **独立性与边界：** 新脚本只导入标准库与 SymPy，未导入 period-8 family/search/reproduce、旧 Floquet symbol、polynomial 或 determinant helper；冻结旧证据仅在独立 transition 与 polynomial snapshot 写入并固定 SHA 后读取。本任务不证明 `P(y,c)>0` for `y>=1561/200`，也不重审全 `n` threshold，因此没有写 `PERIOD8_INFINITE_FAMILY_INDEPENDENTLY_AUDITED`。
+- **负向测试：** flip 一个 tau sign 会改变 determinant；篡改 cell shift、复用错误 alpha root set、把一个 `z^-1` wrap entry 改成 `z`、篡改 frozen coefficient、删除一个 Bloch block 均按要求 FAIL，未修改 committed evidence。
+- **验证：** Task 38 tests 20/20 PASS；`alpha=+1` 与 `alpha=-1` exact finite consistency PASS；已有 Task 37、n32 certificate、minimality certificate 及 Target A/default regression 保持 PASS；JSON parse、compileall 与 diff 检查 PASS。
+- **产物：** `research/audit/target_a_period8_cell_transitions.json`（SHA-256 `e40f49a274904c73765c5703c099bbb3307d67b3905cb8cecd9d9016f26e6f17`）；`research/audit/target_a_period8_independent_polynomial.json`（SHA-256 `cc26dedfee3fe3e6c0674f1b217fde592a043a5d8b4913752dc37ad2a62193b2`）；`research/audit/period8_floquet_independent_audit.json`（SHA-256 `2a5657d0791b1e1a3c742ae8e0a738f083115b4e4516e5e8d8fd4d1999d6c3ee`）；`research/audit/PERIOD8_FLOQUET_INDEPENDENT_AUDIT.md`（SHA-256 `e2b6d588dcef4b49813b939bbb902a74aab290bb1403578999af0bf50fb56309`）；独立脚本及测试。
+- **下一步：** Task 39 独立证明 `P(y,c)>0` for `y>=1561/200, c in [-2,2]` 与 `1561/200<rho_-(n)^2` for every `8|n, n>=32`，再升级完整无限反例族的独立审计状态。

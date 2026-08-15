@@ -1,0 +1,243 @@
+{
+  "schema_version": 1,
+  "status": "PERIOD8_CELL_TRANSITIONS_DERIVED",
+  "tau_period": [
+    1,
+    1,
+    -1,
+    1,
+    -1,
+    -1,
+    1,
+    -1
+  ],
+  "operator": "(Ax)_i=x_(i-1)+x_(i+1)+tau_(i-2)x_(i-2)+tau_i*x_(i+2)",
+  "cell_coordinate": "i=8m+r",
+  "transition_count": 32,
+  "transitions": [
+    {
+      "output_residue": 0,
+      "delta": -2,
+      "target_residue": 6,
+      "cell_shift": -1,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 0,
+      "delta": -1,
+      "target_residue": 7,
+      "cell_shift": -1,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 0,
+      "delta": 1,
+      "target_residue": 1,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 0,
+      "delta": 2,
+      "target_residue": 2,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 1,
+      "delta": -2,
+      "target_residue": 7,
+      "cell_shift": -1,
+      "coefficient": -1
+    },
+    {
+      "output_residue": 1,
+      "delta": -1,
+      "target_residue": 0,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 1,
+      "delta": 1,
+      "target_residue": 2,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 1,
+      "delta": 2,
+      "target_residue": 3,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 2,
+      "delta": -2,
+      "target_residue": 0,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 2,
+      "delta": -1,
+      "target_residue": 1,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 2,
+      "delta": 1,
+      "target_residue": 3,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 2,
+      "delta": 2,
+      "target_residue": 4,
+      "cell_shift": 0,
+      "coefficient": -1
+    },
+    {
+      "output_residue": 3,
+      "delta": -2,
+      "target_residue": 1,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 3,
+      "delta": -1,
+      "target_residue": 2,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 3,
+      "delta": 1,
+      "target_residue": 4,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 3,
+      "delta": 2,
+      "target_residue": 5,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 4,
+      "delta": -2,
+      "target_residue": 2,
+      "cell_shift": 0,
+      "coefficient": -1
+    },
+    {
+      "output_residue": 4,
+      "delta": -1,
+      "target_residue": 3,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 4,
+      "delta": 1,
+      "target_residue": 5,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 4,
+      "delta": 2,
+      "target_residue": 6,
+      "cell_shift": 0,
+      "coefficient": -1
+    },
+    {
+      "output_residue": 5,
+      "delta": -2,
+      "target_residue": 3,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 5,
+      "delta": -1,
+      "target_residue": 4,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 5,
+      "delta": 1,
+      "target_residue": 6,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 5,
+      "delta": 2,
+      "target_residue": 7,
+      "cell_shift": 0,
+      "coefficient": -1
+    },
+    {
+      "output_residue": 6,
+      "delta": -2,
+      "target_residue": 4,
+      "cell_shift": 0,
+      "coefficient": -1
+    },
+    {
+      "output_residue": 6,
+      "delta": -1,
+      "target_residue": 5,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 6,
+      "delta": 1,
+      "target_residue": 7,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 6,
+      "delta": 2,
+      "target_residue": 0,
+      "cell_shift": 1,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 7,
+      "delta": -2,
+      "target_residue": 5,
+      "cell_shift": 0,
+      "coefficient": -1
+    },
+    {
+      "output_residue": 7,
+      "delta": -1,
+      "target_residue": 6,
+      "cell_shift": 0,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 7,
+      "delta": 1,
+      "target_residue": 0,
+      "cell_shift": 1,
+      "coefficient": 1
+    },
+    {
+      "output_residue": 7,
+      "delta": 2,
+      "target_residue": 1,
+      "cell_shift": 1,
+      "coefficient": -1
+    }
+  ]
+}

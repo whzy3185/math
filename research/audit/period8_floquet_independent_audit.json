@@ -1,0 +1,347 @@
+{
+  "schema_version": 1,
+  "status": "PERIOD8_FLOQUET_DETERMINANT_INDEPENDENTLY_AUDITED",
+  "tau_period": [
+    1,
+    1,
+    -1,
+    1,
+    -1,
+    -1,
+    1,
+    -1
+  ],
+  "operator_derivation": {
+    "status": "OPERATOR_DERIVATION_PASS",
+    "step1_local_sign": 1,
+    "step2_local_sign_rule": "b_i=tau_i",
+    "finite_hamilton_gauge": "a_0=...=a_(n-2)=1, a_(n-1)=alpha",
+    "twisted_boundary": "x_(i+n)=alpha*x_i",
+    "exact_finite_equivalence": {
+      "alpha_+1": true,
+      "alpha_-1": true
+    }
+  },
+  "cell_transition_table_file": "research/audit/target_a_period8_cell_transitions.json",
+  "cell_transition_table_sha256": "e40f49a274904c73765c5703c099bbb3307d67b3905cb8cecd9d9016f26e6f17",
+  "bloch_convention": "u_m=z^m*v",
+  "boundary_derivations": [
+    {
+      "status": "BLOCH_BOUNDARY_DERIVATION_PASS",
+      "ansatz": "u_m=z^m*v",
+      "global_boundary": "u_(m+4)=+1*u_m",
+      "derived_relation": "z^4=+1",
+      "derivation": "z^(m+L)*v=alpha*z^m*v and v!=0 imply z^L=alpha",
+      "unit_modulus": "|z|^L=|alpha|=1 implies |z|=1"
+    },
+    {
+      "status": "BLOCH_BOUNDARY_DERIVATION_PASS",
+      "ansatz": "u_m=z^m*v",
+      "global_boundary": "u_(m+4)=-1*u_m",
+      "derived_relation": "z^4=-1",
+      "derivation": "z^(m+L)*v=alpha*z^m*v and v!=0 imply z^L=alpha",
+      "unit_modulus": "|z|^L=|alpha|=1 implies |z|=1"
+    }
+  ],
+  "allowed_z_relation": "z^L=alpha",
+  "unit_circle_consequence": "|z|=1",
+  "H_entries": [
+    [
+      "0",
+      "1",
+      "1",
+      "0",
+      "0",
+      "0",
+      "1/z",
+      "1/z"
+    ],
+    [
+      "1",
+      "0",
+      "1",
+      "1",
+      "0",
+      "0",
+      "0",
+      "-1/z"
+    ],
+    [
+      "1",
+      "1",
+      "0",
+      "1",
+      "-1",
+      "0",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "1",
+      "1",
+      "0",
+      "1",
+      "1",
+      "0",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "-1",
+      "1",
+      "0",
+      "1",
+      "-1",
+      "0"
+    ],
+    [
+      "0",
+      "0",
+      "0",
+      "1",
+      "1",
+      "0",
+      "1",
+      "-1"
+    ],
+    [
+      "z",
+      "0",
+      "0",
+      "0",
+      "-1",
+      "1",
+      "0",
+      "1"
+    ],
+    [
+      "z",
+      "-z",
+      "0",
+      "0",
+      "0",
+      "-1",
+      "1",
+      "0"
+    ]
+  ],
+  "hermitian_check": true,
+  "direct_sum_proof_status": "FLOQUET_DIRECT_SUM_PASS",
+  "direct_sum_dimension_argument": "L distinct Bloch roots times 8 residues equals 8L",
+  "finite_consistency_checks": [
+    {
+      "cell_count": 4,
+      "alpha": 1,
+      "order": 32,
+      "allowed_z_relation": "z^4=+1",
+      "block_count": 4,
+      "dimension_count": "4*8=32",
+      "complete": true,
+      "charpoly_match": true,
+      "full_charpoly_sha256": "b83b3eba919a353f5c23e5e0083e2415fba67f17b2486359fc3d0d7f4d24fc99",
+      "block_product_sha256": "b83b3eba919a353f5c23e5e0083e2415fba67f17b2486359fc3d0d7f4d24fc99"
+    },
+    {
+      "cell_count": 4,
+      "alpha": -1,
+      "order": 32,
+      "allowed_z_relation": "z^4=-1",
+      "block_count": 4,
+      "dimension_count": "4*8=32",
+      "complete": true,
+      "charpoly_match": true,
+      "full_charpoly_sha256": "54fae942e89bd665a29789d96f3edc08ec9d6b68ec2269b3fd1eac731609f837",
+      "block_product_sha256": "54fae942e89bd665a29789d96f3edc08ec9d6b68ec2269b3fd1eac731609f837"
+    }
+  ],
+  "independent_determinant": "x**8 - 16*x**6 - 2*x**4*z + 80*x**4 - 2*x**4/z + 16*x**2*z - 128*x**2 + 16*x**2/z + z**2 - 13*z + 40 - 13/z + z**(-2)",
+  "determinant_inversion_symmetry": true,
+  "determinant_even_in_x": true,
+  "determinant_exact_coefficients": true,
+  "second_determinant_method": "hand-written fraction-free Bareiss elimination",
+  "second_determinant_match": true,
+  "P_independent": "c**2 - 2*c*y**2 + 16*c*y - 13*c + y**4 - 16*y**3 + 80*y**2 - 128*y + 38",
+  "P_independent_coefficient_map": [
+    {
+      "y_degree": 4,
+      "c_degree": 0,
+      "coefficient": "1"
+    },
+    {
+      "y_degree": 3,
+      "c_degree": 0,
+      "coefficient": "-16"
+    },
+    {
+      "y_degree": 2,
+      "c_degree": 1,
+      "coefficient": "-2"
+    },
+    {
+      "y_degree": 2,
+      "c_degree": 0,
+      "coefficient": "80"
+    },
+    {
+      "y_degree": 1,
+      "c_degree": 1,
+      "coefficient": "16"
+    },
+    {
+      "y_degree": 1,
+      "c_degree": 0,
+      "coefficient": "-128"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 2,
+      "coefficient": "1"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 1,
+      "coefficient": "-13"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 0,
+      "coefficient": "38"
+    }
+  ],
+  "c_range": "[-2,2] because c=z+z^-1=2*cos(theta) for |z|=1",
+  "squared_eigenvalue_root_link": "H(z) Hermitian on |z|=1 gives real lambda; det(lambda*I-H)=0 implies P(lambda^2,c)=0 with lambda^2>=0",
+  "source_file": "research/scripts/target_a_floquet_independent_audit.py",
+  "source_sha256": "96b7a6f62768597556670e1115ef5d42ce82e534d5a6469d0725329c6c0c6309",
+  "independence_boundary": "snapshot written before frozen family certificate or proof is opened",
+  "independent_snapshot_file": "research/audit/target_a_period8_independent_polynomial.json",
+  "independent_snapshot_sha256": "cc26dedfee3fe3e6c0674f1b217fde592a043a5d8b4913752dc37ad2a62193b2",
+  "independent_snapshot_frozen_before_old_evidence_read": true,
+  "frozen_certificate_file": "research/counterexamples/target_a_period8_family_certificate.json",
+  "frozen_certificate_sha256": "6421bb0400cbfda7063b86b3dfb9310543cc1c0800a9d49890f25d047624c023",
+  "frozen_polynomial_source_path": "$.floquet_characteristic_polynomial",
+  "frozen_polynomial": "c**2 - 2*c*y**2 + 16*c*y - 13*c + y**4 - 16*y**3 + 80*y**2 - 128*y + 38",
+  "frozen_polynomial_coefficient_map": [
+    {
+      "y_degree": 4,
+      "c_degree": 0,
+      "coefficient": "1"
+    },
+    {
+      "y_degree": 3,
+      "c_degree": 0,
+      "coefficient": "-16"
+    },
+    {
+      "y_degree": 2,
+      "c_degree": 1,
+      "coefficient": "-2"
+    },
+    {
+      "y_degree": 2,
+      "c_degree": 0,
+      "coefficient": "80"
+    },
+    {
+      "y_degree": 1,
+      "c_degree": 1,
+      "coefficient": "16"
+    },
+    {
+      "y_degree": 1,
+      "c_degree": 0,
+      "coefficient": "-128"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 2,
+      "coefficient": "1"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 1,
+      "coefficient": "-13"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 0,
+      "coefficient": "38"
+    }
+  ],
+  "coefficient_comparison": [
+    {
+      "y_degree": 4,
+      "c_degree": 0,
+      "independent_coefficient": "1",
+      "frozen_coefficient": "1",
+      "match": true
+    },
+    {
+      "y_degree": 3,
+      "c_degree": 0,
+      "independent_coefficient": "-16",
+      "frozen_coefficient": "-16",
+      "match": true
+    },
+    {
+      "y_degree": 2,
+      "c_degree": 1,
+      "independent_coefficient": "-2",
+      "frozen_coefficient": "-2",
+      "match": true
+    },
+    {
+      "y_degree": 2,
+      "c_degree": 0,
+      "independent_coefficient": "80",
+      "frozen_coefficient": "80",
+      "match": true
+    },
+    {
+      "y_degree": 1,
+      "c_degree": 1,
+      "independent_coefficient": "16",
+      "frozen_coefficient": "16",
+      "match": true
+    },
+    {
+      "y_degree": 1,
+      "c_degree": 0,
+      "independent_coefficient": "-128",
+      "frozen_coefficient": "-128",
+      "match": true
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 2,
+      "independent_coefficient": "1",
+      "frozen_coefficient": "1",
+      "match": true
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 1,
+      "independent_coefficient": "-13",
+      "frozen_coefficient": "-13",
+      "match": true
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 0,
+      "independent_coefficient": "38",
+      "frozen_coefficient": "38",
+      "match": true
+    }
+  ],
+  "frozen_polynomial_comparison_status": "FLOQUET_POLYNOMIAL_MATCH_PASS",
+  "operator_derivation_status": "OPERATOR_DERIVATION_PASS",
+  "bloch_boundary_status": "BLOCH_BOUNDARY_DERIVATION_PASS",
+  "floquet_hermitian_status": "FLOQUET_HERMITIAN_PASS",
+  "second_determinant_status": "SECOND_DETERMINANT_ROUTE_PASS",
+  "squared_eigenvalue_root_link_status": "SQUARED_EIGENVALUE_ROOT_LINK_PASS",
+  "alpha_role": "H(z) is independent of alpha; alpha only selects roots of z^L=alpha",
+  "uniform_bound_audited": false,
+  "next_gate": "Task 39",
+  "script_sha256": "96b7a6f62768597556670e1115ef5d42ce82e534d5a6469d0725329c6c0c6309"
+}
