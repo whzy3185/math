@@ -1,0 +1,328 @@
+{
+  "method": "exact optimizer roots + rational Rayleigh certificates + exact fallback",
+  "results": [
+    {
+      "n": 8,
+      "switching_classes": 512,
+      "quadrilateral_constraint_rank": 7,
+      "quadrilateral_solution_classes": 4,
+      "threshold_squared_interval": [
+        "27981995875408/5168247530883",
+        "19786259034635/3654502875938"
+      ],
+      "optimizer_class_codes": [
+        213,
+        299
+      ],
+      "optimizer_exact_checks": [
+        {
+          "charpoly_A2": "x**8 - 32*x**7 + 440*x**6 - 3392*x**5 + 16024*x**4 - 47488*x**3 + 86240*x**2 - 87808*x + 38416",
+          "threshold_root_interval": [
+            "27981995875408/5168247530883",
+            "19786259034635/3654502875938"
+          ],
+          "multiplicity": 4
+        },
+        {
+          "charpoly_A2": "x**8 - 32*x**7 + 440*x**6 - 3392*x**5 + 16024*x**4 - 47488*x**3 + 86240*x**2 - 87808*x + 38416",
+          "threshold_root_interval": [
+            "27981995875408/5168247530883",
+            "19786259034635/3654502875938"
+          ],
+          "multiplicity": 4
+        }
+      ],
+      "exhaustive": true,
+      "rayleigh_certified_nonoptimizers": 510,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "smallest_nonoptimizer_numeric_rho": 2.6762431989952593,
+      "smallest_nonoptimizer_codes": [
+        25,
+        179,
+        333,
+        487
+      ],
+      "status": "PASS",
+      "elapsed_seconds": 0.08750224113464355
+    },
+    {
+      "n": 10,
+      "switching_classes": 2048,
+      "quadrilateral_constraint_rank": 9,
+      "quadrilateral_solution_classes": 4,
+      "threshold_squared_interval": [
+        "20446415337486/3278735159921",
+        "25273159253327/4052739537881"
+      ],
+      "optimizer_class_codes": [
+        853,
+        1195
+      ],
+      "optimizer_exact_checks": [
+        {
+          "charpoly_A2": "x**10 - 40*x**9 + 700*x**8 - 7040*x**7 + 44950*x**6 - 189968*x**5 + 537260*x**4 - 1003200*x**3 + 1183985*x**2 - 798600*x + 234256",
+          "threshold_root_interval": [
+            "20446415337486/3278735159921",
+            "25273159253327/4052739537881"
+          ],
+          "multiplicity": 4
+        },
+        {
+          "charpoly_A2": "x**10 - 40*x**9 + 700*x**8 - 7040*x**7 + 44950*x**6 - 189968*x**5 + 537260*x**4 - 1003200*x**3 + 1183985*x**2 - 798600*x + 234256",
+          "threshold_root_interval": [
+            "20446415337486/3278735159921",
+            "25273159253327/4052739537881"
+          ],
+          "multiplicity": 4
+        }
+      ],
+      "exhaustive": true,
+      "rayleigh_certified_nonoptimizers": 2046,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "smallest_nonoptimizer_numeric_rho": 2.720492389638433,
+      "smallest_nonoptimizer_codes": [
+        181,
+        677,
+        809,
+        875,
+        941,
+        1107,
+        1173,
+        1239,
+        1371,
+        1867
+      ],
+      "status": "PASS",
+      "elapsed_seconds": 0.09653973579406738
+    },
+    {
+      "n": 12,
+      "switching_classes": 8192,
+      "quadrilateral_constraint_rank": 11,
+      "quadrilateral_solution_classes": 4,
+      "threshold_squared_interval": [
+        "20318497006090/3018173449203",
+        "27755583077037/4122901604639"
+      ],
+      "optimizer_class_codes": [
+        3413,
+        4779
+      ],
+      "optimizer_exact_checks": [
+        {
+          "charpoly_A2": "x**12 - 48*x**11 + 1032*x**10 - 13136*x**9 + 110232*x**8 - 642528*x**7 + 2668416*x**6 - 7959744*x**5 + 16936848*x**4 - 25089152*x**3 + 24579456*x**2 - 14310912*x + 3748096",
+          "threshold_root_interval": [
+            "20318497006090/3018173449203",
+            "27755583077037/4122901604639"
+          ],
+          "multiplicity": 4
+        },
+        {
+          "charpoly_A2": "x**12 - 48*x**11 + 1032*x**10 - 13136*x**9 + 110232*x**8 - 642528*x**7 + 2668416*x**6 - 7959744*x**5 + 16936848*x**4 - 25089152*x**3 + 24579456*x**2 - 14310912*x + 3748096",
+          "threshold_root_interval": [
+            "20318497006090/3018173449203",
+            "27755583077037/4122901604639"
+          ],
+          "multiplicity": 4
+        }
+      ],
+      "exhaustive": true,
+      "rayleigh_certified_nonoptimizers": 8190,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "smallest_nonoptimizer_numeric_rho": 2.788621152310257,
+      "smallest_nonoptimizer_codes": [
+        685,
+        853,
+        2645,
+        2729,
+        3221,
+        3365,
+        3401,
+        3419,
+        3437,
+        3509,
+        3755,
+        3797,
+        4395,
+        4437,
+        4683,
+        4755,
+        4773,
+        4791,
+        4827,
+        4971
+      ],
+      "status": "PASS",
+      "elapsed_seconds": 0.2598130702972412
+    },
+    {
+      "n": 14,
+      "switching_classes": 32768,
+      "quadrilateral_constraint_rank": 13,
+      "quadrilateral_solution_classes": 4,
+      "threshold_squared_interval": [
+        "23135727883605/3282167568328",
+        "38623707810082/5479381577299"
+      ],
+      "optimizer_class_codes": [
+        13653,
+        19115
+      ],
+      "optimizer_exact_checks": [
+        {
+          "charpoly_A2": "x**14 - 56*x**13 + 1428*x**12 - 21980*x**11 + 228214*x**10 - 1691620*x**9 + 9237242*x**8 - 37775956*x**7 + 116354301*x**6 - 268836176*x**5 + 459044950*x**4 - 562184924*x**3 + 467177585*x**2 - 235976776*x + 54700816",
+          "threshold_root_interval": [
+            "23135727883605/3282167568328",
+            "38623707810082/5479381577299"
+          ],
+          "multiplicity": 4
+        },
+        {
+          "charpoly_A2": "x**14 - 56*x**13 + 1428*x**12 - 21980*x**11 + 228214*x**10 - 1691620*x**9 + 9237242*x**8 - 37775956*x**7 + 116354301*x**6 - 268836176*x**5 + 459044950*x**4 - 562184924*x**3 + 467177585*x**2 - 235976776*x + 54700816",
+          "threshold_root_interval": [
+            "23135727883605/3282167568328",
+            "38623707810082/5479381577299"
+          ],
+          "multiplicity": 4
+        }
+      ],
+      "exhaustive": true,
+      "rayleigh_certified_nonoptimizers": 32766,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "smallest_nonoptimizer_numeric_rho": 2.809787541590753,
+      "smallest_nonoptimizer_codes": [
+        2349,
+        3365,
+        10605,
+        11113,
+        12891,
+        14923,
+        15177,
+        17591,
+        17845,
+        19877,
+        21655,
+        22163,
+        29403,
+        30419
+      ],
+      "status": "PASS",
+      "elapsed_seconds": 1.5796551704406738
+    },
+    {
+      "n": 16,
+      "switching_classes": 131072,
+      "quadrilateral_constraint_rank": 15,
+      "quadrilateral_solution_classes": 4,
+      "threshold_squared_interval": [
+        "29949119646175/4124102524594",
+        "21617655817404/2976829702697"
+      ],
+      "optimizer_class_codes": [
+        54613,
+        76459
+      ],
+      "optimizer_exact_checks": [
+        {
+          "charpoly_A2": "x**16 - 64*x**15 + 1888*x**14 - 34080*x**13 + 421368*x**12 - 3784576*x**11 + 25548096*x**10 - 132254016*x**9 + 530699032*x**8 - 1656547072*x**7 + 4009624192*x**6 - 7447670144*x**5 + 10408242144*x**4 - 10580832768*x**3 + 7379757824*x**2 - 3155449600*x + 623201296",
+          "threshold_root_interval": [
+            "29949119646175/4124102524594",
+            "21617655817404/2976829702697"
+          ],
+          "multiplicity": 4
+        },
+        {
+          "charpoly_A2": "x**16 - 64*x**15 + 1888*x**14 - 34080*x**13 + 421368*x**12 - 3784576*x**11 + 25548096*x**10 - 132254016*x**9 + 530699032*x**8 - 1656547072*x**7 + 4009624192*x**6 - 7447670144*x**5 + 10408242144*x**4 - 10580832768*x**3 + 7379757824*x**2 - 3155449600*x + 623201296",
+          "threshold_root_interval": [
+            "29949119646175/4124102524594",
+            "21617655817404/2976829702697"
+          ],
+          "multiplicity": 4
+        }
+      ],
+      "exhaustive": true,
+      "rayleigh_certified_nonoptimizers": 131070,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "smallest_nonoptimizer_numeric_rho": 2.7603001218337546,
+      "smallest_nonoptimizer_codes": [
+        9637,
+        44333,
+        52043,
+        59753,
+        71319,
+        79029,
+        86739,
+        121435
+      ],
+      "status": "PASS",
+      "elapsed_seconds": 4.588636159896851
+    },
+    {
+      "n": 18,
+      "switching_classes": 524288,
+      "quadrilateral_constraint_rank": 17,
+      "quadrilateral_solution_classes": 4,
+      "threshold_squared_interval": [
+        "29060189582801/3920972951084",
+        "35531239797016/4794085384943"
+      ],
+      "optimizer_class_codes": [
+        218453,
+        305835
+      ],
+      "optimizer_exact_checks": [
+        {
+          "charpoly_A2": "x**18 - 72*x**17 + 2412*x**16 - 49956*x**15 + 716886*x**14 - 7570116*x**13 + 60967986*x**12 - 382963212*x**11 + 1902164805*x**10 - 7527653480*x**9 + 23793993558*x**8 - 59935291452*x**7 + 119428446129*x**6 - 185715793368*x**5 + 220435302384*x**4 - 192721148160*x**3 + 116877991680*x**2 - 43880896512*x + 7676563456",
+          "threshold_root_interval": [
+            "29060189582801/3920972951084",
+            "35531239797016/4794085384943"
+          ],
+          "multiplicity": 4
+        },
+        {
+          "charpoly_A2": "x**18 - 72*x**17 + 2412*x**16 - 49956*x**15 + 716886*x**14 - 7570116*x**13 + 60967986*x**12 - 382963212*x**11 + 1902164805*x**10 - 7527653480*x**9 + 23793993558*x**8 - 59935291452*x**7 + 119428446129*x**6 - 185715793368*x**5 + 220435302384*x**4 - 192721148160*x**3 + 116877991680*x**2 - 43880896512*x + 7676563456",
+          "threshold_root_interval": [
+            "29060189582801/3920972951084",
+            "35531239797016/4794085384943"
+          ],
+          "multiplicity": 4
+        }
+      ],
+      "exhaustive": true,
+      "rayleigh_certified_nonoptimizers": 524286,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "smallest_nonoptimizer_numeric_rho": 2.806071102077757,
+      "smallest_nonoptimizer_codes": [
+        88666,
+        92506,
+        92522,
+        92762,
+        153238,
+        154198,
+        154202,
+        154262,
+        169622,
+        177332,
+        185012,
+        185042,
+        185044,
+        185524,
+        215762,
+        215882,
+        215890,
+        217810,
+        306476,
+        308396
+      ],
+      "status": "PASS",
+      "elapsed_seconds": 20.317086935043335
+    }
+  ],
+  "overall": "PASS"
+}

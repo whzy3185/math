@@ -161,7 +161,7 @@
 
 | 角色 | ID | 状态 | 选择理由 |
 |---|---|---|---|
-| **Target A** | **C029** | **ACTIVE** | 最小未知规模明确，搜索空间约 2.1M，可做完整 exact enumeration，反例与无反例结果均可严格认证。 |
+| **Target A** | **C029** | **DISPROVED** | period-8 Floquet family gives counterexamples for every `8|n, n≥32`; independent exact `n=32` certificate completed. |
 | **Target B** | **C049** | SECONDARY | 符号计算可直接产生负整数系数证书，已知放宽版反例提示边界附近有攻击面。 |
 | **Target C** | **C030** | BACKLOG | 多项式恒等式反例证书短，适合独立 verifier；与 Target B 共用对称函数/组合基础设施。 |
 | **Target D** | **C040** | BACKLOG | 图/SAT 路线，首个参数窗口小，反例是有限邻接表。 |
@@ -169,4 +169,4 @@
 
 C025 保留为第一替补：价值很高且反例证书明确，但已有公开 exact computation，需先审计其代码和 `N=13` 资源成本。C037、C027 暂不设为主目标，因为“有限范围没有 witness”不能直接否证存在性命题。
 
-下一阶段只研究 Target A；其他目标不得同时启动大规模计算。
+Target A 下一阶段仅做独立证明审计、最小反例范围检查与论文整理；在该审计完成前不把算力切换到其他目标的大规模搜索。

@@ -61,10 +61,15 @@ def numpy_matrix(signing: Signing) -> np.ndarray:
     return matrix
 
 
-def integer_rayleigh_lower_bound(matrix: np.ndarray, scale: int = 10**9) -> Fraction:
-    values, vectors = np.linalg.eigh(matrix.astype(float))
-    index = int(np.argmax(np.abs(values)))
-    vector = np.rint(vectors[:, index] * scale).astype(np.int64)
+def integer_rayleigh_lower_bound(
+    matrix: np.ndarray,
+    eigenvector: np.ndarray | None = None,
+    scale: int = 10**9,
+) -> Fraction:
+    if eigenvector is None:
+        values, vectors = np.linalg.eigh(matrix.astype(float))
+        eigenvector = vectors[:, int(np.argmax(np.abs(values)))]
+    vector = np.rint(eigenvector * scale).astype(np.int64)
     if not np.any(vector):
         vector[index % len(vector)] = 1
     image = matrix @ vector
@@ -79,7 +84,8 @@ def exact_optimizer_check(signing: Signing) -> dict[str, object]:
     threshold = threshold_squared(signing.n)
     x = sp.Symbol("x")
     polynomial = sp.Poly(square.charpoly(x).as_expr(), x, domain=sp.ZZ)
-    if sp.simplify(polynomial.as_expr().subs(x, threshold)) != 0:
+    threshold_minpoly = sp.Poly(sp.minimal_polynomial(threshold, x), x, domain=sp.QQ)
+    if sp.rem(polynomial, threshold_minpoly, domain=sp.QQ) != 0:
         raise AssertionError("paper optimizer does not have threshold^2 as an eigenvalue")
     intervals = polynomial.intervals(eps=sp.Rational(1, 10**25))
     containing = []
@@ -153,14 +159,15 @@ def reproduce_n(n: int, exhaustive: bool) -> dict[str, object]:
             continue
         signing = signing_from_class_code(n, code)
         matrix = numpy_matrix(signing)
-        values = np.linalg.eigvalsh(matrix.astype(float))
+        values, vectors = np.linalg.eigh(matrix.astype(float))
+        extremal_index = int(np.argmax(np.abs(values)))
         rho = float(np.max(np.abs(values)))
         if rho < smallest_numeric - 1e-11:
             smallest_numeric = rho
             smallest_codes = [code]
         elif abs(rho - smallest_numeric) <= 1e-11:
             smallest_codes.append(code)
-        bound = integer_rayleigh_lower_bound(matrix)
+        bound = integer_rayleigh_lower_bound(matrix, vectors[:, extremal_index])
         if bound >= upper:
             rayleigh_certified += 1
             continue

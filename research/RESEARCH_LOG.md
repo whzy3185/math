@@ -56,3 +56,27 @@
 - **哪些失败：** 尚未执行 `n=10,12,14,16,18` 的完整复现，因此 Prompt 6 总状态仍为 IN PROGRESS。
 - **新发现：** 数值本征向量只用于提出整数 Rayleigh 向量；每个非 optimizer 的最终排除可完全由有理数与代数数区间验证。
 - **下一步：** 保存 `n≤18` 完整日志与 checksum；只有全体 PASS 后才进入 Prompt 7/`n=20`。
+
+---
+
+## 2026-08-15 — Target A 接手复现与 n=20 首轮搜索
+
+- **研究对象：** C029 signed circulant 全局谱半径猜想。
+- **做了什么：** 克隆并审计当前仓库；搭建本地 `.venv`，使用 Codex bundled NumPy 与 SymPy 1.14.0；修复 `target_a_reproduce.py` 中 optimizer equality 的 SymPy 等零判定问题，改用阈值最小多项式整除 `A^2` 特征多项式；完整运行 `n=8,10,12,14,16,18` 复现，并在 Prompt 6 通过后运行 `n=20` 全 switching-class 搜索。
+- **得到什么：** `n≤18` 全部 PASS；`n=20` 的 `2,097,152` 个 switching classes 全枚举 PASS。对 `n=20`，两个 optimizer class 达到阈值，其余 `2,097,150` 个 class 均由有理 Rayleigh 下界证书排除；exact fallback 为 0；未发现反例。
+- **哪些失败：** 原脚本在 `n=14` 起会因 `sp.simplify(polynomial(threshold)) != 0` 误判 optimizer equality；诊断显示该值数值为 0，但 SymPy 未化简。该失败已通过最小多项式余式判零修复。
+- **新发现：** 现有 Rayleigh-certificate 路线对 `n=20` 仍非常有效，约 98.46 秒完成，无需 exact fallback。当前证据等级为有限范围 **Verified**，不是全体偶数 `n` 的证明。
+- **产物：** `research/logs/target_a_reproduction_n8_18.json`，SHA-256 `141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e`；`research/logs/target_a_search_n20.json`，SHA-256 `20a0d812a268d51c4c52188c63827732216815f20901ef83ad680816d82fbcc4`。
+- **下一步：** 对 `n=20` 的最小非 optimizer orbit 做 dihedral/global-sign 归约与 flux 结构分析；随后设计 `n=22` 搜索的进度日志、checkpoint 与对称规约，避免一次性无进度枚举。
+
+---
+
+## 2026-08-15 — Target A flux atlas、n=22 穷举与无限反例族
+
+- **研究对象：** C029 signed circulant global optimizer conjecture。
+- **做了什么：** 实现 `(Q,alpha)/D_n` 的 binary-bracelet 枚举、defect-shell checkpoint、单次 dense eigendecomposition 与有理 Rayleigh 排除；用 `n=20` raw 全枚举交叉验证 canonicalizer；完成 `n=22` 全 quotient 搜索；扫描 two-defect、局域四缺陷与 period≤12 的 Floquet 结构族。
+- **得到什么：** `n=20` 的 27,296 spectral states 与 raw 2,097,152 classes 完全一致；`n=22` 的 97,468 states 覆盖全部 8,388,608 classes，97,467 个非 optimizer 均精确排除，0 fallback、0 反例。near-minimizer atlas 显示 `n=20,22` 的第二名均为 `d=4`，从而引出周期搜索。
+- **反例：** 找到 `Q=(+,-,-,-)`、`tau=(+,+,-,+,-,-,+,-)` 的 period-8 family。8 阶 Floquet 多项式精确化为 `P(y,c)=y^4-16y^3+(80-2c)y^2+(-128+16c)y+c^2-13c+38`。有理正性证明对所有 Bloch 相位有 `rho(A)^2<1561/200`；Taylor 有理下界证明 `rho_-(n)^2>1561/200` 对所有 `8|n,n≥32` 成立。故原猜想存在无限反例族。
+- **独立审计：** 对显式 `n=32,alpha=+1` signing，Bareiss leading minors 与独立 rational `LDL^T` 均证明 `1561 I-200A^2` 正定；代数阈值隔离区间的下端点严格大于 `1561/200`。另保留 period-10、`n=50` 的独立反例族和整数证书。
+- **证据等级：** 无限族论证为 **Proved（待独立人工审计）**；具体 `n=32` witness 为 **Verified**。未证明 `n=32` 是最小反例。
+- **下一步：** 独立重推 Floquet determinant；检查 `n=24,26,28,30` 以确定最小反例范围；整理 claim-source map 与论文草稿。

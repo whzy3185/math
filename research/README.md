@@ -6,10 +6,11 @@
 
 ## 当前阶段
 
-- 阶段：Prompt 0——项目初始化
-- 状态：完成
-- 下一关卡：Prompt 1——公开文献挖掘（尚未开始）
-- 研究对象：尚未选定
+- 阶段：Target A——signed circulant 反例审计与论文整理
+- 状态：**DISPROVED**；已证明 period-8 无限反例族，覆盖所有 `8|n, n≥32`
+- 首个显式见证：`n=32`；尚未证明它是全局最小反例
+- 下一关卡：独立审计 Floquet 证明；完整检查 `n=24,26,28,30` 的最小性问题
+- 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围
 

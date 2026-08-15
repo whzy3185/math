@@ -1,0 +1,915 @@
+{
+  "method": "(Q, alpha)/D_n + one dense eigh + exact rational Rayleigh certificates",
+  "n": 8,
+  "max_defects": null,
+  "threshold_numeric_rho": 2.3268462696046543,
+  "threshold_squared_upper": "19786259034635/3654502875938",
+  "q_orbits": 18,
+  "spectral_states": 36,
+  "represented_switching_classes": 512,
+  "rayleigh_certified_nonoptimizers": 35,
+  "exact_fallbacks": 0,
+  "counterexamples": [],
+  "smallest_nonoptimizer": {
+    "defect_count": 4,
+    "alpha": -1,
+    "min_numeric_rho": 2.6762431989952584,
+    "gap_from_optimizer": 0.34939692939060407,
+    "attaining_q_orbits": 1,
+    "minimizer_details": [
+      {
+        "canonical_q_code": 85,
+        "dihedral_orbit_size": 2,
+        "canonical_Q": [
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          -1,
+          1,
+          -1
+        ],
+        "triangle_flux_tau0_plus": [
+          1,
+          1,
+          -1,
+          -1,
+          1,
+          1,
+          -1,
+          -1
+        ],
+        "defect_positions": [
+          0,
+          2,
+          4,
+          6
+        ],
+        "cyclic_defect_gaps": [
+          2,
+          2,
+          2,
+          2
+        ],
+        "trace_A4": 208,
+        "trace_A6": 1472,
+        "trace_A8": 10528
+      }
+    ],
+    "minimizer_details_truncated": false
+  },
+  "two_defect_profile": [
+    {
+      "alpha": -1,
+      "numeric_rho": 2.9559424774475476,
+      "gap_from_optimizer": 0.6290962078428932,
+      "canonical_q_code": 3,
+      "dihedral_orbit_size": 8,
+      "canonical_Q": [
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "triangle_flux_tau0_plus": [
+        1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "defect_positions": [
+        0,
+        1
+      ],
+      "cyclic_defect_gaps": [
+        1,
+        7
+      ],
+      "trace_A4": 192,
+      "trace_A6": 1352,
+      "trace_A8": 10336,
+      "two_defect_distance": 1
+    },
+    {
+      "alpha": 1,
+      "numeric_rho": 3.1474302336977527,
+      "gap_from_optimizer": 0.8205839640930983,
+      "canonical_q_code": 3,
+      "dihedral_orbit_size": 8,
+      "canonical_Q": [
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "triangle_flux_tau0_plus": [
+        1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "defect_positions": [
+        0,
+        1
+      ],
+      "cyclic_defect_gaps": [
+        1,
+        7
+      ],
+      "trace_A4": 192,
+      "trace_A6": 1400,
+      "trace_A8": 11648,
+      "two_defect_distance": 1
+    },
+    {
+      "alpha": -1,
+      "numeric_rho": 2.9566549565647477,
+      "gap_from_optimizer": 0.6298086869600934,
+      "canonical_q_code": 5,
+      "dihedral_orbit_size": 8,
+      "canonical_Q": [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "triangle_flux_tau0_plus": [
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "defect_positions": [
+        0,
+        2
+      ],
+      "cyclic_defect_gaps": [
+        2,
+        6
+      ],
+      "trace_A4": 208,
+      "trace_A6": 1568,
+      "trace_A8": 12704,
+      "two_defect_distance": 2
+    },
+    {
+      "alpha": 1,
+      "numeric_rho": 2.6899940478558295,
+      "gap_from_optimizer": 0.36314777825117517,
+      "canonical_q_code": 5,
+      "dihedral_orbit_size": 8,
+      "canonical_Q": [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "triangle_flux_tau0_plus": [
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "defect_positions": [
+        0,
+        2
+      ],
+      "cyclic_defect_gaps": [
+        2,
+        6
+      ],
+      "trace_A4": 176,
+      "trace_A6": 1088,
+      "trace_A8": 7104,
+      "two_defect_distance": 2
+    },
+    {
+      "alpha": -1,
+      "numeric_rho": 2.7682079702150464,
+      "gap_from_optimizer": 0.44136170061039204,
+      "canonical_q_code": 9,
+      "dihedral_orbit_size": 8,
+      "canonical_Q": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "triangle_flux_tau0_plus": [
+        1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "defect_positions": [
+        0,
+        3
+      ],
+      "cyclic_defect_gaps": [
+        3,
+        5
+      ],
+      "trace_A4": 192,
+      "trace_A6": 1256,
+      "trace_A8": 8544,
+      "two_defect_distance": 3
+    },
+    {
+      "alpha": 1,
+      "numeric_rho": 2.9459952022280596,
+      "gap_from_optimizer": 0.6191489326234052,
+      "canonical_q_code": 9,
+      "dihedral_orbit_size": 8,
+      "canonical_Q": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "triangle_flux_tau0_plus": [
+        1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "defect_positions": [
+        0,
+        3
+      ],
+      "cyclic_defect_gaps": [
+        3,
+        5
+      ],
+      "trace_A4": 192,
+      "trace_A6": 1304,
+      "trace_A8": 9600,
+      "two_defect_distance": 3
+    },
+    {
+      "alpha": -1,
+      "numeric_rho": 2.7229053531794114,
+      "gap_from_optimizer": 0.39605908357475705,
+      "canonical_q_code": 17,
+      "dihedral_orbit_size": 4,
+      "canonical_Q": [
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "triangle_flux_tau0_plus": [
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "defect_positions": [
+        0,
+        4
+      ],
+      "cyclic_defect_gaps": [
+        4,
+        4
+      ],
+      "trace_A4": 176,
+      "trace_A6": 1088,
+      "trace_A8": 7200,
+      "two_defect_distance": 4
+    },
+    {
+      "alpha": 1,
+      "numeric_rho": 2.7936044933348434,
+      "gap_from_optimizer": 0.46675822373018905,
+      "canonical_q_code": 17,
+      "dihedral_orbit_size": 4,
+      "canonical_Q": [
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "triangle_flux_tau0_plus": [
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "defect_positions": [
+        0,
+        4
+      ],
+      "cyclic_defect_gaps": [
+        4,
+        4
+      ],
+      "trace_A4": 208,
+      "trace_A6": 1472,
+      "trace_A8": 10688,
+      "two_defect_distance": 4
+    }
+  ],
+  "atlas": [
+    {
+      "defect_count": 0,
+      "alpha": -1,
+      "min_numeric_rho": 2.326846269604655,
+      "gap_from_optimizer": 4.440892098500626e-16,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 0,
+          "dihedral_orbit_size": 1,
+          "canonical_Q": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "defect_positions": [],
+          "cyclic_defect_gaps": [],
+          "trace_A4": 144,
+          "trace_A6": 704,
+          "trace_A8": 3616
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 0,
+      "alpha": 1,
+      "min_numeric_rho": 2.82842712474619,
+      "gap_from_optimizer": 0.5015808551415355,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 0,
+          "dihedral_orbit_size": 1,
+          "canonical_Q": [
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "defect_positions": [],
+          "cyclic_defect_gaps": [],
+          "trace_A4": 176,
+          "trace_A6": 1184,
+          "trace_A8": 8768
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 2,
+      "alpha": -1,
+      "min_numeric_rho": 2.7229053531794114,
+      "gap_from_optimizer": 0.39605908357475705,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 17,
+          "dihedral_orbit_size": 4,
+          "canonical_Q": [
+            1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            1,
+            -1,
+            1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "defect_positions": [
+            0,
+            4
+          ],
+          "cyclic_defect_gaps": [
+            4,
+            4
+          ],
+          "trace_A4": 176,
+          "trace_A6": 1088,
+          "trace_A8": 7200,
+          "two_defect_distance": 4
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 2,
+      "alpha": 1,
+      "min_numeric_rho": 2.6899940478558295,
+      "gap_from_optimizer": 0.36314777825117517,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 5,
+          "dihedral_orbit_size": 8,
+          "canonical_Q": [
+            1,
+            -1,
+            1,
+            -1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            1,
+            -1,
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "defect_positions": [
+            0,
+            2
+          ],
+          "cyclic_defect_gaps": [
+            2,
+            6
+          ],
+          "trace_A4": 176,
+          "trace_A6": 1088,
+          "trace_A8": 7104,
+          "two_defect_distance": 2
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 4,
+      "alpha": -1,
+      "min_numeric_rho": 2.6762431989952584,
+      "gap_from_optimizer": 0.34939692939060407,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 85,
+          "dihedral_orbit_size": 2,
+          "canonical_Q": [
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            -1,
+            1,
+            -1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            1,
+            -1,
+            -1,
+            1,
+            1,
+            -1,
+            -1
+          ],
+          "defect_positions": [
+            0,
+            2,
+            4,
+            6
+          ],
+          "cyclic_defect_gaps": [
+            2,
+            2,
+            2,
+            2
+          ],
+          "trace_A4": 208,
+          "trace_A6": 1472,
+          "trace_A8": 10528
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 4,
+      "alpha": 1,
+      "min_numeric_rho": 2.9471759644707927,
+      "gap_from_optimizer": 0.6203296948661383,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 27,
+          "dihedral_orbit_size": 8,
+          "canonical_Q": [
+            1,
+            1,
+            -1,
+            1,
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            1,
+            1,
+            -1,
+            -1,
+            -1,
+            1,
+            -1
+          ],
+          "defect_positions": [
+            0,
+            1,
+            3,
+            4
+          ],
+          "cyclic_defect_gaps": [
+            1,
+            2,
+            1,
+            4
+          ],
+          "trace_A4": 208,
+          "trace_A6": 1568,
+          "trace_A8": 12608
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 6,
+      "alpha": -1,
+      "min_numeric_rho": 3.200412580765062,
+      "gap_from_optimizer": 0.8735663111604075,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 119,
+          "dihedral_orbit_size": 4,
+          "canonical_Q": [
+            1,
+            1,
+            1,
+            -1,
+            1,
+            1,
+            1,
+            -1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            1,
+            1,
+            1,
+            -1,
+            -1,
+            -1,
+            -1
+          ],
+          "defect_positions": [
+            0,
+            1,
+            2,
+            4,
+            5,
+            6
+          ],
+          "cyclic_defect_gaps": [
+            1,
+            1,
+            2,
+            1,
+            1,
+            2
+          ],
+          "trace_A4": 240,
+          "trace_A6": 2240,
+          "trace_A8": 22304
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 6,
+      "alpha": 1,
+      "min_numeric_rho": 3.3042497145147496,
+      "gap_from_optimizer": 0.9774034449100952,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 111,
+          "dihedral_orbit_size": 8,
+          "canonical_Q": [
+            1,
+            1,
+            1,
+            1,
+            -1,
+            1,
+            1,
+            -1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            -1,
+            -1,
+            -1
+          ],
+          "defect_positions": [
+            0,
+            1,
+            2,
+            3,
+            5,
+            6
+          ],
+          "cyclic_defect_gaps": [
+            1,
+            1,
+            1,
+            2,
+            1,
+            2
+          ],
+          "trace_A4": 256,
+          "trace_A6": 2456,
+          "trace_A8": 24960
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 8,
+      "alpha": -1,
+      "min_numeric_rho": 3.2619726273956693,
+      "gap_from_optimizer": 0.9351263577910149,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 255,
+          "dihedral_orbit_size": 1,
+          "canonical_Q": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "defect_positions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "cyclic_defect_gaps": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "trace_A4": 272,
+          "trace_A6": 2624,
+          "trace_A8": 26656
+        }
+      ],
+      "minimizer_details_truncated": false
+    },
+    {
+      "defect_count": 8,
+      "alpha": 1,
+      "min_numeric_rho": 4.0,
+      "gap_from_optimizer": 1.6731537303953457,
+      "attaining_q_orbits": 1,
+      "minimizer_details": [
+        {
+          "canonical_q_code": 255,
+          "dihedral_orbit_size": 1,
+          "canonical_Q": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "triangle_flux_tau0_plus": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "defect_positions": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7
+          ],
+          "cyclic_defect_gaps": [
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1,
+            1
+          ],
+          "trace_A4": 304,
+          "trace_A6": 4256,
+          "trace_A8": 66112
+        }
+      ],
+      "minimizer_details_truncated": false
+    }
+  ],
+  "shell_summaries": [
+    {
+      "defect_count": 0,
+      "q_orbits": 1,
+      "spectral_states": 2,
+      "represented_switching_classes": 4,
+      "rayleigh_certified_nonoptimizers": 1,
+      "exact_fallbacks": 0,
+      "elapsed_seconds": 0.00018477439880371094
+    },
+    {
+      "defect_count": 2,
+      "q_orbits": 4,
+      "spectral_states": 8,
+      "represented_switching_classes": 112,
+      "rayleigh_certified_nonoptimizers": 8,
+      "exact_fallbacks": 0,
+      "elapsed_seconds": 0.0002701282501220703
+    },
+    {
+      "defect_count": 4,
+      "q_orbits": 8,
+      "spectral_states": 16,
+      "represented_switching_classes": 280,
+      "rayleigh_certified_nonoptimizers": 16,
+      "exact_fallbacks": 0,
+      "elapsed_seconds": 0.0002689361572265625
+    },
+    {
+      "defect_count": 6,
+      "q_orbits": 4,
+      "spectral_states": 8,
+      "represented_switching_classes": 112,
+      "rayleigh_certified_nonoptimizers": 8,
+      "exact_fallbacks": 0,
+      "elapsed_seconds": 0.00020384788513183594
+    },
+    {
+      "defect_count": 8,
+      "q_orbits": 1,
+      "spectral_states": 2,
+      "represented_switching_classes": 4,
+      "rayleigh_certified_nonoptimizers": 2,
+      "exact_fallbacks": 0,
+      "elapsed_seconds": 5.412101745605469e-05
+    }
+  ],
+  "status": "PASS",
+  "elapsed_seconds": 0.0803987979888916
+}

@@ -3,7 +3,7 @@
 Target：C029
 
 Source：[Vaibhav Suvagiya, *Signed circulants at the Ramanujan bound*, arXiv:2607.18334](https://arxiv.org/abs/2607.18334), Conjecture 3
-规格状态：FORMALIZED；尚未执行大规模搜索。
+规格状态：FORMALIZED；**DISPROVED**（2026-08-15）。
 
 ## Definition
 
@@ -146,15 +146,35 @@ No other edge permutation is allowed unless proved to be an automorphism of `C_n
 
 ## Known theorems and verified range
 
+### Disproof found by this project
+
+Let the triangle flux repeat with period 8 as
+
+`tau=(+,+,-,+,-,-,+,-)`,
+
+equivalently let the quadrilateral flux repeat as `Q=(+,-,-,-)`.  For every
+`8|n` with `n≥32`, and for either `alpha=±1`, the resulting signing satisfies
+
+`rho(A)^2 < 1561/200 < rho_-(n)^2`.
+
+Thus the claimed global lower bound is false for an infinite family.  The
+proof uses an 8 by 8 Floquet characteristic polynomial and exact rational
+positivity; see `research/proofs/TARGET_A_PERIOD8_FAMILY.md`.  The concrete
+`n=32, alpha=+1` witness also has an independent exact rational
+positive-definiteness certificate.  No claim is currently made that `n=32`
+is the smallest possible counterexample.
+
 From the source paper:
 
 1. for even `n≥10`, the all-`Q_i`-unbalanced system has exactly four switching classes;
 2. its classes are parametrized by `(τ_0,α)`, and spectral radius depends only on `α`;
 3. `α=+1` gives `2√2`, while `α=−1` gives `ρ_−(n)<2√2`;
 4. the same spectral conclusions hold at `n=8` with the paper's stated convention;
-5. the global conjecture was exhaustively checked numerically for `n∈{8,10,12,14,16,18}` with agreement to `10^-9`.
+5. the source paper reports exhaustive numerical checks for `n∈{8,10,12,14,16,18}` with agreement to `10^-9`.
+6. this project has independently reproduced `n∈{8,10,12,14,16,18}` with exact optimizer equality and rational Rayleigh exclusion certificates, and has additionally checked `n=20` by the same workflow.
 
-The final item is **Observed/Reported**, not yet independently reproduced by this project and not an exact proof of the strict comparisons.
+Item 5 is **Observed/Reported** from the source.  Item 6 is **Verified** for
+the listed finite ranges, not a proof for all even `n`.
 
 ## Exact verifier specification
 
@@ -191,4 +211,9 @@ Any implementation that silently falls back to floating-point eigenvalues is non
 
 ## Search boundary for the next stages
 
-Prompt 6 must first reproduce the paper's four-class formulas and reported global minima for `n=8,10,…,18`. Only after an exact `PASS` may Prompt 7 design the `n=20` search. No large-scale search has been run in the present stage.
+The project has exhaustively verified `n=8,10,…,22`, with the `n=22` search
+performed on all 97,468 `(Q,alpha)/D_22` spectral states.  The conjecture is
+nevertheless false from `n=32` along the period-8 family above.  Remaining
+computational work concerns possible smaller counterexamples at
+`n=24,26,28,30`; it is a minimality study, not a test of whether the original
+conjecture survives.

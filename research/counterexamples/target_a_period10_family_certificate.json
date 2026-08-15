@@ -1,0 +1,67 @@
+{
+  "result": true,
+  "decision": "INFINITE_COUNTEREXAMPLE_FAMILY_SYMBOLICALLY_VERIFIED",
+  "triangle_flux_period": [
+    1,
+    1,
+    -1,
+    1,
+    -1,
+    -1,
+    1,
+    -1,
+    1,
+    -1
+  ],
+  "quadrilateral_flux_period": [
+    1,
+    -1,
+    -1,
+    -1,
+    1,
+    -1,
+    -1,
+    -1,
+    -1,
+    -1
+  ],
+  "defect_residues_mod_10": [
+    0,
+    4
+  ],
+  "floquet_characteristic_polynomial": "-c**2 - 9*c + y**5 - 20*y**4 + 142*y**3 - y**2*(c + 426) + y*(10*c + 485) - 114",
+  "determinant_identity_verified": true,
+  "second_derivative_in_c": "-2",
+  "concave_on_c_interval": true,
+  "rational_uniform_bound_on_rho_squared": "198/25",
+  "endpoint_shift_certificates": [
+    {
+      "c": -2,
+      "shifted_polynomial": "u**5 + 98*u**4/5 + 16958*u**3/125 + 1220884*u**2/3125 + 31237941*u/78125 + 14079218/9765625",
+      "coefficients": [
+        "1",
+        "98/5",
+        "16958/125",
+        "1220884/3125",
+        "31237941/78125",
+        "14079218/9765625"
+      ],
+      "all_coefficients_positive": true
+    },
+    {
+      "c": 2,
+      "shifted_polynomial": "u**5 + 98*u**4/5 + 16958*u**3/125 + 1208384*u**2/3125 + 29412941*u/78125 + 306016718/9765625",
+      "coefficients": [
+        "1",
+        "98/5",
+        "16958/125",
+        "1208384/3125",
+        "29412941/78125",
+        "306016718/9765625"
+      ],
+      "all_coefficients_positive": true
+    }
+  ],
+  "threshold_argument": "For n>=50, rho_-(n)^2 is increasing; at n=50, cos(t)>1-t^2/2 and pi^2<10 give rho_-(50)^2>198/25.",
+  "family": "every n divisible by 10 with n>=50, for alpha=+1 or -1"
+}
