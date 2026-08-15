@@ -1,0 +1,444 @@
+{
+  "method": "raw/quotient cross-check + exact dihedral/switching/global-sign relations",
+  "n20": {
+    "n": 20,
+    "checks": {
+      "raw_status_pass": true,
+      "quotient_status_pass": true,
+      "same_global_minimum": true,
+      "same_optimizer_class_count": true,
+      "same_smallest_nonoptimizer_rho": true,
+      "same_smallest_nonoptimizer_state": true,
+      "same_counterexample_count": true,
+      "quotient_orbit_sum_recovers_raw_space": true,
+      "burnside_q_orbit_count_matches": true
+    },
+    "status": "PASS",
+    "raw": {
+      "switching_classes": 2097152,
+      "optimizer_classes": 2,
+      "smallest_nonoptimizer_numeric_rho": 2.804361313158372,
+      "smallest_nonoptimizer_codes_recorded": [
+        153237,
+        169637,
+        701613,
+        709813,
+        830763,
+        832813,
+        863563,
+        894313,
+        955813,
+        959913,
+        1137239,
+        1141339,
+        1202839,
+        1233589,
+        1264339,
+        1266389,
+        1387339,
+        1395539,
+        1927515,
+        1943915
+      ],
+      "smallest_nonoptimizer_quotient_states": [
+        [
+          17425,
+          -1
+        ]
+      ],
+      "counterexamples": 0,
+      "rayleigh_certified_nonoptimizers": 2097150,
+      "exact_fallbacks": 0,
+      "elapsed_seconds": 70.7320499420166
+    },
+    "quotient": {
+      "q_orbits": 13648,
+      "spectral_states": 27296,
+      "represented_switching_classes": 2097152,
+      "represented_optimizer_classes": 2,
+      "smallest_nonoptimizer_numeric_rho": 2.804361313158375,
+      "smallest_nonoptimizer_state": [
+        17425,
+        -1
+      ],
+      "counterexamples": 0,
+      "rayleigh_certified_nonoptimizers": 27295,
+      "exact_fallbacks": 0,
+      "elapsed_seconds": 1.17094087600708
+    },
+    "elapsed_seconds": 71.90338706970215
+  },
+  "n22_samples": {
+    "n": 22,
+    "seed": 20260815,
+    "sample_count": 32,
+    "dihedral_members_checked": 1386,
+    "expanded_switching_classes_checked": 2772,
+    "maximum_numeric_rho_drift": 6.661338147750939e-15,
+    "checks": {
+      "sample_count_met": true,
+      "all_dihedral_members_have_exact_relation": true,
+      "all_global_negations_preserve_Q_alpha_and_negate_matrix": true,
+      "all_numeric_rho_diagnostics_agree": true,
+      "generator_q_orbits_match_burnside": true,
+      "generator_spectral_states_match_expected": true
+    },
+    "samples": [
+      {
+        "canonical_q_code": 40325,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 24,
+        "relations_requiring_global_negation": 20,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 2.6645352591003757e-15
+      },
+      {
+        "canonical_q_code": 12575,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 28,
+        "relations_requiring_global_negation": 16,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.552713678800501e-15
+      },
+      {
+        "canonical_q_code": 842727,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 32,
+        "relations_requiring_global_negation": 12,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 5.329070518200751e-15
+      },
+      {
+        "canonical_q_code": 351469,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 26,
+        "relations_requiring_global_negation": 18,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 2.6645352591003757e-15
+      },
+      {
+        "canonical_q_code": 373213,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 22,
+        "relations_requiring_global_negation": 22,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.440892098500626e-15
+      },
+      {
+        "canonical_q_code": 300773,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 18,
+        "relations_requiring_global_negation": 26,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.9968028886505635e-15
+      },
+      {
+        "canonical_q_code": 155247,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 22,
+        "relations_requiring_global_negation": 22,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.884981308350689e-15
+      },
+      {
+        "canonical_q_code": 34261,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 22,
+        "relations_requiring_global_negation": 22,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 2.220446049250313e-15
+      },
+      {
+        "canonical_q_code": 322931,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 24,
+        "relations_requiring_global_negation": 20,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.552713678800501e-15
+      },
+      {
+        "canonical_q_code": 718191,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 28,
+        "relations_requiring_global_negation": 16,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.884981308350689e-15
+      },
+      {
+        "canonical_q_code": 1436543,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 24,
+        "relations_requiring_global_negation": 20,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 5.773159728050814e-15
+      },
+      {
+        "canonical_q_code": 614255,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 30,
+        "relations_requiring_global_negation": 14,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.440892098500626e-15
+      },
+      {
+        "canonical_q_code": 147221,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 18,
+        "relations_requiring_global_negation": 26,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.552713678800501e-15
+      },
+      {
+        "canonical_q_code": 372543,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 32,
+        "relations_requiring_global_negation": 12,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.884981308350689e-15
+      },
+      {
+        "canonical_q_code": 708477,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 24,
+        "relations_requiring_global_negation": 20,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 5.329070518200751e-15
+      },
+      {
+        "canonical_q_code": 19475,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 22,
+        "relations_requiring_global_negation": 22,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 1.7763568394002505e-15
+      },
+      {
+        "canonical_q_code": 981487,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 20,
+        "relations_requiring_global_negation": 24,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 6.217248937900877e-15
+      },
+      {
+        "canonical_q_code": 694075,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 20,
+        "relations_requiring_global_negation": 24,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.552713678800501e-15
+      },
+      {
+        "canonical_q_code": 369591,
+        "alpha": 1,
+        "dihedral_orbit_size": 22,
+        "expanded_switching_classes_with_global_sign": 44,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 13,
+        "relations_requiring_global_negation": 9,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.440892098500626e-15
+      },
+      {
+        "canonical_q_code": 37413,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 24,
+        "relations_requiring_global_negation": 20,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.440892098500626e-15
+      },
+      {
+        "canonical_q_code": 281263,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 26,
+        "relations_requiring_global_negation": 18,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.440892098500626e-15
+      },
+      {
+        "canonical_q_code": 25919,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 26,
+        "relations_requiring_global_negation": 18,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.9968028886505635e-15
+      },
+      {
+        "canonical_q_code": 76777,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 18,
+        "relations_requiring_global_negation": 26,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.9968028886505635e-15
+      },
+      {
+        "canonical_q_code": 345547,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 20,
+        "relations_requiring_global_negation": 24,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 6.217248937900877e-15
+      },
+      {
+        "canonical_q_code": 358363,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 24,
+        "relations_requiring_global_negation": 20,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 6.661338147750939e-15
+      },
+      {
+        "canonical_q_code": 46109,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 20,
+        "relations_requiring_global_negation": 24,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.1086244689504383e-15
+      },
+      {
+        "canonical_q_code": 238455,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 26,
+        "relations_requiring_global_negation": 18,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 6.661338147750939e-15
+      },
+      {
+        "canonical_q_code": 619371,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 22,
+        "relations_requiring_global_negation": 22,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 2.6645352591003757e-15
+      },
+      {
+        "canonical_q_code": 70295,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 24,
+        "relations_requiring_global_negation": 20,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 3.1086244689504383e-15
+      },
+      {
+        "canonical_q_code": 297871,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 22,
+        "relations_requiring_global_negation": 22,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 2.6645352591003757e-15
+      },
+      {
+        "canonical_q_code": 11091,
+        "alpha": -1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 26,
+        "relations_requiring_global_negation": 18,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 2.6645352591003757e-15
+      },
+      {
+        "canonical_q_code": 20331,
+        "alpha": 1,
+        "dihedral_orbit_size": 44,
+        "expanded_switching_classes_with_global_sign": 88,
+        "orbit_size_matches_generator": true,
+        "direct_dihedral_switching_relations": 20,
+        "relations_requiring_global_negation": 24,
+        "relation_failures": [],
+        "maximum_numeric_rho_drift": 4.884981308350689e-15
+      }
+    ],
+    "status": "PASS"
+  },
+  "status": "PASS",
+  "elapsed_seconds": 72.7031672000885
+}

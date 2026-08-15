@@ -80,3 +80,15 @@
 - **独立审计：** 对显式 `n=32,alpha=+1` signing，Bareiss leading minors 与独立 rational `LDL^T` 均证明 `1561 I-200A^2` 正定；代数阈值隔离区间的下端点严格大于 `1561/200`。另保留 period-10、`n=50` 的独立反例族和整数证书。
 - **证据等级：** 无限族论证为 **Proved（待独立人工审计）**；具体 `n=32` witness 为 **Verified**。未证明 `n=32` 是最小反例。
 - **下一步：** 独立重推 Floquet determinant；检查 `n=24,26,28,30` 以确定最小反例范围；整理 claim-source map 与论文草稿。
+
+---
+
+## 2026-08-15 — Target A Tasks 30–32：发现冻结与 quotient 完整性审计
+
+- **研究对象：** Target A 否证后的研究冻结和最小性搜索前置审计。
+- **Task 30：** 从 `main@fb4375f` 建立 `agent/target-a-discovery-snapshot`；创建 `research/checkpoints/TARGET_A_DISCOVERY_SNAPSHOT.md`，冻结 period-8 无限族、`n=32` 双正定证书、`n=20,22` 搜索、period≤12 探索、环境、命令和 SHA-256。明确 `n=32 is the smallest counterexample` 为 `UNRESOLVED`。本地快照提交为 `21d5b84`，未 push。
+- **Task 31：** 创建 `research/experiments/TARGET_A_MINIMALITY_SEARCH_PLAN.md`。Burnside 精确计数给出 `n=24,26,28,30` 分别有 353,812、1,299,064、4,810,472、17,929,600 个含 alpha quotient states；设计 direct-bracelet 流生成、defect-shell checkpoint、输入/证书哈希链、rational Rayleigh 与 exact fallback。未开始 `n≥24` 谱搜索。
+- **Task 32：** 重跑 `n=20` 全部 2,097,152 raw switching classes，并与 27,296 quotient states 比较；global minimum、2 个 optimizer、smallest nonoptimizer `(Q-code=17425,alpha=-1)`、0 counterexample 和 orbit-size 空间恢复均一致。固定种子 `20260815` 抽取 32 个 `n=22` quotient states，展开 1,386 个 dihedral 成员和 2,772 个 global-sign switching classes；每个成员均找到精确 automorphism/switching/global-negation 关系。审计状态 `PASS`。
+- **哪些失败：** 无数学或枚举失败。识别出当前 visited-array generator 在 `n=30` 会预分配约 1 GiB，因此计划要求生产搜索前实现并再次审计 constant-memory bracelet stream。
+- **证据等级：** quotient 完整性数学论证和显式等价检查为 **Verified/PASS**；`n=24,26,28,30` 最小性结论仍为 **UNRESOLVED**。
+- **下一步：** 按 stop point 停在 Task 33 前；下一轮先实现并验证 direct bracelet stream，然后执行完整 `n=24` 搜索。
