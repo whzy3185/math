@@ -6,7 +6,7 @@
 
 ## 当前阶段
 
-- 阶段：Target A——一般周期结构障碍与低周期谱前沿
+- 阶段：Target A——**PAPER_PACKAGE_READY**；进入 Reviewer Zero 与定理依赖整理，尚未开始 manuscript
 - 状态：**DISPROVED**；已证明 period-8 无限反例族，覆盖所有 `8|n, n≥32`
 - 首个且最小的反例阶数：`n=32`
 - 最小性状态：**SMALLEST_COUNTEREXAMPLE_VERIFIED**；有限穷举精确排除所有偶数 `8≤n≤30`，`n=32` 有显式精确证书
@@ -25,8 +25,9 @@
 - 低周期结构压缩：**LOW_PERIOD_STRUCTURAL_FRONTIER_PROVED**；2611 类由统一 `F_1,...,F_64` closed-walk hierarchy 排除，8 个全负表示由一个 cancellation lemma 处理，仅保留 5 个 residual endpoint certificates
 - novelty/priority：**TARGET_A_NOVELTY_PRIORITY_AUDIT_PASS**；截至 2026-08-16，记录的 135 条 public-source queries 未发现 direct prior；N6 为 `CLOSE_PRIOR_FOUND`，N8/N9/N10 为 `RELATED_METHOD_ONLY`，其余 N1–N5/N7/N11 为 `NO_DIRECT_PUBLIC_PRIOR_FOUND`
 - priority 边界：该结论受 indexing delay、Google Scholar 不可访问、Semantic Scholar/GitHub API 限流及非公开工作限制；项目自身 public GitHub disclosure 单列为 provenance，不计 independent prior
+- 慢复现：**TARGET_A_FULL_SLOW_REPRODUCTION_PASS**；`n=24,26,28,30` 已从搜索层 fresh regeneration，四条最终 checkpoint chain 与历史结果逐项一致，committed replay 和三个默认跳过的 generator audits 均 PASS，mismatch 0
 - 有限尺寸：`alpha=+1` 对每个 `n=8L` 精确达到 `rho_*`；`alpha=-1` 严格低于并收敛到 `rho_*`
-- 下一关卡：导入 Lane R full reproduction 的精简 manifest/hash summary；随后进入 Reviewer Zero、theorem dependency graph、proof compression 与 notation normalization，仍不直接开始 manuscript
+- 下一关卡：Reviewer Zero、theorem dependency graph、proof compression 与 notation normalization；完成这些预审整理后才评估 manuscript drafting
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围
@@ -73,6 +74,7 @@
 | `logs/` | 完整运行日志、环境信息与校验和 |
 | `paper/` | 论文提纲、正文、参考文献与 claim-source 映射 |
 | `audit/` | 独立计算、证明审计、最小性证书与模拟审稿 |
+| `reproducibility/` | 长实验复现摘要、运行环境、命令与外部证据哈希 |
 
 ## 核心记录
 

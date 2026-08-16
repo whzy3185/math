@@ -1,0 +1,214 @@
+{
+  "schema_version": "1.0.0",
+  "target": "Target A",
+  "status": "TARGET_A_FULL_SLOW_REPRODUCTION_PASS",
+  "completed_utc": "2026-08-16T06:00:15.251995+00:00",
+  "baseline": {
+    "git_commit": "c5cadf3ec7e160fc994453907fe83c579dc89646",
+    "git_tree": "dc08b21bbb5d641e8f525c844b208fe9e1d9d93b",
+    "branch_at_freeze": "agent/target-a-discovery-snapshot",
+    "worktree_mode": "detached frozen worktree",
+    "active_repository_used_as_output": false
+  },
+  "execution": {
+    "machine": "Apple M5, 10-core CPU, 10-core GPU",
+    "workers": 3,
+    "thread_limits": {
+      "OMP_NUM_THREADS": "1",
+      "OPENBLAS_NUM_THREADS": "1",
+      "MKL_NUM_THREADS": "1",
+      "VECLIB_MAXIMUM_THREADS": "1"
+    },
+    "environment": {
+      "python": "3.12.13",
+      "platform": "macOS-26.5.2-arm64-arm-64bit",
+      "numpy": "2.3.5",
+      "sympy": "1.14.0"
+    },
+    "search_command_template": "$PYTHON $FROZEN_WORKTREE/research/scripts/target_a_minimality_search.py --n N --checkpoint-dir $EXTERNAL_OUTPUT/checkpoints/nN --output $EXTERNAL_OUTPUT/manifests/target_a_search_nN.json",
+    "replay_command": "$PYTHON $FROZEN_WORKTREE/research/scripts/target_a_checkpoint_replay.py --n 24 26 28 30 --output $EXTERNAL_OUTPUT/manifests/committed_certificate_replay.json",
+    "slow_test_command": "TARGET_A_RUN_SLOW_GENERATOR_TESTS=1 $PYTHON -m pytest -q research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n26 research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n28 research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n30"
+  },
+  "status_codes": [
+    "FULL_FINITE_SEARCH_REGENERATION_PASS",
+    "FULL_CERTIFICATE_REPLAY_PASS",
+    "FULL_SLOW_REGRESSION_PASS"
+  ],
+  "fresh_regeneration": [
+    {
+      "n": 24,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE_AT_N24",
+      "q_bracelets": 176906,
+      "spectral_states": 353812,
+      "represented_q_vectors": 8388608,
+      "represented_switching_classes": 33554432,
+      "checkpoint_chunks": 28,
+      "elapsed_seconds": 25.28883695602417,
+      "peak_rss_bytes": 78757888,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "completion_checks": {
+        "bracelets_complete": true,
+        "spectral_states_complete": true,
+        "shell_counts_complete": true,
+        "search_space_audit_pass": true
+      },
+      "hashes": {
+        "fresh_result_file_sha256": "064c918cdb2109f363478f1b041ceb873b04b395b0d800bc31443fa3d85d885a",
+        "committed_result_file_sha256": "3fea700914b3c2d8a08a26bbaf490432123ed1a877c231f0d53ddbdf8f394a51",
+        "fresh_checkpoint_manifest_sha256": "963b53906f164dcdf22d59bbbf6989b3ed6e545550b45890baec06aa7e47012c",
+        "committed_checkpoint_manifest_sha256": "978b38db75ccf8d05bd7bae76b28373d5a0b56655299ea2a65cc25722514a98b",
+        "final_checkpoint_chain_sha256": "2dde869aea5da4f040e67a4fef3e93b5f35f5fb42d75f6d48820439f418c83c1",
+        "ordered_input_sha256": "dfa6610b99a23f077dfa63fc49135cd79ddb038b206dc21f15f925e9aa2a06e2",
+        "ordered_certificate_sha256": "994d2bf09913841c868db0d54f7ae912fe0c5925a5d35cb1a945e3e8101707e9"
+      }
+    },
+    {
+      "n": 26,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE_AT_N26",
+      "q_bracelets": 649532,
+      "spectral_states": 1299064,
+      "represented_q_vectors": 33554432,
+      "represented_switching_classes": 134217728,
+      "checkpoint_chunks": 76,
+      "elapsed_seconds": 117.1714129447937,
+      "peak_rss_bytes": 88522752,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "completion_checks": {
+        "bracelets_complete": true,
+        "spectral_states_complete": true,
+        "shell_counts_complete": true,
+        "search_space_audit_pass": true
+      },
+      "hashes": {
+        "fresh_result_file_sha256": "0a138a409ceddc211e3d34a27f013ac067a0d4da439ece0f62b4f5df2024f102",
+        "committed_result_file_sha256": "9cb022a9bc7ba5e2ad7d8d1d0427ec3073a64aae60a09ef032f0a2286875f815",
+        "fresh_checkpoint_manifest_sha256": "a36dcbf8d1cc70227dc5180f46e91901a9b69d150e4db4ccca36f86eef1c967d",
+        "committed_checkpoint_manifest_sha256": "59d106f91ff5bd457e25c1676233970ee46382e4ace7c8e41b7769b85d5b140d",
+        "final_checkpoint_chain_sha256": "c515350b8bea840c04448086fbc98523615364c05ca837553c93efb933bc0c4e",
+        "ordered_input_sha256": "079e8230fcba59bd090dba07af2ed754f7f3116ac6acfd2b789b405d010d2f66",
+        "ordered_certificate_sha256": "9780c3030bb1dfdc1562162e11117b6ebb50de97fa43cc1c6b7c6dea58c73669"
+      }
+    },
+    {
+      "n": 28,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE_AT_N28",
+      "q_bracelets": 2405236,
+      "spectral_states": 4810472,
+      "represented_q_vectors": 134217728,
+      "represented_switching_classes": 536870912,
+      "checkpoint_chunks": 250,
+      "elapsed_seconds": 414.8718740940094,
+      "peak_rss_bytes": 90898432,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "completion_checks": {
+        "bracelets_complete": true,
+        "spectral_states_complete": true,
+        "shell_counts_complete": true,
+        "search_space_audit_pass": true
+      },
+      "hashes": {
+        "fresh_result_file_sha256": "e6897546e88d1d02e642c9ed3fbdfefc375d9520c631dbf6bc459635713b6f23",
+        "committed_result_file_sha256": "07644fbae5bbb93da64bc9d532a1a4a41bc38d013dd96ab2b19524f0fe524269",
+        "fresh_checkpoint_manifest_sha256": "a9ae24bf89b1a4d1c66227c198080936a453d6746408caa5e2d44571343e6603",
+        "committed_checkpoint_manifest_sha256": "e1d1411f0563915c282651d12858c77671b5a8153ac2b47357373d7963b2fc91",
+        "final_checkpoint_chain_sha256": "7ba200b05590b2a9c0ea1121f25f89ddf1d294d0c043417e69f78f764f6e8ee1",
+        "ordered_input_sha256": "d45f9eabd6215514825ed8250eb95efd205f527f8ca68fb33eadf886fd65fa63",
+        "ordered_certificate_sha256": "f266adb3660bf6f8d5c0c5a737aa136ab2e090ab2bdd33ed01a3e4c70de5dab5"
+      }
+    },
+    {
+      "n": 30,
+      "status": "VERIFIED_NO_COUNTEREXAMPLE_AT_N30",
+      "q_bracelets": 8964800,
+      "spectral_states": 17929600,
+      "represented_q_vectors": 536870912,
+      "represented_switching_classes": 2147483648,
+      "checkpoint_chunks": 908,
+      "elapsed_seconds": 1542.2723290920258,
+      "peak_rss_bytes": 141737984,
+      "exact_fallbacks": 0,
+      "counterexamples": [],
+      "completion_checks": {
+        "bracelets_complete": true,
+        "spectral_states_complete": true,
+        "shell_counts_complete": true,
+        "search_space_audit_pass": true
+      },
+      "hashes": {
+        "fresh_result_file_sha256": "1d387cd40104f74840ff14a208eb72356eed85db31e023f104030c9e0a21c76b",
+        "committed_result_file_sha256": "34bbeba4b07723eff94eb8cc7b19f640ea2c07674e72cb5b91b3c74ba1a0b449",
+        "fresh_checkpoint_manifest_sha256": "3c4e7781731777907dd84dd3b13f8e188c65216cba387195fba9372772ce7b58",
+        "committed_checkpoint_manifest_sha256": "56b0cc2c8d12da9d99ca49d66d136d7b40a517cb4211f8fed5eb7b69c83ec7d4",
+        "final_checkpoint_chain_sha256": "b7fd264eece645eead187424152ae810a9ff940e37ffc5649b5ddf65aa31d59d",
+        "ordered_input_sha256": "377d4a4747bbab72436c3620d2e0f035dc4e63e5f99eef6e0b67968f197d6f8d",
+        "ordered_certificate_sha256": "87cda7ab65d68c2141174cc7643bbf4f7ecf42e359d7240026e85f35a9e15dde"
+      }
+    }
+  ],
+  "committed_certificate_replay": {
+    "status": "PASS",
+    "method": "read-only direct-stream cursor and checkpoint hash-chain replay",
+    "orders": [24, 26, 28, 30],
+    "checks_per_order": 12,
+    "all_checks_true": true,
+    "result_file_sha256": "bcfcb67f6b1e67f7d7ec36552c99aeebfcd8811a46ef697de7314b4ad2311d57"
+  },
+  "slow_generator_regression": {
+    "status": "PASS",
+    "tests": [
+      "DirectBraceletTests::test_direct_generator_burnside_n26",
+      "DirectBraceletTests::test_direct_generator_burnside_n28",
+      "DirectBraceletTests::test_direct_generator_burnside_n30"
+    ],
+    "passed": 3,
+    "failed": 0,
+    "elapsed_seconds": 154.54,
+    "log_sha256": "49af1441f18341f3aa9ee96edabaf2a86a4fbccb0fc6e3f4e89b36628bafae6b"
+  },
+  "operational_incidents": [
+    {
+      "kind": "manager_restart",
+      "resolution": "The manager was restarted; n=24 resumed from four validated chunks and all searches completed.",
+      "mathematical_mismatch": false
+    },
+    {
+      "kind": "pytest_selector_error",
+      "returncode": 4,
+      "resolution": "Module-level selectors were corrected to class-qualified unittest node IDs; the intended three tests then passed.",
+      "mathematical_mismatch": false
+    }
+  ],
+  "evidence_file_hashes": {
+    "manager_state_sha256": "f8328ca218082f47020d3cc0fed29bf8bef0f2a64b9e34bc8aa50ef8c4557fb9",
+    "events_sha256": "5e0ba76531fd24aaa637eba8df6ee6bfa385a7ce74bbabeb9b06b311317f3844",
+    "slow_test_inventory_sha256": "721f5d76193bc2197b25d582e150316e1b9d7c72cc4ba725182a0ff6e5cb7ab8",
+    "manager_script_sha256": "cf40c4a07ba1844195d2b34a3b97e8ca2457befdd02eb37d78582004b38c0c3d",
+    "search_script_sha256": "5653c6d6b086ba00d70a3ab7d6692445334f4f0009d4400274959f74a53fd6fc",
+    "generator_source_sha256": "2a972d97c1c72e2f12140336c3328362de531507b5931c0f4b442beb7ac1f5d7"
+  },
+  "comparison": {
+    "fresh_and_committed_core_results_match": true,
+    "fresh_and_committed_final_checkpoint_chains_match": true,
+    "fresh_and_committed_manifest_file_hashes_match": false,
+    "manifest_hash_difference_expected": true,
+    "manifest_hash_difference_reason": "Fresh manifests include the frozen baseline commit, fresh run metadata, and newly written chunk metadata; equality is required for the logical counts, ordered input/certificate hashes, and final checkpoint chain instead.",
+    "mismatch_count": 0
+  },
+  "repository_import": {
+    "large_chunk_files_committed": false,
+    "full_logs_committed": false,
+    "compact_summary_only": true
+  },
+  "paper_gate": {
+    "novelty_priority_audit": "PASS",
+    "stable_new_theorem": "PASS",
+    "default_tests": "PASS",
+    "slow_evidence_without_mismatch": "PASS",
+    "claim_scope_frozen": "PASS",
+    "status": "PAPER_PACKAGE_READY",
+    "next_stage": "Reviewer Zero, theorem dependency graph, proof compression, and notation normalization before manuscript drafting"
+  }
+}
