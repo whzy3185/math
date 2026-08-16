@@ -1,0 +1,468 @@
+{
+  "schema_version": "1.1.0",
+  "snapshot_cutoff_date": "2026-08-16",
+  "access_window_utc": {
+    "start": "2026-08-16T05:19:35Z",
+    "end": "2026-08-16T05:49:16Z"
+  },
+  "sources": [
+    {
+      "id": "S01",
+      "kind": "primary_preprint",
+      "title": "Signed circulants at the Ramanujan bound",
+      "authors": ["Vaibhav Suvagiya"],
+      "urls": {
+        "abstract": "https://arxiv.org/abs/2607.18334",
+        "html": "https://arxiv.org/html/2607.18334",
+        "source": "https://arxiv.org/src/2607.18334",
+        "doi": "https://doi.org/10.48550/arXiv.2607.18334"
+      },
+      "identifiers": {
+        "arxiv": "2607.18334",
+        "doi": "10.48550/arXiv.2607.18334"
+      },
+      "version": "v1",
+      "submitted_at_utc": "2026-07-19T17:33:48Z",
+      "latest_version_at_cutoff": "v1",
+      "source_archive_sha256": "fe460ca0420552f87a4c0649397f9a52543b3faff3e67b84ee7de7d83bd477ba",
+      "observations": [
+        "Conjecture 3 states the global-optimizer claim for every even n>=8.",
+        "The exhaustive verified range is n in {8,10,12,14,16,18}, with numerical agreement to 10^-9.",
+        "Proposition 1 gives spectral radius 2sqrt(2) for the all-unbalanced quadrilateral phase.",
+        "Remark 5 leaves the lower bound open and identifies reflection positivity as a natural route.",
+        "No revision, correction, n=32 remark, or counterexample appears in the accessed version."
+      ],
+      "accessed_at_utc": "2026-08-16T05:20:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S02",
+      "kind": "primary_preprint",
+      "title": "Parity families and a kernel-averaged L-function for near-Ramanujan signings",
+      "authors": ["Vaibhav Suvagiya"],
+      "urls": {
+        "abstract": "https://arxiv.org/abs/2607.17343",
+        "source": "https://arxiv.org/src/2607.17343",
+        "doi": "https://doi.org/10.48550/arXiv.2607.17343"
+      },
+      "identifiers": {
+        "arxiv": "2607.17343",
+        "doi": "10.48550/arXiv.2607.17343"
+      },
+      "version": "v1",
+      "submitted_at_utc": "2026-07-19T17:07:14Z",
+      "latest_version_at_cutoff": "v1",
+      "source_archive_sha256": "80fa7dc4475bb4d8ee23442213f129f568f2c6752fcadfbfa645e94966d8c20c",
+      "observations": [
+        "Provides the companion parity-family and kernel-averaging framework.",
+        "Uses short even cycles and traces as general spectral controls.",
+        "No Target A counterexample, n=32 result, period-8 classification, sharp radical, trichotomy, or target chiral reduction was found."
+      ],
+      "accessed_at_utc": "2026-08-16T05:20:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S03",
+      "kind": "author_code_repository",
+      "title": "Vaibhavs25/bilu-linial-parity",
+      "url": "https://github.com/Vaibhavs25/bilu-linial-parity",
+      "repository_created_at_utc": "2026-07-19T16:05:20Z",
+      "repository_updated_at_utc": "2026-07-19T17:25:14Z",
+      "repository_pushed_at_utc": "2026-07-19T17:25:10Z",
+      "default_branch": "main",
+      "latest_commit": {
+        "sha": "312f0e2f0b4cdc588b3c06c4754f1df231d4da6a",
+        "url": "https://github.com/Vaibhavs25/bilu-linial-parity/commit/312f0e2f0b4cdc588b3c06c4754f1df231d4da6a",
+        "authored_at_utc": "2026-07-19T17:25:09Z",
+        "committed_at_utc": "2026-07-19T17:25:09Z",
+        "message": "Add files via upload",
+        "signature_verified": true
+      },
+      "history": {
+        "commit_count": 8,
+        "all_commits_on_date": "2026-07-19",
+        "commits_after_2026_07_19": 0,
+        "branches": ["main"],
+        "tag": "v1.0",
+        "tag_commit": "4e2a7fde",
+        "open_or_closed_issues_count": 0,
+        "pull_requests_count": 0,
+        "forks_count": 0,
+        "stars_count": 0
+      },
+      "observations": [
+        "README identifies a post-re-audit bundle but contains no Target A counterexample or period-8 result.",
+        "Repository-wide scan of Markdown, TeX, Python, CSV, and shell files found no target-specific formula, pattern, counterexample, period-8, Floquet, eight-barrier, or chiral claim.",
+        "Generic closed-walk terminology appears only in companion-method material.",
+        "The repository's two TeX manuscript blobs match the official arXiv source archive SHA-256 values."
+      ],
+      "accessed_at_utc": "2026-08-16T05:19:35Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S04",
+      "kind": "author_repository_content_scan",
+      "title": "Target-term scan of Vaibhavs25/bilu-linial-parity",
+      "repository_commit": "312f0e2f0b4cdc588b3c06c4754f1df231d4da6a",
+      "scanned_extensions": ["md", "tex", "py", "csv", "sh"],
+      "terms": [
+        "n=32",
+        "32",
+        "counterexample",
+        "Conjecture 3",
+        "period-8",
+        "period 8",
+        "00010001",
+        "10001000",
+        "+---",
+        "1561/200",
+        "7.804226",
+        "sqrt(10+2sqrt(5))",
+        "Floquet",
+        "eight barrier",
+        "closed walk",
+        "chiral"
+      ],
+      "observations": [
+        "No target-specific occurrence was found.",
+        "The bare token 32 appears in experimental data and generic contexts, not as a counterexample claim.",
+        "Generic 'closed walk' occurrences concern companion methodology."
+      ],
+      "accessed_at_utc": "2026-08-16T05:21:00Z",
+      "status": "completed"
+    },
+    {
+      "id": "S05",
+      "kind": "author_experimental_data",
+      "title": "campaign.csv",
+      "url": "https://github.com/Vaibhavs25/bilu-linial-parity/blob/main/campaign.csv",
+      "repository_commit": "312f0e2f0b4cdc588b3c06c4754f1df231d4da6a",
+      "c32_rows": {
+        "family_best_rho": 2.794518,
+        "random_constraints_best_rho": 3.520462,
+        "random_best_rho": 3.063566,
+        "anneal_best_rho": 2.832761,
+        "tabu_best_rho": 2.835144,
+        "evaluation_budget_each": 2000
+      },
+      "observations": [
+        "No C32 campaign value is reported below the conjectured threshold.",
+        "campaign.py records scalar summary data rather than retaining a recoverable best signing.",
+        "These heuristic rows do not establish minimality or absence of a counterexample."
+      ],
+      "accessed_at_utc": "2026-08-16T05:21:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S06",
+      "kind": "author_verification_code",
+      "title": "verify_all.py",
+      "url": "https://github.com/Vaibhavs25/bilu-linial-parity/blob/main/verify_all.py",
+      "repository_commit": "312f0e2f0b4cdc588b3c06c4754f1df231d4da6a",
+      "observations": [
+        "The global Conjecture 3 exhaustive loop explicitly covers n=8,10,12,14.",
+        "The source comments identify n=16,18 as separately executed checks.",
+        "No n=32 exhaustive verification or counterexample routine was found."
+      ],
+      "accessed_at_utc": "2026-08-16T05:21:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S07",
+      "kind": "author_profile",
+      "title": "Vaibhavs25 GitHub profile and public repositories",
+      "url": "https://github.com/Vaibhavs25",
+      "semantic_scholar_author_id": "2451568128",
+      "observations": [
+        "Four public GitHub repositories were listed.",
+        "No later signed-circulant repository or Target A update was found.",
+        "cactus2distance had later July activity but was unrelated; ca was empty; entity-gateway was unrelated."
+      ],
+      "accessed_at_utc": "2026-08-16T05:22:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S08",
+      "kind": "metadata_index",
+      "title": "DataCite DOI metadata",
+      "urls": [
+        "https://api.datacite.org/dois/10.48550/arxiv.2607.18334",
+        "https://api.datacite.org/dois/10.48550/arxiv.2607.17343"
+      ],
+      "records": [
+        {
+          "doi": "10.48550/arxiv.2607.18334",
+          "version": "1",
+          "updated_at_utc": "2026-07-22T01:50:43Z",
+          "citation_count": 0
+        },
+        {
+          "doi": "10.48550/arxiv.2607.17343",
+          "version": "1",
+          "updated_at_utc": "2026-07-21T03:17:07Z",
+          "citation_count": 0
+        }
+      ],
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S09",
+      "kind": "bibliographic_index",
+      "title": "Crossref exact normalized-title searches",
+      "url": "https://api.crossref.org/works",
+      "observations": [
+        "Exact normalized-title query for Signed circulants at the Ramanujan bound returned no matching Crossref work.",
+        "Exact normalized-title query for Parity families and a kernel-averaged L-function for near-Ramanujan signings returned no matching Crossref work.",
+        "N10/N11 exact-expression and close-variant queries returned only unrelated or generic works; the 00010001 period-16 query returned no items."
+      ],
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S10",
+      "kind": "bibliographic_index",
+      "title": "OpenAlex title and citation records",
+      "url": "https://api.openalex.org/works",
+      "observations": [
+        "Title searches found duplicate arXiv/DOI representations for each primary paper.",
+        "The retrieved representations reported cited_by_count=0.",
+        "Four N10/N11 close-variant full-text searches returned generic or unrelated top results and no direct claim."
+      ],
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S11",
+      "kind": "citation_index",
+      "title": "Semantic Scholar paper, author, and citation endpoints",
+      "urls": [
+        "https://api.semanticscholar.org/graph/v1/paper/ARXIV:2607.18334",
+        "https://api.semanticscholar.org/graph/v1/paper/ARXIV:2607.17343",
+        "https://api.semanticscholar.org/graph/v1/author/2451568128"
+      ],
+      "records": {
+        "2607.18334_paper_id": "3b1d8f9163889149f1fb403c34b0d7eaa8460723",
+        "2607.18334_citation_count": 1,
+        "2607.17343_citation_count": 1,
+        "retrieved_citing_relationship": "Each companion paper was the sole citing paper returned for the other.",
+        "author_id": "2451568128",
+        "author_paper_count": 2,
+        "author_aggregate_citation_count": 0
+      },
+      "observations": [
+        "The citation endpoints exposed only the reciprocal companion-paper relationship, not an independent follow-up.",
+        "The paper-level and author-level citation counts were internally inconsistent.",
+        "Later additional query variants returned HTTP 429.",
+        "All four N10/N11 addendum keyword searches returned HTTP 429, so no negative finding is inferred from those queries."
+      ],
+      "accessed_at_utc": "2026-08-16T05:24:00Z",
+      "status": "partially_accessible_rate_limited"
+    },
+    {
+      "id": "S12",
+      "kind": "related_method_preprint",
+      "title": "Spectra of power hypergraphs and signed graphs via parity-closed walks",
+      "authors": ["Lixiang Chen", "Edwin R. van Dam", "Changjiang Bu"],
+      "url": "https://arxiv.org/abs/2302.10496",
+      "arxiv_id": "2302.10496",
+      "submitted_date": "2023-02-21",
+      "observations": [
+        "Studies signed-graph spectra using parity-closed walks and spectral moments.",
+        "Does not address C_n(1,2), Conjecture 3, n=32, the period-8 target, or the Target A structural claims."
+      ],
+      "accessed_at_utc": "2026-08-16T05:29:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S13",
+      "kind": "project_origin_public_disclosure",
+      "title": "whzy3185/math Target A snapshot",
+      "repository_url": "https://github.com/whzy3185/math",
+      "baseline_commit": {
+        "sha": "c5cadf3ec7e160fc994453907fe83c579dc89646",
+        "url": "https://github.com/whzy3185/math/commit/c5cadf3ec7e160fc994453907fe83c579dc89646",
+        "authored_at": "2026-08-16T12:59:14+08:00",
+        "committed_at": "2026-08-16T12:59:14+08:00",
+        "message": "Explain Target A period-8 spectral mechanism"
+      },
+      "observed_branch": "agent/target-a-discovery-snapshot",
+      "observed_branch_head": {
+        "sha": "d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d",
+        "url": "https://github.com/whzy3185/math/commit/d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d",
+        "authored_at": "2026-08-16T13:44:48+08:00",
+        "committed_at": "2026-08-16T13:44:48+08:00",
+        "message": "Classify Target A low-period spectral frontier"
+      },
+      "anonymous_raw_check": {
+        "url": "https://raw.githubusercontent.com/whzy3185/math/637de46394592f918f8e719c88648a46077f1214/research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+        "http_status": 200,
+        "observed_at_utc": "2026-08-16T05:33:13Z"
+      },
+      "synchronization_addendum_checks": [
+        {
+          "claim": "N10",
+          "commit": "637de46394592f918f8e719c88648a46077f1214",
+          "url": "https://raw.githubusercontent.com/whzy3185/math/637de46394592f918f8e719c88648a46077f1214/research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+          "http_status": 200,
+          "observed_at_utc": "2026-08-16T05:45:32Z"
+        },
+        {
+          "claim": "N11",
+          "commit": "d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d",
+          "url": "https://raw.githubusercontent.com/whzy3185/math/d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d/research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md",
+          "http_status": 200,
+          "observed_at_utc": "2026-08-16T05:45:32Z"
+        }
+      ],
+      "observations": [
+        "GitHub HTML labeled the repository Public.",
+        "This is the Target A project under audit, not an independent source.",
+        "The first anonymous-public time was not recovered; only visibility by the observation time is established."
+      ],
+      "status": "accessible_project_origin"
+    },
+    {
+      "id": "S14",
+      "kind": "author_affiliation_page",
+      "title": "CAT Lab author update page",
+      "url": "https://brahadeesh1994.github.io/",
+      "observations": [
+        "A July 15 poster update concerning RAMO was found and was unrelated to signed circulants or Target A.",
+        "No counterexample, Conjecture 3 correction, or period-8 author remark was found."
+      ],
+      "accessed_at_utc": "2026-08-16T05:24:00Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S15",
+      "kind": "search_service",
+      "title": "Google Scholar",
+      "url": "https://scholar.google.com/",
+      "observations": [
+        "Command-line exact-title and conjecture queries timed out with no HTTP response.",
+        "Synchronization-addendum exact searches for the N10 moment formula and N11 primitive-period uniqueness language also timed out with HTTP status 000.",
+        "An in-app browser exact-title attempt timed out/reset.",
+        "The Scholar link from arXiv returned HTTP 403."
+      ],
+      "accessed_at_utc": "2026-08-16T05:48:59Z",
+      "status": "inaccessible",
+      "interpretation": "No negative finding is inferred from this service."
+    },
+    {
+      "id": "S16",
+      "kind": "related_method_article",
+      "title": "Walks and eigenvalues of signed graphs",
+      "authors": ["Zoran Stanic"],
+      "url": "https://doi.org/10.1515/spma-2023-0104",
+      "doi": "10.1515/spma-2023-0104",
+      "publication_date": "2023-01-01",
+      "observations": [
+        "Derives a sequence of signed-graph spectral-radius lower bounds expressed through walks or closed walks.",
+        "Does not use the Target A Hamilton-gauge periodic operator or state the N10 M1/M2/M3 formulas and motif inequalities.",
+        "Does not classify bounded-period signings as in N11."
+      ],
+      "accessed_at_utc": "2026-08-16T05:48:08Z",
+      "status": "accessible_via_repository_and_crossref"
+    },
+    {
+      "id": "S17",
+      "kind": "related_method_article",
+      "title": "Measure-theoretic bounds on the spectral radius of graphs from walks",
+      "authors": ["Francisco Barreras", "Mikhail Hayhoe", "Hamed Hassani", "Victor M. Preciado"],
+      "url": "https://doi.org/10.1016/j.laa.2021.04.023",
+      "doi": "10.1016/j.laa.2021.04.023",
+      "publication_date": "2021-09",
+      "observations": [
+        "Connects graph walk moments with spectral measures and derives spectral-radius bounds and necessary moment-support conditions.",
+        "Includes general moment-ratio inequalities, but not the N10 periodic signed-circulant motif identities or coefficients.",
+        "Does not address the N11 bounded primitive-period phase classification."
+      ],
+      "accessed_at_utc": "2026-08-16T05:48:08Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S18",
+      "kind": "related_method_preprint",
+      "title": "Schrodinger operators on periodic discrete graphs",
+      "authors": ["Evgeny Korotyaev", "Natalia Saburova"],
+      "url": "https://arxiv.org/abs/1307.1841",
+      "arxiv_id": "1307.1841",
+      "version": "v2",
+      "submitted_at_utc": "2013-07-07T09:09:35Z",
+      "revised_at_utc": "2013-12-23T06:56:03Z",
+      "observations": [
+        "Develops Floquet fiber representations for periodic discrete graph operators.",
+        "Does not treat Target A signings, the N10 moment obstructions, or the N11 bounded-period minimizer."
+      ],
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "accessible"
+    },
+    {
+      "id": "S19",
+      "kind": "related_method_preprint",
+      "title": "Floquet isospectrality for periodic graph operators",
+      "authors": ["Wencai Liu"],
+      "url": "https://arxiv.org/abs/2302.13103",
+      "arxiv_id": "2302.13103",
+      "version": "v1",
+      "submitted_at_utc": "2023-02-25T15:43:26Z",
+      "observations": [
+        "Studies Floquet isospectrality for periodic discrete Schrodinger operators.",
+        "Provides periodic-operator context only and does not state N10 or N11."
+      ],
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "accessible"
+    }
+  ],
+  "baseline_file_fingerprints": [
+    {
+      "path": "research/proofs/TARGET_A_SMALLEST_COUNTEREXAMPLE.md",
+      "sha256": "668a3742e4c565ab6dc24d19565befd8531b26cd1ef56fc91528b81ef32062ed"
+    },
+    {
+      "path": "research/proofs/TARGET_A_PERIOD8_FAMILY.md",
+      "sha256": "602eb8e9bc775830628314b2395c81bf9c83a4eea0fde7d6c248e94e570e303a"
+    },
+    {
+      "path": "research/proofs/TARGET_A_PERIOD8_SHARP_CONSTANT.md",
+      "sha256": "e912a020ae2dc0931903b07172ec44f8823902c49a09f08356795c4ffa3e1c72"
+    },
+    {
+      "path": "research/proofs/TARGET_A_PERIOD8_PATTERN_CLASSIFICATION.md",
+      "sha256": "653f4b67401f8bb83aa043070260c3b5949a1fb833a72db0fc8b7a1b807ac05a"
+    },
+    {
+      "path": "research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+      "sha256": "ca89c37eeabe100d3f2fe62695cf99b2cba6eaf116966862eb0e45352e7277d4"
+    }
+  ],
+  "synchronization_source_fingerprints": [
+    {
+      "commit": "637de46394592f918f8e719c88648a46077f1214",
+      "path": "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+      "sha256": "14bb089d2d3dbb375ca0e409557fc1fd8121ad5106f2e08cb5d7005aef8d7a33"
+    },
+    {
+      "commit": "637de46394592f918f8e719c88648a46077f1214",
+      "path": "research/proofs/target_a_general_period_moment_obstructions.json",
+      "sha256": "566928bc0fc06bc984a102d29f84a8694d9c9cb17b254e8940d3c53bdaac2401"
+    },
+    {
+      "commit": "d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d",
+      "path": "research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md",
+      "sha256": "a3e155b00744cd33e40d525494a11cc54bbb7fe1a310148f5db4af7eea83159c"
+    },
+    {
+      "commit": "d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d",
+      "path": "research/proofs/target_a_low_period_spectral_frontier.json",
+      "sha256": "82e69ab7df7d81d6c2c46364a6e07aba7578fbc3ad21a69dcc17ffd08333928d"
+    }
+  ],
+  "snapshot_limitations": [
+    "Indexing latency is material because both primary papers are less than one month old at cutoff.",
+    "Google Scholar was inaccessible and Semantic Scholar became rate-limited.",
+    "Public search cannot observe private drafts, correspondence, or unindexed repositories.",
+    "Git commit timestamps do not establish the first public exposure time."
+  ]
+}

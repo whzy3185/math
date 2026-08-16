@@ -1,0 +1,1305 @@
+{
+  "schema_version": "1.1.0",
+  "audit_cutoff_date": "2026-08-16",
+  "access_window_utc": {
+    "start": "2026-08-16T05:19:35Z",
+    "end": "2026-08-16T05:49:16Z"
+  },
+  "timestamp_note": "Several searches were issued in batches. Their accessed_at_utc values identify the corresponding batch window and may be rounded to the minute.",
+  "interpretation_rule": "An inaccessible or rate-limited service is recorded as such and is not treated as a negative result.",
+  "service_status": [
+    {
+      "service": "arXiv abstract/HTML/source",
+      "status": "accessible",
+      "limitations": "No material access limitation."
+    },
+    {
+      "service": "arXiv API/search",
+      "status": "accessible",
+      "limitations": "Search quality depends on indexed metadata and text fields."
+    },
+    {
+      "service": "GitHub public HTML/raw",
+      "status": "accessible",
+      "limitations": "Global code search coverage through general web indexing is incomplete."
+    },
+    {
+      "service": "GitHub REST API",
+      "status": "partially_accessible_rate_limited",
+      "limitations": "Core repository records were retrieved before the unauthenticated quota was exhausted."
+    },
+    {
+      "service": "Crossref",
+      "status": "accessible",
+      "limitations": "arXiv-only works may lack independent Crossref deposits."
+    },
+    {
+      "service": "DataCite",
+      "status": "accessible",
+      "limitations": "Citation counts may lag."
+    },
+    {
+      "service": "OpenAlex",
+      "status": "accessible",
+      "limitations": "Duplicate arXiv/DOI work records and citation lag were observed."
+    },
+    {
+      "service": "Semantic Scholar",
+      "status": "partially_accessible_rate_limited",
+      "limitations": "Paper/citation/author records were retrieved; later searches returned HTTP 429."
+    },
+    {
+      "service": "Google Scholar",
+      "status": "inaccessible",
+      "limitations": "CLI requests timed out, browser access reset/timed out, and an arXiv Scholar link returned HTTP 403. No negative result is inferred."
+    },
+    {
+      "service": "General web search",
+      "status": "accessible",
+      "limitations": "Search-engine coverage and branch indexing are incomplete."
+    },
+    {
+      "service": "Author/profile pages",
+      "status": "accessible",
+      "limitations": "Only public pages can be audited."
+    }
+  ],
+  "queries": [
+    {
+      "id": "Q001",
+      "service": "arXiv",
+      "operation": "open_primary",
+      "query": "https://arxiv.org/abs/2607.18334",
+      "accessed_at_utc": "2026-08-16T05:20:00Z",
+      "status": "success",
+      "result": "v1 only; submitted 2026-07-19T17:33:48Z; Conjecture 3 present; verified range n=8,10,12,14,16,18."
+    },
+    {
+      "id": "Q002",
+      "service": "arXiv",
+      "operation": "open_html_find",
+      "query": "Conjecture 3; 2sqrt(2); verified n range; Remark 5 in https://arxiv.org/html/2607.18334",
+      "accessed_at_utc": "2026-08-16T05:34:00Z",
+      "status": "success",
+      "result": "Conjecture text and range confirmed; Proposition 1 gives all-unbalanced phase radius 2sqrt(2); reflection-positivity route left open."
+    },
+    {
+      "id": "Q003",
+      "service": "arXiv",
+      "operation": "download_and_hash_source",
+      "query": "https://arxiv.org/src/2607.18334",
+      "accessed_at_utc": "2026-08-16T05:20:00Z",
+      "status": "success",
+      "result": "Source SHA-256 fe460ca0420552f87a4c0649397f9a52543b3faff3e67b84ee7de7d83bd477ba."
+    },
+    {
+      "id": "Q004",
+      "service": "arXiv",
+      "operation": "open_primary",
+      "query": "https://arxiv.org/abs/2607.17343",
+      "accessed_at_utc": "2026-08-16T05:20:00Z",
+      "status": "success",
+      "result": "v1 only; submitted 2026-07-19T17:07:14Z; general companion methodology; no Target A result found."
+    },
+    {
+      "id": "Q005",
+      "service": "arXiv",
+      "operation": "download_and_hash_source",
+      "query": "https://arxiv.org/src/2607.17343",
+      "accessed_at_utc": "2026-08-16T05:20:00Z",
+      "status": "success",
+      "result": "Source SHA-256 80fa7dc4475bb4d8ee23442213f129f568f2c6752fcadfbfa645e94966d8c20c."
+    },
+    {
+      "id": "Q006",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"signed circulant\"",
+      "accessed_at_utc": "2026-08-16T05:25:49Z",
+      "status": "success",
+      "result": "4 records; included arXiv:2607.18334 and unrelated works; no independent Target A follow-up."
+    },
+    {
+      "id": "Q007",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"C_n(1,2)\" AND all:signing",
+      "accessed_at_utc": "2026-08-16T05:25:49Z",
+      "status": "success",
+      "result": "1 record: arXiv:2607.18334 only."
+    },
+    {
+      "id": "Q008",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"period-8\" AND all:circulant",
+      "accessed_at_utc": "2026-08-16T05:25:49Z",
+      "status": "success",
+      "result": "0 records."
+    },
+    {
+      "id": "Q009",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"Conjecture 3\" AND all:\"signed circulants\"",
+      "accessed_at_utc": "2026-08-16T05:25:49Z",
+      "status": "success",
+      "result": "0 records; phrase-field behavior may omit the source paper itself."
+    },
+    {
+      "id": "Q010",
+      "service": "GitHub REST API",
+      "operation": "repository_metadata",
+      "query": "GET /repos/Vaibhavs25/bilu-linial-parity",
+      "accessed_at_utc": "2026-08-16T05:19:35Z",
+      "status": "success",
+      "result": "Public repo; created 2026-07-19T16:05:20Z; pushed 2026-07-19T17:25:10Z; default main."
+    },
+    {
+      "id": "Q011",
+      "service": "GitHub REST API",
+      "operation": "commit_history",
+      "query": "GET /repos/Vaibhavs25/bilu-linial-parity/commits?per_page=100",
+      "accessed_at_utc": "2026-08-16T05:19:35Z",
+      "status": "success",
+      "result": "8 commits, all on 2026-07-19; latest 312f0e2f0b4cdc588b3c06c4754f1df231d4da6a at 17:25:09Z; no later commits."
+    },
+    {
+      "id": "Q012",
+      "service": "GitHub REST API",
+      "operation": "recursive_tree",
+      "query": "GET /repos/Vaibhavs25/bilu-linial-parity/git/trees/main?recursive=1",
+      "accessed_at_utc": "2026-08-16T05:19:35Z",
+      "status": "success",
+      "result": "Complete latest tree retrieved; README, two manuscript TeX/PDF pairs, scripts, and data inspected."
+    },
+    {
+      "id": "Q013",
+      "service": "GitHub REST API",
+      "operation": "repository_state",
+      "query": "GET branches, tags, issues?state=all, pulls?state=all for Vaibhavs25/bilu-linial-parity",
+      "accessed_at_utc": "2026-08-16T05:19:35Z",
+      "status": "success",
+      "result": "Only main branch; v1.0 tag; no issues or pull requests."
+    },
+    {
+      "id": "Q014",
+      "service": "GitHub repository content",
+      "operation": "full_text_scan",
+      "query": "n=32 | 32 | counterexample | Conjecture 3 | period-8 | period 8 | 00010001 | 10001000 | +--- | 1561/200 | 7.804226 | sqrt(10+2sqrt(5)) | Floquet | eight barrier | closed walk | chiral",
+      "accessed_at_utc": "2026-08-16T05:21:00Z",
+      "status": "success",
+      "result": "No target-specific occurrence across md/tex/py/csv/sh. Bare 32 appears in data/generic contexts; generic closed-walk text appears in companion methodology."
+    },
+    {
+      "id": "Q015",
+      "service": "GitHub repository content",
+      "operation": "inspect_experiment",
+      "query": "campaign.csv C_n(1,2) rows for n=32",
+      "accessed_at_utc": "2026-08-16T05:21:00Z",
+      "status": "success",
+      "result": "family 2.794518; randcon 3.520462; random 3.063566; anneal 2.832761; tabu 2.835144; no reported below-threshold value."
+    },
+    {
+      "id": "Q016",
+      "service": "GitHub repository content",
+      "operation": "inspect_code",
+      "query": "campaign.py retention of best signing",
+      "accessed_at_utc": "2026-08-16T05:21:00Z",
+      "status": "success",
+      "result": "Campaign stores scalar summaries, not a recoverable best signing."
+    },
+    {
+      "id": "Q017",
+      "service": "GitHub repository content",
+      "operation": "inspect_code",
+      "query": "verify_all.py Conjecture 3 exhaustive range",
+      "accessed_at_utc": "2026-08-16T05:21:00Z",
+      "status": "success",
+      "result": "Main loop covers n=8,10,12,14; comments identify n=16,18 as separate runs; no n=32 result."
+    },
+    {
+      "id": "Q018",
+      "service": "GitHub repository content",
+      "operation": "hash_compare",
+      "query": "Compare GitHub manuscript TeX blobs with official arXiv source archives",
+      "accessed_at_utc": "2026-08-16T05:21:00Z",
+      "status": "success",
+      "result": "Byte-identical SHA-256 matches for both primary TeX sources."
+    },
+    {
+      "id": "Q019",
+      "service": "GitHub REST API",
+      "operation": "author_repository_search",
+      "query": "GET /users/Vaibhavs25/repos?per_page=100",
+      "accessed_at_utc": "2026-08-16T05:22:00Z",
+      "status": "success",
+      "result": "4 public repositories; no later signed-circulant or Target A repository."
+    },
+    {
+      "id": "Q020",
+      "service": "Crossref",
+      "operation": "exact_normalized_title",
+      "query": "Signed circulants at the Ramanujan bound",
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "success",
+      "result": "No exact normalized-title match."
+    },
+    {
+      "id": "Q021",
+      "service": "Crossref",
+      "operation": "exact_normalized_title",
+      "query": "Parity families and a kernel-averaged L-function for near-Ramanujan signings",
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "success",
+      "result": "No exact normalized-title match."
+    },
+    {
+      "id": "Q022",
+      "service": "DataCite",
+      "operation": "doi_metadata",
+      "query": "10.48550/arxiv.2607.18334",
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "success",
+      "result": "Version 1; metadata updated 2026-07-22T01:50:43Z; citationCount 0."
+    },
+    {
+      "id": "Q023",
+      "service": "DataCite",
+      "operation": "doi_metadata",
+      "query": "10.48550/arxiv.2607.17343",
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "success",
+      "result": "Version 1; metadata updated 2026-07-21T03:17:07Z; citationCount 0."
+    },
+    {
+      "id": "Q024",
+      "service": "OpenAlex",
+      "operation": "exact_title_and_citations",
+      "query": "Signed circulants at the Ramanujan bound",
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "success",
+      "result": "Duplicate arXiv/DOI representations; cited_by_count 0."
+    },
+    {
+      "id": "Q025",
+      "service": "OpenAlex",
+      "operation": "exact_title_and_citations",
+      "query": "Parity families and a kernel-averaged L-function for near-Ramanujan signings",
+      "accessed_at_utc": "2026-08-16T05:23:00Z",
+      "status": "success",
+      "result": "Duplicate arXiv/DOI representations; cited_by_count 0."
+    },
+    {
+      "id": "Q026",
+      "service": "Semantic Scholar",
+      "operation": "paper_lookup_and_citations",
+      "query": "ARXIV:2607.18334",
+      "accessed_at_utc": "2026-08-16T05:24:00Z",
+      "status": "success",
+      "result": "Paper ID 3b1d8f9163889149f1fb403c34b0d7eaa8460723; citationCount 1; sole retrieved citing paper was the companion preprint."
+    },
+    {
+      "id": "Q027",
+      "service": "Semantic Scholar",
+      "operation": "paper_lookup_and_citations",
+      "query": "ARXIV:2607.17343",
+      "accessed_at_utc": "2026-08-16T05:24:00Z",
+      "status": "success_then_rate_limited",
+      "result": "Initial record/citation endpoint showed citationCount 1 and the other companion as sole citing paper; later lookup returned HTTP 429."
+    },
+    {
+      "id": "Q028",
+      "service": "Semantic Scholar",
+      "operation": "author_lookup",
+      "query": "authorId:2451568128",
+      "accessed_at_utc": "2026-08-16T05:24:00Z",
+      "status": "success",
+      "result": "2 papers; aggregate citationCount 0, inconsistent with paper-level reciprocal counts; no third follow-up paper."
+    },
+    {
+      "id": "Q029",
+      "service": "Semantic Scholar",
+      "operation": "additional_keyword_searches",
+      "query": "counterexample, period-8, n=32, signed circulants",
+      "accessed_at_utc": "2026-08-16T05:24:00Z",
+      "status": "rate_limited",
+      "result": "HTTP 429; no negative finding inferred."
+    },
+    {
+      "id": "Q030",
+      "service": "Google Scholar",
+      "operation": "exact_title_search_cli",
+      "query": "\"Signed circulants at the Ramanujan bound\"",
+      "accessed_at_utc": "2026-08-16T05:30:00Z",
+      "status": "inaccessible_timeout",
+      "result": "No HTTP response before timeout; no negative finding inferred."
+    },
+    {
+      "id": "Q031",
+      "service": "Google Scholar",
+      "operation": "conjecture_search_cli",
+      "query": "\"Conjecture 3\" \"Signed circulants\"",
+      "accessed_at_utc": "2026-08-16T05:30:00Z",
+      "status": "inaccessible_timeout",
+      "result": "No HTTP response before timeout; no negative finding inferred."
+    },
+    {
+      "id": "Q032",
+      "service": "Google Scholar",
+      "operation": "browser_and_arxiv_link",
+      "query": "Exact title in in-app browser; Scholar link exposed by arXiv",
+      "accessed_at_utc": "2026-08-16T05:30:00Z",
+      "status": "inaccessible",
+      "result": "Browser timed out/reset; arXiv Scholar link returned HTTP 403; no negative finding inferred."
+    },
+    {
+      "id": "Q033",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:arxiv.org/abs/2607.18334 \"Signed circulants at the Ramanujan bound\"",
+      "accessed_at_utc": "2026-08-16T05:26:00Z",
+      "status": "success",
+      "result": "Original arXiv record; no independent follow-up."
+    },
+    {
+      "id": "Q034",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:arxiv.org/abs/2607.17343 \"Parity families and a kernel-averaged L-function for near-Ramanujan signings\"",
+      "accessed_at_utc": "2026-08-16T05:26:00Z",
+      "status": "success",
+      "result": "Original arXiv record; no independent follow-up."
+    },
+    {
+      "id": "Q035",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:github.com/Vaibhavs25/bilu-linial-parity",
+      "accessed_at_utc": "2026-08-16T05:26:00Z",
+      "status": "success",
+      "result": "Author repository and its files."
+    },
+    {
+      "id": "Q036",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"Signed circulants at the Ramanujan bound\" counterexample OR disproof OR false",
+      "accessed_at_utc": "2026-08-16T05:26:00Z",
+      "status": "success",
+      "result": "No relevant independent disproof or counterexample."
+    },
+    {
+      "id": "Q037",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"2607.18334\"",
+      "accessed_at_utc": "2026-08-16T05:26:00Z",
+      "status": "success",
+      "result": "Original paper, metadata, and mirrors; no direct follow-up."
+    },
+    {
+      "id": "Q038",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"2607.17343\"",
+      "accessed_at_utc": "2026-08-16T05:26:00Z",
+      "status": "success",
+      "result": "Original companion paper, metadata, and mirrors; no direct follow-up."
+    },
+    {
+      "id": "Q039",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"Vaibhav Suvagiya\" signed circulants",
+      "accessed_at_utc": "2026-08-16T05:26:00Z",
+      "status": "success",
+      "result": "Primary paper, author metadata/profile pages; no later target update."
+    },
+    {
+      "id": "Q040",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:github.com \"Signed circulants at the Ramanujan bound\"",
+      "accessed_at_utc": "2026-08-16T05:26:00Z",
+      "status": "success",
+      "result": "Author repository; no independent target repository located."
+    },
+    {
+      "id": "Q041",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"00010001\" \"signed circulant\"",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q042",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"10001000\" \"signed circulant\"",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q043",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"1561/200\" \"spectral radius\" circulant",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q044",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"7.804226065\" circulant",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q045",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"4+sqrt(10+2sqrt(5))\"",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant signed-circulant or target result."
+    },
+    {
+      "id": "Q046",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"sqrt(10+2sqrt(5))\" spectral radius",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant target result."
+    },
+    {
+      "id": "Q047",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"period-8\" \"signed circulant\"",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant independent period-8 classification or family."
+    },
+    {
+      "id": "Q048",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"period 8\" \"C_n(1,2)\" signing",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant independent result."
+    },
+    {
+      "id": "Q049",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"Conjecture 3\" \"Signed circulants at the Ramanujan bound\"",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "Original source context; no correction or disproof."
+    },
+    {
+      "id": "Q050",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"Signed circulants at the Ramanujan bound\" counterexample",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant independent counterexample."
+    },
+    {
+      "id": "Q051",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"C_32(1,2)\" signing",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant independent counterexample or classification."
+    },
+    {
+      "id": "Q052",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"n=32\" \"rho_-(n)\"",
+      "accessed_at_utc": "2026-08-16T05:27:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q053",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"eight barrier\" spectral graph",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant Target A mechanism."
+    },
+    {
+      "id": "Q054",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"closed-walk\" \"signed circulant\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "Generic signed-graph methods; no Target A period-8 mechanism."
+    },
+    {
+      "id": "Q055",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"anti-period-4\" chiral",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant target result."
+    },
+    {
+      "id": "Q056",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"4+4\" chiral \"signed graph\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant Target A reduction."
+    },
+    {
+      "id": "Q057",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"y^4-16y^3+76y^2-96y+16\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q058",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"c^2-13c+38\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant signed-circulant result."
+    },
+    {
+      "id": "Q059",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"P(y,c)\" \"signed circulant\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q060",
+      "service": "General web search",
+      "operation": "search",
+      "query": "Floquet \"C_n(1,2)\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant independent Target A Floquet result."
+    },
+    {
+      "id": "Q061",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:github.com \"00010001\" \"bilu-linial\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q062",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"counterexample\" \"bilu-linial-parity\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant Target A counterexample."
+    },
+    {
+      "id": "Q063",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:github.com/Vaibhavs25/bilu-linial-parity \"32\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No indexed target claim; direct repository scan separately found experimental-data uses."
+    },
+    {
+      "id": "Q064",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:github.com/Vaibhavs25/bilu-linial-parity \"counterexample\"",
+      "accessed_at_utc": "2026-08-16T05:28:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q065",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:arxiv.org signed circulant spectral radius flux signing",
+      "accessed_at_utc": "2026-08-16T05:29:00Z",
+      "status": "success",
+      "result": "Primary source and broader signed-graph literature; no direct Target A prior."
+    },
+    {
+      "id": "Q066",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:arxiv.org periodic signed graph Floquet spectral radius",
+      "accessed_at_utc": "2026-08-16T05:29:00Z",
+      "status": "success",
+      "result": "General periodic/Floquet signed-graph literature; no direct Target A prior."
+    },
+    {
+      "id": "Q067",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:arxiv.org signed graph closed walk spectral moments",
+      "accessed_at_utc": "2026-08-16T05:29:00Z",
+      "status": "success",
+      "result": "Found arXiv:2302.10496 as related closed-walk methodology; no Target A result."
+    },
+    {
+      "id": "Q068",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:arxiv.org chiral symmetry periodic graph Bloch Hamiltonian",
+      "accessed_at_utc": "2026-08-16T05:29:00Z",
+      "status": "success",
+      "result": "General Bloch/chiral literature; no target anti-period-4 or 4+4 claim."
+    },
+    {
+      "id": "Q069",
+      "service": "Author/profile pages",
+      "operation": "author_update_review",
+      "query": "Vaibhav Suvagiya GitHub profile, public repos, Semantic Scholar author record, CAT Lab page",
+      "accessed_at_utc": "2026-08-16T05:24:00Z",
+      "status": "success",
+      "result": "No later signed-circulant correction or Target A author remark; CAT Lab July 15 RAMO poster was unrelated."
+    },
+    {
+      "id": "Q070",
+      "service": "GitHub public raw/HTML",
+      "operation": "anonymous_visibility_check",
+      "query": "https://raw.githubusercontent.com/whzy3185/math/637de46394592f918f8e719c88648a46077f1214/research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+      "accessed_at_utc": "2026-08-16T05:33:13Z",
+      "status": "success",
+      "result": "HTTP 200 anonymously; GitHub HTML labeled whzy3185/math Public. Recorded as project-origin disclosure, not independent prior."
+    },
+    {
+      "id": "Q071",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:github.com/whzy3185/math \"Target A\"",
+      "accessed_at_utc": "2026-08-16T05:31:00Z",
+      "status": "success",
+      "result": "No indexed hit for the project branch; direct raw/HTML access succeeded separately."
+    },
+    {
+      "id": "Q072",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:github.com/whzy3185/math \"Generalize Target A closed-walk obstructions\"",
+      "accessed_at_utc": "2026-08-16T05:31:00Z",
+      "status": "success",
+      "result": "No indexed hit; direct commit-page access succeeded separately."
+    },
+    {
+      "id": "Q073",
+      "service": "General web search",
+      "operation": "search",
+      "query": "github whzy3185 math c5cadf3",
+      "accessed_at_utc": "2026-08-16T05:31:00Z",
+      "status": "success",
+      "result": "No useful indexed hit; direct GitHub commit-page access confirmed the commit."
+    },
+    {
+      "id": "Q074",
+      "service": "GitHub public HTML",
+      "operation": "open_commit_and_tree",
+      "query": "whzy3185/math commits c5cadf3 and 637de463; branch agent/target-a-discovery-snapshot",
+      "accessed_at_utc": "2026-08-16T05:33:30Z",
+      "status": "success",
+      "result": "Repository marked Public; baseline and descendant commit pages and proof tree accessible."
+    },
+    {
+      "id": "Q075",
+      "service": "General web search",
+      "operation": "search",
+      "query": "Vaibhav Suvagiya CAT Lab mathematics RAMO poster July 15 2026",
+      "accessed_at_utc": "2026-08-16T05:38:00Z",
+      "status": "success",
+      "result": "Located https://brahadeesh1994.github.io/; the July 15 RAMO poster update is unrelated to signed circulants or Target A."
+    },
+    {
+      "id": "Q076",
+      "service": "GitHub public raw",
+      "operation": "anonymous_visibility_check",
+      "query": "https://raw.githubusercontent.com/whzy3185/math/637de46394592f918f8e719c88648a46077f1214/research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+      "accessed_at_utc": "2026-08-16T05:45:32Z",
+      "status": "success",
+      "result": "HTTP 200 anonymously; project-origin N10 disclosure, not independent prior."
+    },
+    {
+      "id": "Q077",
+      "service": "GitHub public raw",
+      "operation": "anonymous_visibility_check",
+      "query": "https://raw.githubusercontent.com/whzy3185/math/d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d/research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md",
+      "accessed_at_utc": "2026-08-16T05:45:32Z",
+      "status": "success",
+      "result": "HTTP 200 anonymously; project-origin N11 disclosure, not independent prior."
+    },
+    {
+      "id": "Q078",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"M_1=4p\" \"M_2=20p+16d\"",
+      "accessed_at_utc": "2026-08-16T05:46:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q079",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"M_3=118p+168d+96a+48b\"",
+      "accessed_at_utc": "2026-08-16T05:46:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q080",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"40d+96a+48b\" \"42p\"",
+      "accessed_at_utc": "2026-08-16T05:46:00Z",
+      "status": "success",
+      "result": "Only irrelevant alphanumeric/numeric matches; no signed-graph result."
+    },
+    {
+      "id": "Q081",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"d<=3p/4\" \"signed graph\"",
+      "accessed_at_utc": "2026-08-16T05:46:00Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q082",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"R(Q)<=8\" periodic signing",
+      "accessed_at_utc": "2026-08-16T05:46:10Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q083",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"Hamilton-gauge\" signing Floquet",
+      "accessed_at_utc": "2026-08-16T05:46:10Z",
+      "status": "success",
+      "result": "No relevant independent result."
+    },
+    {
+      "id": "Q084",
+      "service": "General web search",
+      "operation": "search",
+      "query": "signed circulant closed-walk trace moment obstruction Floquet",
+      "accessed_at_utc": "2026-08-16T05:46:10Z",
+      "status": "success",
+      "result": "Found generic signed-graph walk/trace and periodic-operator literature; no N10 exact statement."
+    },
+    {
+      "id": "Q085",
+      "service": "General web search",
+      "operation": "search",
+      "query": "periodic signed graph spectral radius moment inequality Bloch",
+      "accessed_at_utc": "2026-08-16T05:46:10Z",
+      "status": "success",
+      "result": "Found general signed-graph spectral and periodic-operator method sources; no N10/N11 result."
+    },
+    {
+      "id": "Q086",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"primitive tau period\" \"unique minimizer\"",
+      "accessed_at_utc": "2026-08-16T05:46:20Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q087",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"period at most 16\" \"signed circulant\"",
+      "accessed_at_utc": "2026-08-16T05:46:20Z",
+      "status": "success",
+      "result": "No relevant bounded-period result."
+    },
+    {
+      "id": "Q088",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"bounded-period\" \"periodic signings\" spectral radius",
+      "accessed_at_utc": "2026-08-16T05:46:20Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q089",
+      "service": "General web search",
+      "operation": "search",
+      "query": "periodic signing unique minimizer spectral radius circulant",
+      "accessed_at_utc": "2026-08-16T05:46:20Z",
+      "status": "success",
+      "result": "Returned the primary source and unrelated minimizer/circulant literature; no N11 classification."
+    },
+    {
+      "id": "Q090",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"2626\" \"signed circulant\"",
+      "accessed_at_utc": "2026-08-16T05:46:30Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q091",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"0001000100010001\" spectral",
+      "accessed_at_utc": "2026-08-16T05:46:30Z",
+      "status": "success",
+      "result": "Only unrelated digital-pattern and engineering matches."
+    },
+    {
+      "id": "Q092",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"low-period spectral frontier\" signed",
+      "accessed_at_utc": "2026-08-16T05:46:30Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q093",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"unit-cell repetition\" \"signed graph\" minimizer",
+      "accessed_at_utc": "2026-08-16T05:46:30Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q094",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"4+sqrt(10+2sqrt(5))\" \"unique minimizer\"",
+      "accessed_at_utc": "2026-08-16T05:46:40Z",
+      "status": "success",
+      "result": "Only unrelated nested-radical material; no spectral result."
+    },
+    {
+      "id": "Q095",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"4+sqrt(10+2sqrt(5))\" periodic signing",
+      "accessed_at_utc": "2026-08-16T05:46:40Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q096",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"00010001\" \"spectral radius\" signed",
+      "accessed_at_utc": "2026-08-16T05:46:40Z",
+      "status": "success",
+      "result": "No relevant signed-graph result."
+    },
+    {
+      "id": "Q097",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"primitive period 16\" signed graph spectral",
+      "accessed_at_utc": "2026-08-16T05:46:40Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q098",
+      "service": "General web search",
+      "operation": "github_targeted_search",
+      "query": "site:github.com \"40d+96a+48b\"",
+      "accessed_at_utc": "2026-08-16T05:46:50Z",
+      "status": "success",
+      "result": "Only irrelevant hexadecimal/alphanumeric matches."
+    },
+    {
+      "id": "Q099",
+      "service": "General web search",
+      "operation": "github_targeted_search",
+      "query": "site:github.com \"M_3=118p+168d+96a+48b\"",
+      "accessed_at_utc": "2026-08-16T05:46:50Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q100",
+      "service": "General web search",
+      "operation": "github_targeted_search",
+      "query": "site:github.com \"primitive tau period\" \"spectral radius\"",
+      "accessed_at_utc": "2026-08-16T05:46:50Z",
+      "status": "success",
+      "result": "No relevant result."
+    },
+    {
+      "id": "Q101",
+      "service": "General web search",
+      "operation": "github_targeted_search",
+      "query": "site:github.com \"PERIOD_LE16_UNIQUE_PRIMITIVE_OPTIMUM\"",
+      "accessed_at_utc": "2026-08-16T05:46:50Z",
+      "status": "success",
+      "result": "No indexed hit; direct project raw access is recorded separately."
+    },
+    {
+      "id": "Q102",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"Walks and eigenvalues of signed graphs\" Stanic DOI",
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "success",
+      "result": "Located DOI 10.1515/spma-2023-0104 and the University of Belgrade repository record; related N10 method only."
+    },
+    {
+      "id": "Q103",
+      "service": "General web search",
+      "operation": "search",
+      "query": "\"Measure-theoretic bounds on the spectral radius of graphs from walks\"",
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "success",
+      "result": "Located DOI 10.1016/j.laa.2021.04.023; general moment-support method only."
+    },
+    {
+      "id": "Q104",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:arxiv.org \"closed walks\" signed graph spectral radius trace",
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "success",
+      "result": "Found arXiv:2302.10496 and general signed-walk literature; no N10 exact statement."
+    },
+    {
+      "id": "Q105",
+      "service": "General web search",
+      "operation": "search",
+      "query": "site:arxiv.org periodic graph operator Floquet Bloch spectral radius",
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "success",
+      "result": "Found general Floquet sources including arXiv:2302.13103 and arXiv:1307.1841; no N10/N11 statement."
+    },
+    {
+      "id": "Q106",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"closed walk\" AND all:\"signed graph\" AND all:\"spectral radius\"",
+      "accessed_at_utc": "2026-08-16T05:47:01Z",
+      "status": "success",
+      "result": "1 record: arXiv:2302.10496, a related method source."
+    },
+    {
+      "id": "Q107",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"periodic signing\" AND all:\"spectral radius\"",
+      "accessed_at_utc": "2026-08-16T05:47:01Z",
+      "status": "success",
+      "result": "0 records."
+    },
+    {
+      "id": "Q108",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"signed circulant\" AND all:periodic",
+      "accessed_at_utc": "2026-08-16T05:47:01Z",
+      "status": "success",
+      "result": "0 records."
+    },
+    {
+      "id": "Q109",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:Floquet AND all:\"signed graph\" AND all:moment",
+      "accessed_at_utc": "2026-08-16T05:47:01Z",
+      "status": "success",
+      "result": "0 records."
+    },
+    {
+      "id": "Q110",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"primitive period\" AND all:signing",
+      "accessed_at_utc": "2026-08-16T05:47:01Z",
+      "status": "success",
+      "result": "1 unrelated record, Nonclassical Degrees of Freedom in the Riemann Hamiltonian."
+    },
+    {
+      "id": "Q111",
+      "service": "arXiv API",
+      "operation": "metadata_search",
+      "query": "all:\"periodic graph operator\" AND all:\"spectral radius\"",
+      "accessed_at_utc": "2026-08-16T05:47:01Z",
+      "status": "success",
+      "result": "0 records."
+    },
+    {
+      "id": "Q112",
+      "service": "Crossref",
+      "operation": "bibliographic_search",
+      "query": "closed walk trace moment obstruction signed graph spectral radius",
+      "accessed_at_utc": "2026-08-16T05:47:39Z",
+      "status": "success",
+      "result": "Generic signed-graph spectral-radius and walk-sampling works; no N10 exact statement."
+    },
+    {
+      "id": "Q113",
+      "service": "Crossref",
+      "operation": "bibliographic_search",
+      "query": "periodic signed circulant Floquet spectral radius",
+      "accessed_at_utc": "2026-08-16T05:47:39Z",
+      "status": "success",
+      "result": "Generic circulant and signed-graph works; no N10/N11 result."
+    },
+    {
+      "id": "Q114",
+      "service": "Crossref",
+      "operation": "bibliographic_search",
+      "query": "bounded period periodic signing unique minimizer",
+      "accessed_at_utc": "2026-08-16T05:47:39Z",
+      "status": "success",
+      "result": "Unrelated periodic-solution and minimizer works; no N11 result."
+    },
+    {
+      "id": "Q115",
+      "service": "Crossref",
+      "operation": "bibliographic_search",
+      "query": "primitive period signed graph spectral minimizer",
+      "accessed_at_utc": "2026-08-16T05:47:39Z",
+      "status": "success",
+      "result": "Generic signed-graph works; no N11 result."
+    },
+    {
+      "id": "Q116",
+      "service": "OpenAlex",
+      "operation": "full_text_search",
+      "query": "closed walk trace moment obstruction signed graph spectral radius",
+      "accessed_at_utc": "2026-08-16T05:47:39Z",
+      "status": "success",
+      "result": "Top results were generic or unrelated; no N10 exact statement."
+    },
+    {
+      "id": "Q117",
+      "service": "OpenAlex",
+      "operation": "full_text_search",
+      "query": "periodic signed circulant Floquet spectral radius",
+      "accessed_at_utc": "2026-08-16T05:47:39Z",
+      "status": "success",
+      "result": "Top results were generic periodic/Floquet works; no N10/N11 result."
+    },
+    {
+      "id": "Q118",
+      "service": "OpenAlex",
+      "operation": "full_text_search",
+      "query": "bounded period periodic signing unique minimizer",
+      "accessed_at_utc": "2026-08-16T05:47:39Z",
+      "status": "success",
+      "result": "Top results were unrelated; no N11 result."
+    },
+    {
+      "id": "Q119",
+      "service": "OpenAlex",
+      "operation": "full_text_search",
+      "query": "primitive period signed graph spectral minimizer",
+      "accessed_at_utc": "2026-08-16T05:47:39Z",
+      "status": "success",
+      "result": "Top results were unrelated; no N11 result."
+    },
+    {
+      "id": "Q120",
+      "service": "Public article repository",
+      "operation": "open_source_record",
+      "query": "https://research.matf.bg.ac.rs/handle/123456789/1391?mode=full",
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "success",
+      "result": "Walks and eigenvalues of signed graphs, DOI 10.1515/spma-2023-0104; related method only."
+    },
+    {
+      "id": "Q121",
+      "service": "Publisher/Crossref",
+      "operation": "open_source_record",
+      "query": "https://doi.org/10.1016/j.laa.2021.04.023",
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "success",
+      "result": "Measure-theoretic bounds on the spectral radius of graphs from walks; related method only."
+    },
+    {
+      "id": "Q122",
+      "service": "arXiv",
+      "operation": "open_primary",
+      "query": "https://arxiv.org/abs/2302.13103",
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "success",
+      "result": "Floquet isospectrality for periodic graph operators, v1; general method only."
+    },
+    {
+      "id": "Q123",
+      "service": "arXiv",
+      "operation": "open_primary",
+      "query": "https://arxiv.org/abs/1307.1841",
+      "accessed_at_utc": "2026-08-16T05:47:50Z",
+      "status": "success",
+      "result": "Schrodinger operators on periodic discrete graphs, v2; general Floquet method only."
+    },
+    {
+      "id": "Q124",
+      "service": "Crossref",
+      "operation": "doi_metadata",
+      "query": "10.1515/spma-2023-0104",
+      "accessed_at_utc": "2026-08-16T05:48:08Z",
+      "status": "success",
+      "result": "Walks and eigenvalues of signed graphs; Zoran Stanic; published 2023-01-01."
+    },
+    {
+      "id": "Q125",
+      "service": "Crossref",
+      "operation": "doi_metadata",
+      "query": "10.1016/j.laa.2021.04.023",
+      "accessed_at_utc": "2026-08-16T05:48:08Z",
+      "status": "success",
+      "result": "Measure-theoretic bounds on the spectral radius of graphs from walks; Barreras, Hayhoe, Hassani, Preciado; published 2021-09."
+    },
+    {
+      "id": "Q126",
+      "service": "Semantic Scholar",
+      "operation": "keyword_search",
+      "query": "40d 96a 48b 42p signed graph",
+      "accessed_at_utc": "2026-08-16T05:48:22Z",
+      "status": "rate_limited",
+      "result": "HTTP 429; no negative finding inferred."
+    },
+    {
+      "id": "Q127",
+      "service": "Semantic Scholar",
+      "operation": "keyword_search",
+      "query": "closed walk moment obstruction signed circulant Floquet",
+      "accessed_at_utc": "2026-08-16T05:48:22Z",
+      "status": "rate_limited",
+      "result": "HTTP 429; no negative finding inferred."
+    },
+    {
+      "id": "Q128",
+      "service": "Semantic Scholar",
+      "operation": "keyword_search",
+      "query": "bounded period periodic signing unique minimizer",
+      "accessed_at_utc": "2026-08-16T05:48:22Z",
+      "status": "rate_limited",
+      "result": "HTTP 429; no negative finding inferred."
+    },
+    {
+      "id": "Q129",
+      "service": "Semantic Scholar",
+      "operation": "keyword_search",
+      "query": "primitive tau period spectral radius",
+      "accessed_at_utc": "2026-08-16T05:48:22Z",
+      "status": "rate_limited",
+      "result": "HTTP 429; no negative finding inferred."
+    },
+    {
+      "id": "Q130",
+      "service": "Google Scholar",
+      "operation": "exact_formula_search_cli",
+      "query": "\"M_3=118p+168d+96a+48b\"",
+      "accessed_at_utc": "2026-08-16T05:48:59Z",
+      "status": "inaccessible_timeout",
+      "result": "Connection timed out after 15 seconds with HTTP status 000; no negative finding inferred."
+    },
+    {
+      "id": "Q131",
+      "service": "Google Scholar",
+      "operation": "exact_statement_search_cli",
+      "query": "\"primitive tau period\" \"unique minimizer\"",
+      "accessed_at_utc": "2026-08-16T05:48:59Z",
+      "status": "inaccessible_timeout",
+      "result": "Connection timed out after 15 seconds with HTTP status 000; no negative finding inferred."
+    },
+    {
+      "id": "Q132",
+      "service": "Crossref",
+      "operation": "exact_expression_search",
+      "query": "M_3=118p+168d+96a+48b",
+      "accessed_at_utc": "2026-08-16T05:49:16Z",
+      "status": "success",
+      "result": "Only unrelated top matches; no N10 result."
+    },
+    {
+      "id": "Q133",
+      "service": "Crossref",
+      "operation": "exact_expression_search",
+      "query": "40d+96a+48b<=42p",
+      "accessed_at_utc": "2026-08-16T05:49:16Z",
+      "status": "success",
+      "result": "Only unrelated top matches; no N10 result."
+    },
+    {
+      "id": "Q134",
+      "service": "Crossref",
+      "operation": "exact_statement_search",
+      "query": "primitive tau period at most 16 unique minimizer",
+      "accessed_at_utc": "2026-08-16T05:49:16Z",
+      "status": "success",
+      "result": "Only unrelated top matches; no N11 result."
+    },
+    {
+      "id": "Q135",
+      "service": "Crossref",
+      "operation": "exact_pattern_search",
+      "query": "00010001 period 16 spectral radius",
+      "accessed_at_utc": "2026-08-16T05:49:16Z",
+      "status": "success",
+      "result": "0 returned items."
+    }
+  ],
+  "coverage_summary": {
+    "query_count": 135,
+    "synchronization_addendum_query_ids": {
+      "start": "Q076",
+      "end": "Q135",
+      "claims": ["N10", "N11"]
+    },
+    "required_channels_covered": [
+      "arXiv",
+      "Crossref",
+      "Semantic Scholar",
+      "Google Scholar attempted",
+      "general web",
+      "GitHub",
+      "author pages",
+      "citations and follow-ups"
+    ],
+    "inaccessible_services": ["Google Scholar"],
+    "partially_inaccessible_services": ["Semantic Scholar", "GitHub REST API"],
+    "negative_finding_caution": "Negative query results show only that no relevant indexed result was returned for that recorded query at access time."
+  }
+}

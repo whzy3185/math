@@ -1,0 +1,184 @@
+{
+  "schema_version": "1.1.0",
+  "audit": {
+    "target": "Target A",
+    "task": 41,
+    "cutoff_date": "2026-08-16",
+    "access_window_utc": {
+      "start": "2026-08-16T05:19:35Z",
+      "end": "2026-08-16T05:49:16Z"
+    },
+    "baseline_repository": "/Users/muelsyse/Documents/Codex/2026-08-15/cha-k/work/math-slow-c5cadf3",
+    "baseline_commit": "c5cadf3ec7e160fc994453907fe83c579dc89646",
+    "baseline_verified_clean": true,
+    "scope": "Public literature, public repository history, citations, provenance, and author updates; no mathematical search was performed.",
+    "summary": "As of 16 August 2026, no direct public prior was found in the sources and queries recorded in this audit.",
+    "qualification": "The conclusion is bounded by the recorded sources, queries, access failures, indexing delay, and the possibility of non-public or unindexed work.",
+    "synchronization_addendum": {
+      "added_claims": ["N10", "N11"],
+      "source_commits": [
+        "637de46394592f918f8e719c88648a46077f1214",
+        "d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d"
+      ],
+      "baseline_unchanged": true
+    }
+  },
+  "classification_policy": {
+    "unit": "Each N-claim has exactly one assessment field.",
+    "independence_rule": "The labels assess independent public sources predating the project's own claim record. Project-origin GitHub disclosure is recorded as provenance and is not treated as independent prior art.",
+    "allowed_values": [
+      "DIRECT_PRIOR_FOUND",
+      "CLOSE_PRIOR_FOUND",
+      "RELATED_METHOD_ONLY",
+      "NO_DIRECT_PUBLIC_PRIOR_FOUND",
+      "UNRESOLVED"
+    ],
+    "definitions": {
+      "DIRECT_PRIOR_FOUND": "An independent public source predating the project claim record states substantially the same result.",
+      "CLOSE_PRIOR_FOUND": "A predating independent public source states a material part or near-equivalent result, but not the complete claim.",
+      "RELATED_METHOD_ONLY": "Predating independent public sources disclose a relevant method or framework, but not the target-specific claim.",
+      "NO_DIRECT_PUBLIC_PRIOR_FOUND": "No direct or materially close independent public result was found in the recorded search.",
+      "UNRESOLVED": "The recorded search is too incomplete or ambiguous for another assessment."
+    }
+  },
+  "claims": [
+    {
+      "id": "N1",
+      "claim": "Conjecture 3 of arXiv:2607.18334 is false.",
+      "assessment": "NO_DIRECT_PUBLIC_PRIOR_FOUND",
+      "confidence": "high_within_recorded_sources",
+      "evidence_source_ids": ["S01", "S03", "S04", "S08", "S09", "S10", "S11"],
+      "basis": "The source paper remains at v1 and still states Conjecture 3. No correction, author update, independent disproof, or direct follow-up was found in the recorded exact-title, identifier, citation, GitHub, and general-web searches.",
+      "limitations": "Very recent or unindexed work and inaccessible Google Scholar results may be absent."
+    },
+    {
+      "id": "N2",
+      "claim": "The smallest even counterexample is n=32.",
+      "assessment": "NO_DIRECT_PUBLIC_PRIOR_FOUND",
+      "confidence": "high_within_recorded_sources",
+      "evidence_source_ids": ["S01", "S03", "S05", "S06"],
+      "basis": "arXiv:2607.18334 reports exhaustive verification only through n=18. The author repository has heuristic C_32(1,2) campaign rows, but their reported radii remain above the conjectured threshold and the campaign stores no signing. No source claiming a counterexample at n=32 or minimality was found.",
+      "limitations": "The audit assesses public priority, not the correctness of the project's exhaustive finite proof."
+    },
+    {
+      "id": "N3",
+      "claim": "There is an explicit counterexample family for every n=8L with L>=4.",
+      "assessment": "NO_DIRECT_PUBLIC_PRIOR_FOUND",
+      "confidence": "high_within_recorded_sources",
+      "evidence_source_ids": ["S01", "S03", "S04", "S08", "S09"],
+      "basis": "Exact pattern, period-8, multiple-of-eight, title, and repository searches found no independent public family or equivalent statement.",
+      "limitations": "Search engines may not index all code branches, discussions, or personal pages."
+    },
+    {
+      "id": "N4",
+      "claim": "The sharp period-8 squared radius is eta=4+sqrt(10+2sqrt(5)).",
+      "assessment": "NO_DIRECT_PUBLIC_PRIOR_FOUND",
+      "confidence": "high_within_recorded_sources",
+      "evidence_source_ids": ["S01", "S03", "S04", "S08", "S09"],
+      "basis": "Queries for the exact radical, decimal 7.804226065, rational comparison 1561/200, period-8 context, and characteristic-polynomial fragments produced no relevant independent source.",
+      "limitations": "Equivalent algebraic forms not captured by indexed text could evade exact-expression searches."
+    },
+    {
+      "id": "N5",
+      "claim": "The target Q=(+---)^2 is the unique period-8 minimizer.",
+      "assessment": "NO_DIRECT_PUBLIC_PRIOR_FOUND",
+      "confidence": "high_within_recorded_sources",
+      "evidence_source_ids": ["S01", "S03", "S04", "S08", "S09"],
+      "basis": "No independent public source classifying legal period-8 phases or asserting this target's uniqueness was found. The source paper studies a different four-class all-unbalanced family rather than the complete period-8 flux space.",
+      "limitations": "Pattern encodings can differ under switching, translation, reflection, and sign conventions. Multiple equivalent encodings were searched, but not every possible notation."
+    },
+    {
+      "id": "N6",
+      "claim": "Q=(-)^8 is the unique period-8 runner-up with R=8.",
+      "assessment": "CLOSE_PRIOR_FOUND",
+      "confidence": "high",
+      "evidence_source_ids": ["S01", "S03"],
+      "basis": "Proposition 1 of arXiv:2607.18334 gives spectral radius 2sqrt(2) for the all-unbalanced quadrilateral phase, corresponding to squared radius 8. It does not state or prove that this phase is the unique period-8 runner-up, so the complete claim was not found.",
+      "limitations": "The correspondence is made at the flux-phase/value level; conventions for Q and R must be kept explicit."
+    },
+    {
+      "id": "N7",
+      "claim": "There is a period-8 eight-barrier trichotomy.",
+      "assessment": "NO_DIRECT_PUBLIC_PRIOR_FOUND",
+      "confidence": "high_within_recorded_sources",
+      "evidence_source_ids": ["S01", "S02", "S03", "S04", "S08", "S09"],
+      "basis": "Exact 'eight barrier' and period-8 classification searches found no independent target trichotomy. The primary papers do not enumerate below/equal/above-eight period-8 phases.",
+      "limitations": "A result phrased without the 'eight-barrier' terminology could be harder to retrieve, though formula, pattern, and period searches were also used."
+    },
+    {
+      "id": "N8",
+      "claim": "There is a closed-walk structural mechanism for the Target A period-8 result.",
+      "assessment": "RELATED_METHOD_ONLY",
+      "confidence": "high",
+      "evidence_source_ids": ["S02", "S12"],
+      "basis": "arXiv:2607.17343 develops parity families with short-cycle/even-trace control. arXiv:2302.10496 develops signed-graph spectral techniques via parity-closed walks. Neither source gives the Target A period-8 moment identities or trichotomy mechanism.",
+      "limitations": "Closed-walk trace methods are broad; this label does not imply that the project's particular identities follow routinely from either source."
+    },
+    {
+      "id": "N9",
+      "claim": "The target has an anti-period-4 chiral mechanism and a 4+4 reduction.",
+      "assessment": "RELATED_METHOD_ONLY",
+      "confidence": "medium_high",
+      "evidence_source_ids": ["S01", "S02"],
+      "basis": "arXiv:2607.18334 uses Fourier-invariant traceless 2x2 blocks for its alternating-flux phase, and Bloch/chiral block reductions are established methodology. No independent source was found stating the target's anti-period-4 involution, normalized fiber symmetry, or 4+4 reduction.",
+      "limitations": "The broader chiral/Bloch literature is extensive and was sampled through target-focused searches rather than exhaustively reviewed as a separate field."
+    },
+    {
+      "id": "N10",
+      "claim": "For arbitrary periodic Hamilton-gauge signings, the exact identities M1=4p, M2=20p+16d, and M3=118p+168d+96a+48b imply the necessary conditions R(Q)<=8 => d<=3p/4 and 40d+96a+48b<=42p.",
+      "assessment": "RELATED_METHOD_ONLY",
+      "confidence": "high",
+      "evidence_source_ids": ["S02", "S12", "S16", "S17", "S18", "S19"],
+      "basis": "Predating sources relate signed-graph closed walks and trace moments to spectral radius, give general moment-support inequalities, and develop Floquet fibers for periodic graph operators. Exact searches found no independent source containing the Hamilton-gauge identities, the d/a/b motif coefficients, or either displayed necessary inequality.",
+      "limitations": "The underlying moment comparison y^(k+1)<=8y^k on support [0,8] is elementary and fits general moment theory; the assessment concerns the complete target-specific formula-and-obstruction claim."
+    },
+    {
+      "id": "N11",
+      "claim": "Among periodic Hamilton-gauge signings with primitive tau period at most 16, the Target A period-8 phase is the unique minimizer up to translation, reflection, global tau negation, and unit-cell repetition.",
+      "assessment": "NO_DIRECT_PUBLIC_PRIOR_FOUND",
+      "confidence": "high_within_recorded_sources",
+      "evidence_source_ids": ["S01", "S03", "S04", "S09", "S10", "S11", "S18", "S19"],
+      "basis": "Exact theorem-language, primitive-period, bounded-period, orbit-count, binary-pattern, radical, symmetry, periodic-signing, GitHub, arXiv, Crossref, OpenAlex, and general-web searches found no independent bounded-period classification or equivalent uniqueness theorem.",
+      "limitations": "Equivalent phase encodings and unindexed computational classifications remain possible; Google Scholar was inaccessible and Semantic Scholar addendum queries were rate-limited."
+    }
+  ],
+  "assessment_counts": {
+    "DIRECT_PRIOR_FOUND": 0,
+    "CLOSE_PRIOR_FOUND": 1,
+    "RELATED_METHOD_ONLY": 3,
+    "NO_DIRECT_PUBLIC_PRIOR_FOUND": 7,
+    "UNRESOLVED": 0
+  },
+  "project_origin_public_disclosure": {
+    "repository_url": "https://github.com/whzy3185/math",
+    "repository_observed_public": true,
+    "baseline_commit_url": "https://github.com/whzy3185/math/commit/c5cadf3ec7e160fc994453907fe83c579dc89646",
+    "observed_branch": "agent/target-a-discovery-snapshot",
+    "observed_branch_head": "d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d",
+    "anonymous_raw_http_status": 200,
+    "anonymous_visibility_observed_at_utc": "2026-08-16T05:33:13Z",
+    "synchronization_disclosures": [
+      {
+        "claim": "N10",
+        "commit": "637de46394592f918f8e719c88648a46077f1214",
+        "proof_path": "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+        "anonymous_raw_http_status": 200,
+        "observed_at_utc": "2026-08-16T05:45:32Z"
+      },
+      {
+        "claim": "N11",
+        "commit": "d43046f86d6b9f9ddf9a38b9d63dae0d11a7178d",
+        "proof_path": "research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md",
+        "anonymous_raw_http_status": 200,
+        "observed_at_utc": "2026-08-16T05:45:32Z"
+      }
+    ],
+    "caveat": "The exact first-publication or branch-push time was not recovered. Git commit timestamps are not treated as publication timestamps."
+  },
+  "cross_artifacts": {
+    "search_ledger": "target_a_search_query_ledger.json",
+    "source_snapshot": "target_a_public_source_snapshot.json",
+    "narrative_audit": "TARGET_A_NOVELTY_PRIORITY_AUDIT.md",
+    "provenance_timeline": "TARGET_A_PROVENANCE_TIMELINE.md"
+  }
+}

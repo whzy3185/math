@@ -23,8 +23,10 @@
 - 低周期前沿：**PERIOD_LE16_UNIQUE_PRIMITIVE_OPTIMUM_PROVED**；`p<=16` 的 2626 个 legal-Q/dihedral orbits 已由显式枚举与 Burnside 双路线核对，所有 2624 个非 target 表示均有 exact strict certificate
 - 有界唯一性：primitive `tau` period 不超过 16 时，period-8 target 在 translation/reflection/global-negation/cell-repetition 等价下唯一最优；`p=16` 的 tie 是同一相位的重复胞元
 - 低周期结构压缩：**LOW_PERIOD_STRUCTURAL_FRONTIER_PROVED**；2611 类由统一 `F_1,...,F_64` closed-walk hierarchy 排除，8 个全负表示由一个 cancellation lemma 处理，仅保留 5 个 residual endpoint certificates
+- novelty/priority：**TARGET_A_NOVELTY_PRIORITY_AUDIT_PASS**；截至 2026-08-16，记录的 135 条 public-source queries 未发现 direct prior；N6 为 `CLOSE_PRIOR_FOUND`，N8/N9/N10 为 `RELATED_METHOD_ONLY`，其余 N1–N5/N7/N11 为 `NO_DIRECT_PUBLIC_PRIOR_FOUND`
+- priority 边界：该结论受 indexing delay、Google Scholar 不可访问、Semantic Scholar/GitHub API 限流及非公开工作限制；项目自身 public GitHub disclosure 单列为 provenance，不计 independent prior
 - 有限尺寸：`alpha=+1` 对每个 `n=8L` 精确达到 `rho_*`；`alpha=-1` 严格低于并收敛到 `rho_*`
-- 下一关卡：同步导入 Task 41 novelty/priority audit，并针对新 N10/N11 claims 完成定向查重；Lane R full reproduction 完成后导入精简 manifest summary，不开始论文正文
+- 下一关卡：导入 Lane R full reproduction 的精简 manifest/hash summary；随后进入 Reviewer Zero、theorem dependency graph、proof compression 与 notation normalization，仍不直接开始 manuscript
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围
