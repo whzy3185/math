@@ -16,8 +16,10 @@
 - sharp 常数：**PERIOD8_SHARP_SPECTRAL_CONSTANT_PROVED**；`rho_*^2=4+sqrt(10+2sqrt(5))`，唯一 band edge 为 `z=1`
 - period-8 分类：**PERIOD8_UNIQUE_OPTIMUM_AND_SECOND_BEST_PROVED**；128 个合法 flux vectors 的 18 个 `D_8` orbits 已完整分类，target 是唯一最优相
 - 唯一第二名：全 unbalanced phase `Q=(-)^8`，`rho^2=8`；其余 16 类均以 exact Rayleigh certificate 证明严格大于 8
+- 结构机制：**PERIOD8_STRUCTURAL_MECHANISM_PROVED**；`R(Q)<8` 当且仅当两个 positive-flux defects 对置，`R(Q)=8` 当且仅当 `Q=(-)^8`
+- closed-walk/chiral：`M_2=160+16d`、`M_3=944+168d+96a+48b`；target 具有规范化 anti-period-4 chiral involution 和 `4+4` block reduction
 - 有限尺寸：`alpha=+1` 对每个 `n=8L` 精确达到 `rho_*`；`alpha=-1` 严格低于并收敛到 `rho_*`
-- 下一关卡：Task 40C 提炼 period-8 唯一最优相的结构机制与 theorem package；暂不开始 novelty audit 或论文正文
+- 下一关卡：Task 41 对当前结果执行 novelty 与 priority audit；在完成前不开始论文正文
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围

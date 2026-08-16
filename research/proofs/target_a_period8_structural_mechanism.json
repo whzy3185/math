@@ -1,0 +1,334 @@
+{
+  "schema_version": 1,
+  "status": "PERIOD8_STRUCTURAL_MECHANISM_PROVED",
+  "component_statuses": [
+    "PERIOD8_EIGHT_BARRIER_TRICHOTOMY_PROVED",
+    "PERIOD8_CLOSED_WALK_MECHANISM_PROVED",
+    "PERIOD8_TARGET_CHIRAL_MECHANISM_PROVED"
+  ],
+  "dependencies": {
+    "sharp": {
+      "sha256": "f742f79d804f3c44da18dcb4b6562d4d7d1eb75e9f631133bc7314c475dbaa63",
+      "status": "PERIOD8_SHARP_SPECTRAL_CONSTANT_PROVED"
+    },
+    "classification": {
+      "sha256": "a7a7b7259a99f099c7d2ab756a1a2f4c1ee233214f352d12df9e61cf1b47464c",
+      "status": "PERIOD8_UNIQUE_OPTIMUM_AND_SECOND_BEST_PROVED"
+    },
+    "classification_audit": {
+      "sha256": "274e80a6b43183d4a6137ac3d9a676e6942f1d84a46691cb2b63018b66c69e80",
+      "status": "PERIOD8_PATTERN_CLASSIFICATION_INDEPENDENTLY_AUDITED"
+    }
+  },
+  "A2_local_formula": {
+    "status": "FLUX_SQUARE_LOCAL_FORMULA_PASS",
+    "diagonal": "4",
+    "coefficients_by_displacement": {
+      "-4": "Q_(i-4)*Q_(i-3)",
+      "-3": "tau_(i-3)*(1+Q_(i-3))",
+      "-2": "1",
+      "-1": "tau_(i-2)*(1+Q_(i-2))",
+      "0": "4",
+      "+1": "tau_(i-1)*(1+Q_(i-1))",
+      "+2": "1",
+      "+3": "tau_i*(1+Q_i)",
+      "+4": "Q_i*Q_(i+1)"
+    },
+    "cancelled_odd_coupling_checks": 4096,
+    "activated_odd_coupling_checks": 4096,
+    "interpretation": "Q=-1 cancels the associated odd-distance coupling; Q=+1 activates amplitude plus or minus two"
+  },
+  "defect_definition": "D(Q)={i:Q_i=+1}; d=|D(Q)|",
+  "defect_coupling_interpretation": "Q=-1 cancels the associated odd-distance coupling; Q=+1 activates amplitude plus or minus two",
+  "all_unbalanced_baseline": {
+    "status": "ALL_UNBALANCED_CANCELLATION_BASELINE_PASS",
+    "defect_set": [],
+    "square_identity": "A^2=4I+S^2+S^-2+S^4+S^-4",
+    "fourier_symbol": "4+2*cos(2*theta)+2*cos(4*theta)<=8",
+    "attainment": "theta=0",
+    "sharp_squared_constant": "8",
+    "interpretation": "the empty defect set cancels every odd-distance coupling in A^2"
+  },
+  "moment_framework": {
+    "status": "THIRD_MOMENT_LOCAL_STATISTICS_FORMULA_PASS",
+    "definition": "M_k=CT_z tr(H(z)^(2k))=(1/(2*pi))*integral tr(H(e^(i*theta))^(2k)) dtheta",
+    "pointwise_argument": "if R<=8 then 0<=lambda_j(theta)^2<=8, hence y^(k+1)<=8*y^k",
+    "valid_implication": "F_k=M_(k+1)-8*M_k>0 implies R>8",
+    "negative_F_not_sufficient_for_upper_bound": true,
+    "finite_moments_do_not_prove_target_bound": true,
+    "target_upper_bound_source": "Task 40A exact Floquet theorem",
+    "constant_term_method": "exact signed closed-walk dynamic programming; no quadrature",
+    "M1": "32",
+    "M2_formula": "160+16*d",
+    "M2_over_M1_by_d": {
+      "0": "5",
+      "2": "6",
+      "4": "7",
+      "6": "8",
+      "8": "9"
+    },
+    "M2_coefficients_automatically_derived": [
+      160,
+      16
+    ],
+    "M2_status": "SECOND_MOMENT_DEFECT_COUNT_FORMULA_PASS",
+    "M3_formula": "944+168*d+96*a+48*b",
+    "M3_coefficients_automatically_derived": [
+      944,
+      168,
+      96,
+      48
+    ],
+    "F2_formula": "-336+40*d+96*a+48*b",
+    "verified_legal_q_count": 128,
+    "interaction_interpretation": {
+      "168*d": "single activated positive-flux positions",
+      "96*a": "additional interaction of adjacent activated positions",
+      "48*b": "additional interaction at cyclic distance two",
+      "higher_interactions": "none at length six"
+    },
+    "barrier_status": "MOMENT_BARRIER_LEMMA_PASS"
+  },
+  "high_defect_proof": {
+    "status": "HIGH_DEFECT_EIGHT_BARRIER_PASS",
+    "d4": {
+      "cyclic_gap_proof": "write the four positive cyclic gaps as positive integers summing to eight; if n1>=2 then 2a>=4, if n1=0 all gaps are two and b=4, and if n1=1 the other gaps are 2,2,3 so 2a+b=4",
+      "inequality": "2*a+b>=4",
+      "F2_lower_bound": 16,
+      "machine_crosscheck_count": 70
+    },
+    "d6": {
+      "complement_proof": "two negative positions destroy at most four of the eight adjacent positive-positive edges",
+      "inequality": "a>=4",
+      "F2_lower_bound": 288,
+      "machine_crosscheck_count": 28
+    },
+    "d8": {
+      "certificate": "M2-8*M1=288-256=32>0",
+      "F1_value": 32,
+      "machine_crosscheck_count": 1
+    },
+    "conclusion": "d>=4 implies R(Q)>8"
+  },
+  "d2_separation_table": {
+    "status": "D2_MOMENT_HIERARCHY_PASS",
+    "rows": [
+      {
+        "separation": 1,
+        "canonical_q_bits": "00000011",
+        "moments_M1_to_M10": [
+          32,
+          192,
+          1376,
+          10976,
+          93312,
+          823920,
+          7447136,
+          68348832,
+          633982976,
+          5926419872
+        ],
+        "F1_to_F9": [
+          -64,
+          -160,
+          -32,
+          5504,
+          77424,
+          855776,
+          8771744,
+          87192320,
+          854556064
+        ],
+        "first_positive_F_index": 4,
+        "first_positive_F_value": 5504,
+        "target": false,
+        "conclusion": "moment barrier gives R>8"
+      },
+      {
+        "separation": 2,
+        "canonical_q_bits": "00000101",
+        "moments_M1_to_M10": [
+          32,
+          192,
+          1328,
+          9888,
+          76832,
+          612624,
+          4965328,
+          40683296,
+          335872832,
+          2788389472
+        ],
+        "F1_to_F9": [
+          -64,
+          -208,
+          -736,
+          -2272,
+          -2032,
+          64336,
+          960672,
+          10406464,
+          101406816
+        ],
+        "first_positive_F_index": 6,
+        "first_positive_F_value": 64336,
+        "target": false,
+        "conclusion": "moment barrier gives R>8"
+      },
+      {
+        "separation": 3,
+        "canonical_q_bits": "00001001",
+        "moments_M1_to_M10": [
+          32,
+          192,
+          1280,
+          9056,
+          66592,
+          503088,
+          3877920,
+          30363808,
+          240761792,
+          1928966432
+        ],
+        "F1_to_F9": [
+          -64,
+          -256,
+          -1184,
+          -5856,
+          -29648,
+          -146784,
+          -659552,
+          -2148672,
+          2872096
+        ],
+        "first_positive_F_index": 9,
+        "first_positive_F_value": 2872096,
+        "target": false,
+        "conclusion": "moment barrier gives R>8"
+      },
+      {
+        "separation": 4,
+        "canonical_q_bits": "00010001",
+        "moments_M1_to_M10": [
+          32,
+          192,
+          1280,
+          8928,
+          63872,
+          464496,
+          3417152,
+          25354656,
+          189356672,
+          1421345952
+        ],
+        "F1_to_F9": [
+          -64,
+          -256,
+          -1312,
+          -7552,
+          -46480,
+          -298816,
+          -1982560,
+          -13480576,
+          -93507424
+        ],
+        "first_positive_F_index": null,
+        "first_positive_F_value": null,
+        "target": true,
+        "conclusion": "Task 40A gives R=eta<8"
+      }
+    ],
+    "first_positive_indices_for_s1_s2_s3": [
+      4,
+      6,
+      9
+    ],
+    "progressively_longer_detection": true,
+    "equal_spacing_status": "EQUAL_SPACING_DEFECT_MECHANISM_PASS",
+    "logic_boundary": "the first ten negative target excesses do not prove R<8; Task 40A does"
+  },
+  "target_symmetry": {
+    "status": "TARGET_CHIRAL_SYMMETRY_PASS",
+    "tau": [
+      1,
+      -1,
+      1,
+      -1,
+      -1,
+      1,
+      -1,
+      1
+    ],
+    "tau_antiperiod4": true,
+    "raw_operator": "J_raw=D*T4 and J_raw^2=T8; on the z fiber J_raw^2=z*I",
+    "J_definition": "choose xi with xi^2=z and set J_z=xi^-1*D*T4(z)",
+    "J_squared": "I",
+    "anticommutation": "J_z*H(z)*J_z^-1=-H(z)",
+    "eigenspace_dimensions": [
+      4,
+      4
+    ],
+    "block_reduction": "H is off-diagonal between J=+1 and J=-1 spaces; H^2 reduces to BB* and B*B",
+    "even_polynomial_explanation": "chiral conjugacy sends H to -H, so the degree-eight characteristic polynomial is even",
+    "normalization_caveat": "un-normalized D*T4 is not an involution on a general Bloch fiber",
+    "total_status": "PERIOD8_TARGET_CHIRAL_MECHANISM_PROVED"
+  },
+  "antiperiod4_classification": {
+    "status": "ANTIPERIOD4_FLUX_CLASSIFICATION_PASS",
+    "iff_criterion": "Q_(i+4)=Q_i and product_(i=0)^3 Q_i=-1",
+    "legal_q_count": 8,
+    "d8_orbit_count": 2,
+    "orbits": [
+      {
+        "canonical_q_bits": "00010001",
+        "defect_count": 2,
+        "spectral_classification": "R=eta<8"
+      },
+      {
+        "canonical_q_bits": "01110111",
+        "defect_count": 6,
+        "spectral_classification": "R>8 by high-defect moment proof"
+      }
+    ],
+    "mechanism_boundary": "chiral symmetry alone does not imply spectral optimality"
+  },
+  "eight_barrier_trichotomy": {
+    "status": "PERIOD8_EIGHT_BARRIER_TRICHOTOMY_PROVED",
+    "below_eight_iff": "D(Q)={j,j+4} for some j; then R(Q)=eta",
+    "equal_eight_iff": "D(Q) is empty; then Q=(-)^8 and R(Q)=8",
+    "otherwise": "R(Q)>8",
+    "eta": "sqrt(2*sqrt(5) + 10) + 4",
+    "proof_dependencies": [
+      "all-unbalanced cancellation baseline",
+      "d>=4 moment inequalities",
+      "d=2 separation moment hierarchy",
+      "Task 40A exact target theorem"
+    ]
+  },
+  "task40b_crosscheck": {
+    "status": "TASK40B_STRUCTURAL_CROSSCHECK_PASS",
+    "route_a": "Task 40B 18-orbit exact endpoint Rayleigh classification",
+    "route_b": "Task 40C local A^2, moments, defect geometry, and Task 40A target theorem",
+    "legal_q_compared": 128,
+    "mismatch_count": 0,
+    "vector_counts": {
+      "BELOW_EIGHT_TARGET": 4,
+      "EQUAL_EIGHT": 1,
+      "ABOVE_EIGHT": 123
+    }
+  },
+  "scope": {
+    "period8_infinite_volume_structural_theorem": "PROVED",
+    "finite_size_global_optimality": "NOT_CLAIMED",
+    "all_period_global_optimality": "NOT_CLAIMED",
+    "all_signings_global_optimality": "NOT_CLAIMED",
+    "novelty_audit_started": false,
+    "paper_manuscript_started": false
+  },
+  "checker": {
+    "path": "research/scripts/verify_target_a_period8_structural_mechanism.py",
+    "status": "TARGET_A_PERIOD8_STRUCTURAL_MECHANISM_PASS"
+  },
+  "script_sha256": "381f92aa983c701dee2319aa15470e17e1bc9fa2062ee7a74386c56dd7e367c5",
+  "next_gate": "Task 41 current novelty and priority audit"
+}
