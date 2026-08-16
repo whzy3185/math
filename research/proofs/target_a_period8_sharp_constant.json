@@ -1,0 +1,202 @@
+{
+  "schema_version": 1,
+  "status": "PERIOD8_SHARP_SPECTRAL_CONSTANT_PROVED",
+  "source_polynomial_file": "research/audit/target_a_period8_independent_polynomial.json",
+  "source_polynomial_sha256": "cc26dedfee3fe3e6c0674f1b217fde592a043a5d8b4913752dc37ad2a62193b2",
+  "source_floquet_audit_file": "research/audit/period8_floquet_independent_audit.json",
+  "source_floquet_audit_sha256": "2a5657d0791b1e1a3c742ae8e0a738f083115b4e4516e5e8d8fd4d1999d6c3ee",
+  "source_family_audit_file": "research/audit/period8_infinite_family_independent_audit.json",
+  "source_family_audit_sha256": "b36bce66ec367e418e1499a1400773147d29537da92a49695b8d7dc9c1c08fa8",
+  "top_root_definition": "r(c)=largest nonnegative real root in y of P(y,c), c in [-2,2]",
+  "eta_squared": {
+    "exact_radical": "sqrt(2*sqrt(5) + 10) + 4",
+    "minimal_polynomial": "Y**4 - 16*Y**3 + 76*Y**2 - 96*Y + 16",
+    "isolating_interval": {
+      "lower": "1951/250",
+      "upper": "1561/200"
+    },
+    "decimal_diagnostic": "7.8042260651806142885"
+  },
+  "rho_star": {
+    "exact_radical": "sqrt(sqrt(2*sqrt(5) + 10) + 4)",
+    "minimal_polynomial": "R**4 - 2*R**3 - 6*R**2 + 12*R - 4",
+    "even_polynomial_relation": "R**8 - 16*R**6 + 76*R**4 - 96*R**2 + 16",
+    "isolating_interval": {
+      "lower": "2793/1000",
+      "upper": "1397/500"
+    },
+    "decimal_diagnostic": "2.7936044933348411065"
+  },
+  "endpoint_derivation": {
+    "status": "CANDIDATE_BAND_EDGE_DERIVED",
+    "endpoint_polynomial": "y**4 - 16*y**3 + 76*y**2 - 96*y + 16",
+    "translation": "x=y-4",
+    "translated_polynomial": "x**4 - 20*x**2 + 80",
+    "w_polynomial": "w**2 - 20*w + 80",
+    "w_roots": [
+      "10 - 2*sqrt(5)",
+      "2*sqrt(5) + 10"
+    ],
+    "ordered_endpoint_roots": [
+      "4 - sqrt(2*sqrt(5) + 10)",
+      "4 - sqrt(10 - 2*sqrt(5))",
+      "sqrt(10 - 2*sqrt(5)) + 4",
+      "sqrt(2*sqrt(5) + 10) + 4"
+    ],
+    "eta_exact": "sqrt(2*sqrt(5) + 10) + 4",
+    "eta_minimal_polynomial": "Y**4 - 16*Y**3 + 76*Y**2 - 96*Y + 16",
+    "eta_isolating_interval": {
+      "lower": "1951/250",
+      "upper": "1561/200"
+    },
+    "eta_decimal_diagnostic": "7.8042260651806142885",
+    "rho_star_exact": "sqrt(sqrt(2*sqrt(5) + 10) + 4)",
+    "rho_minimal_polynomial": "R**4 - 2*R**3 - 6*R**2 + 12*R - 4",
+    "rho_even_polynomial_relation": "R**8 - 16*R**6 + 76*R**4 - 96*R**2 + 16",
+    "rho_isolating_interval": {
+      "lower": "2793/1000",
+      "upper": "1397/500"
+    },
+    "rho_decimal_diagnostic": "2.7936044933348411065"
+  },
+  "c_endpoint": 2,
+  "z_endpoint": 1,
+  "sharp_positivity_expansion": "t**2 + 2*t*u**2 + 4*t*u*sqrt(2*sqrt(5) + 10) - 3*t + 4*sqrt(5)*t + u**4 + 4*u**3*sqrt(2*sqrt(5) + 10) + 12*sqrt(5)*u**2 + 40*u**2 + 8*sqrt(5)*u*sqrt(2*sqrt(5) + 10)",
+  "sharp_positivity_certificate": {
+    "status": "SHARP_POSITIVITY_CERTIFICATE_PASS",
+    "s": "sqrt(2*sqrt(5) + 10)",
+    "eta": "sqrt(2*sqrt(5) + 10) + 4",
+    "change_of_variables": {
+      "u": "y-eta",
+      "t": "2-c"
+    },
+    "expanded_polynomial": "t**2 + 2*t*u**2 + 4*t*u*sqrt(2*sqrt(5) + 10) - 3*t + 4*sqrt(5)*t + u**4 + 4*u**3*sqrt(2*sqrt(5) + 10) + 12*sqrt(5)*u**2 + 40*u**2 + 8*sqrt(5)*u*sqrt(2*sqrt(5) + 10)",
+    "coefficient_map": [
+      {
+        "u_degree": 4,
+        "t_degree": 0,
+        "coefficient": "1"
+      },
+      {
+        "u_degree": 3,
+        "t_degree": 0,
+        "coefficient": "4*sqrt(2*sqrt(5) + 10)"
+      },
+      {
+        "u_degree": 2,
+        "t_degree": 1,
+        "coefficient": "2"
+      },
+      {
+        "u_degree": 2,
+        "t_degree": 0,
+        "coefficient": "12*sqrt(5) + 40"
+      },
+      {
+        "u_degree": 1,
+        "t_degree": 1,
+        "coefficient": "4*sqrt(2*sqrt(5) + 10)"
+      },
+      {
+        "u_degree": 1,
+        "t_degree": 0,
+        "coefficient": "8*sqrt(5)*sqrt(2*sqrt(5) + 10)"
+      },
+      {
+        "u_degree": 0,
+        "t_degree": 2,
+        "coefficient": "1"
+      },
+      {
+        "u_degree": 0,
+        "t_degree": 1,
+        "coefficient": "-3 + 4*sqrt(5)"
+      },
+      {
+        "u_degree": 0,
+        "t_degree": 0,
+        "coefficient": "0"
+      }
+    ],
+    "constant_coefficient_zero": true,
+    "all_nonconstant_coefficients_strictly_positive": true,
+    "domain": "u>=0 and t>=0, equivalently y>=eta and c<=2",
+    "equality_conditions": "u=0 and t=0, equivalently y=eta and c=2",
+    "equality_justification": "all nonconstant terms are nonnegative; positive pure-u and pure-t linear terms force u=t=0"
+  },
+  "equality_conditions": "u=0 and t=0, equivalently y=eta and c=2",
+  "band_edge": {
+    "status": "GLOBAL_BAND_EDGE_UPPER_PASS",
+    "global_upper": "rho(H(z))^2<=eta for every |z|=1",
+    "squared_equality_requires": "c=2",
+    "unit_circle_equation": "z+z^-1=2 iff (z-1)^2=0",
+    "unique_Bloch_parameter": "z=1",
+    "attainment": "P(eta,2)=0 gives eigenvalues x=+-sqrt(eta) of H(1)",
+    "sharp_status": "PERIOD8_SHARP_INFINITE_VOLUME_CONSTANT_PROVED"
+  },
+  "top_root_monotonicity": {
+    "status": "TOP_BAND_MONOTONICITY_PROVED",
+    "endpoint_c": -2,
+    "endpoint_factorization": "(y - 6 - sqrt(2))*(y - 6 + sqrt(2))*(y - 2 - sqrt(2))*(y - 2 + sqrt(2))",
+    "ordered_endpoint_roots": [
+      "2 - sqrt(2)",
+      "sqrt(2) + 2",
+      "6 - sqrt(2)",
+      "sqrt(2) + 6"
+    ],
+    "y0": "sqrt(2) + 6",
+    "P_y0_c_factorization": "(c + 2)*(c - 8*sqrt(2) + 5)",
+    "P_y0_c_sign": "negative for -2<c<=2",
+    "root_above_y0": "P(y0,c)<0 and P(y,c)->+infinity imply r(c)>y0",
+    "partial_P_partial_c": "2*c - 2*y**2 + 16*y - 13",
+    "c_vertex": "y**2 - 8*y + 13/2",
+    "c_vertex_derivative": "2*y - 8",
+    "c_vertex_at_y0": "-7/2 + 4*sqrt(2)",
+    "c_vertex_lower_bound": "c0(y)>2 for y>=y0",
+    "strict_decrease_in_c": "P_c(y,c)<0 for y>=y0 and c<=2",
+    "strict_monotonicity_argument": "for c1<c2 and y1=r(c1), P(y1,c2)<0; the positive leading term forces a root above y1, so r(c2)>r(c1)"
+  },
+  "alpha_plus": {
+    "status": "PLUS_HOLONOMY_EXACT_FINITE_CONSTANT_PROVED",
+    "domain": "every integer L>=1 (in particular family domain L>=4)",
+    "admissible_relation": "z^L=1",
+    "attainment_z": "z=1",
+    "finite_formula_squared": "sqrt(2*sqrt(5) + 10) + 4",
+    "finite_formula": "sqrt(sqrt(2*sqrt(5) + 10) + 4)"
+  },
+  "alpha_minus": {
+    "status": "MINUS_HOLONOMY_FINITE_BAND_EDGE_PROVED",
+    "domain": "every finite integer L>=1",
+    "admissible_parameters": "z_k=exp(i*(2k+1)*pi/L)",
+    "maximizing_c": "2*cos(pi/L)",
+    "finite_formula_squared": "r(2*cos(pi/L)), where r(c) is the largest real root of P(y,c)",
+    "strict_below_eta": true,
+    "strict_reason": "2*cos(pi/L)<2 and r(c) is strictly increasing",
+    "limit": "sqrt(2*sqrt(5) + 10) + 4",
+    "limit_reason": "2*cos(pi/L)->2 and the Hermitian block spectral radius is continuous; equivalently the simple top root has P_y(eta,2)>0",
+    "endpoint_root_derivative": "8*sqrt(10*sqrt(5) + 50)"
+  },
+  "shared_infinite_volume_squared_constant": "sqrt(2*sqrt(5) + 10) + 4",
+  "old_rational_bound_comparison": {
+    "old_bound": "1561/200",
+    "eta": "sqrt(2*sqrt(5) + 10) + 4",
+    "exact_difference": "761/200 - sqrt(2*sqrt(5) + 10)",
+    "eta_strictly_below_old_bound": true,
+    "old_bound_is_sharp": false,
+    "eta_decimal_diagnostic": "7.80422606518061429",
+    "difference_decimal_diagnostic": "0.000773934819385711534",
+    "interpretation": "1561/200 is a strict rational certificate but is not sharp"
+  },
+  "checker": {
+    "path": "research/scripts/verify_target_a_period8_sharp_constant.py",
+    "status": "TARGET_A_PERIOD8_SHARP_CONSTANT_PASS"
+  },
+  "scope_boundary": {
+    "period8_global_optimality_proved": false,
+    "all_sufficiently_large_even_orders_fail": false,
+    "global_m_n_solved": false,
+    "new_period_search_performed": false
+  },
+  "script_sha256": "b83879735be6641b82b4ab032b825e06ea999ba23d83eaa141f0557c3b1e0c3e",
+  "next_gate": "Task 40B"
+}

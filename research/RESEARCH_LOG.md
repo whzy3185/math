@@ -211,3 +211,21 @@
 - **验证：** Task 39 tests 23/23 PASS；Target A focused tests 77/77 PASS；default 90 项中 87 PASS、3 个既有慢测跳过；`TARGET_A_PERIOD8_INFINITE_FAMILY_PASS`；`N32_CERTIFICATE_PASS`；`TARGET_A_MINIMALITY_CERTIFICATE_PASS`（含 `n=24,26,28,30` 完整只读重放）；JSON parse、compileall、禁止导入与 diff 检查 PASS。
 - **产物：** `research/audit/target_a_period8_uniform_positivity_snapshot.json`（SHA-256 `86d2e7d09534162187699a693d1432a976f2183d9ce06a96cbb40148bb939124`）；`research/audit/period8_infinite_family_independent_audit.json`（SHA-256 `b36bce66ec367e418e1499a1400773147d29537da92a49695b8d7dc9c1c08fa8`）；`research/audit/PERIOD8_INFINITE_FAMILY_INDEPENDENT_AUDIT.md`（SHA-256 `8e9e497375d1df759727d517e2ec26e3b08cf3d023a0cfe9215baa4ec0377bc3`）；主审计脚本、独立总 checker 与测试。
 - **下一步：** Task 40A 从 audited `P(y,c)` 求 period-8 phase 的 sharp infinite-volume spectral radius；本任务不开始论文正文、optimality search 或 novelty audit。
+
+---
+
+## 2026-08-16 — Target A Task 40A：period-8 sharp spectral constant
+
+- **研究对象：** 从 Task 38 审计的 `P(y,c)` 精确求 period-8 phase 的 infinite-volume sharp squared spectral constant，并分别刻画有限 `alpha=+1` 与 `alpha=-1` holonomy sectors。
+- **端点与常数：** 自动重建 `P(y,2)=y^4-16y^3+76y^2-96y+16`；置 `x=y-4` 得 `x^4-20x^2+80`。最大非负根为 `eta=4+sqrt(10+2sqrt(5))`，故 `rho_*=sqrt(eta)`。`eta` 的最小多项式为 `Y^4-16Y^3+76Y^2-96Y+16`，隔离区间为 `(1951/250,1561/200)`；`rho_*` 的最小多项式为 `R^4-2R^3-6R^2+12R-4`，隔离区间为 `(2793/1000,1397/500)`。
+- **sharp positivity 证书：** 置 `s=sqrt(10+2sqrt(5))`、`u=y-eta`、`t=2-c` 后，自动展开
+  `P(eta+u,2-t)=u^4+4su^3+2u^2t+(40+12sqrt(5))u^2+4sut+8sqrt(5)su+t^2+(4sqrt(5)-3)t`。
+  八个非常数系数均严格为正，纯 `u` 与纯 `t` 项给出 `P>=0` 且等号当且仅当 `(u,t)=(0,0)`。因此 `sup_(|z|=1) rho(H(z))^2=eta`，并且唯一 band edge 为 `c=2`，即唯一 `z=1`。
+- **top-root 单调性：** 令 `r(c)` 为 `P(y,c)` 的最大非负根。由 `P(y,-2)` 的最大根 `y_0=6+sqrt(2)`、`P(y_0,c)=(c+2)(c+5-8sqrt(2))` 及 `c_0(y)=y^2-8y+13/2` 在相关根支上严格大于 2，证明 `r(c)` 在 `[-2,2]` 严格递增。
+- **有限 holonomy 结论：** 对每个 `L>=1`，`alpha=+1` 的 admissible phases 含 `z=1`，故最大 squared radius 精确等于 `eta`；`alpha=-1` 的最大 `c` 为 `2cos(pi/L)<2`，故最大 squared radius为 `r(2cos(pi/L))<eta`，且随 `L -> infinity` 收敛到 `eta`。
+- **旧界比较：** 精确证明 `eta<1561/200`，差为 `761/200-sqrt(10+2sqrt(5))>0`；因此 Task 39 的 `B=1561/200` 是严格统一上界，但不是 sharp constant。
+- **边界：** 本任务只解决固定 period-8 phase 的 sharp spectral constant；没有搜索或声明该 phase 在所有 signing 中最优，也没有开始论文正文、classification 或 novelty audit。
+- **负向测试：** 较小端点根冒充最大根、篡改 radical、负 positivity 系数、在 `c<2` 宣称达到 sharp 值、`alpha=-1` 有限达到 `eta`、把其最大 `c` 写成 2、破坏 Task 39 SHA、把旧 `B` 宣称为 sharp，八类 fixtures 均按要求失败。
+- **验证：** Task 40A tests 23/23 PASS；Target A focused tests 100/100 PASS；default 113 项中 110 PASS、3 个既有慢测跳过；`TARGET_A_PERIOD8_SHARP_CONSTANT_PASS`、`TARGET_A_PERIOD8_INFINITE_FAMILY_PASS`、`N32_CERTIFICATE_PASS`、`TARGET_A_MINIMALITY_CERTIFICATE_PASS`；JSON parse、compileall、禁止导入与 diff 检查 PASS。
+- **产物：** `research/scripts/target_a_period8_sharp_constant.py`（SHA-256 `b83879735be6641b82b4ab032b825e06ea999ba23d83eaa141f0557c3b1e0c3e`）；`research/scripts/verify_target_a_period8_sharp_constant.py`（SHA-256 `04aadb96462b3cd7febe75887cacdffffbbcd1c8d7b641dec80489994cbe049b`）；`research/proofs/target_a_period8_sharp_constant.json`（SHA-256 `f742f79d804f3c44da18dcb4b6562d4d7d1eb75e9f631133bc7314c475dbaa63`）；`research/proofs/TARGET_A_PERIOD8_SHARP_CONSTANT.md`（SHA-256 `e912a020ae2dc0931903b07172ec44f8823902c49a09f08356795c4ffa3e1c72`）；独立 checker 与测试。
+- **下一步：** Task 40B 研究 period-8 sharp constant 附近的结构分类与候选最优性边界；在建立新证据前不升级为所有 signing 的全局最优结论。

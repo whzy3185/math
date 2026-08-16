@@ -2,13 +2,18 @@
 
 Date: 2026-08-15
 
-Evidence status: **Proved; PERIOD8_INFINITE_FAMILY_INDEPENDENTLY_AUDITED**.
+Evidence status: **Proved; PERIOD8_INFINITE_FAMILY_INDEPENDENTLY_AUDITED; PERIOD8_SHARP_SPECTRAL_CONSTANT_PROVED**.
 
 The original proof below is preserved. Its full dependency chain has been
 independently rederived and checked in
 `research/audit/PERIOD8_INFINITE_FAMILY_INDEPENDENT_AUDIT.md`, including a
 stronger two-variable positive-coefficient certificate and an exact algebraic
 threshold isolation independent of the Taylor route used below.
+
+The sharp constant and finite-holonomy band-edge structure are proved in
+`research/proofs/TARGET_A_PERIOD8_SHARP_CONSTANT.md`:
+`rho_*^2=4+sqrt(10+2sqrt(5))`. This does not assert optimality among other
+period-8 patterns.
 
 ## Theorem
 

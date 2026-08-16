@@ -13,7 +13,9 @@
 - witness 审计：**N32_WITNESS_INDEPENDENTLY_RECONSTRUCTED**；第二套实现从 flux 定义在非平凡 gauge 中重构并证明 switching equivalence
 - Floquet 审计：**PERIOD8_FLOQUET_DETERMINANT_INDEPENDENTLY_AUDITED**；从有限矩阵、twisted Bloch 分解和双 determinant 路线独立重得 `P(y,c)`
 - 无限族审计：**PERIOD8_INFINITE_FAMILY_INDEPENDENTLY_AUDITED**；正系数 uniform certificate、代数 threshold isolation 与双 holonomy 全部独立 PASS
-- 下一关卡：Task 40A 求 period-8 phase 的 sharp infinite-volume spectral radius；暂不开始论文正文
+- sharp 常数：**PERIOD8_SHARP_SPECTRAL_CONSTANT_PROVED**；`rho_*^2=4+sqrt(10+2sqrt(5))`，唯一 band edge 为 `z=1`
+- 有限尺寸：`alpha=+1` 对每个 `n=8L` 精确达到 `rho_*`；`alpha=-1` 严格低于并收敛到 `rho_*`
+- 下一关卡：Task 40B 分类全部 period-8 flux patterns 并检验该 phase 的 period-8 optimality；暂不开始论文正文
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围
