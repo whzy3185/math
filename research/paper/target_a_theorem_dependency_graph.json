@@ -1,0 +1,276 @@
+{
+  "schema_version": "1.0.0",
+  "status": "TARGET_A_THEOREM_DEPENDENCY_GRAPH_COMPLETE",
+  "claim_inventory": "research/paper/target_a_claim_inventory.json",
+  "theorems": [
+    {
+      "id": "THEOREM_A",
+      "title": "Smallest counterexample",
+      "conclusion": "The smallest admissible even counterexample order is 32.",
+      "dependencies": [
+        "C2",
+        "C3"
+      ],
+      "deletion_tests": {
+        "C2": "Deletes the explicit order-32 counterexample.",
+        "C3": "Deletes exhaustive exclusion below 32, so minimality is unproved."
+      }
+    },
+    {
+      "id": "THEOREM_B",
+      "title": "Infinite counterexample family",
+      "conclusion": "The explicit family is a counterexample for every n=8L, L>=4.",
+      "dependencies": [
+        "C4",
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "deletion_tests": {
+        "C4": "Deletes the family statement.",
+        "C5": "Breaks the passage between finite matrices and Bloch fibers.",
+        "C6": "Deletes the exact characteristic identity used for the spectral bound.",
+        "C7": "Deletes the sharp upper bound and threshold comparison."
+      }
+    },
+    {
+      "id": "THEOREM_C",
+      "title": "Exact period-8 spectral edge",
+      "conclusion": "The target squared radius is eta with a unique edge at z=1.",
+      "dependencies": [
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "deletion_tests": {
+        "C5": "Leaves no justified fiber model.",
+        "C6": "Leaves no exact band equation.",
+        "C7": "Deletes isolation, monotonicity, and equality analysis."
+      }
+    },
+    {
+      "id": "THEOREM_D",
+      "title": "Period-8 structural optimum",
+      "conclusion": "Among infinite-volume 8-periodic Hamilton-gauge phases, the target is the unique minimizer and the eight-barrier trichotomy holds.",
+      "dependencies": [
+        "C7",
+        "C8",
+        "C9",
+        "C10",
+        "C11",
+        "C12",
+        "C13",
+        "C14"
+      ],
+      "deletion_tests": {
+        "C7": "The target upper bound R=eta<8 disappears.",
+        "C8": "The minimizer conclusion is absent.",
+        "C9": "The equality and runner-up case is absent.",
+        "C10": "The trichotomy conclusion is absent.",
+        "C11": "The structural local mechanism loses its base identity.",
+        "C12": "The low-moment combinatorial proof is unavailable.",
+        "C13": "Positive excess no longer implies crossing the barrier.",
+        "C14": "The d=2 non-target cases are not excluded."
+      }
+    },
+    {
+      "id": "THEOREM_E",
+      "title": "General-period moment obstruction",
+      "conclusion": "The first three moments and the two necessary eight-barrier conditions hold for every p>=1.",
+      "dependencies": [
+        "C11",
+        "C13",
+        "C17",
+        "C18",
+        "C19",
+        "C20",
+        "C21"
+      ],
+      "deletion_tests": {
+        "C11": "Deletes the period-independent local operator identity.",
+        "C13": "Deletes the spectral implication from moment excess.",
+        "C17": "Deletes M1 and the first excess calculation.",
+        "C18": "Deletes M2 and both excess calculations.",
+        "C19": "Deletes M3 and the clustering excess.",
+        "C20": "Deletes the density obstruction.",
+        "C21": "Deletes the clustering obstruction."
+      }
+    },
+    {
+      "id": "THEOREM_F",
+      "title": "Low-period frontier",
+      "conclusion": "The target is uniquely optimal among primitive tau periods at most 16.",
+      "dependencies": [
+        "C7",
+        "C13",
+        "C22",
+        "C23",
+        "C24",
+        "C25"
+      ],
+      "deletion_tests": {
+        "C7": "The exact target value and tie standard disappear.",
+        "C13": "The 2611 moment exclusions lose their spectral implication.",
+        "C22": "Orbit-space completeness is unproved.",
+        "C23": "The bounded uniqueness conclusion is absent.",
+        "C24": "Deletes the operator-level equivalence and zone-folding proof, so repetitions or dihedral images may be misidentified.",
+        "C25": "The exact exclusion partition and five residual certificates are absent."
+      }
+    }
+  ],
+  "claim_edges": [
+    [
+      "C1",
+      "C2"
+    ],
+    [
+      "C4",
+      "C5"
+    ],
+    [
+      "C4",
+      "C6"
+    ],
+    [
+      "C4",
+      "C7"
+    ],
+    [
+      "C6",
+      "C5"
+    ],
+    [
+      "C7",
+      "C6"
+    ],
+    [
+      "C8",
+      "C7"
+    ],
+    [
+      "C8",
+      "C10"
+    ],
+    [
+      "C9",
+      "C10"
+    ],
+    [
+      "C10",
+      "C11"
+    ],
+    [
+      "C10",
+      "C12"
+    ],
+    [
+      "C10",
+      "C13"
+    ],
+    [
+      "C10",
+      "C14"
+    ],
+    [
+      "C10",
+      "C7"
+    ],
+    [
+      "C12",
+      "C11"
+    ],
+    [
+      "C14",
+      "C13"
+    ],
+    [
+      "C14",
+      "C7"
+    ],
+    [
+      "C16",
+      "C15"
+    ],
+    [
+      "C17",
+      "C11"
+    ],
+    [
+      "C18",
+      "C11"
+    ],
+    [
+      "C19",
+      "C11"
+    ],
+    [
+      "C20",
+      "C13"
+    ],
+    [
+      "C20",
+      "C17"
+    ],
+    [
+      "C20",
+      "C18"
+    ],
+    [
+      "C21",
+      "C13"
+    ],
+    [
+      "C21",
+      "C18"
+    ],
+    [
+      "C21",
+      "C19"
+    ],
+    [
+      "C22",
+      "C24"
+    ],
+    [
+      "C23",
+      "C22"
+    ],
+    [
+      "C23",
+      "C24"
+    ],
+    [
+      "C23",
+      "C25"
+    ],
+    [
+      "C23",
+      "C7"
+    ],
+    [
+      "C25",
+      "C13"
+    ],
+    [
+      "C25",
+      "C22"
+    ],
+    [
+      "C25",
+      "C7"
+    ],
+    [
+      "C25",
+      "C24"
+    ]
+  ],
+  "independent_verification_is_logical_dependency": false,
+  "edge_classes": {
+    "mathematical_implication": "claim_edges",
+    "primary_proof_dependencies": "theorems[].dependencies",
+    "optional_cross_checks": [
+      "period-8 structural route versus 18-orbit classification",
+      "fresh regeneration versus committed checkpoint chains"
+    ]
+  }
+}

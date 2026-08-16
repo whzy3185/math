@@ -1,0 +1,110 @@
+{
+  "reviewer_round": 1,
+  "frozen_head": "dfb9c9846fa95545fdb1a5153ceabe1767c9ee0a",
+  "counts": {
+    "CRITICAL": 0,
+    "MAJOR": 4,
+    "MODERATE": 1,
+    "MINOR": 2,
+    "OPTIONAL": 0
+  },
+  "findings": [
+    {
+      "id": "RZ-001",
+      "severity": "MAJOR",
+      "title": "The purported frozen paper package is not in the frozen tree",
+      "evidence": [
+        "research/paper/target_a_claim_inventory.json:3-5",
+        "research/scripts/verify_target_a_paper_package.py:66-67",
+        "Filesystem observation: git status --short reports the inventory, graph, paper Markdown, and package verifier/tests as untracked at the stated HEAD."
+      ],
+      "analysis": "The inventory declares a complete package and frozen head/tree, but those Git objects do not contain the reviewed package files. The verifier compares only hard-coded strings and does not check the live head/tree or tracked membership, so the frozen references do not authenticate the package state.",
+      "required_action": "Freeze the complete package in a real commit/tree or publish a content-addressed package manifest; make the verifier check the live Git objects and tracked membership or an explicitly separate package tree."
+    },
+    {
+      "id": "RZ-002",
+      "severity": "MAJOR",
+      "title": "C24 omits the zone-folding theorem needed for repeated-cell equality",
+      "evidence": [
+        "research/paper/target_a_claim_inventory.json:33",
+        "research/paper/target_a_theorem_dependency_graph.json:14",
+        "research/proofs/TARGET_A_PERIODIC_OPERATOR_EQUIVALENCES.md:21-32",
+        "research/proofs/TARGET_A_PERIODIC_OPERATOR_EQUIVALENCES.md:46-58",
+        "research/scripts/verify_target_a_low_period_spectral_frontier.py:258-270"
+      ],
+      "analysis": "Orbit enumeration and primitive-period flags do not prove spectral equality under cell repetition. The needed zone-folding direct sum exists as a standalone theorem/checker but is absent from the claim inventory and graph, while C24 depends only on C22.",
+      "required_action": "Inventory the periodic equivalence/zone-folding theorem and add it as a dependency of C24 and C23, or incorporate its proof and explicit spectral check into C24's listed evidence."
+    },
+    {
+      "id": "RZ-003",
+      "severity": "MAJOR",
+      "title": "The minimality checker authenticates digests and counts, not per-state exact certificates",
+      "evidence": [
+        "research/paper/TARGET_A_PROOF_CLASSIFICATION.md:23-25",
+        "research/scripts/target_a_minimality_search.py:919-927",
+        "research/scripts/target_a_minimality_search.py:963",
+        "research/scripts/target_a_minimality_search.py:824-839",
+        "research/scripts/target_a_checkpoint_replay.py:31-33",
+        "research/scripts/target_a_checkpoint_replay.py:66-79",
+        "research/scripts/verify_target_a_minimality_certificate.py:173-176",
+        "research/scripts/verify_target_a_minimality_certificate.py:241-253"
+      ],
+      "analysis": "Fresh search decisions use valid exact rational Rayleigh quotients, but successful per-state vectors/quotients are reduced to hashes and counts. Replay hashes stored certificate hashes without rebuilding matrices or inequalities, and the total checker trusts those aggregates. The artifact is an authenticated execution transcript, not an independently checkable exact certificate chain; full regeneration is separate evidence.",
+      "required_action": "Persist enough per-state data for independent exact checking, or make full deterministic regeneration the required verifier and relabel checkpoint replay as provenance/completeness replay. State the 17,929,600-state versus 2^31 trust boundary precisely."
+    },
+    {
+      "id": "RZ-004",
+      "severity": "MAJOR",
+      "title": "The dependency graph mixes logical premises, alternative proofs, and circular verification cross-checks",
+      "evidence": [
+        "research/paper/target_a_claim_inventory.json:17",
+        "research/paper/target_a_claim_inventory.json:32",
+        "research/paper/target_a_theorem_dependency_graph.json:9-11",
+        "research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md:162-230",
+        "research/scripts/verify_target_a_period8_structural_mechanism.py:19-25",
+        "research/scripts/verify_target_a_period8_structural_mechanism.py:419-430"
+      ],
+      "analysis": "C8 is declared dependent on C10 while C10's checker requires the C8/C9 classification artifact, creating an executable evidence cycle hidden by the acyclic claim JSON. C23 is declared dependent on C25 although its own frontier proof already certifies every competitor, so the C25 deletion test is false as a logical dependency.",
+      "required_action": "Separate mathematical implication, primary-proof dependencies, and optional cross-checks. Remove nonlogical edges and make the C10 structural checker independent of the classification result it cross-checks."
+    },
+    {
+      "id": "RZ-005",
+      "severity": "MODERATE",
+      "title": "C11's short-cell collision scope is not exercised by its listed checker",
+      "evidence": [
+        "research/paper/target_a_claim_inventory.json:20",
+        "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md:93-97",
+        "research/scripts/target_a_general_period_moments.py:94-115",
+        "research/scripts/verify_target_a_period8_structural_mechanism.py:26",
+        "research/scripts/verify_target_a_period8_structural_mechanism.py:109-139"
+      ],
+      "analysis": "The claimed collision check compares absolute displacement keys and the listed independent checker fixes period 8, so neither merges residues modulo p for p=1,2,3,4. Later Laurent moment checks support C17-C19 but do not directly verify C11's quotient-level A^2 collision statement.",
+      "required_action": "Add a direct Laurent/quotient A^2 collision check for p=1..4 and point C11 to it, or narrow C11 to the infinite-lattice displacement identity."
+    },
+    {
+      "id": "RZ-006",
+      "severity": "MINOR",
+      "title": "The reproducibility statement falsely says checkpoint chunks are uncommitted",
+      "evidence": [
+        "research/paper/TARGET_A_REPRODUCIBILITY_STATEMENT.md:37-40",
+        "research/reproducibility/target_a_full_slow_reproduction_summary.json:200-203",
+        "Repository observation: git ls-files reports 29, 77, 251, and 909 tracked files in the n24, n26, n28, and n30 checkpoint directories."
+      ],
+      "analysis": "The reviewed repository tracks the complete production checkpoint directories, contrary to both statements. This is a documentation error in the trust-boundary description.",
+      "required_action": "Distinguish committed production checkpoints from uncommitted external fresh-regeneration outputs and full runtime logs."
+    },
+    {
+      "id": "RZ-007",
+      "severity": "MINOR",
+      "title": "A proved period-10 theorem is outside the complete claim inventory without an exclusion record",
+      "evidence": [
+        "research/paper/target_a_claim_inventory.json:3-9",
+        "research/paper/target_a_claim_inventory.json:35-36",
+        "research/proofs/TARGET_A_PERIOD10_FAMILY.md:5-21"
+      ],
+      "analysis": "A tracked Target A proof states a second infinite counterexample family, while the complete inventory neither lists it nor identifies it as deferred. Its human-audit caveat may justify deferral, but that status is not represented in the package.",
+      "required_action": "List the period-10 theorem in an explicit deferred/excluded-claims section with its unmet gate, or complete its independent audit and add it to the inventory."
+    }
+  ],
+  "gate_recommendation": "BLOCK_PENDING_MAJOR_REVISIONS"
+}

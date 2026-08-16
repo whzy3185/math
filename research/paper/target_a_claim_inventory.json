@@ -1,0 +1,614 @@
+{
+  "schema_version": "1.0.0",
+  "status": "TARGET_A_CLAIM_INVENTORY_COMPLETE",
+  "frozen_head": "dfb9c9846fa95545fdb1a5153ceabe1767c9ee0a",
+  "frozen_tree": "7a15c4498b1ac9f52f13c17dff5355fa30c4db7c",
+  "exploration_status": "EXPLORATORY_EXTENSION_PAUSED",
+  "allowed_proof_types": [
+    "PURE_ANALYTIC",
+    "FINITE_COMPUTER_ASSISTED",
+    "HYBRID",
+    "INDEPENDENTLY_REPRODUCED"
+  ],
+  "allowed_manuscript_roles": [
+    "MAIN_THEOREM",
+    "THEOREM",
+    "LEMMA",
+    "COROLLARY",
+    "SUPPLEMENT_ONLY"
+  ],
+  "claims": [
+    {
+      "id": "C1",
+      "title": "Disproof",
+      "exact_statement": "Conjecture 3 of arXiv:2607.18334 is false.",
+      "status": "PROVED",
+      "scope": "The original signed-circulant conjecture, with its stated admissible even orders.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C2"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_SMALLEST_COUNTEREXAMPLE.md",
+      "machine_certificate": "research/counterexamples/target_a_minimality_certificate.json",
+      "independent_checker": "research/scripts/verify_target_a_minimality_certificate.py",
+      "test": "research/scripts/test_verify_target_a_minimality_certificate.py",
+      "sha256": {
+        "main": "668a3742e4c565ab6dc24d19565befd8531b26cd1ef56fc91528b81ef32062ed",
+        "certificate": "1f20469033876569292de247344ba88eb0831c163e01c1441f1b75aa8bca95c7",
+        "checker": "48997c791be70f7f2cb5287981dea361494a589034b6e72f78dbcfddf102dbb1",
+        "test": "ae70ef7d85dd1c655371a48a44bb74d66300a521468c2ffaba0a5dfeb6cdbfc9"
+      },
+      "novelty_audit_item": "N1",
+      "manuscript_role": "COROLLARY"
+    },
+    {
+      "id": "C2",
+      "title": "Explicit order-32 counterexample",
+      "exact_statement": "At n=32 the explicit period-8 signing satisfies rho(A_sigma)^2<1561/200<rho_-(32)^2 and is therefore a strict counterexample.",
+      "status": "VERIFIED_EXACT",
+      "scope": "The explicit n=32 witness and exact threshold comparison.",
+      "proof_type": "HYBRID",
+      "dependencies": [],
+      "main_proof_artifact": "research/proofs/TARGET_A_SMALLEST_COUNTEREXAMPLE.md",
+      "machine_certificate": "research/counterexamples/target_a_minimality_certificate.json",
+      "independent_checker": "research/scripts/verify_target_a_minimality_certificate.py",
+      "test": "research/scripts/test_verify_target_a_minimality_certificate.py",
+      "sha256": {
+        "main": "668a3742e4c565ab6dc24d19565befd8531b26cd1ef56fc91528b81ef32062ed",
+        "certificate": "1f20469033876569292de247344ba88eb0831c163e01c1441f1b75aa8bca95c7",
+        "checker": "48997c791be70f7f2cb5287981dea361494a589034b6e72f78dbcfddf102dbb1",
+        "test": "ae70ef7d85dd1c655371a48a44bb74d66300a521468c2ffaba0a5dfeb6cdbfc9"
+      },
+      "novelty_audit_item": "N2",
+      "manuscript_role": "MAIN_THEOREM"
+    },
+    {
+      "id": "C3",
+      "title": "Finite exact exclusion",
+      "exact_statement": "Every admissible even order 8<=n<=30 satisfies the conjectured spectral bound.",
+      "status": "FINITE_EXACT_COMPUTER_ASSISTED_THEOREM",
+      "scope": "Exactly n=8,10,...,30; fresh frozen-worktree regeneration covers n=24,26,28,30 and smaller orders retain their separately audited exact runs.",
+      "proof_type": "FINITE_COMPUTER_ASSISTED",
+      "dependencies": [],
+      "main_proof_artifact": "research/proofs/TARGET_A_SMALLEST_COUNTEREXAMPLE.md",
+      "machine_certificate": "research/audit/TARGET_A_MINIMALITY_DEPENDENCIES.json",
+      "independent_checker": "research/scripts/verify_target_a_minimality_certificate.py",
+      "test": "research/scripts/test_verify_target_a_minimality_certificate.py",
+      "sha256": {
+        "main": "668a3742e4c565ab6dc24d19565befd8531b26cd1ef56fc91528b81ef32062ed",
+        "certificate": "5bb4a6c39039bb76e41945c0c1f0dffd545b778c0230ce85d3f905bc197b284f",
+        "checker": "48997c791be70f7f2cb5287981dea361494a589034b6e72f78dbcfddf102dbb1",
+        "test": "ae70ef7d85dd1c655371a48a44bb74d66300a521468c2ffaba0a5dfeb6cdbfc9"
+      },
+      "novelty_audit_item": "N2",
+      "manuscript_role": "THEOREM"
+    },
+    {
+      "id": "C4",
+      "title": "Infinite counterexample family",
+      "exact_statement": "For every n=8L with L>=4, the explicit period-8 signing is a counterexample.",
+      "status": "PROVED_AND_INDEPENDENTLY_AUDITED",
+      "scope": "Orders divisible by 8 with n>=32; not all even orders.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C5",
+        "C6",
+        "C7"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_FAMILY.md",
+      "machine_certificate": "research/counterexamples/target_a_period8_family_certificate.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_infinite_family.py",
+      "test": "research/scripts/test_target_a_period8_uniform_bound_audit.py",
+      "sha256": {
+        "main": "602eb8e9bc775830628314b2395c81bf9c83a4eea0fde7d6c248e94e570e303a",
+        "certificate": "6421bb0400cbfda7063b86b3dfb9310543cc1c0800a9d49890f25d047624c023",
+        "checker": "04bc8fc08b0af24970d77c7f4a73bc9a577caff8e47ac69db90bee478d38d8d6",
+        "test": "952aa217abfe0e6107a852f415bf4f0e903a0c5559c8cdbffa49c481b3108625"
+      },
+      "novelty_audit_item": "N3",
+      "manuscript_role": "MAIN_THEOREM"
+    },
+    {
+      "id": "C5",
+      "title": "Floquet decomposition",
+      "exact_statement": "A period-8 Hamilton-gauge signing on n=8L decomposes into 8-by-8 fibers H(z) at z^L=alpha, while the infinite operator is the direct integral over |z|=1.",
+      "status": "PROVED_AND_INDEPENDENTLY_AUDITED",
+      "scope": "The explicit period-8 cell, with finite and infinite spectra kept distinct.",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [],
+      "main_proof_artifact": "research/audit/PERIOD8_FLOQUET_INDEPENDENT_AUDIT.md",
+      "machine_certificate": "research/audit/period8_floquet_independent_audit.json",
+      "independent_checker": "research/scripts/target_a_floquet_independent_audit.py",
+      "test": "research/scripts/test_target_a_floquet_independent_audit.py",
+      "sha256": {
+        "main": "e2b6d588dcef4b49813b939bbb902a74aab290bb1403578999af0bf50fb56309",
+        "certificate": "2a5657d0791b1e1a3c742ae8e0a738f083115b4e4516e5e8d8fd4d1999d6c3ee",
+        "checker": "96b7a6f62768597556670e1115ef5d42ce82e534d5a6469d0725329c6c0c6309",
+        "test": "e9932eddb76c801bd966d8804c30c6e797d0be32543b96f68fe6d06f0c7a60a1"
+      },
+      "novelty_audit_item": "N3",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C6",
+      "title": "Exact Floquet polynomial",
+      "exact_statement": "For y=lambda^2 and c=z+z^{-1}, det(lambda I-H(z)) reduces to P(y,c)=y^4-16y^3+(80-2c)y^2+(-128+16c)y+c^2-13c+38.",
+      "status": "PROVED_AND_INDEPENDENTLY_AUDITED",
+      "scope": "The canonical period-8 target fiber and c in [-2,2].",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [
+        "C5"
+      ],
+      "main_proof_artifact": "research/audit/PERIOD8_FLOQUET_INDEPENDENT_AUDIT.md",
+      "machine_certificate": "research/audit/target_a_period8_independent_polynomial.json",
+      "independent_checker": "research/scripts/target_a_floquet_independent_audit.py",
+      "test": "research/scripts/test_target_a_floquet_independent_audit.py",
+      "sha256": {
+        "main": "e2b6d588dcef4b49813b939bbb902a74aab290bb1403578999af0bf50fb56309",
+        "certificate": "cc26dedfee3fe3e6c0674f1b217fde592a043a5d8b4913752dc37ad2a62193b2",
+        "checker": "96b7a6f62768597556670e1115ef5d42ce82e534d5a6469d0725329c6c0c6309",
+        "test": "e9932eddb76c801bd966d8804c30c6e797d0be32543b96f68fe6d06f0c7a60a1"
+      },
+      "novelty_audit_item": "N3",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C7",
+      "title": "Sharp period-8 constant",
+      "exact_statement": "The target phase has R(Q)=eta=4+sqrt(10+2sqrt(5)), hence rho_*=sqrt(eta), with its unique top band edge at z=1.",
+      "status": "PROVED",
+      "scope": "The target infinite period-8 phase; alpha=+1 attains eta and alpha=-1 is strictly below it at finite L.",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [
+        "C6"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_SHARP_CONSTANT.md",
+      "machine_certificate": "research/proofs/target_a_period8_sharp_constant.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_sharp_constant.py",
+      "test": "research/scripts/test_target_a_period8_sharp_constant.py",
+      "sha256": {
+        "main": "e912a020ae2dc0931903b07172ec44f8823902c49a09f08356795c4ffa3e1c72",
+        "certificate": "f742f79d804f3c44da18dcb4b6562d4d7d1eb75e9f631133bc7314c475dbaa63",
+        "checker": "04aadb96462b3cd7febe75887cacdffffbbcd1c8d7b641dec80489994cbe049b",
+        "test": "5509f12522b395c3ccc9b972848f019cd505a371fab9e15e5018f9d1b2b5309c"
+      },
+      "novelty_audit_item": "N4",
+      "manuscript_role": "MAIN_THEOREM"
+    },
+    {
+      "id": "C8",
+      "title": "Unique period-8 minimizer",
+      "exact_statement": "Modulo translation, reflection, switching coordinates, and the two lifts tau and -tau, the target flux phase is the unique minimizer among period-8 phases.",
+      "status": "PROVED",
+      "scope": "Period-8 Hamilton-gauge phases only.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C7",
+        "C10"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_PATTERN_CLASSIFICATION.md",
+      "machine_certificate": "research/proofs/target_a_period8_pattern_classification.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_pattern_classification.py",
+      "test": "research/scripts/test_target_a_period8_pattern_classification.py",
+      "sha256": {
+        "main": "653f4b67401f8bb83aa043070260c3b5949a1fb833a72db0fc8b7a1b807ac05a",
+        "certificate": "a7a7b7259a99f099c7d2ab756a1a2f4c1ee233214f352d12df9e61cf1b47464c",
+        "checker": "17191409d23260853febc1551c2df3293b38c25f93daa70648b6f3c64f5b064a",
+        "test": "596d4ea2071da9ccc9caea597b5ccdbdd5688bad4e17bfa2935ad6053cccd2b3"
+      },
+      "novelty_audit_item": "N5",
+      "manuscript_role": "MAIN_THEOREM"
+    },
+    {
+      "id": "C9",
+      "title": "Unique runner-up",
+      "exact_statement": "The all-negative flux phase Q=(-)^8 is the unique period-8 runner-up and has R(Q)=8.",
+      "status": "PROVED",
+      "scope": "Period-8 Hamilton-gauge phases only; the value 8 itself has close prior art.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C10"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_PATTERN_CLASSIFICATION.md",
+      "machine_certificate": "research/proofs/target_a_period8_pattern_classification.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_pattern_classification.py",
+      "test": "research/scripts/test_target_a_period8_pattern_classification.py",
+      "sha256": {
+        "main": "653f4b67401f8bb83aa043070260c3b5949a1fb833a72db0fc8b7a1b807ac05a",
+        "certificate": "a7a7b7259a99f099c7d2ab756a1a2f4c1ee233214f352d12df9e61cf1b47464c",
+        "checker": "17191409d23260853febc1551c2df3293b38c25f93daa70648b6f3c64f5b064a",
+        "test": "596d4ea2071da9ccc9caea597b5ccdbdd5688bad4e17bfa2935ad6053cccd2b3"
+      },
+      "novelty_audit_item": "N6",
+      "manuscript_role": "COROLLARY"
+    },
+    {
+      "id": "C10",
+      "title": "Eight-barrier trichotomy",
+      "exact_statement": "For period 8, R(Q)<8 iff D(Q)={j,j+4}; R(Q)=8 iff D(Q) is empty; otherwise R(Q)>8.",
+      "status": "PROVED",
+      "scope": "All 128 legal period-8 flux words, modulo no unstated equivalence.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C11",
+        "C12",
+        "C13",
+        "C14",
+        "C7"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+      "machine_certificate": "research/proofs/target_a_period8_structural_mechanism.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_structural_core.py",
+      "test": "research/scripts/test_target_a_period8_structural_core.py",
+      "sha256": {
+        "main": "ca89c37eeabe100d3f2fe62695cf99b2cba6eaf116966862eb0e45352e7277d4",
+        "certificate": "34212c53f16e2fe67e2ed2c7b00cd37f62e4fe97eae48d1e33e2350b40f3f728",
+        "checker": "56162b0e970b276fb647c87e02c8149577aebeed3997b7f7a13f30022bc46ac1",
+        "test": "2b9b9b8d0663a2ae18c2be0126bcc6bc5e59f384a71c9f98c61fc2cf57c3d3ab"
+      },
+      "novelty_audit_item": "N7",
+      "manuscript_role": "MAIN_THEOREM"
+    },
+    {
+      "id": "C11",
+      "title": "Local square formula",
+      "exact_statement": "The nine displacement coefficients of A_tau^2 are the exact local flux formula recorded in the structural theorem.",
+      "status": "PROVED",
+      "scope": "The infinite-lattice displacement identity; short-cell quotient collisions are handled separately by C17-C19 and their Laurent checker.",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+      "machine_certificate": "research/proofs/target_a_period8_structural_mechanism.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_structural_mechanism.py",
+      "test": "research/scripts/test_target_a_period8_structural_mechanism.py",
+      "sha256": {
+        "main": "ca89c37eeabe100d3f2fe62695cf99b2cba6eaf116966862eb0e45352e7277d4",
+        "certificate": "34212c53f16e2fe67e2ed2c7b00cd37f62e4fe97eae48d1e33e2350b40f3f728",
+        "checker": "428995679eff90b81b9fa6d628392019cb5a890a01283d8e7890cf262827750f",
+        "test": "bf2d718e836e343c3f1862608e0ffe05479e28ef39bb8dbd0519330f5cd496e3"
+      },
+      "novelty_audit_item": "N8",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C12",
+      "title": "Period-8 moments",
+      "exact_statement": "For period 8, M1=32, M2=160+16d, and M3=944+168d+96a+48b.",
+      "status": "PROVED",
+      "scope": "All legal period-8 flux words.",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [
+        "C11"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+      "machine_certificate": "research/proofs/target_a_period8_structural_mechanism.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_structural_mechanism.py",
+      "test": "research/scripts/test_target_a_period8_structural_mechanism.py",
+      "sha256": {
+        "main": "ca89c37eeabe100d3f2fe62695cf99b2cba6eaf116966862eb0e45352e7277d4",
+        "certificate": "34212c53f16e2fe67e2ed2c7b00cd37f62e4fe97eae48d1e33e2350b40f3f728",
+        "checker": "428995679eff90b81b9fa6d628392019cb5a890a01283d8e7890cf262827750f",
+        "test": "bf2d718e836e343c3f1862608e0ffe05479e28ef39bb8dbd0519330f5cd496e3"
+      },
+      "novelty_audit_item": "N8",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C13",
+      "title": "Moment barrier",
+      "exact_statement": "For every k>=1, F_k=M_{k+1}-8M_k>0 implies R(Q)>8; the converse and every inference from F_k<=0 are unavailable.",
+      "status": "PROVED",
+      "scope": "Any periodic Hermitian Bloch family for which M_k is normalized phase average and R is squared spectral radius.",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [],
+      "main_proof_artifact": "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+      "machine_certificate": "research/proofs/target_a_general_period_moment_obstructions.json",
+      "independent_checker": "research/scripts/verify_target_a_general_period_moments.py",
+      "test": "research/scripts/test_target_a_general_period_moments.py",
+      "sha256": {
+        "main": "14bb089d2d3dbb375ca0e409557fc1fd8121ad5106f2e08cb5d7005aef8d7a33",
+        "certificate": "566928bc0fc06bc984a102d29f84a8694d9c9cb17b254e8940d3c53bdaac2401",
+        "checker": "563ec3882130037de1136da8ea695be5b2d0d1ad4c46194d829614628ca4637d",
+        "test": "190506ba146b83ecd76459a71eb424d0bafa89a0aef4ede4d1f2907409fde527"
+      },
+      "novelty_audit_item": "N8",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C14",
+      "title": "Two-defect hierarchy",
+      "exact_statement": "For period-8 two-defect phases, separations 1,2,3 first have positive excess at F4,F6,F9, while separation 4 is the target and is bounded by the sharp theorem.",
+      "status": "PROVED",
+      "scope": "The d=2 shell at period 8; negative excesses are not upper bounds.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C13",
+        "C7"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+      "machine_certificate": "research/proofs/target_a_period8_structural_mechanism.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_structural_mechanism.py",
+      "test": "research/scripts/test_target_a_period8_structural_mechanism.py",
+      "sha256": {
+        "main": "ca89c37eeabe100d3f2fe62695cf99b2cba6eaf116966862eb0e45352e7277d4",
+        "certificate": "34212c53f16e2fe67e2ed2c7b00cd37f62e4fe97eae48d1e33e2350b40f3f728",
+        "checker": "428995679eff90b81b9fa6d628392019cb5a890a01283d8e7890cf262827750f",
+        "test": "bf2d718e836e343c3f1862608e0ffe05479e28ef39bb8dbd0519330f5cd496e3"
+      },
+      "novelty_audit_item": "N8",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C15",
+      "title": "Anti-period-4 target",
+      "exact_statement": "The canonical target lift satisfies tau_{i+4}=-tau_i; equivalently Q_{i+4}=Q_i and the first four Q entries have product -1.",
+      "status": "PROVED",
+      "scope": "The target lift and the complete anti-period-4 classification at period 8.",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+      "machine_certificate": "research/proofs/target_a_period8_structural_mechanism.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_structural_mechanism.py",
+      "test": "research/scripts/test_target_a_period8_structural_mechanism.py",
+      "sha256": {
+        "main": "ca89c37eeabe100d3f2fe62695cf99b2cba6eaf116966862eb0e45352e7277d4",
+        "certificate": "34212c53f16e2fe67e2ed2c7b00cd37f62e4fe97eae48d1e33e2350b40f3f728",
+        "checker": "428995679eff90b81b9fa6d628392019cb5a890a01283d8e7890cf262827750f",
+        "test": "bf2d718e836e343c3f1862608e0ffe05479e28ef39bb8dbd0519330f5cd496e3"
+      },
+      "novelty_audit_item": "N9",
+      "manuscript_role": "SUPPLEMENT_ONLY"
+    },
+    {
+      "id": "C16",
+      "title": "Chiral involution",
+      "exact_statement": "After choosing xi^2=z, J_z=xi^{-1}DT_4(z) is an involution anticommuting with H(z), yielding a 4+4 off-diagonal block reduction.",
+      "status": "PROVED",
+      "scope": "The anti-period-4 target fiber; the raw DT_4 squares to zI and is not itself normalized.",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [
+        "C15"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md",
+      "machine_certificate": "research/proofs/target_a_period8_structural_mechanism.json",
+      "independent_checker": "research/scripts/verify_target_a_period8_structural_mechanism.py",
+      "test": "research/scripts/test_target_a_period8_structural_mechanism.py",
+      "sha256": {
+        "main": "ca89c37eeabe100d3f2fe62695cf99b2cba6eaf116966862eb0e45352e7277d4",
+        "certificate": "34212c53f16e2fe67e2ed2c7b00cd37f62e4fe97eae48d1e33e2350b40f3f728",
+        "checker": "428995679eff90b81b9fa6d628392019cb5a890a01283d8e7890cf262827750f",
+        "test": "bf2d718e836e343c3f1862608e0ffe05479e28ef39bb8dbd0519330f5cd496e3"
+      },
+      "novelty_audit_item": "N9",
+      "manuscript_role": "SUPPLEMENT_ONLY"
+    },
+    {
+      "id": "C17",
+      "title": "General first moment",
+      "exact_statement": "For every p>=1 and every legal p-periodic flux word, M1=4p.",
+      "status": "PROVED",
+      "scope": "Periodic Hamilton-gauge Bloch operator, including p=1,2,3,4 with quotient multiplicities.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C11"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+      "machine_certificate": "research/proofs/target_a_general_period_moment_obstructions.json",
+      "independent_checker": "research/scripts/verify_target_a_general_period_moments.py",
+      "test": "research/scripts/test_target_a_general_period_moments.py",
+      "sha256": {
+        "main": "14bb089d2d3dbb375ca0e409557fc1fd8121ad5106f2e08cb5d7005aef8d7a33",
+        "certificate": "566928bc0fc06bc984a102d29f84a8694d9c9cb17b254e8940d3c53bdaac2401",
+        "checker": "563ec3882130037de1136da8ea695be5b2d0d1ad4c46194d829614628ca4637d",
+        "test": "190506ba146b83ecd76459a71eb424d0bafa89a0aef4ede4d1f2907409fde527"
+      },
+      "novelty_audit_item": "N10",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C18",
+      "title": "General second moment",
+      "exact_statement": "For every p>=1 and legal Q, M2=20p+16d.",
+      "status": "PROVED",
+      "scope": "Periodic Hamilton-gauge Bloch operator, including short-cell collisions counted with multiplicity.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C11"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+      "machine_certificate": "research/proofs/target_a_general_period_moment_obstructions.json",
+      "independent_checker": "research/scripts/verify_target_a_general_period_moments.py",
+      "test": "research/scripts/test_target_a_general_period_moments.py",
+      "sha256": {
+        "main": "14bb089d2d3dbb375ca0e409557fc1fd8121ad5106f2e08cb5d7005aef8d7a33",
+        "certificate": "566928bc0fc06bc984a102d29f84a8694d9c9cb17b254e8940d3c53bdaac2401",
+        "checker": "563ec3882130037de1136da8ea695be5b2d0d1ad4c46194d829614628ca4637d",
+        "test": "190506ba146b83ecd76459a71eb424d0bafa89a0aef4ede4d1f2907409fde527"
+      },
+      "novelty_audit_item": "N10",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C19",
+      "title": "General third moment",
+      "exact_statement": "For every p>=1 and legal Q, M3=118p+168d+96a+48b.",
+      "status": "PROVED",
+      "scope": "Periodic Hamilton-gauge Bloch operator, with cyclic a and b retaining coincident-offset multiplicities at small p.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C11"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+      "machine_certificate": "research/proofs/target_a_general_period_moment_obstructions.json",
+      "independent_checker": "research/scripts/verify_target_a_general_period_moments.py",
+      "test": "research/scripts/test_target_a_general_period_moments.py",
+      "sha256": {
+        "main": "14bb089d2d3dbb375ca0e409557fc1fd8121ad5106f2e08cb5d7005aef8d7a33",
+        "certificate": "566928bc0fc06bc984a102d29f84a8694d9c9cb17b254e8940d3c53bdaac2401",
+        "checker": "563ec3882130037de1136da8ea695be5b2d0d1ad4c46194d829614628ca4637d",
+        "test": "190506ba146b83ecd76459a71eb424d0bafa89a0aef4ede4d1f2907409fde527"
+      },
+      "novelty_audit_item": "N10",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C20",
+      "title": "Defect-density obstruction",
+      "exact_statement": "For every legal periodic phase, R(Q)<=8 implies d<=3p/4.",
+      "status": "PROVED",
+      "scope": "Necessary condition only; it is not sufficient and does not establish global optimality.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C13",
+        "C17",
+        "C18"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+      "machine_certificate": "research/proofs/target_a_general_period_moment_obstructions.json",
+      "independent_checker": "research/scripts/verify_target_a_general_period_moments.py",
+      "test": "research/scripts/test_target_a_general_period_moments.py",
+      "sha256": {
+        "main": "14bb089d2d3dbb375ca0e409557fc1fd8121ad5106f2e08cb5d7005aef8d7a33",
+        "certificate": "566928bc0fc06bc984a102d29f84a8694d9c9cb17b254e8940d3c53bdaac2401",
+        "checker": "563ec3882130037de1136da8ea695be5b2d0d1ad4c46194d829614628ca4637d",
+        "test": "190506ba146b83ecd76459a71eb424d0bafa89a0aef4ede4d1f2907409fde527"
+      },
+      "novelty_audit_item": "N10",
+      "manuscript_role": "MAIN_THEOREM"
+    },
+    {
+      "id": "C21",
+      "title": "Local-clustering obstruction",
+      "exact_statement": "For every legal periodic phase, R(Q)<=8 implies 40d+96a+48b<=42p.",
+      "status": "PROVED",
+      "scope": "Necessary condition only; strict reversal proves R(Q)>8.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C13",
+        "C18",
+        "C19"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_GENERAL_PERIOD_MOMENT_OBSTRUCTIONS.md",
+      "machine_certificate": "research/proofs/target_a_general_period_moment_obstructions.json",
+      "independent_checker": "research/scripts/verify_target_a_general_period_moments.py",
+      "test": "research/scripts/test_target_a_general_period_moments.py",
+      "sha256": {
+        "main": "14bb089d2d3dbb375ca0e409557fc1fd8121ad5106f2e08cb5d7005aef8d7a33",
+        "certificate": "566928bc0fc06bc984a102d29f84a8694d9c9cb17b254e8940d3c53bdaac2401",
+        "checker": "563ec3882130037de1136da8ea695be5b2d0d1ad4c46194d829614628ca4637d",
+        "test": "190506ba146b83ecd76459a71eb424d0bafa89a0aef4ede4d1f2907409fde527"
+      },
+      "novelty_audit_item": "N10",
+      "manuscript_role": "MAIN_THEOREM"
+    },
+    {
+      "id": "C22",
+      "title": "Complete bounded orbit space",
+      "exact_statement": "For 1<=p<=16 there are exactly 2626 legal-Q/dihedral orbit representations, with per-period counts independently matched by explicit enumeration and Burnside counting.",
+      "status": "FINITE_EXACT_COMPUTER_ASSISTED_THEOREM",
+      "scope": "Unit-cell periods p<=16; orbit representations, not 2626 inequivalent primitive infinite phases.",
+      "proof_type": "FINITE_COMPUTER_ASSISTED",
+      "dependencies": [
+        "C24"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md",
+      "machine_certificate": "research/proofs/target_a_low_period_spectral_frontier.json",
+      "independent_checker": "research/scripts/verify_target_a_low_period_spectral_frontier.py",
+      "test": "research/scripts/test_target_a_low_period_spectral_frontier.py",
+      "sha256": {
+        "main": "a3e155b00744cd33e40d525494a11cc54bbb7fe1a310148f5db4af7eea83159c",
+        "certificate": "82e69ab7df7d81d6c2c46364a6e07aba7578fbc3ad21a69dcc17ffd08333928d",
+        "checker": "f6f2eae206e735d4caaa8560faabbb4e5edf5a01fda096c41653161ee97291c9",
+        "test": "c13753b0cfb113bea7ffff40d7699b0bd4b2761015bab988f7cf0a5a5dccd72c"
+      },
+      "novelty_audit_item": "N11",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C23",
+      "title": "Low-period unique optimum",
+      "exact_statement": "Among periodic Hamilton-gauge signings with primitive tau period at most 16, the period-8 target is the unique minimizer up to translation, reflection, global tau negation, and unit-cell repetition.",
+      "status": "PROVED",
+      "scope": "Primitive tau period <=16 only; no all-period, finite-size, or all-signings conclusion.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C22",
+        "C24",
+        "C25",
+        "C7"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md",
+      "machine_certificate": "research/proofs/target_a_low_period_spectral_frontier.json",
+      "independent_checker": "research/scripts/verify_target_a_low_period_spectral_frontier.py",
+      "test": "research/scripts/test_target_a_low_period_spectral_frontier.py",
+      "sha256": {
+        "main": "a3e155b00744cd33e40d525494a11cc54bbb7fe1a310148f5db4af7eea83159c",
+        "certificate": "82e69ab7df7d81d6c2c46364a6e07aba7578fbc3ad21a69dcc17ffd08333928d",
+        "checker": "f6f2eae206e735d4caaa8560faabbb4e5edf5a01fda096c41653161ee97291c9",
+        "test": "c13753b0cfb113bea7ffff40d7699b0bd4b2761015bab988f7cf0a5a5dccd72c"
+      },
+      "novelty_audit_item": "N11",
+      "manuscript_role": "MAIN_THEOREM"
+    },
+    {
+      "id": "C24",
+      "title": "Periodic operator equivalences and repeated cells",
+      "exact_statement": "Translation, reflection, global tau negation, and unit-cell repetition preserve R(Q); if p=mq then H_p(z) is the direct sum of H_q(w) over w^m=z, so the p=16 target row is only a doubled cell.",
+      "status": "PROVED",
+      "scope": "All periodic Hamilton-gauge words, with exact transition-level audit through displayed period 16.",
+      "proof_type": "PURE_ANALYTIC",
+      "dependencies": [],
+      "main_proof_artifact": "research/proofs/TARGET_A_PERIODIC_OPERATOR_EQUIVALENCES.md",
+      "machine_certificate": "research/proofs/target_a_periodic_operator_equivalences.json",
+      "independent_checker": "research/scripts/verify_target_a_periodic_operator_equivalences.py",
+      "test": "research/scripts/test_target_a_periodic_operator_equivalences.py",
+      "sha256": {
+        "main": "2a04eb910e1e0f5c79301430d3ac5c6de9266b356a249adbc4bcc41c066f9b87",
+        "certificate": "c2f4529283fd6c96ed588a6843ab6127be7b03b585aede03df254e4b0db7fb90",
+        "checker": "2c2c7874c4517726a44072411a19529efb2600fcf81c792337f4302100944dc2",
+        "test": "c81c8299a87fb393402d3b861f7fc83b6ff81b9e8f92edc6d2541a32935826e8"
+      },
+      "novelty_audit_item": "N11",
+      "manuscript_role": "LEMMA"
+    },
+    {
+      "id": "C25",
+      "title": "Structural frontier compression",
+      "exact_statement": "The 2626 bounded-period representations partition exactly into 2611 moment exclusions, 8 all-negative baseline representations, 5 residual endpoint certificates, and 2 target representations.",
+      "status": "PROVED_WITH_FINITE_CERTIFICATES",
+      "scope": "The complete p<=16 orbit table; the moment hierarchy uses only F_k>0 implications through F64.",
+      "proof_type": "HYBRID",
+      "dependencies": [
+        "C13",
+        "C22",
+        "C7",
+        "C24"
+      ],
+      "main_proof_artifact": "research/proofs/TARGET_A_LOW_PERIOD_STRUCTURAL_FRONTIER.md",
+      "machine_certificate": "research/proofs/target_a_low_period_structural_frontier.json",
+      "independent_checker": "research/scripts/verify_target_a_low_period_structural_frontier.py",
+      "test": "research/scripts/test_target_a_low_period_structural_frontier.py",
+      "sha256": {
+        "main": "cd6de9cc2c5a201247b09814815ced50aa68bf6133a203569bc3a877ee6e2c01",
+        "certificate": "7f9fe5b0f318f07b31d71c638049bc9458422fae9ad4c5ee40062c40b5891b71",
+        "checker": "0f6238c45f72aae1ac5ab8daed758e9f5642e0138404de0caedb4cdd721ec0a2",
+        "test": "f40db0b48d32fe8ec735896cb7df892eccddecae4d3a721a703b0348aef314a2"
+      },
+      "novelty_audit_item": "N11",
+      "manuscript_role": "MAIN_THEOREM"
+    }
+  ],
+  "scope_exclusions": [
+    "ALL_PERIOD_OPTIMUM",
+    "ALL_SIGNINGS_OPTIMUM",
+    "FINITE_N_GLOBAL_OPTIMUM_FOR_ALL_N"
+  ],
+  "deferred_claims": [
+    {
+      "title": "Period-10 counterexample family",
+      "artifact": "research/proofs/TARGET_A_PERIOD10_FAMILY.md",
+      "status": "DEFERRED_FROM_MANUSCRIPT",
+      "reason": "Not needed for Theorems A-F; dominated by the period-8 family; independent human audit is incomplete."
+    }
+  ]
+}
