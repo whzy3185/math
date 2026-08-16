@@ -196,3 +196,18 @@
 - **验证：** Task 38 tests 20/20 PASS；`alpha=+1` 与 `alpha=-1` exact finite consistency PASS；已有 Task 37、n32 certificate、minimality certificate 及 Target A/default regression 保持 PASS；JSON parse、compileall 与 diff 检查 PASS。
 - **产物：** `research/audit/target_a_period8_cell_transitions.json`（SHA-256 `e40f49a274904c73765c5703c099bbb3307d67b3905cb8cecd9d9016f26e6f17`）；`research/audit/target_a_period8_independent_polynomial.json`（SHA-256 `cc26dedfee3fe3e6c0674f1b217fde592a043a5d8b4913752dc37ad2a62193b2`）；`research/audit/period8_floquet_independent_audit.json`（SHA-256 `2a5657d0791b1e1a3c742ae8e0a738f083115b4e4516e5e8d8fd4d1999d6c3ee`）；`research/audit/PERIOD8_FLOQUET_INDEPENDENT_AUDIT.md`（SHA-256 `e2b6d588dcef4b49813b939bbb902a74aab290bb1403578999af0bf50fb56309`）；独立脚本及测试。
 - **下一步：** Task 39 独立证明 `P(y,c)>0` for `y>=1561/200, c in [-2,2]` 与 `1561/200<rho_-(n)^2` for every `8|n, n>=32`，再升级完整无限反例族的独立审计状态。
+
+---
+
+## 2026-08-16 — Target A Task 39：period-8 无限反例族完整独立审计
+
+- **研究对象：** 以 Task 38 独立审计并固定 SHA 的 `P(y,c)`、Hermitian/root-link 与 Floquet direct sum 为唯一理论依赖，独立证明所有 `L>=4`、`alpha=+-1` 的 period-8 signing 满足 `rho(A)^2<1561/200<rho_-(8L)^2`。
+- **主 positivity 证书：** 从 Task 38 coefficient map 重建而非手写 `P`。置 `B=1561/200`、`u=y-B`、`t=2-c` 后自动展开为 9 项；所有系数非负且常数 `84332641/1600000000` 严格为正，因此直接证明更强区域 `P(y,c)>0` for `y>=B, c<=2`。主 snapshot 在 secondary threshold route 前冻结。另以自动导出的 `c`-vertex 与 `P(B+u,2)` 全正系数作独立 cross-check。
+- **谱逻辑：** Task 38 保证 admissible `H(z)` Hermitian、`lambda` 为实数且 `P(lambda^2,c)=0`。若 `lambda^2>=B` 将与严格 positivity 矛盾，故所有 block 及其 direct sum 都满足严格 `rho^2<B`；同一论证覆盖 `alpha=-1,+1`。
+- **主 threshold 证书：** 从 `TARGET_A_SPEC.md` 的定义与 `cos^2(theta)=(1+cos(2theta))/2` 自动推出 `rho_-^2(n)=4+2cos(2pi/n)+2cos(4pi/n)`。在 `n=32` 用两次正半角构造 exact radical，自动得到八次 minimal polynomial；Sturm 证明 `(7809/1000,781/100)` 恰含一个实根，并以 exact algebraic comparison 识别该根，从而 `1561/200<rho_-^2(32)`。初等 cosine monotonicity 将严格下界推广到所有 `n>=32`，最终仅限制到真实 family domain `n=8L, L>=4`。
+- **第二 threshold 路线：** 独立重算 alternating Taylor lower polynomial 与 `9<pi^2<10`，精确恢复 `1178731111/150994944`，其超过 `B` 的差为 `5389327/3774873600`。该路线只作 secondary cross-check。
+- **负向测试：** 篡改一个 `P` coefficient、令 positivity 常数为负、从 `L=3/n=24` 开始、误纳 `n=30`、破坏 Task 38 audit SHA、删除 `alpha=-1`、使用空 isolating interval、宣称 all even `n>=32` 均按要求 FAIL；临时 fixtures 未修改 committed evidence。
+- **状态与证据边界：** 新增 `PERIOD8_INFINITE_FAMILY_INDEPENDENTLY_AUDITED`，但不声明所有偶数 `n>=32` 失败、period-8 optimal、`n=32` witness 唯一或全局最小谱半径已知。README、registry 与原 period-8 proof 已同步。`TARGET_A_SPEC.md` 因 Task 36A minimality certificate 和 dependency manifest 固定整文件 SHA 而保持字节不变；当前审计状态由上述非冻结状态文档记录，避免改写 finite-range evidence。
+- **验证：** Task 39 tests 23/23 PASS；Target A focused tests 77/77 PASS；default 90 项中 87 PASS、3 个既有慢测跳过；`TARGET_A_PERIOD8_INFINITE_FAMILY_PASS`；`N32_CERTIFICATE_PASS`；`TARGET_A_MINIMALITY_CERTIFICATE_PASS`（含 `n=24,26,28,30` 完整只读重放）；JSON parse、compileall、禁止导入与 diff 检查 PASS。
+- **产物：** `research/audit/target_a_period8_uniform_positivity_snapshot.json`（SHA-256 `86d2e7d09534162187699a693d1432a976f2183d9ce06a96cbb40148bb939124`）；`research/audit/period8_infinite_family_independent_audit.json`（SHA-256 `b36bce66ec367e418e1499a1400773147d29537da92a49695b8d7dc9c1c08fa8`）；`research/audit/PERIOD8_INFINITE_FAMILY_INDEPENDENT_AUDIT.md`（SHA-256 `8e9e497375d1df759727d517e2ec26e3b08cf3d023a0cfe9215baa4ec0377bc3`）；主审计脚本、独立总 checker 与测试。
+- **下一步：** Task 40A 从 audited `P(y,c)` 求 period-8 phase 的 sharp infinite-volume spectral radius；本任务不开始论文正文、optimality search 或 novelty audit。

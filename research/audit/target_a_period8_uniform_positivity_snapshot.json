@@ -1,0 +1,308 @@
+{
+  "schema_version": 1,
+  "status": "UNIFORM_POSITIVITY_CERTIFIED",
+  "B": "1561/200",
+  "source_P_sha256": "cc26dedfee3fe3e6c0674f1b217fde592a043a5d8b4913752dc37ad2a62193b2",
+  "floquet_audit_sha256": "2a5657d0791b1e1a3c742ae8e0a738f083115b4e4516e5e8d8fd4d1999d6c3ee",
+  "source_P_coefficient_map": [
+    {
+      "y_degree": 4,
+      "c_degree": 0,
+      "coefficient": "1"
+    },
+    {
+      "y_degree": 3,
+      "c_degree": 0,
+      "coefficient": "-16"
+    },
+    {
+      "y_degree": 2,
+      "c_degree": 1,
+      "coefficient": "-2"
+    },
+    {
+      "y_degree": 2,
+      "c_degree": 0,
+      "coefficient": "80"
+    },
+    {
+      "y_degree": 1,
+      "c_degree": 1,
+      "coefficient": "16"
+    },
+    {
+      "y_degree": 1,
+      "c_degree": 0,
+      "coefficient": "-128"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 2,
+      "coefficient": "1"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 1,
+      "coefficient": "-13"
+    },
+    {
+      "y_degree": 0,
+      "c_degree": 0,
+      "coefficient": "38"
+    }
+  ],
+  "change_of_variables": {
+    "u": "y-B",
+    "t": "2-c"
+  },
+  "expanded_polynomial": "t**2 + 2*t*u**2 + 761*t*u/50 + 119121*t/20000 + u**4 + 761*u**3/50 + 1337363*u**2/20000 + 136311081*u/2000000 + 84332641/1600000000",
+  "monomial_coefficient_map": [
+    {
+      "u_degree": 4,
+      "t_degree": 0,
+      "coefficient": "1"
+    },
+    {
+      "u_degree": 3,
+      "t_degree": 0,
+      "coefficient": "761/50"
+    },
+    {
+      "u_degree": 2,
+      "t_degree": 1,
+      "coefficient": "2"
+    },
+    {
+      "u_degree": 2,
+      "t_degree": 0,
+      "coefficient": "1337363/20000"
+    },
+    {
+      "u_degree": 1,
+      "t_degree": 1,
+      "coefficient": "761/50"
+    },
+    {
+      "u_degree": 1,
+      "t_degree": 0,
+      "coefficient": "136311081/2000000"
+    },
+    {
+      "u_degree": 0,
+      "t_degree": 2,
+      "coefficient": "1"
+    },
+    {
+      "u_degree": 0,
+      "t_degree": 1,
+      "coefficient": "119121/20000"
+    },
+    {
+      "u_degree": 0,
+      "t_degree": 0,
+      "coefficient": "84332641/1600000000"
+    }
+  ],
+  "all_coefficients_nonnegative": true,
+  "strict_positive_constant": true,
+  "proved_region": "u>=0 and t>=0, equivalently y>=B and c<=2",
+  "positive_coefficient_certificate": {
+    "status": "POSITIVE_COEFFICIENT_CERTIFICATE_PASS",
+    "B": "1561/200",
+    "change_of_variables": {
+      "u": "y-B",
+      "t": "2-c"
+    },
+    "expanded_polynomial": "t**2 + 2*t*u**2 + 761*t*u/50 + 119121*t/20000 + u**4 + 761*u**3/50 + 1337363*u**2/20000 + 136311081*u/2000000 + 84332641/1600000000",
+    "monomial_coefficient_map": [
+      {
+        "u_degree": 4,
+        "t_degree": 0,
+        "coefficient": "1"
+      },
+      {
+        "u_degree": 3,
+        "t_degree": 0,
+        "coefficient": "761/50"
+      },
+      {
+        "u_degree": 2,
+        "t_degree": 1,
+        "coefficient": "2"
+      },
+      {
+        "u_degree": 2,
+        "t_degree": 0,
+        "coefficient": "1337363/20000"
+      },
+      {
+        "u_degree": 1,
+        "t_degree": 1,
+        "coefficient": "761/50"
+      },
+      {
+        "u_degree": 1,
+        "t_degree": 0,
+        "coefficient": "136311081/2000000"
+      },
+      {
+        "u_degree": 0,
+        "t_degree": 2,
+        "coefficient": "1"
+      },
+      {
+        "u_degree": 0,
+        "t_degree": 1,
+        "coefficient": "119121/20000"
+      },
+      {
+        "u_degree": 0,
+        "t_degree": 0,
+        "coefficient": "84332641/1600000000"
+      }
+    ],
+    "all_coefficients_nonnegative": true,
+    "strict_positive_constant": true,
+    "target_region": "u>=0 and 0<=t<=4, equivalent to y>=B and c in [-2,2]",
+    "proved_region": "u>=0 and t>=0, equivalently y>=B and c<=2",
+    "strictness": "the positive constant term excludes equality at y=B"
+  },
+  "secondary_vertex_check": {
+    "status": "VERTEX_CROSSCHECK_PASS",
+    "dP_dc": "2*c - 2*y**2 + 16*y - 13",
+    "vertex_c0": "y**2 - 8*y + 13/2",
+    "vertex_derivative": "2*y - 8",
+    "B_greater_than_4": true,
+    "vertex_at_B": "199121/40000",
+    "vertex_at_B_exceeds_2": true,
+    "monotonicity": "c0'(y)>0 for y>=B and dP/dc<0 for c<=2",
+    "boundary_shift": "u**4 + 761*u**3/50 + 1337363*u**2/20000 + 136311081*u/2000000 + 84332641/1600000000",
+    "boundary_coefficient_map": [
+      {
+        "u_degree": 4,
+        "coefficient": "1"
+      },
+      {
+        "u_degree": 3,
+        "coefficient": "761/50"
+      },
+      {
+        "u_degree": 2,
+        "coefficient": "1337363/20000"
+      },
+      {
+        "u_degree": 1,
+        "coefficient": "136311081/2000000"
+      },
+      {
+        "u_degree": 0,
+        "coefficient": "84332641/1600000000"
+      }
+    ],
+    "all_boundary_coefficients_positive": true
+  },
+  "spectral_implication": {
+    "status": "UNIFORM_SPECTRAL_BOUND_PASS",
+    "hermitian_dependency": true,
+    "squared_root_dependency": true,
+    "direct_sum_dependency": true,
+    "contradiction": "lambda^2>=B would make P(lambda^2,c)>0, contradicting P(lambda^2,c)=0",
+    "strict_block_bound": "rho(H(z))^2 < 1561/200 for every admissible z",
+    "strict_full_bound": "rho(A_(8L,alpha))^2 < 1561/200",
+    "alpha_values": [
+      -1,
+      1
+    ]
+  },
+  "threshold_formula": {
+    "spec_file": "research/conjectures/TARGET_A_SPEC.md",
+    "spec_sha256": "b484e44ba3975f61229c83702843e370a51d78767053d871480c3f4e3da37e97",
+    "definition": "rho_-(n)=2*sqrt(cos(pi/n)^2+cos(2*pi/n)^2)",
+    "identity": "cos(theta)^2=(1+cos(2*theta))/2",
+    "identity_checks": [
+      true,
+      true
+    ],
+    "squared_formula": "2*cos(2*pi/n) + 2*cos(4*pi/n) + 4"
+  },
+  "n32_primary_algebraic_threshold": {
+    "status": "N32_THRESHOLD_ALGEBRAIC_PASS",
+    "formula_at_n32": "2*sqrt(sqrt(2)/4 + 1/2) + 2*cos(pi/16) + 4",
+    "formula_equals_radical_exactly": true,
+    "half_angle_chain": {
+      "cos_pi_4": "sqrt(2)/2",
+      "cos_pi_8": "sqrt(sqrt(2)/4 + 1/2)",
+      "cos_pi_16": "sqrt(sqrt(sqrt(2)/4 + 1/2)/2 + 1/2)",
+      "positive_square_root_reason": "all three angles lie in (0,pi/2)"
+    },
+    "exact_radical": "sqrt(sqrt(2) + 2) + sqrt(sqrt(sqrt(2) + 2) + 2) + 4",
+    "minimal_polynomial": "X**8 - 32*X**7 + 432*X**6 - 3216*X**5 + 14456*X**4 - 40224*X**3 + 67736*X**2 - 63184*X + 25022",
+    "minimal_polynomial_coefficients": [
+      "1",
+      "-32",
+      "432",
+      "-3216",
+      "14456",
+      "-40224",
+      "67736",
+      "-63184",
+      "25022"
+    ],
+    "isolating_interval": {
+      "lower": "7809/1000",
+      "upper": "781/100"
+    },
+    "endpoint_values": {
+      "at_lower": "-5269084032383895817575679/1000000000000000000000000",
+      "at_upper": "107375349183918241/10000000000000000"
+    },
+    "endpoint_signs": {
+      "at_lower": -1,
+      "at_upper": 1
+    },
+    "root_count": 1,
+    "radical_in_interval_exact": true,
+    "rational_lower": "7809/1000",
+    "B_below_lower": true
+  },
+  "threshold_monotonicity": {
+    "status": "THRESHOLD_MONOTONICITY_PASS",
+    "function": "R(n)=4+2*cos(2*pi/n)+2*cos(4*pi/n)",
+    "domain": "integers n>=32",
+    "proof": "for n2>n1>=32 both positive angles 2*pi/n and 4*pi/n strictly decrease inside (0,pi), where cosine is strictly decreasing; hence R(n2)>R(n1)",
+    "strictly_increasing": true,
+    "minimum_at_32": true
+  },
+  "family": {
+    "tau_period": [
+      1,
+      1,
+      -1,
+      1,
+      -1,
+      -1,
+      1,
+      -1
+    ],
+    "Q_period": [
+      1,
+      -1,
+      -1,
+      -1,
+      1,
+      -1,
+      -1,
+      -1
+    ],
+    "n_rule": "n=8L with integer L>=4",
+    "start_L": 4,
+    "alpha_values": [
+      -1,
+      1
+    ]
+  },
+  "theorem_statement": "For every integer L>=4 and alpha in {-1,+1}, the period-8 signing on C_(8L)(1,2) satisfies rho(A)^2 < 1561/200 < rho_-(8L)^2.",
+  "old_family_proof_read_before_snapshot": false,
+  "source_file": "research/scripts/target_a_period8_uniform_bound_audit.py",
+  "source_sha256": "a33c15a20f44c3fe5f64c0047576862569a1f88e3aeeab213f552bba5189c227"
+}

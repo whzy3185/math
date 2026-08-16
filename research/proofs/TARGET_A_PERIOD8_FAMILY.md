@@ -2,7 +2,13 @@
 
 Date: 2026-08-15
 
-Evidence status: **Proved**, subject to independent human audit.
+Evidence status: **Proved; PERIOD8_INFINITE_FAMILY_INDEPENDENTLY_AUDITED**.
+
+The original proof below is preserved. Its full dependency chain has been
+independently rederived and checked in
+`research/audit/PERIOD8_INFINITE_FAMILY_INDEPENDENT_AUDIT.md`, including a
+stronger two-variable positive-coefficient certificate and an exact algebraic
+threshold isolation independent of the Taylor route used below.
 
 ## Theorem
 
