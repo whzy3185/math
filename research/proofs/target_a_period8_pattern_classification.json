@@ -1,0 +1,1219 @@
+{
+  "schema_version": 1,
+  "status": "PERIOD8_UNIQUE_OPTIMUM_AND_SECOND_BEST_PROVED",
+  "classification_statuses": [
+    "PERIOD8_FLUX_CLASSIFICATION_COMPLETE",
+    "PERIOD8_UNIQUE_OPTIMUM_PROVED",
+    "PERIOD8_SECOND_BEST_GAP_PROVED"
+  ],
+  "bit_convention": "1 means Q_i=+1; 0 means Q_i=-1; Q_0 is the leftmost bit",
+  "sharp_dependency": {
+    "path": "research/proofs/target_a_period8_sharp_constant.json",
+    "sha256": "f742f79d804f3c44da18dcb4b6562d4d7d1eb75e9f631133bc7314c475dbaa63",
+    "status": "PERIOD8_SHARP_SPECTRAL_CONSTANT_PROVED"
+  },
+  "phase_space": {
+    "raw_tau_count": 256,
+    "tau_lifts_per_q": 2,
+    "tau_negation_equivalence": "A_(-tau)(z)=-D*A_tau(z)*D with D=diag((-1)^i)",
+    "legal_q_count": 128,
+    "d8_orbit_count": 18,
+    "shell_counts": {
+      "0": 1,
+      "2": 4,
+      "4": 8,
+      "6": 4,
+      "8": 1
+    },
+    "orbit_size_sum": 128,
+    "full_charpoly_equivalence_class_count": 18,
+    "spectral_equivalence_class_count": 18,
+    "endpoint_spectra_class_count": 18
+  },
+  "orbits": [
+    {
+      "orbit_id": "P8-01",
+      "canonical_q_bits": "00000000",
+      "canonical_q_code": 0,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1
+      ],
+      "defect_count": 0,
+      "orbit_size": 1,
+      "stabilizer_size": 16,
+      "primitive_q_period": 1,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1
+      ],
+      "primitive_tau_period": 2,
+      "tau_period_relation": "doubles_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": true,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "8.00000000000001",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 64,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 0,
+        "comparison_to_8": "="
+      },
+      "exact_sharp_constant": "8",
+      "classification_status": "UNIQUE_SECOND_BEST_EXACT",
+      "squared_charpoly_signature_sha256": "5c23a0ec1d7edf6c17f112785f101202acab06b76f53bb0a3deb0bc21278ae23",
+      "endpoint_spectra_signature_sha256": "c9fff042578ac2727cb3b235d48db3de8631f6c598d2a500c5a94e99ea3a15cd"
+    },
+    {
+      "orbit_id": "P8-02",
+      "canonical_q_bits": "00000011",
+      "canonical_q_code": 3,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "defect_count": 2,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": 1,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "9.90631707599469",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 72,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 8,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "678a114f919c0faf484275a3f2f2dedc99ca19024e6d4abc5554f3525cee64b5",
+      "endpoint_spectra_signature_sha256": "6db0e9022f00a358d5634c763b9500ef37c58e065c1ca2bd197586d71f528214"
+    },
+    {
+      "orbit_id": "P8-03",
+      "canonical_q_bits": "00000101",
+      "canonical_q_code": 5,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "defect_count": 2,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": 2,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "8.74180853217889",
+        "theta_over_pi": "1",
+        "candidate_z_endpoint": -1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": -1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          1
+        ],
+        "numerator": 60,
+        "denominator": 7,
+        "difference_from_8_times_denominator": 4,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "1b7a1e313abb164190819f25d948c95965f6be9485dce082c8583ed3cf48eff3",
+      "endpoint_spectra_signature_sha256": "5f739a0f54fe2509ad590b90e5bbba56e3e196e196a75b8b7af583f5ea0bbcfa"
+    },
+    {
+      "orbit_id": "P8-04",
+      "canonical_q_bits": "00001001",
+      "canonical_q_code": 9,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "defect_count": 2,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": 3,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "8.67888773155075",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 60,
+        "denominator": 7,
+        "difference_from_8_times_denominator": 4,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "72bf0c309356da0ea23d6304b87706079fa07d51eb2d8ada91620b2d2b1f5448",
+      "endpoint_spectra_signature_sha256": "51418e82abafbff55a09f8432954e51f88392f5178ea8656e2c617349c89db55"
+    },
+    {
+      "orbit_id": "P8-05",
+      "canonical_q_bits": "00001111",
+      "canonical_q_code": 15,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "defect_count": 4,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "12.2826722313107",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 88,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 24,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "01e09bc6573204d5c1151b9fd772c2d317236bacbcb3c6242f12a241264ff12e",
+      "endpoint_spectra_signature_sha256": "0f0682ebc361004eefefc8cfbd6abcf964ed13233cd04488b5d2717761eb4f33"
+    },
+    {
+      "orbit_id": "P8-06",
+      "canonical_q_bits": "00010001",
+      "canonical_q_code": 17,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "defect_count": 2,
+      "orbit_size": 4,
+      "stabilizer_size": 4,
+      "primitive_q_period": 4,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "doubles_q_period",
+      "target_phase": true,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": 4,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "7.80422606518062",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": null,
+      "exact_sharp_constant": "sqrt(2*sqrt(5) + 10) + 4",
+      "classification_status": "UNIQUE_TARGET_EXACT",
+      "squared_charpoly_signature_sha256": "d1bb5c9ff2cbb076ebb72326886662f02095d532762cd4e3b077f62a462d2d45",
+      "endpoint_spectra_signature_sha256": "57cbad5e36e8f286d3e66263f56f39fe56e90cede4b2c443cee512506252824b"
+    },
+    {
+      "orbit_id": "P8-07",
+      "canonical_q_bits": "00010111",
+      "canonical_q_code": 23,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "defect_count": 4,
+      "orbit_size": 16,
+      "stabilizer_size": 1,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "10.8382901411622",
+        "theta_over_pi": "1",
+        "candidate_z_endpoint": -1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 60,
+        "denominator": 7,
+        "difference_from_8_times_denominator": 4,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "e46ae760c2a7144f9aaf5f2c84966daee0af3a5232077a361139ea4a7bc14141",
+      "endpoint_spectra_signature_sha256": "2747c4ffd6a69027b2de493a80d436a243192df85adb671bf093e2e4a0db63e8"
+    },
+    {
+      "orbit_id": "P8-08",
+      "canonical_q_bits": "00011011",
+      "canonical_q_code": 27,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "defect_count": 4,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "9.95763413943552",
+        "theta_over_pi": "1",
+        "candidate_z_endpoint": -1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "numerator": 42,
+        "denominator": 5,
+        "difference_from_8_times_denominator": 2,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "cb085c593f48d000bb3995ff297661697d6f06689d4e39662b8bab19dc9ff40e",
+      "endpoint_spectra_signature_sha256": "d79e5c006dba0d60d29fe5de57563873a76a7cb9717e227fb37947ebbca0e967"
+    },
+    {
+      "orbit_id": "P8-09",
+      "canonical_q_bits": "00100111",
+      "canonical_q_code": 39,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "defect_count": 4,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "10.6404654218786",
+        "theta_over_pi": "1",
+        "candidate_z_endpoint": -1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 80,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 16,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "bdb8c18507fa8d74b5b92e228688b570a9883bd1f3c65421bbcbe0bf718d035c",
+      "endpoint_spectra_signature_sha256": "0211958b1c817011588e5fc8cd30c6d020254a80cbbe2c6f7399f199b5eea603"
+    },
+    {
+      "orbit_id": "P8-10",
+      "canonical_q_bits": "00101011",
+      "canonical_q_code": 43,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "defect_count": 4,
+      "orbit_size": 16,
+      "stabilizer_size": 1,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "10.3623044650767",
+        "theta_over_pi": "1",
+        "candidate_z_endpoint": -1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          -1,
+          -1
+        ],
+        "numerator": 42,
+        "denominator": 5,
+        "difference_from_8_times_denominator": 2,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "39b46e07b76340df01543c9c6f53327448cdd04985460aa61f69bff69ae3ddb9",
+      "endpoint_spectra_signature_sha256": "8f795fccdcf8118f032830a3d615fa73e6fef910c1b471c164bab17f919b75a8"
+    },
+    {
+      "orbit_id": "P8-11",
+      "canonical_q_bits": "00101101",
+      "canonical_q_code": 45,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1
+      ],
+      "defect_count": 4,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "10.4721359549996",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          0,
+          -1,
+          1
+        ],
+        "numerator": 52,
+        "denominator": 6,
+        "difference_from_8_times_denominator": 4,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "4593a9e1ea5d3203e9ea658bc6a155576cea178dcc1723ddf1f724de5fa2cd2e",
+      "endpoint_spectra_signature_sha256": "760930d58b2d387e459c1051755849acd52980a4589041bd58f79e45f5b20d6a"
+    },
+    {
+      "orbit_id": "P8-12",
+      "canonical_q_bits": "00110011",
+      "canonical_q_code": 51,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        1,
+        1
+      ],
+      "defect_count": 4,
+      "orbit_size": 4,
+      "stabilizer_size": 4,
+      "primitive_q_period": 4,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 4,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "10.4721359549996",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 80,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 16,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "97ab51ee11fffa9e0889be97f1ca76c94c805845e75cc0170eec61ef9b7d4437",
+      "endpoint_spectra_signature_sha256": "8ba854768d8dcf3af0da47e0d96c6076a405ff8bfafc54ae9253eb05afedefc5"
+    },
+    {
+      "orbit_id": "P8-13",
+      "canonical_q_bits": "00111111",
+      "canonical_q_code": 63,
+      "canonical_q_signs": [
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "defect_count": 6,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "13.3745298794648",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 104,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 40,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "286836aecf07cb82ed4be1f9061502fcda3e8ee60127a663f398a761895170ea",
+      "endpoint_spectra_signature_sha256": "8016ec7170954652197b3cde4cc450bf0abaa361203751b2ee2798899a068228"
+    },
+    {
+      "orbit_id": "P8-14",
+      "canonical_q_bits": "01010101",
+      "canonical_q_code": 85,
+      "canonical_q_signs": [
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "defect_count": 4,
+      "orbit_size": 2,
+      "stabilizer_size": 8,
+      "primitive_q_period": 2,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        -1,
+        -1,
+        1
+      ],
+      "primitive_tau_period": 4,
+      "tau_period_relation": "doubles_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "10",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          0,
+          1,
+          0,
+          1,
+          -1
+        ],
+        "numerator": 50,
+        "denominator": 6,
+        "difference_from_8_times_denominator": 2,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "01faa49aa1accc7061f15ad6e76c425b07df2c42ae4412b2c9e7c54b8967b08b",
+      "endpoint_spectra_signature_sha256": "6ebedcb45a42c63f4c93e886c767a09f1b1f62e0c2b37be77d235e88d31a72e7"
+    },
+    {
+      "orbit_id": "P8-15",
+      "canonical_q_bits": "01011111",
+      "canonical_q_code": 95,
+      "canonical_q_signs": [
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "defect_count": 6,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "13.4381783232217",
+        "theta_over_pi": "1",
+        "candidate_z_endpoint": -1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 80,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 16,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "be74483e847952773d66a5dae41f63208178fa2648c3817888e194595d4068a8",
+      "endpoint_spectra_signature_sha256": "b52b6995119c337018bd9e4224c65cac5b1ab5388ccd489ffcbdb8be3e8fc715"
+    },
+    {
+      "orbit_id": "P8-16",
+      "canonical_q_bits": "01101111",
+      "canonical_q_code": 111,
+      "canonical_q_signs": [
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "defect_count": 6,
+      "orbit_size": 8,
+      "stabilizer_size": 2,
+      "primitive_q_period": 8,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "12.2725813107434",
+        "theta_over_pi": "1",
+        "candidate_z_endpoint": -1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          0,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 60,
+        "denominator": 7,
+        "difference_from_8_times_denominator": 4,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "86b29d7c509e86e0a890469e1b9053a98005c2d6230bf93eaf4ad2cc2732e7ce",
+      "endpoint_spectra_signature_sha256": "110c42918b1eac8d6bd70a4ffe47b396e9e58cf935d353d75c3a08ad5813438f"
+    },
+    {
+      "orbit_id": "P8-17",
+      "canonical_q_bits": "01110111",
+      "canonical_q_code": 119,
+      "canonical_q_signs": [
+        -1,
+        1,
+        1,
+        1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "defect_count": 6,
+      "orbit_size": 4,
+      "stabilizer_size": 4,
+      "primitive_q_period": 4,
+      "tau_lift_tau0_plus": [
+        1,
+        -1,
+        -1,
+        -1,
+        -1,
+        1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 8,
+      "tau_period_relation": "doubles_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "11.1038667445264",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 72,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 8,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "e45df763bfcfe81a439d07b60bd3b8ca37df945a687177054000d41dfd41168c",
+      "endpoint_spectra_signature_sha256": "fccd2f707bfbee1f97eb01284a0f55b4b5a4dcda2269bd89194c5cb3aed8f563"
+    },
+    {
+      "orbit_id": "P8-18",
+      "canonical_q_bits": "11111111",
+      "canonical_q_code": 255,
+      "canonical_q_signs": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "defect_count": 8,
+      "orbit_size": 1,
+      "stabilizer_size": 16,
+      "primitive_q_period": 1,
+      "tau_lift_tau0_plus": [
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1,
+        1
+      ],
+      "primitive_tau_period": 1,
+      "tau_period_relation": "equals_q_period",
+      "target_phase": false,
+      "all_unbalanced_phase": false,
+      "cyclic_plus_separation": null,
+      "numeric_preview": {
+        "status": "OBSERVED",
+        "sample_count": 4096,
+        "rho_squared": "16",
+        "theta_over_pi": "0",
+        "candidate_z_endpoint": 1
+      },
+      "exact_lower_certificate": {
+        "method": "rayleigh_at_z_pm1",
+        "z": 1,
+        "vector": [
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1,
+          -1
+        ],
+        "numerator": 128,
+        "denominator": 8,
+        "difference_from_8_times_denominator": 64,
+        "comparison_to_8": ">"
+      },
+      "exact_sharp_constant": null,
+      "classification_status": "STRICTLY_ABOVE_EIGHT_CERTIFIED",
+      "squared_charpoly_signature_sha256": "b70bd6d9f08b5b389c402e01c951d87a7acd2a708033c676a57fdbe8e617dbb6",
+      "endpoint_spectra_signature_sha256": "1ec0cb1e4b4aa02f470ccda39a8162275214b8f59fd51160459eee3fcd5985bd"
+    }
+  ],
+  "d2_shell": {
+    "status": "D2_TARGET_UNIQUE_OPTIMUM_FINITE_EXACT_CLASSIFICATION",
+    "proof_type": "finite exact table using target eta<8 and three strict endpoint Rayleigh certificates",
+    "rows": [
+      {
+        "orbit_id": "P8-02",
+        "canonical_q_bits": "00000011",
+        "cyclic_plus_separation": 1,
+        "target_phase": false,
+        "certificate_comparison_to_8": ">"
+      },
+      {
+        "orbit_id": "P8-03",
+        "canonical_q_bits": "00000101",
+        "cyclic_plus_separation": 2,
+        "target_phase": false,
+        "certificate_comparison_to_8": ">"
+      },
+      {
+        "orbit_id": "P8-04",
+        "canonical_q_bits": "00001001",
+        "cyclic_plus_separation": 3,
+        "target_phase": false,
+        "certificate_comparison_to_8": ">"
+      },
+      {
+        "orbit_id": "P8-06",
+        "canonical_q_bits": "00010001",
+        "cyclic_plus_separation": 4,
+        "target_phase": true,
+        "certificate_comparison_to_8": "eta<8"
+      }
+    ]
+  },
+  "target": {
+    "q_orbit": "00010001",
+    "eta": "sqrt(2*sqrt(5) + 10) + 4",
+    "rho_star": "sqrt(sqrt(2*sqrt(5) + 10) + 4)",
+    "unique_period8_minimizer": true
+  },
+  "runner_up": {
+    "q_orbit": "00000000",
+    "sharp_squared_constant": "8",
+    "sharp_spectral_radius": "2*sqrt(2)",
+    "unique": true,
+    "exact_squared_gap": "4 - sqrt(2*sqrt(5) + 10)",
+    "exact_radius_gap": "2*sqrt(2) - sqrt(sqrt(2*sqrt(5) + 10) + 4)"
+  },
+  "ranking": {
+    "method": "Task 40A exact target constant, fresh all-unbalanced upper identity, and exact endpoint Rayleigh lower certificates",
+    "competitor_classes_certified_ge_8": 17,
+    "competitor_classes_certified_gt_8": 16,
+    "ties_with_target": [],
+    "classes_better_than_target": []
+  },
+  "scope_boundary": {
+    "period8_infinite_volume_optimality": "PROVED",
+    "finite_size_global_optimality": "NOT_CLAIMED",
+    "all_period_global_optimality": "NOT_CLAIMED",
+    "all_signings_global_optimality": "NOT_CLAIMED"
+  },
+  "checker": {
+    "path": "research/scripts/verify_target_a_period8_pattern_classification.py",
+    "status": "TARGET_A_PERIOD8_PATTERN_CLASSIFICATION_PASS"
+  },
+  "script_sha256": "bacfd061e7ca7bbd33c07b6e9aea7186ef697aaa4c13468362dde338db98ca52",
+  "next_gate": "Task 40C"
+}

@@ -14,8 +14,10 @@
 - Floquet 审计：**PERIOD8_FLOQUET_DETERMINANT_INDEPENDENTLY_AUDITED**；从有限矩阵、twisted Bloch 分解和双 determinant 路线独立重得 `P(y,c)`
 - 无限族审计：**PERIOD8_INFINITE_FAMILY_INDEPENDENTLY_AUDITED**；正系数 uniform certificate、代数 threshold isolation 与双 holonomy 全部独立 PASS
 - sharp 常数：**PERIOD8_SHARP_SPECTRAL_CONSTANT_PROVED**；`rho_*^2=4+sqrt(10+2sqrt(5))`，唯一 band edge 为 `z=1`
+- period-8 分类：**PERIOD8_UNIQUE_OPTIMUM_AND_SECOND_BEST_PROVED**；128 个合法 flux vectors 的 18 个 `D_8` orbits 已完整分类，target 是唯一最优相
+- 唯一第二名：全 unbalanced phase `Q=(-)^8`，`rho^2=8`；其余 16 类均以 exact Rayleigh certificate 证明严格大于 8
 - 有限尺寸：`alpha=+1` 对每个 `n=8L` 精确达到 `rho_*`；`alpha=-1` 严格低于并收敛到 `rho_*`
-- 下一关卡：Task 40B 分类全部 period-8 flux patterns 并检验该 phase 的 period-8 optimality；暂不开始论文正文
+- 下一关卡：Task 40C 提炼 period-8 唯一最优相的结构机制与 theorem package；暂不开始 novelty audit 或论文正文
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围
