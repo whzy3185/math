@@ -6,7 +6,7 @@
 
 ## 当前阶段
 
-- 阶段：Target A——signed circulant 反例审计与论文整理
+- 阶段：Target A——一般周期结构障碍与低周期谱前沿
 - 状态：**DISPROVED**；已证明 period-8 无限反例族，覆盖所有 `8|n, n≥32`
 - 首个且最小的反例阶数：`n=32`
 - 最小性状态：**SMALLEST_COUNTEREXAMPLE_VERIFIED**；有限穷举精确排除所有偶数 `8≤n≤30`，`n=32` 有显式精确证书
@@ -18,8 +18,10 @@
 - 唯一第二名：全 unbalanced phase `Q=(-)^8`，`rho^2=8`；其余 16 类均以 exact Rayleigh certificate 证明严格大于 8
 - 结构机制：**PERIOD8_STRUCTURAL_MECHANISM_PROVED**；`R(Q)<8` 当且仅当两个 positive-flux defects 对置，`R(Q)=8` 当且仅当 `Q=(-)^8`
 - closed-walk/chiral：`M_2=160+16d`、`M_3=944+168d+96a+48b`；target 具有规范化 anti-period-4 chiral involution 和 `4+4` block reduction
+- 一般周期 closed-walk：**GENERAL_PERIOD_CLOSED_WALK_OBSTRUCTIONS_PROVED**；对任意 `p>=1`，`M_1=4p`、`M_2=20p+16d`、`M_3=118p+168d+96a+48b`
+- 一般周期 8-barrier 必要条件：`R(Q)<=8` 推出 `d<=3p/4` 且 `40d+96a+48b<=42p`；不声称充分性或全周期最优性
 - 有限尺寸：`alpha=+1` 对每个 `n=8L` 精确达到 `rho_*`；`alpha=-1` 严格低于并收敛到 `rho_*`
-- 下一关卡：Task 41 对当前结果执行 novelty 与 priority audit；在完成前不开始论文正文
+- 下一关卡：Task 42B 完整分类 `p<=16` 的低周期谱前沿；Task 41 novelty/priority audit 在隔离通道并行，不开始论文正文
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围

@@ -264,3 +264,17 @@
 - **验证：** Task 40C tests 28/28 PASS；Target A focused tests 153/153 PASS；default 166 项中 163 PASS、3 个既有 slow tests 跳过；Task 38 Floquet、Task 39 infinite family、Task 40A sharp、Task 40B classification、Task 40C mechanism、独立 n32 reconstruction、n32 certificate 与完整 minimality certificate 全部 PASS。
 - **产物：** `research/proofs/target_a_period8_structural_mechanism.json`（SHA-256 `34212c53f16e2fe67e2ed2c7b00cd37f62e4fe97eae48d1e33e2350b40f3f728`）；`research/proofs/TARGET_A_PERIOD8_STRUCTURAL_MECHANISM.md`（SHA-256 `ca89c37eeabe100d3f2fe62695cf99b2cba6eaf116966862eb0e45352e7277d4`）；主脚本 SHA-256 `381f92aa983c701dee2319aa15470e17e1bc9fa2062ee7a74386c56dd7e367c5`；checker SHA-256 `428995679eff90b81b9fa6d628392019cb5a890a01283d8e7890cf262827750f`；测试与 theorem package。
 - **下一步：** Task 41 对 arXiv、期刊发表、作者更新、引用与后续 signed-circulant 文献执行 current novelty/priority audit；在审计完成前不开始论文 manuscript。
+
+---
+
+## 2026-08-16 — Target A Task 42A：一般周期 closed-walk identities 与 8-barrier 必要障碍
+
+- **研究对象：** 将 Task 40C 的 period-8 closed-walk 机制推广到任意整数周期 `p>=1` 的 Hamilton-gauge signing；只建立一般周期必要条件，不声称充分性、全周期最优性、有限尺寸全局最优性或所有 signing 的全局结论。
+- **一般 `A^2` 局部公式：** 从无限 lattice 的四条 transitions 独立相乘，得到 displacement `-4,...,+4` 的完整系数；公式不含 `p`。对周期 `1,...,8` 的全部 510 个 `tau` words、3586 个 rows 逐项核验，覆盖短胞元 residue collision。
+- **符号闭步推导：** 枚举 `{-2,-1,+1,+2}` 上全部长度 2、4、6 closed step words，共 `4/36/430` 条；将闭步 tau 单项式的成对端点严格改写为 Q 区间乘积，再按平移类收集，独立得到 `M_1=4p`、`M_2=28p+8 sum Q_i`、`M_3=238p+156 sum Q_i+24 sum Q_iQ_(i+1)+12 sum Q_iQ_(i+2)`。置 `I_i=(1+Q_i)/2` 后化为 `M_2=20p+16d` 与 `M_3=118p+168d+96a+48b`。
+- **一般 8-barrier 障碍：** 若 `R(Q)<=8`，则逐 band 有 `y^(k+1)<=8y^k`，故 `M_(k+1)<=8M_k`。由 `F_1=16d-12p` 得 `d<=3p/4`；由 `F_2=-42p+40d+96a+48b` 得 `40d+96a+48b<=42p`。只使用严格反命题 `F_k>0 => R>8`，明确拒绝以非正 excess 证明上界。
+- **机器验证：** 主路线全枚举 `p=1,...,12` 的 4095 个合法 Q，另以固定 seed 在 `p=13,17,24,31,48` 核验 320 个样本，并检查 translation、reflection、`tau -> -tau`。第二条 exact Laurent-polynomial 路线对 `p<=6` 的 63 个合法 Q 逐项重算常数项。独立 checker 不导入主脚本，以递归闭步枚举、`p<=10` 全枚举及另一随机 seed 重验；无数值积分。
+- **状态：** `GENERAL_PERIOD_CLOSED_WALK_IDENTITIES_PROVED`、`GENERAL_PERIOD_DEFECT_DENSITY_OBSTRUCTION_PROVED`、`GENERAL_PERIOD_LOCAL_CLUSTER_OBSTRUCTION_PROVED`；总状态 `GENERAL_PERIOD_CLOSED_WALK_OBSTRUCTIONS_PROVED`。可读局部 motif basis 已在 `M_3` 达成，因此 optional `M_4` 不进入本 theorem package，下一步转 Task 42B。
+- **负向测试：** M3 coefficient、raw closed-walk expansion、density implication direction、nonpositive excess overclaim、necessary-as-sufficient、all-period global overclaim、quadrature 与 source SHA 篡改均按要求 FAIL；Task 42A tests 15/15 PASS，Task 40A/40B/40C/42A 定向回归 91/91 PASS，全套 default tests 为 178 PASS、3 个既有 slow generator tests SKIP、17 subtests PASS；独立 checker `TARGET_A_GENERAL_PERIOD_MOMENTS_PASS`。
+- **产物：** 主脚本 SHA-256 `04579c1d67c6af2da2a2629ba97352294864c19ae3a9b0ccc832111587731c6d`；checker `563ec3882130037de1136da8ea695be5b2d0d1ad4c46194d829614628ca4637d`；测试 `190506ba146b83ecd76459a71eb424d0bafa89a0aef4ede4d1f2907409fde527`；JSON `566928bc0fc06bc984a102d29f84a8694d9c9cb17b254e8940d3c53bdaac2401`；proof markdown `14bb089d2d3dbb375ca0e409557fc1fd8121ad5106f2e08cb5d7005aef8d7a33`。
+- **下一步：** Task 42B 以 explicit dihedral orbit enumeration 与独立 Burnside count 完整核验 `p<=16` 的 2626 个 legal-Q orbit diagnostics，并分类 primitive tau phases 的低周期谱前沿；Task 41 novelty/priority audit 与 Lane R full reproduction 继续并行。
