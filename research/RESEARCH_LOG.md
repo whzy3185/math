@@ -295,3 +295,17 @@
 - **独立验证：** checker 不导入 classifier，重算两路 orbit counts、全部 Q/tau/orbit/primitive/geometric data、1787 个 moment 与 837 个 endpoint certificates、24 个 Sturm polynomials/intervals 及 target repetition；`TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER_PASS`。Task 42B tests 15/15 PASS，Task 40A/40B/40C/42A/42B 定向回归 106/106 PASS，全套 default tests 为 193 PASS、3 个既有 slow generator tests SKIP、17 subtests PASS。
 - **产物：** classifier SHA-256 `0bea57a542dd5f1fc92745bb803185fca6fa432053efba6fe099d815cc2e7730`；checker `f6f2eae206e735d4caaa8560faabbb4e5edf5a01fda096c41653161ee97291c9`；tests `c13753b0cfb113bea7ffff40d7699b0bd4b2761015bab988f7cf0a5a5dccd72c`；JSON `82e69ab7df7d81d6c2c46364a6e07aba7578fbc3ad21a69dcc17ffd08333928d`；proof markdown `a3e155b00744cd33e40d525494a11cc54bbb7fe1a310148f5db4af7eea83159c`。
 - **下一步：** Task 42C 用 Task 42A general moments、defect density、local clusters、gap statistics 与 primitive/chiral structure 压缩 2624 份 exact exclusions；Task 41 handoff 完成后追加 N10/N11 targeted novelty search，Lane R 继续冻结重算。
+
+---
+
+## 2026-08-16 — Target A Task 42C：低周期 exact frontier 的 closed-walk 结构压缩
+
+- **研究对象：** 将 Task 42B 对 `p<=16` 的 2624 个 competitor representations 从大规模逐类 endpoint certificates 压缩为统一 moment hierarchy、一个 cancellation baseline lemma 与极少数 residual certificates；不扩大 Task 42B 的 bounded theorem scope。
+- **adaptive moment hierarchy：** 对每类精确计算 `F_k=M_(k+1)-8M_k`，先统一检查 `F_1,...,F_24`，仅对 residual 扩展到 `F_25,...,F_64`。严格只用 `F_k>0 => R>8`，不以 finite negative excess 证明上界。共 2611 类出现首次 positive excess：`F1/F2/F3/F4/F5` 分别检测 `64/1723/493/178/56` 类，最晚的两类分别到 `F48` 与 `F64` 才越过，说明低密度 near-barrier geometry 需要长 closed walks。
+- **15 类稳定 residual：** 8 类是 `Q=(-)^p` 的重复 cells，统一由 period-independent identity `A^2=4I+S^2+S^-2+S^4+S^-4` 得 exact `R=8>eta`；2 类是同一 target phase 的 `p=8/16` 表示，依赖 Task 40A 得 `R=eta`；其余 5 类为 `P10-0006/P12-0006/P14-0006/P14-0154/P16-0006`。
+- **exception geometry：** 四个 `P(2m)-0006` residuals 是 positive defects cyclic separation 4、另一 gap 逐渐增大的 primitive phases；`P14-0154` 是 cyclic gaps `3,4,3,4` 的四-defect phase。对五类仅保留 Task 42B exact endpoint integer Rayleigh certificate 证明 `R>eta`。numeric previews 不作为证明，也不声称前四类 exact `R<8` 或 `P14-0154` exact `R=8`。
+- **compression accounting：** `2611 moment + 8 baseline + 5 endpoint = 2624 competitors`，再加 2 target representations 恰覆盖 2626 orbits，overlap/omission/uncertified 均为 0。Task 42B 的 837 个 endpoint certificates 中有 832 个被统一 moment route 替换。
+- **状态与 scope：** 新状态 `LOW_PERIOD_STRUCTURAL_FRONTIER_PROVED`。它证明 primitive period≤16 frontier 的结构压缩，不声明 negative excess upper bound、period≥17、all-period optimum 或论文 package ready。
+- **独立验证：** checker 不导入 structural classifier，从 Task 42B orbit table 重建每类 signed closed walks，逐项核验首次 positive index/value 到 `F64`，重建 15 类 residual partition，并重新乘五个 endpoint matrices/vectors 与 exact eta comparison；`TARGET_A_LOW_PERIOD_STRUCTURAL_FRONTIER_PASS`。Task 42C tests 11/11 PASS；全套 default tests 为 204 PASS、3 个既有 slow generator tests SKIP、17 subtests PASS。
+- **产物：** classifier SHA-256 `c3681df7083c96b754507a40491ee0f58737546b6f0e9003dade2f228d41d18e`；checker `0f6238c45f72aae1ac5ab8daed758e9f5642e0138404de0caedb4cdd721ec0a2`；tests `f40db0b48d32fe8ec735896cb7df892eccddecae4d3a721a703b0348aef314a2`；JSON `7f9fe5b0f318f07b31d71c638049bc9458422fae9ad4c5ee40062c40b5891b71`；proof markdown `cd6de9cc2c5a201247b09814815ced50aa68bf6133a203569bc3a877ee6e2c01`。
+- **下一步：** 同步接收 Task 41 经 N10/N11 targeted search 更新的 handoff；核验 safe wording 后由 main agent 导入。Lane R 完成 n30、certificate replay 与 slow generator tests 后再导入精简 reproduction summary。
