@@ -1,8 +1,8 @@
-# 1. Introduction
+\section{Introduction}
 
 Signed adjacency matrices provide a concrete meeting point of spectral graph
-theory, switching theory, and discrete magnetic or flux-phase ideas. If `G` is
-a graph and every edge receives a sign in `{+1,-1}`, switching the signs at a
+theory, switching theory, and discrete magnetic or flux-phase ideas. If \(G\) is
+a graph and every edge receives a sign in \({+1,-1}\), switching the signs at a
 vertex conjugates the signed adjacency matrix by a diagonal sign matrix.
 Consequently the spectrum depends on cycle fluxes rather than on the chosen
 edge gauge. The optimization problem of minimizing spectral radius over all
@@ -10,27 +10,27 @@ signings can therefore be viewed as a finite flux-phase problem.
 
 We study this problem for the four-regular circulant
 
-```text
+\begin{lstlisting}[language={}]
 G_n=C_n(1,2),
-```
+\end{lstlisting}
 
-whose vertices are the residues modulo `n` and whose edges join vertices at
+whose vertices are the residues modulo \(n\) and whose edges join vertices at
 cyclic distances one and two. Suvagiya identified a distinguished family in
-which the triangle fluxes alternate [5]. For even `n`, the two members of that
+which the triangle fluxes alternate \cite{Suvagiya2026Signed}. For even \(n\), the two members of that
 family with negative step-one Hamilton-cycle holonomy have spectral radius
 
-```text
+\begin{lstlisting}[language={}]
 rho_-(n)=2 sqrt(cos^2(pi/n)+cos^2(2pi/n)).
-```
+\end{lstlisting}
 
-Conjecture 3 of [5] states that no signing of `G_n` has smaller spectral
-radius. That paper verified the assertion for `n=8,10,...,18` and left the
+Conjecture 3 of \cite{Suvagiya2026Signed} states that no signing of \(G_n\) has smaller spectral
+radius. That paper verified the assertion for \(n=8,10,...,18\) and left the
 general lower bound open.
 
 The inherited ingredients are the alternating-triangle family, its four
-switching/holonomy classes, the displayed formula for `rho_-(n)`, and the
-conjecture itself [5]; the companion parity-family framework is developed in
-[4]. The counterexample, its minimality, the infinite periodic family, the
+switching/holonomy classes, the displayed formula for \(\rho_-(n)\), and the
+conjecture itself \cite{Suvagiya2026Signed}; the companion parity-family framework is developed in
+\cite{Suvagiya2026Parity}. The counterexample, its minimality, the infinite periodic family, the
 sharp band edge, and the period-eight and low-period classifications proved
 here are new results of the present article.
 
@@ -38,9 +38,9 @@ The conjecture is false. Its failure is nevertheless delayed: every admissible
 order below 32 satisfies the proposed lower bound. The first counterexample is
 an order-32 signing whose triangle-flux word is the fourfold repetition of
 
-```text
+\begin{lstlisting}[language={}]
 (+,+,-,+,-,-,+,-).
-```
+\end{lstlisting}
 
 The same word defines an eight-periodic operator. Its Floquet polynomial can be
 computed exactly, and a uniform positivity argument turns the isolated witness
@@ -48,12 +48,12 @@ into an infinite family for all multiples of eight at least 32. The resulting
 analysis does more than refute the conjecture: it reveals a sharp period-eight
 spectral edge and a structural cancellation mechanism.
 
-## 1.1 Main results
+\subsection{Main results}
 
 Our first result combines an exact witness with exhaustive finite exclusion.
 
-**Theorem A (smallest counterexample).**  The conjectured lower bound holds for
-every even `n` with `8<=n<=30`. It fails at `n=32`. Hence 32 is the smallest
+\textbf{Theorem A (smallest counterexample).}  The conjectured lower bound holds for
+every even \(n\) with \(8\le n\le 30\). It fails at \(n=32\). Hence 32 is the smallest
 counterexample order.
 
 The exclusion through 30 is a finite computer-assisted theorem. Its proof
@@ -63,71 +63,71 @@ short exact positive-definiteness certificate.
 
 The witness extends periodically.
 
-**Theorem B (infinite counterexample family).**  For every `n=8L` with `L>=4`
+\textbf{Theorem B (infinite counterexample family).}  For every \(n=8L\) with \(L\ge 4\)
 and either Hamilton holonomy, the period-eight signing defined in Section 4
 satisfies
 
-```text
+\begin{lstlisting}[language={}]
 rho(A)^2 < 1561/200 < rho_-(n)^2.
-```
+\end{lstlisting}
 
 Thus the conjecture fails at every multiple of eight at least 32. We do not
 claim that it fails at every even order above 32.
 
 The Floquet analysis is sharp at infinite volume.
 
-**Theorem C (exact period-eight edge).**  For the target period-eight phase,
+\textbf{Theorem C (exact period-eight edge).}  For the target period-eight phase,
 the squared infinite-volume spectral radius is
 
-```text
+\begin{lstlisting}[language={}]
 eta=4+sqrt(10+2sqrt(5)),
-```
+\end{lstlisting}
 
-and the top band reaches `eta` only at Bloch parameter `z=1`.
+and the top band reaches \(\eta\) only at Bloch parameter \(z=1\).
 
 The local mechanism is described by a complete phase classification. For a
-legal eight-periodic flux word `Q`, let `D(Q)` be the set of positive entries
-and let `R(Q)` denote the squared infinite-volume spectral radius.
+legal eight-periodic flux word \(Q\), let \(D(Q)\) be the set of positive entries
+and let \(R(Q)\) denote the squared infinite-volume spectral radius.
 
-**Theorem D (eight-barrier trichotomy).**  Exactly one of the following occurs:
+\textbf{Theorem D (eight-barrier trichotomy).}  Exactly one of the following occurs:
 
-```text
+\begin{lstlisting}[language={}]
 D(Q)=emptyset:                 R(Q)=8;
 D(Q)={j,j+4}:                 R(Q)=eta<8;
 all other legal period-8 Q:    R(Q)>8.
-```
+\end{lstlisting}
 
 In particular the target is the unique period-eight minimizer up to
 translation, reflection, and global edge-sign negation, and the all-negative phase
 is the unique runner-up.
 
 The same squared-operator calculation gives information at every period. Put
-`d=|D(Q)|`, let `a` count adjacent positive pairs, and let `b` count positive
+\(d=|D(Q)|\), let \(a\) count adjacent positive pairs, and let \(b\) count positive
 pairs at cyclic distance two.
 
-**Theorem E (general-period moment obstruction).**  For every legal
-`p`-periodic phase,
+\textbf{Theorem E (general-period moment obstruction).}  For every legal
+\(p\)-periodic phase,
 
-```text
+\begin{lstlisting}[language={}]
 M_1=4p,
 M_2=20p+16d,
 M_3=118p+168d+96a+48b.
-```
+\end{lstlisting}
 
-If `R(Q)<=8`, then necessarily
+If \(R(Q)\le 8\), then necessarily
 
-```text
+\begin{lstlisting}[language={}]
 d<=3p/4,
 40d+96a+48b<=42p.
-```
+\end{lstlisting}
 
 These are necessary conditions only.
 
 Finally we classify a bounded but nontrivial periodic domain.
 
-**Theorem F (low-period frontier).** Consider the infinite operators (2.1)
-whose Hamilton-gauge triangle word `tau` has least positive period at most 16,
-and minimize their squared infinite-volume radius `R`. The target phase is the
+\textbf{Theorem F (low-period frontier).} Consider the infinite operators (2.1)
+whose Hamilton-gauge triangle word \(\tau\) has least positive period at most 16,
+and minimize their squared infinite-volume radius \(R\). The target phase is the
 unique minimizer up to translation, reflection, global edge-sign negation, and repetition
 of the unit cell. Repeated cells are retained only for certificate accounting
 and are identified spectrally by zone folding.
@@ -139,33 +139,33 @@ repeated all-negative cells, five exact endpoint certificates handle the
 remaining competitors, and two displayed target rows are one phase related by
 zone folding.
 
-## 1.2 Proof strategy
+\subsection{Proof strategy}
 
 The first organizing device is Hamilton gauge. After switching all step-one
-edges to `+1` except for a single holonomy cut, a signing is encoded by a
-periodic word `tau` of triangle fluxes. Its adjacent products
+edges to \(+1\) except for a single holonomy cut, a signing is encoded by a
+periodic word \(\tau\) of triangle fluxes. Its adjacent products
 
-```text
+\begin{lstlisting}[language={}]
 Q_i=tau_i tau_(i+1)
-```
+\end{lstlisting}
 
 are the quadrilateral fluxes. Periodicity permits a Floquet decomposition into
-finite Hermitian Laurent matrices `H_Q(z)`. For the target word, the
+finite Hermitian Laurent matrices \(H_Q(z)\). For the target word, the
 characteristic determinant is even in the eigenvalue and reduces to a quartic
-`P(y,c)` in `y=lambda^2` and `c=z+z^(-1)`. An exact positive-coefficient
+\(P(y,c)\) in \(y=\lambda^2\) and \(c=z+z^{-1}\). An exact positive-coefficient
 expansion at the candidate edge proves the sharp bound and its equality case.
 
-The second device is to square the infinite operator. In `A_tau^2`, every
-odd-displacement coefficient contains a factor `1+Q_i`. Negative flux
+The second device is to square the infinite operator. In \(A_\tau^2\), every
+odd-displacement coefficient contains a factor \(1+Q_i\). Negative flux
 therefore cancels that coupling exactly, while positive flux activates an
 amplitude of absolute value two. Constant terms of even Bloch traces count
 signed closed walks. If all squared band values were at most eight, their
-successive moments would satisfy `M_(k+1)<=8M_k`. A positive excess therefore
+successive moments would satisfy \(M_{k+1}\le 8M_k\). A positive excess therefore
 forces the spectrum above eight. This one-way implication, combined with
 defect geometry, proves the period-eight trichotomy and supplies the general
 period obstructions.
 
-## 1.3 Scope and public status
+\subsection{Scope and public status}
 
 The results distinguish three optimization domains. Theorem D concerns
 infinite-volume phases of displayed period eight. Theorem F concerns periodic
@@ -179,7 +179,7 @@ the source paper, the author's listed follow-up materials, or the narrow
 direct-result searches recorded for this draft. This is a dated and bounded
 search statement, not an absolute priority claim.
 
-## 1.4 Organization
+\subsection{Organization}
 
 Section 2 fixes switching, flux, Floquet, moment, and equivalence notation.
 Section 3 proves Theorem A. Sections 4 and 5 prove the periodic family and its

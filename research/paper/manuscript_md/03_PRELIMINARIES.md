@@ -51,7 +51,7 @@ The signed operator then has the local form
 (A_tau x)_i=x_(i-1)+x_(i+1)+tau_(i-2)x_(i-2)+tau_i x_(i+2).       (2.1)
 ```
 
-The quadrilateral flux word is
+The distinguished local quadrilateral flux word is
 
 ```text
 Q_i=tau_i tau_(i+1).                                             (2.2)
@@ -75,6 +75,12 @@ the defect set and write `d=|D(Q)|`. We also use the cyclic local statistics
 a=#{i:Q_i=Q_(i+1)=+1},
 b=#{i:Q_i=Q_(i+2)=+1}.                                          (2.3)
 ```
+
+When `n=8`, the graph contains two additional step-two quadrilaterals not
+among the local cycles encoded by (2.2). This causes no loss of finite
+information: the cycle-basis coordinates `(tau,alpha)`, rather than `Q` alone,
+parametrize every switching class and are the coordinates used in the
+all-signings enumeration.
 
 ## 2.3 Floquet matrices
 
@@ -109,6 +115,16 @@ R(Q)=sup_(|z|=1) rho(H_tau(z))^2.                                (2.5)
 The two lifts of `Q` have the same value, so this notation is unambiguous.
 Notice that `R(Q)` is always a **squared** spectral radius.
 
+For every explicit fiber certificate below we use the canonical lift
+`tau_0=+1`, `tau_(i+1)=Q_i tau_i`, and the ordered fiber basis
+`(v_0,...,v_(p-1))`. The other lift is obtained by the diagonal conjugacy and
+fiber reparametrization in Lemma 2.1, so it has the same squared spectral
+conclusions.
+
+Whenever an explicit matrix representative is required, we write
+`H_Q(z):=H_(tau^can)(z)` for the fiber formed from this canonical lift and
+basis. The notation `R(Q)` and the moments `M_k(Q)` remain lift-invariant.
+
 If a finite graph has order `n=pL` and Hamilton holonomy `alpha`, its cell
 sequence satisfies `u_(m+L)=alpha u_m`. The unitary cell shift has eigenvalues
 exactly
@@ -130,7 +146,7 @@ the infinite-volume spectrum. We will not substitute one for the other.
 
 We record the equivalences used in classifying periodic phases.
 
-**Lemma 2.1 (translation, reflection, and negation).**  Translating `tau`,
+**Lemma 2.1 (translation, reflection, and edge-sign negation).** Translating `tau`,
 reflecting it by `tau_i -> tau_(-i-2)`, or replacing `tau` by `-tau` preserves
 `R(Q)`. On flux words reflection is `Q_i -> Q_(-i-3)`.
 
@@ -142,7 +158,8 @@ T_r A_tau T_r^(-1)=A_(translated tau),
 J A_tau J=A_(reflected tau).
 ```
 
-Both are unitary conjugacies. For negation let `(Dx)_i=(-1)^i x_i`. The
+Both are unitary conjugacies. For global edge-sign negation let
+`(Dx)_i=(-1)^i x_i`. The
 endpoints of a step-one edge have opposite `D` signs while those of a step-two
 edge have equal signs. Therefore
 
@@ -212,7 +229,7 @@ of nonpositive excesses, does not prove `R(Q)<=8`.
 
 ## 2.6 Distinguished constants
 
-For even `n>=8`, the conjectured threshold is
+For even `n>=8`, the conjectured threshold inherited from [5] is
 
 ```text
 rho_-(n)=2 sqrt(cos^2(pi/n)+cos^2(2pi/n)),

@@ -71,7 +71,15 @@ For later use we also record that `eta` has minimal polynomial
 Y^4-16Y^3+76Y^2-96Y+16                                         (5.7)
 ```
 
-and lies in `(1951/250,1561/200)`. In particular `eta<8`.
+Indeed, translation `Y=X+4` reduces (5.7) to
+`X^4-20X^2+80`. By Gauss's lemma, a rational factorization may be taken into
+monic integral quadratics. Vanishing of the cubic and linear coefficients
+reduces it either to `(X^2+a)(X^2+b)`, where
+`a+b=-20` and `ab=80`, or to
+`(X^2+rX+s)(X^2-rX+s)`, where `s^2=80`. The first case would make `a,b`
+roots of `T^2+20T+80`, whose discriminant 80 is not a square; the second has
+no rational `s`. Thus (5.7) is irreducible over `Q`. The number `eta` lies in
+`(1951/250,1561/200)`; in particular `eta<8`.
 
 ## 5.3 Monotonicity of the top band
 

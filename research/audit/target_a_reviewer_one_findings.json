@@ -1,0 +1,118 @@
+{
+  "schema_version": "1.0",
+  "manuscript_sha256": "d95e22a2a8028988402aa964bf95a143cf29136502398d7c50e59c7467105ba8",
+  "reviewed_utc": "2026-08-20T07:27:59Z",
+  "scores": {
+    "correctness": 3,
+    "novelty": 5,
+    "significance": 4,
+    "clarity": 4,
+    "proof_flow": 3,
+    "computer_assisted_acceptability": 2
+  },
+  "counts": {
+    "CRITICAL": 0,
+    "MAJOR": 1,
+    "MODERATE": 3,
+    "MINOR": 3,
+    "total": 7
+  },
+  "gate_pass": false,
+  "verdict": "MAJOR REVISION",
+  "findings": [
+    {
+      "id": "R1-001",
+      "severity": "MAJOR",
+      "category": "Computer-assisted proof",
+      "title": "The core exhaustive theorems lack an accessible submitted proof artifact",
+      "manuscript_line_references": [
+        "541-569",
+        "1193-1273",
+        "1292-1378",
+        "1640-1704"
+      ],
+      "consequence": "The smallest-counterexample assertion in Theorem A and the uniqueness assertion in Theorem F depend on millions of exact decisions and complete representative sets that are not present in the manuscript. Aggregate counts, claimed digests, and descriptions of external checkpoints do not let a referee verify either the per-state inequalities or the absence of an omitted or duplicated state. Appendix C gives repository-relative commands but no repository URL, immutable commit, archival DOI, artifact manifest, or submitted certificate bundle. The disclosed limitation that recordwise independent generator agreement stops at order 24 is especially material because minimality depends on orders 26, 28, and 30. As submitted, these headline claims are not auditable computer-assisted proofs.",
+      "required_revision": "Deposit the complete checker source, canonical representative manifests, exact certificate or checkpoint data needed for every decisive state, pinned dependencies, and regeneration instructions in a stable public archive; cite its immutable identifier in the paper and bind the paper to artifact hashes. Include a compact machine-checkable manifest in the supplement and explain precisely which independent checks cover each order. Theorem A and Theorem F should not be presented as proved until that supplement is part of the submission and can be rerun by a referee."
+    },
+    {
+      "id": "R1-002",
+      "severity": "MODERATE",
+      "category": "Proof completeness",
+      "title": "The displayed order-32 LDL^T certificate is described but not displayed",
+      "manuscript_line_references": [
+        "473-513",
+        "1616-1625"
+      ],
+      "consequence": "Proposition 3.1 says that 32 pivots or leading principal minors are positive, while Appendix B says those values constitute the exact certificate, but none is given. Thus the proof at the point where Theorem A invokes it is not checkable from the manuscript. This does not appear fatal to the mathematics because Sections 4.1-4.3 later provide a separate, explicit Floquet-polynomial positivity proof of the stronger uniform bound.",
+      "required_revision": "Either list the 32 pivots or minors in Appendix B or rewrite Proposition 3.1 to invoke the explicit determinant and positivity argument of Sections 4.1-4.3, moving that argument before Theorem A if necessary for a clean proof order."
+    },
+    {
+      "id": "R1-003",
+      "severity": "MODERATE",
+      "category": "Exact certificates and notation",
+      "title": "H_Q(z) is not defined at the lift level needed by the five Rayleigh certificates",
+      "manuscript_line_references": [
+        "268-272",
+        "311-318",
+        "1231-1255",
+        "1581-1614"
+      ],
+      "consequence": "A legal Q has two lifts, tau and -tau. The manuscript establishes that their squared spectral radii agree, which makes R(Q) unambiguous, but an explicit matrix-vector quotient depends on which lift and fiber basis are used. The five vectors are therefore not formally reconstructible from the stated notation H_Q(z). Under the natural convention tau_0=+1 followed by tau_(i+1)=Q_i tau_i, all five displayed quotients do reproduce exactly, so this appears to be a specification defect rather than a false calculation.",
+      "required_revision": "Define a canonical lift and fiber ordering for every explicit certificate, preferably tau_0=+1 with the recursion already given, or list the full tau word for each row. State how the certificate transforms under the other lift."
+    },
+    {
+      "id": "R1-004",
+      "severity": "MODERATE",
+      "category": "Proof completeness",
+      "title": "Closed-walk enumerations closing Theorems D and E are asserted without an auditable derivation",
+      "manuscript_line_references": [
+        "943-954",
+        "987-1002",
+        "1092-1107",
+        "1285-1301"
+      ],
+      "consequence": "The coefficients in M_3, the collection of 430 length-six words, and the first positive excesses F_4=5504, F_6=64336, and F_9=2872096 are essential to the period-eight trichotomy and general moment theorem. The manuscript states the enumeration rule and outputs but does not provide the grouped count table, a recurrence, or an included checker. The values are internally consistent and the three excesses can be independently reconstructed, but the proof body is thinner than the manuscript's classification of these results as fully algebraic.",
+      "required_revision": "Add a short dynamic-programming or Laurent-polynomial recurrence, the grouped monomial counts, and a compact exact checker or supplementary table reproducing the stated moments and excesses. State explicitly whether these steps are hand-verifiable finite algebra or computer-assisted calculations."
+    },
+    {
+      "id": "R1-005",
+      "severity": "MINOR",
+      "category": "Citation and novelty positioning",
+      "title": "The source conjecture and inherited spectral formula are not cited in the body",
+      "manuscript_line_references": [
+        "43-53",
+        "421-439",
+        "1725-1728"
+      ],
+      "consequence": "The introduction attributes results to Suvagiya and repeatedly invokes the source paper, but no in-text citation points to reference 5. This weakens the boundary between inherited material and the manuscript's new contribution and leaves most of the bibliography orphaned.",
+      "required_revision": "Cite the original paper at the first definition of the distinguished family, the formula for rho_-(n), and Conjecture 3; cite the companion work where relevant; and add a concise related-work paragraph explaining which propositions are borrowed and which results are new."
+    },
+    {
+      "id": "R1-006",
+      "severity": "MINOR",
+      "category": "Terminology at order eight",
+      "title": "Quadrilateral flux word is potentially misleading for n=8",
+      "manuscript_line_references": [
+        "213-217",
+        "262-285",
+        "534-545"
+      ],
+      "consequence": "At order eight the graph has two additional step-two quadrilaterals beyond the local cycles encoded by Q_i=tau_i tau_(i+1). The manuscript's coordinate system remains complete because (tau,alpha) is used for finite signings, but the unqualified term quadrilateral flux word can be read as encoding every quadrilateral flux at n=8.",
+      "required_revision": "Call the Q_i the distinguished or local quadrilateral fluxes and add a sentence noting the two exceptional order-eight quadrilaterals and why they do not affect the complete (tau,alpha) parametrization or the all-signings enumeration."
+    },
+    {
+      "id": "R1-007",
+      "severity": "MINOR",
+      "category": "Scope definition",
+      "title": "The primitive-period domain in Theorem F should be stated self-containedly",
+      "manuscript_line_references": [
+        "146-149",
+        "1167-1191",
+        "1208-1219",
+        "1270-1277"
+      ],
+      "consequence": "Primitive Hamilton-gauge period is not formally defined in the theorem statement, and the enumeration mixes displayed Q cells with primitive tau periods and repeated cells. The later discussion makes the intended infinite-volume domain recoverable, but the headline theorem can be misread as minimizing over primitive Q periods or over finite holonomy sectors.",
+      "required_revision": "State directly that the domain consists of infinite operators whose Hamilton-gauge triangle word tau has primitive period at most 16, that the minimized quantity is the squared infinite-volume radius R, and that repeated displayed cells are retained only for complete certificate accounting and then identified by zone folding."
+    }
+  ]
+}

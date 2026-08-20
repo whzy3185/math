@@ -32,6 +32,11 @@ unique equality orbit at eight is `00000000`.
 
 ## B.2 Five low-period residual certificates
 
+For every row, reconstruct the canonical triangle lift by setting
+`tau_0=+1` and recursing through `tau_(i+1)=Q_i tau_i`. The vector coordinates
+are in the ordered fiber basis `(v_0,...,v_(p-1))` of Section 2.3. This fixes
+the matrix denoted by `H_Q(z)` below without any gauge ambiguity.
+
 For each row below, `H=H_Q(z)` and the listed integer vector is denoted by
 `v`. Direct matrix multiplication gives the stated rational quotient
 `r=||Hv||^2/||v||^2`.
@@ -65,7 +70,34 @@ argument (8.6) proves `r>eta`, and Rayleigh's principle proves `R(Q)>eta`.
 These five computations are the only individual endpoint certificates needed
 by the compressed proof of Theorem F.
 
-## B.3 The order-32 positive-definiteness certificate
+The other triangle lift is obtained from the canonical one by the conjugacy
+and fiber reparametrization of Lemma 2.1; transporting `v` through that unitary
+map gives the same quotient and conclusion.
+
+## B.3 Exact two-defect moment table
+
+For a period-eight word with two positive fluxes at cyclic separation `s`,
+the dynamic program (7.2)-(7.3) gives the following exact moments and excesses.
+The table includes every value needed to identify the first positive excess;
+only the positive entries are used to infer `R>8`.
+
+| `s` | sequence | `k=1,...,10` |
+|---:|---|---|
+| 1 | `M_k` | `32, 192, 1376, 10976, 93312, 823920, 7447136, 68348832, 633982976, 5926419872` |
+| 1 | `F_k`, `k=1,...,9` | `-64, -160, -32, 5504, 77424, 855776, 8771744, 87192320, 854556064` |
+| 2 | `M_k` | `32, 192, 1328, 9888, 76832, 612624, 4965328, 40683296, 335872832, 2788389472` |
+| 2 | `F_k`, `k=1,...,9` | `-64, -208, -736, -2272, -2032, 64336, 960672, 10406464, 101406816` |
+| 3 | `M_k` | `32, 192, 1280, 9056, 66592, 503088, 3877920, 30363808, 240761792, 1928966432` |
+| 3 | `F_k`, `k=1,...,9` | `-64, -256, -1184, -5856, -29648, -146784, -659552, -2148672, 2872096` |
+| 4 | `M_k` | `32, 192, 1280, 8928, 63872, 464496, 3417152, 25354656, 189356672, 1421345952` |
+| 4 | `F_k`, `k=1,...,9` | `-64, -256, -1312, -7552, -46480, -298816, -1982560, -13480576, -93507424` |
+
+Thus separations one, two, and three cross the barrier first at `F_4`, `F_6`,
+and `F_9`, respectively. The nonpositive displayed values for separation four
+are not used in the converse direction; that case is settled by the exact
+Floquet theorem of Section 5.
+
+## B.4 The order-32 positive-definiteness cross-check
 
 For the witness (3.1), form `M=1561I-200A_32^2`. The exact certificate consists
 of the 32 positive pivots of rational `LDL^T` elimination. Fraction-free
@@ -75,3 +107,8 @@ double route verifies both arithmetic consistency and the hypothesis of
 Sylvester's criterion. The conclusion is the strict inequality
 `rho(A_32)^2<1561/200`; no approximation to an eigenvalue is part of the
 certificate.
+
+This elimination is an independent arithmetic cross-check, not the logical
+proof used by Proposition 3.1. The proposition follows directly from the
+displayed fiber matrix (4.2), determinant (4.5), positive expansion (4.6),
+and finite Floquet decomposition (4.3).

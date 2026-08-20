@@ -6,7 +6,7 @@
 
 ## 当前阶段
 
-- 阶段：Target A——**TARGET_A_MANUSCRIPT_READY**；Reviewer Zero 写稿门禁已通过，尚未开始 manuscript
+- 阶段：Target A——**TARGET_A_MANUSCRIPT_MD_READY**；完整 Markdown V2、中文指南和可编译 LaTeX/PDF 已完成
 - 状态：**DISPROVED**；已证明 period-8 无限反例族，覆盖所有 `8|n, n≥32`
 - 首个且最小的反例阶数：`n=32`
 - 最小性状态：**SMALLEST_COUNTEREXAMPLE_VERIFIED**；有限穷举精确排除所有偶数 `8≤n≤30`，`n=32` 有显式精确证书
@@ -27,9 +27,9 @@
 - priority 边界：该结论受 indexing delay、Google Scholar 不可访问、Semantic Scholar/GitHub API 限流及非公开工作限制；项目自身 public GitHub disclosure 单列为 provenance，不计 independent prior
 - 慢复现：**TARGET_A_FULL_SLOW_REPRODUCTION_PASS**；`n=24,26,28,30` 已从搜索层 fresh regeneration，四条最终 checkpoint chain 与历史结果逐项一致，committed replay 和三个默认跳过的 generator audits 均 PASS，mismatch 0
 - Reviewer Zero：round 1 的 `0 CRITICAL / 4 MAJOR` 已全部修复或重述；独立盲审 round 2 为 `0 CRITICAL / 0 MAJOR / 5 MODERATE / 1 MINOR`，写稿门禁 PASS
-- 投稿边界：round 2 的 4 个开放非阻断修补项和 2 个 accepted computation-trust risks 已保留在 architecture/gate；当前状态允许 Task 44 写稿，不等于 submission-grade
+- 投稿边界：Reviewer One 最终 closure audit 为 `CRITICAL=0, MAJOR=0, MODERATE=0, MINOR=0`；计算信任边界和重生成资源仍在正文中公开披露
 - 有限尺寸：`alpha=+1` 对每个 `n=8L` 精确达到 `rho_*`；`alpha=-1` 严格低于并收敛到 `rho_*`
-- 下一关卡：Task 44——按冻结架构起草 manuscript，同时显式处理 Reviewer Zero 的 submission preflight；不自动继续 period 17+ 探索
+- 当前交付：`research/paper/manuscript_md/TARGET_A_MANUSCRIPT_V2.md`、`research/paper/manuscript_tex/main.tex` 与 `main.pdf`；不自动投稿，不自动继续 period 17+ 探索
 - 研究对象：C029 signed circulant global optimizer conjecture
 
 ## 优先研究范围

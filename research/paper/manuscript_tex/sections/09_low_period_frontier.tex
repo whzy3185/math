@@ -1,115 +1,121 @@
-# 8. The Low-Period Spectral Frontier
+\section{The Low-Period Spectral Frontier}
 
 We prove Theorem F by combining complete orbit enumeration with a compressed
 set of exact spectral exclusions. Its domain is the set of infinite operators
-(2.1) whose Hamilton-gauge triangle word `tau` has a least positive period
-`p<=16`; the minimized quantity is the squared infinite-volume radius (2.5),
+(2.1) whose Hamilton-gauge triangle word \(\tau\) has a least positive period
+\(p\le 16\); the minimized quantity is the squared infinite-volume radius (2.5),
 not a finite-holonomy spectrum. A word displayed in a repeated cell is kept
 only for complete certificate accounting and is identified with its primitive
 phase by zone folding. The theorem does not extrapolate beyond this domain.
 
-## 8.1 Complete phase space
+\subsection{Complete phase space}
 
-For each displayed cell length `1<=p<=16`, consider the legal flux words
+For each displayed cell length \(1\le p\le 16\), consider the legal flux words
 
-```text
+\begin{lstlisting}[language={}]
 Q in {+1,-1}^p,       product_i Q_i=1,                          (8.1)
-```
+\end{lstlisting}
 
 modulo rotations and reflections. Explicit orbit partition and the independent
 Burnside calculation of Appendix A give the counts
 
-```text
+\begin{lstlisting}[language={}]
 1,2,2,4,4,8,9,18,23,44,63,122,190,362,612,1162,                (8.2)
-```
+\end{lstlisting}
 
-whose sum is 2,626. Every periodic phase of primitive `tau` period at most 16
+whose sum is 2,626. Every periodic phase of primitive \(\tau\) period at most 16
 appears in the list when written in its primitive cell. Translation,
 reflection, global edge-sign negation, and cell repetition have the spectral
 equivalences proved in Lemmas 2.1-2.2.
 
-## 8.2 Exact exclusion scheme
+\subsection{Exact exclusion scheme}
 
 For every representative compute the moments (2.9). Lemma 2.3 supplies the
 valid implication
 
-```text
+\begin{lstlisting}[language={}]
 F_k>0 ==> R(Q)>8>eta.                                            (8.3)
-```
+\end{lstlisting}
 
-An adaptive exact closed-walk calculation through `F_64` finds a first
+An adaptive exact closed-walk calculation through \(F_64\) finds a first
 positive excess for 2,611 representatives. The first-positive indices range
 from 1 to 64; in particular, two near-barrier classes are first detected only
-at `F_48` and `F_64`. This calculation uses integer closed-walk sums, so the
+at \(F_48\) and \(F_64\). This calculation uses integer closed-walk sums, so the
 sign of every excess is exact.
 
 Fifteen representatives remain. Eight are displayed even-period repetitions
-of the all-negative phase. Equation (6.1) proves `R=8>eta` for all of them.
+of the all-negative phase. Equation (6.1) proves \(R=8>\eta\) for all of them.
 Two are
 
-```text
+\begin{lstlisting}[language={}]
 p=8:  Q=00010001,
 p=16: Q=0001000100010001,                                      (8.4)
-```
+\end{lstlisting}
 
 where zero denotes negative flux and one positive flux. Lemma 2.2 shows that
 the second row is the doubled-cell representation of the first, not a second
-phase; Section 5 gives their common value `R=eta`.
+phase; Section 5 gives their common value \(R=\eta\).
 
 The remaining five representatives are
 
-| `p` | canonical `Q` |
-|---:|---|
-| 10 | `0000010001` |
-| 12 | `000000010001` |
-| 14 | `00000000010001` |
-| 14 | `00010010001001` |
-| 16 | `0000000000010001` |
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\(p\) & canonical \(Q\) \\
+\midrule
+10 & \(0000010001\) \\
+12 & \(000000010001\) \\
+14 & \(00000000010001\) \\
+14 & \(00010010001001\) \\
+16 & \(0000000000010001\) \\
+\bottomrule
+\end{tabular}%
+\end{center}
 
-For each row choose `z in {+1,-1}` and a stored nonzero integer vector `v`.
-Let `H=H_Q(z)` and
+For each row choose \(z \in {+1,-1}\) and a stored nonzero integer vector \(v\).
+Let \(H=H_Q(z)\) and
 
-```text
+\begin{lstlisting}[language={}]
 r=(v^T H^2 v)/(v^T v).                                         (8.5)
-```
+\end{lstlisting}
 
 All arithmetic in (8.5) is integral before the final rational division. The
-five certificates first verify `r>4`. Put
+five certificates first verify \(r>4\). Put
 
-```text
+\begin{lstlisting}[language={}]
 u=((r-4)^2-10)/2.
-```
+\end{lstlisting}
 
-They then verify `u>0` and `u^2>5`. Since `r-4>0`, these inequalities select
+They then verify \(u>0\) and \(u^2>5\). Since \(r-4>0\), these inequalities select
 the positive square-root branch and give
 
-```text
+\begin{lstlisting}[language={}]
 (r-4)^2>10+2sqrt(5),
 r>4+sqrt(10+2sqrt(5))=eta.                                     (8.6)
-```
+\end{lstlisting}
 
-The condition `r>4` is indispensable: the two inequalities involving `u`
+The condition \(r>4\) is indispensable: the two inequalities involving \(u\)
 alone can also hold on the lower branch. Rayleigh's principle and (8.5)-(8.6)
-give `R(Q)>=r>eta` for each residual representative.
+give \(R(Q)\ge r>\eta\) for each residual representative.
 
-## 8.3 Completeness accounting
+\subsection{Completeness accounting}
 
 The exact partition is
 
-```text
+\begin{lstlisting}[language={}]
 2611  moment-detected representatives,
    8  repeated all-negative representatives,
    5  endpoint-certified residual competitors,
    2  displayed target representations,
 ----
 2626  total representatives.                                   (8.7)
-```
+\end{lstlisting}
 
 The sets in (8.7) are disjoint, and Appendix A proves that the 2,626
 representatives are the full legal orbit space. Every non-target phase in the
-domain therefore has `R(Q)>eta`, while the two target rows are one primitive
-period-eight phase with `R(Q)=eta`. This proves Theorem F. `square`
+domain therefore has \(R(Q)>\eta\), while the two target rows are one primitive
+period-eight phase with \(R(Q)=\eta\). This proves Theorem F. \(\square\)
 
 The nearest observed competitor occurs at period ten, but numerical ordering
 within a non-target period is not part of the theorem. What is proved exactly
-is the strict comparison of every competitor with `eta`.
+is the strict comparison of every competitor with \(\eta\).

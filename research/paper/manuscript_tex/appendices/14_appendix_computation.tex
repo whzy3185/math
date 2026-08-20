@@ -1,16 +1,16 @@
-# Appendix C. Computational Protocol
+\section{Computational Protocol}
 
-## C.1 Reference environment
+\subsection{Reference environment}
 
 The public proof artifact is the immutable Git snapshot
 
-```text
+\begin{lstlisting}[language={}]
 https://github.com/whzy3185/math/tree/
 c81be34a3b12a7ac47adbb4499c475df7bf4fc04
-```
+\end{lstlisting}
 
 and its submission binding is
-`research/reproducibility/target_a_submission_artifact_manifest.json`. The
+\path{research/reproducibility/target_a_submission_artifact_manifest.json}. The
 manifest records the artifact roles and SHA-256 hashes for Theorems A and F.
 Its verifier reads the named files from the pinned Git object, rather than
 silently accepting mutable working-tree copies. The snapshot contains all
@@ -22,36 +22,36 @@ draft's public artifact immutable and content-addressed.
 
 The reference interpreter and packages are:
 
-```text
+\begin{lstlisting}[language={}]
 Python 3.12.13
 NumPy 2.3.5
 SymPy 1.14.0
 pytest 9.1.1
-```
+\end{lstlisting}
 
 From a clean checkout with Python 3.12 available, a portable environment is
 created by
 
-```bash
+\begin{lstlisting}[language={bash}]
 python3.12 -m venv .venv-target-a
 .venv-target-a/bin/python -m pip install --upgrade pip
 .venv-target-a/bin/python -m pip install \
   -r research/reproducibility/requirements-target-a.txt
-```
+\end{lstlisting}
 
 All commands below are repository-relative.
 
-## C.2 Fast verification
+\subsection{Fast verification}
 
 The complete default regression suite is run by
 
-```bash
+\begin{lstlisting}[language={bash}]
 .venv-target-a/bin/python -m pytest -q research/scripts
-```
+\end{lstlisting}
 
 The principal theorem checkers may also be run separately:
 
-```bash
+\begin{lstlisting}[language={bash}]
 .venv-target-a/bin/python research/scripts/verify_target_a_minimality_certificate.py
 .venv-target-a/bin/python research/scripts/verify_target_a_period8_infinite_family.py
 .venv-target-a/bin/python research/scripts/verify_target_a_period8_sharp_constant.py
@@ -61,28 +61,28 @@ The principal theorem checkers may also be run separately:
 .venv-target-a/bin/python research/scripts/verify_target_a_low_period_structural_frontier.py
 .venv-target-a/bin/python research/scripts/verify_target_a_periodic_operator_equivalences.py
 .venv-target-a/bin/python research/scripts/verify_target_a_submission_artifact_manifest.py
-```
+\end{lstlisting}
 
 Each command fails closed on a mismatched dependency, count, exact
 certificate, scope flag, or source digest.
 
-## C.3 Slow generator audits
+\subsection{Slow generator audits}
 
 The three generator audits skipped by the default suite are enabled explicitly:
 
-```bash
+\begin{lstlisting}[language={bash}]
 TARGET_A_RUN_SLOW_GENERATOR_TESTS=1 \
 .venv-target-a/bin/python -m pytest -q \
   research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n26 \
   research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n28 \
   research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n30
-```
+\end{lstlisting}
 
 These tests independently check shell totals, Burnside counts, represented
 class totals, ordering, and parity. They are audits, not fresh spectral
 regeneration.
 
-## C.4 Regeneration versus integrity replay
+\subsection{Regeneration versus integrity replay}
 
 Fresh regeneration starts from the canonical generator, reconstructs every
 spectral state, recomputes its exact decision, and writes a new checkpoint
@@ -92,7 +92,7 @@ re-executes the mathematical decision for every state.
 
 For the production orders, choose an empty external directory and run
 
-```bash
+\begin{lstlisting}[language={bash}]
 export OUT=/absolute/path/to/target-a-regeneration
 mkdir -p "$OUT/checkpoints" "$OUT/results"
 for n in 24 26 28 30; do
@@ -101,20 +101,28 @@ for n in 24 26 28 30; do
     --checkpoint-dir "$OUT/checkpoints/n$n" \
     --output "$OUT/results/target_a_search_n$n.json"
 done
-```
+\end{lstlisting}
 
-An interrupted order is resumed by adding `--resume` to its command. Each
+An interrupted order is resumed by adding \(--resume\) to its command. Each
 result JSON records the completed state and shell totals, ordered input and
 certificate hashes, terminal checkpoint-chain hash, elapsed time, and peak
 resident memory. A successful reference run on an Apple M5 using Python
 3.12.13, NumPy 2.3.5, and SymPy 1.14.0 produced:
 
-| `n` | states | chunks | time (s) | peak RSS (MiB) | checkpoint disk | terminal chain SHA-256 |
-|---:|---:|---:|---:|---:|---:|---|
-| 24 | 353,812 | 28 | 25.3 | 75.1 | 1.1 MiB | `2dde869aea5da4f040e67a4fef3e93b5f35f5fb42d75f6d48820439f418c83c1` |
-| 26 | 1,299,064 | 76 | 117.2 | 84.4 | 3.1 MiB | `c515350b8bea840c04448086fbc98523615364c05ca837553c93efb933bc0c4e` |
-| 28 | 4,810,472 | 250 | 414.9 | 86.7 | 12 MiB | `7ba200b05590b2a9c0ea1121f25f89ddf1d294d0c043417e69f78f764f6e8ee1` |
-| 30 | 17,929,600 | 908 | 1542.3 | 135.2 | 43 MiB | `b7fd264eece645eead187424152ae810a9ff940e37ffc5649b5ddf65aa31d59d` |
+\begin{center}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllllll}
+\toprule
+\(n\) & states & chunks & time (s) & peak RSS (MiB) & checkpoint disk & terminal chain SHA-256 \\
+\midrule
+24 & 353,812 & 28 & 25.3 & 75.1 & 1.1 MiB & \texttt{\detokenize{2dde869aea5da4f040e67a4fef3e93b5f35f5fb42d75f6d48820439f418c83c1}} \\
+26 & 1,299,064 & 76 & 117.2 & 84.4 & 3.1 MiB & \texttt{\detokenize{c515350b8bea840c04448086fbc98523615364c05ca837553c93efb933bc0c4e}} \\
+28 & 4,810,472 & 250 & 414.9 & 86.7 & 12 MiB & \texttt{\detokenize{7ba200b05590b2a9c0ea1121f25f89ddf1d294d0c043417e69f78f764f6e8ee1}} \\
+30 & 17,929,600 & 908 & 1542.3 & 135.2 & 43 MiB & \texttt{\detokenize{b7fd264eece645eead187424152ae810a9ff940e37ffc5649b5ddf65aa31d59d}} \\
+\bottomrule
+\end{tabular}%
+}
+\end{center}
 
 Runtime is hardware-dependent; the observed sequential total was about 35
 minutes, peak per-process memory stayed below 150 MiB, and the four checkpoint
@@ -123,11 +131,11 @@ also records the ordered input and ordered certificate hashes, so a fresh run
 can be compared without access to an off-repository timing log. The committed
 chains themselves are replayed by
 
-```bash
+\begin{lstlisting}[language={bash}]
 .venv-target-a/bin/python research/scripts/target_a_checkpoint_replay.py \
   --n 24 26 28 30 \
   --output /tmp/target_a_checkpoint_replay.json
-```
+\end{lstlisting}
 
 The production checkpoints are committed. The fresh regeneration chunks and
 full runtime logs are retained outside the repository; their compact manifest
@@ -135,7 +143,7 @@ records state counts, chunk counts, ordered input and certificate digests, and
 terminal chain digests. Agreement of these logical fingerprints, rather than
 byte equality of timing metadata, defines mismatch zero.
 
-## C.5 Negative tests
+\subsection{Negative tests}
 
 Regression tests alter one logical field at a time and require rejection.
 They cover, among other faults, missing orbit representatives, duplicated

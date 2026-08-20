@@ -1,0 +1,124 @@
+{
+  "reviewer": "Reviewer One",
+  "round": 2,
+  "review_mode": "fresh_independent_adversarial",
+  "manuscript": {
+    "path": "/Users/muelsyse/Documents/Codex/2026-08-15/cha-k/work/math/research/paper/manuscript_md/TARGET_A_MANUSCRIPT_V2.md",
+    "sha256": "7371fb31dbba160fb8c91a967952cf00a20357a743a12a72339aaad67aacf556"
+  },
+  "source_paper": {
+    "url": "https://arxiv.org/html/2607.18334",
+    "version": "v1",
+    "date": "2026-07-19"
+  },
+  "verdict": "REVISION_REQUESTED_GATE_PASSES",
+  "scores": {
+    "mathematical_correctness": 9.0,
+    "novelty_positioning_relative_to_source": 9.0,
+    "proof_completeness": 8.0,
+    "notation_and_scope": 8.5,
+    "computer_assisted_proof_acceptability": 7.5,
+    "overall": 8.4,
+    "scale_max": 10.0
+  },
+  "severity_counts": {
+    "CRITICAL": 0,
+    "MAJOR": 0,
+    "MODERATE": 2,
+    "MINOR": 3
+  },
+  "gate_rule": "gate passes iff CRITICAL=0 and MAJOR=0",
+  "gate_pass": true,
+  "explicit_no_critical_or_major": true,
+  "findings": [
+    {
+      "id": 1,
+      "severity": "MODERATE",
+      "title": "Proof classification understates computational dependence of moment results",
+      "manuscript_lines": [
+        "1132-1147",
+        "1194-1198",
+        "1337-1351"
+      ],
+      "assessment": "Section 7 calls the closed-word coefficient collection computer-assisted, while Section 9.1 places the first three moment formulas among algebraic proofs. The recurrence and checker support correctness, but the proof boundary is inconsistent.",
+      "required_revision": "Classify the coefficient collection behind (7.4)-(7.6) and the period-eight F_4, F_6, and F_9 values as exact computer-assisted symbolic identities, or add a complete hand derivation."
+    },
+    {
+      "id": 2,
+      "severity": "MODERATE",
+      "title": "Finite minimality lacks a documented end-to-end regeneration command and fully archived replay at every order",
+      "manuscript_lines": [
+        "572-583",
+        "1372-1396",
+        "1421-1447",
+        "1776-1829"
+      ],
+      "assessment": "The deterministic exact source, quotient proof, committed checkpoint integrity, and disclosed trust limits support the theorem, but the submission protocol does not document full regeneration commands, resources, and retained outputs through order 30; some evidence remains aggregate or off-repository.",
+      "required_revision": "Add repository-relative fresh-regeneration commands, expected totals and terminal digests, resource estimates, and preferably archive the regeneration summaries and certificate-chain outputs needed for independent comparison."
+    },
+    {
+      "id": 3,
+      "severity": "MINOR",
+      "title": "Minimal-polynomial irreducibility is not shown",
+      "manuscript_lines": [
+        "811-817"
+      ],
+      "assessment": "The manuscript proves that eta is a root of (5.7) but does not prove that the polynomial is irreducible over Q.",
+      "required_revision": "Add a short irreducibility argument for the translated polynomial X^4-20X^2+80."
+    },
+    {
+      "id": 4,
+      "severity": "MINOR",
+      "title": "H_Q(z) is used without a formal matrix definition",
+      "manuscript_lines": [
+        "303-340",
+        "413-418",
+        "1652-1659"
+      ],
+      "assessment": "H_tau(z) is defined, but later H_Q(z) is used even though a matrix representative requires a chosen triangle lift and fiber convention.",
+      "required_revision": "Define H_Q(z) using the canonical lift, or retain H_tau(z) and use Q only for lift-invariant quantities."
+    },
+    {
+      "id": 5,
+      "severity": "MINOR",
+      "title": "Global gauge negation is misleading terminology",
+      "manuscript_lines": [
+        "125-127",
+        "363-385"
+      ],
+      "assessment": "Negating all edge signs sends A to a conjugate of -A and is not ordinary switching/gauge equivalence.",
+      "required_revision": "Use global edge-sign negation or triangle-lift negation."
+    }
+  ],
+  "novelty_assessment": {
+    "source_inherited_results_correctly_attributed": true,
+    "direct_overlap_with_claimed_new_results_found": false,
+    "priority_language_appropriately_bounded": true
+  },
+  "checker_replay": {
+    "advertised_venv_present": false,
+    "fallback_python": "3.9.6",
+    "passed": [
+      "verify_target_a_submission_artifact_manifest.py",
+      "verify_target_a_general_period_moments.py",
+      "verify_target_a_low_period_structural_frontier.py",
+      "verify_target_a_periodic_operator_equivalences.py"
+    ],
+    "blocked_missing_numpy": [
+      "verify_target_a_minimality_certificate.py"
+    ],
+    "blocked_missing_sympy": [
+      "verify_target_a_period8_infinite_family.py",
+      "verify_target_a_period8_sharp_constant.py",
+      "verify_target_a_period8_structural_mechanism.py",
+      "verify_target_a_low_period_spectral_frontier.py",
+      "verify_target_a_n32_certificate.py"
+    ],
+    "not_run": [
+      "default pytest suite",
+      "slow generator audits",
+      "fresh full spectral regeneration"
+    ]
+  },
+  "materials_scope_complied": true
+}

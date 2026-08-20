@@ -9,7 +9,8 @@ from pathlib import Path
 
 
 RESEARCH_ROOT = Path(__file__).resolve().parents[1]
-DEFAULT_MANUSCRIPT = RESEARCH_ROOT / "paper" / "manuscript_md" / "TARGET_A_MANUSCRIPT_V1.md"
+DEFAULT_MANUSCRIPT = RESEARCH_ROOT / "paper" / "manuscript_md" / "TARGET_A_MANUSCRIPT_V2.md"
+ARTIFACT_COMMIT = "c81be34a3b12a7ac47adbb4499c475df7bf4fc04"
 REQUIRED_HEADINGS = [
     "# Counterexamples and Flux-Phase Structure for Signed Circulant Graphs",
     "# 1. Introduction",
@@ -53,6 +54,7 @@ def verify_manuscript(text: str) -> None:
     _check("finite computer-assisted" in text.lower(), "VERIFY_COMPUTER_ASSISTED_DISCLOSURE_FAIL")
     _check("2,147,483,648" in text and "17,929,600" in text, "VERIFY_QUOTIENT_TRUST_BOUNDARY_FAIL")
     _check("20 August 2026" in text and re.search(r"bounded\s+search statement", text), "VERIFY_CURRENT_STATUS_CITATION_FAIL")
+    _check(ARTIFACT_COMMIT in text, "VERIFY_IMMUTABLE_ARTIFACT_CITATION_FAIL")
 
     lower = text.lower()
     for forbidden in ("todo", "proof omitted", "left to the author", "author must add", "world-first"):
@@ -61,7 +63,8 @@ def verify_manuscript(text: str) -> None:
 
     body = text.split("# Appendix A.", 1)[0]
     _check(not re.search(r"\bTask\s+[0-9]", body), "VERIFY_BODY_TASK_LANGUAGE_FAIL")
-    _check(not re.search(r"\b[0-9a-f]{40}\b", body), "VERIFY_BODY_COMMIT_HASH_FAIL")
+    body_hashes = set(re.findall(r"\b[0-9a-f]{40}\b", body))
+    _check(body_hashes == {ARTIFACT_COMMIT}, "VERIFY_BODY_COMMIT_HASH_FAIL")
     _check("all-period theorem" not in lower or "not an all-period theorem" in lower, "VERIFY_ALL_PERIOD_SCOPE_FAIL")
     _check("all-signings global optimality" not in lower, "VERIFY_ALL_SIGNINGS_OVERCLAIM_FAIL")
     print("TARGET_A_MANUSCRIPT_STRUCTURE_PASS")

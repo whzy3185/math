@@ -12,10 +12,10 @@ switching class is represented uniquely by
 (tau_0,...,tau_(n-1),alpha) in {+1,-1}^(n+1).                   (A.1)
 ```
 
-For even `n`, global negation of every edge negates every triangle flux and
+For even `n`, global edge-sign negation negates every triangle flux and
 preserves `alpha`; it also replaces `A` by `-A`, so spectral radius is
 unchanged. The adjacent products `Q_i=tau_i tau_(i+1)` are unchanged by this
-negation. Legal `Q` words have product `+1`, and each has exactly the two lifts
+edge-sign negation. Legal `Q` words have product `+1`, and each has exactly the two lifts
 `tau` and `-tau`. Therefore a pair `(Q,alpha)` represents precisely this
 spectrally equivalent pair of switching classes.
 

@@ -31,6 +31,12 @@ class ManuscriptMarkdownTests(unittest.TestCase):
     def test_author_placeholder_rejected(self):
         self.assert_rejected(self.text + "\nLeft to the author.\n")
 
+    def test_mutable_or_wrong_artifact_snapshot_rejected(self):
+        self.assert_rejected(self.text.replace(
+            "c81be34a3b12a7ac47adbb4499c475df7bf4fc04",
+            "0000000000000000000000000000000000000000",
+        ))
+
     def test_missing_radical_branch_rejected(self):
         self.assert_rejected(self.text.replace("positive square-root branch", "chosen branch"))
 

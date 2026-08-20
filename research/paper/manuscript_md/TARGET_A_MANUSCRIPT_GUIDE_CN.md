@@ -28,18 +28,18 @@
 
 - **为什么存在：** 一次性固定 `G_n,sigma,A_sigma,tau,Q,alpha,H_Q(z),R(Q),M_k,F_k`。
 - **核心结论：** switching 不变性、有限 Floquet 条件 `z^L=alpha`、无限条件
-  `|z|=1`、translation/reflection/negation 和 zone folding。
+  `|z|=1`、translation/reflection/edge-sign negation 和 zone folding。
 - **主要证明思路：** 都是显式酉共轭或 fiber 分解；重复胞元按内部平移特征空间直和。
 - **计算依赖：** 无，属于解析核心。
-- **审稿人可能质疑：** finite 与 infinite Bloch 参数是否混用、odd cell 下 negation
+- **审稿人可能质疑：** finite 与 infinite Bloch 参数是否混用、odd cell 下 edge-sign negation
   是否漏掉 `z->-z`；正文均已显式说明。
 
 ## 第 3 节：最小反例
 
 - **为什么存在：** 证明 `n=32` 不只是一个反例，而是最小反例。
 - **核心结论：** `rho(A_32)^2<1561/200<rho_-(32)^2`，且 `8<=n<=30` 全部排除。
-- **主要证明思路：** 对 witness 使用 `1561I-200A^2` 正定性；对阈值使用 nested radical
-  minimal polynomial 与 Sturm isolation；对较小阶使用完整 switching quotient。
+- **主要证明思路：** 对 witness 使用正文展示的 Floquet 多项式正系数展开；对阈值使用
+  nested radical minimal polynomial 与 Sturm isolation；对较小阶使用完整 switching quotient。
 - **计算依赖：** 完整有限排除是 computer-assisted；order-32 witness 是短 exact certificate。
 - **审稿人可能质疑：** 17,929,600 states 如何覆盖 `2^31` classes。Appendix A 用
   `(Q,alpha)`、dihedral orbit size 和两个 `tau` lifts 证明覆盖。
@@ -84,8 +84,10 @@
 - **为什么存在：** 将 period-8 现象提升为任意周期的必要条件。
 - **核心结论：** `M1=4p`、`M2=20p+16d`、`M3=118p+168d+96a+48b`，并得到两个
   eight-barrier 必要不等式。
-- **主要证明思路：** 枚举长度 2/4/6 的闭步词，将剩余 `tau` 因子望远镜化成 `Q` 区间积。
-- **计算依赖：** 430 个长度六闭步词的符号收集可机器复核，但公式推导和逻辑均在正文。
+- **主要证明思路：** 用正文给出的整数动态规划递推枚举长度 2/4/6 的闭步词，将剩余
+  `tau` 因子望远镜化成 `Q` 区间积。
+- **计算依赖：** 430 个长度六闭步词的符号收集由递推和 checker 双重给定，公式推导和
+  推论逻辑均在正文。
 - **审稿人可能质疑：** `p=1,2,3,4` residue collision；Laurent 条目保留 multiplicity，
   cyclic identities 对短周期仍成立。
 
@@ -103,12 +105,13 @@
 
 - **为什么存在：** 让审稿人知道机器到底证明了什么，而不是只看到“程序通过”。
 - **核心结论：** 所有严格比较来自 rational、integer、Sturm 或 positive-definite certificates；
-  regeneration 与 integrity replay 明确区分。
+  regeneration 与 integrity replay 明确区分，并绑定到公开不可变 commit 和逐文件哈希。
 - **主要证明思路：** 说明 quotient coverage、certificate coverage、fresh regeneration 和
   independent checker 的逻辑关系。
 - **计算依赖：** 本节本身就是计算证据边界说明。
 - **审稿人可能质疑：** 环境能否重建、较大阶 generator 是否完全独立。环境版本已锁定；最大
-  三阶的 recordwise 独立性仍诚实列为 execution-trust boundary。
+  三阶的 recordwise 独立性仍诚实列为 execution-trust boundary；Appendix C 已给出完整
+  重生成命令、终端 chain hash 和实测时间/内存/磁盘。
 
 ## 第 10 节：讨论
 

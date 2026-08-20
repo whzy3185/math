@@ -30,23 +30,15 @@ Let `A_32` denote the resulting signed adjacency matrix.
 rho(A_32)^2 < 1561/200 < rho_-(32)^2.                            (3.3)
 ```
 
-**Proof.** Consider the rational symmetric matrix
-
-```text
-M=1561 I-200 A_32^2.
-```
-
-Fraction-free elimination gives positive leading principal minors in all 32
-orders. Equivalently, exact rational `LDL^T` elimination gives 32 positive
-diagonal pivots. Sylvester's criterion therefore implies `M` is positive
-definite. For every nonzero vector `v`,
-
-```text
-1561 v^T v - 200 v^T A_32^2 v > 0.
-```
-
-Taking the supremum of the Rayleigh quotient of `A_32^2` yields
-`rho(A_32)^2<1561/200`.
+**Proof.** The eight-site Floquet calculation in Section 4 gives the explicit
+polynomial `P(y,c)` in (4.5). Put `B=1561/200`, `u=y-B`, and `t=2-c`.
+Equation (4.6) displays `P(B+u,2-t)` as a polynomial whose coefficients are
+nonnegative and whose constant term is
+`84332641/1600000000>0`. Hence `P(y,c)>0` for every `y>=B` and
+`c in [-2,2]`. Every squared eigenvalue of a unit-circle fiber is a
+nonnegative root of `P`; therefore every fiber has squared radius strictly
+less than `B`. The finite decomposition (4.3), with `L=4` and `alpha=+1`,
+gives `rho(A_32)^2<1561/200`.
 
 For the other inequality, equation (2.12) gives
 
@@ -108,7 +100,7 @@ rho(A_sigma)>=rho_-(n).                                          (3.7)
 This is a finite computer-assisted proposition.
 
 **Proof.** Switching classes are represented in the cycle coordinates
-`(tau,alpha)`. Global negation and the dihedral action are used only after
+`(tau,alpha)`. Global edge-sign negation and the dihedral action are used only after
 their spectral invariance has been proved. For `n<=20`, all `2^(n+1)` classes
 are enumerated directly. For `n=22`, and for the production orders
 `24,26,28,30`, the legal quadrilateral words are partitioned into dihedral

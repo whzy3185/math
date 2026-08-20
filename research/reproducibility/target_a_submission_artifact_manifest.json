@@ -1,0 +1,149 @@
+{
+  "schema_version": "1.0.0",
+  "status": "TARGET_A_SUBMISSION_ARTIFACT_MANIFEST_COMPLETE",
+  "repository": "https://github.com/whzy3185/math",
+  "artifact_snapshot": {
+    "commit": "c81be34a3b12a7ac47adbb4499c475df7bf4fc04",
+    "immutable_url": "https://github.com/whzy3185/math/tree/c81be34a3b12a7ac47adbb4499c475df7bf4fc04",
+    "branch_at_freeze": "agent/target-a-discovery-snapshot"
+  },
+  "environment": {
+    "python": "3.12.13",
+    "requirements": "research/reproducibility/requirements-target-a.txt",
+    "clean_environment_default_suite": {
+      "passed": 253,
+      "skipped": 3,
+      "subtests_passed": 17
+    }
+  },
+  "theorem_a": {
+    "orders": [8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32],
+    "order_32_mode": "EXACT_WITNESS_CERTIFICATE_AND_UNIFORM_FLOQUET_PROOF",
+    "orders_8_to_22_mode": "DETERMINISTIC_EXACT_REGENERATION_AVAILABLE; COMPACT_ARTIFACT_IS_AGGREGATE_ATTESTATION",
+    "orders_24_to_30_mode": "DETERMINISTIC_FULL_REGENERATION_AND_COMMITTED_CHECKPOINT_INTEGRITY_REPLAY",
+    "recordwise_independent_generator_limit": 24,
+    "largest_order_aggregate_generator_audits": [26, 28, 30],
+    "represented_switching_classes_n30": 2147483648,
+    "canonical_spectral_states_n30": 17929600,
+    "mathematical_mismatch_count": 0
+  },
+  "theorem_f": {
+    "displayed_period_range": [1, 16],
+    "canonical_orbit_rows": 2626,
+    "canonical_set_equality_checked": true,
+    "deterministic_orbit_ids_checked": true,
+    "partition": {
+      "moment_detected": 2611,
+      "all_negative_repetitions": 8,
+      "residual_endpoint_certificates": 5,
+      "target_representations": 2
+    }
+  },
+  "files": [
+    {
+      "path": "research/counterexamples/target_a_n32_period8.json",
+      "sha256": "c5ecd532da469092ef98fe2385dfb69b8da542595f942cd88b881d985b72bc10",
+      "role": "order-32 witness"
+    },
+    {
+      "path": "research/counterexamples/target_a_n32_period8_certificate.json",
+      "sha256": "db1378c6a7e5ab8526890be41c929a60ee17675d920a5ca0c501f49d888e46b4",
+      "role": "order-32 exact certificate"
+    },
+    {
+      "path": "research/counterexamples/target_a_minimality_certificate.json",
+      "sha256": "1f20469033876569292de247344ba88eb0831c163e01c1441f1b75aa8bca95c7",
+      "role": "minimality summary"
+    },
+    {
+      "path": "research/audit/TARGET_A_MINIMALITY_DEPENDENCIES.json",
+      "sha256": "5bb4a6c39039bb76e41945c0c1f0dffd545b778c0230ce85d3f905bc197b284f",
+      "role": "minimality dependency manifest"
+    },
+    {
+      "path": "research/audit/target_a_minimality_checkpoint_replay.json",
+      "sha256": "bcfcb67f6b1e67f7d7ec36552c99aeebfcd8811a46ef697de7314b4ad2311d57",
+      "role": "checkpoint integrity replay"
+    },
+    {
+      "path": "research/reproducibility/target_a_full_slow_reproduction_summary.json",
+      "sha256": "6ab911dfee4f69e41b4afcfd8964bf24417944c2524c9ab2802366bf6f3f0f66",
+      "role": "fresh regeneration summary"
+    },
+    {
+      "path": "research/scripts/target_a_minimality_search.py",
+      "sha256": "5653c6d6b086ba00d70a3ab7d6692445334f4f0009d4400274959f74a53fd6fc",
+      "role": "deterministic finite search and regeneration source"
+    },
+    {
+      "path": "research/scripts/verify_target_a_n32_certificate.py",
+      "sha256": "cc61bdb44c29c5b415b155f4d8da0f25cb729b628a1dba79d86353b374b27de2",
+      "role": "independent order-32 checker"
+    },
+    {
+      "path": "research/scripts/verify_target_a_minimality_certificate.py",
+      "sha256": "48997c791be70f7f2cb5287981dea361494a589034b6e72f78dbcfddf102dbb1",
+      "role": "minimality aggregate checker"
+    },
+    {
+      "path": "research/logs/checkpoints/n24/manifest.json",
+      "sha256": "978b38db75ccf8d05bd7bae76b28373d5a0b56655299ea2a65cc25722514a98b",
+      "role": "n=24 committed checkpoint manifest"
+    },
+    {
+      "path": "research/logs/checkpoints/n26/manifest.json",
+      "sha256": "59d106f91ff5bd457e25c1676233970ee46382e4ace7c8e41b7769b85d5b140d",
+      "role": "n=26 committed checkpoint manifest"
+    },
+    {
+      "path": "research/logs/checkpoints/n28/manifest.json",
+      "sha256": "e1d1411f0563915c282651d12858c77671b5a8153ac2b47357373d7963b2fc91",
+      "role": "n=28 committed checkpoint manifest"
+    },
+    {
+      "path": "research/logs/checkpoints/n30/manifest.json",
+      "sha256": "56b0cc2c8d12da9d99ca49d66d136d7b40a517cb4211f8fed5eb7b69c83ec7d4",
+      "role": "n=30 committed checkpoint manifest"
+    },
+    {
+      "path": "research/proofs/target_a_low_period_spectral_frontier.json",
+      "sha256": "82e69ab7df7d81d6c2c46364a6e07aba7578fbc3ad21a69dcc17ffd08333928d",
+      "role": "complete 2626-row canonical table and exact certificates"
+    },
+    {
+      "path": "research/proofs/target_a_low_period_structural_frontier.json",
+      "sha256": "7f9fe5b0f318f07b31d71c638049bc9458422fae9ad4c5ee40062c40b5891b71",
+      "role": "compressed 2611+8+5+2 partition"
+    },
+    {
+      "path": "research/proofs/target_a_periodic_operator_equivalences.json",
+      "sha256": "c2f4529283fd6c96ed588a6843ab6127be7b03b585aede03df254e4b0db7fb90",
+      "role": "operator equivalence and zone-folding audit"
+    },
+    {
+      "path": "research/scripts/verify_target_a_low_period_spectral_frontier.py",
+      "sha256": "a6b032dfc1d4e995117e124eeb99185b6c696aa466a80167a0c3c59f09bb380b",
+      "role": "independent canonical-set and certificate checker"
+    },
+    {
+      "path": "research/scripts/verify_target_a_low_period_structural_frontier.py",
+      "sha256": "0f6238c45f72aae1ac5ab8daed758e9f5642e0138404de0caedb4cdd721ec0a2",
+      "role": "independent structural-partition checker"
+    },
+    {
+      "path": "research/scripts/verify_target_a_periodic_operator_equivalences.py",
+      "sha256": "2c2c7874c4517726a44072411a19529efb2600fcf81c792337f4302100944dc2",
+      "role": "transition-level equivalence checker"
+    },
+    {
+      "path": "research/reproducibility/requirements-target-a.txt",
+      "sha256": "1fae3c933a04007e576fdff81189de77e0d3a305d74af2e8341745b2904c8921",
+      "role": "pinned Python environment"
+    }
+  ],
+  "limitations": [
+    "The compact n<=22 artifact authenticates aggregate historical records; full per-state mathematical verification requires deterministic regeneration.",
+    "Independent recordwise generator equality is complete through n=24; n=26,28,30 use independent aggregate Burnside, shell, represented-size, ordering, and parity audits.",
+    "The immutable Git snapshot is the drafting archive; a DOI-bearing release remains a submission action."
+  ]
+}
