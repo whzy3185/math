@@ -244,6 +244,25 @@ def verify_low_period_data(
     rows = result.get("orbits", [])
     _check(len(rows) == 2626, "VERIFY_ORBIT_TABLE_LENGTH_FAIL")
     _check(len({row.get("orbit_id") for row in rows}) == 2626, "VERIFY_DUPLICATE_ORBIT_ID_FAIL")
+    expected_representatives = {
+        p: sorted(
+            {
+                _canonical(prefix + (math.prod(prefix),))
+                for prefix in itertools.product((-1, 1), repeat=p - 1)
+            },
+            key=_bits,
+        )
+        for p in range(1, 17)
+    }
+    actual_representatives = {p: [] for p in range(1, 17)}
+    for row in rows:
+        actual_representatives[row["p"]].append(tuple(row["canonical_q_signs"]))
+    for p in range(1, 17):
+        actual_representatives[p].sort(key=_bits)
+        _check(actual_representatives[p] == expected_representatives[p], f"VERIFY_CANONICAL_ORBIT_SET_FAIL:{p}")
+        expected_ids = [f"P{p:02d}-{index:04d}" for index in range(1, len(expected_representatives[p]) + 1)]
+        actual_ids = [row["orbit_id"] for row in rows if row["p"] == p]
+        _check(actual_ids == expected_ids, f"VERIFY_DETERMINISTIC_ORBIT_IDS_FAIL:{p}")
     distribution = {"moment": 0, "ternary": 0, "integer": 0, "target": 0}
     by_period = {p: [] for p in range(1, 17)}
     rows_by_id = {}

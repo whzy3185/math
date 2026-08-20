@@ -18,6 +18,7 @@ from verify_target_a_low_period_spectral_frontier import (
     DEFAULT_SHARP,
     DEFAULT_SOURCE,
     LowPeriodVerificationError,
+    _rational_gt_eta,
     verify_low_period_data,
 )
 
@@ -80,11 +81,29 @@ class LowPeriodFrontierTests(unittest.TestCase):
         result["phase_space"]["route_a_orbit_counts"][15] -= 1
         self.assert_rejected(result=result)
 
+    def test_duplicate_canonical_representative_rejected(self):
+        result = copy.deepcopy(self.result)
+        rows = [row for row in result["orbits"] if row["p"] == 8]
+        rows[1]["canonical_q_signs"] = rows[0]["canonical_q_signs"]
+        rows[1]["canonical_q_bits"] = rows[0]["canonical_q_bits"]
+        self.assert_rejected(result=result)
+
+    def test_nondeterministic_orbit_id_rejected(self):
+        result = copy.deepcopy(self.result)
+        rows = [row for row in result["orbits"] if row["p"] == 8]
+        rows[0]["orbit_id"], rows[1]["orbit_id"] = rows[1]["orbit_id"], rows[0]["orbit_id"]
+        self.assert_rejected(result=result)
+
     def test_rayleigh_numerator_tamper_rejected(self):
         result = copy.deepcopy(self.result)
         row = next(row for row in result["orbits"] if row["exact_certificate"]["type"] == "EXACT_ENDPOINT_INTEGER_RAYLEIGH")
         row["exact_certificate"]["numerator"] += 1
         self.assert_rejected(result=result)
+
+    def test_radical_comparison_rejects_lower_branch(self):
+        # At r=0, u=3 and u^2>5; only the explicit r>4 guard rejects it.
+        accepted, _ = _rational_gt_eta(0, 1)
+        self.assertFalse(accepted)
 
     def test_moment_excess_tamper_rejected(self):
         result = copy.deepcopy(self.result)

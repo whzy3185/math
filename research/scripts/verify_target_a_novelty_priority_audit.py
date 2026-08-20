@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import hashlib
 import json
+import subprocess
 import sys
 from collections import Counter
 from pathlib import Path
@@ -68,7 +69,21 @@ def _verify_fingerprints(snapshot: dict[str, Any]) -> None:
         for row in rows:
             path = RESEARCH_ROOT.parent / row["path"]
             _check(path.is_file(), f"VERIFY_FINGERPRINT_PATH_MISSING:{row['path']}")
-            _check(_sha256(path.read_bytes()) == row["sha256"], f"VERIFY_FINGERPRINT_SHA_FAIL:{row['path']}")
+            if "commit" in row:
+                try:
+                    content = subprocess.run(
+                        ["git", "show", f"{row['commit']}:{row['path']}"],
+                        cwd=RESEARCH_ROOT.parent,
+                        check=True,
+                        capture_output=True,
+                    ).stdout
+                except subprocess.CalledProcessError as error:
+                    raise NoveltyAuditVerificationError(
+                        f"VERIFY_FINGERPRINT_GIT_OBJECT_FAIL:{row['commit']}:{row['path']}"
+                    ) from error
+            else:
+                content = path.read_bytes()
+            _check(_sha256(content) == row["sha256"], f"VERIFY_FINGERPRINT_SHA_FAIL:{row['path']}")
 
 
 def verify_audit_data(

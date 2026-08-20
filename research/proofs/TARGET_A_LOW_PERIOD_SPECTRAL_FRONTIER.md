@@ -189,8 +189,20 @@ The stored certificate verifies `r>eta` without floating point. Put
 u=((r-4)^2-10)/2.
 ```
 
-The exact rational inequalities `u>0` and `u^2>5` imply
-`r>4+sqrt(10+2sqrt(5))=eta`. Rayleigh's principle then gives
+The certificate first verifies the branch condition `r>4`.  Since both
+`r-4` and `sqrt(10+2sqrt(5))` are then positive, squaring preserves the
+comparison.  The further exact rational inequalities `u>0` and `u^2>5`
+give
+
+```text
+(r-4)^2>10+2sqrt(5),
+r-4>sqrt(10+2sqrt(5)),
+r>4+sqrt(10+2sqrt(5))=eta.
+```
+
+The branch condition is essential: the two inequalities involving `u` alone
+would also hold for some values on the lower branch `r<4`.  Rayleigh's
+principle now gives
 
 ```text
 R(Q)>=lambda_max(H^2)>=r>eta.
