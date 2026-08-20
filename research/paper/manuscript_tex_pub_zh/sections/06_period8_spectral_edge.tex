@@ -1,0 +1,156 @@
+\section{精确周期八谱边}\label{sec:period-eight-edge}
+
+第~\ref{sec:periodic-construction} 节中的有理数便于证明严格有限反例，但它并非
+真实带边。现在证明定理~\ref{thm:exact-period-eight-edge}。
+
+\subsection{端点根}
+
+当 \(c=2\) 时，式~\eqref{eq:floquet-polynomial} 化为
+
+\begin{equation}
+\label{eq:edge-polynomial}
+P(y,2)=y^{4}-16y^{3}+76y^{2}-96y+16.
+\end{equation}
+
+作平移 \(y=x+4\)，则
+
+\begin{equation}
+\label{eq:edge-depressed-quartic}
+P(x+4,2)=x^{4}-20x^{2}+80.
+\end{equation}
+
+令 \(w=x^2\)，得到 \(w^2-20w+80=0\)，其根为
+\(10\pm2\sqrt5\)。式~\eqref{eq:edge-polynomial} 的四个实根按递增次序为
+
+\begin{equation}
+\label{eq:edge-four-roots}
+\begin{aligned}
+&4-\sqrt{10+2\sqrt{5}}, \\
+&4-\sqrt{10-2\sqrt{5}}, \\
+&4+\sqrt{10-2\sqrt{5}}, \\
+&4+\sqrt{10+2\sqrt{5}}.
+\end{aligned}
+\end{equation}
+
+因此最大的端点根为
+
+\begin{equation}
+\label{eq:eta-definition}
+\eta=4+\sqrt{10+2\sqrt{5}}.
+\end{equation}
+
+\subsection{锐正性与唯一性}
+
+令
+
+\begin{equation}
+\begin{aligned}
+s&=\sqrt{10+2\sqrt{5}},       \eta=4+s, \\
+u&=y-\eta,                   t=2-c.
+\end{aligned}
+\end{equation}
+
+代入式~\eqref{eq:floquet-polynomial} 得恒等式
+
+\begin{equation}
+\label{eq:eta-positive-expansion}
+\begin{aligned}
+&P(\eta+u,2-t) \\
+&=u^{4}+4s u^{3}+2u^{2}t+(40+12\sqrt{5})u^{2} \\
+&\quad +4s ut+8\sqrt{5}s u+t^{2}+(4\sqrt{5}-3)t.
+\end{aligned}
+\end{equation}
+
+所有系数均为正。因此，当 \(u,t\geq0\) 时，右端非负，且仅在 \(u=t=0\)
+时为零。由于每个单位圆纤维都有 \(c\leq2\)，式~
+\eqref{eq:eta-positive-expansion} 排除大于 \(\eta\) 的每个平方特征值，并且只
+在 \(c=2\) 时允许等号。
+
+当 \(c=2\) 时，\(\eta\) 是式~\eqref{eq:edge-polynomial} 的根，所以
+\(\pm\sqrt\eta\) 是 \(H(1)\) 的特征值。因此
+
+\begin{equation}
+\label{eq:exact-infinite-edge}
+\sup_{\lvert z\rvert=1} \rho(H(z))^{2}=\eta.
+\end{equation}
+
+在单位圆上，\(z+z^{-1}=2\) 当且仅当 \(z=1\)。这同时证明了定理~
+\ref{thm:exact-period-eight-edge} 的数值与唯一性断言。
+
+为后文使用，还记录 \(\eta\) 的最小多项式为
+
+\begin{equation}
+\label{eq:eta-minimal-polynomial}
+Y^{4}-16Y^{3}+76Y^{2}-96Y+16.
+\end{equation}
+
+事实上，平移 \(Y=X+4\) 把式~\eqref{eq:eta-minimal-polynomial} 化为
+\(X^4-20X^2+80\)。由 Gauss 引理，有理因式分解可取为首一整系数二次式。
+三次项和一次项消失，使它只能是 \((X^2+a)(X^2+b)\)，其中
+\(a+b=-20\)、\(ab=80\)，或 \((X^2+rX+s)(X^2-rX+s)\)，其中
+\(s^2=80\)。第一种情形会使 \(a,b\) 成为 \(T^2+20T+80\) 的根，但其判别式
+80 不是平方数；第二种情形不存在有理数 \(s\)。故式~
+\eqref{eq:eta-minimal-polynomial} 在 \(\mathbb Q\) 上不可约。数 \(\eta\) 位于
+\((\frac{1951}{250},\frac{1561}{200})\)；特别地，\(\eta<8\)。
+
+\subsection{最高能带的单调性}
+
+令 \(r(c)\) 为 \(P(y,c)\) 的最大实根。当 \(c=-2\) 时，
+
+\begin{equation}
+\label{eq:minus-one-fiber-factorization}
+\begin{aligned}
+P(y,-2)&=(y^{2}-12y+34)(y^{2}-4y+2), \\
+r(-2)&=6+\sqrt{2}=:y_{0}.
+\end{aligned}
+\end{equation}
+
+当 \(-2<c\leq2\) 时，代入得
+
+\begin{equation}
+\label{eq:minus-one-fiber-comparison}
+P(y_{0},c)=(c+2)(c+5-8\sqrt{2})<0.
+\end{equation}
+
+由于 \(P(y,c)\) 随 \(y\) 趋于正无穷，式~
+\eqref{eq:minus-one-fiber-comparison} 蕴含当 \(c>-2\) 时
+\(r(c)>y_0\)。此外，
+
+\begin{equation}
+\label{eq:floquet-c-derivative}
+P_c(y,c)=2(c-c_{0}(y)),       c_{0}(y)=y^{2}-8y+\frac{13}{2}.
+\end{equation}
+
+函数 \(c_0\) 在 \(y\geq y_0>4\) 上递增，且
+
+\begin{equation}
+c_{0}(y_{0})=-\frac{7}{2}+4\sqrt{2}>2.
+\end{equation}
+
+因此，在 \(y\geq y_0\)、\(c\leq2\) 的整个区域内都有 \(P_c(y,c)<0\)。若
+\(-2\leq c_1<c_2\leq2\) 且 \(y_1=r(c_1)\)，则
+\(P(y_1,c_2)<P(y_1,c_1)=0\)，所以 \(P(\,cdot\,,c_2)\) 在 \(y_1\) 之上
+有根。故 \(r(c)\) 在 \([-2,2]\) 上严格递增。
+
+\subsection{有限和乐}
+
+当 \(\alpha=+1\) 时，有限集合 \(z^L=1\) 包含 \(z=1\)。由式~
+\eqref{eq:exact-infinite-edge}，
+
+\begin{equation}
+\label{eq:positive-holonomy-edge}
+\rho(A_{8L,+1})^{2}=\eta.
+\end{equation}
+
+当 \(\alpha=-1\) 时，允许参数为
+\(z_k=\exp((2k+1)\pi i/L)\)。其中最大的 \(c\) 值是
+\(2\cos(\frac{\pi}{L})\)，严格小于二。刚证明的单调性给出
+
+\begin{equation}
+\label{eq:negative-holonomy-edge}
+\rho(A_{8L,-1})^{2}=r(2\cos(\frac{\pi}{L}))<\eta.
+\end{equation}
+
+当 \(L\) 趨于无穷时，\(2\cos(\frac{\pi}{L})\) 趨于二；Hermitian 纤维的
+特征值连续性使式~\eqref{eq:negative-holonomy-edge} 收敛到 \(\eta\)。所以两种
+和乐扇区具有相同的无限体积谱边，但每个有限尺度上只有正扇区达到该值。

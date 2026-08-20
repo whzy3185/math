@@ -1,0 +1,151 @@
+\section{周期构造与 Floquet 约化}\label{sec:periodic-construction}
+
+现在把 32 阶模式放入任意多个八点胞中。令
+
+\begin{equation}
+\label{eq:target-triangle-word}
+\tau_*=(+,+,-,+,-,-,+,-)
+\end{equation}
+
+并在阶数 \(n=8L\) 的图上施加任一 Hamilton 和乐
+\(\alpha\in\{+1,-1\}\)。
+
+\subsection{八点纤维}
+
+写 \(i=8m+r\)、\(0\leq r<8\)，并令 \(x_{8m+r}=z^mv_r\)。代入式~
+\eqref{eq:periodic-operator} 得
+
+\begin{equation}
+\label{eq:target-floquet-matrix}
+H(z)=\begin{pmatrix}
+0 & 1 & 1 & 0 & 0 & 0 & z^{-1} & z^{-1} \\
+1 & 0 & 1 & 1 & 0 & 0 & 0 & -z^{-1} \\
+1 & 1 & 0 & 1 & -1 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 \\
+0 & 0 & -1 & 1 & 0 & 1 & -1 & 0 \\
+0 & 0 & 0 & 1 & 1 & 0 & 1 & -1 \\
+z & 0 & 0 & 0 & -1 & 1 & 0 & 1 \\
+z & -z & 0 & 0 & 0 & -1 & 1 & 0
+\end{pmatrix}.
+\end{equation}
+
+在 \(\lvert z\rvert=1\) 上，把 \(z\) 换成其复共轭 \(z^{-1}\) 会转置矩阵，
+所以式~\eqref{eq:target-floquet-matrix} 是 Hermitian 矩阵。
+
+\begin{proposition}[有限 Floquet 分解]
+\label{prop:finite-floquet-decomposition}
+当 \(n=8L\) 时，
+
+\begin{equation}
+\label{eq:target-finite-decomposition}
+A_{8L,\alpha} \cong \bigoplus_{z^L=\alpha} H(z).
+\end{equation}
+
+\end{proposition}
+\begin{proof}
+令 \(S\) 为带扭曲边界 \(u_{m+L}=\alpha u_m\) 的 \(L\) 个胞坐标上的酉平移。
+其归一化特征向量为 \(L^{-1/2}(1,z,\ldots,z^{L-1})\)，其中
+\(z^L=\alpha\)。由几何级数恒等式，不同根对应的向量正交。带符号算子是
+剩余类矩阵与 \(S\) 的幂的张量积之有限和，所以每个特征空间都不变，且限制
+恰为式~\eqref{eq:target-floquet-matrix}。共有 \(L\) 个这样的八维特征空间，
+维数之和为 \(8L\)。
+
+因此，有限问题使用离散集合 \(z^L=\alpha\)，而无限周期问题使用全部
+\(\lvert z\rvert=1\)。
+
+\end{proof}
+\subsection{精确行列式}
+
+令 \(x\) 为谱参数。对 \(xI-H(z)\) 作无分数消元得
+
+\begin{equation}
+\label{eq:target-characteristic-polynomial}
+\begin{aligned}
+&\operatorname{det}(xI-H(z)) \\
+&=x^{8}-16x^{6}+(80-2(z+z^{-1}))x^{4} \\
+&\quad +(-128+16(z+z^{-1}))x^{2} \\
+&\quad +(z^{2}+z^{-2})-13(z+z^{-1})+40.
+\end{aligned}
+\end{equation}
+
+令
+
+\begin{equation}
+y=x^{2},       c=z+z^{-1}.
+\end{equation}
+
+由于 \(z^2+z^{-2}=c^2-2\)，式~\eqref{eq:target-characteristic-polynomial} 化为
+
+\begin{equation}
+\label{eq:floquet-polynomial}
+P(y,c)=y^{4}-16y^{3}+(80-2c)y^{2}+(-128+16c)y+c^{2}-13c+38.
+\end{equation}
+
+当 \(\lvert z\rvert=1\) 时，\(c=2\cos\theta\in[-2,2]\)。Hermitian 性保证
+每个特征值 \(\lambda\) 都是实数，而式~\eqref{eq:floquet-polynomial} 表明
+\(\lambda^2\) 是 \(P(y,c)\) 的非负根。
+
+\subsection{一致有理上界}
+
+令
+
+\begin{equation}
+B=\frac{1561}{200},       u=y-B,       t=2-c.
+\end{equation}
+
+直接代入式~\eqref{eq:floquet-polynomial} 得
+
+\begin{equation}
+\label{eq:rational-positive-expansion}
+\begin{aligned}
+&P(B+u,2-t) \\
+&=u^{4}+(\frac{761}{50})u^{3}+2u^{2}t+(\frac{1337363}{20000})u^{2} \\
+&\quad +(\frac{761}{50})ut+(\frac{136311081}{2000000})u \\
+&\quad +t^{2}+(\frac{119121}{20000})t+\frac{84332641}{1600000000}.
+\end{aligned}
+\end{equation}
+
+式~\eqref{eq:rational-positive-expansion} 的每个系数均非负，且常数项为正。
+因此，只要 \(y\geq B\)、\(c\leq2\)，就有 \(P(y,c)>0\)。特别地，任何单位
+圆纤维的平方特征值都不能达到 \(B\)，故
+
+\begin{equation}
+\label{eq:uniform-fiber-bound}
+\rho(H(z))^{2}<B
+\end{equation}
+
+对每个 \(\lvert z\rvert=1\) 成立。命题~
+\ref{prop:finite-floquet-decomposition} 于是给出
+
+\begin{equation}
+\label{eq:finite-family-upper-bound}
+\rho(A_{8L,\alpha})^{2}<\frac{1561}{200}
+\end{equation}
+
+它对两种和乐以及每个 \(L\geq1\) 都成立。
+
+\subsection{与猜想阈值的比较}
+
+当 \(n=32\) 时，Sturm 隔离式~\eqref{eq:order-thirty-two-threshold}--
+\eqref{eq:order-thirty-two-polynomial} 给出
+
+\begin{equation}
+\label{eq:threshold-at-thirty-two}
+\rho_-(32)^{2}>\frac{7809}{1000}>\frac{1561}{200}.
+\end{equation}
+
+对 \(n\geq32\)，角 \(\frac{2\pi}{n}\) 和 \(\frac{4\pi}{n}\) 均位于
+\((0,\pi)\)，且随 \(n\) 增大而减小。余弦函数在 \((0,\pi)\) 上随自变量
+减小而增大，故式~\eqref{eq:conjectured-threshold} 表明 \(\rho_-(n)^2\) 随
+\(n\) 增大。因此
+
+\begin{equation}
+\label{eq:monotone-threshold-bound}
+\rho_-(n)^{2}\geq \rho_-(32)^{2}>\frac{1561}{200}.
+\end{equation}
+
+合并式~\eqref{eq:finite-family-upper-bound} 与
+\eqref{eq:monotone-threshold-bound}，即对 \(n=8L\)、\(L\geq4\) 证明定理~
+\ref{thm:infinite-counterexample-family}。
+
+八的倍数这一限制来自构造，而不是阈值比较。此处不对其他偶数阶作结论。

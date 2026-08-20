@@ -1,0 +1,164 @@
+\section{精确分类与残余证书}\label{app:exact-certificates}
+
+\subsection{周期八轨道表}
+
+以 0 表示负通量，以 1 表示正通量。128 个合法周期八字构成 18 个二面体
+轨道。第~\ref{sec:eight-barrier} 节的结构证明给出下列精确分类。
+
+\begin{table}[tbp]
+\centering
+\caption{合法周期八通量轨道的精确分类。}
+\label{tab:period-eight-classification}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllll}
+\toprule
+规范 \(Q\) & \(d\) & 轨道大小 & 本原 \(\tau\) 周期 & 精确结论 \\
+\midrule
+\(00000000\) & 0 & 1 & 2 & \(R=8\) \\
+\(00000011\) & 2 & 8 & 8 & \(R>8\) \\
+\(00000101\) & 2 & 8 & 8 & \(R>8\) \\
+\(00001001\) & 2 & 8 & 8 & \(R>8\) \\
+\(00001111\) & 4 & 8 & 8 & \(R>8\) \\
+\(00010001\) & 2 & 4 & 8 & \(R=\eta\) \\
+\(00010111\) & 4 & 16 & 8 & \(R>8\) \\
+\(00011011\) & 4 & 8 & 8 & \(R>8\) \\
+\(00100111\) & 4 & 8 & 8 & \(R>8\) \\
+\(00101011\) & 4 & 16 & 8 & \(R>8\) \\
+\(00101101\) & 4 & 8 & 8 & \(R>8\) \\
+\(00110011\) & 4 & 4 & 4 & \(R>8\) \\
+\(00111111\) & 6 & 8 & 8 & \(R>8\) \\
+\(01010101\) & 4 & 2 & 4 & \(R>8\) \\
+\(01011111\) & 6 & 8 & 8 & \(R>8\) \\
+\(01101111\) & 6 & 8 & 8 & \(R>8\) \\
+\(01110111\) & 6 & 4 & 8 & \(R>8\) \\
+\(11111111\) & 8 & 1 & 1 & \(R>8\) \\
+\bottomrule
+\end{tabular}
+}
+\endgroup
+\end{table}
+
+轨道大小之和为 128。唯一低于八的轨道是 \(00010001\)，唯一在八处取等号
+的轨道是 \(00000000\)。
+
+\subsection{五个低周期残余证书}
+
+对每一行，令 \(\tau_0=+1\)，再由 \(\tau_{i+1}=Q_i\tau_i\) 递推，以重构
+规范三角形提升。向量坐标采用第~\ref{subsec:floquet-matrices} 节的有序纤维
+基 \((v_0,\ldots,v_{p-1})\)。这无规范歧义地固定了下文记作 \(H_Q(z)\) 的
+矩阵。
+
+对下表每一行，令 \(H=H_Q(z)\)，并以 \(v\) 表示所列整数向量。直接矩阵
+乘法给出有理商 \(r=\lVert Hv\rVert^2/\lVert v\rVert^2\)。
+
+\begin{table}[H]
+\centering
+\caption{五个残余竞争者的精确 Rayleigh 数据。}
+\label{tab:residual-rayleigh-data}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{llll}
+\toprule
+\(p\), \(Q\) & \(z\) & 向量 \(v\) & \(r\) \\
+\midrule
+10, \(0000010001\) & -1 & \((3,2,-3,3,0,5,-5,5,-5,2)\) & \(\frac{1066}{135}\) \\
+12, \(000000010001\) & 1 & \((-5,-5,-5,-1,-4,-2,-3,0,-2,-2,0,-4)\) & \(\frac{1022}{129}\) \\
+14, \(00000000010001\) & 1 & \((-1,2,0,2,-1,3,-2,3,-1,4,-4,4,-3,0)\) & \(\frac{119}{15}\) \\
+14, \(00010010001001\) & 1 & \((-4,-5,-4,0,-2,0,1,0,-2,0,-4,-5,-4,-6)\) & \(\frac{1270}{159}\) \\
+16, \(0000000000010001\) & 1 & \((-5,-5,-5,-1,-4,-2,-4,-1,-3,-1,-2,0,-2,-2,0,-4)\) & \(\frac{1204}{151}\) \\
+\bottomrule
+\end{tabular}
+}
+\endgroup
+\end{table}
+
+五个商都大于四。对变换
+
+\begin{equation}
+u=((r-4)^{2}-10)/2,
+\end{equation}
+
+精确比较数据如下：
+
+\begin{table}[H]
+\centering
+\caption{残余竞争者的精确根式比较数据。}
+\label{tab:residual-radical-data}
+\begingroup
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{lll}
+\toprule
+\(r\) & \(u\) & \(u^{2}-5\) \\
+\midrule
+\(\frac{1066}{135}\) & \(\frac{47213}{18225}\) & \(\frac{568314244}{332150625}\) \\
+\(\frac{1022}{129}\) & \(\frac{44813}{16641}\) & \(\frac{623590564}{276922881}\) \\
+\(\frac{119}{15}\) & \(\frac{1231}{450}\) & \(\frac{502861}{202500}\) \\
+\(\frac{1270}{159}\) & \(\frac{74573}{25281}\) & \(\frac{2365487524}{639128961}\) \\
+\(\frac{1204}{151}\) & \(\frac{65995}{22801}\) & \(\frac{1755912020}{519885601}\) \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+最后两列的每个元素均为正。由于 \(r>4\)，式~
+\eqref{eq:residual-radical-comparison} 的分支论证证明 \(r>\eta\)，Rayleigh
+原理进而证明 \(R(Q)>\eta\)。这五项计算是定理~
+\ref{thm:low-period-frontier} 的压缩证明所需的全部逐个端点证书。
+
+另一个三角形提升由引理~\ref{lem:operator-equivalences} 的共轭和纤维重参数化
+从规范提升得到；把 \(v\) 经该酉映射传送，得到相同的商和结论。
+
+\subsection{精确两缺陷矩表}
+
+对两个正通量循环间距为 \(s\) 的周期八字，动态规划式~
+\eqref{eq:walk-recurrence}--\eqref{eq:walk-moment} 给出下列精确矩和超额量。
+表中包含识别首个正超额量所需的每个数值；只有正值用于推出 \(R>8\)。
+
+\begin{table}[H]
+\centering
+\caption{周期八分离缺陷对的矩与超额量序列。}
+\label{tab:separated-defect-moments}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lll}
+\toprule
+\(s\) & 序列 & \(k=1,\ldots,10\) \\
+\midrule
+1 & \(M_k\) & \(32, 192, 1376, 10976, 93312, 823920, 7447136, 68348832, 633982976, 5926419872\) \\
+1 & \(F_k\), \(k=1,\ldots,9\) & \(-64, -160, -32, 5504, 77424, 855776, 8771744, 87192320, 854556064\) \\
+2 & \(M_k\) & \(32, 192, 1328, 9888, 76832, 612624, 4965328, 40683296, 335872832, 2788389472\) \\
+2 & \(F_k\), \(k=1,\ldots,9\) & \(-64, -208, -736, -2272, -2032, 64336, 960672, 10406464, 101406816\) \\
+3 & \(M_k\) & \(32, 192, 1280, 9056, 66592, 503088, 3877920, 30363808, 240761792, 1928966432\) \\
+3 & \(F_k\), \(k=1,\ldots,9\) & \(-64, -256, -1184, -5856, -29648, -146784, -659552, -2148672, 2872096\) \\
+4 & \(M_k\) & \(32, 192, 1280, 8928, 63872, 464496, 3417152, 25354656, 189356672, 1421345952\) \\
+4 & \(F_k\), \(k=1,\ldots,9\) & \(-64, -256, -1312, -7552, -46480, -298816, -1982560, -13480576, -93507424\) \\
+\bottomrule
+\end{tabular}
+}
+\endgroup
+\end{table}
+
+所以间距一、二、三分别首次在 \(F_4,F_6,F_9\) 越过屏障。间距四所列非正值
+不用于逆向推理；该情形由第~\ref{sec:period-eight-edge} 节的精确 Floquet
+定理解决。
+
+\subsection{32 阶正定性复核}
+
+对见证式~\eqref{eq:order-thirty-two-triangle-word}，构造
+\(M=1561I-200A_{32}^2\)。精确证书由有理 \(LDL^T\) 消元的 32 个正主元
+组成。无分数 Bareiss 消元独立地产生顺序主子式，而 \(LDL^T\) 主元的累积
+乘积与这些主子式一致。这条双路线同时验证算术一致性和 Sylvester 判据的
+假设，结论是严格不等式 \(\rho(A_{32})^2<\frac{1561}{200}\)；证书不含任何
+特征值近似。
+
+该消元是独立算术复核，而不是命题~\ref{prop:order-thirty-two-witness} 所用的
+逻辑证明。该命题直接来自所展示的纤维矩阵~\eqref{eq:target-floquet-matrix}、
+行列式~\eqref{eq:floquet-polynomial}、正性展开~
+\eqref{eq:rational-positive-expansion} 和有限 Floquet 分解~
+\eqref{eq:target-finite-decomposition}。

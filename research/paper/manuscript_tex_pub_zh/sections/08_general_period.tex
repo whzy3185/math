@@ -1,0 +1,163 @@
+\section{一般周期闭步障碍}\label{sec:general-period}
+
+第~\ref{sec:eight-barrier} 节的局部平方恒等式不依赖周期。现在对每个合法周期
+相位导出前三个矩，并证明定理~\ref{thm:general-period-moment-obstruction}。
+
+\subsection{从闭步到通量单项式}
+
+式~\eqref{eq:periodic-operator} 的可能步长为 \(-2,-1,+1,+2\)。长度一跃迁
+的权重为一。从 \(j\) 出发的 \(+2\) 跃迁权重为 \(\tau_j\)，而 \(-2\)
+跃迁的权重为 \(\tau_{j-2}\)。
+
+考虑一个闭步字，并模二消去重复的 \(\tau\) 因子。剩余指标个数为偶数，将其
+写成
+
+\begin{equation}
+r_{1}<r_{2}<\ldots<r_{2s}.
+\end{equation}
+
+利用 \(Q_h=\tau_h\tau_{h+1}\) 并作伸缩消去，得到
+
+\begin{equation}
+\label{eq:tau-product-from-flux}
+\begin{aligned}
+&\prod_j \tau_{r_j} \\
+&=\prod_{\ell=1}^{s}\prod_{h=r_{2\ell-1}}^{r_{2\ell}-1}Q_h.
+\end{aligned}
+\end{equation}
+
+所以每个带符号闭步都化为 \(Q\) 的区间乘积单项式。这个恒等式先在整数格点
+上成立，再模周期约化，因此施加循环指标后也能处理短胞重合。
+
+\subsection{精确闭步字归集}
+
+为完整起见，整数格点上的有限动态规划递推如下。对起始剩余类 \(r\)，令
+
+\begin{equation}
+\label{eq:walk-recurrence}
+\begin{aligned}W_0^{(r)}(j)&=\begin{cases}1,&j=r,\\0,&j\ne r,\end{cases}\\
+W_{\ell+1}^{(r)}(j)&=\sum_{\delta\in\{-2,-1,1,2\}}W_{\ell}^{(r)}(j-\delta)w(j-\delta,\delta).
+\end{aligned}
+\end{equation}
+
+其中
+
+\begin{equation}
+w(i,-1)=w(i,+1)=1,   w(i,+2)=\tau_i,   w(i,-2)=\tau_{i-2}.
+\end{equation}
+
+每次相乘后，都消去成对出现的相同 \(\tau\) 因子，再用式~
+\eqref{eq:tau-product-from-flux} 把剩余因子化为 \(Q\) 的区间乘积。于是
+
+\begin{equation}
+\label{eq:walk-moment}
+M_k=\sum_{r=0}^{p-1} W_{2k}^{r}(r).
+\end{equation}
+
+因此，下文每个系数都只通过自由符号变量的整群代数中的加法和乘法得到；归集
+过程不含浮点谱计算。
+
+长度二、四、六的闭步字分别有 4、36、430 个。按平移归集其通量单项式可得
+
+\begin{table}[tbp]
+\centering
+\caption{从一个起始剩余类出发的闭步贡献。}
+\label{tab:closed-walk-contributions}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{ll}
+\toprule
+长度 & 一个起始剩余类的贡献 \\
+\midrule
+2 & \(4\) \\
+4 & \(28+8Q_i\) \\
+6 & \(238+156Q_i+24Q_iQ_{i+1}+12Q_iQ_{i+2}\) \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+简要说明这一归集。长度二时，四种步长各自紧跟反向步。长度四时，36 个零和
+字经式~\eqref{eq:tau-product-from-flux} 化为 28 个常数项和单个 \(Q_i\) 的
+八个平移。长度六时，对 430 个零和字应用式~
+\eqref{eq:tau-product-from-flux}，再把相同的平移区间乘积分组，只留下表中的
+四种单项式。这是自由 \(Q\) 变量中的有限符号恒等式，而非逐周期数值观察。
+
+对 \(p\) 个起始剩余类求和得
+
+\begin{equation}
+\label{eq:general-flux-moments}
+\begin{aligned}
+M_{1}&=4p, \\
+M_{2}&=28p+8 \sum_i Q_i, \\
+M_{3}&=238p+156 \sum_i Q_i \\
+&\quad +24 \sum_i Q_iQ_{i+1}+12 \sum_i Q_iQ_{i+2}.
+\end{aligned}
+\end{equation}
+
+令 \(I_i=(1+Q_i)/2\)，则
+
+\begin{equation}
+d=\sum_i I_i,       a=\sum_i I_iI_{i+1},       b=\sum_i I_iI_{i+2}.
+\end{equation}
+
+在式~\eqref{eq:general-flux-moments} 中代入 \(Q_i=2I_i-1\) 并合并，得到
+
+\begin{equation}
+\label{eq:general-defect-moments}
+\begin{aligned}
+M_{1}&=4p, \\
+M_{2}&=20p+16d, \\
+M_{3}&=118p+168d+96a+48b.
+\end{aligned}
+\end{equation}
+
+由于所有和都是循环的，即使偏移一和二模 \(p\) 重合，式~
+\eqref{eq:general-defect-moments} 对 \(p=1,2,3,4\) 仍成立；Laurent 矩阵构造
+保留了重数。
+
+\subsection{八屏障处的必要条件}
+
+由式~\eqref{eq:general-defect-moments}，
+
+\begin{equation}
+\label{eq:general-excesses}
+\begin{aligned}
+F_{1}&=M_{2}-8M_{1}=16d-12p, \\
+F_{2}&=M_{3}-8M_{2}=-42p+40d+96a+48b.
+\end{aligned}
+\end{equation}
+
+若 \(R(Q)\leq8\)，引理~\ref{lem:moment-barrier} 要求 \(F_1\leq0\) 且
+\(F_2\leq0\)。因此
+
+\begin{equation}
+\label{eq:general-necessary-conditions}
+\begin{aligned}
+d&\leq \frac{3p}{4}, \\
+40d+96a+48b&\leq 42p.
+\end{aligned}
+\end{equation}
+
+这就证明了定理~\ref{thm:general-period-moment-obstruction}。
+
+含 4、36、430 个字的归集是一项有限计算机辅助符号计算。递推式~
+\eqref{eq:walk-recurrence}--\eqref{eq:walk-moment} 完整指定证明算法；附录~
+\ref{app:computational-protocol} 所列精确检查器复现分组表、式~
+\eqref{eq:general-flux-moments}--\eqref{eq:general-excesses}，以及定理~
+\ref{thm:eight-barrier-trichotomy} 中使用的周期八数值
+\(F_4=5504\)、\(F_6=64336\)、\(F_9=2872096\)。
+
+第一个不等式限制缺陷密度。第二个还惩罚局部聚集，并赋予相邻缺陷对比距离
+二缺陷对更大的权重。逆命题一般不成立：满足式~
+\eqref{eq:general-necessary-conditions}，或观察到有限多个非正 \(F_k\)，都不
+能推出 \(R(Q)\leq8\)。
+
+\subsection{与周期八机制的关系}
+
+当 \(p=8\) 时，式~\eqref{eq:general-defect-moments}--
+\eqref{eq:general-excesses} 特化为式~\eqref{eq:period-eight-first-moment}--
+\eqref{eq:period-eight-second-excess}。对高缺陷密度，前两个超额量已经越过
+屏障。低密度相位可以躲过这些短程检验；第~\ref{sec:eight-barrier} 节的两
+缺陷间距层级表明，此时需要逐渐加长的闭步。这促成有界低周期定理所用的
+自适应层级。

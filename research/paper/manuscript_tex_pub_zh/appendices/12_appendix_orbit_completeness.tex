@@ -1,0 +1,115 @@
+\section{商集与轨道完备性}\label{app:orbit-completeness}
+
+本附录给出定理~\ref{thm:smallest-counterexample} 和定理~
+\ref{thm:low-period-frontier} 所用的有限覆盖论证。
+
+\subsection{切换坐标}
+
+对 \(G_n=C_n(1,2)\)，\(n\) 个三角形圈和步长一 Hamilton 圈构成
+\((n+1)\) 维圈空间的一组基。因此每个切换类由下式唯一表示：
+
+\begin{equation}
+\label{eq:cycle-coordinate-space}
+(\tau_{0},\ldots,\tau_{n-1},\alpha) \in \{+1,-1\}^{n+1}.
+\end{equation}
+
+当 \(n\) 为偶数时，全局边符号取反会取反每个三角形通量并保持 \(\alpha\)；
+它还把 \(A\) 换成 \(-A\)，故谱半径不变。相邻乘积
+\(Q_i=\tau_i\tau_{i+1}\) 在该取反下不变。合法 \(Q\) 字的乘积为 \(+1\)，
+且每个字恰有两个提升 \(\tau\) 和 \(-\tau\)。所以一对 \((Q,\alpha)\) 恰好
+代表这一对谱等价切换类。
+
+二面体群按图自同构作用。若规范 \(Q\) 轨道大小为 \(s\)，保留两个
+\(\alpha\) 值就代表 \(4s\) 个切换类：\(s\) 个几何字、两个 \(\tau\) 提升
+和两种和乐。对所有合法 \(Q\) 轨道求和得
+
+\begin{equation}
+\label{eq:orbit-weight-identity}
+\sum_{\mathrm{orbits}} 4s = 4\cdot 2^{n-1}=2^{n+1},
+\end{equation}
+
+恰等于切换类总数。因此该商集不遗漏任何类。
+
+\subsection{合法通量字的 Burnside 计数}
+
+设循环的 \(p\) 个位置上的置换 \(g\) 具有圈长
+\(\ell_1,\ldots,\ell_c\)。被 \(g\) 固定的字在每个圈上为常数，所以由符号
+\(\varepsilon_1,\ldots,\varepsilon_c\) 指定。其总乘积为
+
+\begin{equation}
+\label{eq:permutation-cycle-sign}
+\prod_{j=1}^c \varepsilon_j^{\ell_j}.
+\end{equation}
+
+若至少一个 \(\ell_j\) 为奇数，则 \(2^c\) 种赋值中恰有一半使式~
+\eqref{eq:permutation-cycle-sign} 为正，所以 \(g\) 固定 \(2^{c-1}\) 个合法字。
+若所有 \(\ell_j\) 均为偶数，则该式恒正，\(g\) 固定全部 \(2^c\) 种赋值。
+Burnside 引理于是给出
+
+\begin{equation}
+\label{eq:burnside-orbit-count}
+N_p=\frac{1}{2p}\sum_{g\in D_p}\begin{cases}2^{c(g)-1}, & \text{若 }g\text{ 有奇圈}, \\
+2^{c(g)}, & \text{若 }g\text{ 的所有圈均为偶圈}.
+\end{cases}
+\end{equation}
+
+计算 \(p\) 个旋转和 \(p\) 个反射的圈分解，得到：
+
+\begin{table}[tbp]
+\centering
+\caption{直至周期十六的合法通量字和二面体轨道数。}
+\label{tab:low-period-orbit-counts}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lll}
+\toprule
+\(p\) & 合法字数 & 二面体轨道数 \\
+\midrule
+1 & 1 & 1 \\
+2 & 2 & 2 \\
+3 & 4 & 2 \\
+4 & 8 & 4 \\
+5 & 16 & 4 \\
+6 & 32 & 8 \\
+7 & 64 & 9 \\
+8 & 128 & 18 \\
+9 & 256 & 23 \\
+10 & 512 & 44 \\
+11 & 1,024 & 63 \\
+12 & 2,048 & 122 \\
+13 & 4,096 & 190 \\
+14 & 8,192 & 362 \\
+15 & 16,384 & 612 \\
+16 & 32,768 & 1,162 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+轨道数总和为 2,626。
+
+\subsection{显式代表元集合相等}
+
+有界前沿使用的不仅是式~\eqref{eq:burnside-orbit-count} 的计数。对每个 \(p\)，
+任取前 \(p-1\) 项，再强制最后一项使乘积为正，从而构造全部 \(2^{p-1}\) 个
+合法字。把每个字换成其所有旋转与反射后旋转中字典序最小者。将所得规范字
+集合与存储表的 \((p,Q)\) 集合精确比较，并要求表标识符遵循该字典序。集合
+相等同时排除遗漏轨道和用新标识符掩盖的重复轨道。
+
+对每个存储代表元，第二项检查重新计算其二面体像集、轨道大小、周期提升、
+本原 \(Q\) 周期和本原 \(\tau\) 周期。这证明周期 8 与 16 的两个目标行由胞
+重复关联，且没有移除真正不同的本原相位。
+
+\subsection{有限最小性覆盖}
+
+直至 20 阶，直接迭代式~\eqref{eq:cycle-coordinate-space} 覆盖每个切换类。
+在更大阶数上，按缺陷壳层生成规范 \((Q,\alpha)\) 记录。每条记录保存其二面
+体轨道大小，从而保存式~\eqref{eq:orbit-weight-identity} 给出的代表重数。对每
+个壳层，将这些重数之和与合法字的二项式奇偶计数比较；再把各壳层之和与
+\(2^{n+1}\) 比较。末端游标证明规范生成器已经穷尽其有序定义域。
+
+当 \(n=24\) 时，另一套基于访问集合的生成器和固定重量项链生成器在全部
+176,906 条规范通量记录上逐条一致。当 \(n=26,28,30\) 时，独立 Burnside
+计数与壳层总数、代表大小之和、次序及奇偶性检查均与生产结果一致。这就在
+第~\ref{sec:computational-verification} 节披露的执行信任边界下建立了所述
+有限覆盖性。

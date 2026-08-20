@@ -1,0 +1,110 @@
+\section{计算机辅助验证}\label{sec:computational-verification}
+
+若干主要结果把人工论证与有限精确计算结合起来。本节准确说明哪些内容由
+计算证明，哪些内容由解析论证证明，以及两层证明如何衔接。
+
+\subsection{证明分类}
+
+Floquet 直和、行列式恒等式、锐正性展开、算子等价、消去基线、矩屏障、从
+分组矩恒等式到缺陷不等式的转换，以及手征约化，都是第~
+\ref{sec:preliminaries} 节和第~\ref{sec:periodic-construction}--
+\ref{sec:eight-barrier} 节给出的代数证明。
+
+下列断言是有限计算机辅助定理：
+
+\begin{enumerate}
+\item 每个偶数阶 \(8\leq n\leq30\) 的每个切换类都满足猜想下界；
+\item 展示周期至 16 的 2,626 个合法通量/二面体轨道代表元构成完整有限相空间；
+\item 定理~\ref{thm:low-period-frontier} 使用的精确证书划分覆盖上述每个代表元；
+\item 式~\eqref{eq:general-flux-moments}--\eqref{eq:general-excesses} 背后的系数归集以及所述 \(F_4,F_6,F_9\) 数值，是由一般周期矩检查器复现的精确计算机辅助符号恒等式；
+\item 闭步首个正指标和五个残余 Rayleigh 商，是整数或有理运算的精确输出。
+\end{enumerate}
+
+独立重执行和独立编写的检查器会增强可信度，但不是定理的附加假设。
+
+\subsection{有限判定的精确性}
+
+浮点特征值只用于定位可能的最大化纤维或提出小有理向量。有限判定仅以以下
+一种精确形式进入证明：
+
+\begin{itemize}
+\item 由整数矩阵和整数向量计算的有理 Rayleigh 不等式；
+\item 由无分数消元或有理消元得到的正定性证书；
+\item 整系数多项式的 Sturm 根隔离证书；
+\item 精确整数闭步超额量；
+\item 精确轨道计数与轨道大小之和。
+\end{itemize}
+
+所以任何严格定理不等式都不依赖浮点容差。
+
+\subsection{最小性计算}
+
+对 \(n=8,\ldots,20\)，直接枚举全部 \(2^{n+1}\) 个切换类。对
+\(n=22,\ldots,30\)，计算枚举规范四边形通量手镯，保留两种和乐，并附上
+精确二面体轨道重数。所代表的切换类总数与 \(2^{n+1}\) 核对。因而在最大
+阶数上，是用 17,929,600 个规范谱状态代表 2,147,483,648 个切换类，而不是
+运行 21.47 亿个独立测试用例。
+
+对各生产阶数执行了新的确定性再生成：
+
+\begin{table}[tbp]
+\centering
+\caption{大阶数枚举中的规范谱状态和检查点分块。}
+\label{tab:checkpoint-counts}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lll}
+\toprule
+\(n\) & 规范谱状态 & 分块数 \\
+\midrule
+24 & 353,812 & 28 \\
+26 & 1,299,064 & 76 \\
+28 & 4,810,472 & 250 \\
+30 & 17,929,600 & 908 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+再生成的有序输入摘要、有序证书摘要、壳层计数、代表总数和末端检查点链均与
+原计算一致；数学不匹配数为零。已提交检查点的完整性重放与此次再生成有所
+区别：前者认证已存执行记录，但不会重建每个状态的不等式。
+
+\subsection{低周期计算}
+
+对每个 \(1\leq p\leq16\)，一条路线把所有合法通量字显式划分为二面体轨道，
+另一条路线使用 Burnside 引理和置换圈奇偶性。把代表元集合而不只是其基数与
+独立生成的规范集合比较；确定性轨道标识符绑定于字典序。随后逐行检查合法
+奇偶性、规范性、轨道大小、\(\tau\) 提升、本原周期、算子等价和精确证书。
+
+所得 2,626 行表没有缺失或重复的规范代表元。精确排除划分式~
+\eqref{eq:frontier-partition} 没有重叠，也没有未解决行。
+
+\subsection{可复现环境与信任边界}
+
+提交的证明材料固定到公开不可变快照
+
+\begin{center}
+\url{https://github.com/whzy3185/math/tree/c81be34a3b12a7ac47adbb4499c475df7bf4fc04}
+\end{center}
+
+机器可读清单
+\path{research/reproducibility/}\allowbreak\path{target_a_submission_}\allowbreak\path{artifact_manifest.json}
+把定理~\ref{thm:smallest-counterexample} 和定理~
+\ref{thm:low-period-frontier} 绑定到检查器源码、固定依赖、24 至 30 阶检查点
+链、再生成摘要和完整 2,626 行低周期表的 SHA-256 摘要。对定理~
+\ref{thm:low-period-frontier}，该表包含每个规范代表元及其精确判定。对定理~
+\ref{thm:smallest-counterexample}，已提交的生产检查点为 24 至 30 阶提供逐块
+完整性重放，而确定性搜索程序为每个阶数提供逐状态完整数学再生成路线。直至
+22 阶的紧凑材料是汇总证明，不替代该再生成。
+
+参考环境为 Python 3.12.13、NumPy 2.3.5、SymPy 1.14.0 和 pytest 9.1.1。
+机器可读需求文件固定了 Python 包。因而可在干净的 Python 3.12 环境中，
+使用附录~\ref{app:computational-protocol} 所列仓库相对命令运行默认套件和三个
+显式启用的慢速生成器审计。
+
+仍有两个信任边界，并在此披露而非隐藏。对直至 22 阶的情形，紧凑规范最小性
+材料认证汇总历史记录；虽然也执行了新的精确重跑，但仓库没有为每个历史状态
+存档可独立重放的向量。对 26、28、30 阶，独立生成器审计检查 Burnside 总数、
+壳层总数、代表大小之和、阶数和奇偶性，而与另一套实现逐记录相等的检查完成
+到 24 阶。这些是穷举部分的执行信任限制，不是未披露的数值容差。

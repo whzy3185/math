@@ -1,0 +1,65 @@
+\usepackage{fontspec}
+\usepackage{xeCJK}
+\setCJKmainfont[BoldFont=STHeiti,ItalicFont=Songti SC]{Songti SC}
+\setCJKsansfont[AutoFakeBold=2]{STHeiti}
+\setCJKmonofont{STHeiti}
+\usepackage{microtype}
+\usepackage{mathtools,amssymb,amsthm}
+\usepackage{booktabs,array,tabularx,graphicx}
+\usepackage{float}
+\usepackage{xcolor}
+\usepackage{listings}
+\usepackage{titlesec}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{geometry}
+\geometry{a4paper,left=25mm,right=25mm,top=25mm,bottom=25mm}
+\emergencystretch=3em
+\raggedbottom
+\linespread{1.20}
+\setlength{\parindent}{2em}
+\setlength{\parskip}{0pt}
+\setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
+\setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
+\titleformat{\section}{\centering\sffamily\bfseries\fontsize{14}{18}\selectfont}{\thesection}{1em}{}
+\titleformat{\subsection}{\sffamily\bfseries\fontsize{12}{16}\selectfont}{\thesubsection}{0.8em}{}
+\titleformat{\subsubsection}{\sffamily\bfseries\fontsize{11}{15}\selectfont}{\thesubsubsection}{0.8em}{}
+\titlespacing*{\section}{0pt}{18pt}{10pt}
+\titlespacing*{\subsection}{0pt}{13pt}{6pt}
+\titlespacing*{\subsubsection}{0pt}{10pt}{4pt}
+\renewcommand{\abstractname}{摘要}
+\renewcommand{\refname}{参考文献}
+\renewcommand{\tablename}{表}
+\renewcommand{\figurename}{图}
+
+\DeclareMathOperator{\spec}{spec}
+\DeclareMathOperator{\diag}{diag}
+\DeclareMathOperator{\CT}{CT}
+
+\newtheorem{theorem}{定理}[section]
+\newtheorem{proposition}[theorem]{命题}
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{定义}
+\newtheorem{example}[theorem]{例}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{注}
+\renewcommand{\proofname}{证明}
+\crefname{equation}{式}{式}
+\crefname{theorem}{定理}{定理}
+\crefname{proposition}{命题}{命题}
+\crefname{lemma}{引理}{引理}
+\crefname{table}{表}{表}
+\crefname{section}{节}{节}
+
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  columns=fullflexible,
+  keepspaces=true,
+  frame=single,
+  rulecolor=\color{black!25},
+  xleftmargin=0.5em,
+  xrightmargin=0.5em
+}

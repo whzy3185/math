@@ -1,0 +1,197 @@
+\section{引言}\label{sec:introduction}
+
+带符号邻接矩阵为谱图论、切换理论以及离散磁性或通量相思想提供了一个具体
+的交汇点。设 \(G\) 为一张图，每条边都被赋予 \(\{+1,-1\}\) 中的一个符号。
+在某个顶点切换符号，等价于用一个对角符号矩阵共轭带符号邻接矩阵。因此，
+谱只依赖于圈通量，而不依赖于所选的边规范。于是，在所有赋号中最小化谱半径
+的问题可以视为一个有限通量相问题。
+
+本文研究四正则循环图
+
+\begin{equation}
+G_n=C_n(1,2),
+\end{equation}
+
+其中顶点是模 \(n\) 的剩余类，循环距离为一或二的顶点之间连边。Suvagiya
+给出了一个三角形通量交替的特殊族 \cite{Suvagiya2026Signed}。当 \(n\) 为
+偶数时，该族中 Hamilton 步长一圈和乐为负的两个成员具有谱半径
+
+\begin{equation}
+\rho_-(n)=2 \sqrt{\cos^{2}(\frac{\pi}{n})+\cos^{2}(\frac{2\pi}{n})}.
+\end{equation}
+
+文献 \cite{Suvagiya2026Signed} 的猜想 3 断言，\(G_n\) 的任何赋号都不可能
+具有更小的谱半径。该文验证了 \(n=8,10,\ldots,18\) 的情形，并将一般下界
+留作公开问题。
+
+切换观点属于经典的带符号图理论 \cite{Zaslavsky1982}；循环图谱与 Floquet
+约化分别提供有限算子和周期算子的背景 \cite{Davis1979,Kuchment1993}。
+Bilu 与 Linial 提出了更广泛的谱赋号问题 \cite{BiluLinial2006}，其二分图
+情形由 Marcus、Spielman 与 Srivastava 解决
+\cite{MarcusSpielmanSrivastava2015}。Lieb 的通量相定理提供了本文采用的
+物理术语 \cite{Lieb1994}。这些文献提供背景，而不包含本文证明的反例或分类
+结果。
+
+继承自既有工作的要素包括交替三角形族、它的四个切换/和乐类、上述
+\(\rho_-(n)\) 公式以及猜想本身 \cite{Suvagiya2026Signed}；配套的奇偶族
+框架见 \cite{Suvagiya2026Parity}。本文的新结果是反例及其最小性、无限周期
+反例族、锐带边，以及周期八和低周期分类。
+
+该猜想是错误的，但其失效出现得很晚：所有小于 32 的允许阶数都满足所提
+下界。第一个反例是一个 32 阶赋号，其三角形通量字是下列八元组的四次重复：
+
+\begin{equation}
+(+,+,-,+,-,-,+,-).
+\end{equation}
+
+同一个字定义了一个周期八算子。它的 Floquet 多项式可以精确计算，而一个
+一致正性论证将这个孤立见证推广为无限族，覆盖所有不小于 32 的八的倍数。
+由此所得分析不仅否定了猜想，还揭示出一个锐周期八谱边和一种结构性消去
+机制。
+
+\subsection{主要结果}
+
+第一个结果把一个精确见证与有限穷举排除结合起来。
+
+\begin{theorem}[最小反例]
+\label{thm:smallest-counterexample}
+对于每个满足 \(8\leq n\leq 30\) 的偶数 \(n\)，猜想下界成立；而在
+\(n=32\) 时失效。因此，32 是最小反例阶数。
+
+\end{theorem}
+直至 30 阶的排除是一条有限计算机辅助定理。其证明枚举切换类的一个完整
+商集，并用精确有理不等式认证每个非极小元。32 阶见证本身则有一个简短的
+精确正定性证书。
+
+该见证可以周期延拓。
+
+\begin{theorem}[无限反例族]
+\label{thm:infinite-counterexample-family}
+对于每个 \(n=8L\)、\(L\geq 4\)，以及任一 Hamilton 和乐，第~
+\ref{sec:periodic-construction} 节定义的周期八赋号都满足
+
+\begin{equation}
+\rho(A)^{2} < \frac{1561}{200} < \rho_-(n)^{2}.
+\end{equation}
+
+因此，猜想在每个不小于 32 的八的倍数处失效。我们并不声称它在每个大于
+32 的偶数阶都失效。
+
+\end{theorem}
+在无限体积极限下，Floquet 分析是锐的。
+
+\begin{theorem}[精确周期八谱边]
+\label{thm:exact-period-eight-edge}
+对于目标周期八相位，无限体积谱半径的平方为
+
+\begin{equation}
+\eta=4+\sqrt{10+2\sqrt{5}},
+\end{equation}
+
+并且最高能带仅在 Bloch 参数 \(z=1\) 处达到 \(\eta\)。
+
+\end{theorem}
+其局部机制由一套完整相位分类刻画。对于合法的周期八通量字 \(Q\)，令
+\(D(Q)\) 为其中正号位置的集合，并令 \(R(Q)\) 表示无限体积谱半径的平方。
+
+\begin{theorem}[八屏障三分律]
+\label{thm:eight-barrier-trichotomy}
+下列三种情形恰有一种发生：
+
+\begin{equation}
+\begin{cases}
+R(Q)=8, & D(Q)=\varnothing; \\
+R(Q)=\eta<8, & D(Q)=\{j,j+4\}; \\
+R(Q)>8, & \text{对于其他每个合法周期八 }Q.
+\end{cases}
+\end{equation}
+
+特别地，在平移、反射和全局边符号取反意义下，目标相位是唯一的周期八极小
+元，而全负相位是唯一的次优相位。
+
+\end{theorem}
+同一个平方算子计算还能给出任意周期的信息。令 \(d=\lvert D(Q)\rvert\)，
+令 \(a\) 计数相邻正号对，令 \(b\) 计数循环距离为二的正号对。
+
+\begin{theorem}[一般周期矩障碍]
+\label{thm:general-period-moment-obstruction}
+对于每个合法的 \(p\)-周期相位，
+
+\begin{equation}
+\begin{aligned}
+M_{1}&=4p, \\
+M_{2}&=20p+16d, \\
+M_{3}&=118p+168d+96a+48b.
+\end{aligned}
+\end{equation}
+
+若 \(R(Q)\leq 8\)，则必有
+
+\begin{equation}
+\begin{aligned}
+d&\leq \frac{3p}{4}, \\
+40d+96a+48b&\leq 42p.
+\end{aligned}
+\end{equation}
+
+这些仅是必要条件。
+
+\end{theorem}
+最后，我们分类一个有界但非平凡的周期区域。
+
+\begin{theorem}[低周期前沿]
+\label{thm:low-period-frontier}
+考虑式~\eqref{eq:periodic-operator} 中、本原 Hamilton 规范三角形字 \(\tau\)
+的最小正周期至多为 16 的无限算子，并最小化其无限体积谱半径平方 \(R\)。
+除平移、反射、全局边符号取反以及单位胞重复这些自然等价外，目标相位是唯一
+极小元。重复胞仅为证书记账而保留，并通过能区折叠识别为谱等价。
+
+\end{theorem}
+该定理是计算机辅助的：一项完整精确的有限分类把闭步压缩与残余竞争者的
+精确证书结合起来。完整划分和证书记账见第~\ref{sec:low-period-frontier} 节。
+
+\subsection{证明策略}
+
+第一个组织工具是 Hamilton 规范。通过切换，可将所有步长一边变为 \(+1\)，
+只留下一个和乐切口；此时一个赋号由三角形通量的周期字 \(\tau\) 编码。其
+相邻乘积
+
+\begin{equation}
+Q_i=\tau_i \tau_{i+1}
+\end{equation}
+
+就是四边形通量。周期性允许把算子 Floquet 分解为有限 Hermitian Laurent
+矩阵 \(H_Q(z)\)。对目标字，特征行列式关于特征值为偶函数，并约化成变量
+\(y=\lambda^{2}\) 与 \(c=z+z^{-1}\) 的四次式 \(P(y,c)\)。在候选谱边处的
+一个精确正系数展开证明锐界及其等号情形。
+
+第二个工具是对无限算子作平方。在 \(A_\tau^{2}\) 中，每个奇位移系数都含有
+因子 \(1+Q_i\)。因此，负通量恰好消去该耦合，而正通量激活绝对值为二的
+振幅。偶次 Bloch 迹的常数项计数带符号闭步。如果所有平方能带值都不超过
+八，则它们的逐次矩满足 \(M_{k+1}\leq 8M_k\)。所以，正的超额量会迫使谱超过
+八。这个单向蕴含与缺陷几何结合，证明周期八三分律并给出一般周期障碍。
+
+\subsection{范围与公开状态}
+
+本文结果区分三个优化区域。定理~\ref{thm:eight-barrier-trichotomy} 讨论展示
+周期为八的无限体积相位。定理~\ref{thm:low-period-frontier} 讨论本原 Hamilton
+规范周期至多为 16 的周期相位。定理~\ref{thm:smallest-counterexample} 只在已
+枚举至 32 阶的范围内讨论全部有限赋号。这些结果均未证明对所有周期、所有
+非周期赋号或每个有限阶的全局最优性。
+
+据我们所知，在源论文、作者列出的后续材料或为本稿记录的窄范围直接结果
+检索中，尚无对猜想 3 的公开直接解决。这是一项有边界的文献陈述，并非绝对
+优先权主张；检索日期和范围记录在可复现性说明中。
+
+\subsection{文章结构}
+
+第~\ref{sec:preliminaries} 节固定切换、通量、Floquet、矩和等价记号。
+第~\ref{sec:smallest-counterexample} 节证明定理~
+\ref{thm:smallest-counterexample}。第~\ref{sec:periodic-construction} 节和第~
+\ref{sec:period-eight-edge} 节证明周期反例族及其锐谱边。第~
+\ref{sec:eight-barrier} 节证明八屏障三分律并解释手征对称。第~
+\ref{sec:general-period} 节导出一般周期矩和必要条件。第~
+\ref{sec:low-period-frontier} 节证明有界低周期前沿。第~
+\ref{sec:computational-verification} 节说明计算机辅助证明的边界和可复现性
+模型。第~\ref{sec:discussion} 节汇集推论与开放问题。附录给出审计计算机
+辅助部分所需的轨道计数论证、精确有限证书和计算协议。

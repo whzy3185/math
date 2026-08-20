@@ -1,0 +1,136 @@
+\section{低周期谱前沿}\label{sec:low-period-frontier}
+
+我们把完整轨道枚举与一组压缩的精确谱排除相结合，证明定理~
+\ref{thm:low-period-frontier}。其定义域是式~\eqref{eq:periodic-operator} 中
+Hamilton 规范三角形字 \(\tau\) 的最小正周期 \(p\leq16\) 的无限算子集合；
+最小化的量是式~\eqref{eq:squared-periodic-radius} 的无限体积谱半径平方，而非
+有限和乐谱。在重复胞中展示的字只为完整证书记账而保留，并通过能区折叠与其
+本原相位认同。该定理不外推到此定义域之外。
+
+\subsection{完整相空间}
+
+对每个展示胞长度 \(1\leq p\leq16\)，考虑模旋转和反射的合法通量字
+
+\begin{equation}
+\label{eq:legal-periodic-flux}
+Q \in \{+1,-1\}^p,       \prod_i Q_i=1.
+\end{equation}
+
+显式轨道划分和附录~\ref{app:orbit-completeness} 的独立 Burnside 计算给出
+计数
+
+\begin{equation}
+\label{eq:low-period-orbit-counts}
+1,2,2,4,4,8,9,18,23,44,63,122,190,362,612,1162,
+\end{equation}
+
+总和为 2,626。每个本原 \(\tau\) 周期至多为 16 的周期相位，在其本原胞中
+书写时都出现在该列表里。平移、反射、全局边符号取反和胞重复具有引理~
+\ref{lem:operator-equivalences} 与引理~\ref{lem:zone-folding} 证明的谱等价。
+
+\subsection{精确排除方案}
+
+对每个代表元计算式~\eqref{eq:moment-and-excess} 的矩。引理~
+\ref{lem:moment-barrier} 给出有效蕴含
+
+\begin{equation}
+\label{eq:frontier-moment-exclusion}
+F_k>0 \Longrightarrow R(Q)>8>\eta.
+\end{equation}
+
+直至 \(F_{64}\) 的自适应精确闭步计算，为 2,611 个代表元找到首个正超额量。
+首个正指标介于 1 与 64 之间；特别地，两个近屏障类分别直到 \(F_{48}\) 和
+\(F_{64}\) 才首次被检出。该计算使用整数闭步和，所以每个超额量的符号都是
+精确的。
+
+还剩十五个代表元。其中八个是全负相位的偶周期重复展示。式~
+\eqref{eq:all-negative-square} 证明它们全都满足 \(R=8>\eta\)。另两个是
+
+\begin{equation}
+\label{eq:target-zone-folding-rows}
+\begin{aligned}
+p&=8:  Q=00010001, \\
+p&=16: Q=0001000100010001,
+\end{aligned}
+\end{equation}
+
+其中零表示负通量，一表示正通量。引理~\ref{lem:zone-folding} 表明第二行是
+第一行的双胞表示，而不是第二个相位；第~\ref{sec:period-eight-edge} 节给出
+二者共同的值 \(R=\eta\)。
+
+剩余五个代表元为
+
+\begin{table}[tbp]
+\centering
+\caption{需要端点证书的残余低周期竞争者。}
+\label{tab:residual-competitors}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{ll}
+\toprule
+\(p\) & 规范 \(Q\) \\
+\midrule
+10 & \(0000010001\) \\
+12 & \(000000010001\) \\
+14 & \(00000000010001\) \\
+14 & \(00010010001001\) \\
+16 & \(0000000000010001\) \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+对每行选择 \(z\in\{+1,-1\}\) 和一个存储的非零整数向量 \(v\)。令
+\(H=H_Q(z)\)，并置
+
+\begin{equation}
+\label{eq:residual-rayleigh-quotient}
+r=(v^T H^{2} v)/(v^T v).
+\end{equation}
+
+式~\eqref{eq:residual-rayleigh-quotient} 的全部运算在最后一次有理除法前都是
+整数运算。五个证书先验证 \(r>4\)。令
+
+\begin{equation}
+u=((r-4)^{2}-10)/2.
+\end{equation}
+
+随后验证 \(u>0\) 和 \(u^2>5\)。由于 \(r-4>0\)，这些不等式选出正平方根
+分支并给出
+
+\begin{equation}
+\label{eq:residual-radical-comparison}
+\begin{aligned}
+(r-4)^{2}&>10+2\sqrt{5}, \\
+r&>4+\sqrt{10+2\sqrt{5}}=\eta.
+\end{aligned}
+\end{equation}
+
+条件 \(r>4\) 不可缺少：只用关于 \(u\) 的两个不等式，在较低分支上也可能
+成立。Rayleigh 原理与式~\eqref{eq:residual-rayleigh-quotient}--
+\eqref{eq:residual-radical-comparison} 对每个残余代表元给出
+\(R(Q)\geq r>\eta\)。
+
+\subsection{完备性记账}
+
+精确划分为
+
+\begin{equation}
+\label{eq:frontier-partition}
+\begin{aligned}
+2611&\quad\text{个由矩检出的代表元},\\
+8&\quad\text{个重复全负代表元},\\
+5&\quad\text{个由端点认证的残余竞争者},\\
+2&\quad\text{个目标展示代表元},\\
+2626&\quad\text{个代表元总计}.
+\end{aligned}
+\end{equation}
+
+式~\eqref{eq:frontier-partition} 中各集合互不相交，附录~
+\ref{app:orbit-completeness} 证明这 2,626 个代表元构成完整合法轨道空间。
+所以定义域中的每个非目标相位都有 \(R(Q)>\eta\)，而两个目标行对应同一个
+满足 \(R(Q)=\eta\) 的本原周期八相位。这就证明了定理~
+\ref{thm:low-period-frontier}。
+
+观测到的最近竞争者出现在周期十，但非目标周期内的数值排序不是定理内容。
+精确证明的是每个竞争者与 \(\eta\) 的严格比较。

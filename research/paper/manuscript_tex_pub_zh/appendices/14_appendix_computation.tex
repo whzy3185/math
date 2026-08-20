@@ -1,0 +1,151 @@
+\section{计算协议}\label{app:computational-protocol}
+
+\subsection{参考环境}
+
+公开证明材料是不可变 Git 快照
+
+\begin{center}
+\url{https://github.com/whzy3185/math/tree/c81be34a3b12a7ac47adbb4499c475df7bf4fc04}
+\end{center}
+
+其投稿绑定文件为
+\path{research/reproducibility/}\allowbreak\path{target_a_submission_}\allowbreak\path{artifact_manifest.json}。
+该清单记录定理~\ref{thm:smallest-counterexample} 和定理~
+\ref{thm:low-period-frontier} 的材料角色与 SHA-256 摘要。验证器从固定 Git
+对象读取指定文件，而不会默认接受可变工作树副本。该快照包含全部检查器源码、
+完整 2,626 行低周期证书表、24 至 30 阶检查点数据、紧凑最小性材料、再生成
+摘要和固定依赖。投稿时最好提供带 DOI 的存档版本；完整提交标识符已经使本稿
+的公开材料不可变且按内容寻址。
+
+参考解释器和软件包为：
+
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+组件 & 版本 \\
+\midrule
+Python & 3.12.13 \\
+NumPy & 2.3.5 \\
+SymPy & 1.14.0 \\
+pytest & 9.1.1 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+在具有 Python 3.12 的干净检出中，用下列命令创建可移植环境：
+
+\begin{lstlisting}[language=bash]
+python3.12 -m venv .venv-target-a
+.venv-target-a/bin/python -m pip install --upgrade pip
+.venv-target-a/bin/python -m pip install \
+  -r research/reproducibility/requirements-target-a.txt
+\end{lstlisting}
+
+下文所有命令均相对于仓库根目录。
+
+\subsection{快速验证}
+
+完整默认回归套件运行命令为
+
+\begin{lstlisting}[language=bash]
+.venv-target-a/bin/python -m pytest -q research/scripts
+\end{lstlisting}
+
+也可分别运行主要定理检查器：
+
+\begin{lstlisting}[language=bash]
+.venv-target-a/bin/python research/scripts/verify_target_a_minimality_certificate.py
+.venv-target-a/bin/python research/scripts/verify_target_a_period8_infinite_family.py
+.venv-target-a/bin/python research/scripts/verify_target_a_period8_sharp_constant.py
+.venv-target-a/bin/python research/scripts/verify_target_a_period8_structural_mechanism.py
+.venv-target-a/bin/python research/scripts/verify_target_a_general_period_moments.py
+.venv-target-a/bin/python research/scripts/verify_target_a_low_period_spectral_frontier.py
+.venv-target-a/bin/python research/scripts/verify_target_a_low_period_structural_frontier.py
+.venv-target-a/bin/python research/scripts/verify_target_a_periodic_operator_equivalences.py
+.venv-target-a/bin/python research/scripts/verify_target_a_submission_artifact_manifest.py
+\end{lstlisting}
+
+只要依赖、计数、精确证书、范围标志或源码摘要不匹配，每条命令都会封闭失败。
+
+\subsection{慢速生成器审计}
+
+默认套件跳过的三个生成器审计需显式启用：
+
+\begin{lstlisting}[language=bash]
+TARGET_A_RUN_SLOW_GENERATOR_TESTS=1 \
+.venv-target-a/bin/python -m pytest -q \
+  research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n26 \
+  research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n28 \
+  research/scripts/test_target_a_direct_bracelets.py::DirectBraceletTests::test_direct_generator_burnside_n30
+\end{lstlisting}
+
+这些测试独立检查壳层总数、Burnside 计数、所代表类总数、次序和奇偶性。
+它们是审计，而不是新的谱再生成。
+
+\subsection{再生成与完整性重放}
+
+新的再生成从规范生成器开始，重构每个谱状态，重新计算其精确判定，并写入新
+检查点链。完整性重放读取已有链并验证其摘要、计数、游标和汇总记录。二者都
+有用，但只有前者会对每个状态重新执行数学判定。
+
+对各生产阶数，选择一个空的外部目录并运行
+
+\begin{lstlisting}[language=bash]
+export OUT="${TARGET_A_OUTPUT:?set TARGET_A_OUTPUT}"
+mkdir -p "$OUT/checkpoints" "$OUT/results"
+for n in 24 26 28 30; do
+  .venv-target-a/bin/python research/scripts/target_a_minimality_search.py \
+    --n "$n" \
+    --checkpoint-dir "$OUT/checkpoints/n$n" \
+    --output "$OUT/results/target_a_search_n$n.json"
+done
+\end{lstlisting}
+
+在某阶数中断后，可向其命令添加 \(--resume\) 继续。每个结果 JSON 记录完成
+状态和壳层总数、有序输入与证书摘要、末端检查点链摘要、耗时和峰值驻留内存。
+在 Apple M5 上使用 Python 3.12.13、NumPy 2.3.5 和 SymPy 1.14.0 的一次
+成功参考运行得到：
+
+\begin{table}[tbp]
+\centering
+\caption{记录的再生成资源与末端检查点摘要。}
+\label{tab:regeneration-resources}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllllll}
+\toprule
+\(n\) & 状态数 & 分块数 & 时间（秒） & 峰值 RSS（MiB） & 检查点磁盘 & 末端链 SHA-256 \\
+\midrule
+24 & 353,812 & 28 & 25.3 & 75.1 & 1.1 MiB & \texttt{\detokenize{2dde869aea5da4f040e67a4fef3e93b5f35f5fb42d75f6d48820439f418c83c1}} \\
+26 & 1,299,064 & 76 & 117.2 & 84.4 & 3.1 MiB & \texttt{\detokenize{c515350b8bea840c04448086fbc98523615364c05ca837553c93efb933bc0c4e}} \\
+28 & 4,810,472 & 250 & 414.9 & 86.7 & 12 MiB & \texttt{\detokenize{7ba200b05590b2a9c0ea1121f25f89ddf1d294d0c043417e69f78f764f6e8ee1}} \\
+30 & 17,929,600 & 908 & 1542.3 & 135.2 & 43 MiB & \texttt{\detokenize{b7fd264eece645eead187424152ae810a9ff940e37ffc5649b5ddf65aa31d59d}} \\
+\bottomrule
+\end{tabular}
+}
+\endgroup
+\end{table}
+
+运行时间依赖硬件；观测到的串行总时间约 35 分钟，单进程峰值内存低于
+150 MiB，四个检查点目录共占约 60 MiB。已提交的紧凑再现摘要还记录有序
+输入与有序证书摘要，所以无需仓库外计时日志即可比较新运行。已提交链本身由
+下列命令重放：
+
+\begin{lstlisting}[language=bash]
+.venv-target-a/bin/python research/scripts/target_a_checkpoint_replay.py \
+  --n 24 26 28 30 \
+  --output "$OUT/target_a_checkpoint_replay.json"
+\end{lstlisting}
+
+生产检查点已提交。新的再生成分块和完整运行日志保存在仓库外；其紧凑清单
+记录状态数、分块数、有序输入与证书摘要以及末端链摘要。逻辑指纹一致而非计时
+元数据逐字节一致，定义不匹配数为零。
+
+\subsection{负向测试}
+
+回归测试每次修改一个逻辑字段并要求系统拒绝。覆盖的错误包括：遗漏轨道代表
+元、重复规范字、非确定性轨道标识符、依赖摘要漂移、错误本原周期、被改动的
+Rayleigh 分子、较低根式分支、错误矩方向、把数值预览提升为证明，以及禁止的
+全周期范围。该对抗层很重要，因为许多正向检查共享同一组精确算术原语。
