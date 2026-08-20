@@ -1,0 +1,158 @@
+\section{The Exact Period-Eight Spectral Edge}\label{sec:period-eight-edge}
+
+The rational number in Section~\ref{sec:periodic-construction} is convenient for proving strict finite
+counterexamples, but it is not the true band edge. We now prove Theorem~\ref{thm:exact-period-eight-edge}.
+
+\subsection{The endpoint roots}
+
+At \(c=2\), Equation~\eqref{eq:floquet-polynomial} becomes
+
+\begin{equation}
+\label{eq:edge-polynomial}
+P(y,2)=y^{4}-16y^{3}+76y^{2}-96y+16.
+\end{equation}
+
+Translate \(y=x+4\). Then
+
+\begin{equation}
+\label{eq:edge-depressed-quartic}
+P(x+4,2)=x^{4}-20x^{2}+80.
+\end{equation}
+
+Putting \(w=x^{2}\) gives \(w^{2}-20w+80=0\), whose roots are
+\(10+-2\sqrt{5}\). The four real roots of \eqref{eq:edge-polynomial}, in increasing order, are
+
+\begin{equation}
+\label{eq:edge-four-roots}
+\begin{aligned}
+&4-\sqrt{10+2\sqrt{5}}, \\
+&4-\sqrt{10-2\sqrt{5}}, \\
+&4+\sqrt{10-2\sqrt{5}}, \\
+&4+\sqrt{10+2\sqrt{5}}.
+\end{aligned}
+\end{equation}
+
+Thus the largest endpoint root is
+
+\begin{equation}
+\label{eq:eta-definition}
+\eta=4+\sqrt{10+2\sqrt{5}}.
+\end{equation}
+
+\subsection{Sharp positivity and uniqueness}
+
+Set
+
+\begin{equation}
+\begin{aligned}
+s&=\sqrt{10+2\sqrt{5}},       \eta=4+s, \\
+u&=y-\eta,                   t=2-c.
+\end{aligned}
+\end{equation}
+
+Substitution in \eqref{eq:floquet-polynomial} yields the identity
+
+\begin{equation}
+\label{eq:eta-positive-expansion}
+\begin{aligned}
+&P(\eta+u,2-t) \\
+&=u^{4}+4s u^{3}+2u^{2}t+(40+12\sqrt{5})u^{2} \\
+&\quad +4s ut+8\sqrt{5}s u+t^{2}+(4\sqrt{5}-3)t.
+\end{aligned}
+\end{equation}
+
+All coefficients are positive. Hence for \(u,t\geq 0\), the right side is
+nonnegative, and it vanishes only at \(u=t=0\). Since every unit-circle fiber
+has \(c\leq 2\), Equation~\eqref{eq:eta-positive-expansion} excludes every squared eigenvalue above \(\eta\) and
+permits equality only when \(c=2\).
+
+At \(c=2\), Equation~\eqref{eq:edge-polynomial} has \(\eta\) as a root, so \(+-\sqrt{\eta}\) are eigenvalues
+of \(H(1)\). Therefore
+
+\begin{equation}
+\label{eq:exact-infinite-edge}
+\sup_{\lvert z\rvert=1} \rho(H(z))^{2}=\eta.
+\end{equation}
+
+On the unit circle, \(z+z^{-1}=2\) if and only if \(z=1\). This proves both the
+value and the uniqueness assertion in Theorem~\ref{thm:exact-period-eight-edge}.
+
+For later use we also record that \(\eta\) has minimal polynomial
+
+\begin{equation}
+\label{eq:eta-minimal-polynomial}
+Y^{4}-16Y^{3}+76Y^{2}-96Y+16
+\end{equation}
+
+Indeed, translation \(Y=X+4\) reduces \eqref{eq:eta-minimal-polynomial} to
+\(X^{4}-20X^{2}+80\). By Gauss's lemma, a rational factorization may be taken into
+monic integral quadratics. Vanishing of the cubic and linear coefficients
+reduces it either to \((X^{2}+a)(X^{2}+b)\), where
+\(a+b=-20\) and \(ab=80\), or to
+\((X^{2}+rX+s)(X^{2}-rX+s)\), where \(s^{2}=80\). The first case would make \(a,b\)
+roots of \(T^{2}+20T+80\), whose discriminant 80 is not a square; the second has
+no rational \(s\). Thus \eqref{eq:eta-minimal-polynomial} is irreducible over \(Q\). The number \(\eta\) lies in
+\((\frac{1951}{250},\frac{1561}{200})\); in particular \(\eta<8\).
+
+\subsection{Monotonicity of the top band}
+
+Let \(r(c)\) be the largest real root of \(P(y,c)\). At \(c=-2\),
+
+\begin{equation}
+\label{eq:minus-one-fiber-factorization}
+\begin{aligned}
+P(y,-2)&=(y^{2}-12y+34)(y^{2}-4y+2), \\
+r(-2)&=6+\sqrt{2}=:y_{0}.
+\end{aligned}
+\end{equation}
+
+For \(-2<c\leq 2\), substitution gives
+
+\begin{equation}
+\label{eq:minus-one-fiber-comparison}
+P(y_{0},c)=(c+2)(c+5-8\sqrt{2})<0.
+\end{equation}
+
+Since \(P(y,c)\) tends to positive infinity with \(y\), \eqref{eq:minus-one-fiber-comparison} implies
+\(r(c)>y_{0}\) for \(c>-2\).
+
+Moreover,
+
+\begin{equation}
+\label{eq:floquet-c-derivative}
+P_c(y,c)=2(c-c_{0}(y)),       c_{0}(y)=y^{2}-8y+\frac{13}{2}.
+\end{equation}
+
+The function \(c_{0}\) is increasing for \(y\geq y_{0}>4\), and
+
+\begin{equation}
+c_{0}(y_{0})=-\frac{7}{2}+4\sqrt{2}>2.
+\end{equation}
+
+Thus \(P_c(y,c)<0\) throughout \(y\geq y_{0}\) and \(c\leq 2\). If
+\(-2\leq c_{1}<c_{2}\leq 2\) and \(y_{1}=r(c_{1})\), then
+\(P(y_{1},c_{2})<P(y_{1},c_{1})=0\); hence \(P(.,c_{2})\) has a root above \(y_{1}\).
+Therefore \(r(c)\) is strictly increasing on \([-2,2]\).
+
+\subsection{Finite holonomies}
+
+For \(\alpha=+1\), the finite set \(z^L=1\) contains \(z=1\). By \eqref{eq:exact-infinite-edge},
+
+\begin{equation}
+\label{eq:positive-holonomy-edge}
+\rho(A_{8L,+1})^{2}=\eta.
+\end{equation}
+
+For \(\alpha=-1\), the admissible parameters are
+\(z_k=exp((2k+1)\pi i/L)\). Their largest \(c\) value is \(2\cos(\frac{\pi}{L})\), which is
+strictly less than two. The monotonicity just proved gives
+
+\begin{equation}
+\label{eq:negative-holonomy-edge}
+\rho(A_{8L,-1})^{2}=r(2\cos(\frac{\pi}{L}))<\eta.
+\end{equation}
+
+As \(L\) tends to infinity, \(2\cos(\frac{\pi}{L})\) tends to two, and continuity of the
+eigenvalues of the Hermitian fiber gives convergence of \eqref{eq:negative-holonomy-edge} to \(\eta\).
+Thus both holonomy sectors have the same infinite-volume edge, but only the
+positive sector attains it at each finite size.

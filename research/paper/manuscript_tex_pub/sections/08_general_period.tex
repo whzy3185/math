@@ -1,0 +1,167 @@
+\section{General-Period Closed-Walk Obstructions}\label{sec:general-period}
+
+The local square identity in Section~\ref{sec:eight-barrier} does not depend on the period. We now
+derive the first three moments for every legal periodic phase and prove
+Theorem~\ref{thm:general-period-moment-obstruction}.
+
+\subsection{From closed walks to flux monomials}
+
+The possible steps of \eqref{eq:periodic-operator} are \(-2,-1,+1,+2\). A step of length one has
+weight one. A \(+2\) step from \(j\) has weight \(\tau_j\), and a \(-2\) step from
+\(j\) has weight \(\tau_{j-2}\).
+
+Consider a closed step word and cancel repeated \(\tau\) factors modulo two.
+The remaining indices occur in even number; write them as
+
+\begin{equation}
+r_{1}<r_{2}<\ldots<r_{2s}.
+\end{equation}
+
+Using \(Q_h=\tau_h \tau_{h+1}\) and telescoping,
+
+\begin{equation}
+\label{eq:tau-product-from-flux}
+\begin{aligned}
+&\prod_j \tau_{r_j} \\
+&=\prod_{\ell=1}^{s}\prod_{h=r_{2\ell-1}}^{r_{2\ell}-1}Q_h.
+\end{aligned}
+\end{equation}
+
+Thus every signed closed walk becomes a monomial in interval products of \(Q\).
+The identity is on the integer lattice, before reduction modulo a period, so
+it also handles short-cell collisions once cyclic indices are imposed.
+
+\subsection{Exact closed-word collection}
+
+For completeness, the collection has the following finite dynamic-programming
+recurrence on the integer lattice. For a starting residue \(r\), set
+
+\begin{equation}
+\label{eq:walk-recurrence}
+\begin{aligned}W_0^{(r)}(j)&=\begin{cases}1,&j=r,\\0,&j\ne r,\end{cases}\\
+W_{\ell+1}^{(r)}(j)&=\sum_{\delta\in\{-2,-1,1,2\}}W_{\ell}^{(r)}(j-\delta)w(j-\delta,\delta).
+\end{aligned}
+\end{equation}
+
+where
+
+\begin{equation}
+w(i,-1)=w(i,+1)=1,   w(i,+2)=\tau_i,   w(i,-2)=\tau_{i-2}.
+\end{equation}
+
+After every multiplication, pairs of equal \(\tau\) factors are cancelled and
+the remaining factors are converted to \(Q\) interval products by \eqref{eq:tau-product-from-flux}. Then
+
+\begin{equation}
+\label{eq:walk-moment}
+M_k=\sum_{r=0}^{p-1} W_{2k}^{r}(r).
+\end{equation}
+
+Thus every coefficient below is obtained by additions and multiplications in
+the integral group algebra of the free sign variables; no floating-point
+spectral calculation enters the collection.
+
+There are respectively 4, 36, and 430 closed step words of lengths two, four,
+and six. Collecting their flux monomials up to translation gives
+
+\begin{table}[tbp]
+\centering
+\caption{Closed-walk contributions from one starting residue.}
+\label{tab:closed-walk-contributions}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{ll}
+\toprule
+length & contribution from one starting residue \\
+\midrule
+2 & \(4\) \\
+4 & \(28+8Q_i\) \\
+6 & \(238+156Q_i+24Q_iQ_{i+1}+12Q_iQ_{i+2}\) \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+We briefly justify the collection. At length two, each of the four steps is
+followed by its reverse. At length four, the 36 zero-sum words reduce via
+\eqref{eq:tau-product-from-flux} to 28 constant terms and eight translates of a single \(Q_i\). At length
+six, applying \eqref{eq:tau-product-from-flux} to the 430 zero-sum words and grouping equal translated
+interval products leaves only the four displayed monomial types. This is a
+finite symbolic identity in the free \(Q\) variables, not a period-by-period
+numerical observation.
+
+Summing over the \(p\) starting residues yields
+
+\begin{equation}
+\label{eq:general-flux-moments}
+\begin{aligned}
+M_{1}&=4p, \\
+M_{2}&=28p+8 \sum_i Q_i, \\
+M_{3}&=238p+156 \sum_i Q_i \\
+&\quad +24 \sum_i Q_iQ_{i+1}+12 \sum_i Q_iQ_{i+2}.
+\end{aligned}
+\end{equation}
+
+Let \(I_i=(1+Q_i)/2\). Then
+
+\begin{equation}
+d=\sum_i I_i,       a=\sum_i I_iI_{i+1},       b=\sum_i I_iI_{i+2}.
+\end{equation}
+
+Substitute \(Q_i=2I_i-1\) in \eqref{eq:general-flux-moments} and collect. The result is
+
+\begin{equation}
+\label{eq:general-defect-moments}
+\begin{aligned}
+M_{1}&=4p, \\
+M_{2}&=20p+16d, \\
+M_{3}&=118p+168d+96a+48b.
+\end{aligned}
+\end{equation}
+
+Because all sums are cyclic, \eqref{eq:general-defect-moments} remains valid for \(p=1,2,3,4\), even when
+the offsets one and two coincide modulo \(p\); multiplicities are retained by
+the Laurent-matrix construction.
+
+\subsection{Necessary conditions at the eight-barrier}
+
+From \eqref{eq:general-defect-moments},
+
+\begin{equation}
+\label{eq:general-excesses}
+\begin{aligned}
+F_{1}&=M_{2}-8M_{1}=16d-12p, \\
+F_{2}&=M_{3}-8M_{2}=-42p+40d+96a+48b.
+\end{aligned}
+\end{equation}
+
+If \(R(Q)\leq 8\), Lemma~\ref{lem:moment-barrier} requires \(F_{1}\leq 0\) and \(F_{2}\leq 0\). Therefore
+
+\begin{equation}
+\label{eq:general-necessary-conditions}
+\begin{aligned}
+d&\leq \frac{3p}{4}, \\
+40d+96a+48b&\leq 42p.
+\end{aligned}
+\end{equation}
+
+This proves Theorem~\ref{thm:general-period-moment-obstruction}.
+
+The \(4\), \(36\), and \(430\) word collections are a finite computer-assisted
+symbolic calculation. Recurrences \eqref{eq:walk-recurrence}-\eqref{eq:walk-moment} specify the complete proof
+algorithm, and the exact checker named in Appendix~\ref{app:computational-protocol} reproduces the grouped
+table, formulas \eqref{eq:general-flux-moments}-\eqref{eq:general-excesses}, and the period-eight values
+\(F_{4}=5504\), \(F_{6}=64336\), and \(F_{9}=2872096\) used in Theorem~\ref{thm:eight-barrier-trichotomy}.
+
+The first inequality limits defect density. The second also penalizes local
+clustering, assigning greater weight to adjacent pairs than to distance-two
+pairs. The converse is false in general: satisfying \eqref{eq:general-necessary-conditions}, or observing
+finitely many nonpositive \(F_k\), does not establish \(R(Q)\leq 8\).
+
+\subsection{Relation to the period-eight mechanism}
+
+At \(p=8\), equations \eqref{eq:general-defect-moments}-\eqref{eq:general-excesses} specialize to \eqref{eq:period-eight-first-moment}-\eqref{eq:period-eight-second-excess}. For high defect
+density the first two excesses already cross the barrier. Low-density phases
+can evade these short tests, and the two-defect separation hierarchy in
+Section~\ref{sec:eight-barrier} shows that progressively longer closed walks are then required.
+This motivates the adaptive hierarchy used in the bounded low-period theorem.

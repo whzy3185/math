@@ -1,0 +1,138 @@
+\section{The Low-Period Spectral Frontier}\label{sec:low-period-frontier}
+
+We prove Theorem~\ref{thm:low-period-frontier} by combining complete orbit enumeration with a compressed
+set of exact spectral exclusions. Its domain is the set of infinite operators
+\eqref{eq:periodic-operator} whose Hamilton-gauge triangle word \(\tau\) has a least positive period
+\(p\leq 16\); the minimized quantity is the squared infinite-volume radius \eqref{eq:squared-periodic-radius},
+not a finite-holonomy spectrum. A word displayed in a repeated cell is kept
+only for complete certificate accounting and is identified with its primitive
+phase by zone folding. The theorem does not extrapolate beyond this domain.
+
+\subsection{Complete phase space}
+
+For each displayed cell length \(1\leq p\leq 16\), consider the legal flux words
+
+\begin{equation}
+\label{eq:legal-periodic-flux}
+Q \in \{+1,-1\}^p,       \prod_i Q_i=1,
+\end{equation}
+
+modulo rotations and reflections. Explicit orbit partition and the independent
+Burnside calculation of Appendix~\ref{app:orbit-completeness} give the counts
+
+\begin{equation}
+\label{eq:low-period-orbit-counts}
+1,2,2,4,4,8,9,18,23,44,63,122,190,362,612,1162,
+\end{equation}
+
+whose sum is 2,626. Every periodic phase of primitive \(\tau\) period at most 16
+appears in the list when written in its primitive cell. Translation,
+reflection, global edge-sign negation, and cell repetition have the spectral
+equivalences proved in Lemmas 2.1-2.2.
+
+\subsection{Exact exclusion scheme}
+
+For every representative compute the moments \eqref{eq:moment-and-excess}. Lemma~\ref{lem:moment-barrier} supplies the
+valid implication
+
+\begin{equation}
+\label{eq:frontier-moment-exclusion}
+F_k>0 \Longrightarrow R(Q)>8>\eta.
+\end{equation}
+
+An adaptive exact closed-walk calculation through \(F_{64}\) finds a first
+positive excess for 2,611 representatives. The first-positive indices range
+from 1 to 64; in particular, two near-barrier classes are first detected only
+at \(F_{48}\) and \(F_{64}\). This calculation uses integer closed-walk sums, so the
+sign of every excess is exact.
+
+Fifteen representatives remain. Eight are displayed even-period repetitions
+of the all-negative phase. Equation~\eqref{eq:all-negative-square} proves \(R=8>\eta\) for all of them.
+Two are
+
+\begin{equation}
+\label{eq:target-zone-folding-rows}
+\begin{aligned}
+p&=8:  Q=00010001, \\
+p&=16: Q=0001000100010001,
+\end{aligned}
+\end{equation}
+
+where zero denotes negative flux and one positive flux. Lemma~\ref{lem:zone-folding} shows that
+the second row is the doubled-cell representation of the first, not a second
+phase; Section~\ref{sec:period-eight-edge} gives their common value \(R=\eta\).
+
+The remaining five representatives are
+
+\begin{table}[tbp]
+\centering
+\caption{Residual low-period competitors requiring endpoint certificates.}
+\label{tab:residual-competitors}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{ll}
+\toprule
+\(p\) & canonical \(Q\) \\
+\midrule
+10 & \(0000010001\) \\
+12 & \(000000010001\) \\
+14 & \(00000000010001\) \\
+14 & \(00010010001001\) \\
+16 & \(0000000000010001\) \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+For each row choose \(z \in \{+1,-1\}\) and a stored nonzero integer vector \(v\).
+Let \(H=H_Q(z)\) and
+
+\begin{equation}
+\label{eq:residual-rayleigh-quotient}
+r=(v^T H^{2} v)/(v^T v).
+\end{equation}
+
+All arithmetic in \eqref{eq:residual-rayleigh-quotient} is integral before the final rational division. The
+five certificates first verify \(r>4\). Put
+
+\begin{equation}
+u=((r-4)^{2}-10)/2.
+\end{equation}
+
+They then verify \(u>0\) and \(u^{2}>5\). Since \(r-4>0\), these inequalities select
+the positive square-root branch and give
+
+\begin{equation}
+\label{eq:residual-radical-comparison}
+\begin{aligned}
+(r-4)^{2}&>10+2\sqrt{5}, \\
+r&>4+\sqrt{10+2\sqrt{5}}=\eta.
+\end{aligned}
+\end{equation}
+
+The condition \(r>4\) is indispensable: the two inequalities involving \(u\)
+alone can also hold on the lower branch. Rayleigh's principle and \eqref{eq:residual-rayleigh-quotient}-\eqref{eq:residual-radical-comparison}
+give \(R(Q)\geq r>\eta\) for each residual representative.
+
+\subsection{Completeness accounting}
+
+The exact partition is
+
+\begin{equation}
+\label{eq:frontier-partition}
+\begin{aligned}2611&\quad\text{moment-detected representatives},\\
+8&\quad\text{repeated all-negative representatives},\\
+5&\quad\text{endpoint-certified residual competitors},\\
+2&\quad\text{displayed target representations},\\
+2626&\quad\text{total representatives}.
+\end{aligned}
+\end{equation}
+
+The sets in \eqref{eq:frontier-partition} are disjoint, and Appendix~\ref{app:orbit-completeness} proves that the 2,626
+representatives are the full legal orbit space. Every non-target phase in the
+domain therefore has \(R(Q)>\eta\), while the two target rows are one primitive
+period-eight phase with \(R(Q)=\eta\). This proves Theorem~\ref{thm:low-period-frontier}.
+
+The nearest observed competitor occurs at period ten, but numerical ordering
+within a non-target period is not part of the theorem. What is proved exactly
+is the strict comparison of every competitor with \(\eta\).

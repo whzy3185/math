@@ -1,0 +1,287 @@
+\section{Signed Circulants and Flux Coordinates}\label{sec:preliminaries}
+
+\subsection{Signed adjacency matrices and switching}
+
+For an integer \(n\geq 8\), let \(G_n=C_n(1,2)\) have vertex set \(\mathbb{Z}/n\mathbb{Z}\) and edges
+
+\begin{equation}
+\{i,i+1\}, \{i,i+2\}    (i \in \mathbb{Z}/n\mathbb{Z}).
+\end{equation}
+
+A signing is a map \(\sigma:E(G_n)\to \{+1,-1\}\). Its signed adjacency matrix
+\(A_\sigma\) is the real symmetric matrix whose \(ij\) entry is the sign of
+\(\{i,j\}\) when this is an edge and zero otherwise. We write
+
+\begin{equation}
+\rho(A_\sigma)=\max\{\lvert \lambda\rvert: \lambda \in \operatorname{spec}(A_\sigma)\}.
+\end{equation}
+
+For a vertex-sign function \(d:\mathbb{Z}/n\mathbb{Z}\to \{+1,-1\}\), let \(D=\operatorname{diag}(d_i)\). Replacing
+\(\sigma_ij\) by \(d_i \sigma_ij d_j\) replaces \(A_\sigma\) by \(D A_\sigma D\) and
+therefore preserves the spectrum. This operation is switching.
+
+Because \(G_n\) is connected and has \(2n\) edges, its cycle space has dimension
+\(2n-n+1=n+1\). Hence there are exactly \(2^{n+1}\) switching classes. We use a
+cycle-flux coordinate system adapted to the Hamilton cycle of step-one edges.
+
+\subsection{Hamilton gauge, triangle flux, and quadrilateral flux}
+
+Let \(a_i\) be the sign of the step-one edge \(\{i,i+1\}\) and \(b_i\) the sign of
+the step-two edge \(\{i,i+2\}\). Define the triangle flux and Hamilton holonomy by
+
+\begin{equation}
+\begin{aligned}
+\tau_i&=a_i a_{i+1} b_i, \\
+\alpha&=\prod_{i=0}^{n-1} a_i.
+\end{aligned}
+\end{equation}
+
+The \(n\) triangle cycles together with the step-one Hamilton cycle form a cycle
+basis, so \((\tau_{0},\ldots,\tau_{n-1},\alpha)\) determines the switching class.
+
+Switch so that all step-one edges are positive except possibly the edge
+crossing the cut from \(n-1\) to \(0\). Equivalently, extend a vector to the
+integer lattice with twisted boundary condition
+
+\begin{equation}
+x_{i+n}=\alpha x_i.
+\end{equation}
+
+The signed operator then has the local form
+
+\begin{equation}
+\label{eq:periodic-operator}
+(A_\tau x)_i=x_{i-1}+x_{i+1}+\tau_{i-2}x_{i-2}+\tau_i x_{i+2}.
+\end{equation}
+
+The distinguished local quadrilateral flux word is
+
+\begin{equation}
+\label{eq:quadrilateral-flux}
+Q_i=\tau_i \tau_{i+1}.
+\end{equation}
+
+For a \(p\)-periodic word \(\tau\), Equation~\eqref{eq:quadrilateral-flux} implies
+\(\prod_{i=0}^{p-1} Q_i=1\). Conversely, any word
+\(Q \in \{+1,-1\}^p\) with product \(+1\) has exactly two periodic lifts, obtained by
+choosing \(\tau_{0}=+1\) or \(-1\) and recursing via
+\(\tau_{i+1}=Q_i \tau_i\).
+
+We call
+
+\begin{equation}
+D(Q)=\{i:Q_i=+1\}
+\end{equation}
+
+the defect set and write \(d=\lvert D(Q)\rvert\). We also use the cyclic local statistics
+
+\begin{equation}
+\label{eq:local-defect-statistics}
+\begin{aligned}
+a&=\#\{i:Q_i=Q_{i+1}=+1\}, \\
+b&=\#\{i:Q_i=Q_{i+2}=+1\}.
+\end{aligned}
+\end{equation}
+
+When \(n=8\), the graph contains two additional step-two quadrilaterals not
+among the local cycles encoded by \eqref{eq:quadrilateral-flux}. This causes no loss of finite
+information: the cycle-basis coordinates \((\tau,\alpha)\), rather than \(Q\) alone,
+parametrize every switching class and are the coordinates used in the
+all-signings enumeration.
+
+\subsection{Floquet matrices}\label{subsec:floquet-matrices}
+
+Suppose \(\tau\) has displayed period \(p\). Write an integer index as \(mp+r\),
+where \(0\leq r<p\), and seek Bloch vectors of the form
+
+\begin{equation}
+x_{mp+r}=z^m v_r.
+\end{equation}
+
+Substitution in \eqref{eq:periodic-operator} gives a \(p\times p\) Laurent matrix \(H_\tau(z)\). More
+explicitly, for each transition from output residue \(r\) to an absolute source
+index \(j\), write \(j=mp+s\), \(0\leq s<p\), and add the transition coefficient times
+\(z^m\) to entry \((r,s)\). This convention automatically adds coefficients when
+different transitions collide in short cells.
+
+The identity
+
+\begin{equation}
+\label{eq:fiber-transpose}
+H_\tau(z)^T=H_\tau(z^{-1})
+\end{equation}
+
+follows by reversing each undirected transition. Thus \(H_\tau(z)\) is Hermitian
+on the unit circle.
+
+For an infinite periodic phase, define
+
+\begin{equation}
+\label{eq:squared-periodic-radius}
+R(Q)=\sup_{\lvert z\rvert=1} \rho(H_\tau(z))^{2}.
+\end{equation}
+
+The two lifts of \(Q\) have the same value, so this notation is unambiguous.
+Notice that \(R(Q)\) is always a \textbf{squared} spectral radius.
+
+For every explicit fiber certificate below we use the canonical lift
+\(\tau_{0}=+1\), \(\tau_{i+1}=Q_i \tau_i\), and the ordered fiber basis
+\((v_{0},\ldots,v_{p-1})\). The other lift is obtained by the diagonal conjugacy and
+fiber reparametrization in Lemma~\ref{lem:operator-equivalences}, so it has the same squared spectral
+conclusions.
+
+Whenever an explicit matrix representative is required, we write
+\(H_Q(z):=H_{\tau^{\mathrm{can}}}(z)\) for the fiber formed from this canonical lift and
+basis. The notation \(R(Q)\) and the moments \(M_k(Q)\) remain lift-invariant.
+
+If a finite graph has order \(n=pL\) and Hamilton holonomy \(\alpha\), its cell
+sequence satisfies \(u_{m+L}=\alpha u_m\). The unitary cell shift has eigenvalues
+exactly
+
+\begin{equation}
+\label{eq:finite-bloch-grid}
+z^L=\alpha,
+\end{equation}
+
+and the finite matrix decomposes as
+
+\begin{equation}
+\label{eq:finite-floquet-decomposition}
+A_{pL,\alpha}  \cong  \bigoplus_{z^L=\alpha} H_\tau(z).
+\end{equation}
+
+Equation~\eqref{eq:finite-bloch-grid} is a discrete finite set. Equation \(\lvert z\rvert=1\) in \eqref{eq:squared-periodic-radius} describes
+the infinite-volume spectrum. We will not substitute one for the other.
+
+\subsection{Operator equivalences}
+
+We record the equivalences used in classifying periodic phases.
+
+\begin{lemma}[translation, reflection, and edge-sign negation]
+\label{lem:operator-equivalences}
+Translating \(\tau\),
+reflecting it by \(\tau_i \to  \tau_{-i-2}\), or replacing \(\tau\) by \(-\tau\) preserves
+\(R(Q)\). On flux words reflection is \(Q_i \to  Q_{-i-3}\).
+
+\end{lemma}
+\begin{proof}
+Let \((T_r x)_i=x_{i-r}\) and \((Jx)_i=x_{-i}\). Direct substitution in
+\eqref{eq:periodic-operator} gives
+
+\begin{equation}
+\begin{aligned}
+T_r A_\tau T_r^{-1}&=A_{\text{translated }\tau}, \\
+J A_\tau J&=A_{\text{reflected }\tau}.
+\end{aligned}
+\end{equation}
+
+Both are unitary conjugacies. For global edge-sign negation let
+\((Dx)_i=(-1)^i x_i\). The
+endpoints of a step-one edge have opposite \(D\) signs while those of a step-two
+edge have equal signs. Therefore
+
+\begin{equation}
+A_{-\tau}=-D A_\tau D.
+\end{equation}
+
+The spectrum is negated and its square is unchanged. In an odd displayed cell
+the fiber coordinate changes from \(z\) to \(-z\), but the full unit circle is
+preserved.
+
+\end{proof}
+\begin{lemma}[zone folding]
+\label{lem:zone-folding}
+If \(\tau\) has primitive period \(q\) and is
+displayed in a repeated cell \(p=mq\), then
+
+\begin{equation}
+\label{eq:zone-folding}
+H_p(z) \cong \bigoplus_{w^m=z} H_q(w).
+\end{equation}
+
+In particular repetition of the unit cell preserves \(R(Q)\).
+
+\end{lemma}
+\begin{proof}
+Write a residue in the repeated cell as \(r+kq\), where
+\(0\leq r<q\) and \(0\leq k<m\). Decompose the \(mq\)-dimensional fiber according to the
+unitary internal translation by \(q\). On its \(w\)-eigenspace vectors have the
+form
+
+\begin{equation}
+x_{r+kq}=w^k v_r.
+\end{equation}
+
+The repeated boundary condition is equivalent to \(w^m=z\). Since all
+coefficients in \eqref{eq:periodic-operator} are \(q\)-periodic, every transition factors out \(w^k\)
+and the remaining action on \(v\) is exactly \(H_q(w)\). The \(m\) roots of
+\(w^m=z\) give mutually orthogonal eigenspaces and their dimensions sum to
+\(mq\). This proves \eqref{eq:zone-folding}, including multiplicities.
+
+\end{proof}
+\subsection{Closed-walk moments}
+
+For a periodic phase define
+
+\begin{equation}
+\label{eq:moment-and-excess}
+\begin{aligned}
+M_k(Q)&=\operatorname{CT}_{z} \operatorname{tr}(H_Q(z)^{2k}), \\
+F_k(Q)&=M_{k+1}(Q)-8M_k(Q).
+\end{aligned}
+\end{equation}
+
+Constant-term extraction equals normalized integration around the unit circle:
+
+\begin{equation}
+\label{eq:moment-integral}
+M_k(Q)=\frac{1}{2\pi}\int_{0}^{2\pi}\sum_j\lambda_j(e^{i\theta})^{2k}\,d\theta.
+\end{equation}
+
+It is also the signed sum of closed walks of length \(2k\) per period cell.
+
+\begin{lemma}[moment barrier]
+\label{lem:moment-barrier}
+If \(R(Q)\leq 8\), then
+\(M_{k+1}(Q)\leq 8M_k(Q)\) for every \(k\geq 1\). Equivalently,
+
+\begin{equation}
+\label{eq:moment-barrier}
+F_k(Q)>0  \Longrightarrow  R(Q)>8.
+\end{equation}
+
+\end{lemma}
+\begin{proof}
+Under \(R(Q)\leq 8\), every
+\(y_j(\theta)=\lambda_j(e^{i \theta})^{2}\) lies in \([0,8]\). Hence
+\(y_j^{k+1}\leq 8y_j^k\). Sum over \(j\) and integrate using \eqref{eq:moment-integral}.
+
+\end{proof}
+We emphasize that \eqref{eq:moment-barrier} is one-way. A nonpositive excess, or any finite list
+of nonpositive excesses, does not prove \(R(Q)\leq 8\).
+
+\subsection{Distinguished constants}
+
+For even \(n\geq 8\), the conjectured threshold inherited from \cite{Suvagiya2026Signed} is
+
+\begin{equation}
+\label{eq:conjectured-threshold}
+\begin{aligned}
+\rho_-(n)&=2 \sqrt{\cos^{2}(\frac{\pi}{n})+\cos^{2}(\frac{2\pi}{n})}, \\
+\rho_-(n)^{2}&=4+2\cos(\frac{2\pi}{n})+2\cos(\frac{4\pi}{n}).
+\end{aligned}
+\end{equation}
+
+The target period-eight squared spectral edge is
+
+\begin{equation}
+\label{eq:target-edge}
+\begin{aligned}
+\eta&=4+\sqrt{10+2\sqrt{5}}, \\
+\rho_*&=\sqrt{\eta}.
+\end{aligned}
+\end{equation}
+
+These quantities play different roles: \(\rho_-(n)\) is the finite conjectured
+lower bound, while \(\eta\) is the exact infinite-volume squared radius of the
+counterexample phase.

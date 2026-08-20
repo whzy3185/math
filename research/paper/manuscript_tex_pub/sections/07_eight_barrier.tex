@@ -1,0 +1,231 @@
+\section{The Eight-Barrier and Structural Optimum}\label{sec:eight-barrier}
+
+We now prove Theorem~\ref{thm:eight-barrier-trichotomy} without relying on the list of 17 individual
+competitor certificates. The proof begins with an exact local identity for the
+squared operator and ends with a finite four-case analysis of two-defect
+geometry.
+
+\subsection{Squaring the operator}
+
+Starting from \eqref{eq:periodic-operator}, multiply the four transitions twice. The complete row of
+\(A_\tau^{2}\) from residue \(i\) is
+
+\begin{table}[tbp]
+\centering
+\caption{Coefficients of the squared operator by displacement.}
+\label{tab:squared-operator-coefficients}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{ll}
+\toprule
+displacement & coefficient \\
+\midrule
+\(-4\) & \(Q_{i-4}Q_{i-3}\) \\
+\(-3\) & \(\tau_{i-3}(1+Q_{i-3})\) \\
+\(-2\) & \(1\) \\
+\(-1\) & \(\tau_{i-2}(1+Q_{i-2})\) \\
+\(0\) & \(4\) \\
+\(+1\) & \(\tau_{i-1}(1+Q_{i-1})\) \\
+\(+2\) & \(1\) \\
+\(+3\) & \(\tau_i(1+Q_i)\) \\
+\(+4\) & \(Q_iQ_{i+1}\) \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+For completeness, consider for example displacement \(+3\). It arises from the
+two paths \(+1,+2\) and \(+2,+1\), with weights \(\tau_{i+1}\) and \(\tau_i\).
+Since \(\tau_{i+1}=\tau_i Q_i\), their sum is \(\tau_i(1+Q_i)\). The other odd
+displacements follow by translation and reversal. Displacement \(+4\) has the
+single path \(+2,+2\), of weight \(\tau_i \tau_{i+2}=Q_iQ_{i+1}\). The diagonal
+has four immediate reversals, the \(+-2\) displacements have their surviving
+unit coefficient after cancellation of the remaining routes, and reversal
+gives the negative displacements.
+
+Thus a negative flux \(Q_i=-1\) cancels the associated odd-displacement
+couplings, while a positive flux opens them with absolute amplitude two. This
+is the defect mechanism behind the theorem.
+
+\subsection{The all-negative baseline}\label{subsec:all-negative-baseline}
+
+If \(Q_i=-1\) for every \(i\), choose the lift \(\tau_i=(-1)^i\). Let \(S\) be the
+bilateral shift and set
+
+\begin{equation}
+C=S+S^{-1},       E=S^{2}+S^{-2},       D=\operatorname{diag}((-1)^i).
+\end{equation}
+
+Then \(A=C+DE\), while \(CD=-DC\) and \(ED=DE\). Hence the cross terms cancel:
+
+\begin{equation}
+\label{eq:all-negative-square}
+A^{2}=C^{2}+E^{2}=4I+S^{2}+S^{-2}+S^{4}+S^{-4}.
+\end{equation}
+
+On the Fourier mode \(S=e^{i \theta}\), the symbol of \eqref{eq:all-negative-square} is
+
+\begin{equation}
+\label{eq:all-negative-dispersion}
+4+2\cos(2\theta)+2\cos(4\theta)\leq 8.
+\end{equation}
+
+Equality holds at \(\theta=0\). Therefore the all-negative phase has \(R=8\).
+
+\subsection{The first three moments at period eight}
+
+For an eight-periodic word, equations \eqref{eq:moment-and-excess}-\eqref{eq:moment-integral} give the signed closed-walk
+moments. The diagonal of \(A^{2}\) is four at each of eight residues, so
+
+\begin{equation}
+\label{eq:period-eight-first-moment}
+M_{1}=32.
+\end{equation}
+
+Since \(A^{2}\) is Hermitian,
+
+\begin{equation}
+M_{2}=\operatorname{tr}(A^{4})=\sum_{i,j}\lvert (A^{2})_{i,j}\rvert^{2}.
+\end{equation}
+
+The diagonal and even-displacement terms contribute 160. Each positive flux
+opens four oriented odd-displacement entries, each of square four, so
+
+\begin{equation}
+\label{eq:period-eight-second-moment}
+M_{2}=160+16d.
+\end{equation}
+
+For \(M_{3}=\operatorname{tr}((A^{2})^{3})\), collect the local closed products according to whether
+they use no activated site, one activated site, an adjacent activated pair, or
+a distance-two activated pair. Direct multiplication of the displayed
+\(A^{2}\) row gives respectively the coefficients \(944\), \(168\), \(96\), and \(48\):
+
+\begin{equation}
+\label{eq:period-eight-third-moment}
+M_{3}=944+168d+96a+48b.
+\end{equation}
+
+An independent derivation of \eqref{eq:period-eight-third-moment}, valid for every period, is given in
+Section~\ref{sec:general-period} by enumerating the 430 closed step words of length six. Thus no
+spectral approximation enters \eqref{eq:period-eight-first-moment}-\eqref{eq:period-eight-third-moment}.
+
+The second excess is
+
+\begin{equation}
+\label{eq:period-eight-second-excess}
+F_{2}=M_{3}-8M_{2}=-336+40d+96a+48b.
+\end{equation}
+
+\subsection{Four or more defects}\label{subsec:four-or-more-defects}
+
+Because \(\prod_i Q_i=1\), the defect count \(d\) is even.
+
+Suppose \(d=4\). Write the four positive cyclic gaps as positive integers
+summing to eight. If at least two gaps are one, then \(2a\geq 4\). If none is one,
+all four gaps equal two and \(b=4\). If exactly one is one, the other gaps are
+\(2,2,3\), so again \(2a+b=4\). Hence always \(2a+b\geq 4\), and \eqref{eq:period-eight-second-excess} gives
+
+\begin{equation}
+F_{2}=-176+48(2a+b)\geq 16>0.
+\end{equation}
+
+If \(d=6\), the two negative positions destroy at most four of the eight
+adjacent positive-positive edges, so \(a\geq 4\); then \(F_{2}\geq 288>0\). If \(d=8\),
+\eqref{eq:period-eight-first-moment}-\eqref{eq:period-eight-second-moment} give
+
+\begin{equation}
+F_{1}=M_{2}-8M_{1}=32>0.
+\end{equation}
+
+By Lemma~\ref{lem:moment-barrier}, every phase with at least four defects has \(R(Q)>8\).
+
+\subsection{Two defects}\label{subsec:two-defects}
+
+Let \(d=2\) and let \(s \in \{1,2,3,4\}\) be the smaller cyclic separation of the
+two defects. Translation and reflection make \(s\) a complete orbit invariant.
+Exact closed-walk enumeration gives the following first positive excesses:
+
+\begin{table}[tbp]
+\centering
+\caption{First positive moment excess for two nonantipodal defects.}
+\label{tab:two-defect-excesses}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{lll}
+\toprule
+separation \(s\) & first positive excess & value \\
+\midrule
+1 & \(F_{4}\) & 5,504 \\
+2 & \(F_{6}\) & 64,336 \\
+3 & \(F_{9}\) & 2,872,096 \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+We indicate how these are certified. Starting at each of the eight residues,
+enumerate all words of length \(2k\) over steps \(\{-2,-1,+1,+2\}\) whose total
+displacement is zero, multiply the corresponding signs from \eqref{eq:periodic-operator}, and sum.
+This produces the integer \(M_k\); subtraction gives \(F_k\). For \(s=1,2,3\), the
+first positive values are exactly those in the table, so Lemma~\ref{lem:moment-barrier} gives
+\(R(Q)>8\).
+
+For \(s=4\), the word is a translate of
+
+\begin{equation}
+Q_*=(+,-,-,-,+,-,-,-).
+\end{equation}
+
+Section~\ref{sec:period-eight-edge} proves \(R(Q_*)=\eta<8\). No conclusion is drawn from the negative
+values of its first nine excesses.
+
+\subsection{Proof of the trichotomy}
+
+The legal defect counts are \(0,2,4,6,8\). Section~\ref{subsec:all-negative-baseline} proves \(R=8\) when
+\(d=0\). Section~\ref{subsec:four-or-more-defects} proves \(R>8\) for \(d\geq 4\). Section~\ref{subsec:two-defects} proves \(R>8\) for
+two-defect separations one, two, and three, while separation four is exactly
+the target orbit and has \(R=\eta<8\). These cases are disjoint and exhaustive,
+which proves Theorem~\ref{thm:eight-barrier-trichotomy}.
+
+The orbit of \(Q_*\) contains four flux words, corresponding to the four
+antipodal pairs. Thus the minimizer is unique modulo translation and
+reflection. The all-negative word is the only equality case at eight and is
+therefore the unique runner-up orbit.
+
+\subsection{Chiral structure of the target}
+
+The target lift may be written
+
+\begin{equation}
+\label{eq:target-antiperiodicity}
+\tau=(+,-,+,-,-,+,-,+),       \tau_{i+4}=-\tau_i.
+\end{equation}
+
+Let \(T_{4}(z)\) be translation by four sites on the Bloch fiber and let
+\(D=\operatorname{diag}((-1)^i)\). On a general fiber,
+
+\begin{equation}
+(D T_{4}(z))^{2}=zI.
+\end{equation}
+
+Choose \(xi\) with \(xi^{2}=z\) and define \(J_z=xi^{-1}D T_{4}(z)\). Substitution of
+\eqref{eq:target-antiperiodicity} in the four transitions gives
+
+\begin{equation}
+\label{eq:chiral-symmetry}
+J_z^{2}=I,       J_z H(z)J_z^{-1}=-H(z).
+\end{equation}
+
+Both eigenspaces of \(J_z\) have dimension four. In a chiral basis,
+
+\begin{equation}
+\label{eq:off-diagonal-square}
+H(z)=\begin{pmatrix}0&B\\C&0\end{pmatrix},\qquad H(z)^2=\begin{pmatrix}BC&0\\0&CB\end{pmatrix}.
+\end{equation}
+
+On the unit circle \(C=B*\). Equation~\eqref{eq:off-diagonal-square} explains the even characteristic
+polynomial and the four-dimensional squared-band reduction. It does not by
+itself prove optimality: the legal chiral words form two dihedral orbits, one
+with two defects and one with six, and the latter lies above eight by Section
+6.4.

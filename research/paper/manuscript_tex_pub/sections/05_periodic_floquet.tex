@@ -1,0 +1,150 @@
+\section{Periodic Construction and Floquet Reduction}\label{sec:periodic-construction}
+
+We now place the order-32 pattern in an arbitrary number of eight-site cells.
+Let
+
+\begin{equation}
+\label{eq:target-triangle-word}
+\tau_*=(+,+,-,+,-,-,+,-)
+\end{equation}
+
+and impose either Hamilton holonomy \(\alpha \in \{+1,-1\}\) on a graph of order
+\(n=8L\).
+
+\subsection{The eight-site fiber}
+
+Write \(i=8m+r\), \(0\leq r<8\), and put \(x_{8m+r}=z^m v_r\). Substitution in \eqref{eq:periodic-operator}
+gives
+
+\begin{equation}
+\label{eq:target-floquet-matrix}
+H(z)=\begin{pmatrix}
+0 & 1 & 1 & 0 & 0 & 0 & z^{-1} & z^{-1} \\
+1 & 0 & 1 & 1 & 0 & 0 & 0 & -z^{-1} \\
+1 & 1 & 0 & 1 & -1 & 0 & 0 & 0 \\
+0 & 1 & 1 & 0 & 1 & 1 & 0 & 0 \\
+0 & 0 & -1 & 1 & 0 & 1 & -1 & 0 \\
+0 & 0 & 0 & 1 & 1 & 0 & 1 & -1 \\
+z & 0 & 0 & 0 & -1 & 1 & 0 & 1 \\
+z & -z & 0 & 0 & 0 & -1 & 1 & 0
+\end{pmatrix}.
+\end{equation}
+
+On \(\lvert z\rvert=1\), replacing \(z\) by its complex conjugate \(z^{-1}\) transposes the
+matrix, so \eqref{eq:target-floquet-matrix} is Hermitian.
+
+\begin{proposition}[finite Floquet decomposition]
+\label{prop:finite-floquet-decomposition}
+For \(n=8L\),
+
+\begin{equation}
+\label{eq:target-finite-decomposition}
+A_{8L,\alpha} \cong \bigoplus_{z^L=\alpha} H(z).
+\end{equation}
+
+\end{proposition}
+\begin{proof}
+Let \(S\) be the unitary shift on the \(L\) cell coordinates with
+twisted boundary \(u_{m+L}=\alpha u_m\). Its normalized eigenvectors are
+\(L^{-\frac{1}{2}}(1,z,\ldots,z^{L-1})\) with \(z^L=\alpha\). Distinct roots are orthogonal by
+the geometric-sum identity. The signed operator is a finite sum of residue
+matrices tensored with powers of \(S\), so each eigenspace is invariant and its
+restriction is \eqref{eq:target-floquet-matrix}. There are \(L\) such eight-dimensional eigenspaces, and
+their dimensions sum to \(8L\).
+
+Thus the finite problem uses the discrete set \(z^L=\alpha\), while the infinite
+periodic problem uses every \(\lvert z\rvert=1\).
+
+\end{proof}
+\subsection{Exact determinant}
+
+Let \(x\) be the spectral parameter. Fraction-free elimination of
+\(xI-H(z)\) gives
+
+\begin{equation}
+\label{eq:target-characteristic-polynomial}
+\begin{aligned}
+&\operatorname{det}(xI-H(z)) \\
+&=x^{8}-16x^{6}+(80-2(z+z^{-1}))x^{4} \\
+&\quad +(-128+16(z+z^{-1}))x^{2} \\
+&\quad +(z^{2}+z^{-2})-13(z+z^{-1})+40.
+\end{aligned}
+\end{equation}
+
+Set
+
+\begin{equation}
+y=x^{2},       c=z+z^{-1}.
+\end{equation}
+
+Since \(z^{2}+z^{-2}=c^{2}-2\), Equation~\eqref{eq:target-characteristic-polynomial} becomes
+
+\begin{equation}
+\label{eq:floquet-polynomial}
+P(y,c)=y^{4}-16y^{3}+(80-2c)y^{2}+(-128+16c)y+c^{2}-13c+38.
+\end{equation}
+
+For \(\lvert z\rvert=1\), \(c=2\cos(\theta)\) lies in \([-2,2]\). Hermiticity implies that every
+eigenvalue \(\lambda\) is real, and \eqref{eq:floquet-polynomial} shows that \(\lambda^{2}\) is a nonnegative
+root of \(P(y,c)\).
+
+\subsection{A uniform rational bound}
+
+Put
+
+\begin{equation}
+B=\frac{1561}{200},       u=y-B,       t=2-c.
+\end{equation}
+
+Direct substitution in \eqref{eq:floquet-polynomial} gives
+
+\begin{equation}
+\label{eq:rational-positive-expansion}
+\begin{aligned}
+&P(B+u,2-t) \\
+&=u^{4}+(\frac{761}{50})u^{3}+2u^{2}t+(\frac{1337363}{20000})u^{2} \\
+&\quad +(\frac{761}{50})ut+(\frac{136311081}{2000000})u \\
+&\quad +t^{2}+(\frac{119121}{20000})t+\frac{84332641}{1600000000}.
+\end{aligned}
+\end{equation}
+
+Every coefficient in \eqref{eq:rational-positive-expansion} is nonnegative and the constant term is positive.
+Therefore \(P(y,c)>0\) whenever \(y\geq B\) and \(c\leq 2\). In particular, no squared
+eigenvalue of any unit-circle fiber reaches \(B\); hence
+
+\begin{equation}
+\label{eq:uniform-fiber-bound}
+\rho(H(z))^{2}<B
+\end{equation}
+
+for every \(\lvert z\rvert=1\). Proposition~\ref{prop:finite-floquet-decomposition} now yields
+
+\begin{equation}
+\label{eq:finite-family-upper-bound}
+\rho(A_{8L,\alpha})^{2}<\frac{1561}{200}
+\end{equation}
+
+for both holonomies and every \(L\geq 1\).
+
+\subsection{Comparison with the conjectured threshold}
+
+At \(n=32\), the Sturm isolation \eqref{eq:order-thirty-two-threshold}-\eqref{eq:order-thirty-two-polynomial} gives
+
+\begin{equation}
+\label{eq:threshold-at-thirty-two}
+\rho_-(32)^{2}>\frac{7809}{1000}>\frac{1561}{200}.
+\end{equation}
+
+For \(n\geq 32\), both angles \(\frac{2\pi}{n}\) and \(\frac{4\pi}{n}\) lie in \((0,\pi)\) and decrease as
+\(n\) increases. Since cosine decreases with its argument on \((0,\pi)\), equation
+\eqref{eq:conjectured-threshold} shows that \(\rho_-(n)^{2}\) increases with \(n\). Thus
+
+\begin{equation}
+\label{eq:monotone-threshold-bound}
+\rho_-(n)^{2}\geq \rho_-(32)^{2}>\frac{1561}{200}.
+\end{equation}
+
+Combining \eqref{eq:finite-family-upper-bound} and \eqref{eq:monotone-threshold-bound} proves Theorem~\ref{thm:infinite-counterexample-family} for \(n=8L\), \(L\geq 4\).
+
+The restriction to multiples of eight comes from the construction, not from
+the threshold comparison. No conclusion is drawn here for other even orders.

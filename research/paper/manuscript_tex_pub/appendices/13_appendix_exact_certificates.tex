@@ -1,0 +1,168 @@
+\section{Exact Classification and Residual Certificates}\label{app:exact-certificates}
+
+\subsection{Period-eight orbit table}
+
+Use \(0\) for negative flux and \(1\) for positive flux. The 128 legal period-eight
+words form 18 dihedral orbits. The structural proof in Section~\ref{sec:eight-barrier} gives the
+following exact classification.
+
+\begin{table}[tbp]
+\centering
+\caption{Exact classification of legal period-eight flux orbits.}
+\label{tab:period-eight-classification}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lllll}
+\toprule
+canonical \(Q\) & \(d\) & orbit size & primitive \(\tau\) period & exact conclusion \\
+\midrule
+\(00000000\) & 0 & 1 & 2 & \(R=8\) \\
+\(00000011\) & 2 & 8 & 8 & \(R>8\) \\
+\(00000101\) & 2 & 8 & 8 & \(R>8\) \\
+\(00001001\) & 2 & 8 & 8 & \(R>8\) \\
+\(00001111\) & 4 & 8 & 8 & \(R>8\) \\
+\(00010001\) & 2 & 4 & 8 & \(R=\eta\) \\
+\(00010111\) & 4 & 16 & 8 & \(R>8\) \\
+\(00011011\) & 4 & 8 & 8 & \(R>8\) \\
+\(00100111\) & 4 & 8 & 8 & \(R>8\) \\
+\(00101011\) & 4 & 16 & 8 & \(R>8\) \\
+\(00101101\) & 4 & 8 & 8 & \(R>8\) \\
+\(00110011\) & 4 & 4 & 4 & \(R>8\) \\
+\(00111111\) & 6 & 8 & 8 & \(R>8\) \\
+\(01010101\) & 4 & 2 & 4 & \(R>8\) \\
+\(01011111\) & 6 & 8 & 8 & \(R>8\) \\
+\(01101111\) & 6 & 8 & 8 & \(R>8\) \\
+\(01110111\) & 6 & 4 & 8 & \(R>8\) \\
+\(11111111\) & 8 & 1 & 1 & \(R>8\) \\
+\bottomrule
+\end{tabular}
+}
+\endgroup
+\end{table}
+
+The orbit sizes sum to 128. The unique sub-eight orbit is \(00010001\), and the
+unique equality orbit at eight is \(00000000\).
+
+\subsection{Five low-period residual certificates}
+
+For every row, reconstruct the canonical triangle lift by setting
+\(\tau_{0}=+1\) and recursing through \(\tau_{i+1}=Q_i \tau_i\). The vector coordinates
+are in the ordered fiber basis \((v_{0},\ldots,v_{p-1})\) of Section~\ref{subsec:floquet-matrices}. This fixes
+the matrix denoted by \(H_Q(z)\) below without any gauge ambiguity.
+
+For each row below, \(H=H_Q(z)\) and the listed integer vector is denoted by
+\(v\). Direct matrix multiplication gives the stated rational quotient
+\(r=\lVert Hv\rVert^{2}/\lVert v\rVert^{2}\).
+
+\begin{table}[tbp]
+\centering
+\caption{Exact Rayleigh data for the five residual competitors.}
+\label{tab:residual-rayleigh-data}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\begin{tabular}{llll}
+\toprule
+\(p\), \(Q\) & \(z\) & vector \(v\) & \(r\) \\
+\midrule
+10, \(0000010001\) & -1 & \((3,2,-3,3,0,5,-5,5,-5,2)\) & \(\frac{1066}{135}\) \\
+12, \(000000010001\) & 1 & \((-5,-5,-5,-1,-4,-2,-3,0,-2,-2,0,-4)\) & \(\frac{1022}{129}\) \\
+14, \(00000000010001\) & 1 & \((-1,2,0,2,-1,3,-2,3,-1,4,-4,4,-3,0)\) & \(\frac{119}{15}\) \\
+14, \(00010010001001\) & 1 & \((-4,-5,-4,0,-2,0,1,0,-2,0,-4,-5,-4,-6)\) & \(\frac{1270}{159}\) \\
+16, \(0000000000010001\) & 1 & \((-5,-5,-5,-1,-4,-2,-4,-1,-3,-1,-2,0,-2,-2,0,-4)\) & \(\frac{1204}{151}\) \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+All five quotients exceed four. For the transformation
+
+\begin{equation}
+u=((r-4)^{2}-10)/2,
+\end{equation}
+
+the exact comparison data are:
+
+\begin{table}[H]
+\centering
+\caption{Exact radical-comparison data for the residual competitors.}
+\label{tab:residual-radical-data}
+\begingroup
+\renewcommand{\arraystretch}{1.35}
+\begin{tabular}{lll}
+\toprule
+\(r\) & \(u\) & \(u^{2}-5\) \\
+\midrule
+\(\frac{1066}{135}\) & \(\frac{47213}{18225}\) & \(\frac{568314244}{332150625}\) \\
+\(\frac{1022}{129}\) & \(\frac{44813}{16641}\) & \(\frac{623590564}{276922881}\) \\
+\(\frac{119}{15}\) & \(\frac{1231}{450}\) & \(\frac{502861}{202500}\) \\
+\(\frac{1270}{159}\) & \(\frac{74573}{25281}\) & \(\frac{2365487524}{639128961}\) \\
+\(\frac{1204}{151}\) & \(\frac{65995}{22801}\) & \(\frac{1755912020}{519885601}\) \\
+\bottomrule
+\end{tabular}
+\endgroup
+\end{table}
+
+Every entry in the last two columns is positive. Because \(r>4\), the branch
+argument \eqref{eq:residual-radical-comparison} proves \(r>\eta\), and Rayleigh's principle proves \(R(Q)>\eta\).
+These five computations are the only individual endpoint certificates needed
+by the compressed proof of Theorem~\ref{thm:low-period-frontier}.
+
+The other triangle lift is obtained from the canonical one by the conjugacy
+and fiber reparametrization of Lemma~\ref{lem:operator-equivalences}; transporting \(v\) through that unitary
+map gives the same quotient and conclusion.
+
+\subsection{Exact two-defect moment table}
+
+For a period-eight word with two positive fluxes at cyclic separation \(s\),
+the dynamic program \eqref{eq:walk-recurrence}-\eqref{eq:walk-moment} gives the following exact moments and excesses.
+The table includes every value needed to identify the first positive excess;
+only the positive entries are used to infer \(R>8\).
+
+\begin{table}[H]
+\centering
+\caption{Moment and excess sequences for separated period-eight defect pairs.}
+\label{tab:separated-defect-moments}
+\begingroup
+\renewcommand{\arraystretch}{1.12}
+\scriptsize
+\resizebox{\textwidth}{!}{%
+\begin{tabular}{lll}
+\toprule
+\(s\) & sequence & \(k=1,\ldots,10\) \\
+\midrule
+1 & \(M_k\) & \(32, 192, 1376, 10976, 93312, 823920, 7447136, 68348832, 633982976, 5926419872\) \\
+1 & \(F_k\), \(k=1,\ldots,9\) & \(-64, -160, -32, 5504, 77424, 855776, 8771744, 87192320, 854556064\) \\
+2 & \(M_k\) & \(32, 192, 1328, 9888, 76832, 612624, 4965328, 40683296, 335872832, 2788389472\) \\
+2 & \(F_k\), \(k=1,\ldots,9\) & \(-64, -208, -736, -2272, -2032, 64336, 960672, 10406464, 101406816\) \\
+3 & \(M_k\) & \(32, 192, 1280, 9056, 66592, 503088, 3877920, 30363808, 240761792, 1928966432\) \\
+3 & \(F_k\), \(k=1,\ldots,9\) & \(-64, -256, -1184, -5856, -29648, -146784, -659552, -2148672, 2872096\) \\
+4 & \(M_k\) & \(32, 192, 1280, 8928, 63872, 464496, 3417152, 25354656, 189356672, 1421345952\) \\
+4 & \(F_k\), \(k=1,\ldots,9\) & \(-64, -256, -1312, -7552, -46480, -298816, -1982560, -13480576, -93507424\) \\
+\bottomrule
+\end{tabular}
+}
+\endgroup
+\end{table}
+
+Thus separations one, two, and three cross the barrier first at \(F_{4}\), \(F_{6}\),
+and \(F_{9}\), respectively. The nonpositive displayed values for separation four
+are not used in the converse direction; that case is settled by the exact
+Floquet theorem of Section~\ref{sec:period-eight-edge}.
+
+\subsection{The order-32 positive-definiteness cross-check}
+
+For the witness \eqref{eq:order-thirty-two-triangle-word}, form \(M=1561I-200A_{32}^{2}\). The exact certificate consists
+of the 32 positive pivots of rational \(LDL^T\) elimination. Fraction-free
+Bareiss elimination independently produces the leading principal minors, and
+the cumulative products of the \(LDL^T\) pivots agree with those minors. This
+double route verifies both arithmetic consistency and the hypothesis of
+Sylvester's criterion. The conclusion is the strict inequality
+\(\rho(A_{32})^{2}<\frac{1561}{200}\); no approximation to an eigenvalue is part of the
+certificate.
+
+This elimination is an independent arithmetic cross-check, not the logical
+proof used by Proposition~\ref{prop:order-thirty-two-witness}. The proposition follows directly from the
+displayed fiber matrix \eqref{eq:target-floquet-matrix}, determinant \eqref{eq:floquet-polynomial}, positive expansion \eqref{eq:rational-positive-expansion},
+and finite Floquet decomposition \eqref{eq:target-finite-decomposition}.
