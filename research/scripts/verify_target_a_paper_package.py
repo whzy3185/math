@@ -14,6 +14,9 @@ REPO_ROOT = RESEARCH_ROOT.parent
 PAPER_ROOT = RESEARCH_ROOT / "paper"
 DEFAULT_INVENTORY = PAPER_ROOT / "target_a_claim_inventory.json"
 DEFAULT_GRAPH = PAPER_ROOT / "target_a_theorem_dependency_graph.json"
+DEFAULT_GATE = PAPER_ROOT / "target_a_manuscript_gate.json"
+DEFAULT_ROUND2 = RESEARCH_ROOT / "audit" / "target_a_reviewer_zero_round2_findings.json"
+DEFAULT_ARCHITECTURE = PAPER_ROOT / "TARGET_A_MANUSCRIPT_ARCHITECTURE.md"
 EXPECTED_IDS = [f"C{index}" for index in range(1, 26)]
 EXPECTED_THEOREMS = [f"THEOREM_{letter}" for letter in "ABCDEF"]
 REQUIRED_FIELDS = {
@@ -222,11 +225,75 @@ def verify_claim_evidence_and_reproducibility() -> None:
     print("TARGET_A_PAPER_PACKAGE_LINT_PASS")
 
 
+def verify_reviewer_zero_round2_and_gate(
+    round2: dict[str, Any] | None = None,
+    gate: dict[str, Any] | None = None,
+    architecture: str | None = None,
+) -> None:
+    round2 = _load(DEFAULT_ROUND2) if round2 is None else round2
+    gate = _load(DEFAULT_GATE) if gate is None else gate
+    architecture = DEFAULT_ARCHITECTURE.read_text(encoding="utf-8") if architecture is None else architecture
+
+    expected_counts = {"CRITICAL": 0, "MAJOR": 0, "MODERATE": 5, "MINOR": 1}
+    _check(round2.get("schema_version") == "1.0.0", "VERIFY_RZ2_SCHEMA_FAIL")
+    _check(round2.get("reviewed_head") == "b9e00bd34222d40e9ac954d3d5c4817644650be0", "VERIFY_RZ2_HEAD_FAIL")
+    _check(round2.get("counts") == expected_counts, "VERIFY_RZ2_COUNTS_FAIL")
+    calculated_gate = round2["counts"]["CRITICAL"] == 0 and round2["counts"]["MAJOR"] == 0
+    _check(round2.get("gate_pass") is calculated_gate and calculated_gate, "VERIFY_RZ2_GATE_FAIL")
+    findings = round2.get("findings", [])
+    _check([row.get("id") for row in findings] == [f"RZ2-{index:03d}" for index in range(1, 7)], "VERIFY_RZ2_FINDING_IDS_FAIL")
+    _check(all(row.get("severity") in expected_counts for row in findings), "VERIFY_RZ2_SEVERITY_FAIL")
+    _check(all(row.get("disposition") in {"OPEN", "ACCEPTED_RISK"} for row in findings), "VERIFY_RZ2_DISPOSITION_FAIL")
+
+    _check(gate.get("schema_version") == "1.0.0", "VERIFY_GATE_SCHEMA_FAIL")
+    _check(gate.get("status") == "TARGET_A_MANUSCRIPT_READY", "VERIFY_GATE_STATUS_FAIL")
+    _check(gate.get("drafting_gate_pass") is True, "VERIFY_DRAFTING_GATE_FAIL")
+    _check(gate.get("submission_status") == "MODERATE_REPAIRS_REMAIN", "VERIFY_SUBMISSION_BOUNDARY_FAIL")
+    reviewed = gate.get("reviewed_package", {})
+    _check(reviewed.get("head") == round2["reviewed_head"], "VERIFY_GATE_REVIEWED_HEAD_FAIL")
+    _check(reviewed.get("tree") == "3873fb1c948a85443a2b55a642dbf1dba9359bdb", "VERIFY_GATE_REVIEWED_TREE_FAIL")
+    _check(reviewed.get("claim_bearing_package_frozen") is True, "VERIFY_CLAIM_PACKAGE_FREEZE_FAIL")
+    _check(reviewed.get("round2_report_sha256") == _sha256(RESEARCH_ROOT / "audit" / "TARGET_A_REVIEWER_ZERO_ROUND2.md"), "VERIFY_RZ2_REPORT_SHA_FAIL")
+    _check(reviewed.get("round2_json_sha256") == _sha256(DEFAULT_ROUND2), "VERIFY_RZ2_JSON_SHA_FAIL")
+    _check(gate.get("reviewer_zero", {}).get("round2", {}).get("counts") == expected_counts, "VERIFY_GATE_RZ2_COUNTS_FAIL")
+    _check(gate["reviewer_zero"]["round2"].get("gate_pass") is True, "VERIFY_GATE_RZ2_PASS_FAIL")
+    open_ids = {row["id"] for row in findings if row["disposition"] == "OPEN"}
+    risk_ids = {row["id"] for row in findings if row["disposition"] == "ACCEPTED_RISK"}
+    _check(set(gate["reviewer_zero"]["round2"].get("open_nonblocking", [])) == open_ids, "VERIFY_GATE_OPEN_FINDINGS_FAIL")
+    _check(set(gate["reviewer_zero"]["round2"].get("accepted_risks", [])) == risk_ids, "VERIFY_GATE_ACCEPTED_RISKS_FAIL")
+    _check(all(gate.get("conditions", {}).values()), "VERIFY_GATE_CONDITION_FAIL")
+    _check(gate.get("auto_start_next_task") is False, "VERIFY_TASK44_AUTOSTART_FAIL")
+
+    expected_sections = (
+        "## 1. Introduction",
+        "## 2. Signed Circulants and Flux Coordinates",
+        "## 3. The Smallest Counterexample",
+        "## 4. Periodic Construction and Floquet Reduction",
+        "## 5. Exact Period-8 Spectral Edge",
+        "## 6. The Eight-Barrier and Structural Optimum",
+        "## 7. General-Period Closed-Walk Obstructions",
+        "## 8. The Low-Period Spectral Frontier",
+        "## 9. Computer-Assisted Verification",
+        "## 10. Discussion and Open Problems",
+        "## Appendices",
+        "## Supplement",
+        "## Submission Preflight",
+    )
+    _check(all(section in architecture for section in expected_sections), "VERIFY_ARCHITECTURE_SECTION_FAIL")
+    _check(all(f"**O{index}.**" in architecture for index in range(1, 6)), "VERIFY_OPEN_PROBLEM_COVERAGE_FAIL")
+    _check("not manuscript prose" in architecture and "Task 44" in architecture, "VERIFY_ARCHITECTURE_BOUNDARY_FAIL")
+    _check("world-first" not in architecture.lower(), "VERIFY_ARCHITECTURE_NOVELTY_OVERCLAIM_FAIL")
+    print("TARGET_A_REVIEWER_ZERO_ROUND2_PASS")
+    print("TARGET_A_MANUSCRIPT_ARCHITECTURE_PASS")
+    print("TARGET_A_MANUSCRIPT_GATE_PASS")
+
+
 def main() -> None:
     try:
         verify_initial_files()
         verify_notation_and_compression()
         verify_claim_evidence_and_reproducibility()
+        verify_reviewer_zero_round2_and_gate()
     except Exception as error:
         print(f"Target A paper package verification failed: {error}", file=sys.stderr)
         print("TARGET_A_PAPER_PACKAGE_FAIL")

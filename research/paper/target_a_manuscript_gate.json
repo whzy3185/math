@@ -1,0 +1,68 @@
+{
+  "schema_version": "1.0.0",
+  "task": 43,
+  "status": "TARGET_A_MANUSCRIPT_READY",
+  "drafting_gate_pass": true,
+  "submission_status": "MODERATE_REPAIRS_REMAIN",
+  "initial_head": "dfb9c9846fa95545fdb1a5153ceabe1767c9ee0a",
+  "reviewed_package": {
+    "head": "b9e00bd34222d40e9ac954d3d5c4817644650be0",
+    "tree": "3873fb1c948a85443a2b55a642dbf1dba9359bdb",
+    "claim_bearing_package_frozen": true,
+    "round2_report_sha256": "89f660135b864a3ed67896b469e9dc4a0282cd15e02c3432bbb81dade8e2b9e6",
+    "round2_json_sha256": "1e25be13336429d315065fdbd651e907e8cb2242fbcc6cef673c7584b88852dd"
+  },
+  "reviewer_zero": {
+    "round1": {
+      "counts": {
+        "CRITICAL": 0,
+        "MAJOR": 4,
+        "MODERATE": 1,
+        "MINOR": 2,
+        "OPTIONAL": 0
+      },
+      "all_critical_resolved": true,
+      "all_major_resolved": true
+    },
+    "round2": {
+      "counts": {
+        "CRITICAL": 0,
+        "MAJOR": 0,
+        "MODERATE": 5,
+        "MINOR": 1
+      },
+      "gate_pass": true,
+      "open_nonblocking": [
+        "RZ2-001",
+        "RZ2-002",
+        "RZ2-003",
+        "RZ2-005"
+      ],
+      "accepted_risks": [
+        "RZ2-004",
+        "RZ2-006"
+      ]
+    }
+  },
+  "conditions": {
+    "claim_inventory_complete": true,
+    "dependency_graph_complete": true,
+    "notation_frozen": true,
+    "proof_compression_complete": true,
+    "claim_evidence_complete": true,
+    "reproduction_pass": true,
+    "reproduction_mismatch_zero": true,
+    "novelty_scope_safe": true,
+    "reviewer_zero_critical_zero": true,
+    "reviewer_zero_major_zero": true,
+    "manuscript_architecture_frozen": true,
+    "exploratory_extension_paused": true
+  },
+  "scope_exclusions": [
+    "ALL_PERIOD_OPTIMUM",
+    "ALL_SIGNINGS_OPTIMUM",
+    "FINITE_N_GLOBAL_OPTIMUM_FOR_ALL_N"
+  ],
+  "next_task": "Task 44 - Draft manuscript",
+  "auto_start_next_task": false
+}

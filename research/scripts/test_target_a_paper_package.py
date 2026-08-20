@@ -3,8 +3,11 @@ import json
 import unittest
 
 from verify_target_a_paper_package import (
+    DEFAULT_ARCHITECTURE,
+    DEFAULT_GATE,
     DEFAULT_GRAPH,
     DEFAULT_INVENTORY,
+    DEFAULT_ROUND2,
     PaperPackageVerificationError,
     verify_claim_inventory,
     verify_dependency_graph,
@@ -12,6 +15,7 @@ from verify_target_a_paper_package import (
     verify_graph_markdown,
     verify_notation_and_compression,
     verify_claim_evidence_and_reproducibility,
+    verify_reviewer_zero_round2_and_gate,
 )
 
 
@@ -25,6 +29,7 @@ class PaperPackageTests(unittest.TestCase):
         verify_initial_files()
         verify_notation_and_compression()
         verify_claim_evidence_and_reproducibility()
+        verify_reviewer_zero_round2_and_gate()
 
     def test_claim_gap_rejected(self):
         inventory = copy.deepcopy(self.inventory)
@@ -61,6 +66,23 @@ class PaperPackageTests(unittest.TestCase):
         markdown = "| THEOREM_A | wrong | C2 |\n"
         with self.assertRaises(PaperPackageVerificationError):
             verify_graph_markdown(self.graph, markdown)
+
+    def test_reviewer_zero_blocker_rejected(self):
+        round2 = json.loads(DEFAULT_ROUND2.read_text(encoding="utf-8"))
+        round2["counts"]["MAJOR"] = 1
+        with self.assertRaises(PaperPackageVerificationError):
+            verify_reviewer_zero_round2_and_gate(round2=round2)
+
+    def test_gate_finding_disposition_drift_rejected(self):
+        gate = json.loads(DEFAULT_GATE.read_text(encoding="utf-8"))
+        gate["reviewer_zero"]["round2"]["accepted_risks"] = []
+        with self.assertRaises(PaperPackageVerificationError):
+            verify_reviewer_zero_round2_and_gate(gate=gate)
+
+    def test_missing_open_problem_rejected(self):
+        architecture = DEFAULT_ARCHITECTURE.read_text(encoding="utf-8").replace("**O5.**", "**O6.**")
+        with self.assertRaises(PaperPackageVerificationError):
+            verify_reviewer_zero_round2_and_gate(architecture=architecture)
 
 
 if __name__ == "__main__":

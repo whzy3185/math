@@ -1,0 +1,196 @@
+{
+  "schema_version": "1.0.0",
+  "reviewed_head": "b9e00bd34222d40e9ac954d3d5c4817644650be0",
+  "reviewed_branch": "agent/target-a-discovery-snapshot",
+  "reviewed_utc": "2026-08-16T09:08:30Z",
+  "counts": {
+    "CRITICAL": 0,
+    "MAJOR": 0,
+    "MODERATE": 5,
+    "MINOR": 1
+  },
+  "gate_pass": true,
+  "verdict": "PASS WITH MODERATE REPAIRS: no critical or major mathematical blocker; ready for manuscript drafting, but not yet submission-grade as a reproducibility bundle.",
+  "findings": [
+    {
+      "id": "RZ2-001",
+      "severity": "MODERATE",
+      "category": "Reproducibility",
+      "title": "No committed environment lock or portable bootstrap",
+      "affected_claims_files": [
+        "C3-C6",
+        "C10",
+        "C14",
+        "C17-C25",
+        "research/experiments/TARGET_A_REPRODUCTION.md",
+        "research/paper/TARGET_A_FINITE_COMPUTATION_TRUST_MODEL.md",
+        "research/reproducibility/target_a_full_slow_reproduction_summary.json"
+      ],
+      "evidence": [
+        "research/experiments/TARGET_A_REPRODUCTION.md:8-10 records versions but obtains NumPy from a host-specific path.",
+        "research/experiments/TARGET_A_REPRODUCTION.md:82-109 gives absolute-path reproduction commands.",
+        "research/paper/TARGET_A_FINITE_COMPUTATION_TRUST_MODEL.md:52-59 says the supplement should include a machine-readable environment lock and command manifest.",
+        "Clean-tree pytest collection failed because NumPy was absent; installing the recorded numpy==2.3.5 into the temporary review directory made all tests pass."
+      ],
+      "consequence": "A referee cannot run the advertised suite from a fresh checkout without reconstructing an undocumented host-specific dependency path.",
+      "required_action": "Commit a portable machine-readable environment lock/bootstrap, replace absolute-path commands, and verify default and slow lanes in a clean environment created only from the lock.",
+      "disposition": "OPEN"
+    },
+    {
+      "id": "RZ2-002",
+      "severity": "MODERATE",
+      "category": "Proof correctness",
+      "title": "Human radical comparison omits the r>4 branch premise",
+      "affected_claims_files": [
+        "C23",
+        "C25",
+        "research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md",
+        "research/scripts/verify_target_a_low_period_spectral_frontier.py"
+      ],
+      "evidence": [
+        "research/proofs/TARGET_A_LOW_PERIOD_SPECTRAL_FRONTIER.md:179-197 claims u>0 and u^2>5 imply r>eta without stating r>4.",
+        "research/scripts/verify_target_a_low_period_spectral_frontier.py:171-177 correctly rejects value<=4 before applying the squared comparison."
+      ],
+      "consequence": "The certificates remain valid, but the standalone human proof has a genuine logical omission that could propagate into the manuscript.",
+      "required_action": "State and prove r>4 before squaring, include it in the displayed certificate conditions, and add a low-branch negative regression.",
+      "disposition": "OPEN"
+    },
+    {
+      "id": "RZ2-003",
+      "severity": "MODERATE",
+      "category": "Classification independence",
+      "title": "Low-period checker counts rows but does not bind them to the full canonical orbit set",
+      "affected_claims_files": [
+        "C22",
+        "C23",
+        "C25",
+        "research/scripts/verify_target_a_low_period_spectral_frontier.py",
+        "research/proofs/target_a_low_period_spectral_frontier.json"
+      ],
+      "evidence": [
+        "research/scripts/verify_target_a_low_period_spectral_frontier.py:238-246 checks independent counts and unique orbit IDs.",
+        "research/scripts/verify_target_a_low_period_spectral_frontier.py:250-262 checks each supplied row individually but not equality with an independently enumerated representative set.",
+        "Reviewer Zero independently compared the full canonical sets and found no missing, extra, or duplicate row in the committed artifact."
+      ],
+      "consequence": "The table is complete in fact, but the checker could accept an omitted orbit replaced by a duplicate canonical word under a new unique ID and valid duplicate certificate.",
+      "required_action": "Compare the stored (p,Q) set exactly with an independent canonical enumeration, bind orbit IDs to deterministic order, and add omission/duplicate tamper tests.",
+      "disposition": "OPEN"
+    },
+    {
+      "id": "RZ2-004",
+      "severity": "MODERATE",
+      "category": "Finite-computation trust boundary",
+      "title": "The canonical minimality checker does not replay per-state mathematics for n<=22",
+      "affected_claims_files": [
+        "C3",
+        "THEOREM_A",
+        "research/scripts/verify_target_a_minimality_certificate.py",
+        "research/paper/TARGET_A_FINITE_COMPUTATION_TRUST_MODEL.md",
+        "research/paper/TARGET_A_REPRODUCIBILITY_STATEMENT.md"
+      ],
+      "evidence": [
+        "research/scripts/verify_target_a_minimality_certificate.py:98-118 validates aggregate historical records for n<=20.",
+        "research/scripts/verify_target_a_minimality_certificate.py:121-150 validates aggregate shell/certificate records for n=22.",
+        "research/paper/TARGET_A_FINITE_COMPUTATION_TRUST_MODEL.md:20-42 correctly discloses the integrity-versus-regeneration boundary.",
+        "Reviewer Zero reran exact n=8,10,...,22 computations successfully with zero fallbacks and zero counterexamples."
+      ],
+      "consequence": "No mismatch was observed, but the committed one-command checker is partly an attestation/hash check rather than a full mathematical replay over C3's complete range.",
+      "required_action": "Retain the computer-assisted label; for submission add a clean-HEAD full-range regeneration manifest or independently replayable per-state certificates for n<=22.",
+      "disposition": "ACCEPTED_RISK"
+    },
+    {
+      "id": "RZ2-005",
+      "severity": "MINOR",
+      "category": "Provenance",
+      "title": "Canonical package snapshots do not identify the reviewed HEAD",
+      "affected_claims_files": [
+        "C1-C25",
+        "research/paper/target_a_claim_inventory.json",
+        "research/reproducibility/target_a_full_slow_reproduction_summary.json",
+        "research/scripts/verify_target_a_paper_package.py"
+      ],
+      "evidence": [
+        "research/paper/target_a_claim_inventory.json:4-5 names frozen commit/tree dfb9c984.../7a15c449....",
+        "research/reproducibility/target_a_full_slow_reproduction_summary.json:6-11 names baseline c5cadf3e.../dc08b21b....",
+        "research/scripts/verify_target_a_paper_package.py:62-67 hard-codes the older claim-inventory identifiers rather than reviewed HEAD b9e00bd3...."
+      ],
+      "consequence": "Artifact hashes pass, but canonical metadata does not mechanically identify the reviewed final commit as the theorem snapshot.",
+      "required_action": "Publish a final manifest naming the drafting/submission HEAD and tree, or an explicit immutable mapping proving that no claim-bearing artifact changed.",
+      "disposition": "OPEN"
+    },
+    {
+      "id": "RZ2-006",
+      "severity": "MODERATE",
+      "category": "Enumeration trust boundary",
+      "title": "Production generator independence above n=24 is aggregate rather than recordwise",
+      "affected_claims_files": [
+        "C3 at n=26,28,30",
+        "research/audit/DIRECT_BRACELET_GENERATOR_AUDIT.md",
+        "research/scripts/target_a_direct_generator_audit.py",
+        "research/paper/TARGET_A_FINITE_COMPUTATION_TRUST_MODEL.md"
+      ],
+      "evidence": [
+        "research/audit/DIRECT_BRACELET_GENERATOR_AUDIT.md:27-46 establishes ordered record equality only through n=22.",
+        "research/paper/TARGET_A_FINITE_COMPUTATION_TRUST_MODEL.md:44-50 says dual-generator recordwise agreement extends through n=24.",
+        "research/scripts/target_a_direct_generator_audit.py:155-164 checks only aggregate Burnside totals, represented-size sums, order, and parity at production scale.",
+        "Reviewer Zero reran the n=26,28,30 slow audits successfully."
+      ],
+      "consequence": "No discrepancy was observed, but a largest-order representative/orbit-size defect preserving all aggregates lies outside the independent audit.",
+      "required_action": "Provide a proof-oriented validation of the FKM/reflection/orbit-size implementation for arbitrary n or a separately implemented partitioned recordwise validation for n=26,28,30.",
+      "disposition": "ACCEPTED_RISK"
+    }
+  ],
+  "high_risk_checklist": [
+    {
+      "item": "Claim scopes exclude all-period/all-signings/global-finite-n overclaims and restrict the infinite family to multiples of eight.",
+      "status": "PASS"
+    },
+    {
+      "item": "The n=32 witness has exact positive-definiteness, exact threshold comparison, and independent gauge reconstruction.",
+      "status": "PASS"
+    },
+    {
+      "item": "Finite and infinite Floquet decompositions, both holonomies, and the z^L=alpha boundary are explicit and verified.",
+      "status": "PASS"
+    },
+    {
+      "item": "The period-8 determinant, uniform positivity, sharp constant, and unique z=1 edge have independent exact routes.",
+      "status": "PASS"
+    },
+    {
+      "item": "Moment implications are one-way only and short-cell collision multiplicities are retained.",
+      "status": "PASS"
+    },
+    {
+      "item": "Period-8 classification covers all 128 legal flux words and distinguishes exact signatures from numeric coincidences.",
+      "status": "PASS"
+    },
+    {
+      "item": "Translation/reflection/negation and repeated-cell zone folding are proved, including odd-cell z -> -z and the doubled p=16 target.",
+      "status": "PASS"
+    },
+    {
+      "item": "The committed 2626-row low-period table is complete, but independent checker set-binding needs repair.",
+      "status": "PARTIAL",
+      "finding_ids": [
+        "RZ2-003"
+      ]
+    },
+    {
+      "item": "Finite minimality regeneration and generator audits are successful but not uniform in trust level across all orders.",
+      "status": "PARTIAL",
+      "finding_ids": [
+        "RZ2-004",
+        "RZ2-006"
+      ]
+    },
+    {
+      "item": "Reproduction versions are recorded, but a portable environment lock and final-HEAD provenance manifest are missing.",
+      "status": "PARTIAL",
+      "finding_ids": [
+        "RZ2-001",
+        "RZ2-005"
+      ]
+    }
+  ]
+}
