@@ -1,12 +1,18 @@
 \section{Introduction}\label{sec:introduction}
 
 Signed adjacency matrices provide a concrete meeting point of spectral graph
-theory, switching theory, and discrete magnetic or flux-phase ideas. If \(G\) is
-a graph and every edge receives a sign in \(\{+1,-1\}\), switching the signs at a
-vertex conjugates the signed adjacency matrix by a diagonal sign matrix.
-Consequently the spectrum depends on cycle fluxes rather than on the chosen
-edge gauge. The optimization problem of minimizing spectral radius over all
-signings can therefore be viewed as a finite flux-phase problem.
+theory, switching theory, and discrete magnetic ideas. Switching at vertices
+conjugates the signed adjacency matrix by a diagonal sign matrix, so its
+spectrum depends on cycle fluxes rather than on an edge gauge. Minimizing the
+spectral radius over all signings of a fixed graph is therefore an optimization
+problem on a finite flux space. It belongs both to the classical theory of
+signed graphs~\cite{Zaslavsky1982} and to the broader spectral-signing problem
+initiated by Bilu and Linial~\cite{BiluLinial2006}. The latter line includes the
+interlacing-family solution for bipartite Ramanujan lifts and subsequent
+explicit near-Ramanujan constructions~\cite{MarcusSpielmanSrivastava2015,MohantyODonnellParedes2022};
+those results do not determine the two-sided optimum for a fixed nonbipartite
+graph. Extremal-radius questions within signed graph classes form a related,
+distinct literature~\cite{BelardoCioabaKoolenWang2019,BelardoBrunettiCiampella2021}.
 
 We study this problem for the four-regular circulant
 
@@ -15,30 +21,46 @@ G_n=C_n(1,2),
 \end{equation}
 
 whose vertices are the residues modulo \(n\) and whose edges join vertices at
-cyclic distances one and two. Suvagiya identified a distinguished family in
-which the triangle fluxes alternate \cite{Suvagiya2026Signed}. For even \(n\), the two members of that
+cyclic distances one and two. This is a useful model rather than a universal
+one: it is the simplest four-regular circulant with overlapping triangles and
+quadrilaterals, its switching space has explicit cycle coordinates, and a
+periodic signing admits a finite Floquet reduction. Most importantly for the
+present problem, squaring its signed operator makes a local factor \(1+Q_i\)
+visible: negative quadrilateral flux cancels a coupling and positive flux
+activates it. Thus a global spectral optimization can be related to a local
+defect geometry while retaining a complete finite quotient.
+
+Suvagiya recently identified a distinguished family in which the triangle
+fluxes alternate~\cite{Suvagiya2026Signed}. For even \(n\), the two members of that
 family with negative step-one Hamilton-cycle holonomy have spectral radius
 
 \begin{equation}
 \rho_-(n)=2 \sqrt{\cos^{2}(\frac{\pi}{n})+\cos^{2}(\frac{2\pi}{n})}.
 \end{equation}
 
-Conjecture 3 of \cite{Suvagiya2026Signed} states that no signing of \(G_n\) has smaller spectral
-radius. That paper verified the assertion for \(n=8,10,\ldots,18\) and left the
-general lower bound open.
+Conjecture 3 of~\cite{Suvagiya2026Signed} states that no signing of \(G_n\) has
+smaller spectral radius. That paper verified the assertion for
+\(n=8,10,\ldots,18\) and left the general lower bound open. The companion
+parity-family framework appears in~\cite{Suvagiya2026Parity}.
 
-
-The switching viewpoint belongs to the classical theory of signed graphs~\cite{Zaslavsky1982}; circulant spectra and Floquet reduction provide the finite and periodic operator context~\cite{Davis1979,Kuchment1993}. The broader spectral-signing problem was formulated by Bilu and Linial~\cite{BiluLinial2006}, and its bipartite case was resolved by Marcus, Spielman, and Srivastava~\cite{MarcusSpielmanSrivastava2015}.  Lieb's flux-phase theorem supplies the physical terminology~\cite{Lieb1994}. These sources supply background rather than the counterexample or the classification results proved here.
+Circulant Fourier analysis~\cite{Davis1979} and Floquet theory for periodic
+graph operators~\cite{Kuchment1993,KorotyaevSaburova2017} provide the operator
+context. Flux-dependent trace formulas on periodic graphs are especially close
+in spirit to our closed-walk calculations~\cite{KorotyaevSaburova2023}. We use
+``flux phase'' as mathematical terminology suggested by magnetic-operator and
+physical precedents, including Lieb's theorem~\cite{Lieb1994}; no physical
+ground-state principle or hypothesis from that theorem is invoked here.
 
 The inherited ingredients are the alternating-triangle family, its four
 switching/holonomy classes, the displayed formula for \(\rho_-(n)\), and the
-conjecture itself \cite{Suvagiya2026Signed}; the companion parity-family framework is developed in
-\cite{Suvagiya2026Parity}. The counterexample, its minimality, the infinite periodic family, the
-sharp band edge, and the period-eight and low-period classifications proved
-here are new results of the present article.
+conjecture itself~\cite{Suvagiya2026Signed}. The present contribution is not
+only an explicit counterexample. We determine the smallest failure, extend it to
+an infinite arithmetic family, calculate its exact band edge, identify the
+local cancellation mechanism, classify every period-eight phase, derive
+general-period obstructions, and complete an exact bounded-period frontier.
 
-The conjecture is false. Its failure is nevertheless delayed: every admissible
-order below 32 satisfies the proposed lower bound. The first counterexample is
+The conjecture is false, but its failure is delayed: every admissible
+order below 32 satisfies the proposed lower bound. The smallest counterexample is
 an order-32 signing whose triangle-flux word is the fourfold repetition of
 
 \begin{equation}
@@ -48,8 +70,11 @@ an order-32 signing whose triangle-flux word is the fourfold repetition of
 The same word defines an eight-periodic operator. Its Floquet polynomial can be
 computed exactly, and a uniform positivity argument turns the isolated witness
 into an infinite family for all multiples of eight at least 32. The resulting
-analysis does more than refute the conjecture: it reveals a sharp period-eight
-spectral edge and a structural cancellation mechanism.
+analysis reveals why that word is effective. In the squared operator, entries
+with \(Q_i=-1\) cancel and entries with \(Q_i=+1\) become active defects; the
+counterexample arranges its two positive defects antipodally in an eight-site
+cell. This mechanism, rather than the isolated order-32 comparison, is the
+organizing theme of the paper.
 
 \subsection{Main results}
 
@@ -101,7 +126,7 @@ The local mechanism is described by a complete phase classification. For a
 legal eight-periodic flux word \(Q\), let \(D(Q)\) be the set of positive entries
 and let \(R(Q)\) denote the squared infinite-volume spectral radius.
 
-\begin{theorem}[Eight-Barrier Trichotomy]
+\begin{theorem}[Period-Eight Trichotomy]
 \label{thm:eight-barrier-trichotomy}
 Exactly one of the following occurs:
 
@@ -149,7 +174,7 @@ These are necessary conditions only.
 \end{theorem}
 Finally we classify a bounded but nontrivial periodic domain.
 
-\begin{theorem}[Low-Period Frontier]
+\begin{theorem}[Low-Period Spectral Classification]
 \label{thm:low-period-frontier}
 Consider the infinite operators \eqref{eq:periodic-operator}
 whose Hamilton-gauge triangle word \(\tau\) has least positive period at most 16,

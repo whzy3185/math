@@ -61,6 +61,16 @@ The distinguished local quadrilateral flux word is
 Q_i=\tau_i \tau_{i+1}.
 \end{equation}
 
+\begin{figure}[tbp]
+\centering
+\input{figures/figure_flux_coordinates}
+\caption{Local flux coordinates in \(C_n(1,2)\). Solid edges have cyclic
+distance one and dashed arcs have distance two. The adjacent triangle fluxes
+share the edge sign \(a_{i+1}\); their product is the quadrilateral flux
+\(Q_i\). The drawing fixes notation only and does not impose a gauge.}
+\label{fig:flux-coordinates}
+\end{figure}
+
 For a \(p\)-periodic word \(\tau\), Equation~\eqref{eq:quadrilateral-flux} implies
 \(\prod_{i=0}^{p-1} Q_i=1\). Conversely, any word
 \(Q \in \{+1,-1\}^p\) with product \(+1\) has exactly two periodic lifts, obtained by
@@ -238,7 +248,8 @@ Constant-term extraction equals normalized integration around the unit circle:
 M_k(Q)=\frac{1}{2\pi}\int_{0}^{2\pi}\sum_j\lambda_j(e^{i\theta})^{2k}\,d\theta.
 \end{equation}
 
-It is also the signed sum of closed walks of length \(2k\) per period cell.
+It is also the signed sum of closed walks of length \(2k\) per period cell, in
+the standard trace--closed-walk correspondence for graph spectra~\cite{CvetkovicRowlinsonSimic2010}.
 
 \begin{lemma}[moment barrier]
 \label{lem:moment-barrier}
