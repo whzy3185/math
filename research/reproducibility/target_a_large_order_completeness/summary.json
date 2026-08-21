@@ -1,0 +1,83 @@
+{
+  "schema_version": 1,
+  "purpose": "independent record-level equality and completeness audit for large Target A orbit sets",
+  "primary_route": "Python fixed-weight FKM necklace recursion",
+  "independent_route": "C full integer-space scan with direct dihedral orbit construction",
+  "independence": {
+    "canonicalization_code_shared": false,
+    "canonicalization_traversal_shared": false,
+    "group_action_specification_shared": true,
+    "binary_q_semantics_shared": true,
+    "traversal_order_shared": false,
+    "shell_decomposition_shared": false,
+    "data_structures_shared": false,
+    "implementation_language_shared": false
+  },
+  "build": {
+    "compiler": "/usr/bin/cc",
+    "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "source_sha256": "7bd69b39ef9b3aa0fb4ff5af61f4eb583e0aab788336feacd54a99453d7ada60"
+  },
+  "execution_provenance": {
+    "repository_head": "98f981516644036581f51d0e8af028e642106cc0",
+    "command": "python research/scripts/target_a_record_set_audit.py --n 24 26 28 30",
+    "driver_sha256": "d73a8e7435e8d2378eeaccce4c4f3e5f9dbcdd61adaf1fb9d10e3b087186ac4a",
+    "primary_generator_sha256": "2a972d97c1c72e2f12140336c3328362de531507b5931c0f4b442beb7ac1f5d7",
+    "note": "source and detail hashes, rather than worktree cleanliness, bind this recorded run"
+  },
+  "python": "3.12.13",
+  "platform": "macOS-26.5.2-arm64-arm-64bit",
+  "orders": [
+    24,
+    26,
+    28,
+    30
+  ],
+  "results": [
+    {
+      "order": 24,
+      "status": "PASS",
+      "record_level_set_equality": true,
+      "canonical_representatives": 176906,
+      "canonical_spectral_states": 353812,
+      "represented_switching_classes": 33554432,
+      "elapsed_seconds": 2.48201584815979,
+      "file": "n24.json",
+      "file_sha256": "037d6b945e148ccee43092d5926a5ab19bb0943596ab1a804b91b9de5224151c"
+    },
+    {
+      "order": 26,
+      "status": "PASS",
+      "record_level_set_equality": true,
+      "canonical_representatives": 649532,
+      "canonical_spectral_states": 1299064,
+      "represented_switching_classes": 134217728,
+      "elapsed_seconds": 7.591920852661133,
+      "file": "n26.json",
+      "file_sha256": "937bfa3f4a7c6f5bf3c9a1d3446f351d834454829808a4105201b3a0cad1f6b3"
+    },
+    {
+      "order": 28,
+      "status": "PASS",
+      "record_level_set_equality": true,
+      "canonical_representatives": 2405236,
+      "canonical_spectral_states": 4810472,
+      "represented_switching_classes": 536870912,
+      "elapsed_seconds": 31.259705066680908,
+      "file": "n28.json",
+      "file_sha256": "a2b3ae2ed5570f07835eb15b9ae919a80a5bda10accfdc36a76ffaafa840d92c"
+    },
+    {
+      "order": 30,
+      "status": "PASS",
+      "record_level_set_equality": true,
+      "canonical_representatives": 8964800,
+      "canonical_spectral_states": 17929600,
+      "represented_switching_classes": 2147483648,
+      "elapsed_seconds": 132.679829120636,
+      "file": "n30.json",
+      "file_sha256": "d26745576638a25576fa9ca1b53c14c941083a5311e16d1080a7899f104f48fd"
+    }
+  ],
+  "status": "PASS"
+}

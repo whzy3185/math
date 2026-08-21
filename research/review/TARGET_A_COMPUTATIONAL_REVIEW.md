@@ -1,216 +1,276 @@
-# Target A Computational Review
+# Target A Computational Re-review
 
 Date: 2026-08-21
 
 Role: independent referee for computer-assisted mathematics
 
-Recommendation: **MAJOR REVISION**
+Recommendation: **COMPUTATIONAL CORE PASS; ARCHIVAL FOLLOW-UP REQUIRED**
 
-Severity counts: **BLOCKER 0 / MAJOR 2 / MODERATE 3 / MINOR 1**
+Severity counts: **BLOCKER 0 / MAJOR 0 / MODERATE 2 / MINOR 0**
 
-## Scope and Overall Assessment
+## Scope
 
-I reviewed the new large-order enumeration route formed by
-`target_a_independent_orbit_scan.c`, `target_a_record_set_audit.py`, its tests,
-the machine-readable summaries in `target_a_large_order_completeness/`, and
-`TARGET_A_FINITE_MINIMALITY_TRUST_MAP.md`. I also traced their interfaces to
-`target_a_bracelets.py`, `target_a_minimality_search.py`, checkpoint replay,
-the exact threshold/Rayleigh decision, and the top-level minimality verifier.
+This is a line-by-line re-review of the six findings in the earlier Reviewer
+Compute report. I reviewed the current shared worktree without modifying code or
+manuscript files and without rerunning the expensive `n=30` enumeration or
+spectral decision job.
 
-The new C full-space scan is a substantial and valid improvement over aggregate
-Burnside checks. For the intended even orders it performs an exact,
-ordering-independent consumption of every canonical `Q` record and checks the
-corresponding dihedral orbit size. I found no concrete omission, duplication,
-orbit-size error, arithmetic error, or holonomy-specific counterexample in the
-reviewed runs. The archived `n=24,26,28,30` histograms are internally coherent,
-and fresh referee runs at `n=24` and `n=26` reproduced the archived counts.
+The re-review covers:
 
-This does **not**, however, close the entire computational trust boundary for
-the smallest-counterexample theorem. The new route independently checks the
-enumerated `Q`-orbit set, but it does not independently reconstruct and verify
-the exact spectral exclusion attached to each `(Q,alpha)` state. The existing
-checkpoint replay authenticates opaque certificate digests rather than
-recomputing the per-state certificates. That remaining correlated
-implementation risk must be stated plainly.
+- the C full-space representative stream;
+- `target_a_record_set_audit.py` and its four-order evidence;
+- `target_a_independent_spectral_audit.py` and its four-order evidence;
+- `target_a_computational_evidence_manifest.json`;
+- `verify_target_a_computational_evidence.py`, including exact optimizer-edge
+  verification;
+- the top-level minimality gate;
+- the English and Chinese descriptions of the computational trust boundary.
 
-## Findings
+## Executive Assessment
 
-### MAJOR 1: Search/certificate separation remains incomplete
+The mathematical-computational content of the two former MAJOR findings is now
+closed. The repository has a genuinely separate large-order spectral decision
+route: canonical records are emitted by the C full-space scanner, both
+holonomies are reconstructed by a standalone Python implementation, and every
+nonoptimizer is excluded by an exact integer Rayleigh quotient against a
+certified algebraic upper endpoint. The recorded runs pass at all four orders
+`n=24,26,28,30`, including 17,929,600 spectral states at `n=30`.
 
-The C scanner consumes only `(canonical Q word, orbit size)` records
-(`target_a_independent_orbit_scan.c`, lines 110--159). It never constructs a
-signed adjacency matrix, visits either holonomy as a mathematical state, or
-checks a Rayleigh inequality. The Python driver labels the resulting count as
-`canonical_spectral_states = 2 * representatives` and declares holonomy
-coverage (`target_a_record_set_audit.py`, lines 138--160), but those spectral
-decisions remain entirely in `target_a_minimality_search.py`.
+The strengthened evidence is now hash-bound and mandatory in the top-level
+minimality verifier. A separate small verifier reconstructs the distinguished
+optimizer and uses exact characteristic-polynomial root isolation to prove that
+the threshold is the largest eigenvalue of `A^2`, rather than merely a
+characteristic root.
 
-In the production search, the exact logic is sound in form: a floating
-eigenvector only proposes an integer vector, `||Av||^2/||v||^2` is evaluated
-with integer arithmetic, and comparison with a certified algebraic upper bound
-is exact (`target_a_minimality_search.py`, lines 886--944). The problem is the
-saved proof object. Each per-state record is fed into SHA-256 and then discarded
-(lines 922--963); the integer vector is not retained for the overwhelmingly
-dominant `RAYLEIGH_CERTIFIED` path. Checkpoint replay regenerates the input
-cursor but merely hashes the already stored per-chunk certificate digests
-(`target_a_checkpoint_replay.py`, lines 30--34 and 66--69). It cannot verify
-that a stored numerator and denominator arose from the claimed state, because
-those values are not present.
+I found no BLOCKER or MAJOR defect. Two publication-archive issues remain at
+MODERATE severity. They do not invalidate the recorded exact decisions, but
+they should be closed before the repository is presented as the final immutable
+submission artifact.
 
-Consequently, the large-order conclusion still trusts the same implementation
-for `Q -> tau -> signing`, matrix construction, numerical vector proposal, and
-exact Rayleigh evaluation. The documented full regeneration is valuable, but
-it reruns the same implementation and reproduces the same digest; it is not an
-independent certificate verifier.
+## Disposition of Original Findings
 
-Required resolution: either archive compact per-state proof data sufficient
-for a small independent verifier (at minimum state identifier plus an integer
-Rayleigh vector, with deterministic chunking), or implement a genuinely
-separate decision route that reconstructs every `(Q,alpha)` matrix and verifies
-the exact exclusion through `n=30`. Until then, the representative-set risk is
-closed but the per-state decision risk is not.
+### MAJOR 1: Search/certificate separation
 
-### MAJOR 2: The new evidence is not part of the trusted theorem gate
+**Status: RESOLVED.**
 
-At review time all new scanner, driver, test, completeness, and trust-map files
-were untracked by Git. More importantly, the top-level verifier does not load
-or authenticate them. `verify_target_a_minimality_certificate.py` lists trusted
-hashes for historical search results and checkpoint manifests (lines 21--36),
-then audits those production summaries and replays their checkpoints (lines
-154--197 and 225--253). A smallest-counterexample verification can therefore
-pass if the new record-level audit is absent, stale, or replaced.
+`target_a_independent_spectral_audit.py` supplies the alternative requested by
+the original report: a second full decision implementation through `n=30`.
+Its spectral input is the record file written by the C scanner
+(`target_a_independent_spectral_audit.py`, lines 104--123 and 225--245), not the
+production FKM traversal. It does not import the production signing, matrix,
+threshold, or Rayleigh functions. It independently:
 
-The existing submission manifest and English manuscript also retain the old
-boundary: they state that recordwise generator equality stops at `n=24`, with
-only aggregate checks at `n=26,28,30`
-(`target_a_submission_artifact_manifest.json`, lines 144--147;
-`sections/10_computational_verification.tex`, lines 121--129;
-`appendices/12_appendix_orbit_completeness.tex`, lines 119--124). This conflicts
-with the stronger claim in the new trust map.
+1. reconstructs `Q`, `tau`, both values of `alpha`, and the signed adjacency
+   matrix (lines 157--181 and 245--253);
+2. obtains only a proposed integer vector from the floating eigensolver;
+3. computes `||Av||^2/||v||^2` with integer arithmetic (lines 184--191);
+4. compares the resulting `Fraction` with a certified rational upper endpoint
+   for the algebraic threshold (lines 142--154 and 264--290);
+5. requires every nonoptimizer to be exactly excluded and the uncertified list
+   to be empty (lines 298--310).
 
-Required resolution: commit the new evidence; add the driver, C source,
-per-order results, summary, and trust map to the submission artifact manifest;
-make the top-level minimality verifier require their hashes and PASS conditions;
-and update the manuscript's disclosure in the same atomic revision. The new
-audit should fail the publication gate when any required order or detail file
-is missing or changed.
+The four archived details report:
 
-### MODERATE 1: Holonomy and the factor-four class multiplicity are asserted, not independently scanned
+| `n` | canonical `Q` representatives | spectral states | exact nonoptimizer exclusions | uncertified |
+|---:|---:|---:|---:|---:|
+| 24 | 176,906 | 353,812 | 353,811 | 0 |
+| 26 | 649,532 | 1,299,064 | 1,299,063 | 0 |
+| 28 | 2,405,236 | 4,810,472 | 4,810,471 | 0 |
+| 30 | 8,964,800 | 17,929,600 | 17,929,599 | 0 |
 
-The C route scans only legal `Q` words. The fields `holonomy_coverage = [-1,1]`,
-`canonical_spectral_states = 2 * representatives`, and
-`sum_of_represented_switching_classes = 4 * represented_q_vectors` are assigned
-by the orchestrating Python code (`target_a_record_set_audit.py`, lines
-147--153). They do not arise from the independent scanner. Thus the new audit
-does not independently test that both holonomies are emitted once, that the two
-`tau` lifts are precisely global-sign partners for even `n`, or that the
-dihedral action on `Q` preserves the intended spectral equivalence.
+This route remains a regeneration proof rather than an archive of every vector,
+but that is now a disclosed residual trust boundary, not a missing independent
+decision implementation.
 
-The human cycle-space argument in the manuscript and the earlier raw/quotient
-cross-checks materially mitigate this risk. The production stream also loops
-over both `alpha` values (`target_a_minimality_search.py`, lines 265--269), and
-checkpoint input replay verifies its state count. Nevertheless, the trust map
-should distinguish "proved and exercised by the production route" from
-"independently checked by the new C route." A small independent expansion test
-should be linked explicitly as evidence for this interface.
+### MAJOR 2: Evidence absent from the trusted theorem gate
 
-### MODERATE 2: The independence metadata is too categorical
+**Status: RESOLVED for the logical theorem gate.**
 
-The two implementations use different languages, traversal orders, and data
-structures, which is a real independence gain. They nevertheless share the
-same binary representation, parity convention, and rotation/reflection
-formulas. Compare the C orbit construction at lines 22--37 and 122--132 with
-`target_a_bracelets.py`, lines 15--28 and 78--88. A common mistake in the
-specified dihedral action or the `Q` encoding could therefore survive exact
-record equality. Moreover, `canonicality_failures == 0` is partly an internal
-consistency check: in an ascending full-space scan, the first unvisited member
-is minimal under whatever orbit relation that same scanner constructed.
+`verify_target_a_minimality_certificate.py` now:
 
-The trust map acknowledges the shared mathematical quotient specification and
-Python orchestration (lines 93--97), but `summary.json` states simply that
-`canonicalization_shared` is false. Replace this with a more precise statement:
-no canonicalization *code or traversal* is shared, while the group action and
-state semantics are shared. This is a correlated implementation risk, not a
-demonstrated failure.
+- imports the strengthened evidence verifier (line 14);
+- hard-codes the SHA-256 of the computational evidence manifest (lines 23--30);
+- rejects a manifest-hash mismatch (lines 250--254);
+- executes the strengthened verifier and requires its PASS result before
+  checkpoint replay or the `n=32` witness is accepted (lines 255--261).
 
-### MODERATE 3: Recorded-run provenance is incomplete
+A fresh top-level run with checkpoint replay disabled returned
+`SMALLEST_COUNTEREXAMPLE_VERIFIED` and included four PASS strengthened-evidence
+reports. Thus the old theorem gate can no longer pass merely from production
+counts and opaque checkpoint digests while ignoring the new record and spectral
+audits.
 
-`summary.json` records the C source hash and compiler, but it does not bind the
-hashes of `target_a_record_set_audit.py` or `target_a_bracelets.py`, the Git
-commit/tree, the exact command, or the hashes of the four detail JSON files.
-`test_target_a_record_set_audit.py` checks that the current C source matches the
-recorded hash and then trusts the PASS booleans in the detail files (lines
-23--40). This is enough for regression convenience, not for an archival proof
-manifest.
+The English and Chinese manuscripts now describe recordwise equality at all
+four large orders, distinguish integrity replay from decision regeneration,
+describe the second full spectral route, and disclose the remaining shared
+quotient/vector-archive boundaries. Their mathematical trust-boundary accounts
+are materially aligned.
 
-Required resolution: include all executable-source hashes, commit/tree,
-environment, command, and per-detail file hashes in one authenticated manifest;
-have the test recompute cross-file totals and verify every referenced hash.
-Timing metadata may remain informational.
+The final immutable submission packaging is not yet synchronized; that is
+recorded separately as MODERATE 1 below.
 
-### MINOR 1: The public input domain accepts odd orders with the wrong parity convention
+### MODERATE 1: Holonomy and factor-four coverage
 
-The C program and Python driver accept every `1 <= n <= 30`
-(`target_a_independent_orbit_scan.c`, lines 64--71;
-`target_a_record_set_audit.py`, lines 100--103), but both enumerate even Hamming
-weight. With bit `1` meaning `Q_i=+1`, `product_i Q_i=1` requires Hamming weight
-congruent to `n` modulo two. The current convention is therefore correct only
-for even `n`. A fresh `n=9` run incorrectly returned PASS over the complementary
-parity class. This does not affect `n=24,26,28,30`, but the interface should
-reject odd `n` or implement the general parity rule and add an odd-order test.
+**Status: RESOLVED.**
 
-## Positive Technical Checks
+The independent spectral loop explicitly evaluates each C record for
+`alpha=-1,+1` (lines 245--253). PASS requires exactly two decided states per
+representative, a unique exact optimizer, all other states exactly excluded,
+and no uncertified state (lines 298--310). The evidence verifier independently
+checks the spectral-state count, both-holonomy label, representative agreement,
+and the `2^(n+1)` switching-class total at each order
+(`verify_target_a_computational_evidence.py`, lines 128--138).
 
-- The disk table uses one byte per word with zero as an absence sentinel; all
-  valid orbit sizes are in `1..2n <= 60`, so the representation is lossless for
-  the supported production orders.
-- The C scan visits all `2^n` words, filters the legal even-parity half, directly
-  constructs rotations and reflected rotations, marks every orbit member, and
-  checks independently computed orbit sizes before destructive consumption.
-- Driver-level checks detect missing records, duplicate primary outputs,
-  noncanonical extras through count mismatch, orbit-size mismatches, parity
-  errors, histogram disagreement, and an incorrect represented-space sum.
-- The rational Rayleigh path is exact after vector proposal. With scale `10^9`
-  and graph degree four, the `int64` matrix-vector product cannot overflow at
-  `n <= 30`; squaring is performed after conversion to Python integers.
-- The threshold interval is obtained from a minimal polynomial and exact sign
-  tests. No reviewed theorem decision depends on a floating tolerance.
-- The archived defect and orbit histograms for all four orders independently
-  satisfy representative totals, weighted orbit sums `2^(n-1)`, shell-complement
-  symmetry, and the factor-four total `2^(n+1)`.
+The factor of four still uses the proved cycle-space statement that a `Q` orbit
+of size `s` has two holonomies and two global-sign lifts. That is an appropriate
+human-proof interface and is now exercised, rather than merely asserted, by the
+second decision route.
+
+### MODERATE 2: Overstated generator independence
+
+**Status: RESOLVED, with correlated risk disclosed.**
+
+The record-set summary now distinguishes unshared canonicalization code and
+traversal from the necessarily shared group-action specification and binary
+`Q` semantics (`target_a_record_set_audit.py`, lines 197--206). The trust map
+and both manuscripts make the same distinction. The revised wording no longer
+equates different source files with complete mathematical independence.
+
+### MODERATE 3: Recorded-run provenance
+
+**Status: RESOLVED for the recorded evidence.**
+
+The record-set summary now binds the driver hash, primary-generator hash,
+repository HEAD, command, compiler/C-source hash, and every detail-file hash
+(`target_a_record_set_audit.py`, lines 185--235). The independent spectral
+summary similarly binds all three source routes and every per-order detail hash
+(`target_a_independent_spectral_audit.py`, lines 337--395).
+
+The computational evidence manifest authenticates 19 sources, summaries,
+details, the trust map, and production checkpoint manifests. Its verifier
+checks every file hash, cross-checks summary/detail hashes, aligns the two routes
+order by order, verifies all PASS predicates, and recomputes class, state,
+holonomy, and optimizer conditions (`verify_target_a_computational_evidence.py`,
+lines 88--148).
+
+### MINOR 1: Odd-order input accepted under the wrong parity convention
+
+**Status: RESOLVED.**
+
+Both the C scanner and Python driver now reject every odd order and restrict the
+interface to even `n` in `[8,30]` (`target_a_independent_orbit_scan.c`, lines
+64--70; `target_a_record_set_audit.py`, lines 101--103). The regression suite
+explicitly requires `audit_order(9, ...)` to raise an error.
+
+## Exact Optimizer-Edge Verification
+
+The independent spectral runner itself checks exact divisibility by the
+threshold minimal polynomial. The small evidence verifier adds the missing
+maximal-root argument. For each `n=24,26,28,30`, it reconstructs the optimizer
+matrix, forms the exact integer characteristic polynomial of `A^2`, and checks
+minimal-polynomial divisibility (`verify_target_a_computational_evidence.py`,
+lines 53--74). It then isolates every real characteristic root. Exactly one
+isolating interval contains the algebraic threshold, and for every other
+interval it requires, by exact algebraic sign, that the interval's right
+endpoint is strictly below the threshold (lines 75--85).
+
+Since `A^2` is real symmetric positive semidefinite, this proves that the
+threshold is its largest eigenvalue. It is stronger than checking that the
+threshold is merely some eigenvalue.
+
+## Remaining Findings
+
+### MODERATE 1: Final immutable snapshot and submission manifest are stale
+
+The older submission manifest still states
+`recordwise_independent_generator_limit: 24` and describes `n=26,28,30` as
+aggregate-only (`target_a_submission_artifact_manifest.json`, lines 19--28 and
+144--147). Its verifier currently passes because it checks file hashes and
+theorem coverage but does not reject this obsolete semantic limitation.
+
+The English and Chinese manuscripts correctly describe the strengthened
+evidence, but both still cite immutable snapshot `c81be34...`, which predates
+the new uncommitted scanner, independent spectral audit, evidence artifacts,
+and gate changes. The computational evidence manifest records HEAD `98f9815...`,
+but that commit likewise does not contain the currently untracked evidence
+files.
+
+Executable resolution before publication:
+
+1. commit the reviewed code, evidence, gate, trust map, and synchronized
+   manuscripts;
+2. update the submission manifest to recordwise equality and independent
+   spectral decisions through `n=30`, and include the strengthened manifest;
+3. replace the old immutable URL in both manuscripts with a snapshot that
+   actually contains the evidence;
+4. rerun both manifest verifiers and the top-level minimality gate.
+
+### MODERATE 2: The strengthened verifier source is not hash-bound by its own evidence graph
+
+The computational evidence manifest authenticates the scanner, both audit
+drivers, the primary generator, evidence files, trust map, and checkpoint
+manifests. It does not include
+`research/scripts/verify_target_a_computational_evidence.py`. The top-level
+minimality checker authenticates the manifest hash and trusts the imported
+verifier's return value, while the older dependency graph also omits this
+verifier.
+
+The current verifier was inspected and executed successfully, so this is not a
+present correctness failure. It is an archival trust-chain gap: an altered
+imported verifier is not detected by the hard-coded manifest hash alone.
+
+Executable resolution: add the strengthened verifier source to the minimality
+dependency manifest, or have the top-level checker verify a hard-coded SHA-256
+for that source before calling it. Include its regression test and manifest
+builder in the final submission inventory as supporting provenance.
+
+## Correlated Implementation Risk That Remains
+
+The following risk is real and should remain disclosed even after the two
+MODERATE packaging items are fixed:
+
+- Both enumeration routes implement the same proved `(Q,alpha)/D_n` quotient,
+  binary convention, and dihedral group action. Different code does not protect
+  against an error in that common mathematical specification.
+- Both spectral routes use the same Hamilton-gauge mathematics, the same
+  algebraic threshold formula, NumPy for vector proposal, and SymPy for
+  algebraic certification. Their source implementations are separate, but
+  library-level and specification-level correlation remains.
+- Per-state integer vectors are regenerated rather than archived. The committed
+  compact evidence binds ordered decision digests and zero-uncertified counts;
+  independent verification of an individual historical state still requires
+  rerunning the corresponding route.
+- This referee did not rerun the full `n=30` job. Confidence in that order uses
+  the hash-bound recorded execution, exact aggregate checks, current verifier,
+  and consistency with the freshly reproduced lower-order route.
+
+None of these is a floating-point theorem decision: all accepted inequalities
+are exact after the proposal stage.
 
 ## Referee Executions
 
-All executions used repository inputs read-only and temporary output directories.
+All fresh outputs were written outside the repository.
 
 | Check | Result |
 |---|---|
-| Targeted test suite for record audit, minimality search, checkpoint replay, and minimality verifier | `20 passed, 3 subtests passed` |
-| Fresh record-set audit, `n=24` | PASS; 176,906 `Q` representatives; 353,812 spectral-state count |
-| Fresh record-set audit, `n=26` | PASS; 649,532 `Q` representatives; 1,299,064 spectral-state count |
-| Fresh checkpoint replay, `n=24,26` | PASS; all 12 checks per order |
-| Fresh full minimality search, `n=8` | PASS; 36 quotient states, 35 exact Rayleigh exclusions, zero fallbacks |
-| C strict-warning compile | PASS; no diagnostics |
-| C AddressSanitizer/UndefinedBehaviorSanitizer run, `n=12` | PASS; no sanitizer diagnostics |
-| Archived `n=24,26,28,30` histogram recomputation | PASS for all totals and multiplicities |
-| Deliberate odd-domain probe, `n=9` | Returned PASS, confirming MINOR 1 |
+| `verify_target_a_computational_evidence.py` | PASS for `n=24,26,28,30`, including exact optimizer maximum-root isolation |
+| Top-level minimality verifier, checkpoint replay disabled | `SMALLEST_COUNTEREXAMPLE_VERIFIED`; strengthened evidence PASS |
+| Targeted record/spectral/evidence/minimality tests | `11 passed, 3 subtests passed` |
+| Fresh independent spectral audit at `n=24` | PASS; 353,812 states; 353,811 exact exclusions; zero uncertified |
+| Fresh-versus-archived `n=24` C record-stream SHA-256 | exact match: `5557d593...e21f1f21` |
+| Fresh-versus-archived `n=24` decision SHA-256 | exact match: `bddd4e22...a794b638` |
+| Submission artifact verifier | PASS, but does not detect the stale recordwise-limit wording noted above |
+| Full `n=30` rerun | not run, as instructed |
 
-I did not rerun the full `n=28` or `n=30` record scan, and I did not rerun the
-17,929,600-state `n=30` spectral search. The repository records a prior full
-same-code regeneration with matching ordered certificate digests; I treat that
-as strong reproducibility evidence but not as independent per-state
-certification.
+## Final Verdict
 
-## Final Computational Verdict
+The requested target **BLOCKER=0, MAJOR=0** is met for the computational proof
+core. The former large-order representative-set and per-state decision gaps are
+closed by two separate full routes, exact arithmetic, four-order hash-bound PASS
+evidence, exact optimizer-edge isolation, and mandatory top-level gate
+integration.
 
-There is no BLOCKER and no observed evidence that the finite-minimality theorem
-is false. The new record-set route credibly closes the former risk that matching
-aggregate counts could hide compensating omissions and duplicates at
-`n=26,28,30`. It should be retained.
-
-The computational package is not yet ready to advertise a fully independent
-verification of the smallest-counterexample theorem. Before publication, the
-authors should (1) integrate the new record evidence into the authenticated
-top-level gate and manuscript, and (2) separate the large search from a small
-independent verifier for the per-state exact exclusions, or explicitly retain
-that decision layer as a disclosed correlated implementation trust boundary.
+The package should not yet be called the final immutable submission snapshot.
+Close the two MODERATE archival items above, preserve the disclosed correlated
+risk, and rerun the lightweight gates. No additional `n=30` computation is
+needed to perform those fixes.

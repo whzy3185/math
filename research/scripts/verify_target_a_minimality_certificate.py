@@ -11,6 +11,7 @@ from pathlib import Path
 from typing import Any
 
 from target_a_checkpoint_replay import replay_saved_search
+from verify_target_a_computational_evidence import verify as verify_computational_evidence
 from verify_target_a_n32_certificate import verify_n32_certificate
 
 
@@ -19,6 +20,14 @@ DEFAULT_CERTIFICATE = (
     RESEARCH_ROOT / "counterexamples" / "target_a_minimality_certificate.json"
 )
 PRODUCTION_ORDERS = (24, 26, 28, 30)
+COMPUTATIONAL_EVIDENCE_MANIFEST = (
+    RESEARCH_ROOT
+    / "reproducibility"
+    / "target_a_computational_evidence_manifest.json"
+)
+TRUSTED_COMPUTATIONAL_EVIDENCE_SHA256 = (
+    "cc5a3a6c339e7a192b2f92a069ad6f19a213174eab79ac3bf11d15ababbeb537"
+)
 TRUSTED_EVIDENCE_SHA256 = {
     "research/logs/target_a_reproduction_n8_18.json": "141d0253159acde39473cf4f825f65d438cd56e8433e407c3302fe048ad3715e",
     "research/logs/target_a_search_n20.json": "20a0d812a268d51c4c52188c63827732216815f20901ef83ad680816d82fbcc4",
@@ -238,6 +247,19 @@ def verify_minimality_certificate(
         _require(entry.get("status") == "VERIFIED_NO_COUNTEREXAMPLE", f"n={n} certificate status changed")
     _require(certificate.get("domain_coverage_complete") is True, "certificate domain coverage flag is false")
 
+    _require(
+        _sha256(COMPUTATIONAL_EVIDENCE_MANIFEST)
+        == TRUSTED_COMPUTATIONAL_EVIDENCE_SHA256,
+        "EVIDENCE_HASH_MISMATCH: strengthened computational manifest",
+    )
+    computational_report = verify_computational_evidence(
+        COMPUTATIONAL_EVIDENCE_MANIFEST
+    )
+    _require(
+        computational_report.get("status") == "PASS",
+        "strengthened computational evidence did not pass",
+    )
+
     if run_replays:
         replay_reports = [replay_saved_search(n, research_root) for n in PRODUCTION_ORDERS]
         _require(all(report["status"] == "PASS" for report in replay_reports), "checkpoint replay failed")
@@ -289,6 +311,7 @@ def verify_minimality_certificate(
         "first_counterexample_order": claimed_order,
         "n32_status": n32_report["status"],
         "checkpoint_replays": replay_reports if run_replays else "not requested",
+        "strengthened_computational_evidence": computational_report,
     }
 
 

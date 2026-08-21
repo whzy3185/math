@@ -1,0 +1,82 @@
+{
+  "schema_version": 1,
+  "order": 26,
+  "status": "PASS",
+  "purpose": "independent reconstruction and exact exclusion of every large-order spectral state",
+  "representative_source": "independent C full-space orbit scan, emitted in increasing integer order",
+  "matrix_route": "standalone Hamilton-gauge reconstruction in target_a_independent_spectral_audit.py",
+  "decision_rule": "floating eigenvector proposal followed by exact integer Rayleigh quotient >= certified algebraic threshold upper endpoint",
+  "threshold_squared": "4*cos(pi/13)**2 + 4*cos(pi/26)**2",
+  "threshold_interval": [
+    "28526207898435/3698556147368",
+    "26903365670087/3488147069469"
+  ],
+  "canonical_representatives": 649532,
+  "spectral_states": 1299064,
+  "represented_q_words": 33554432,
+  "represented_switching_classes": 134217728,
+  "holonomies": [
+    -1,
+    1
+  ],
+  "rayleigh_certified_nonoptimizers": 1299063,
+  "uncertified_states": [],
+  "optimizer": {
+    "state": [
+      0,
+      1,
+      -1
+    ],
+    "status": "EXACT_THRESHOLD_FACTOR_PASS",
+    "threshold_minimal_polynomial": "Y**6 - 24*Y**5 + 227*Y**4 - 1085*Y**3 + 2774*Y**2 - 3609*Y + 1873",
+    "characteristic_degree": 26,
+    "threshold_factor_multiplicity": 4
+  },
+  "ordered_independent_certificate_sha256": "d2eb49c0f926bd9cd694e88742b4e939aeb478bf943fbfa3671f46fbe28befc3",
+  "independent_record_stream_sha256": "8d6a68d63cfad0d4dd68a6d7b29f5014a4952755b6499e0e433d4cade44a23d2",
+  "scanner_summary": {
+    "status": "PASS",
+    "n": 26,
+    "universe_words": 67108864,
+    "legal_q_words": 33554432,
+    "independent_representatives": 649532,
+    "consumed_primary_records": 649532,
+    "represented_q_vectors": 33554432,
+    "missing_primary_records": 0,
+    "orbit_size_mismatches": 0,
+    "canonicality_failures": 0,
+    "defect_count_histogram": {
+      "0": 1,
+      "2": 13,
+      "4": 328,
+      "6": 4576,
+      "8": 30415,
+      "10": 102817,
+      "12": 186616,
+      "14": 186616,
+      "16": 102817,
+      "18": 30415,
+      "20": 4576,
+      "22": 328,
+      "24": 13,
+      "26": 1
+    },
+    "orbit_size_histogram": {
+      "1": 2,
+      "13": 126,
+      "26": 8316,
+      "52": 641088
+    }
+  },
+  "checks": {
+    "independent_scanner_passed": true,
+    "primary_and_independent_record_counts_equal": true,
+    "all_independent_records_decided": true,
+    "all_legal_q_words_represented": true,
+    "both_holonomies_checked": true,
+    "unique_optimizer_checked_exactly": true,
+    "all_nonoptimizers_exactly_excluded": true,
+    "no_uncertified_state": true
+  },
+  "elapsed_seconds": 83.63646602630615
+}

@@ -1,0 +1,109 @@
+{
+  "schema_version": 1,
+  "status": "TARGET_A_COMPUTATIONAL_EVIDENCE_COMPLETE",
+  "repository_head_at_manifest_build": "98f981516644036581f51d0e8af028e642106cc0",
+  "orders": [
+    24,
+    26,
+    28,
+    30
+  ],
+  "coverage_claim": "exact record-level dihedral representative equality at every listed order",
+  "decision_claim": "independent reconstruction and exact Rayleigh exclusion of every nonoptimizer spectral state at every listed order",
+  "checkpoint_claim": "production checkpoint chains bind the original ordered decisions; they are separate from the independent decision rerun",
+  "files": [
+    {
+      "path": "research/scripts/target_a_independent_orbit_scan.c",
+      "sha256": "7bd69b39ef9b3aa0fb4ff5af61f4eb583e0aab788336feacd54a99453d7ada60"
+    },
+    {
+      "path": "research/scripts/target_a_record_set_audit.py",
+      "sha256": "d73a8e7435e8d2378eeaccce4c4f3e5f9dbcdd61adaf1fb9d10e3b087186ac4a"
+    },
+    {
+      "path": "research/scripts/target_a_independent_spectral_audit.py",
+      "sha256": "3f03e1ad7647d9ebef070bf4677cacb0b1af12ff97282829167cf212127e85f1"
+    },
+    {
+      "path": "research/scripts/target_a_bracelets.py",
+      "sha256": "2a972d97c1c72e2f12140336c3328362de531507b5931c0f4b442beb7ac1f5d7"
+    },
+    {
+      "path": "research/scripts/verify_target_a_computational_evidence.py",
+      "sha256": "9916cbb68151e58592c5c531076f0db11ae0cac153d5abd10fe9658a302910fd"
+    },
+    {
+      "path": "research/scripts/test_target_a_computational_evidence.py",
+      "sha256": "227ee35934bb8c03d8cf92939ecc423467105cc130988d53271e6f19aa0098ff"
+    },
+    {
+      "path": "research/scripts/build_target_a_computational_evidence_manifest.py",
+      "sha256": "308580164e730c449147f30e47fd49c6f6deca0d35290e4828190583d940be32"
+    },
+    {
+      "path": "research/reproducibility/target_a_large_order_completeness/summary.json",
+      "sha256": "a72781e5858bafad397713f3df7913343340c58d8c99f1ea32273ab3e638284d"
+    },
+    {
+      "path": "research/reproducibility/target_a_large_order_completeness/n24.json",
+      "sha256": "037d6b945e148ccee43092d5926a5ab19bb0943596ab1a804b91b9de5224151c"
+    },
+    {
+      "path": "research/reproducibility/target_a_large_order_completeness/n26.json",
+      "sha256": "937bfa3f4a7c6f5bf3c9a1d3446f351d834454829808a4105201b3a0cad1f6b3"
+    },
+    {
+      "path": "research/reproducibility/target_a_large_order_completeness/n28.json",
+      "sha256": "a2b3ae2ed5570f07835eb15b9ae919a80a5bda10accfdc36a76ffaafa840d92c"
+    },
+    {
+      "path": "research/reproducibility/target_a_large_order_completeness/n30.json",
+      "sha256": "d26745576638a25576fa9ca1b53c14c941083a5311e16d1080a7899f104f48fd"
+    },
+    {
+      "path": "research/reproducibility/target_a_independent_spectral_audit/summary.json",
+      "sha256": "ef6cf9a3d0cb94f78bb54e4124a9d87ad843e570d6c3a71d030d51988c9acc5a"
+    },
+    {
+      "path": "research/reproducibility/target_a_independent_spectral_audit/n24.json",
+      "sha256": "573c41fc1abf3b2f463fed9c6f5a1af3cf74dc61d9a5463cf86b6ac6d576fbd0"
+    },
+    {
+      "path": "research/reproducibility/target_a_independent_spectral_audit/n26.json",
+      "sha256": "87da20d530ad7b82bb4d97594040c77763fccac246ac059871c060f1f0a683e5"
+    },
+    {
+      "path": "research/reproducibility/target_a_independent_spectral_audit/n28.json",
+      "sha256": "fce0dc2456b226d380d56ea34c7372c99841e674fca715ac3b91dd2d5ec11823"
+    },
+    {
+      "path": "research/reproducibility/target_a_independent_spectral_audit/n30.json",
+      "sha256": "ca35d8ce478bbd3b0f75933e9a89273ecc23a54225b61d23272d9ac88c5c21d0"
+    },
+    {
+      "path": "research/review/TARGET_A_FINITE_MINIMALITY_TRUST_MAP.md",
+      "sha256": "46e0011f3d9a6fd17898791ab4486f784dbf023483c626ac0b9cd5854ba4e40b"
+    },
+    {
+      "path": "research/logs/checkpoints/n24/manifest.json",
+      "sha256": "978b38db75ccf8d05bd7bae76b28373d5a0b56655299ea2a65cc25722514a98b"
+    },
+    {
+      "path": "research/logs/checkpoints/n26/manifest.json",
+      "sha256": "59d106f91ff5bd457e25c1676233970ee46382e4ace7c8e41b7769b85d5b140d"
+    },
+    {
+      "path": "research/logs/checkpoints/n28/manifest.json",
+      "sha256": "e1d1411f0563915c282651d12858c77671b5a8153ac2b47357373d7963b2fc91"
+    },
+    {
+      "path": "research/logs/checkpoints/n30/manifest.json",
+      "sha256": "56b0cc2c8d12da9d99ca49d66d136d7b40a517cb4211f8fed5eb7b69c83ec7d4"
+    }
+  ],
+  "trust_boundary": [
+    "both routes implement the proved Q/holonomy quotient specification",
+    "floating eigensolvers propose integer vectors but do not decide inequalities",
+    "full per-state vectors are regenerated rather than archived individually"
+  ]
+}

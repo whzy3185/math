@@ -1,0 +1,94 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "orders": [
+    24,
+    26,
+    28,
+    30
+  ],
+  "command": "python research/scripts/target_a_independent_spectral_audit.py --n 24 26 28 30",
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.3.5",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit"
+  },
+  "sources": {
+    "driver": {
+      "path": "research/scripts/target_a_independent_spectral_audit.py",
+      "sha256": "3f03e1ad7647d9ebef070bf4677cacb0b1af12ff97282829167cf212127e85f1"
+    },
+    "independent_c_scanner": {
+      "path": "research/scripts/target_a_independent_orbit_scan.c",
+      "sha256": "7bd69b39ef9b3aa0fb4ff5af61f4eb583e0aab788336feacd54a99453d7ada60"
+    },
+    "primary_comparison_stream": {
+      "path": "research/scripts/target_a_bracelets.py",
+      "sha256": "2a972d97c1c72e2f12140336c3328362de531507b5931c0f4b442beb7ac1f5d7",
+      "role": "comparison table only; spectral records are emitted by the C full-space scan"
+    }
+  },
+  "build": {
+    "compiler": "/usr/bin/cc",
+    "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "command": [
+      "/usr/bin/cc",
+      "-O3",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "/Users/muelsyse/Documents/Codex/2026-08-15/cha-k/work/math/research/scripts/target_a_independent_orbit_scan.c",
+      "-o",
+      "/var/folders/rm/r56mvlts7r58wj61844837940000gn/T/target-a-spectral-audit-e5dpqpto/target_a_independent_orbit_scan"
+    ],
+    "c_source_sha256": "7bd69b39ef9b3aa0fb4ff5af61f4eb583e0aab788336feacd54a99453d7ada60"
+  },
+  "results": [
+    {
+      "order": 24,
+      "status": "PASS",
+      "canonical_representatives": 176906,
+      "spectral_states": 353812,
+      "rayleigh_certified_nonoptimizers": 353811,
+      "ordered_independent_certificate_sha256": "bddd4e22de3809d676b1eeb821d5bb4bcdfd93d4aa15f13c2096dad6a794b638",
+      "file": "n24.json",
+      "file_sha256": "573c41fc1abf3b2f463fed9c6f5a1af3cf74dc61d9a5463cf86b6ac6d576fbd0",
+      "elapsed_seconds": 20.116178274154663
+    },
+    {
+      "order": 26,
+      "status": "PASS",
+      "canonical_representatives": 649532,
+      "spectral_states": 1299064,
+      "rayleigh_certified_nonoptimizers": 1299063,
+      "ordered_independent_certificate_sha256": "d2eb49c0f926bd9cd694e88742b4e939aeb478bf943fbfa3671f46fbe28befc3",
+      "file": "n26.json",
+      "file_sha256": "87da20d530ad7b82bb4d97594040c77763fccac246ac059871c060f1f0a683e5",
+      "elapsed_seconds": 83.63646602630615
+    },
+    {
+      "order": 28,
+      "status": "PASS",
+      "canonical_representatives": 2405236,
+      "spectral_states": 4810472,
+      "rayleigh_certified_nonoptimizers": 4810471,
+      "ordered_independent_certificate_sha256": "f578291128ec841791e3666ef21fc809a33c854d0638d701dab9e928626771de",
+      "file": "n28.json",
+      "file_sha256": "fce0dc2456b226d380d56ea34c7372c99841e674fca715ac3b91dd2d5ec11823",
+      "elapsed_seconds": 333.13289976119995
+    },
+    {
+      "order": 30,
+      "status": "PASS",
+      "canonical_representatives": 8964800,
+      "spectral_states": 17929600,
+      "rayleigh_certified_nonoptimizers": 17929599,
+      "ordered_independent_certificate_sha256": "2be5633e3817ae662a71b52523ceca84480349fe1a83c5f30ec74a3503d016b3",
+      "file": "n30.json",
+      "file_sha256": "ca35d8ce478bbd3b0f75933e9a89273ecc23a54225b61d23272d9ac88c5c21d0",
+      "elapsed_seconds": 1403.2436633110046
+    }
+  ]
+}
