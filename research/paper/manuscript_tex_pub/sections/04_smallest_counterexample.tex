@@ -128,7 +128,7 @@ bracelets, with both holonomies retained. Appendix~\ref{app:orbit-completeness} 
 sizes sum to \(2^{n+1}\) and gives an independent Burnside count.
 
 For every representative other than the distinguished optimizer, the
-enumeration stores a nonzero rational vector \(v\) and verifies exactly
+enumeration constructs a nonzero rational vector \(v\) and verifies exactly
 
 \begin{equation}
 \label{eq:rayleigh-certificate}
@@ -140,6 +140,9 @@ floating eigenvalues are used only to propose \(v\). The distinguished class is
 checked by its exact known spectrum. Thus every switching class satisfies
 \eqref{eq:finite-exclusion-bound}. The state counts and certificate totals in Table~\ref{tab:minimality-counts} agree with the
 complete quotient counts, and there are no unresolved representatives.
+The compact archive persists the counts, ordered decision digests, checkpoint
+chains, and zero-uncertified summaries; individual rational vectors are
+deterministically regenerated rather than stored one by one.
 
 \begin{table}[tbp]
 \centering

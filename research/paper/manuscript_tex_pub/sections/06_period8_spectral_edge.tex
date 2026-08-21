@@ -3,6 +3,17 @@
 The rational number in Section~\ref{sec:periodic-construction} is convenient for proving strict finite
 counterexamples, but it is not the true band edge. We now prove Theorem~\ref{thm:exact-period-eight-edge}.
 
+\begin{figure}[H]
+\centering
+\input{figures/figure_period8_target}
+\caption{The target period-eight phase. The triangle-flux word \(\tau\) induces
+the quadrilateral-flux word \(Q\) with exactly two positive entries, shown as
+filled vertices. They are antipodal in the eight-site cell, so
+\(D(Q)=\{0,4\}\) up to translation and reflection. This geometry is the
+sub-eight case isolated by the trichotomy in Section~\ref{sec:eight-barrier}.}
+\label{fig:period8-target}
+\end{figure}
+
 \subsection{The endpoint roots}
 
 At \(c=2\), Equation~\eqref{eq:floquet-polynomial} becomes
@@ -20,7 +31,7 @@ P(x+4,2)=x^{4}-20x^{2}+80.
 \end{equation}
 
 Putting \(w=x^{2}\) gives \(w^{2}-20w+80=0\), whose roots are
-\(10+-2\sqrt{5}\). The four real roots of \eqref{eq:edge-polynomial}, in increasing order, are
+\(10\pm2\sqrt{5}\). The four real roots of \eqref{eq:edge-polynomial}, in increasing order, are
 
 \begin{equation}
 \label{eq:edge-four-roots}
@@ -66,7 +77,7 @@ nonnegative, and it vanishes only at \(u=t=0\). Since every unit-circle fiber
 has \(c\leq 2\), Equation~\eqref{eq:eta-positive-expansion} excludes every squared eigenvalue above \(\eta\) and
 permits equality only when \(c=2\).
 
-At \(c=2\), Equation~\eqref{eq:edge-polynomial} has \(\eta\) as a root, so \(+-\sqrt{\eta}\) are eigenvalues
+At \(c=2\), Equation~\eqref{eq:edge-polynomial} has \(\eta\) as a root, so \(\pm\sqrt{\eta}\) are eigenvalues
 of \(H(1)\). Therefore
 
 \begin{equation}

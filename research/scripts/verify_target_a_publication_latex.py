@@ -78,7 +78,7 @@ def verify_publication_latex() -> None:
     check("main_anonymous.tex" in readme and "body.tex" in readme, "README_ENTRYPOINTS")
 
     listings = environment_bodies(combined, "lstlisting")
-    check(len(listings) == 6, f"SHELL_LISTING_COUNT:{len(listings)}")
+    check(len(listings) == 8, f"SHELL_LISTING_COUNT:{len(listings)}")
     for listing in listings:
         check(
             not re.search(r"(?:sqrt\(|rho\(|eta=|direct_sum|product_|==>|<=|>=)", listing),
@@ -88,6 +88,7 @@ def verify_publication_latex() -> None:
     displays = "\n".join(environment_bodies(body, "equation"))
     pseudo_math = r"(?:sqrt\(|(?<!\\)rho\(|(?<!\\)eta=|direct_sum|product_|(?<!\\)sum_|==>|<=|>=|emptyset)"
     check(not re.search(pseudo_math, displays), "ASCII_PSEUDO_MATH_IN_DISPLAY")
+    check("+-" not in body, "ASCII_PLUS_MINUS_IN_BODY")
 
     theorem_bodies: list[str] = []
     for environment in ("theorem", "proposition", "lemma", "corollary"):

@@ -116,9 +116,20 @@ multiplicities is compared with the binomial parity count of legal words; the
 sum over shells is compared with \(2^{n+1}\). A terminal cursor proves that the
 canonical generator has exhausted its ordered domain.
 
-At \(n=24\), a separately implemented visited-set generator and a fixed-weight
-necklace generator agree record for record on all 176,906 canonical flux
-records. At \(n=26,28,30\), independent Burnside and shell totals, represented
-size sums, ordering, and parity checks agree with production. This establishes
-the stated finite coverage subject to the execution-trust boundary disclosed
-in Section~\ref{sec:computational-verification}.
+At every order \(n=24,26,28,30\), the production fixed-weight necklace stream is
+compared with a separately implemented C full-space scanner. The latter scans
+every binary word, tests legal parity, constructs the direct dihedral orbit,
+and marks every orbit member in a bitmap. It then consumes the matching
+production record from a disk-mapped table and independently compares the
+canonical word and orbit size. No stream order or hash equality is used to
+decide the result. The comparison consumes exactly 176,906, 649,532,
+2,405,236, and 8,964,800 canonical flux records, respectively, with no missing,
+duplicate, unconsumed, or orbit-size-mismatched record.
+
+For each order the independently summed orbit sizes equal \(2^{n-1}\), and the
+defect and orbit-size histograms agree. Adjoining both holonomies and both
+global-sign lifts therefore recovers all \(2^{n+1}\) switching classes. The
+earlier visited-set Python comparison at \(n=24\) and the Burnside, shell,
+ordering, and parity audits remain additional checks. This establishes finite
+coverage subject to the execution-trust boundary disclosed in
+Section~\ref{sec:computational-verification}.

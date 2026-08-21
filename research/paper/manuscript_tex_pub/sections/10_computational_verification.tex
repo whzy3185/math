@@ -9,7 +9,8 @@ is proved analytically, and how the two layers interact.
 The Floquet direct sum, determinant identity, sharp positivity expansion,
 operator equivalences, cancellation baseline, moment barrier, conversion from
 the grouped moment identities to the defect inequalities, and chiral reduction
-are algebraic proofs presented in Sections~\ref{sec:preliminaries} and~\ref{sec:periodic-construction}-7.
+are algebraic proofs presented in Section~\ref{sec:preliminaries} and
+Sections~\ref{sec:periodic-construction}--\ref{sec:eight-barrier}.
 
 The following assertions are finite computer-assisted theorems:
 
@@ -50,6 +51,18 @@ multiplicity. The represented switching-class total is checked against
 classes by 17,929,600 canonical spectral states; it does not run 2.147 billion
 independent test cases.
 
+For each large order \(n=24,26,28,30\), the canonical \(Q\)-representative set
+has also been compared record by record with an independently written C
+scanner. The production route is a fixed-weight FKM necklace recursion, in the
+tradition of canonical necklace and bracelet generation
+\cite{FredricksenMaiorana1978,Sawada2001}. The independent route instead scans
+all \(2^n\) binary words, filters parity, constructs every dihedral image
+directly, and marks complete orbits in a bitmap. It shares neither traversal
+nor canonicalization code with the production generator. Exact destructive
+set consumption verifies the canonical word and orbit size of every record;
+the comparison does not infer set equality from a common digest or from equal
+cardinality.
+
 Fresh deterministic regeneration was performed for the production orders:
 
 \begin{table}[tbp]
@@ -78,6 +91,28 @@ replay of committed checkpoints is distinguished from this regeneration: it
 authenticates stored execution records but does not recreate every per-state
 inequality.
 
+The independent representative counts are 176,906, 649,532, 2,405,236, and
+8,964,800 at orders 24, 26, 28, and 30, respectively. At each order the missing,
+duplicate, unconsumed, and orbit-size-mismatch counts are all zero. Summing the
+independently reconstructed orbit sizes gives \(2^{n-1}\) legal \(Q\) words;
+adjoining the two holonomies and two global-sign lifts gives all \(2^{n+1}\)
+switching classes. This is a coverage certificate, separate from the exact
+spectral certificate attached to each production state.
+
+A second full decision route closes that separation at the large orders. The C
+scanner emits its independently reconstructed canonical records in increasing
+integer order. A standalone Python checker, which imports none of the
+production signing, matrix, threshold, or certificate routines, reconstructs
+both Hamilton holonomies from each record, builds the signed adjacency matrix,
+and proposes an integer vector from a floating eigensolver. It then evaluates
+\(\lVert Av\rVert^2/\lVert v\rVert^2\) with integer arithmetic and compares it
+with a certified rational upper endpoint for \(\rho_-(n)^2\). The distinguished
+state is checked by exact characteristic-polynomial divisibility. At
+\(n=24,26,28,30\), respectively, this route decides 353,812, 1,299,064,
+4,810,472, and 17,929,600 spectral states, with one exact optimizer and no
+uncertified nonoptimizer. Thus the strengthened result does not rely solely on
+repeating the production certificate digest.
+
 \subsection{Low-period computation}
 
 For each \(1\leq p\leq 16\), one route explicitly partitions all legal flux words into
@@ -100,8 +135,15 @@ The submitted proof artifact is pinned to the public immutable snapshot
 \url{https://github.com/whzy3185/math/tree/c81be34a3b12a7ac47adbb4499c475df7bf4fc04}
 \end{center}
 
-The machine-readable manifest
-\path{research/reproducibility/}\allowbreak\path{target_a_submission_}\allowbreak\path{artifact_manifest.json} binds
+The machine-readable submission and strengthened-computation manifests are
+
+\begin{center}
+\small
+\path{research/reproducibility/target_a_submission_artifact_manifest.json}\\
+\path{research/reproducibility/target_a_computational_evidence_manifest.json}.
+\end{center}
+
+Together they bind
 Theorems~\ref{thm:smallest-counterexample} and~\ref{thm:low-period-frontier} to the SHA-256 hashes of the checker source, pinned
 requirements, order-24 through order-30 checkpoint chains, regeneration
 summary, and complete 2,626-row low-period table. For Theorem~\ref{thm:low-period-frontier} the table
@@ -118,12 +160,15 @@ packages. The default suite and the three explicitly enabled slow generator
 audits can therefore be run from a clean Python 3.12 environment using
 repository-relative commands listed in Appendix~\ref{app:computational-protocol}.
 
-Two residual trust boundaries remain and are disclosed rather than hidden.
-For orders through 22, the compact canonical minimality artifact authenticates
-aggregate historical records; a fresh exact rerun has also been performed, but
-the repository does not archive an independently replayable vector for every
-historical state. For orders 26, 28, and 30, independent generator audits check
-Burnside totals, shell totals, represented-size sums, order, and parity, while
-recordwise equality against a separately implemented generator has been
-carried through order 24. These are execution-trust limits of the exhaustive
-part, not unreported numerical tolerances.
+Two residual trust boundaries remain and are disclosed rather than hidden, as
+is standard practice for large proofs by exhaustion~\cite{Lam1991}. First, the
+two enumeration routes necessarily implement the same proved mathematical
+quotient \((Q,\alpha)/D_n\), although they do so with different algorithms,
+languages, and data structures. Second, the repository does not archive every
+large-order integer Rayleigh vector as a separate file. The production and
+independent decision routes recreate those vectors and verify their
+inequalities, while separate ordered digests and checkpoint chains bind each
+run. For orders through 22, the compact historical artifacts likewise
+authenticate aggregate records rather than one independently replayable file
+per state. These are execution-trust limits, not floating-point tolerances or
+unverified orbit counts.

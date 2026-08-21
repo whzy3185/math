@@ -73,6 +73,38 @@ certificate, scope flag, or source digest.
 
 \subsection{Slow generator audits}
 
+The strongest representative-set audit is run directly by
+
+\begin{lstlisting}[language=bash]
+.venv-target-a/bin/python \
+  research/scripts/target_a_record_set_audit.py \
+  --n 24 26 28 30
+\end{lstlisting}
+
+The driver builds the independent C scanner, streams the production FKM
+representatives into a disk-mapped table, and requires exact destructive set
+consumption. It reports zero missing, duplicate, remaining, canonicality, and
+orbit-size errors, together with exact defect and orbit-size histograms. This
+audit reconstructs the complete representative set; it does not recompute the
+spectral decision attached to every state.
+
+The independent large-order spectral decisions are rerun by
+
+\begin{lstlisting}[language=bash]
+.venv-target-a/bin/python \
+  research/scripts/target_a_independent_spectral_audit.py \
+  --n 24 26 28 30
+\end{lstlisting}
+
+This command consumes records emitted by the C full-space scan, independently
+reconstructs both holonomy matrices, and verifies every nonoptimizer with an
+exact integer Rayleigh quotient. It is a full decision rerun rather than a
+checkpoint replay. The recorded reference execution took tens of minutes; its
+per-order counts, independent certificate digests, source hashes, and zero
+uncertified-state checks are bound by
+\path{research/reproducibility/}\allowbreak
+\path{target_a_computational_evidence_manifest.json}.
+
 The three generator audits skipped by the default suite are enabled explicitly:
 
 \begin{lstlisting}[language=bash]
