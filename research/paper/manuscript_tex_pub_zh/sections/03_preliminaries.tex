@@ -1,6 +1,6 @@
-\section{带符号循环图与通量坐标}\label{sec:preliminaries}
+\section{符号循环图与通量坐标}\label{sec:preliminaries}
 
-\subsection{带符号邻接矩阵与切换}
+\subsection{符号邻接矩阵与切换}
 
 对整数 \(n\geq 8\)，令 \(G_n=C_n(1,2)\) 的顶点集为
 \(\mathbb{Z}/n\mathbb{Z}\)，边为
@@ -9,7 +9,7 @@
 \{i,i+1\}, \{i,i+2\}    (i \in \mathbb{Z}/n\mathbb{Z}).
 \end{equation}
 
-赋号是映射 \(\sigma:E(G_n)\to \{+1,-1\}\)。其带符号邻接矩阵
+赋号是映射 \(\sigma:E(G_n)\to \{+1,-1\}\)。相应的符号邻接矩阵
 \(A_\sigma\) 是实对称矩阵：若 \(\{i,j\}\) 是边，则其 \(ij\) 元为该边符号，
 否则为零。记
 
@@ -20,10 +20,10 @@
 对顶点符号函数 \(d:\mathbb{Z}/n\mathbb{Z}\to \{+1,-1\}\)，令
 \(D=\operatorname{diag}(d_i)\)。把 \(\sigma_{ij}\) 换成
 \(d_i\sigma_{ij}d_j\)，就把 \(A_\sigma\) 换成 \(DA_\sigma D\)，因而保持谱
-不变。这个操作称为切换。
+不变。此操作称为切换。
 
 由于 \(G_n\) 连通且有 \(2n\) 条边，其圈空间维数为
-\(2n-n+1=n+1\)。所以恰有 \(2^{n+1}\) 个切换类。我们采用适配于步长一
+\(2n-n+1=n+1\)。因此恰有 \(2^{n+1}\) 个切换类。本文采用适配于步长一
 Hamilton 圈的圈通量坐标系。
 
 \subsection{Hamilton 规范、三角形通量与四边形通量}
@@ -34,8 +34,9 @@ Hamilton 圈的圈通量坐标系。
 \begin{equation}
 \begin{aligned}
 \tau_i&=a_i a_{i+1} b_i, \\
-\alpha&=\prod_{i=0}^{n-1} a_i.
+\alpha&=\prod_{i=0}^{n-1} a_i
 \end{aligned}
+\text{。}
 \end{equation}
 
 这 \(n\) 个三角形圈与步长一 Hamilton 圈构成一个圈基，因此
@@ -48,7 +49,7 @@ Hamilton 圈的圈通量坐标系。
 x_{i+n}=\alpha x_i.
 \end{equation}
 
-此时带符号算子具有局部形式
+此时符号算子具有局部形式
 
 \begin{equation}
 \label{eq:periodic-operator}
@@ -62,15 +63,24 @@ x_{i+n}=\alpha x_i.
 Q_i=\tau_i \tau_{i+1}.
 \end{equation}
 
+\begin{figure}[tbp]
+\centering
+\input{figures/figure_flux_coordinates}
+\caption{\(C_n(1,2)\) 的局部通量坐标。实线表示循环距离一的边，虚弧线表示
+循环距离二的边。相邻两个三角形通量共享边符号 \(a_{i+1}\)，其乘积为四边形
+通量 \(Q_i\)。该图仅固定记号，不预设规范。}
+\label{fig:flux-coordinates}
+\end{figure}
+
 对于 \(p\)-周期字 \(\tau\)，式~\eqref{eq:quadrilateral-flux} 蕴含
 \(\prod_{i=0}^{p-1}Q_i=1\)。反过来，任何满足乘积为 \(+1\) 的字
 \(Q\in\{+1,-1\}^p\) 恰有两个周期提升：选择 \(\tau_0=+1\) 或 \(-1\)，
 再由 \(\tau_{i+1}=Q_i\tau_i\) 递推得到。
 
-我们称
+定义
 
 \begin{equation}
-D(Q)=\{i:Q_i=+1\}
+D(Q)=\{i:Q_i=+1\}\text{，}
 \end{equation}
 
 为缺陷集，并记 \(d=\lvert D(Q)\rvert\)。还要使用循环局部统计量
@@ -79,8 +89,9 @@ D(Q)=\{i:Q_i=+1\}
 \label{eq:local-defect-statistics}
 \begin{aligned}
 a&=\#\{i:Q_i=Q_{i+1}=+1\}, \\
-b&=\#\{i:Q_i=Q_{i+2}=+1\}.
+b&=\#\{i:Q_i=Q_{i+2}=+1\}
 \end{aligned}
+\text{。}
 \end{equation}
 
 当 \(n=8\) 时，图中另有两个步长二四边形，它们不属于式~
@@ -90,7 +101,7 @@ b&=\#\{i:Q_i=Q_{i+2}=+1\}.
 
 \subsection{Floquet 矩阵}\label{subsec:floquet-matrices}
 
-设 \(\tau\) 的展示周期为 \(p\)。把整数指标写成 \(mp+r\)，其中
+设 \(\tau\) 的表示周期为 \(p\)。把整数指标写成 \(mp+r\)，其中
 \(0\leq r<p\)，并寻找如下形式的 Bloch 向量：
 
 \begin{equation}
@@ -106,7 +117,7 @@ x_{mp+r}=z^m v_r.
 
 \begin{equation}
 \label{eq:fiber-transpose}
-H_\tau(z)^T=H_\tau(z^{-1})
+H_\tau(z)^T=H_\tau(z^{-1})\text{，}
 \end{equation}
 
 来自对每个无向跃迁反向。因此，当 \(z\) 位于单位圆上时，\(H_\tau(z)\) 是
@@ -119,14 +130,14 @@ Hermitian 矩阵。
 R(Q)=\sup_{\lvert z\rvert=1} \rho(H_\tau(z))^{2}.
 \end{equation}
 
-\(Q\) 的两个提升具有相同的值，所以这个记号没有歧义。注意，\(R(Q)\)
+\(Q\) 的两个提升具有相同的值，因而该记号没有歧义。注意，\(R(Q)\)
 始终是谱半径的\textbf{平方}。
 
 下文每个显式纤维证书都采用规范提升 \(\tau_0=+1\)、
 \(\tau_{i+1}=Q_i\tau_i\)，以及有序纤维基
 \((v_0,\ldots,v_{p-1})\)。另一个提升可由引理~
-\ref{lem:operator-equivalences} 中的对角共轭和纤维重参数化得到，因此具有相同
-的谱平方结论。
+\ref{lem:operator-equivalences} 中的对角共轭和纤维重参数化得到，因此所得
+谱半径的平方相同。
 
 需要显式矩阵代表时，记
 \(H_Q(z):=H_{\tau^{\mathrm{can}}}(z)\)，它表示由该规范提升和基构成的纤维。
@@ -169,8 +180,9 @@ A_{pL,\alpha}  \cong  \bigoplus_{z^L=\alpha} H_\tau(z).
 \begin{equation}
 \begin{aligned}
 T_r A_\tau T_r^{-1}&=A_{\text{平移后的 }\tau}, \\
-J A_\tau J&=A_{\text{反射后的 }\tau}.
+J A_\tau J&=A_{\text{反射后的 }\tau}
 \end{aligned}
+\text{。}
 \end{equation}
 
 二者都是酉共轭。对于全局边符号取反，令 \((Dx)_i=(-1)^ix_i\)。步长一边
@@ -180,13 +192,13 @@ J A_\tau J&=A_{\text{反射后的 }\tau}.
 A_{-\tau}=-D A_\tau D.
 \end{equation}
 
-谱被取负而其平方不变。在奇数展示胞中，纤维坐标从 \(z\) 变为 \(-z\)，
+谱被取负而其平方不变。在奇数表示胞中，纤维坐标从 \(z\) 变为 \(-z\)，
 但完整单位圆保持不变。
 
 \end{proof}
 \begin{lemma}[能区折叠]
 \label{lem:zone-folding}
-若 \(\tau\) 的本原周期为 \(q\)，并展示在重复胞 \(p=mq\) 中，则
+若 \(\tau\) 的本原周期为 \(q\)，并采用重复周期胞 \(p=mq\) 表示，则
 
 \begin{equation}
 \label{eq:zone-folding}
@@ -197,8 +209,8 @@ H_p(z) \cong \bigoplus_{w^m=z} H_q(w).
 
 \end{lemma}
 \begin{proof}
-把重复胞中的剩余类写成 \(r+kq\)，其中 \(0\leq r<q\)、\(0\leq k<m\)。
-按酉内部平移 \(q\) 分解这个 \(mq\) 维纤维。在其 \(w\)-特征空间上，向量
+把重复周期胞中的剩余类写成 \(r+kq\)，其中 \(0\leq r<q\)、\(0\leq k<m\)。
+按酉内部平移 \(q\) 分解该 \(mq\) 维纤维。在其 \(w\)-特征空间上，向量
 具有形式
 
 \begin{equation}
@@ -208,10 +220,10 @@ x_{r+kq}=w^k v_r.
 重复边界条件等价于 \(w^m=z\)。由于式~\eqref{eq:periodic-operator} 的所有
 系数都是 \(q\)-周期的，每个跃迁都可提出 \(w^k\)，而在 \(v\) 上剩余作用
 恰为 \(H_q(w)\)。\(w^m=z\) 的 \(m\) 个根给出两两正交的特征空间，其维数
-之和为 \(mq\)。这就证明了式~\eqref{eq:zone-folding}，包括重数。
+之和为 \(mq\)。由此得到式~\eqref{eq:zone-folding}，重数亦包含在内。
 
 \end{proof}
-\subsection{闭步矩}
+\subsection{闭游走矩}
 
 对周期相位定义
 
@@ -219,8 +231,9 @@ x_{r+kq}=w^k v_r.
 \label{eq:moment-and-excess}
 \begin{aligned}
 M_k(Q)&=\operatorname{CT}_{z} \operatorname{tr}(H_Q(z)^{2k}), \\
-F_k(Q)&=M_{k+1}(Q)-8M_k(Q).
+F_k(Q)&=M_{k+1}(Q)-8M_k(Q)
 \end{aligned}
+\text{。}
 \end{equation}
 
 取常数项等于沿单位圆的归一化积分：
@@ -230,9 +243,10 @@ F_k(Q)&=M_{k+1}(Q)-8M_k(Q).
 M_k(Q)=\frac{1}{2\pi}\int_{0}^{2\pi}\sum_j\lambda_j(e^{i\theta})^{2k}\,d\theta.
 \end{equation}
 
-它也等于每个周期胞中长度为 \(2k\) 的带符号闭步之和。
+它也等于每个周期胞中长度为 \(2k\) 的符号闭游走之和；这正是图谱理论中标准的
+迹--闭游走对应关系 \cite{CvetkovicRowlinsonSimic2010}。
 
-\begin{lemma}[矩屏障]
+\begin{lemma}[矩阈值判据]
 \label{lem:moment-barrier}
 若 \(R(Q)\leq 8\)，则对每个 \(k\geq 1\) 都有
 \(M_{k+1}(Q)\leq 8M_k(Q)\)。等价地，
@@ -261,8 +275,9 @@ F_k(Q)>0  \Longrightarrow  R(Q)>8.
 \label{eq:conjectured-threshold}
 \begin{aligned}
 \rho_-(n)&=2 \sqrt{\cos^{2}(\frac{\pi}{n})+\cos^{2}(\frac{2\pi}{n})}, \\
-\rho_-(n)^{2}&=4+2\cos(\frac{2\pi}{n})+2\cos(\frac{4\pi}{n}).
+\rho_-(n)^{2}&=4+2\cos(\frac{2\pi}{n})+2\cos(\frac{4\pi}{n})
 \end{aligned}
+\text{。}
 \end{equation}
 
 目标周期八谱边的平方为
@@ -271,9 +286,10 @@ F_k(Q)>0  \Longrightarrow  R(Q)>8.
 \label{eq:target-edge}
 \begin{aligned}
 \eta&=4+\sqrt{10+2\sqrt{5}}, \\
-\rho_*&=\sqrt{\eta}.
+\rho_*&=\sqrt{\eta}
 \end{aligned}
+\text{。}
 \end{equation}
 
 这两个量作用不同：\(\rho_-(n)\) 是有限图的猜想下界，而 \(\eta\) 是反例
-相位无限体积谱半径平方的精确值。
+相位无限体积谱半径之平方的精确值。

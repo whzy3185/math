@@ -1,0 +1,38 @@
+\begin{tikzpicture}[
+  scale=1.05,
+  defect/.style={circle,draw,fill=black,minimum size=6.5mm,inner sep=0pt},
+  regular/.style={circle,draw,fill=white,minimum size=6.5mm,inner sep=0pt},
+  signplus/.style={font=\small,text=white},
+  signminus/.style={font=\small,text=black}
+]
+  \foreach \i/\ang/\sgn in {
+    0/90/+,
+    1/45/-,
+    2/0/-,
+    3/-45/-,
+    4/-90/+,
+    5/-135/-,
+    6/180/-,
+    7/135/-
+  }{
+    \coordinate (p\i) at (\ang:1.65);
+    \ifnum\i=0
+      \node[defect] (n\i) at (p\i) {};
+      \node[signplus] at (p\i) {\(\sgn\)};
+    \else\ifnum\i=4
+      \node[defect] (n\i) at (p\i) {};
+      \node[signplus] at (p\i) {\(\sgn\)};
+    \else
+      \node[regular] (n\i) at (p\i) {};
+      \node[signminus] at (p\i) {\(\sgn\)};
+    \fi\fi
+    \node[font=\scriptsize] at (\ang:2.12) {\(Q_{\i}\)};
+  }
+  \draw[thin] (n0)--(n1)--(n2)--(n3)--(n4)--(n5)--(n6)--(n7)--cycle;
+  \draw[{Latex[length=2mm]}-{Latex[length=2mm]},line width=0.75pt]
+    ($(p0)+(0.20,0)$)--node[left=10pt,font=\small]{相距 \(4\)} ($(p4)+(0.20,0)$);
+  \node[anchor=west,align=left,font=\small] at (2.55,0.45)
+    {\(\tau=(+,+,-,+,-,-,+,-)\)\\[3pt]
+     \(Q=(+,-,-,-,+,-,-,-)\)\\[3pt]
+     \(D(Q)=\{0,4\}\)};
+\end{tikzpicture}

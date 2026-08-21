@@ -8,12 +8,12 @@
 \url{https://github.com/whzy3185/math/tree/c81be34a3b12a7ac47adbb4499c475df7bf4fc04}
 \end{center}
 
-其投稿绑定文件为
+相应的投稿材料清单为
 \path{research/reproducibility/}\allowbreak\path{target_a_submission_}\allowbreak\path{artifact_manifest.json}。
 该清单记录定理~\ref{thm:smallest-counterexample} 和定理~
 \ref{thm:low-period-frontier} 的材料角色与 SHA-256 摘要。验证器从固定 Git
 对象读取指定文件，而不会默认接受可变工作树副本。该快照包含全部检查器源码、
-完整 2,626 行低周期证书表、24 至 30 阶检查点数据、紧凑最小性材料、再生成
+完整 2,626 行低周期证书表、24 至 30 阶检查点数据、紧凑最小性材料、重新计算
 摘要和固定依赖。投稿时最好提供带 DOI 的存档版本；完整提交标识符已经使本稿
 的公开材料不可变且按内容寻址。
 
@@ -65,11 +65,38 @@ python3.12 -m venv .venv-target-a
 .venv-target-a/bin/python research/scripts/verify_target_a_submission_artifact_manifest.py
 \end{lstlisting}
 
-只要依赖、计数、精确证书、范围标志或源码摘要不匹配，每条命令都会封闭失败。
+只要依赖、计数、精确证书、范围标志或源码摘要不匹配，相应命令即终止并报告失败。
 
-\subsection{慢速生成器审计}
+\subsection{慢速生成器核验}
 
-默认套件跳过的三个生成器审计需显式启用：
+最强的代表元集合核验由下列命令直接执行：
+
+\begin{lstlisting}[language=bash]
+.venv-target-a/bin/python \
+  research/scripts/target_a_record_set_audit.py \
+  --n 24 26 28 30
+\end{lstlisting}
+
+该程序构建独立 C 扫描器，将正式 FKM 代表元写入磁盘映射表，并要求逐项消耗
+整个集合。输出中的缺失、重复、剩余、规范性及轨道大小错误均为零，同时给出
+精确缺陷与轨道大小直方图。此项核验重构完整代表元集合，但不重新计算每个状态
+的谱判定。
+
+独立的大阶谱判定由下列命令重新执行：
+
+\begin{lstlisting}[language=bash]
+.venv-target-a/bin/python \
+  research/scripts/target_a_independent_spectral_audit.py \
+  --n 24 26 28 30
+\end{lstlisting}
+
+该命令读取 C 全空间扫描器导出的记录，独立重构两种和乐矩阵，并用精确整数
+Rayleigh 商验证每个非最优状态。它重新执行全部判定，而非只复核检查点。记录
+的参考运行耗时为数十分钟；每阶计数、独立证书摘要、源码摘要及零未认证状态
+由 \path{research/reproducibility/}\allowbreak
+\path{target_a_computational_evidence_manifest.json} 绑定。
+
+默认套件跳过的三个生成器核验需显式启用：
 
 \begin{lstlisting}[language=bash]
 TARGET_A_RUN_SLOW_GENERATOR_TESTS=1 \
@@ -80,15 +107,15 @@ TARGET_A_RUN_SLOW_GENERATOR_TESTS=1 \
 \end{lstlisting}
 
 这些测试独立检查壳层总数、Burnside 计数、所代表类总数、次序和奇偶性。
-它们是审计，而不是新的谱再生成。
+这些测试用于独立核验，而不是重新进行谱计算。
 
-\subsection{再生成与完整性重放}
+\subsection{重新计算与完整性复核}
 
-新的再生成从规范生成器开始，重构每个谱状态，重新计算其精确判定，并写入新
-检查点链。完整性重放读取已有链并验证其摘要、计数、游标和汇总记录。二者都
+新的计算从规范生成器开始，重构每个谱状态，重新计算其精确判定，并写入新的
+检查点序列。完整性复核读取已有序列并验证其摘要、计数、游标和汇总记录。二者都
 有用，但只有前者会对每个状态重新执行数学判定。
 
-对各生产阶数，选择一个空的外部目录并运行
+对各正式计算阶数，选择一个空的外部目录并运行
 
 \begin{lstlisting}[language=bash]
 export OUT="${TARGET_A_OUTPUT:?set TARGET_A_OUTPUT}"
@@ -108,7 +135,7 @@ done
 
 \begin{table}[tbp]
 \centering
-\caption{记录的再生成资源与末端检查点摘要。}
+\caption{重新计算所用资源与末端检查点摘要。}
 \label{tab:regeneration-resources}
 \begingroup
 \renewcommand{\arraystretch}{1.12}
@@ -130,8 +157,8 @@ done
 
 运行时间依赖硬件；观测到的串行总时间约 35 分钟，单进程峰值内存低于
 150 MiB，四个检查点目录共占约 60 MiB。已提交的紧凑再现摘要还记录有序
-输入与有序证书摘要，所以无需仓库外计时日志即可比较新运行。已提交链本身由
-下列命令重放：
+输入与有序证书摘要，所以无需仓库外计时日志即可比较新的计算结果。仓库中保存
+的检查点序列由下列命令复核：
 
 \begin{lstlisting}[language=bash]
 .venv-target-a/bin/python research/scripts/target_a_checkpoint_replay.py \
@@ -139,13 +166,14 @@ done
   --output "$OUT/target_a_checkpoint_replay.json"
 \end{lstlisting}
 
-生产检查点已提交。新的再生成分块和完整运行日志保存在仓库外；其紧凑清单
-记录状态数、分块数、有序输入与证书摘要以及末端链摘要。逻辑指纹一致而非计时
-元数据逐字节一致，定义不匹配数为零。
+正式计算的检查点已保存在仓库中。新的计算分块和完整运行日志保存在仓库外；其紧凑清单
+记录状态数、分块数、有序输入与证书摘要以及末端检查点序列摘要。复核要求
+逻辑摘要一致，而不要求计时元数据逐字节一致；未发现定义不一致。
 
-\subsection{负向测试}
+\subsection{错误注入测试}
 
-回归测试每次修改一个逻辑字段并要求系统拒绝。覆盖的错误包括：遗漏轨道代表
+错误注入测试每次修改一个证明数据字段，并验证检查程序能够识别错误。所检验的异常
+包括遗漏轨道代表
 元、重复规范字、非确定性轨道标识符、依赖摘要漂移、错误本原周期、被改动的
 Rayleigh 分子、较低根式分支、错误矩方向、把数值预览提升为证明，以及禁止的
-全周期范围。该对抗层很重要，因为许多正向检查共享同一组精确算术原语。
+全周期范围。此类异常检验不可省略，因为多项正向检查共享同一组精确算术原语。

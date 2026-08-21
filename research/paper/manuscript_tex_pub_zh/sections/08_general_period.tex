@@ -1,43 +1,45 @@
-\section{一般周期闭步障碍}\label{sec:general-period}
+\section{一般周期的闭游走矩障碍}\label{sec:general-period}
 
-第~\ref{sec:eight-barrier} 节的局部平方恒等式不依赖周期。现在对每个合法周期
+第~\ref{sec:eight-barrier} 节的局部平方恒等式不依赖周期。本节对每个合法周期
 相位导出前三个矩，并证明定理~\ref{thm:general-period-moment-obstruction}。
 
-\subsection{从闭步到通量单项式}
+\subsection{从闭游走到通量单项式}
 
 式~\eqref{eq:periodic-operator} 的可能步长为 \(-2,-1,+1,+2\)。长度一跃迁
 的权重为一。从 \(j\) 出发的 \(+2\) 跃迁权重为 \(\tau_j\)，而 \(-2\)
 跃迁的权重为 \(\tau_{j-2}\)。
 
-考虑一个闭步字，并模二消去重复的 \(\tau\) 因子。剩余指标个数为偶数，将其
+考虑一个闭游走步长序列，并模二消去重复的 \(\tau\) 因子。剩余指标个数为偶数，将其
 写成
 
 \begin{equation}
 r_{1}<r_{2}<\ldots<r_{2s}.
 \end{equation}
 
-利用 \(Q_h=\tau_h\tau_{h+1}\) 并作伸缩消去，得到
+利用 \(Q_h=\tau_h\tau_{h+1}\) 并逐项消去，得到
 
 \begin{equation}
 \label{eq:tau-product-from-flux}
 \begin{aligned}
 &\prod_j \tau_{r_j} \\
-&=\prod_{\ell=1}^{s}\prod_{h=r_{2\ell-1}}^{r_{2\ell}-1}Q_h.
+&=\prod_{\ell=1}^{s}\prod_{h=r_{2\ell-1}}^{r_{2\ell}-1}Q_h
 \end{aligned}
+\text{。}
 \end{equation}
 
-所以每个带符号闭步都化为 \(Q\) 的区间乘积单项式。这个恒等式先在整数格点
+所以每个符号闭游走都化为 \(Q\) 的区间乘积单项式。该恒等式先在整数格点
 上成立，再模周期约化，因此施加循环指标后也能处理短胞重合。
 
-\subsection{精确闭步字归集}
+\subsection{闭游走步长序列的精确归集}
 
 为完整起见，整数格点上的有限动态规划递推如下。对起始剩余类 \(r\)，令
 
 \begin{equation}
 \label{eq:walk-recurrence}
 \begin{aligned}W_0^{(r)}(j)&=\begin{cases}1,&j=r,\\0,&j\ne r,\end{cases}\\
-W_{\ell+1}^{(r)}(j)&=\sum_{\delta\in\{-2,-1,1,2\}}W_{\ell}^{(r)}(j-\delta)w(j-\delta,\delta).
+W_{\ell+1}^{(r)}(j)&=\sum_{\delta\in\{-2,-1,1,2\}}W_{\ell}^{(r)}(j-\delta)w(j-\delta,\delta)
 \end{aligned}
+\text{，}
 \end{equation}
 
 其中
@@ -54,14 +56,14 @@ w(i,-1)=w(i,+1)=1,   w(i,+2)=\tau_i,   w(i,-2)=\tau_{i-2}.
 M_k=\sum_{r=0}^{p-1} W_{2k}^{r}(r).
 \end{equation}
 
-因此，下文每个系数都只通过自由符号变量的整群代数中的加法和乘法得到；归集
+因此，下文每个系数都只通过自由符号变量的整数群代数中的加法和乘法得到；归集
 过程不含浮点谱计算。
 
-长度二、四、六的闭步字分别有 4、36、430 个。按平移归集其通量单项式可得
+长度为二、四、六的闭游走步长序列分别有 4、36、430 个。按平移归集其通量单项式可得
 
 \begin{table}[tbp]
 \centering
-\caption{从一个起始剩余类出发的闭步贡献。}
+\caption{从一个起始剩余类出发的闭游走贡献。}
 \label{tab:closed-walk-contributions}
 \begingroup
 \renewcommand{\arraystretch}{1.12}
@@ -91,8 +93,9 @@ M_k=\sum_{r=0}^{p-1} W_{2k}^{r}(r).
 M_{1}&=4p, \\
 M_{2}&=28p+8 \sum_i Q_i, \\
 M_{3}&=238p+156 \sum_i Q_i \\
-&\quad +24 \sum_i Q_iQ_{i+1}+12 \sum_i Q_iQ_{i+2}.
+&\quad +24 \sum_i Q_iQ_{i+1}+12 \sum_i Q_iQ_{i+2}
 \end{aligned}
+\text{。}
 \end{equation}
 
 令 \(I_i=(1+Q_i)/2\)，则
@@ -108,15 +111,16 @@ d=\sum_i I_i,       a=\sum_i I_iI_{i+1},       b=\sum_i I_iI_{i+2}.
 \begin{aligned}
 M_{1}&=4p, \\
 M_{2}&=20p+16d, \\
-M_{3}&=118p+168d+96a+48b.
+M_{3}&=118p+168d+96a+48b
 \end{aligned}
+\text{。}
 \end{equation}
 
 由于所有和都是循环的，即使偏移一和二模 \(p\) 重合，式~
 \eqref{eq:general-defect-moments} 对 \(p=1,2,3,4\) 仍成立；Laurent 矩阵构造
 保留了重数。
 
-\subsection{八屏障处的必要条件}
+\subsection{谱阈值 8 下的必要条件}
 
 由式~\eqref{eq:general-defect-moments}，
 
@@ -124,8 +128,9 @@ M_{3}&=118p+168d+96a+48b.
 \label{eq:general-excesses}
 \begin{aligned}
 F_{1}&=M_{2}-8M_{1}=16d-12p, \\
-F_{2}&=M_{3}-8M_{2}=-42p+40d+96a+48b.
+F_{2}&=M_{3}-8M_{2}=-42p+40d+96a+48b
 \end{aligned}
+\text{。}
 \end{equation}
 
 若 \(R(Q)\leq8\)，引理~\ref{lem:moment-barrier} 要求 \(F_1\leq0\) 且
@@ -135,11 +140,12 @@ F_{2}&=M_{3}-8M_{2}=-42p+40d+96a+48b.
 \label{eq:general-necessary-conditions}
 \begin{aligned}
 d&\leq \frac{3p}{4}, \\
-40d+96a+48b&\leq 42p.
+40d+96a+48b&\leq 42p
 \end{aligned}
+\text{。}
 \end{equation}
 
-这就证明了定理~\ref{thm:general-period-moment-obstruction}。
+由此证明定理~\ref{thm:general-period-moment-obstruction}。
 
 含 4、36、430 个字的归集是一项有限计算机辅助符号计算。递推式~
 \eqref{eq:walk-recurrence}--\eqref{eq:walk-moment} 完整指定证明算法；附录~
@@ -148,8 +154,8 @@ d&\leq \frac{3p}{4}, \\
 \ref{thm:eight-barrier-trichotomy} 中使用的周期八数值
 \(F_4=5504\)、\(F_6=64336\)、\(F_9=2872096\)。
 
-第一个不等式限制缺陷密度。第二个还惩罚局部聚集，并赋予相邻缺陷对比距离
-二缺陷对更大的权重。逆命题一般不成立：满足式~
+第一个不等式限制缺陷密度；第二个不等式对局部聚集施加更强约束，相邻缺陷对
+的权重大于距离为二的缺陷对。逆命题一般不成立：满足式~
 \eqref{eq:general-necessary-conditions}，或观察到有限多个非正 \(F_k\)，都不
 能推出 \(R(Q)\leq8\)。
 
@@ -158,6 +164,7 @@ d&\leq \frac{3p}{4}, \\
 当 \(p=8\) 时，式~\eqref{eq:general-defect-moments}--
 \eqref{eq:general-excesses} 特化为式~\eqref{eq:period-eight-first-moment}--
 \eqref{eq:period-eight-second-excess}。对高缺陷密度，前两个超额量已经越过
-屏障。低密度相位可以躲过这些短程检验；第~\ref{sec:eight-barrier} 节的两
-缺陷间距层级表明，此时需要逐渐加长的闭步。这促成有界低周期定理所用的
+谱阈值 8。低缺陷密度相位可能无法由这些低阶矩条件排除；第~
+\ref{sec:eight-barrier} 节的两缺陷间距层级表明，此时需要逐渐加长的闭游走。
+这一现象导出有界低周期定理所用的
 自适应层级。

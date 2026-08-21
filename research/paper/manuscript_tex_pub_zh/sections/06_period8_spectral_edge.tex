@@ -1,7 +1,17 @@
-\section{精确周期八谱边}\label{sec:period-eight-edge}
+\section{周期八的精确谱边}\label{sec:period-eight-edge}
 
 第~\ref{sec:periodic-construction} 节中的有理数便于证明严格有限反例，但它并非
-真实带边。现在证明定理~\ref{thm:exact-period-eight-edge}。
+真实谱边。本节证明定理~\ref{thm:exact-period-eight-edge}。
+
+\begin{figure}[H]
+\centering
+\input{figures/figure_period8_target}
+\caption{目标周期八相位。三角形通量字 \(\tau\) 诱导四边形通量字 \(Q\)；
+其中两个正号以黑色实心点标出，并在八点胞中互为对径，故在平移与反射意义下
+\(D(Q)=\{0,4\}\)。第~\ref{sec:eight-barrier} 节的三分定理证明这正是低于阈值
+8 的情形。}
+\label{fig:period8-target}
+\end{figure}
 
 \subsection{端点根}
 
@@ -28,8 +38,9 @@ P(x+4,2)=x^{4}-20x^{2}+80.
 &4-\sqrt{10+2\sqrt{5}}, \\
 &4-\sqrt{10-2\sqrt{5}}, \\
 &4+\sqrt{10-2\sqrt{5}}, \\
-&4+\sqrt{10+2\sqrt{5}}.
+&4+\sqrt{10+2\sqrt{5}}
 \end{aligned}
+\text{。}
 \end{equation}
 
 因此最大的端点根为
@@ -39,15 +50,16 @@ P(x+4,2)=x^{4}-20x^{2}+80.
 \eta=4+\sqrt{10+2\sqrt{5}}.
 \end{equation}
 
-\subsection{锐正性与唯一性}
+\subsection{精确上界与等号唯一性}
 
 令
 
 \begin{equation}
 \begin{aligned}
 s&=\sqrt{10+2\sqrt{5}},       \eta=4+s, \\
-u&=y-\eta,                   t=2-c.
+u&=y-\eta,                   t=2-c
 \end{aligned}
+\text{，}
 \end{equation}
 
 代入式~\eqref{eq:floquet-polynomial} 得恒等式
@@ -57,8 +69,9 @@ u&=y-\eta,                   t=2-c.
 \begin{aligned}
 &P(\eta+u,2-t) \\
 &=u^{4}+4s u^{3}+2u^{2}t+(40+12\sqrt{5})u^{2} \\
-&\quad +4s ut+8\sqrt{5}s u+t^{2}+(4\sqrt{5}-3)t.
+&\quad +4s ut+8\sqrt{5}s u+t^{2}+(4\sqrt{5}-3)t
 \end{aligned}
+\text{。}
 \end{equation}
 
 所有系数均为正。因此，当 \(u,t\geq0\) 时，右端非负，且仅在 \(u=t=0\)
@@ -93,7 +106,7 @@ Y^{4}-16Y^{3}+76Y^{2}-96Y+16.
 \eqref{eq:eta-minimal-polynomial} 在 \(\mathbb Q\) 上不可约。数 \(\eta\) 位于
 \((\frac{1951}{250},\frac{1561}{200})\)；特别地，\(\eta<8\)。
 
-\subsection{最高能带的单调性}
+\subsection{最高谱带的单调性}
 
 令 \(r(c)\) 为 \(P(y,c)\) 的最大实根。当 \(c=-2\) 时，
 
@@ -101,8 +114,9 @@ Y^{4}-16Y^{3}+76Y^{2}-96Y+16.
 \label{eq:minus-one-fiber-factorization}
 \begin{aligned}
 P(y,-2)&=(y^{2}-12y+34)(y^{2}-4y+2), \\
-r(-2)&=6+\sqrt{2}=:y_{0}.
+r(-2)&=6+\sqrt{2}=:y_{0}
 \end{aligned}
+\text{。}
 \end{equation}
 
 当 \(-2<c\leq2\) 时，代入得
@@ -129,10 +143,10 @@ c_{0}(y_{0})=-\frac{7}{2}+4\sqrt{2}>2.
 
 因此，在 \(y\geq y_0\)、\(c\leq2\) 的整个区域内都有 \(P_c(y,c)<0\)。若
 \(-2\leq c_1<c_2\leq2\) 且 \(y_1=r(c_1)\)，则
-\(P(y_1,c_2)<P(y_1,c_1)=0\)，所以 \(P(\,cdot\,,c_2)\) 在 \(y_1\) 之上
+\(P(y_1,c_2)<P(y_1,c_1)=0\)，所以 \(P(\,\cdot\,,c_2)\) 在 \(y_1\) 之上
 有根。故 \(r(c)\) 在 \([-2,2]\) 上严格递增。
 
-\subsection{有限和乐}
+\subsection{有限图的和乐扇区}
 
 当 \(\alpha=+1\) 时，有限集合 \(z^L=1\) 包含 \(z=1\)。由式~
 \eqref{eq:exact-infinite-edge}，

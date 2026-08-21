@@ -1,6 +1,6 @@
 \section{最小反例}\label{sec:smallest-counterexample}
 
-现在证明定理~\ref{thm:smallest-counterexample}。证明包含逻辑上分离的两部分。
+本节证明定理~\ref{thm:smallest-counterexample}。证明包含逻辑上相互独立的两部分。
 首先，用精确矩阵不等式认证一个显式的 32 阶赋号。其次，用完整有限枚举排除
 32 以下的每个允许阶数。第一部分足够简短，直接在此给出；第二部分的商集与
 证书覆盖性在附录~\ref{app:orbit-completeness} 中证明。
@@ -11,7 +11,7 @@
 
 \begin{equation}
 \label{eq:order-thirty-two-triangle-word}
-\tau=(+,+,-,+,-,-,+,-)
+\tau=(+,+,-,+,-,-,+,-)\text{，}
 \end{equation}
 
 重复四次。在 Hamilton 规范下，所有步长一边均为正，而步长二边
@@ -22,7 +22,7 @@
 Q=(+,-,-,-)^{8}.
 \end{equation}
 
-以 \(A_{32}\) 表示所得带符号邻接矩阵。
+以 \(A_{32}\) 表示所得符号邻接矩阵。
 
 \begin{proposition}
 \label{prop:order-thirty-two-witness}
@@ -41,7 +41,7 @@ Q=(+,-,-,-)^{8}.
 \eqref{eq:rational-positive-expansion} 把 \(P(B+u,2-t)\) 展开为系数均非负的
 多项式，其常数项为 \(\frac{84332641}{1600000000}>0\)。因此，对每个
 \(y\geq B\) 和 \(c\in[-2,2]\)，都有 \(P(y,c)>0\)。单位圆纤维的每个平方
-特征值都是 \(P\) 的非负根，故每个纤维的谱半径平方都严格小于 \(B\)。在
+特征值都是 \(P\) 的非负根，故每个纤维谱半径的平方都严格小于 \(B\)。在
 \(L=4\)、\(\alpha=+1\) 时，有限分解式~
 \eqref{eq:target-finite-decomposition} 给出
 \(\rho(A_{32})^2<\frac{1561}{200}\)。
@@ -52,22 +52,24 @@ Q=(+,-,-,-)^{8}.
 \label{eq:order-thirty-two-threshold}
 \begin{aligned}
 &\rho_-(32)^{2} \\
-&=4+\sqrt{2+\sqrt{2}}+\sqrt{2+\sqrt{2+\sqrt{2}}}.
+&=4+\sqrt{2+\sqrt{2}}+\sqrt{2+\sqrt{2+\sqrt{2}}}
 \end{aligned}
+\text{。}
 \end{equation}
 
-这个代数数是下列多项式在区间
+该代数数是下列多项式在区间
 \((\frac{7809}{1000},\frac{781}{100})\) 中唯一的实根：
 
 \begin{equation}
 \label{eq:order-thirty-two-polynomial}
 \begin{aligned}
 &X^{8}-32X^{7}+432X^{6}-3216X^{5}+14456X^{4} \\
-&\quad -40224X^{3}+67736X^{2}-63184X+25022.
+&\quad -40224X^{3}+67736X^{2}-63184X+25022
 \end{aligned}
+\text{。}
 \end{equation}
 
-Sturm 序列在两个端点的变号数之差为一，且把嵌套根式精确代入即可识别这个
+Sturm 序列在两个端点的变号数之差为一，且把嵌套根式精确代入即可识别该
 孤立根。由于
 
 \begin{equation}
@@ -76,10 +78,10 @@ Sturm 序列在两个端点的变号数之差为一，且把嵌套根式精确�
 
 式~\eqref{eq:order-thirty-two-certificate} 中第二个不等式成立。
 
-该见证不依赖于规范。例如，选择步长一边符号
+该证书不依赖于规范。例如，选择步长一边符号
 
 \begin{equation}
-(+,-,+,-,-,+,-,+)^{4}
+(+,-,+,-,-,+,-,+)^{4}\text{，}
 \end{equation}
 
 并由 \(b_i=\tau_i a_i a_{i+1}\) 求解，可得步长二边符号
@@ -88,8 +90,8 @@ Sturm 序列在两个端点的变号数之差为一，且把嵌套根式精确�
 (-,-,+,+,+,+,-,-)^{4}.
 \end{equation}
 
-对角切换向量 \((+,+,-,-,+,-,-,+)^4\) 把这个矩阵共轭到 \(A_{32}\)。
-这给出一个从通量数据而非所存边列表出发的独立重构。
+对角切换向量 \((+,+,-,-,+,-,-,+)^4\) 把所得矩阵共轭到 \(A_{32}\)。
+由此得到一个从通量数据而非所存边列表出发的独立重构。
 
 \end{proof}
 \subsection{穷举排除 32 以下阶数}
@@ -117,11 +119,11 @@ Sturm 序列在两个端点的变号数之差为一，且把嵌套根式精确�
 \begin{proof}
 用圈坐标 \((\tau,\alpha)\) 表示切换类。全局边符号取反和二面体作用只在其
 谱不变性得到证明后使用。对 \(n\leq 20\)，直接枚举全部 \(2^{n+1}\) 个类。
-对 \(n=22\) 以及生产阶数 \(24,26,28,30\)，把合法四边形字划分为二面体
+对 \(n=22\) 以及正式计算阶数 \(24,26,28,30\)，把合法四边形字划分为二面体
 手镯，并保留两种和乐。附录~\ref{app:orbit-completeness} 证明轨道大小之和为
 \(2^{n+1}\)，并给出独立的 Burnside 计数。
 
-对特殊极小元以外的每个代表元，枚举都存储一个非零有理向量 \(v\)，并精确
+对特殊最优相位以外的每个代表元，枚举都构造一个非零有理向量 \(v\)，并精确
 验证
 
 \begin{equation}
@@ -132,17 +134,19 @@ Sturm 序列在两个端点的变号数之差为一，且把嵌套根式精确�
 式~\eqref{eq:rayleigh-certificate} 中的三角阈值按实代数数比较；浮点特征值只
 用于提出候选 \(v\)。特殊类则用其已知精确谱检查。因此每个切换类都满足
 式~\eqref{eq:finite-exclusion-bound}。表~\ref{tab:minimality-counts} 的状态数
-和证书总数与完整商计数一致，且没有未解决代表元。
+和证书总数与完整商计数一致，且不存在未判定的代表元。
+紧凑归档保存计数、有序判定摘要、检查点链和未认证状态为零的汇总；各个有理
+向量由确定性程序重新生成，而不逐项存储。
 
 \begin{table}[tbp]
 \centering
-\caption{有限最小性枚举与精确非极小元证书。}
+\caption{有限最小性枚举与非最优代表元的精确证书。}
 \label{tab:minimality-counts}
 \begingroup
 \renewcommand{\arraystretch}{1.12}
 \begin{tabular}{lll}
 \toprule
-\(n\) & 所代表的切换类 & 精确非极小元证书 \\
+\(n\) & 所代表的切换类 & 非最优代表元的精确证书 \\
 \midrule
 8 & 512 & 510 \\
 10 & 2,048 & 2,046 \\
@@ -171,4 +175,4 @@ Sturm 序列在两个端点的变号数之差为一，且把嵌套根式精确�
 \ref{prop:order-thirty-two-witness} 给出 32 阶的严格反例。由于定义域由不小于
 八的偶数组成，30 与 32 之间没有允许阶数。因此 32 是最小反例阶数。
 
-该定理既不声称 32 阶见证唯一，也不声称猜想在 32 以上每个偶数阶都失效。
+该定理既不声称 32 阶反例唯一，也不声称猜想在 32 以上每个偶数阶都失效。

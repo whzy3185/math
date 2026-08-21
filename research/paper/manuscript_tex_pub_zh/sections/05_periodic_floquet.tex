@@ -1,10 +1,10 @@
 \section{周期构造与 Floquet 约化}\label{sec:periodic-construction}
 
-现在把 32 阶模式放入任意多个八点胞中。令
+将 32 阶模式置于任意多个八点周期胞中。令
 
 \begin{equation}
 \label{eq:target-triangle-word}
-\tau_*=(+,+,-,+,-,-,+,-)
+\tau_*=(+,+,-,+,-,-,+,-)\text{，}
 \end{equation}
 
 并在阶数 \(n=8L\) 的图上施加任一 Hamilton 和乐
@@ -45,7 +45,7 @@ A_{8L,\alpha} \cong \bigoplus_{z^L=\alpha} H(z).
 \begin{proof}
 令 \(S\) 为带扭曲边界 \(u_{m+L}=\alpha u_m\) 的 \(L\) 个胞坐标上的酉平移。
 其归一化特征向量为 \(L^{-1/2}(1,z,\ldots,z^{L-1})\)，其中
-\(z^L=\alpha\)。由几何级数恒等式，不同根对应的向量正交。带符号算子是
+\(z^L=\alpha\)。由几何级数恒等式，不同根对应的向量正交。符号算子是
 剩余类矩阵与 \(S\) 的幂的张量积之有限和，所以每个特征空间都不变，且限制
 恰为式~\eqref{eq:target-floquet-matrix}。共有 \(L\) 个这样的八维特征空间，
 维数之和为 \(8L\)。
@@ -64,8 +64,9 @@ A_{8L,\alpha} \cong \bigoplus_{z^L=\alpha} H(z).
 &\operatorname{det}(xI-H(z)) \\
 &=x^{8}-16x^{6}+(80-2(z+z^{-1}))x^{4} \\
 &\quad +(-128+16(z+z^{-1}))x^{2} \\
-&\quad +(z^{2}+z^{-2})-13(z+z^{-1})+40.
+&\quad +(z^{2}+z^{-2})-13(z+z^{-1})+40
 \end{aligned}
+\text{。}
 \end{equation}
 
 令
@@ -101,8 +102,9 @@ B=\frac{1561}{200},       u=y-B,       t=2-c.
 &P(B+u,2-t) \\
 &=u^{4}+(\frac{761}{50})u^{3}+2u^{2}t+(\frac{1337363}{20000})u^{2} \\
 &\quad +(\frac{761}{50})ut+(\frac{136311081}{2000000})u \\
-&\quad +t^{2}+(\frac{119121}{20000})t+\frac{84332641}{1600000000}.
+&\quad +t^{2}+(\frac{119121}{20000})t+\frac{84332641}{1600000000}
 \end{aligned}
+\text{。}
 \end{equation}
 
 式~\eqref{eq:rational-positive-expansion} 的每个系数均非负，且常数项为正。
@@ -111,7 +113,7 @@ B=\frac{1561}{200},       u=y-B,       t=2-c.
 
 \begin{equation}
 \label{eq:uniform-fiber-bound}
-\rho(H(z))^{2}<B
+\rho(H(z))^{2}<B\text{，}
 \end{equation}
 
 对每个 \(\lvert z\rvert=1\) 成立。命题~
@@ -119,7 +121,7 @@ B=\frac{1561}{200},       u=y-B,       t=2-c.
 
 \begin{equation}
 \label{eq:finite-family-upper-bound}
-\rho(A_{8L,\alpha})^{2}<\frac{1561}{200}
+\rho(A_{8L,\alpha})^{2}<\frac{1561}{200}\text{，}
 \end{equation}
 
 它对两种和乐以及每个 \(L\geq1\) 都成立。

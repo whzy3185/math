@@ -1,0 +1,28 @@
+\begin{tikzpicture}[
+  x=1.45cm,y=1.05cm,
+  vertex/.style={circle,draw,fill=white,inner sep=1.8pt},
+  edgeone/.style={line width=0.75pt},
+  edgetwo/.style={line width=0.75pt,dashed},
+  flux/.style={font=\small}
+]
+  \node[vertex,label=below:{\(i\)}] (v0) at (0,0) {};
+  \node[vertex,label=below:{\(i+1\)}] (v1) at (1,0) {};
+  \node[vertex,label=below:{\(i+2\)}] (v2) at (2,0) {};
+  \node[vertex,label=below:{\(i+3\)}] (v3) at (3,0) {};
+
+  \draw[edgeone] (v0)--node[below=3pt,flux]{\(a_i\)} (v1);
+  \draw[edgeone] (v1)--node[below=3pt,flux]{\(a_{i+1}\)} (v2);
+  \draw[edgeone] (v2)--node[below=3pt,flux]{\(a_{i+2}\)} (v3);
+  \draw[edgetwo,bend left=38] (v0) to node[above=3pt,flux]{\(b_i\)} (v2);
+  \draw[edgetwo,bend left=38] (v1) to node[above=3pt,flux]{\(b_{i+1}\)} (v3);
+
+  \node[font=\scriptsize,align=center] at (0.72,1.05)
+    {\(\tau_i=a_i a_{i+1}b_i\)};
+  \node[font=\scriptsize,align=center] at (2.28,1.05)
+    {\(\tau_{i+1}=a_{i+1}a_{i+2}b_{i+1}\)};
+  \node[flux,draw,rounded corners=1pt,inner sep=4pt] at (1.5,1.82)
+    {\(Q_i=\tau_i\tau_{i+1}\)};
+
+  \draw[-{Latex[length=2mm]},thin] (1.20,1.61)--(0.90,1.25);
+  \draw[-{Latex[length=2mm]},thin] (1.80,1.61)--(2.10,1.25);
+\end{tikzpicture}

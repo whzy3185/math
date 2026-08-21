@@ -1,4 +1,4 @@
-\section{精确分类与残余证书}\label{app:exact-certificates}
+\section{精确分类与剩余证书}\label{app:exact-certificates}
 
 \subsection{周期八轨道表}
 
@@ -44,11 +44,11 @@
 轨道大小之和为 128。唯一低于八的轨道是 \(00010001\)，唯一在八处取等号
 的轨道是 \(00000000\)。
 
-\subsection{五个低周期残余证书}
+\subsection{五个剩余竞争相位的低周期证书}
 
 对每一行，令 \(\tau_0=+1\)，再由 \(\tau_{i+1}=Q_i\tau_i\) 递推，以重构
 规范三角形提升。向量坐标采用第~\ref{subsec:floquet-matrices} 节的有序纤维
-基 \((v_0,\ldots,v_{p-1})\)。这无规范歧义地固定了下文记作 \(H_Q(z)\) 的
+基 \((v_0,\ldots,v_{p-1})\)。由此无规范歧义地固定下文记作 \(H_Q(z)\) 的
 矩阵。
 
 对下表每一行，令 \(H=H_Q(z)\)，并以 \(v\) 表示所列整数向量。直接矩阵
@@ -56,7 +56,7 @@
 
 \begin{table}[H]
 \centering
-\caption{五个残余竞争者的精确 Rayleigh 数据。}
+\caption{五个剩余竞争相位的精确 Rayleigh 数据。}
 \label{tab:residual-rayleigh-data}
 \begingroup
 \renewcommand{\arraystretch}{1.12}
@@ -86,7 +86,7 @@ u=((r-4)^{2}-10)/2,
 
 \begin{table}[H]
 \centering
-\caption{残余竞争者的精确根式比较数据。}
+\caption{剩余竞争相位的精确根式比较数据。}
 \label{tab:residual-radical-data}
 \begingroup
 \renewcommand{\arraystretch}{1.35}
@@ -144,15 +144,15 @@ u=((r-4)^{2}-10)/2,
 \endgroup
 \end{table}
 
-所以间距一、二、三分别首次在 \(F_4,F_6,F_9\) 越过屏障。间距四所列非正值
+所以间距一、二、三分别首次在 \(F_4,F_6,F_9\) 超过谱阈值 8。间距四所列非正值
 不用于逆向推理；该情形由第~\ref{sec:period-eight-edge} 节的精确 Floquet
 定理解决。
 
 \subsection{32 阶正定性复核}
 
-对见证式~\eqref{eq:order-thirty-two-triangle-word}，构造
+对显式构造~\eqref{eq:order-thirty-two-triangle-word}，构造
 \(M=1561I-200A_{32}^2\)。精确证书由有理 \(LDL^T\) 消元的 32 个正主元
-组成。无分数 Bareiss 消元独立地产生顺序主子式，而 \(LDL^T\) 主元的累积
+组成。无分数 Bareiss 消元独立地得到顺序主子式，而 \(LDL^T\) 主元的累积
 乘积与这些主子式一致。这条双路线同时验证算术一致性和 Sylvester 判据的
 假设，结论是严格不等式 \(\rho(A_{32})^2<\frac{1561}{200}\)；证书不含任何
 特征值近似。

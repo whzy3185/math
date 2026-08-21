@@ -1,39 +1,42 @@
-\title{\bfseries\fontsize{18}{24}\selectfont 带符号循环图的反例与通量相结构}
-\ifdefined\TargetAAnonymous
-  \author{\fontsize{12}{18}\selectfont 匿名}
-\else
-  \author{\fontsize{12}{18}\selectfont [AUTHOR NAME]}
+\begin{center}
+{\bfseries\fontsize{18}{24}\selectfont 符号循环图的周期八谱结构与反例\par}
+\vspace{12pt}
+{\fontsize{12}{18}\selectfont
+\ifdefined\TargetAAnonymous 匿名\else [作者姓名]\fi\par}
+\ifdefined\TargetAAnonymous\else
+\vspace{6pt}
+{\small [单位]\quad [院系]\quad [城市]\quad [邮编]\par}
 \fi
-\date{}
-\maketitle
+\end{center}
 
 \ifdefined\TargetAAnonymous\else
 \begin{center}
 \small
-\mbox{[AFFILIATION]}\\
-\mbox{[DEPARTMENT]}, \mbox{[INSTITUTION]}\\
-\mbox{[CITY]}, \mbox{[COUNTRY]}\\[3pt]
-通讯作者：[CORRESPONDING AUTHOR]\\
-电子邮箱：[EMAIL]\quad ORCID：[ORCID]
+通讯作者：[通讯作者]\quad 电子邮箱：[电子邮箱]\quad ORCID：[ORCID]
 \end{center}
 \fi
 
-\begin{abstract}
-对于带符号循环图 \(C_n(1,2)\)，近期一个猜想断言：当 \(n\geq 8\) 为偶数时，
-具有负 Hamilton 圈和乐且三角形通量交替的等价类总能使谱半径达到最小。
-本文否定该猜想并确定其最小失效阶数。精确穷举计算验证了所有偶数
-\(8\leq n\leq 30\) 上的猜想下界，而 \(n=32\) 时一个显式赋号具有严格更小的
-谱半径；因此有限阶最小性结论是计算机辅助的。该反例由一个周期八通量模式
-生成，并在所有满足 \(8\mid n\) 且 \(n\geq 32\) 的阶数上产生反例。Floquet
-约化给出平方能带的精确四次方程以及周期八的锐值
-\(\eta=4+\sqrt{10+2\sqrt{5}}\)。随后我们解释这一相位背后的机制：带符号算子
-平方后，负通量恰好消去所有相关的奇位移耦合，而正通量产生局域缺陷。闭步
-矩给出完整的周期八三分律：对径缺陷对恰为谱平方半径小于八的相位；全负相位
-的谱平方半径等于八；其余每个相位均大于八。对于任意周期，我们导出前三个
-精确矩，并得到缺陷密度和局部聚集的必要不等式。最后，一项完整的精确分类
-表明，在本原 Hamilton 规范周期至多为十六的周期相位中，除自然算子等价外，
-该周期八相位是唯一极小元。
-\end{abstract}
+\vspace{4pt}
+\noindent\textbf{摘要：}针对符号循环图 \(C_n(1,2)\)，已有猜想认为：当偶数
+\(n\geq 8\) 时，Hamilton 圈和乐（holonomy）为负且三角形通量交替的等价类
+总使谱半径最小。完整精确搜索验证该下界对所有偶数 \(8\leq n\leq 30\) 成立，
+并由 \(n=32\) 的显式赋号给出最小反例。有限阶最小性属于计算机辅助结论：
+两条独立枚举路线逐记录核对规范代表元集合，全部谱判定均采用精确整数或有理
+算术。
+该赋号源于周期八通量模式，并对所有满足 \(8\mid n\)、\(n\geq 32\) 的阶数
+构成反例。Floquet 约化得到谱带值的平方所满足的精确四次方程及周期八锐值
+\(\eta=4+\sqrt{10+2\sqrt{5}}\)。算子平方揭示正、负通量对应的局部缺陷与
+耦合消去机制，并给出周期八相位关于谱阈值 8 的完整三分分类。对一般周期，
+前三个闭游走矩仅导出缺陷密度与局部聚集的必要条件；对本原 Hamilton 规范
+周期不超过 16 的相位，精确有限分类表明，所构造周期八相位在自然算子等价
+意义下是唯一最优相位。\par
 
-\noindent\textbf{关键词：} [KEYWORDS TO CONFIRM]\par
-\noindent\textbf{MSC 2020：} [MSC CODES TO CONFIRM]
+\vspace{4pt}
+\noindent\textbf{关键词：}符号循环图；谱半径；切换等价；通量相；Floquet 理论；闭游走矩；计算机辅助证明\par
+\noindent\textbf{MR(2020)分类号：}\TargetAMRClass\par
+\noindent\textbf{中图分类号：}\TargetAChineseLibraryClass\par
+\noindent\textbf{基金项目：}\TargetAFunding\par
+
+\ifdefined\IncludeEnglishAbstract
+  \input{english-abstract-interface}
+\fi

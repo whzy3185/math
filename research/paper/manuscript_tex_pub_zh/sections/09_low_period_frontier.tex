@@ -1,15 +1,16 @@
-\section{低周期谱前沿}\label{sec:low-period-frontier}
+\section{低周期谱极值分类}\label{sec:low-period-frontier}
 
-我们把完整轨道枚举与一组压缩的精确谱排除相结合，证明定理~
-\ref{thm:low-period-frontier}。其定义域是式~\eqref{eq:periodic-operator} 中
-Hamilton 规范三角形字 \(\tau\) 的最小正周期 \(p\leq16\) 的无限算子集合；
-最小化的量是式~\eqref{eq:squared-periodic-radius} 的无限体积谱半径平方，而非
-有限和乐谱。在重复胞中展示的字只为完整证书记账而保留，并通过能区折叠与其
-本原相位认同。该定理不外推到此定义域之外。
+本节结合完整轨道枚举与一组压缩的精确谱排除，证明定理~
+\ref{thm:low-period-frontier}。其定义域是式~\eqref{eq:periodic-operator} 所定义的
+无限图周期算子，其中 Hamilton 规范三角形字 \(\tau\) 的最小正周期
+\(p\leq16\)。所极小化的量是式~\eqref{eq:squared-periodic-radius} 给出的无限
+体积谱半径的平方，而不是固定和乐扇区中的有限图离散 Floquet 谱。重复周期胞中的
+表示字仅为完整证书计数而保留，并通过能区折叠识别为与其本原相位谱等价。
+该定理不外推到此定义域之外。
 
-\subsection{完整相空间}
+\subsection{完整相位空间}
 
-对每个展示胞长度 \(1\leq p\leq16\)，考虑模旋转和反射的合法通量字
+对每个表示胞长度 \(1\leq p\leq16\)，考虑模旋转和反射的合法通量字
 
 \begin{equation}
 \label{eq:legal-periodic-flux}
@@ -38,20 +39,21 @@ Q \in \{+1,-1\}^p,       \prod_i Q_i=1.
 F_k>0 \Longrightarrow R(Q)>8>\eta.
 \end{equation}
 
-直至 \(F_{64}\) 的自适应精确闭步计算，为 2,611 个代表元找到首个正超额量。
-首个正指标介于 1 与 64 之间；特别地，两个近屏障类分别直到 \(F_{48}\) 和
-\(F_{64}\) 才首次被检出。该计算使用整数闭步和，所以每个超额量的符号都是
+直至 \(F_{64}\) 的自适应精确闭游走矩计算，为 2,611 个代表元找到首个正超额量。
+首个正指标介于 1 与 64 之间；特别地，两个接近谱阈值 8 的类分别直到 \(F_{48}\) 和
+\(F_{64}\) 才首次被检出。该计算使用整数闭游走和，所以每个超额量的符号都是
 精确的。
 
-还剩十五个代表元。其中八个是全负相位的偶周期重复展示。式~
+尚余十五个代表元。其中八个是全负相位的偶周期重复表示。式~
 \eqref{eq:all-negative-square} 证明它们全都满足 \(R=8>\eta\)。另两个是
 
 \begin{equation}
 \label{eq:target-zone-folding-rows}
 \begin{aligned}
 p&=8:  Q=00010001, \\
-p&=16: Q=0001000100010001,
+p&=16: Q=0001000100010001
 \end{aligned}
+\text{，}
 \end{equation}
 
 其中零表示负通量，一表示正通量。引理~\ref{lem:zone-folding} 表明第二行是
@@ -62,7 +64,7 @@ p&=16: Q=0001000100010001,
 
 \begin{table}[tbp]
 \centering
-\caption{需要端点证书的残余低周期竞争者。}
+\caption{需要端点证书的剩余低周期竞争相位。}
 \label{tab:residual-competitors}
 \begingroup
 \renewcommand{\arraystretch}{1.12}
@@ -95,23 +97,24 @@ r=(v^T H^{2} v)/(v^T v).
 u=((r-4)^{2}-10)/2.
 \end{equation}
 
-随后验证 \(u>0\) 和 \(u^2>5\)。由于 \(r-4>0\)，这些不等式选出正平方根
+进一步验证 \(u>0\) 和 \(u^2>5\)。由于 \(r-4>0\)，这些不等式选出正平方根
 分支并给出
 
 \begin{equation}
 \label{eq:residual-radical-comparison}
 \begin{aligned}
 (r-4)^{2}&>10+2\sqrt{5}, \\
-r&>4+\sqrt{10+2\sqrt{5}}=\eta.
+r&>4+\sqrt{10+2\sqrt{5}}=\eta
 \end{aligned}
+\text{。}
 \end{equation}
 
 条件 \(r>4\) 不可缺少：只用关于 \(u\) 的两个不等式，在较低分支上也可能
 成立。Rayleigh 原理与式~\eqref{eq:residual-rayleigh-quotient}--
-\eqref{eq:residual-radical-comparison} 对每个残余代表元给出
+\eqref{eq:residual-radical-comparison} 对每个剩余代表元给出
 \(R(Q)\geq r>\eta\)。
 
-\subsection{完备性记账}
+\subsection{完备性核验}
 
 精确划分为
 
@@ -120,17 +123,18 @@ r&>4+\sqrt{10+2\sqrt{5}}=\eta.
 \begin{aligned}
 2611&\quad\text{个由矩检出的代表元},\\
 8&\quad\text{个重复全负代表元},\\
-5&\quad\text{个由端点认证的残余竞争者},\\
-2&\quad\text{个目标展示代表元},\\
-2626&\quad\text{个代表元总计}.
+5&\quad\text{个由端点认证的剩余竞争相位},\\
+2&\quad\text{个目标表示代表元},\\
+2626&\quad\text{个代表元总计}
 \end{aligned}
+\text{。}
 \end{equation}
 
 式~\eqref{eq:frontier-partition} 中各集合互不相交，附录~
 \ref{app:orbit-completeness} 证明这 2,626 个代表元构成完整合法轨道空间。
 所以定义域中的每个非目标相位都有 \(R(Q)>\eta\)，而两个目标行对应同一个
-满足 \(R(Q)=\eta\) 的本原周期八相位。这就证明了定理~
+满足 \(R(Q)=\eta\) 的本原周期八相位。由此证明定理~
 \ref{thm:low-period-frontier}。
 
-观测到的最近竞争者出现在周期十，但非目标周期内的数值排序不是定理内容。
-精确证明的是每个竞争者与 \(\eta\) 的严格比较。
+计算表明，最接近目标值的竞争相位出现在周期十。非目标周期内的数值排序不是
+定理内容；精确证明的只是每个竞争相位与 \(\eta\) 的严格比较。

@@ -1,6 +1,6 @@
-\section{八屏障与结构极小元}\label{sec:eight-barrier}
+\section{周期八相位三分分类}\label{sec:eight-barrier}
 
-现在证明定理~\ref{thm:eight-barrier-trichotomy}，不依赖 17 个逐一列出的竞争者
+本节证明定理~\ref{thm:eight-barrier-trichotomy}，不依赖 17 个逐一列出的竞争相位
 证书。证明从平方算子的一个精确局部恒等式出发，最后归结为两缺陷几何的
 有限四情形分析。
 
@@ -40,8 +40,8 @@
 \(\tau_i\tau_{i+2}=Q_iQ_{i+1}\)。对角线上有四次立即折返；位移
 \(\pm2\) 在其余路径消去后留下单位系数；反向给出负位移。
 
-所以负通量 \(Q_i=-1\) 消去相关的奇位移耦合，而正通量以绝对值为二的振幅
-打开这些耦合。这就是定理背后的缺陷机制。
+因此，负通量 \(Q_i=-1\) 消去相关的奇位移耦合，而正通量则以绝对值为二的
+振幅保留这些耦合。这正是定理所刻画的缺陷机制。
 
 \subsection{全负基线}\label{subsec:all-negative-baseline}
 
@@ -71,7 +71,7 @@ A^{2}=C^{2}+E^{2}=4I+S^{2}+S^{-2}+S^{4}+S^{-4}.
 \subsection{周期八的前三个矩}
 
 对周期八字，式~\eqref{eq:moment-and-excess}--\eqref{eq:moment-integral} 给出带
-符号闭步矩。\(A^2\) 在八个剩余类上的对角元均为四，故
+符号闭游走矩。\(A^2\) 在八个剩余类上的对角元均为四，故
 
 \begin{equation}
 \label{eq:period-eight-first-moment}
@@ -84,7 +84,7 @@ M_{1}=32.
 M_{2}=\operatorname{tr}(A^{4})=\sum_{i,j}\lvert (A^{2})_{i,j}\rvert^{2}.
 \end{equation}
 
-对角项和偶位移项贡献 160。每个正通量打开四个定向奇位移矩阵元，每个元素
+对角项和偶位移项贡献 160。每个正通量对应四个非零定向奇位移矩阵元，每个元素
 的平方为四，所以
 
 \begin{equation}
@@ -92,8 +92,8 @@ M_{2}=\operatorname{tr}(A^{4})=\sum_{i,j}\lvert (A^{2})_{i,j}\rvert^{2}.
 M_{2}=160+16d.
 \end{equation}
 
-计算 \(M_3=\operatorname{tr}((A^2)^3)\) 时，按局部闭乘积不使用激活点、使用
-一个激活点、使用相邻激活点对或使用距离二激活点对分类。直接乘上表所示的
+计算 \(M_3=\operatorname{tr}((A^2)^3)\) 时，按局部闭乘积不经过正通量位置、经过
+一个正通量位置、经过相邻正通量位置对或经过距离为二的正通量位置对分类。直接乘上表所示的
 \(A^2\) 行，分别得到系数 \(944,168,96,48\)：
 
 \begin{equation}
@@ -101,7 +101,7 @@ M_{2}=160+16d.
 M_{3}=944+168d+96a+48b.
 \end{equation}
 
-第~\ref{sec:general-period} 节通过枚举长度六的 430 个闭步字，给出式~
+第~\ref{sec:general-period} 节通过枚举长度为六的 430 个闭游走步长序列，给出式~
 \eqref{eq:period-eight-third-moment} 的独立推导，且该推导对每个周期有效。因此
 式~\eqref{eq:period-eight-first-moment}--\eqref{eq:period-eight-third-moment}
 不涉及任何谱近似。
@@ -139,7 +139,7 @@ F_{1}=M_{2}-8M_{1}=32>0.
 \subsection{两个缺陷}\label{subsec:two-defects}
 
 令 \(d=2\)，以 \(s\in\{1,2,3,4\}\) 表示两个缺陷的较小循环间距。平移和
-反射使 \(s\) 成为完整轨道不变量。精确闭步枚举给出下列首个正超额量：
+反射使 \(s\) 成为完整轨道不变量。精确闭游走枚举给出下列首个正超额量：
 
 \begin{table}[tbp]
 \centering
@@ -168,11 +168,11 @@ F_{1}=M_{2}-8M_{1}=32>0.
 当 \(s=4\) 时，该字是
 
 \begin{equation}
-Q_*=(+,-,-,-,+,-,-,-)
+Q_*=(+,-,-,-,+,-,-,-)\text{，}
 \end{equation}
 
-的一个平移。第~\ref{sec:period-eight-edge} 节证明 \(R(Q_*)=\eta<8\)。我们不
-从其前九个超额量的负值作出任何结论。
+的一个平移。第~\ref{sec:period-eight-edge} 节证明 \(R(Q_*)=\eta<8\)。其前
+九个超额量为负，但这些负值不蕴含任何进一步结论。
 
 \subsection{三分律的证明}
 
@@ -182,8 +182,8 @@ Q_*=(+,-,-,-,+,-,-,-)
 \(R>8\)，而间距四恰为目标轨道，且 \(R=\eta<8\)。这些情形互不相交且
 穷尽所有可能，故定理~\ref{thm:eight-barrier-trichotomy} 得证。
 
-\(Q_*\) 的轨道含四个通量字，对应四个对径点对。因此除平移和反射外，极小
-元唯一。全负字是八处唯一的等号情形，因而是唯一的次优轨道。
+\(Q_*\) 的轨道含四个通量字，对应四个对径点对。因此除平移和反射外，最优
+相位唯一。全负字是阈值 8 处唯一的等号情形，因而是唯一的次优轨道。
 
 \subsection{目标相位的手征结构}
 
@@ -216,7 +216,7 @@ J_z^{2}=I,       J_z H(z)J_z^{-1}=-H(z).
 H(z)=\begin{pmatrix}0&B\\C&0\end{pmatrix},\qquad H(z)^2=\begin{pmatrix}BC&0\\0&CB\end{pmatrix}.
 \end{equation}
 
-在单位圆上 \(C=B^*\)。式~\eqref{eq:off-diagonal-square} 解释了偶特征多项式
-和四维平方能带约化。它本身并不证明最优性：合法手征字构成两个二面体轨道，
+在单位圆上 \(C=B^{\ast}\)。式~\eqref{eq:off-diagonal-square} 解释了偶特征多项式
+和关于谱带值之平方的四维约化。它本身并不证明最优性：合法手征字构成两个二面体轨道，
 一个有两个缺陷，一个有六个缺陷；后者由第~\ref{subsec:four-or-more-defects}
-节可知位于八之上。
+节可知其谱半径的平方超过 8。

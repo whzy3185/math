@@ -8,6 +8,8 @@
 \usepackage{booktabs,array,tabularx,graphicx}
 \usepackage{float}
 \usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,positioning}
 \usepackage{listings}
 \usepackage{titlesec}
 \usepackage[hidelinks]{hyperref}
@@ -21,7 +23,7 @@
 \setlength{\parskip}{0pt}
 \setlength{\abovedisplayskip}{7pt plus 2pt minus 2pt}
 \setlength{\belowdisplayskip}{7pt plus 2pt minus 2pt}
-\titleformat{\section}{\centering\sffamily\bfseries\fontsize{14}{18}\selectfont}{\thesection}{1em}{}
+\titleformat{\section}{\raggedright\sffamily\bfseries\fontsize{14}{18}\selectfont}{\thesection}{1em}{}
 \titleformat{\subsection}{\sffamily\bfseries\fontsize{12}{16}\selectfont}{\thesubsection}{0.8em}{}
 \titleformat{\subsubsection}{\sffamily\bfseries\fontsize{11}{15}\selectfont}{\thesubsubsection}{0.8em}{}
 \titlespacing*{\section}{0pt}{18pt}{10pt}
@@ -31,6 +33,12 @@
 \renewcommand{\refname}{参考文献}
 \renewcommand{\tablename}{表}
 \renewcommand{\figurename}{图}
+
+\providecommand{\TargetARunningTitle}{[SHORT RUNNING TITLE]}
+\providecommand{\TargetAFunding}{[基金项目]}
+\providecommand{\TargetAAuthorBio}{[作者简介]}
+\providecommand{\TargetAMRClass}{05C50（主）；05C22，68V05（次）}
+\providecommand{\TargetAChineseLibraryClass}{[待投稿期刊确认]}
 
 \DeclareMathOperator{\spec}{spec}
 \DeclareMathOperator{\diag}{diag}
