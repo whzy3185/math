@@ -27,6 +27,8 @@ inspected at higher resolution after the final layout change.
 - the Chinese figure label is localized and does not collide with the graph;
 - tables and long immutable paths remain inside the text block;
 - bibliography transitions and final-page spacing are readable in every wrapper;
+- the Chinese `gbt7714-numerical` bibliography is numbered, aligned, and
+  readable on its two final pages;
 - page numbering, section transitions, and front matter are consistent;
 - build logs report zero overfull boxes and zero undefined references or citations.
 

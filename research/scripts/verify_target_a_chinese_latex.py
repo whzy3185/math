@@ -42,6 +42,10 @@ FORBIDDEN_CHINESE_PHRASES = (
     "逻辑指纹",
     "系统拒绝",
     "本原相位认同",
+    "趨于",
+    "图谱理论",
+    "扭曲猜想阈值",
+    "通量相变分原理",
 )
 EXPECTED_THEOREM_TITLES = (
     "最小反例定理",
@@ -123,6 +127,10 @@ def verify_target_a_chinese_latex() -> None:
     )
     frontmatter = (CHINESE_DIR / "frontmatter.tex").read_text(encoding="utf-8")
     preamble = (CHINESE_DIR / "publication-preamble.tex").read_text(encoding="utf-8")
+    main_source = (CHINESE_DIR / "main.tex").read_text(encoding="utf-8")
+    english_interface = (CHINESE_DIR / "english-abstract-interface.tex").read_text(
+        encoding="utf-8"
+    )
 
     check(re.search(r"[\u4e00-\u9fff]", chinese_body) is not None, "CHINESE_TEXT_MISSING")
     check(r"\usepackage{xeCJK}" in chinese_sources, "XECJK_MISSING")
@@ -146,6 +154,30 @@ def verify_target_a_chinese_latex() -> None:
     check("IncludeEnglishAbstract" in frontmatter, "ENGLISH_ABSTRACT_SWITCH")
     check((CHINESE_DIR / "english-abstract-interface.tex").is_file(), "ENGLISH_ABSTRACT_INTERFACE")
     check("TargetARunningTitle" in preamble, "RUNNING_TITLE_INTERFACE")
+    check(
+        r"\bibliographystyle{gbt7714-numerical}" in main_source,
+        "GBT7714_BIBLIOGRAPHY_STYLE",
+    )
+    check(
+        r"\usepackage[numbers,sort&compress]{natbib}" in preamble,
+        "NUMERIC_COMPRESSED_CITATIONS",
+    )
+    check("TargetARunningTitle}{符号循环图的周期八谱结构与反例}" in preamble, "RUNNING_TITLE")
+    check("TargetAChineseLibraryClass}{O157.5}" in preamble, "CLC_VALUE")
+    check("[SHORT RUNNING TITLE]" not in preamble, "RUNNING_TITLE_PLACEHOLDER")
+    check("[待投稿期刊确认]" not in preamble, "CLC_PLACEHOLDER")
+    check(
+        "Period-Eight Spectral Structure and Counterexamples for Signed Circulant Graphs"
+        in english_interface,
+        "ENGLISH_INTERFACE_TITLE",
+    )
+    check(
+        "signed circulant graph; spectral radius; switching" in english_interface
+        and "computer-assisted proof" in english_interface,
+        "ENGLISH_INTERFACE_KEYWORDS",
+    )
+    check("[KEYWORDS TO CONFIRM]" not in english_interface, "ENGLISH_KEYWORD_PLACEHOLDER")
+    check("[致谢]" not in chinese_sources, "ACKNOWLEDGMENTS_PLACEHOLDER")
 
     abstract_match = re.search(
         r"\\noindent\\textbf\{摘要：\}(.*?)\\par", frontmatter, flags=re.DOTALL

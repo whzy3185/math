@@ -43,8 +43,8 @@ Thus no strict theorem inequality depends on a floating tolerance.
 
 \subsection{Minimality computation}
 
-At \(n=8,\ldots,20\), direct enumeration covers all \(2^{n+1}\) switching classes.
-At \(n=22,\ldots,30\), the computation enumerates canonical quadrilateral-flux
+At \(n=8,10,\ldots,20\), direct enumeration covers all \(2^{n+1}\) switching classes.
+At \(n=22,24,\ldots,30\), the computation enumerates canonical quadrilateral-flux
 bracelets, retains both holonomies, and attaches the exact dihedral orbit
 multiplicity. The represented switching-class total is checked against
 \(2^{n+1}\). The largest order therefore represents 2,147,483,648 switching
@@ -99,7 +99,8 @@ adjoining the two holonomies and two global-sign lifts gives all \(2^{n+1}\)
 switching classes. This is a coverage certificate, separate from the exact
 spectral certificate attached to each production state.
 
-A second full decision route closes that separation at the large orders. The C
+A second full decision route closes the gap between coverage verification and
+independent spectral-decision verification at the large orders. The C
 scanner emits its independently reconstructed canonical records in increasing
 integer order. A standalone Python checker, which imports none of the
 production signing, matrix, threshold, or certificate routines, reconstructs
