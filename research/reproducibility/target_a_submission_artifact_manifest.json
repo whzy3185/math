@@ -3,8 +3,8 @@
   "status": "TARGET_A_SUBMISSION_ARTIFACT_MANIFEST_COMPLETE",
   "repository": "https://github.com/whzy3185/math",
   "artifact_snapshot": {
-    "commit": "c81be34a3b12a7ac47adbb4499c475df7bf4fc04",
-    "immutable_url": "https://github.com/whzy3185/math/tree/c81be34a3b12a7ac47adbb4499c475df7bf4fc04",
+    "commit": "bb3c8aca39a27c76e8b76bbe733b84d0fd1fafc6",
+    "immutable_url": "https://github.com/whzy3185/math/tree/bb3c8aca39a27c76e8b76bbe733b84d0fd1fafc6",
     "branch_at_freeze": "agent/target-a-discovery-snapshot"
   },
   "environment": {
@@ -20,9 +20,9 @@
     "orders": [8, 10, 12, 14, 16, 18, 20, 22, 24, 26, 28, 30, 32],
     "order_32_mode": "EXACT_WITNESS_CERTIFICATE_AND_UNIFORM_FLOQUET_PROOF",
     "orders_8_to_22_mode": "DETERMINISTIC_EXACT_REGENERATION_AVAILABLE; COMPACT_ARTIFACT_IS_AGGREGATE_ATTESTATION",
-    "orders_24_to_30_mode": "DETERMINISTIC_FULL_REGENERATION_AND_COMMITTED_CHECKPOINT_INTEGRITY_REPLAY",
-    "recordwise_independent_generator_limit": 24,
-    "largest_order_aggregate_generator_audits": [26, 28, 30],
+    "orders_24_to_30_mode": "DETERMINISTIC_FULL_REGENERATION; EXACT INDEPENDENT RECORD-SET EQUALITY; INDEPENDENT FULL SPECTRAL DECISION RERUN; COMMITTED CHECKPOINT INTEGRITY REPLAY",
+    "recordwise_independent_generator_orders": [24, 26, 28, 30],
+    "independent_full_spectral_decision_orders": [24, 26, 28, 30],
     "represented_switching_classes_n30": 2147483648,
     "canonical_spectral_states_n30": 17929600,
     "mathematical_mismatch_count": 0
@@ -52,12 +52,12 @@
     },
     {
       "path": "research/counterexamples/target_a_minimality_certificate.json",
-      "sha256": "1f20469033876569292de247344ba88eb0831c163e01c1441f1b75aa8bca95c7",
+      "sha256": "a4b5248fee46b56ac763773c90b8087d454b6928a6bcd66622b4fdecac3e8ded",
       "role": "minimality summary"
     },
     {
       "path": "research/audit/TARGET_A_MINIMALITY_DEPENDENCIES.json",
-      "sha256": "5bb4a6c39039bb76e41945c0c1f0dffd545b778c0230ce85d3f905bc197b284f",
+      "sha256": "1de2a8e0e4f4e3094afcd1b3e557712b30771e694245070810f31b58d4fc2c49",
       "role": "minimality dependency manifest"
     },
     {
@@ -82,7 +82,7 @@
     },
     {
       "path": "research/scripts/verify_target_a_minimality_certificate.py",
-      "sha256": "48997c791be70f7f2cb5287981dea361494a589034b6e72f78dbcfddf102dbb1",
+      "sha256": "84685dc01b647234a3c62de6665627509a76b9b668e8f06da857ed3f8953e01f",
       "role": "minimality aggregate checker"
     },
     {
@@ -136,6 +136,81 @@
       "role": "transition-level equivalence checker"
     },
     {
+      "path": "research/reproducibility/target_a_computational_evidence_manifest.json",
+      "sha256": "cc5a3a6c339e7a192b2f92a069ad6f19a213174eab79ac3bf11d15ababbeb537",
+      "role": "authenticated strengthened computational evidence graph"
+    },
+    {
+      "path": "research/scripts/target_a_independent_orbit_scan.c",
+      "sha256": "7bd69b39ef9b3aa0fb4ff5af61f4eb583e0aab788336feacd54a99453d7ada60",
+      "role": "independent full-integer-space orbit scanner"
+    },
+    {
+      "path": "research/scripts/target_a_record_set_audit.py",
+      "sha256": "d73a8e7435e8d2378eeaccce4c4f3e5f9dbcdd61adaf1fb9d10e3b087186ac4a",
+      "role": "exact representative-set equality driver"
+    },
+    {
+      "path": "research/scripts/target_a_independent_spectral_audit.py",
+      "sha256": "3f03e1ad7647d9ebef070bf4677cacb0b1af12ff97282829167cf212127e85f1",
+      "role": "independent full spectral-decision route"
+    },
+    {
+      "path": "research/scripts/verify_target_a_computational_evidence.py",
+      "sha256": "9916cbb68151e58592c5c531076f0db11ae0cac153d5abd10fe9658a302910fd",
+      "role": "strengthened computational evidence checker"
+    },
+    {
+      "path": "research/scripts/build_target_a_computational_evidence_manifest.py",
+      "sha256": "308580164e730c449147f30e47fd49c6f6deca0d35290e4828190583d940be32",
+      "role": "strengthened evidence manifest builder"
+    },
+    {
+      "path": "research/scripts/test_target_a_record_set_audit.py",
+      "sha256": "8797754f509e85210c8f5a79906eb1a477eb41895eae11692f974be64fd6f302",
+      "role": "representative-set audit regression test"
+    },
+    {
+      "path": "research/scripts/test_target_a_independent_spectral_audit.py",
+      "sha256": "f6ad5c08b20242dbe6dc4140959124c9338d49739e751a0990b03dba6e62f737",
+      "role": "independent spectral audit regression test"
+    },
+    {
+      "path": "research/scripts/test_target_a_computational_evidence.py",
+      "sha256": "227ee35934bb8c03d8cf92939ecc423467105cc130988d53271e6f19aa0098ff",
+      "role": "strengthened evidence-gate regression test"
+    },
+    {
+      "path": "research/reproducibility/target_a_large_order_completeness/summary.json",
+      "sha256": "a72781e5858bafad397713f3df7913343340c58d8c99f1ea32273ab3e638284d",
+      "role": "four-order exact record-equality summary"
+    },
+    {
+      "path": "research/reproducibility/target_a_independent_spectral_audit/summary.json",
+      "sha256": "ef6cf9a3d0cb94f78bb54e4124a9d87ad843e570d6c3a71d030d51988c9acc5a",
+      "role": "four-order independent spectral-decision summary"
+    },
+    {
+      "path": "research/scripts/target_a_high_period_exploration.py",
+      "sha256": "0675a160d6c1c1b40026e1536fcdf976901045af8bb867be7df62112726e3875",
+      "role": "controlled period-17-to-24 non-theorem experiment"
+    },
+    {
+      "path": "research/experiments/target_a_high_period_exploration.json",
+      "sha256": "c5583c962db486ce3588916ebc06a013fe782d58faad3844923e6555e66dc15f",
+      "role": "archived high-period experimental data"
+    },
+    {
+      "path": "research/paper/manuscript_tex_pub/main.pdf",
+      "sha256": "2b82f037081aad1739a7b8f60583f8e73bf8c10ee8b8430665f9f945fe690805",
+      "role": "English publication manuscript at artifact freeze"
+    },
+    {
+      "path": "research/paper/manuscript_tex_pub_zh/main.pdf",
+      "sha256": "c704f1ee8751e5dca686928c2c6a2648bf88bd08c41a46ad93c2abd30f0faa71",
+      "role": "Chinese publication-format manuscript at artifact freeze"
+    },
+    {
       "path": "research/reproducibility/requirements-target-a.txt",
       "sha256": "1fae3c933a04007e576fdff81189de77e0d3a305d74af2e8341745b2904c8921",
       "role": "pinned Python environment"
@@ -143,7 +218,7 @@
   ],
   "limitations": [
     "The compact n<=22 artifact authenticates aggregate historical records; full per-state mathematical verification requires deterministic regeneration.",
-    "Independent recordwise generator equality is complete through n=24; n=26,28,30 use independent aggregate Burnside, shell, represented-size, ordering, and parity audits.",
+    "At n=24,26,28,30 every canonical record and both holonomy decisions are independently regenerated, but both routes necessarily share the proved quotient specification and common numerical/algebraic libraries.",
     "The immutable Git snapshot is the drafting archive; a DOI-bearing release remains a submission action."
   ]
 }

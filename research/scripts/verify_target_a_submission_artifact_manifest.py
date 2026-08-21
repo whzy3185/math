@@ -27,13 +27,13 @@ def verify_manifest(data: dict) -> None:
     _check(data.get("schema_version") == "1.0.0", "VERIFY_SUBMISSION_MANIFEST_SCHEMA_FAIL")
     _check(data.get("status") == "TARGET_A_SUBMISSION_ARTIFACT_MANIFEST_COMPLETE", "VERIFY_SUBMISSION_MANIFEST_STATUS_FAIL")
     commit = data.get("artifact_snapshot", {}).get("commit")
-    _check(commit == "c81be34a3b12a7ac47adbb4499c475df7bf4fc04", "VERIFY_ARTIFACT_COMMIT_FAIL")
+    _check(commit == "bb3c8aca39a27c76e8b76bbe733b84d0fd1fafc6", "VERIFY_ARTIFACT_COMMIT_FAIL")
     resolved = subprocess.run(
         ["git", "rev-parse", commit], cwd=REPO_ROOT, check=True, capture_output=True, text=True
     ).stdout.strip()
     _check(resolved == commit, "VERIFY_ARTIFACT_COMMIT_RESOLUTION_FAIL")
     files = data.get("files", [])
-    _check(len(files) == 20, "VERIFY_ARTIFACT_FILE_COUNT_FAIL")
+    _check(len(files) == 35, "VERIFY_ARTIFACT_FILE_COUNT_FAIL")
     _check(len({row["path"] for row in files}) == len(files), "VERIFY_ARTIFACT_DUPLICATE_PATH_FAIL")
     for row in files:
         content = subprocess.run(
@@ -47,6 +47,18 @@ def verify_manifest(data: dict) -> None:
     theorem_a = data.get("theorem_a", {})
     _check(theorem_a.get("orders") == list(range(8, 33, 2)), "VERIFY_THEOREM_A_ORDER_COVERAGE_FAIL")
     _check(theorem_a.get("mathematical_mismatch_count") == 0, "VERIFY_THEOREM_A_MISMATCH_FAIL")
+    _check(
+        theorem_a.get("recordwise_independent_generator_orders") == [24, 26, 28, 30],
+        "VERIFY_THEOREM_A_RECORDWISE_COVERAGE_FAIL",
+    )
+    _check(
+        theorem_a.get("independent_full_spectral_decision_orders") == [24, 26, 28, 30],
+        "VERIFY_THEOREM_A_INDEPENDENT_DECISION_COVERAGE_FAIL",
+    )
+    _check(
+        "recordwise_independent_generator_limit" not in theorem_a,
+        "VERIFY_THEOREM_A_OBSOLETE_RECORDWISE_LIMIT_FAIL",
+    )
     theorem_f = data.get("theorem_f", {})
     _check(theorem_f.get("canonical_orbit_rows") == 2626, "VERIFY_THEOREM_F_ORBIT_COUNT_FAIL")
     _check(theorem_f.get("canonical_set_equality_checked") is True, "VERIFY_THEOREM_F_SET_BINDING_FAIL")
