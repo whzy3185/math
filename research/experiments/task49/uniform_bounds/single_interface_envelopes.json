@@ -1,0 +1,26 @@
+{
+  "G6": {
+    "observed_maximum_normalized_error": 0.2550518878317525,
+    "C_empirical_1p1": 0.28055707661492774,
+    "C_empirical_2x": 0.510103775663505,
+    "resolved_rows": 15,
+    "unresolved_double_rows": 3,
+    "template": "|R_n-c| <= C |mu|^bulk_cells"
+  },
+  "G10": {
+    "observed_maximum_normalized_error": 0.13677189405035906,
+    "C_empirical_1p1": 0.15044908345539498,
+    "C_empirical_2x": 0.2735437881007181,
+    "resolved_rows": 14,
+    "unresolved_double_rows": 3,
+    "template": "|R_n-c| <= C |mu|^bulk_cells"
+  },
+  "two_interface": {
+    "one_tail_coefficient_of_variation": 0.7402172142840867,
+    "two_tail_coefficient_of_variation": 0.6653158639031723,
+    "observed_two_tail_supremum": 0.04211546072361673,
+    "template_rows": 28,
+    "recommended_template": "|R_(L,M)-c6| <= C(|mu6|^L+|mu6|^(M-L))",
+    "classification": "TWO_TAIL_BOUND_SUPPORTED"
+  }
+}

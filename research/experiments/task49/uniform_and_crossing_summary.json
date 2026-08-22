@@ -1,0 +1,118 @@
+{
+  "uniform_bound_gate": "UNIFORM_BOUND_TEMPLATE_FOUND",
+  "single_interface_classification": "SIMPLE_SINGLE_TAIL_BOUND_SUPPORTED",
+  "two_interface_classification": "TWO_TAIL_BOUND_SUPPORTED",
+  "envelopes": {
+    "G6": {
+      "observed_maximum_normalized_error": 0.2550518878317525,
+      "C_empirical_1p1": 0.28055707661492774,
+      "C_empirical_2x": 0.510103775663505,
+      "resolved_rows": 15,
+      "unresolved_double_rows": 3,
+      "template": "|R_n-c| <= C |mu|^bulk_cells"
+    },
+    "G10": {
+      "observed_maximum_normalized_error": 0.13677189405035906,
+      "C_empirical_1p1": 0.15044908345539498,
+      "C_empirical_2x": 0.2735437881007181,
+      "resolved_rows": 14,
+      "unresolved_double_rows": 3,
+      "template": "|R_n-c| <= C |mu|^bulk_cells"
+    },
+    "two_interface": {
+      "one_tail_coefficient_of_variation": 0.7402172142840867,
+      "two_tail_coefficient_of_variation": 0.6653158639031723,
+      "observed_two_tail_supremum": 0.04211546072361673,
+      "template_rows": 28,
+      "recommended_template": "|R_(L,M)-c6| <= C(|mu6|^L+|mu6|^(M-L))",
+      "classification": "TWO_TAIL_BOUND_SUPPORTED"
+    }
+  },
+  "crossing_onsets": {
+    "G6": {
+      "first_numerical_crossing": 50,
+      "first_exact_crossing": 50,
+      "last_pre_crossing": {
+        "family": "G6",
+        "n": 42,
+        "alpha": 1,
+        "gap_sequence": "6 4 4 4 4 4 4 4 4 4",
+        "R_squared": 7.904074545050893,
+        "threshold_squared": 7.888807264022538,
+        "delta": 0.015267281028354951,
+        "solver": "dense eigvalsh",
+        "evidence_status": "NUMERICALLY_ABOVE_THRESHOLD",
+        "exact_detail": {
+          "status": "NUMERICALLY_ABOVE_THRESHOLD",
+          "rayleigh_lower": "3952037266995617509/499999999300382512",
+          "reason": "no expensive exact cyclotomic threshold enclosure was attempted for a non-counterexample row"
+        }
+      },
+      "exact_crossing_count": 5
+    },
+    "G10": {
+      "first_numerical_crossing": 94,
+      "first_exact_crossing": 94,
+      "last_pre_crossing": {
+        "family": "G10",
+        "n": 86,
+        "alpha": 1,
+        "gap_sequence": "10 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4 4",
+        "R_squared": 7.977104188362199,
+        "threshold_squared": 7.973351303477323,
+        "delta": 0.0037528848848760177,
+        "solver": "dense eigvalsh",
+        "evidence_status": "NUMERICALLY_ABOVE_THRESHOLD",
+        "exact_detail": {
+          "status": "NUMERICALLY_ABOVE_THRESHOLD",
+          "rayleigh_lower": "7977104189922146852/1000000000195553015",
+          "reason": "no expensive exact cyclotomic threshold enclosure was attempted for a non-counterexample row"
+        }
+      },
+      "exact_crossing_count": 4
+    },
+    "TWO_SYMMETRIC": {
+      "first_numerical_crossing": 52,
+      "first_exact_crossing": 52,
+      "last_pre_crossing": {
+        "family": "TWO_SYMMETRIC",
+        "n": 36,
+        "alpha": -1,
+        "gap_sequence": "6 4 4 4 6 4 4 4",
+        "R_squared": 7.900979392057465,
+        "threshold_squared": 7.849000747596232,
+        "delta": 0.051978644461232903,
+        "solver": "dense eigvalsh",
+        "evidence_status": "NUMERICALLY_ABOVE_THRESHOLD",
+        "exact_detail": {
+          "status": "NUMERICALLY_ABOVE_THRESHOLD",
+          "rayleigh_lower": "3950489692935232563/499999999608467014",
+          "reason": "no expensive exact cyclotomic threshold enclosure was attempted for a non-counterexample row"
+        }
+      },
+      "exact_crossing_count": 5
+    },
+    "TWO_SHIFTED": {
+      "first_numerical_crossing": 60,
+      "first_exact_crossing": 60,
+      "last_pre_crossing": {
+        "family": "TWO_SHIFTED",
+        "n": 44,
+        "alpha": -1,
+        "gap_sequence": "6 4 4 4 6 4 4 4 4 4",
+        "R_squared": 7.9101359538289255,
+        "threshold_squared": 7.89862883099086,
+        "delta": 0.011507122838065875,
+        "solver": "dense eigvalsh",
+        "evidence_status": "NUMERICALLY_ABOVE_THRESHOLD",
+        "exact_detail": {
+          "status": "NUMERICALLY_ABOVE_THRESHOLD",
+          "rayleigh_lower": "988766994548077014/125000000040386365",
+          "reason": "no expensive exact cyclotomic threshold enclosure was attempted for a non-counterexample row"
+        }
+      },
+      "exact_crossing_count": 5
+    }
+  },
+  "evidence_boundary": "Empirical envelopes choose theorem templates; only rows with exact certificates support finite counterexample claims."
+}
