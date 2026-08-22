@@ -43,8 +43,8 @@ claim, not the desired theorem.
 - `PROVED`: 3
 - `COMPUTER-ASSISTED PROVED`: 3
 - `EXACT FINITE DATA`: 4
-- `HIGH-PRECISION EVIDENCE`: 7
-- `EXPERIMENTAL SIGNAL`: 6
+- `HIGH-PRECISION EVIDENCE`: 8
+- `EXPERIMENTAL SIGNAL`: 5
 - `OPEN`: 1
 
 The count is by the 24 entries above.  A future manuscript writer must cite
