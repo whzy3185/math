@@ -1,0 +1,134 @@
+{
+  "status": "BULK_HYPERBOLICITY_PROVED",
+  "tau_cell": [
+    1,
+    1,
+    -1,
+    1,
+    -1,
+    -1,
+    1,
+    -1
+  ],
+  "M8_entries": [
+    [
+      "(lambda - 3)*(lambda + 1)*(lambda^2 + 2*lambda - 1)",
+      "lambda^2 + 4*lambda + 1",
+      "lambda*(lambda^2 - lambda - 7)",
+      "-(lambda + 1)^2"
+    ],
+    [
+      "1 - 3*lambda^2",
+      "lambda^4 - 5*lambda^2 + 4*lambda + 2",
+      "-lambda^3 + lambda^2 + lambda - 3",
+      "-lambda^3 + 3*lambda - 3"
+    ],
+    [
+      "-lambda^3 + 3*lambda + 3",
+      "(lambda - 2)*(lambda^2 + 3*lambda + 1)",
+      "-(lambda - 2)*(2*lambda + 3)",
+      "-(lambda - 2)*(lambda + 2)"
+    ],
+    [
+      "-lambda*(lambda + 2)",
+      "lambda^3 + lambda^2 - 3*lambda - 1",
+      "-(lambda - 1)*(lambda + 2)",
+      "-(lambda - 1)*(lambda + 2)"
+    ]
+  ],
+  "characteristic_polynomial": "z^4 + z^3*(-2*y^2 + 16*y - 13) + z^2*(y^4 - 16*y^3 + 80*y^2 - 128*y + 40) + z*(-2*y^2 + 16*y - 13) + 1",
+  "palindromic_reduction": "w^2 - 2*w*y^2 + 16*w*y - 13*w + y^4 - 16*y^3 + 80*y^2 - 128*y + 38",
+  "reduced_discriminant": "-12*y^2 + 96*y + 17",
+  "w_branches": [
+    "(2*y^2-16*y+13-sqrt(-12*y^2+96*y+17))/2",
+    "(2*y^2-16*y+13+sqrt(-12*y^2+96*y+17))/2"
+  ],
+  "eta_upper_bound": "eta < 781/100",
+  "eta_checks": {
+    "sqrt5_upper": true,
+    "outer_radicand_upper": true
+  },
+  "G6": {
+    "family": "G6",
+    "y_interval": [
+      "1581/200",
+      "3953/500"
+    ],
+    "q_fast": "1/8",
+    "q_slow": "9/25",
+    "unstable_lower_bounds": [
+      "25/9",
+      "8"
+    ],
+    "h_left": "229961/20000",
+    "discriminant_left": "260117/10000",
+    "discriminant_right": "1619873/62500",
+    "slow_test": {
+      "target_w": "706/225",
+      "positive_base": "940049/180000",
+      "squared_margin": "40913042401/32400000000",
+      "conclusion": "w_minus > q_slow + q_slow^(-1)"
+    },
+    "fast_test": {
+      "target_w": "65/8",
+      "positive_base": "95039/20000",
+      "squared_margin": "1334775679/400000000",
+      "conclusion": "w_plus > q_fast + q_fast^(-1)"
+    },
+    "root_structure": "four distinct positive real roots; two stable and two reciprocal unstable roots",
+    "checks": {
+      "ordered_interval": true,
+      "inside_eta_8": true,
+      "h_increasing": true,
+      "discriminant_decreasing": true,
+      "discriminant_positive": true,
+      "slow_base_positive": true,
+      "slow_square_margin_positive": true,
+      "fast_base_positive": true,
+      "fast_square_margin_positive": true,
+      "q_fast_below_q_slow": true
+    }
+  },
+  "G10": {
+    "family": "G10",
+    "y_interval": [
+      "7977/1000",
+      "3989/500"
+    ],
+    "q_fast": "1/8",
+    "q_slow": "4/15",
+    "unstable_lower_bounds": [
+      "15/4",
+      "8"
+    ],
+    "h_left": "6316529/500000",
+    "discriminant_left": "4800413/250000",
+    "discriminant_right": "1194137/62500",
+    "slow_test": {
+      "target_w": "241/60",
+      "positive_base": "6899587/1500000",
+      "squared_margin": "4400583770569/2250000000000",
+      "conclusion": "w_minus > q_slow + q_slow^(-1)"
+    },
+    "fast_test": {
+      "target_w": "65/8",
+      "positive_base": "1808471/500000",
+      "squared_margin": "1505980642159/250000000000",
+      "conclusion": "w_plus > q_fast + q_fast^(-1)"
+    },
+    "root_structure": "four distinct positive real roots; two stable and two reciprocal unstable roots",
+    "checks": {
+      "ordered_interval": true,
+      "inside_eta_8": true,
+      "h_increasing": true,
+      "discriminant_decreasing": true,
+      "discriminant_positive": true,
+      "slow_base_positive": true,
+      "slow_square_margin_positive": true,
+      "fast_base_positive": true,
+      "fast_square_margin_positive": true,
+      "q_fast_below_q_slow": true
+    }
+  },
+  "proof_boundary": "All checks use exact symbolic or rational arithmetic; no floating root is an acceptance input."
+}
