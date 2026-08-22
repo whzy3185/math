@@ -1,0 +1,23 @@
+{
+  "high_precision_splitting": true,
+  "splitting_precision_digits": 160,
+  "splitting_route": "4x4 finite-ring Evans determinant with 80/120/160-digit validation",
+  "full_arbitrary_precision_matrix_crosschecks": 2,
+  "finite_matrix_evans_crosschecks_pass": true,
+  "maximum_fp64_transfer_y_difference": 1.5764090194781476e-14,
+  "median_splitting_ratio": 0.350768888399446,
+  "mu6": 0.35050611613292243,
+  "floquet_phase_status": "PARTIAL_PHASE_EXPLANATION",
+  "cut_invariant": true,
+  "orientation_invariant": true,
+  "equivalent_stable_unstable_matching": true,
+  "localization": {
+    "classification": "LOCALIZATION_ROBUST",
+    "profiles": 6,
+    "fit_windows_per_side": 5,
+    "maximum_multiplier_distance_from_bulk": 0.03086307515710407,
+    "all_fit_r_squared_above_0p98": true
+  },
+  "gate": "INTERFACE_MECHANISM_READY_FOR_PROOF",
+  "boundary": "The finite-ring Evans roots are high-precision numerical evidence; exact two-defect elimination remains proof work."
+}
