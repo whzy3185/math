@@ -1,0 +1,59 @@
+{
+  "status": "TARGET_A_TASK50_CERTIFICATE_PACKAGE_READY",
+  "environment": {
+    "python": "3.12.13",
+    "sympy": "1.14.0",
+    "integer_rational_arithmetic": "fractions.Fraction and SymPy ZZ/QQ",
+    "sqrt_enclosures": "integer isqrt with 120-decimal outward rational endpoints"
+  },
+  "certificates": [
+    {
+      "path": "proofs/task50/certificates/bulk_hyperbolicity_certificates.json",
+      "sha256": "01bb365e77a352bd5ba65505aa2c04b1ce9521f61519a1a6646f39d32a291827",
+      "bytes": 3827
+    },
+    {
+      "path": "proofs/task50/certificates/bulk_symbolic.json",
+      "sha256": "a69dc5d9d4313c7b0335de62b915757448eff3dd7117cb2770562e1126101caa",
+      "bytes": 1044
+    },
+    {
+      "path": "proofs/task50/certificates/finite_ring_recurrence.json",
+      "sha256": "1e1e2ccbf706bf6259dc5c0e54f3cb91c37812ec1c74f11d9b3f30c4e50bf790",
+      "bytes": 11196
+    },
+    {
+      "path": "proofs/task50/certificates/g10_defect_transfer.json",
+      "sha256": "7f0b44d6cb2db1beddbda6f3e26a0ddb097591311fa63394b0c5d9f5df19a331",
+      "bytes": 3690
+    },
+    {
+      "path": "proofs/task50/certificates/g10_interface_certificate.json",
+      "sha256": "983b2a342a01d8140a2ffabf6bdca6a1ce4a52c8ec5ebc32186ab1091c711f0e",
+      "bytes": 11023
+    },
+    {
+      "path": "proofs/task50/certificates/g6_defect_transfer.json",
+      "sha256": "d55051543fc67098e2dd6422021fd52f457059499704ab3832c0967e538a3d8c",
+      "bytes": 2991
+    },
+    {
+      "path": "proofs/task50/certificates/g6_interface_certificate.json",
+      "sha256": "134d5d29ab8aaae5141cc70493a6f0c1955afeda36bc15789076b0a9a8ae49ea",
+      "bytes": 10305
+    }
+  ],
+  "proved_gates": [
+    "BULK_HYPERBOLICITY_PROVED",
+    "G6_INTERFACE_THEOREM_PROVED",
+    "G10_INTERFACE_THEOREM_PROVED"
+  ],
+  "incomplete_gates": [
+    "SINGLE_INTERFACE_BOUND_INCOMPLETE",
+    "TWO_INTERFACE_BOUND_INCOMPLETE",
+    "ALL_EVEN_THEOREM_INCOMPLETE"
+  ],
+  "independent_checker": "research/scripts/verify_target_a_task50_interface.py",
+  "checker_output": "research/reproducibility/task50/interface_checker_output.json",
+  "formal_manuscript_dependency": false
+}
