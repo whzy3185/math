@@ -1,0 +1,83 @@
+{
+  "period": 24,
+  "canonical_q_code": 1118481,
+  "q_bits": "100010001000100010001000",
+  "d": 6,
+  "a": 0,
+  "b": 0,
+  "defect_gap_sequence": [
+    4,
+    4,
+    4,
+    4,
+    4,
+    4
+  ],
+  "minimum_defect_separation": 4,
+  "maximum_defect_separation": 4,
+  "defect_density": 0.25,
+  "primitive_q_period": 4,
+  "primitive_tau_period": 8,
+  "target_repetition": true,
+  "two_defect": false,
+  "near_antipodal": false,
+  "survived_through_k": 16,
+  "moments": [
+    "96",
+    "576",
+    "3840",
+    "26784",
+    "191616",
+    "1393488",
+    "10251456",
+    "76063968",
+    "568070016",
+    "4264037856",
+    "32134148736",
+    "242931652560",
+    "1841202705984",
+    "13983318473616",
+    "106377065373120",
+    "810379820614752",
+    "6180636834589056"
+  ],
+  "excesses": [
+    "-192",
+    "-768",
+    "-3936",
+    "-22656",
+    "-139440",
+    "-896448",
+    "-5947680",
+    "-40441728",
+    "-280522272",
+    "-1978154112",
+    "-14141537328",
+    "-102250514496",
+    "-746303174256",
+    "-5489482415808",
+    "-40636702370208",
+    "-302401730328960"
+  ],
+  "selection_grid_screen": {
+    "value": 7.804226065180615,
+    "theta": 0.0,
+    "grid_index": 0,
+    "grid": 128,
+    "status": "NUMERICAL_GRID_ESTIMATE"
+  },
+  "numerical_screen": {
+    "value": 7.804226065180615,
+    "theta": 0.0,
+    "grid_index": 0,
+    "grid": 2048,
+    "status": "NUMERICAL_GRID_ESTIMATE"
+  },
+  "numerical_gap_from_eta": 0.0,
+  "classification": "CERTIFIED_R_EQ_ETA",
+  "certificate": {
+    "status": "CERTIFIED_R_EQ_ETA",
+    "method": "existing period-8 exact theorem and zone folding",
+    "R_squared": "4+sqrt(10+2*sqrt(5))"
+  }
+}

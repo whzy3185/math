@@ -1,0 +1,82 @@
+{
+  "period": 20,
+  "canonical_q_code": 17,
+  "q_bits": "10001000000000000000",
+  "d": 2,
+  "a": 0,
+  "b": 0,
+  "defect_gap_sequence": [
+    4,
+    16
+  ],
+  "minimum_defect_separation": 4,
+  "maximum_defect_separation": 16,
+  "defect_density": 0.1,
+  "primitive_q_period": 20,
+  "primitive_tau_period": 20,
+  "target_repetition": false,
+  "two_defect": true,
+  "near_antipodal": false,
+  "survived_through_k": 16,
+  "moments": [
+    "80",
+    "432",
+    "2696",
+    "18256",
+    "129600",
+    "946872",
+    "7048744",
+    "53161040",
+    "404801168",
+    "3105233872",
+    "23960462144",
+    "185769786520",
+    "1446054716160",
+    "11294209539800",
+    "88466130980856",
+    "694669505304784",
+    "5466636710333456"
+  ],
+  "excesses": [
+    "-208",
+    "-760",
+    "-3312",
+    "-16448",
+    "-89928",
+    "-526232",
+    "-3228912",
+    "-20487152",
+    "-133175472",
+    "-881408832",
+    "-5913910632",
+    "-40103576000",
+    "-274228189480",
+    "-1887545337544",
+    "-13059542542064",
+    "-90719332104816"
+  ],
+  "selection_grid_screen": {
+    "value": 8.023307692361815,
+    "theta": 0.0,
+    "grid_index": 0,
+    "grid": 128,
+    "status": "NUMERICAL_GRID_ESTIMATE"
+  },
+  "numerical_screen": {
+    "value": 8.023307692361815,
+    "theta": 0.0,
+    "grid_index": 0,
+    "grid": 2048,
+    "status": "NUMERICAL_GRID_ESTIMATE"
+  },
+  "numerical_gap_from_eta": 0.2190816271812004,
+  "classification": "CERTIFIED_R_GT_ETA",
+  "certificate": {
+    "status": "CERTIFIED_R_GT_ETA",
+    "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+    "alpha": 1,
+    "rayleigh_lower_bound": "4011653848322601413/500000000266934143",
+    "comparison_rational": "1561/200",
+    "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+  }
+}
