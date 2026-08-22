@@ -1,0 +1,77 @@
+{
+  "status": "LOCAL_RAYLEIGH_LEVEL2_COMPLETE",
+  "levels": [
+    {
+      "support_length": 6,
+      "tau_windows": 256,
+      "exact_Rayleigh_certificates": 160,
+      "distinct_Q_survivors": 48,
+      "maximum_certified_margin": 2.595773934819386
+    },
+    {
+      "support_length": 7,
+      "tau_windows": 512,
+      "exact_Rayleigh_certificates": 360,
+      "distinct_Q_survivors": 76,
+      "maximum_certified_margin": 2.595773934819386
+    },
+    {
+      "support_length": 8,
+      "tau_windows": 1024,
+      "exact_Rayleigh_certificates": 848,
+      "distinct_Q_survivors": 88,
+      "maximum_certified_margin": 1.6957739348193854
+    },
+    {
+      "support_length": 9,
+      "tau_windows": 2048,
+      "exact_Rayleigh_certificates": 1864,
+      "distinct_Q_survivors": 92,
+      "maximum_certified_margin": 2.595773934819386
+    },
+    {
+      "support_length": 10,
+      "tau_windows": 4096,
+      "exact_Rayleigh_certificates": 3880,
+      "distinct_Q_survivors": 108,
+      "maximum_certified_margin": 2.595773934819386
+    }
+  ],
+  "strongest_Q_survivors": 108,
+  "de_bruijn_bounded_cycle_count_period_le_16": 30,
+  "bounded_cycles": [
+    "0",
+    "0001",
+    "000001",
+    "0000001",
+    "00000001",
+    "000000001",
+    "0000000001",
+    "0000010001",
+    "00000000001",
+    "00000010001",
+    "000000000001",
+    "000000010001",
+    "0000000000001",
+    "0000000010001",
+    "0000001000001",
+    "00000000000001",
+    "00000000010001",
+    "00000001000001",
+    "00000100010001",
+    "000000000000001",
+    "000000000010001",
+    "000000001000001",
+    "000000010000001",
+    "000000100010001",
+    "0000000000000001",
+    "0000000000010001",
+    "0000000001000001",
+    "0000000010000001",
+    "0000000100010001",
+    "0000010000010001"
+  ],
+  "target_cycle_present": true,
+  "classification": "WEAK",
+  "proof_boundary": "Each exclusion is an exact integer Rayleigh quotient. The cycle audit is complete only through primitive period 16, so it is not an arbitrary-period theorem."
+}

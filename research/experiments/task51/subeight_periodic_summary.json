@@ -1,0 +1,31 @@
+{
+  "status": "SUBEIGHT_PERIODIC_ATLAS_COMPLETE_P24_NUMERICAL_BAND_REFINEMENT",
+  "reused_frontier_candidates": 199,
+  "primitive_R_lt_8_count": 13,
+  "primitive_periods": [
+    8,
+    10,
+    12,
+    14,
+    16,
+    18,
+    20,
+    22,
+    24
+  ],
+  "minimum_non_target": {
+    "period": 10,
+    "Q_bits": "0000010001",
+    "primitive_Q_period": 10,
+    "primitive_tau_period": 10,
+    "gap_word": "4 6",
+    "charge_word": "0 2",
+    "defect_density": 0.2,
+    "charge_density": 0.2,
+    "R_squared": 7.916381551744975,
+    "band_at_8": "R_LT_8",
+    "source": "reused exact p<=24 frontier",
+    "status": "NUMERICAL_BLOCH_ATLAS"
+  },
+  "exact_boundary": "The eta comparison through p=24 remains exact. New R<8 labels use a deterministic 1024-point Bloch grid except for already proved period-eight/ten identities."
+}
