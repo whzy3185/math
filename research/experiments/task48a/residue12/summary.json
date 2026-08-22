@@ -1,0 +1,100 @@
+{
+  "status": "RESIDUE12_STABLE_C_LT_8_FAMILY",
+  "orders": [
+    44,
+    60,
+    76,
+    92,
+    108,
+    124,
+    140,
+    156,
+    172,
+    188,
+    204,
+    220,
+    236,
+    252,
+    268,
+    284,
+    300,
+    316,
+    332,
+    348,
+    364,
+    380,
+    396,
+    412,
+    428,
+    444,
+    460,
+    476,
+    492,
+    508
+  ],
+  "orders_tested": 30,
+  "families": [
+    "R1_SINGLE_GAP8",
+    "R2_TWO_GAP6",
+    "R3_GAP10_PLUS_GAP2",
+    "R4_THREE_PLUS2_ONE_MINUS2"
+  ],
+  "both_holonomies": true,
+  "numerical_counterexamples": 29,
+  "exact_counterexamples": 29,
+  "first_exact_order": 60,
+  "first_failed_order": 44,
+  "stable_family": "two gap-6 with alpha=-1 and separation shifted one bulk cell from the symmetric split",
+  "asymptotic_constant": "7.90536931162032701197627927980427398748634897435095307657228078569266921671007864162074782247881828267387081039866136101670038968120158998084957272613921381060505108250546930391235989038842461605938382657529541",
+  "asymptotic_fit": {
+    "models": [
+      {
+        "model": "E2",
+        "parameters": [
+          0.35050611613292243,
+          0.12227903914275665
+        ],
+        "limit_c": 7.905370012068116,
+        "linear_coefficients": [
+          0.00931997073036563,
+          -0.004554688676980558
+        ],
+        "rss": 2.511406957956099e-10,
+        "AIC": -755.1861552345496,
+        "BIC": -748.1801683262388,
+        "holdout_rss": 4.903796192866712e-12,
+        "parameter_count": 5
+      },
+      {
+        "model": "E",
+        "parameters": 0.4950377907359192,
+        "limit_c": 7.905353293093999,
+        "linear_coefficients": [
+          0.004878913145670671
+        ],
+        "rss": 1.712851970979269e-07,
+        "AIC": -563.4339969625767,
+        "BIC": -559.2304048175902,
+        "holdout_rss": 2.542848992480586e-09,
+        "parameter_count": 3
+      },
+      {
+        "model": "P",
+        "parameters": 2.6500000000000004,
+        "limit_c": 7.905306649722539,
+        "linear_coefficients": [
+          113.10081902469739
+        ],
+        "rss": 5.958606231926407e-07,
+        "AIC": -526.0336929778465,
+        "BIC": -521.83010083286,
+        "holdout_rss": 2.8279286801758907e-08,
+        "parameter_count": 3
+      }
+    ],
+    "best_model": "E2",
+    "second_best": "E"
+  },
+  "all_exact_certificates_pass": true,
+  "signal": "STRONG"
+}

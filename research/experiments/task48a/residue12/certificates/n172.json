@@ -1,0 +1,21 @@
+{
+  "status": "CERTIFIED_COUNTEREXAMPLE",
+  "n": 172,
+  "alpha": -1,
+  "q_bits": "1000001000100010001000100010001000100010001000100010001000100010001000100010001000100000100010001000100010001000100010001000100010001000100010001000100010001000100010001000",
+  "rho_squared_numerical": 7.905371496761402,
+  "rational_upper_bound": "3953/500",
+  "threshold_rational_lower": "29559/3698",
+  "threshold_margin_lower": "80653/924500",
+  "exact_sparse_LDL_positive": true,
+  "pivot_count": 172,
+  "all_pivots_positive": true,
+  "pivot_sequence_sha256": "a39894554e687dd8fada0e2d0ce7233ed2506f7b852ca2d0779a270c3eac7f2e",
+  "maximum_pivot_numerator_bits": 1707,
+  "maximum_pivot_denominator_bits": 1705,
+  "certificate_matrix_sha256": "962d599eb3ab95f390429e3bc39fb9b4f0f7536fc070c75eef00d76cdd60149c",
+  "elimination_order": "vertices 4..n-5, then the eight cyclic boundary vertices",
+  "reproduction": "target_a_task48a_two_interface.py recomputes every exact rational pivot",
+  "family": "R2_TWO_GAP6",
+  "parameter": 19
+}
