@@ -1,0 +1,147 @@
+{
+  "status": "NEUTRAL_FINITE_DEFECT_RANK_INERTIA_EXACT",
+  "rows": [
+    {
+      "case": "G6_neutralized_by_gap2",
+      "special_gaps": [
+        6,
+        2
+      ],
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "support_size": 8,
+      "rank": 8,
+      "positive_inertia": 4,
+      "negative_inertia": 4,
+      "zero_inertia_in_core": 0,
+      "arithmetic": "exact integer rank and exact Sturm root count"
+    },
+    {
+      "case": "G10_neutralized_by_three_gap2",
+      "special_gaps": [
+        10,
+        2,
+        2,
+        2
+      ],
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "support_size": 16,
+      "rank": 16,
+      "positive_inertia": 8,
+      "negative_inertia": 8,
+      "zero_inertia_in_core": 0,
+      "arithmetic": "exact integer rank and exact Sturm root count"
+    },
+    {
+      "case": "gap2_neutralized_by_G6",
+      "special_gaps": [
+        2,
+        6
+      ],
+      "support": [
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "support_size": 8,
+      "rank": 8,
+      "positive_inertia": 4,
+      "negative_inertia": 4,
+      "zero_inertia_in_core": 0,
+      "arithmetic": "exact integer rank and exact Sturm root count"
+    },
+    {
+      "case": "gap8_neutralized_by_two_gap2",
+      "special_gaps": [
+        8,
+        2,
+        2
+      ],
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "support_size": 12,
+      "rank": 12,
+      "positive_inertia": 6,
+      "negative_inertia": 6,
+      "zero_inertia_in_core": 0,
+      "arithmetic": "exact integer rank and exact Sturm root count"
+    },
+    {
+      "case": "two_G6_neutralized_by_two_gap2",
+      "special_gaps": [
+        6,
+        6,
+        2,
+        2
+      ],
+      "support": [
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18
+      ],
+      "support_size": 16,
+      "rank": 14,
+      "positive_inertia": 7,
+      "negative_inertia": 7,
+      "zero_inertia_in_core": 2,
+      "arithmetic": "exact integer rank and exact Sturm root count"
+    }
+  ],
+  "charged_interface_boundary": "A lone nonzero charge joins translated bulk sectors and is not a finite-rank perturbation of one globally fixed bulk gauge. Neutralized compact combinations are finite rank as certified here.",
+  "Birman_Schwinger_consequence": "A direct one-bulk finite-rank Birman-Schwinger model is not applicable to isolated G6/G10 without first constructing a piecewise bulk unitary; neutral compact defects remain viable."
+}

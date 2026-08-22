@@ -1,0 +1,92 @@
+{
+  "status": "EXACT_CHARGE_CONSERVATION_PROVED",
+  "identities": {
+    "gap_partition": "sum_i g_i=n",
+    "charge_definition": "q_i=g_i-4",
+    "total_charge": "sum_i q_i=n-4d",
+    "Q_legality": "product_i Q_i=(-1)^(n-d)=1",
+    "even_n_consequence": "d is even",
+    "residue_consequence": "sum_i q_i congruent n (mod 8)"
+  },
+  "proof": "The positive-Q sites partition the cycle into d positive gaps. Summing g_i-4 gives n-4d. For even n, the periodic tau lift condition product Q=1 forces d even, hence 4d is divisible by 8.",
+  "rows": [
+    {
+      "n_mod_8": 0,
+      "legal_positive_defect_parity": "even",
+      "total_charge_congruence_mod_8": 0,
+      "representative_total_charges": [
+        -16,
+        -8,
+        0,
+        8
+      ],
+      "minimal_nonnegative_plus2_decomposition": [],
+      "nearest_negative_total_charge": -8,
+      "holonomy": [
+        -1,
+        1
+      ]
+    },
+    {
+      "n_mod_8": 2,
+      "legal_positive_defect_parity": "even",
+      "total_charge_congruence_mod_8": 2,
+      "representative_total_charges": [
+        -14,
+        -6,
+        2,
+        10
+      ],
+      "minimal_nonnegative_plus2_decomposition": [
+        2
+      ],
+      "nearest_negative_total_charge": -6,
+      "holonomy": [
+        -1,
+        1
+      ]
+    },
+    {
+      "n_mod_8": 4,
+      "legal_positive_defect_parity": "even",
+      "total_charge_congruence_mod_8": 4,
+      "representative_total_charges": [
+        -12,
+        -4,
+        4,
+        12
+      ],
+      "minimal_nonnegative_plus2_decomposition": [
+        2,
+        2
+      ],
+      "nearest_negative_total_charge": -4,
+      "holonomy": [
+        -1,
+        1
+      ]
+    },
+    {
+      "n_mod_8": 6,
+      "legal_positive_defect_parity": "even",
+      "total_charge_congruence_mod_8": 6,
+      "representative_total_charges": [
+        -10,
+        -2,
+        6,
+        14
+      ],
+      "minimal_nonnegative_plus2_decomposition": [
+        2,
+        2,
+        2
+      ],
+      "nearest_negative_total_charge": -2,
+      "holonomy": [
+        -1,
+        1
+      ]
+    }
+  ],
+  "minimality_boundary": "The +2 decompositions minimize the number and magnitude of positive even charges arithmetically; spectral optimality is a separate question."
+}
