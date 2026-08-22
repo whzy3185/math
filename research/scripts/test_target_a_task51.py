@@ -86,6 +86,9 @@ def test_defect_rank_inertia():
 
 def test_three_g6_legality_and_comparison():
     data = load(TASK51 / "multi_slip_summary.json")
+    rows = list(csv.DictReader((TASK51 / "multi_slip_clusters.csv").open()))
+    three = next(row for row in rows if json.loads(row["special_gaps"]) == [6, 6, 6])
+    assert int(three["n"]) % 8 == 6 and json.loads(three["charges"]) == [2, 2, 2]
     assert data["three_G6_beats_G10"] and data["three_G6_minus_G10_at_fixed_defect_count"] < -0.07
 
 
