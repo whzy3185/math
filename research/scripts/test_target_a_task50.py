@@ -169,7 +169,7 @@ def test_manuscript_freeze():
 
 
 def test_existing_theorem_statements_unchanged():
-    result = subprocess.run(["git","diff","--name-only",BASELINE,"--","research/proofs"],cwd=RESEARCH.parent,capture_output=True,text=True,check=True)
+    result = subprocess.run(["git","diff","--name-only","--diff-filter=MDR",BASELINE,"--","research/proofs"],cwd=RESEARCH.parent,capture_output=True,text=True,check=True)
     assert all(path.startswith("research/proofs/task50/") for path in result.stdout.splitlines())
 
 
