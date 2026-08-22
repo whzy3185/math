@@ -1,0 +1,44 @@
+{
+  "status": "TASK49_STORY_DATA_READY",
+  "datasets": {
+    "figure1_threshold_crossings.csv": {
+      "source": "threshold_crossings/threshold_crossings.csv",
+      "units": "squared spectral radius",
+      "evidence": "mixed numerical and exact-certified rows; see evidence_status"
+    },
+    "figure2_localization.csv": {
+      "source": "localization_robustness/raw/g6_n514.json and g10_n510.json",
+      "units": "period-eight cells and eigenvector L2 norm",
+      "evidence": "numerical FP64 sparse A^2 profiles"
+    },
+    "figure3_two_interface_splitting.csv": {
+      "source": "interface_mechanism/two_interface_high_precision.csv",
+      "units": "period-eight cells and squared-level splitting",
+      "evidence": "80/120/160-digit 4x4 finite-ring Evans roots"
+    },
+    "figure4_residue_patterns.csv": {
+      "source": "Task 48A structural family definitions and Task 49 crossing atlas",
+      "units": "residue and cyclic gap words",
+      "evidence": "explicit constructions; eventual uniform theorem remains open"
+    },
+    "figure5_moment_hankel_waterfall.csv": {
+      "source": "Task 49 independent p24 and Hankel audits",
+      "units": "dihedral orbit count",
+      "evidence": "exact integer computer-assisted verification"
+    },
+    "figure6_p17_p24_classification.csv": {
+      "source": "reproducibility/task49/p24_independent/summary.json",
+      "units": "dihedral orbit count",
+      "evidence": "independent exact finite audit"
+    }
+  },
+  "row_counts": {
+    "threshold_crossing_rows": 35,
+    "localization_rows": 118,
+    "splitting_rows": 24,
+    "residue_pattern_rows": 5,
+    "waterfall_rows": 3,
+    "bounded_classification_rows": 8
+  },
+  "script_sha256": "72f89eba21a71498406698149b1e4fb2ef94803ec28f7b8e4ec02b79ec7ef43b"
+}
