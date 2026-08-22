@@ -1,0 +1,58 @@
+{
+  "schema_version": 1,
+  "status": "PASS",
+  "orders": [
+    22
+  ],
+  "command": "python research/scripts/target_a_independent_spectral_audit.py --n 22",
+  "environment": {
+    "python": "3.12.13",
+    "numpy": "2.3.5",
+    "sympy": "1.14.0",
+    "platform": "macOS-26.5.2-arm64-arm-64bit"
+  },
+  "sources": {
+    "driver": {
+      "path": "research/scripts/target_a_independent_spectral_audit.py",
+      "sha256": "3f03e1ad7647d9ebef070bf4677cacb0b1af12ff97282829167cf212127e85f1"
+    },
+    "independent_c_scanner": {
+      "path": "research/scripts/target_a_independent_orbit_scan.c",
+      "sha256": "7bd69b39ef9b3aa0fb4ff5af61f4eb583e0aab788336feacd54a99453d7ada60"
+    },
+    "primary_comparison_stream": {
+      "path": "research/scripts/target_a_bracelets.py",
+      "sha256": "2a972d97c1c72e2f12140336c3328362de531507b5931c0f4b442beb7ac1f5d7",
+      "role": "comparison table only; spectral records are emitted by the C full-space scan"
+    }
+  },
+  "build": {
+    "compiler": "/usr/bin/cc",
+    "compiler_version": "Apple clang version 21.0.0 (clang-2100.1.1.101)",
+    "command": [
+      "/usr/bin/cc",
+      "-O3",
+      "-std=c11",
+      "-Wall",
+      "-Wextra",
+      "-Werror",
+      "/Users/muelsyse/Documents/Codex/2026-08-15/cha-k/work/math/research/scripts/target_a_independent_orbit_scan.c",
+      "-o",
+      "/var/folders/rm/r56mvlts7r58wj61844837940000gn/T/target-a-spectral-audit-pv1py1mr/target_a_independent_orbit_scan"
+    ],
+    "c_source_sha256": "7bd69b39ef9b3aa0fb4ff5af61f4eb583e0aab788336feacd54a99453d7ada60"
+  },
+  "results": [
+    {
+      "order": 22,
+      "status": "PASS",
+      "canonical_representatives": 48734,
+      "spectral_states": 97468,
+      "rayleigh_certified_nonoptimizers": 97467,
+      "ordered_independent_certificate_sha256": "04674adb0fb841e18099b8abf8f63d779a9ad075c964253458c0fe40e4c51bc3",
+      "file": "n22.json",
+      "file_sha256": "4e2fa7c23a96079966dec6bdebbae8c5e68b2f68893f7ff6720d32efa791b713",
+      "elapsed_seconds": 8.210397243499756
+    }
+  ]
+}

@@ -1,0 +1,108 @@
+{
+  "schema_version": 1,
+  "order": 22,
+  "state_representation": "even-parity binary Q word; bit 1 means Q_i=+1",
+  "quotient_representation": "one representative per dihedral orbit, with both alpha=-1,+1 retained",
+  "comparison_method": "ordering-independent exact set consumption through a disk-mapped orbit-size table",
+  "hash_role": "reproducibility only; PASS is decided by exact record consumption, not digest equality",
+  "primary": {
+    "algorithm": "fixed-weight FKM necklace recursion with reflection filtering",
+    "enumeration_order": "even defect shell, then increasing canonical integer",
+    "representatives": 48734,
+    "represented_q_vectors": 2097152,
+    "defect_count_histogram": {
+      "0": 1,
+      "2": 11,
+      "4": 195,
+      "6": 1782,
+      "8": 7440,
+      "10": 14938,
+      "12": 14938,
+      "14": 7440,
+      "16": 1782,
+      "18": 195,
+      "20": 11,
+      "22": 1
+    },
+    "orbit_size_histogram": {
+      "1": 2,
+      "11": 62,
+      "22": 2046,
+      "44": 46624
+    },
+    "ordered_stream_sha256": "07d9b2cd040d72eed5c2a8d771d499bc7d6437326d0b8bcea45db97733c14328",
+    "duplicate_records": 0,
+    "parity_failures": 0,
+    "elapsed_seconds": 0.5597858428955078
+  },
+  "independent": {
+    "status": "PASS",
+    "n": 22,
+    "universe_words": 4194304,
+    "legal_q_words": 2097152,
+    "independent_representatives": 48734,
+    "consumed_primary_records": 48734,
+    "represented_q_vectors": 2097152,
+    "missing_primary_records": 0,
+    "orbit_size_mismatches": 0,
+    "canonicality_failures": 0,
+    "defect_count_histogram": {
+      "0": 1,
+      "2": 11,
+      "4": 195,
+      "6": 1782,
+      "8": 7440,
+      "10": 14938,
+      "12": 14938,
+      "14": 7440,
+      "16": 1782,
+      "18": 195,
+      "20": 11,
+      "22": 1
+    },
+    "orbit_size_histogram": {
+      "1": 2,
+      "11": 62,
+      "22": 2046,
+      "44": 46624
+    },
+    "elapsed_seconds": 1.6539149284362793,
+    "stderr": ""
+  },
+  "number_of_legal_q_words": 2097152,
+  "number_of_canonical_dihedral_representatives": 48734,
+  "canonical_spectral_states": 97468,
+  "holonomy_coverage": [
+    -1,
+    1
+  ],
+  "sum_of_represented_q_vectors": 2097152,
+  "sum_of_represented_switching_classes": 8388608,
+  "expected_switching_classes": 8388608,
+  "terminal_traversal_check": {
+    "independent_integer_range_scanned": [
+      0,
+      4194303
+    ],
+    "every_even_parity_word_visited": true,
+    "remaining_primary_records": 0
+  },
+  "checks": {
+    "independent_scanner_passed": true,
+    "primary_has_no_duplicates": true,
+    "primary_parity_is_legal": true,
+    "all_primary_records_consumed": true,
+    "no_independent_record_missing_from_primary": true,
+    "canonical_representative_counts_equal": true,
+    "record_orbit_sizes_equal": true,
+    "canonical_words_verified_by_full_scan": true,
+    "defect_histograms_equal": true,
+    "orbit_histograms_equal": true,
+    "legal_q_word_count_complete": true,
+    "primary_multiplicity_complete": true,
+    "independent_multiplicity_complete": true
+  },
+  "record_level_set_equality": true,
+  "status": "PASS",
+  "elapsed_seconds": 2.2179489135742188
+}
