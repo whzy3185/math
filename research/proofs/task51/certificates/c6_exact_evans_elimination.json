@@ -1,0 +1,79 @@
+{
+  "c6": {
+    "status": "C6_DEGREE10_EVANS_POLYNOMIAL_PROVED",
+    "symmetric_evans_degrees": {
+      "degree_lambda": 32,
+      "degree_S": 4,
+      "degree_P": 4,
+      "term_count": 295
+    },
+    "symmetric_variables": {
+      "S": "z1+z2",
+      "P": "z1*z2"
+    },
+    "reciprocal_relations": [
+      "S(P+1)+aP=0",
+      "P^2+S^2+1-bP=0"
+    ],
+    "elimination": {
+      "squared_evans_degree_P": 16,
+      "squared_evans_degree_y": 32,
+      "product_relation_degree_P": 4,
+      "resultant_degree_y": 108,
+      "content": "1",
+      "factors": [
+        {
+          "degree": 2,
+          "multiplicity": 16,
+          "polynomial": "2*y**2 - 16*y + 13",
+          "roots_in_c6_interval": 0,
+          "irreducible_over_Q": true
+        },
+        {
+          "degree": 4,
+          "multiplicity": 2,
+          "polynomial": "y**4 - 16*y**3 + 68*y**2 - 32*y + 52",
+          "roots_in_c6_interval": 0,
+          "irreducible_over_Q": true
+        },
+        {
+          "degree": 4,
+          "multiplicity": 2,
+          "polynomial": "9*y**4 - 144*y**3 + 708*y**2 - 1056*y + 404",
+          "roots_in_c6_interval": 0,
+          "irreducible_over_Q": true
+        },
+        {
+          "degree": 10,
+          "multiplicity": 2,
+          "polynomial": "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256",
+          "roots_in_c6_interval": 1,
+          "irreducible_over_Q": true
+        },
+        {
+          "degree": 10,
+          "multiplicity": 4,
+          "polynomial": "16*y**10 - 484*y**9 + 5796*y**8 - 34617*y**7 + 105000*y**6 - 135904*y**5 + 7632*y**4 + 60620*y**3 + 57232*y**2 - 52880*y + 64",
+          "roots_in_c6_interval": 0,
+          "irreducible_over_Q": true
+        }
+      ]
+    },
+    "c6_polynomial": "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256",
+    "c6_interval": [
+      "7905369311620327/1000000000000000",
+      "988171163952541/125000000000000"
+    ],
+    "unique_root_in_interval": true,
+    "irreducible_degree": 10,
+    "logical_bridge": "Task 50 proves distinct positive stable roots and an Evans zero in the interval, so P>0 and z1!=z2. Every such zero annihilates the exact resultant. Exactly one irreducible factor has a root in the interval, hence c6 is its unique interval root.",
+    "PSLQ_used_for_acceptance": false
+  },
+  "c10": {
+    "status": "OPEN_SYMBOLIC_GROWTH_STOP",
+    "attempt": "exact transfer and symmetric-Evans construction available",
+    "reason": "No low-degree candidate survived Task 48A validation; an unbounded resultant is prohibited."
+  },
+  "charge_recurrence": "PROMISING_PERIOD8_INSERTION_RELATION_NOT_ELIMINATED",
+  "trace_map": "PROMISING_EXTERIOR_TRACE_COORDINATES_NOT_CLOSED"
+}

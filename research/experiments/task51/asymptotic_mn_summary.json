@@ -1,0 +1,28 @@
+{
+  "status": "COMMON_NONZERO_RESIDUE_LIMIT_STRONGLY_SUPPORTED_NOT_PROVED",
+  "candidate_limits": {
+    "residue_0": "4+sqrt(10+2*sqrt(5))",
+    "residue_2": "c6",
+    "residue_4": "c6",
+    "residue_6": "c6"
+  },
+  "c6": 7.905369311620327,
+  "evidence_rows": 10,
+  "largest_late_difference_by_residue": {
+    "2": 1.7763568394002505e-15,
+    "4": 1.1562392820962941e-08,
+    "6": 5.57310358129115e-06
+  },
+  "leading_corrections": {
+    "status": "OPEN",
+    "reason": "Several competitive rows are at or below double resolution; Task 51 does not extend n or infer coefficients from unresolved FP64 corrections.",
+    "expected_scale": "slow G6 Floquet multiplier raised to the shortest interface separation",
+    "mod16": "geometry/holonomy-dependent prefactors remain unresolved"
+  },
+  "lower_bound_requirements": [
+    "arbitrary-period crystallization or an equivalent global compactness theorem",
+    "fixed-r multi-slip lower bounds and complete upper-gap eigenvalue counting",
+    "uniform control of mixed and negative charge decompositions"
+  ],
+  "claim_boundary": "These are explicit-family upper bounds and convergence signals, not residue-class global minimality or a theorem about m_n."
+}
