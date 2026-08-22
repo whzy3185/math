@@ -185,11 +185,14 @@ def test_manuscript_freeze():
 def test_no_existing_theorem_statement_modified():
     root = RESEARCH.parent
     result = subprocess.run(
-        ["git", "diff", "--name-only", BASELINE, "--", "research/proofs"],
+        ["git", "diff", "--name-only", "--diff-filter=MDR", BASELINE, "--", "research/proofs"],
         cwd=root,
         check=True,
         capture_output=True,
         text=True,
     )
     changed = [line for line in result.stdout.splitlines() if line]
+    # Later tasks may add their own proof directories.  This Task 49 freeze
+    # guard only rejects modifications, deletions, and renames of pre-existing
+    # proof artifacts outside Task 49.
     assert all(line.startswith("research/proofs/task49/") for line in changed)
