@@ -1,0 +1,18 @@
+{
+  "period": 23,
+  "canonical_q_code": 17553,
+  "q_bits": "10001001001000100000000",
+  "primitive_q_period": 23,
+  "primitive_tau_period": 23,
+  "target_repetition": false,
+  "classification": "CERTIFIED_R_GT_ETA",
+  "certificate": {
+    "status": "CERTIFIED_R_GT_ETA",
+    "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+    "alpha": -1,
+    "rayleigh_lower_bound": "8184682524834662336/999999999911992567",
+    "comparison_rational": "1561/200",
+    "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+  },
+  "task47_selected": true
+}

@@ -1,0 +1,220 @@
+{
+  "schema_version": 1,
+  "status": "COMPLETE_EXACT_CLOSURE",
+  "period": 19,
+  "legal_dihedral_orbits": 7155,
+  "represented_q_words": 262144,
+  "moment_excluded_through_F16": 7145,
+  "F16_survivors": 10,
+  "classification_counts": {
+    "CERTIFIED_R_GT_ETA": 10,
+    "CERTIFIED_R_EQ_ETA": 0,
+    "CERTIFIED_R_LT_ETA": 0,
+    "UNRESOLVED": 0
+  },
+  "primitive_survivors": 10,
+  "target_equalities": [],
+  "survivors": [
+    {
+      "period": 19,
+      "canonical_q_code": 1,
+      "q_bits": "1000000000000000000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": 1,
+        "rayleigh_lower_bound": "8313695096974577276/999999999519111149",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q1.json",
+      "certificate_sha256": "9db807583611b71b9bd6275ef7c5a38cb02b0d74193470f8d4512a7f6ff4db9d"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 73,
+      "q_bits": "1001001000000000000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": 1,
+        "rayleigh_lower_bound": "4131948669261582095/500000000418030692",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q73.json",
+      "certificate_sha256": "10320560c21d3c9616fdeb18600478f55f1374cc6a05d9f629a6e171cbc4c0a0"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 137,
+      "q_bits": "1001000100000000000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": 1,
+        "rayleigh_lower_bound": "8149545289868916688/1000000000456341749",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q137.json",
+      "certificate_sha256": "a2d16b19728c9bed5b5cb86495c026c83c2f6b751bc8245747366ca1e1987e10"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 273,
+      "q_bits": "1000100010000000000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": 1,
+        "rayleigh_lower_bound": "8219579197245024110/999999998695858217",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q273.json",
+      "certificate_sha256": "f67845360b0f70ecdede4f38ce4d6851159676ff727999aaa50fb1b20bd5bc73"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 1041,
+      "q_bits": "1000100000100000000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": -1,
+        "rayleigh_lower_bound": "2065301606191465839/250000000033792483",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q1041.json",
+      "certificate_sha256": "301e93b7d22bfed1b11247c4ce703ce1056d2f9ced69df3f384cf115c5e8d459"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 2065,
+      "q_bits": "1000100000010000000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": -1,
+        "rayleigh_lower_bound": "8274632715012010108/1000000000027750575",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q2065.json",
+      "certificate_sha256": "e67e8a481462905591d4eb25891b6c68d876edfe4a4a1620220b0ccf86a0e6ab"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 4681,
+      "q_bits": "1001001001001000000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": -1,
+        "rayleigh_lower_bound": "4151039764568880030/500000000426027783",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q4681.json",
+      "certificate_sha256": "a3317d054ce32f101312f33e719808dc929fb51fabab17da293de9f8dcd7914d"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 8777,
+      "q_bits": "1001001001000100000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": 1,
+        "rayleigh_lower_bound": "4063000903820124581/500000000421252664",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q8777.json",
+      "certificate_sha256": "aeb357f3ff101f8f99724928c64555a9df217692651a5632e75c59abcb4812e7"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 9289,
+      "q_bits": "1001001000100100000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": 1,
+        "rayleigh_lower_bound": "8130988562487995334/1000000000308224543",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q9289.json",
+      "certificate_sha256": "f1c1dde3c7a552b75e4d3efefdfab8caace2ad750944c32321eb1a829b2c166b"
+    },
+    {
+      "period": 19,
+      "canonical_q_code": 34953,
+      "q_bits": "1001000100010001000",
+      "primitive_q_period": 19,
+      "primitive_tau_period": 19,
+      "target_repetition": false,
+      "classification": "CERTIFIED_R_GT_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_GT_ETA",
+        "method": "exact integer Rayleigh quotient at Bloch endpoint alpha=+1 or -1",
+        "alpha": 1,
+        "rayleigh_lower_bound": "1337451999855584336/166666666353663229",
+        "comparison_rational": "1561/200",
+        "logic": "R(Q)^2 >= Rayleigh > 1561/200 > eta; the last sign is checked exactly in SymPy"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p19_q34953.json",
+      "certificate_sha256": "156362618620776cf6c168c5a182ad40f6f31f5582d84ecab6591bc4ad4d10f8"
+    }
+  ],
+  "coverage_logic": "Every legal orbit is either excluded by the exact F_k>0 implication or appears in this exact survivor classification."
+}

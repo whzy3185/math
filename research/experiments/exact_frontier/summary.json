@@ -1,0 +1,54 @@
+{
+  "schema_version": 1,
+  "status": "P24_EXACT_FRONTIER_CLOSED",
+  "scope": "EXACT FRONTIER CERTIFICATION; FORMAL THEOREM NOT MODIFIED",
+  "periods": [
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "total_legal_dihedral_orbits": 370100,
+  "total_moment_excluded": 369916,
+  "total_F16_survivors": 184,
+  "certificate_resolved_GT": 183,
+  "equalities": [
+    {
+      "period": 24,
+      "canonical_q_code": 1118481,
+      "q_bits": "100010001000100010001000",
+      "primitive_q_period": 4,
+      "primitive_tau_period": 8,
+      "target_repetition": true,
+      "classification": "CERTIFIED_R_EQ_ETA",
+      "certificate": {
+        "status": "CERTIFIED_R_EQ_ETA",
+        "method": "period-8 target theorem plus exact repeated-cell zone folding",
+        "R_squared": "4+sqrt(10+2*sqrt(5))"
+      },
+      "task47_selected": true,
+      "certificate_file": "research/experiments/exact_frontier/certificates/p24_q1118481.json",
+      "certificate_sha256": "d70b19f42a8225187b373166d3460cd4d7c46607f52444b5fe1f3d2238ac0760"
+    }
+  ],
+  "unresolved_count": 0,
+  "task47_selected_survivors": 125,
+  "task48_previously_unselected_counts": {
+    "22": 11,
+    "23": 14,
+    "24": 34
+  },
+  "task48_previously_unselected_resolved": 59,
+  "theorem_candidate": "LOW_PERIOD_OPTIMALITY_P24_CANDIDATE",
+  "source_moment_sha256": "8488c5498eb5e0b5e005faed6e8fe38a7d6c37871cab919345f16e76e3201197",
+  "source_task47_certificate_sha256": "3ede0542b8146af640f3d163ba29abc6c755965799e73960774cd12d22ea5c2b",
+  "repository_head": "981499eceb6e34461c7b6c4d703d677c27674e19",
+  "software": {
+    "python": "3.12.13"
+  },
+  "script_sha256": "a71c9ed7ebbaf0dfd505ff2b125dbb4ba822af04a68b38ef256e42f7cc3e81b7"
+}
