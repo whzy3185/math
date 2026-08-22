@@ -1,0 +1,127 @@
+{
+  "status": "ORDER9_EXACT_1_PLUS_4_PLUS_4_PROVED",
+  "P9": "-(t - 1)*(t**4 - 2*t**3*y**2 + 16*t**3*y - 13*t**3 + t**2*y**4 - 16*t**2*y**3 + 80*t**2*y**2 - 128*t**2*y + 40*t**2 - 2*t*y**2 + 16*t*y - 13*t + 1)*(-t**4 + t**3*y**4 - 16*t**3*y**3 + 80*t**3*y**2 - 128*t**3*y + 38*t**3 - 2*t**2*y**4 + 32*t**2*y**3 - 148*t**2*y**2 + 160*t**2*y - 91*t**2 + t*y**4 - 16*t*y**3 + 80*t*y**2 - 128*t*y + 38*t - 1)",
+  "constant_factor": "t - 1",
+  "Q1": "t**4 - 2*t**3*y**2 + 16*t**3*y - 13*t**3 + t**2*y**4 - 16*t**2*y**3 + 80*t**2*y**2 - 128*t**2*y + 40*t**2 - 2*t*y**2 + 16*t*y - 13*t + 1",
+  "Q2": "t**4 - t**3*y**4 + 16*t**3*y**3 - 80*t**3*y**2 + 128*t**3*y - 38*t**3 + 2*t**2*y**4 - 32*t**2*y**3 + 148*t**2*y**2 - 160*t**2*y + 91*t**2 - t*y**4 + 16*t*y**3 - 80*t*y**2 + 128*t*y - 38*t + 1",
+  "factorization_identity_exact": true,
+  "bezout": {
+    "A_for_Q1": "(-t**3*y**8 + 32*t**3*y**7 - 412*t**3*y**6 + 2720*t**3*y**5 - 9739*t**3*y**4 + 18608*t**3*y**3 - 17880*t**3*y**2 + 6336*t**3*y - 312*t**3 + t**2*y**12 - 48*t**2*y**11 + 1004*t**2*y**10 - 12000*t**2*y**9 + 90353*t**2*y**8 - 445984*t**2*y**7 + 1458544*t**2*y**6 - 3131008*t**2*y**5 + 4283995*t**2*y**4 - 3507632*t**2*y**3 + 1515476*t**2*y**2 - 280736*t**2*y + 11907*t**2 - 2*t*y**12 + 96*t*y**11 - 1996*t*y**10 + 23520*t*y**9 - 172706*t*y**8 + 820288*t*y**7 - 2545684*t*y**6 + 5147104*t*y**5 - 6721233*t*y**4 + 5514512*t*y**3 - 2697698*t*y**2 + 634128*t*y - 30305*t + y**12 - 48*y**11 + 1004*y**10 - 12000*y**9 + 90354*y**8 - 446016*y**7 + 1458926*y**6 - 3133008*y**5 + 4287692*y**4 - 3506368*y**3 + 1514964*y**2 - 284320*y + 15547)/((y**4 - 16*y**3 + 76*y**2 - 96*y + 16)*(y**8 - 32*y**7 + 414*y**6 - 2768*y**5 + 10164*y**4 - 20288*y**3 + 20746*y**2 - 8272*y + 611))",
+    "B_for_Q2": "(t**3*y**8 - 32*t**3*y**7 + 412*t**3*y**6 - 2720*t**3*y**5 + 9739*t**3*y**4 - 18608*t**3*y**3 + 17880*t**3*y**2 - 6336*t**3*y + 312*t**3 - 2*t**2*y**10 + 80*t**2*y**9 - 1349*t**2*y**8 + 12448*t**2*y**7 - 68354*t**2*y**6 + 228400*t**2*y**5 - 460096*t**2*y**4 + 540672*t**2*y**3 - 334508*t**2*y**2 + 87392*t**2*y - 4107*t**2 + t*y**12 - 48*t*y**11 + 1004*t*y**10 - 12000*t*y**9 + 90355*t*y**8 - 446048*t*y**7 + 1459370*t*y**6 - 3136496*t*y**5 + 4303876*t*y**4 - 3546176*t*y**3 + 1552588*t*y**2 - 294496*t*y + 13118*t - 2*y**10 + 80*y**9 - 1350*y**8 + 12480*y**7 - 68756*y**6 + 230880*y**5 - 467761*y**4 + 551696*y**3 - 342480*y**2 + 93312*y - 5771)/((y**4 - 16*y**3 + 76*y**2 - 96*y + 16)*(y**8 - 32*y**7 + 414*y**6 - 2768*y**5 + 10164*y**4 - 20288*y**3 + 20746*y**2 - 8272*y + 611))",
+    "identity": "A(E)Q1(E)+B(E)Q2(E)=1",
+    "exact": true
+  },
+  "projection_definition": {
+    "g_k": "f_(k+1)-f_k",
+    "u": "B(E) Q2(E) g",
+    "v": "A(E) Q1(E) g",
+    "reconstruction": "g=u+v",
+    "u_recurrence": "Q1(E)u=0",
+    "v_recurrence": "Q2(E)v=0"
+  },
+  "reciprocal_reductions": [
+    {
+      "factor": "Q1",
+      "quartic": "t**4 - 2*t**3*y**2 + 16*t**3*y - 13*t**3 + t**2*y**4 - 16*t**2*y**3 + 80*t**2*y**2 - 128*t**2*y + 40*t**2 - 2*t*y**2 + 16*t*y - 13*t + 1",
+      "quadratic_in_x": "x**2 - 2*x*y**2 + 16*x*y - 13*x + y**4 - 16*y**3 + 80*y**2 - 128*y + 38",
+      "discriminant": "-12*y**2 + 96*y + 17",
+      "lift_identity_exact": true
+    },
+    {
+      "factor": "Q2",
+      "quartic": "t**4 - t**3*y**4 + 16*t**3*y**3 - 80*t**3*y**2 + 128*t**3*y - 38*t**3 + 2*t**2*y**4 - 32*t**2*y**3 + 148*t**2*y**2 - 160*t**2*y + 91*t**2 - t*y**4 + 16*t*y**3 - 80*t*y**2 + 128*t*y - 38*t + 1",
+      "quadratic_in_x": "x**2 - x*y**4 + 16*x*y**3 - 80*x*y**2 + 128*x*y - 38*x + 2*y**4 - 32*y**3 + 148*y**2 - 160*y + 89",
+      "discriminant": "(y**2 - 12*y + 34)*(y**2 - 4*y + 2)*(y**4 - 16*y**3 + 76*y**2 - 96*y + 16)",
+      "lift_identity_exact": true
+    }
+  ],
+  "proof_note": "The projection follows in Q(y)[E] from Bezout and Q1(E)Q2(E)g=0; no fitted coefficient enters it.",
+  "sequence_checks": [
+    {
+      "family": "G6",
+      "alpha": -1,
+      "direct_prefix_terms": 9,
+      "extended_terms": 32,
+      "P9_checks": 20,
+      "Q1Q2_delta_checks": 23,
+      "exact": true,
+      "prefix_digests": [
+        "23d2933255a12d06b2145404b761254c6732fa865f4f4c273b2fa15a27e92107",
+        "31f5a758125f0a25490dbd38b0793ab4c160941df61e2c09131134bc79909172",
+        "3b88b1dacac1b35f9a5da83a11f4d0c00d54f49c11e48542fc724468196313d5",
+        "81600f10ca46abfdd30a1aa51281c750cca46fcd7b46bd887ac46393ce40a809",
+        "e3613ff7c4cf54a25d4229ecb72267e94b9e38973ef5840dd261a86c70a8fe49",
+        "04774cde7842f6f36330e2b207b8f613115b0473247c116a657df1fbc0d9bab5",
+        "eea737f95e8b4a82c54eb221855d64fa77c9508aa02a1ecd7f35c3e326223856",
+        "4889c0910e733f90d87037647ecf4b86aef430c77cddeeedfc59c2ef08e13ec1",
+        "1eb80dd8c39f32a11575bb3a0847cf9c3ac101e912f326a07e79d100a5f74e9e"
+      ]
+    },
+    {
+      "family": "G6",
+      "alpha": 1,
+      "direct_prefix_terms": 9,
+      "extended_terms": 32,
+      "P9_checks": 20,
+      "Q1Q2_delta_checks": 23,
+      "exact": true,
+      "prefix_digests": [
+        "4105142e6907eec17e2556322f9067bec4a1b20b74347a91cee2dabb21321b6c",
+        "87df80a20f6602326ad3590314f2aee090367812de483a9b4c62dc8a59743cfb",
+        "fcf1d272f1592c244a7e903dd38f2487ec7202171bf1f21a7814a9759c29bf25",
+        "f79694570c9aa9c6b1c2b5ade7dd96b2f6d06c8dd7543689a10f272926067310",
+        "f1238774beca708f4b1c26d5c7f109acf6a1d2a38734fee195367bfb5264a2f8",
+        "995e6f36fb4151549667785d54052caf601b20ddee271309a5febf18dc82e84c",
+        "3e1b81e4bcf6f8b40cc5341a2ec2e6e23030014b5a480adad455dfff846cd126",
+        "5a5b179bd8152ca10cc58aeee6a7951318bba260a3fcbff7cbf7682022760a64",
+        "bd7b81b68333432f7bc5a2e8e350997dbfd44da979641691abcdaf26c473435e"
+      ]
+    },
+    {
+      "family": "G10",
+      "alpha": -1,
+      "direct_prefix_terms": 9,
+      "extended_terms": 32,
+      "P9_checks": 20,
+      "Q1Q2_delta_checks": 23,
+      "exact": true,
+      "prefix_digests": [
+        "9371861a255d7763f28aa0819af1f4bf5f02c7ad74dd262758661062774f935c",
+        "170fd35f9aff1fcb263276bbb5b1940dd1047f9a9fd54d2649870ea18d320ce9",
+        "5bb4ecc66fe98fc02ba37dea37de17a3730d25adc0864ff84a8854976eb8ad3a",
+        "423c07232e83689f2eadafda0ffd036d9a8c535e0ba26c37f674a61a3443121f",
+        "54fd9315754558a6395e8398aa243864aa71f4cec2fb2974ead8f720bd49ed00",
+        "d5ecac96c6e6f19610a3ff8e5d21e4f8b15886d95559c868bcdefb60b5e1ca50",
+        "9933913bd525b41ef2179d405905bb47354528d6bd6ad00c9a12c3b69a7c2689",
+        "80550557b3b4f8dc9f0ab62b1aeee78786adb133ec57d720b572e9e4035989e5",
+        "e630cd52a7cd53806ea16548f2c0063faa1cdc0f0eb3721ec5e08f4387889a41"
+      ]
+    },
+    {
+      "family": "G10",
+      "alpha": 1,
+      "direct_prefix_terms": 9,
+      "extended_terms": 32,
+      "P9_checks": 20,
+      "Q1Q2_delta_checks": 23,
+      "exact": true,
+      "prefix_digests": [
+        "ef0a5d62dde7a1088de75c90cac53e0751be8ac2681f14574d19ecd07eaa02e6",
+        "de11b024bf180a5fe38c100c20cce286a9c3cd1431d5a74ee9156126491cf542",
+        "5a1d3fe9153bb89e7d7bfa6bcfa343756811fda1b9c87c8940e705d22ce9df0c",
+        "053ca98054f8645d4680a83febb3f52b9ced6f12b95c606ae7a8af4682c08b88",
+        "d9a2e8631a41d21e0b70c490313ddb0889ccd0bc39541136ef486a6334398a28",
+        "8cd6b0e803a012326f35ea6bafd1995f229af32ad0808473057be516e99759b6",
+        "6ab1b1c9e5a0ccd9ec3e6e6fb7082c4c34b6c0bf4c7c2394988593b71f7c5587",
+        "09d205a88ca5436ce978fd5d24375dfb81ae2b6c582617c633bdf87296e0b5ee",
+        "f4d817284cf3f052e3192f91a2f9d511318970dec3f1d79057472386af2c3592"
+      ]
+    }
+  ],
+  "shifted_sign_summary": "STRONG",
+  "diagnostic_classifications": {
+    "Chebyshev_cosh": "WEAK",
+    "dominant_mode": "PROMISING",
+    "closure_Hankel": "FALSIFIED"
+  }
+}
