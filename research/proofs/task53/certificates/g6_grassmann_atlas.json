@@ -1,0 +1,282 @@
+{
+  "status": "GATE_A2_PASS",
+  "evidence": "COMPUTER_ASSISTED_PROVED",
+  "energy_interval": [
+    "988171163952541/125000000000000",
+    "16"
+  ],
+  "atlas": [
+    {
+      "name": "outer-left-013",
+      "interval": [
+        "988171163952541/125000000000000",
+        "31663/4000"
+      ],
+      "plane_records": [
+        {
+          "plane": "right stable",
+          "chosen_minor": "23",
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "section": "P**2*lambda**2 - P**2*lambda - 2*P**2 - P*S*lambda**6 + P*S*lambda**5 + 13*P*S*lambda**4 - 8*P*S*lambda**3 - 38*P*S*lambda**2 + 13*P*S*lambda + 7*P*S + P*lambda**10 - P*lambda**9 - 24*P*lambda**8 + 16*P*lambda**7 + 179*P*lambda**6 - 90*P*lambda**5 - 452*P*lambda**4 + 178*P*lambda**3 + 215*P*lambda**2 - 56*P*lambda - 24*P - S**2*lambda**2 - 4*S**2*lambda - S**2 + 3*S*lambda**6 + 7*S*lambda**5 - 19*S*lambda**4 - 46*S*lambda**3 + 5*S*lambda**2 + 19*S*lambda + 3*S - 2*lambda**10 - 3*lambda**9 + 31*lambda**8 + 38*lambda**7 - 149*lambda**6 - 118*lambda**5 + 234*lambda**4 + 38*lambda**3 - 54*lambda**2 - 7*lambda + 2",
+          "physical_numerator": "P**4*lambda**2 - P**4*lambda - 2*P**4 - P**3*lambda**10 + P**3*lambda**9 + 18*P**3*lambda**8 - 16*P**3*lambda**7 - 118*P**3*lambda**6 + 77*P**3*lambda**5 + 339*P**3*lambda**4 - 134*P**3*lambda**3 - 389*P**3*lambda**2 + 111*P**3*lambda + 63*P**3 - 5*P**2*lambda**9 - P**2*lambda**8 + 90*P**2*lambda**7 + 21*P**2*lambda**6 - 498*P**2*lambda**5 - 92*P**2*lambda**4 + 844*P**2*lambda**3 + 35*P**2*lambda**2 - 380*P**2*lambda - 87*P**2 + 3*P*lambda**10 + 7*P*lambda**9 - 48*P*lambda**8 - 112*P*lambda**7 + 234*P*lambda**6 + 539*P*lambda**5 - 305*P*lambda**4 - 648*P*lambda**3 + 124*P*lambda**2 + 177*P*lambda + 19*P - 2*lambda**10 - 3*lambda**9 + 31*lambda**8 + 38*lambda**7 - 149*lambda**6 - 118*lambda**5 + 234*lambda**4 + 38*lambda**3 - 54*lambda**2 - 7*lambda + 2",
+          "physical_denominator": "P**2 + 2*P + 1",
+          "resultant_factors": [
+            {
+              "polynomial": "3*y**2 - 24*y + 2",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 1
+            },
+            {
+              "polynomial": "2*y**2 - 16*y + 13",
+              "degree": 2,
+              "multiplicity": 8,
+              "roots_in_task_interval": 0
+            },
+            {
+              "polynomial": "16*y**6 - 264*y**5 + 1473*y**4 - 3216*y**3 + 2188*y**2 - 368*y + 16",
+              "degree": 6,
+              "multiplicity": 2,
+              "roots_in_task_interval": 0
+            },
+            {
+              "polynomial": "16*y**16 - 760*y**15 + 17393*y**14 - 261384*y**13 + 2884672*y**12 - 23950608*y**11 + 147236392*y**10 - 652159200*y**9 + 2017950496*y**8 - 4193069376*y**7 + 5512799888*y**6 - 4145651712*y**5 + 1456831360*y**4 - 111763456*y**3 - 11450112*y**2 + 577536*y + 65536",
+              "degree": 16,
+              "multiplicity": 1,
+              "roots_in_task_interval": 0
+            }
+          ],
+          "candidate_factors": [
+            {
+              "polynomial": "3*y**2 - 24*y + 2",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 1
+            }
+          ],
+          "normalized_chart_lower_bound": "1"
+        },
+        {
+          "plane": "left unstable",
+          "chosen_minor": "01",
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "section": "2*P**2*lambda**8 - 3*P**2*lambda**7 - 23*P**2*lambda**6 + 34*P**2*lambda**5 + 57*P**2*lambda**4 - 84*P**2*lambda**3 + 8*P**2*lambda**2 + 8*P**2*lambda - P**2 - 8*P*S*lambda**4 + 6*P*S*lambda**3 + 34*P*S*lambda**2 - 4*P*S*lambda - 3*P*S + 6*P*lambda**8 - 3*P*lambda**7 - 75*P*lambda**6 + 30*P*lambda**5 + 253*P*lambda**4 - 68*P*lambda**3 - 192*P*lambda**2 + 16*P*lambda + 15*P",
+          "physical_numerator": "2*P**3*lambda**8 - 3*P**3*lambda**7 - 23*P**3*lambda**6 + 34*P**3*lambda**5 + 57*P**3*lambda**4 - 84*P**3*lambda**3 + 8*P**3*lambda**2 + 8*P**3*lambda - P**3 - 8*P**2*lambda**8 + 6*P**2*lambda**7 + 98*P**2*lambda**6 - 40*P**2*lambda**5 - 344*P**2*lambda**4 - 10*P**2*lambda**3 + 306*P**2*lambda**2 - 28*P**2*lambda - 25*P**2 + 6*P*lambda**8 - 3*P*lambda**7 - 75*P*lambda**6 + 30*P*lambda**5 + 253*P*lambda**4 - 68*P*lambda**3 - 192*P*lambda**2 + 16*P*lambda + 15*P",
+          "physical_denominator": "P + 1",
+          "resultant_factors": [
+            {
+              "polynomial": "2*y**2 - 16*y + 13",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 0
+            },
+            {
+              "polynomial": "3*y**2 - 24*y + 2",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 1
+            },
+            {
+              "polynomial": "16*y**6 - 264*y**5 + 1473*y**4 - 3216*y**3 + 2188*y**2 - 368*y + 16",
+              "degree": 6,
+              "multiplicity": 2,
+              "roots_in_task_interval": 0
+            },
+            {
+              "polynomial": "16*y**16 - 760*y**15 + 17393*y**14 - 261384*y**13 + 2884672*y**12 - 23950608*y**11 + 147236392*y**10 - 652159200*y**9 + 2017950496*y**8 - 4193069376*y**7 + 5512799888*y**6 - 4145651712*y**5 + 1456831360*y**4 - 111763456*y**3 - 11450112*y**2 + 577536*y + 65536",
+              "degree": 16,
+              "multiplicity": 1,
+              "roots_in_task_interval": 0
+            }
+          ],
+          "candidate_factors": [
+            {
+              "polynomial": "3*y**2 - 24*y + 2",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 1
+            }
+          ],
+          "normalized_chart_lower_bound": "1"
+        }
+      ]
+    },
+    {
+      "name": "bridge-012",
+      "interval": [
+        "79157/10000",
+        "79159/10000"
+      ],
+      "plane_records": [
+        {
+          "plane": "right stable",
+          "chosen_minor": "01",
+          "cofactor_rows": [
+            0,
+            1,
+            2
+          ],
+          "section": "2*P*lambda**8 - P*lambda**7 - 29*P*lambda**6 + 11*P*lambda**5 + 125*P*lambda**4 - 13*P*lambda**3 - 162*P*lambda**2 - 57*P*lambda - P - 4*S*lambda**4 + S*lambda**3 + 12*S*lambda**2 + 9*S*lambda - 3*S + 2*lambda**8 - 19*lambda**6 - 7*lambda**5 + 37*lambda**4 + 21*lambda**3 + 14*lambda**2 + 35*lambda + 15",
+          "physical_section_on_bridge": {
+            "lower": "37215527374634454788819933641363/250000000000000000000000000000",
+            "upper": "168722186820554299195960881504369/1000000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          },
+          "section_excludes_zero": true,
+          "normalized_chart_lower_bound": "1"
+        },
+        {
+          "plane": "left unstable",
+          "chosen_minor": "02",
+          "cofactor_rows": [
+            0,
+            1,
+            2
+          ],
+          "section": "2*P**2*lambda**8 + 2*P**2*lambda**7 - 17*P**2*lambda**6 - 10*P**2*lambda**5 + 27*P**2*lambda**4 + 8*P**2*lambda**3 + 16*P**2*lambda**2 - 18*P**2*lambda - 5*P**2 - 2*P*S*lambda**4 - 8*P*S*lambda**3 - 6*P*S*lambda**2 + 10*P*S*lambda + P*S + 2*P*lambda**7 + 3*P*lambda**6 - 26*P*lambda**5 - 33*P*lambda**4 + 92*P*lambda**3 + 72*P*lambda**2 - 98*P*lambda + 3*P",
+          "physical_section_on_bridge": {
+            "lower": "-95682972675011626384200640797/15625000000000000000000000000",
+            "upper": "-24936928968874033994088618671/1000000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          },
+          "section_excludes_zero": true,
+          "normalized_chart_lower_bound": "1"
+        }
+      ]
+    },
+    {
+      "name": "outer-right-013",
+      "interval": [
+        "158317/20000",
+        "16"
+      ],
+      "plane_records": [
+        {
+          "plane": "right stable",
+          "chosen_minor": "23",
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "section": "P**2*lambda**2 - P**2*lambda - 2*P**2 - P*S*lambda**6 + P*S*lambda**5 + 13*P*S*lambda**4 - 8*P*S*lambda**3 - 38*P*S*lambda**2 + 13*P*S*lambda + 7*P*S + P*lambda**10 - P*lambda**9 - 24*P*lambda**8 + 16*P*lambda**7 + 179*P*lambda**6 - 90*P*lambda**5 - 452*P*lambda**4 + 178*P*lambda**3 + 215*P*lambda**2 - 56*P*lambda - 24*P - S**2*lambda**2 - 4*S**2*lambda - S**2 + 3*S*lambda**6 + 7*S*lambda**5 - 19*S*lambda**4 - 46*S*lambda**3 + 5*S*lambda**2 + 19*S*lambda + 3*S - 2*lambda**10 - 3*lambda**9 + 31*lambda**8 + 38*lambda**7 - 149*lambda**6 - 118*lambda**5 + 234*lambda**4 + 38*lambda**3 - 54*lambda**2 - 7*lambda + 2",
+          "physical_numerator": "P**4*lambda**2 - P**4*lambda - 2*P**4 - P**3*lambda**10 + P**3*lambda**9 + 18*P**3*lambda**8 - 16*P**3*lambda**7 - 118*P**3*lambda**6 + 77*P**3*lambda**5 + 339*P**3*lambda**4 - 134*P**3*lambda**3 - 389*P**3*lambda**2 + 111*P**3*lambda + 63*P**3 - 5*P**2*lambda**9 - P**2*lambda**8 + 90*P**2*lambda**7 + 21*P**2*lambda**6 - 498*P**2*lambda**5 - 92*P**2*lambda**4 + 844*P**2*lambda**3 + 35*P**2*lambda**2 - 380*P**2*lambda - 87*P**2 + 3*P*lambda**10 + 7*P*lambda**9 - 48*P*lambda**8 - 112*P*lambda**7 + 234*P*lambda**6 + 539*P*lambda**5 - 305*P*lambda**4 - 648*P*lambda**3 + 124*P*lambda**2 + 177*P*lambda + 19*P - 2*lambda**10 - 3*lambda**9 + 31*lambda**8 + 38*lambda**7 - 149*lambda**6 - 118*lambda**5 + 234*lambda**4 + 38*lambda**3 - 54*lambda**2 - 7*lambda + 2",
+          "physical_denominator": "P**2 + 2*P + 1",
+          "resultant_factors": [
+            {
+              "polynomial": "3*y**2 - 24*y + 2",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 1
+            },
+            {
+              "polynomial": "2*y**2 - 16*y + 13",
+              "degree": 2,
+              "multiplicity": 8,
+              "roots_in_task_interval": 0
+            },
+            {
+              "polynomial": "16*y**6 - 264*y**5 + 1473*y**4 - 3216*y**3 + 2188*y**2 - 368*y + 16",
+              "degree": 6,
+              "multiplicity": 2,
+              "roots_in_task_interval": 0
+            },
+            {
+              "polynomial": "16*y**16 - 760*y**15 + 17393*y**14 - 261384*y**13 + 2884672*y**12 - 23950608*y**11 + 147236392*y**10 - 652159200*y**9 + 2017950496*y**8 - 4193069376*y**7 + 5512799888*y**6 - 4145651712*y**5 + 1456831360*y**4 - 111763456*y**3 - 11450112*y**2 + 577536*y + 65536",
+              "degree": 16,
+              "multiplicity": 1,
+              "roots_in_task_interval": 0
+            }
+          ],
+          "candidate_factors": [
+            {
+              "polynomial": "3*y**2 - 24*y + 2",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 1
+            }
+          ],
+          "normalized_chart_lower_bound": "1"
+        },
+        {
+          "plane": "left unstable",
+          "chosen_minor": "01",
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "section": "2*P**2*lambda**8 - 3*P**2*lambda**7 - 23*P**2*lambda**6 + 34*P**2*lambda**5 + 57*P**2*lambda**4 - 84*P**2*lambda**3 + 8*P**2*lambda**2 + 8*P**2*lambda - P**2 - 8*P*S*lambda**4 + 6*P*S*lambda**3 + 34*P*S*lambda**2 - 4*P*S*lambda - 3*P*S + 6*P*lambda**8 - 3*P*lambda**7 - 75*P*lambda**6 + 30*P*lambda**5 + 253*P*lambda**4 - 68*P*lambda**3 - 192*P*lambda**2 + 16*P*lambda + 15*P",
+          "physical_numerator": "2*P**3*lambda**8 - 3*P**3*lambda**7 - 23*P**3*lambda**6 + 34*P**3*lambda**5 + 57*P**3*lambda**4 - 84*P**3*lambda**3 + 8*P**3*lambda**2 + 8*P**3*lambda - P**3 - 8*P**2*lambda**8 + 6*P**2*lambda**7 + 98*P**2*lambda**6 - 40*P**2*lambda**5 - 344*P**2*lambda**4 - 10*P**2*lambda**3 + 306*P**2*lambda**2 - 28*P**2*lambda - 25*P**2 + 6*P*lambda**8 - 3*P*lambda**7 - 75*P*lambda**6 + 30*P*lambda**5 + 253*P*lambda**4 - 68*P*lambda**3 - 192*P*lambda**2 + 16*P*lambda + 15*P",
+          "physical_denominator": "P + 1",
+          "resultant_factors": [
+            {
+              "polynomial": "2*y**2 - 16*y + 13",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 0
+            },
+            {
+              "polynomial": "3*y**2 - 24*y + 2",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 1
+            },
+            {
+              "polynomial": "16*y**6 - 264*y**5 + 1473*y**4 - 3216*y**3 + 2188*y**2 - 368*y + 16",
+              "degree": 6,
+              "multiplicity": 2,
+              "roots_in_task_interval": 0
+            },
+            {
+              "polynomial": "16*y**16 - 760*y**15 + 17393*y**14 - 261384*y**13 + 2884672*y**12 - 23950608*y**11 + 147236392*y**10 - 652159200*y**9 + 2017950496*y**8 - 4193069376*y**7 + 5512799888*y**6 - 4145651712*y**5 + 1456831360*y**4 - 111763456*y**3 - 11450112*y**2 + 577536*y + 65536",
+              "degree": 16,
+              "multiplicity": 1,
+              "roots_in_task_interval": 0
+            }
+          ],
+          "candidate_factors": [
+            {
+              "polynomial": "3*y**2 - 24*y + 2",
+              "degree": 2,
+              "multiplicity": 4,
+              "roots_in_task_interval": 1
+            }
+          ],
+          "normalized_chart_lower_bound": "1"
+        }
+      ]
+    }
+  ],
+  "chart_count": 3,
+  "coverage": "the full closed task interval, including both endpoints and the repeated-multiplier energy",
+  "uncovered_points": [],
+  "normalization": "Within each chart every Plucker section is divided by its proved nonzero chosen coordinate. The chosen coordinate is therefore exactly 1 in that affine chart.",
+  "transition_relation": "On each nonempty overlap the two affine representatives differ by the exact ratio of their chosen Plucker sections; both denominator sections are nonzero there.",
+  "stable_branch": "P is the small root of P+P^-1=t_large, where t_large is the larger root of (t+2)(t-b)+a^2=0; S=-aP/(P+1).",
+  "branch_selector": "larger_t_smaller_P",
+  "physical_matching": "The unsquared G6 condition is (Lambda^2 D)(U_left) wedge S_right=0, with cut [-8,14), left bulk cell [-16,-8), right bulk cell [14,22), and the orientation encoded by tau_window(6).",
+  "orientation": "forward G6: B_0 on the left and B_2 on the right",
+  "reflection": "Index reflection is a unitary permutation of ell2(Z), reverses the cut, and exchanges the left unstable/right stable planes. The exterior pairing changes only by a nonzero sign.",
+  "translation_sector": "For gap g=6 the exact Task 52 rule sigma(g-4)=g-4 mod 4 gives B_0 -> B_2. Absolute simultaneous translations are permutation conjugacies.",
+  "extraneous_branch_boundary": "The squared resultant includes every physical zero but also roots from the other P branch, cofactor-section degeneracy, lambda-sign squaring, and cleared denominators. The sole chart candidate 3*y^2-24*y+2 is the rows-013 cofactor-section degeneracy and is covered by the independently nonzero rows-012 bridge chart.",
+  "checks": {
+    "candidate_interval_isolates_exact_root": true,
+    "one_candidate_factor_each": true,
+    "same_candidate_factor": true,
+    "candidate_is_inside_bridge_only": true,
+    "bridge_sections_nonzero": true,
+    "left_overlap_nonempty": true,
+    "right_overlap_nonempty": true,
+    "task_interval_ordered": true,
+    "defect_transfer_unimodular": true
+  }
+}

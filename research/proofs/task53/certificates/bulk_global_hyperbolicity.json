@@ -1,0 +1,86 @@
+{
+  "status": "GATE_A1_PASS",
+  "evidence": "PROVED",
+  "energy_interval": [
+    "988171163952541/125000000000000",
+    "16"
+  ],
+  "characteristic_polynomial": "z**4 + z**3*(-2*y**2 + 16*y - 13) + z**2*(y**4 - 16*y**3 + 80*y**2 - 128*y + 40) + z*(-2*y**2 + 16*y - 13) + 1",
+  "reciprocal_reduction": "w**2 + w*(-2*y**2 + 16*y - 13) + y**4 - 16*y**3 + 80*y**2 - 128*y + 38",
+  "w_discriminant": "-12*y**2 + 96*y + 17",
+  "w_plus_2_polynomial": "y**4 - 16*y**3 + 76*y**2 - 96*y + 16",
+  "w_minus_2_polynomial": "(y**2 - 12*y + 34)*(y**2 - 4*y + 2)",
+  "z_discriminant": "(y**2 - 12*y + 34)*(y**2 - 4*y + 2)*(12*y**2 - 96*y - 17)**2*(y**4 - 16*y**3 + 76*y**2 - 96*y + 16)",
+  "eta": "sqrt(2*sqrt(5) + 10) + 4",
+  "critical_energy": "4 + sqrt(627)/6",
+  "critical_energy_decimal": "8.17332800851630480447968852962",
+  "critical_repeated_w": "95/12",
+  "critical_records": [
+    {
+      "factor": "y**2 - 12*y + 34",
+      "multiplicity_in_z_discriminant": 1,
+      "degree": 2,
+      "roots_in_closed_task_interval": 0
+    },
+    {
+      "factor": "y**2 - 4*y + 2",
+      "multiplicity_in_z_discriminant": 1,
+      "degree": 2,
+      "roots_in_closed_task_interval": 0
+    },
+    {
+      "factor": "12*y**2 - 96*y - 17",
+      "multiplicity_in_z_discriminant": 2,
+      "degree": 2,
+      "roots_in_closed_task_interval": 1
+    },
+    {
+      "factor": "y**4 - 16*y**3 + 76*y**2 - 96*y + 16",
+      "multiplicity_in_z_discriminant": 1,
+      "degree": 4,
+      "roots_in_closed_task_interval": 0
+    }
+  ],
+  "root_geometry": [
+    {
+      "interval": "[988171163952541/125000000000000, 4 + sqrt(627)/6)",
+      "w_type": "two distinct real roots, both greater than 2",
+      "z_type": "four distinct positive real reciprocal roots",
+      "stable_dimension": 2,
+      "unstable_dimension": 2
+    },
+    {
+      "interval": "{4 + sqrt(627)/6}",
+      "w_type": "double root 95/12",
+      "z_type": "one stable and one unstable positive root, each algebraic multiplicity two",
+      "stable_dimension": 2,
+      "unstable_dimension": 2
+    },
+    {
+      "interval": "(4 + sqrt(627)/6, 16]",
+      "w_type": "nonreal conjugate pair",
+      "z_type": "reciprocal-conjugate quadruple off the unit circle",
+      "stable_dimension": 2,
+      "unstable_dimension": 2
+    }
+  ],
+  "unit_circle_argument": "For |z|=1, w=z+z^-1 lies in [-2,2]. At c6_upper both real w roots exceed 2. No root can enter [-2,2] before the sole w-discriminant event because the endpoint polynomials have no root above eta. At the event w=95/12; afterwards w is nonreal.",
+  "checks": {
+    "reciprocal_coefficients": true,
+    "palindromic_reduction": true,
+    "w_discriminant": true,
+    "plus_endpoint_is_eta_polynomial": true,
+    "minus_endpoint_factorization": true,
+    "z_discriminant_complete": true,
+    "only_one_discriminant_root_in_interval": true,
+    "critical_energy_exact": true,
+    "critical_w_exact": true,
+    "c6_upper_above_eta": true,
+    "c6_upper_below_critical": true,
+    "critical_below_16": true,
+    "w_roots_real_at_c6_upper": true,
+    "smaller_w_root_above_2_base": true,
+    "smaller_w_root_above_2_square": true,
+    "critical_repeated_w_above_2": true
+  }
+}

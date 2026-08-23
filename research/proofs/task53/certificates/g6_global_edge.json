@@ -1,0 +1,111 @@
+{
+  "status": "GATE_A3_PASS_G6_GLOBAL_EDGE_PROVED",
+  "evidence": "COMPUTER_ASSISTED_PROVED",
+  "theorem": "sup sigma(H6)=c6 and sigma(H6) intersect (c6,16] is empty",
+  "c6_interval": [
+    "7905369311620327/1000000000000000",
+    "988171163952541/125000000000000"
+  ],
+  "global_exclusion_interval": [
+    "988171163952541/125000000000000",
+    "16"
+  ],
+  "factor_records": [
+    {
+      "degree": 2,
+      "multiplicity": 16,
+      "polynomial": "2*y**2 - 16*y + 13",
+      "irreducible_over_Q": true,
+      "roots_in_global_exclusion_interval": 0
+    },
+    {
+      "degree": 4,
+      "multiplicity": 2,
+      "polynomial": "y**4 - 16*y**3 + 68*y**2 - 32*y + 52",
+      "irreducible_over_Q": true,
+      "roots_in_global_exclusion_interval": 0
+    },
+    {
+      "degree": 4,
+      "multiplicity": 2,
+      "polynomial": "9*y**4 - 144*y**3 + 708*y**2 - 1056*y + 404",
+      "irreducible_over_Q": true,
+      "roots_in_global_exclusion_interval": 0
+    },
+    {
+      "degree": 10,
+      "multiplicity": 2,
+      "polynomial": "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256",
+      "irreducible_over_Q": true,
+      "roots_in_global_exclusion_interval": 1
+    },
+    {
+      "degree": 10,
+      "multiplicity": 4,
+      "polynomial": "16*y**10 - 484*y**9 + 5796*y**8 - 34617*y**7 + 105000*y**6 - 135904*y**5 + 7632*y**4 + 60620*y**3 + 57232*y**2 - 52880*y + 64",
+      "irreducible_over_Q": true,
+      "roots_in_global_exclusion_interval": 1
+    }
+  ],
+  "candidate_records": [
+    {
+      "label": "gap2_physical_root_on_wrong_branch",
+      "interval": [
+        "8080985802104273/1000000000000000",
+        "4040492901052137/500000000000000"
+      ],
+      "resultant_factors": [
+        "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256"
+      ],
+      "unsquared_g6_matching": {
+        "lower": "-8362762401395322424628954595615433141079/500000000000000000000000000000",
+        "upper": "-8362759240435040227417741939929556830821/500000000000000000000000000000",
+        "format": "30-decimal outward rational enclosure"
+      },
+      "matching_excludes_zero": true,
+      "cofactor_rows": [
+        0,
+        1,
+        3
+      ],
+      "all_vectors_valid": true,
+      "classification": "NONPHYSICAL_FOR_G6"
+    },
+    {
+      "label": "secondary_elimination_branch",
+      "interval": [
+        "406992828166963/50000000000000",
+        "101748207041741/12500000000000"
+      ],
+      "resultant_factors": [
+        "16*y**10 - 484*y**9 + 5796*y**8 - 34617*y**7 + 105000*y**6 - 135904*y**5 + 7632*y**4 + 60620*y**3 + 57232*y**2 - 52880*y + 64"
+      ],
+      "unsquared_g6_matching": {
+        "lower": "-9646322659355383800530837161791302703671/500000000000000000000000000000",
+        "upper": "-19292398194159317615673354336232538613017/1000000000000000000000000000000",
+        "format": "30-decimal outward rational enclosure"
+      },
+      "matching_excludes_zero": true,
+      "cofactor_rows": [
+        0,
+        1,
+        3
+      ],
+      "all_vectors_valid": true,
+      "classification": "NONPHYSICAL_FOR_G6"
+    }
+  ],
+  "local_bridge": "Task 50's exact-rational interval Evans certificate has one simple zero in the c6 interval; its fixed-sign derivative excludes every further zero through c6_upper.",
+  "global_argument": "Every physical unsquared zero annihilates the exact stable-branch resultant. Sturm counting finds exactly two candidates on [c6_upper,16], and validated unsquared matching excludes both. The repeated-multiplier energy is represented by the confluent symmetric quotient and is not a resultant candidate. Finally ||H6||<=4 gives y=lambda^2<=16.",
+  "gap2_explanation": "The first candidate is physical for gap2, but the G6 defect transfer and sector orientation give a strictly nonzero unsquared determinant on its isolating interval.",
+  "proof_boundary": "Resultants provide candidate completeness only. Physical classification uses unsquared matching in certified Grassmann charts; no decimal eigenvalue is an acceptance condition.",
+  "checks": {
+    "exactly_two_resultant_candidates": true,
+    "both_candidate_intervals_isolate_one_factor_root": true,
+    "both_unsquared_matchings_nonzero": true,
+    "all_candidate_charts_valid": true,
+    "local_c6_unique_root_inherited": true,
+    "local_interval_matches": true,
+    "operator_norm_cap": true
+  }
+}
