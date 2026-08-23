@@ -4,11 +4,11 @@
 
 entry HEAD: `ac4c69b796c9dc14d1307a092d1e0faa093081f2`
 
-final HEAD: recorded after final verification and push
+final HEAD: final verification commit (reported after push)
 
 branch: `agent/target-a-discovery-snapshot`
 
-tests: baseline `373 passed, 3 skipped, 20 subtests`
+tests: final `437 passed, 3 skipped, 20 subtests`
 
 manuscript freeze: English `59e3a8f...`; Chinese `57ae03f...`; unchanged
 
@@ -394,31 +394,31 @@ hostile editor: no manuscript integration before fixed-r cap
 
 ## 30. Verification
 
-full tests: pending final run
+full tests: `437 passed, 3 skipped, 20 subtests passed`
 
-Task52: pending final run
+Task52: 64 passed; verifier PASS
 
-Task51: baseline PASS
+Task51: verifier PASS
 
-Task50: baseline PASS
+Task50: verifier PASS
 
-Task49: baseline PASS
+Task49: verifier PASS
 
-Task48A: baseline PASS
+Task48A: verifier PASS
 
-Task47: baseline PASS
+Task47: verifier PASS
 
-minimality: baseline PASS
+minimality: PASS
 
-computational evidence: baseline PASS
+computational evidence: PASS
 
-submission artifact: baseline PASS
+submission artifact: PASS
 
 manuscript freeze: PASS
 
 ## 31. Git
 
-commits: pending final logical commits
+commits: `737e9a5`, `3bacbd7`, and final verification commit
 
 remote HEAD: pending push
 
