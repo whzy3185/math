@@ -1,0 +1,20 @@
+{
+  "status": "P24_C6_BOUNDED_AUDIT_COMPLETE",
+  "primitive_sub8_count": 13,
+  "target_period8_rows": 1,
+  "non_target_rows": 12,
+  "numerical_non_target_below_c6": [],
+  "period10_exact": {
+    "status": "PERIOD10_BAND_EDGE_GT_C6_PROVED",
+    "Bloch_endpoint": "c=-2",
+    "argument": "P(c6,-2)<0, P(8,-2)>0, and dP/dy has no zero on [c6,8], so the endpoint block has one root in (c6,8).",
+    "checks": {
+      "P_at_c6_right_negative": true,
+      "P_at_8_positive": true,
+      "derivative_positive_at_c6_left": true,
+      "derivative_no_root_on_c6_to_8": true
+    }
+  },
+  "other_phases": "EXPERIMENTAL numerical comparisons only",
+  "bounded_period_boundary": "No conclusion beyond primitive periods at most 24."
+}

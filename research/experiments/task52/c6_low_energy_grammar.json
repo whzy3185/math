@@ -1,0 +1,97 @@
+{
+  "status": "C6_LOW_ENERGY_GRAMMAR_EXACT_FINITE_PARTIAL",
+  "threshold_upper_endpoint": "988171163952541/125000000000000",
+  "levels": [
+    {
+      "support_length": 6,
+      "tau_windows": 256,
+      "exact_c6_Rayleigh_exclusions": 160,
+      "distinct_Q_survivors": 48
+    },
+    {
+      "support_length": 7,
+      "tau_windows": 512,
+      "exact_c6_Rayleigh_exclusions": 360,
+      "distinct_Q_survivors": 76
+    },
+    {
+      "support_length": 8,
+      "tau_windows": 1024,
+      "exact_c6_Rayleigh_exclusions": 816,
+      "distinct_Q_survivors": 104
+    },
+    {
+      "support_length": 9,
+      "tau_windows": 2048,
+      "exact_c6_Rayleigh_exclusions": 1784,
+      "distinct_Q_survivors": 132
+    },
+    {
+      "support_length": 10,
+      "tau_windows": 4096,
+      "exact_c6_Rayleigh_exclusions": 3768,
+      "distinct_Q_survivors": 164
+    }
+  ],
+  "overlap_automaton": {
+    "window_length": 11,
+    "nodes": 105,
+    "edges": 164
+  },
+  "primitive_cycles_through_period_16": 48,
+  "displayed_cycles": [
+    "0",
+    "0001",
+    "000001",
+    "0000001",
+    "0001001",
+    "00000001",
+    "000000001",
+    "000001001",
+    "0000000001",
+    "0000001001",
+    "0000010001",
+    "00000000001",
+    "00000001001",
+    "00000010001",
+    "00010001001",
+    "000000000001",
+    "000000001001",
+    "000000010001",
+    "0000000000001",
+    "0000000001001",
+    "0000000010001",
+    "0000001000001",
+    "0000010001001",
+    "00000000000001",
+    "00000000001001",
+    "00000000010001",
+    "00000001000001",
+    "00000010001001",
+    "00000100010001",
+    "000000000000001",
+    "000000000001001",
+    "000000000010001",
+    "000000001000001",
+    "000000010000001",
+    "000000010001001",
+    "000000100010001",
+    "000001000001001",
+    "000100010001001",
+    "0000000000000001",
+    "0000000000001001",
+    "0000000000010001",
+    "0000000001000001",
+    "0000000010000001",
+    "0000000010001001",
+    "0000000100010001",
+    "0000001000001001",
+    "0000010000010001",
+    "0000010010001001"
+  ],
+  "period_eight_bulk_cycle_present": true,
+  "bulk_plus_slip_decomposition": "OPEN",
+  "dense_defect_lower_bound": "OPEN",
+  "classification": "WEAK",
+  "proof_boundary": "Every local exclusion is an exact rational Rayleigh comparison with the rational upper endpoint for c6. The overlap/cycle audit is finite and does not classify all long words."
+}
