@@ -1,0 +1,153 @@
+{
+  "status": "TASK54_GATE_A_AND_REDUCED_RESOLVENT_PASS",
+  "evidence": "COMPUTER_ASSISTED_PROVED",
+  "c6_interval": [
+    "7905369311620327/1000000000000000",
+    "988171163952541/125000000000000"
+  ],
+  "eta_rational_upper": "1561/200",
+  "delta6": "1/100",
+  "theorem": "c6 is the only physical G6 eigenvalue in (eta,c6], and sigma(H6)\\{c6} is disjoint from [c6-delta6,c6+delta6]",
+  "candidate_classification": {
+    "resultant_root_count": 2,
+    "physical_root": "c6 (Task50 unsquared simple-root certificate)",
+    "secondary_interval": [
+      "24402145900547/3125000000000",
+      "390434334408753/50000000000000"
+    ],
+    "secondary_resultant_factors": [
+      "16*y**10 - 484*y**9 + 5796*y**8 - 34617*y**7 + 105000*y**6 - 135904*y**5 + 7632*y**4 + 60620*y**3 + 57232*y**2 - 52880*y + 64"
+    ],
+    "secondary_unsquared_charts": [
+      {
+        "cofactor_rows": [
+          0,
+          1,
+          2
+        ],
+        "matching": {
+          "lower": "-16036880868269022531002033930878703807/200000000000000000000000000000",
+          "upper": "-80181533042370510508720446400762440583/1000000000000000000000000000000",
+          "format": "30-decimal outward rational enclosure"
+        },
+        "matching_excludes_zero": true,
+        "all_vectors_valid": true
+      },
+      {
+        "cofactor_rows": [
+          0,
+          1,
+          3
+        ],
+        "matching": {
+          "lower": "-291873257356432879998988071974631098613/1000000000000000000000000000000",
+          "upper": "-291851747532450793445121765407322976787/1000000000000000000000000000000",
+          "format": "30-decimal outward rational enclosure"
+        },
+        "matching_excludes_zero": true,
+        "all_vectors_valid": true
+      },
+      {
+        "cofactor_rows": [
+          0,
+          2,
+          3
+        ],
+        "matching": {
+          "lower": "-72967039651582558405523863774447101811/250000000000000000000000000000",
+          "upper": "-58371369256510643107805675317762988329/200000000000000000000000000000",
+          "format": "30-decimal outward rational enclosure"
+        },
+        "matching_excludes_zero": true,
+        "all_vectors_valid": true
+      },
+      {
+        "cofactor_rows": [
+          1,
+          2,
+          3
+        ],
+        "matching": {
+          "lower": "-8018637004039816738044461867737868509/100000000000000000000000000000",
+          "upper": "-80179567343317662081855816555040150023/1000000000000000000000000000000",
+          "format": "30-decimal outward rational enclosure"
+        },
+        "matching_excludes_zero": true,
+        "all_vectors_valid": true
+      }
+    ],
+    "factors": [
+      {
+        "degree": 2,
+        "multiplicity": 16,
+        "polynomial": "2*y**2 - 16*y + 13",
+        "irreducible_over_Q": true,
+        "roots_in_eta_upper_to_c6_upper": 0,
+        "roots_in_secondary_interval": 0
+      },
+      {
+        "degree": 4,
+        "multiplicity": 2,
+        "polynomial": "y**4 - 16*y**3 + 68*y**2 - 32*y + 52",
+        "irreducible_over_Q": true,
+        "roots_in_eta_upper_to_c6_upper": 0,
+        "roots_in_secondary_interval": 0
+      },
+      {
+        "degree": 4,
+        "multiplicity": 2,
+        "polynomial": "9*y**4 - 144*y**3 + 708*y**2 - 1056*y + 404",
+        "irreducible_over_Q": true,
+        "roots_in_eta_upper_to_c6_upper": 0,
+        "roots_in_secondary_interval": 0
+      },
+      {
+        "degree": 10,
+        "multiplicity": 2,
+        "polynomial": "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256",
+        "irreducible_over_Q": true,
+        "roots_in_eta_upper_to_c6_upper": 1,
+        "roots_in_secondary_interval": 0
+      },
+      {
+        "degree": 10,
+        "multiplicity": 4,
+        "polynomial": "16*y**10 - 484*y**9 + 5796*y**8 - 34617*y**7 + 105000*y**6 - 135904*y**5 + 7632*y**4 + 60620*y**3 + 57232*y**2 - 52880*y + 64",
+        "irreducible_over_Q": true,
+        "roots_in_eta_upper_to_c6_upper": 1,
+        "roots_in_secondary_interval": 1
+      }
+    ]
+  },
+  "resolvent": {
+    "contour": "|z-c6|=1/300",
+    "contour_radius": "1/300",
+    "reduced_complement_spectral_distance": "1/150",
+    "reduced_operator_norm_bound": 150,
+    "finite_range": 4,
+    "absolute_row_sum": 16,
+    "theta": "1/40000",
+    "weight_perturbation_bound": "16/9999",
+    "full_interface_weighted_resolvent_bound": 600,
+    "riesz_projection_kernel_constant": 2,
+    "reduced_kernel_constant": 1200,
+    "bulk_spectral_distance_lower": "291107934860981/3000000000000000",
+    "bulk_weighted_resolvent_bound": 12,
+    "kernel_decay": "exp(-|i-j|/40000)"
+  },
+  "proof_boundary": "The resultant is used only for candidate completeness. Every non-c6 candidate is rejected by the unsquared interval Evans condition. Resolvent constants then follow from the spectral theorem and a direct finite-range exponential conjugation bound.",
+  "checks": {
+    "eta_below_rational_upper": true,
+    "exactly_two_resultant_roots_in_full_upper_gap": true,
+    "secondary_interval_isolates_one_factor_root": true,
+    "all_four_unsquared_charts_exclude_secondary": true,
+    "task50_c6_root_is_simple_and_unique": true,
+    "delta6_interval_stays_above_bulk": true,
+    "reduced_contour_distance": true,
+    "ct_exponential_inequality": true,
+    "ct_full_resolvent_denominator_positive": true,
+    "ct_full_resolvent_safe_constant": true,
+    "bulk_distance_exceeds_nine_hundredths": true,
+    "bulk_ct_safe_constant": true
+  }
+}
