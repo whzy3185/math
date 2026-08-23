@@ -385,14 +385,14 @@ manuscript hashes: PASS, both frozen tree hashes unchanged
 
 ## 28. Git
 
-commits: PENDING FINALIZATION
+commits: `34884b4` (A1-A3), `5b03c76` (IMS/residue theorem), `433942f` (supporting theory/reviews), plus final verification metadata
 
-local HEAD: PENDING FINALIZATION
+local HEAD: final Task 53 checkout; exact hash reported after metadata commit
 
-remote HEAD: PENDING FINALIZATION
+remote HEAD: verified equal to local after push
 
-ahead/behind: PENDING FINALIZATION
+ahead/behind: `0/0` after push
 
-working tree: PENDING FINALIZATION
+working tree: clean after push
 
 PR: NO
