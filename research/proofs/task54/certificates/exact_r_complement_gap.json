@@ -1,0 +1,42 @@
+{
+  "status": "EXACT_R_BY_COMPLEMENT_GAP_PROVED",
+  "evidence": "PROVED",
+  "supported_r": [
+    1,
+    2,
+    3
+  ],
+  "constants": {
+    "delta6": "1/100",
+    "partition_transition_radius_R0": 256,
+    "minimum_site_separation_D0": 1040,
+    "ims_error_constant": 320,
+    "ims_error_at_R0": "5/1024",
+    "delta_comp": "1/200",
+    "fixed_counting_window_radius": "1/400",
+    "feshbach_Q_inverse_bound": 400,
+    "quasimode_cell_rate": "9/25"
+  },
+  "local_orthogonality_identity": "phi_j=chi_j psi_j and x perpendicular phi_j imply <psi_j,chi_j x>=<chi_j psi_j,x>=0 exactly",
+  "partition_lemma": "A piecewise sine/cosine two-overlap partition with transition width R has sum_j|chi_j(a)-chi_j(b)|^2 <= pi^2 d(a,b)^2/(4R^2). Using pi^2<10, range four, and absolute H-row-sum 16 gives ||E_IMS||<=320/R^2.",
+  "complement_theorem": "For fixed r in {1,2,3}, legal r-G6 rings with minimum site separation at least D0 and x perpendicular to the disjoint truncated-mode span satisfy <x,Hx> <= (c6-delta_comp)||x||^2.",
+  "counting_theorem": "For sufficiently large separation, exactly r eigenvalues counted with multiplicity lie in [c6-1/400,c6+1/400], and each is c6+O_r((9/25)^L).",
+  "feshbach": {
+    "window": "|lambda-c6|<=1/400",
+    "inverse": "||(QHQ-lambda)^(-1)||<=400",
+    "effective_operator": "PHP-PHQ(QHQ-lambda)^(-1)QHP",
+    "equivalence": "multiplicity-preserving Schur-complement equivalence",
+    "expansion": "H_eff(lambda)=c6 I_r+T_1+R_2(lambda)",
+    "orders": "||T_1||=O_r((9/25)^L), ||R_2||=O_r((9/25)^(2L))"
+  },
+  "proof_boundary": "The theorem is fixed-r and large-separation. It counts multiplicity but does not prove simplicity or exact leading interaction coefficients. The constants multiplying the inherited exponential quasimode bounds are existential, as in Task52.",
+  "checks": {
+    "bulk_gap_larger_than_delta6": true,
+    "ims_error_below_half_delta6": true,
+    "complement_gap_safe": true,
+    "fixed_window_above_complement": true,
+    "feshbach_inverse_bound": true,
+    "partition_range_margin": true,
+    "supported_r_values": true
+  }
+}
