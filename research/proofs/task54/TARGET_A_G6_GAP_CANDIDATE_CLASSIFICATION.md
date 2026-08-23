@@ -1,7 +1,14 @@
 # G6 Upper-Gap Candidate Classification
 
-Exact stable-branch elimination has exactly two roots between the rational
-bulk bound `1561/200` and `c6_upper`. One is the Task 50 simple physical root
+The exact inequalities
+
+```text
+1951/250 < eta < 1561/200
+```
+
+follow by two rational squarings. Exact stable-branch elimination has no root
+in `[1951/250,1561/200]` and exactly two roots between `1561/200` and
+`c6_upper`. One is the Task 50 simple physical root
 `c6`. The other lies in
 
 ```text

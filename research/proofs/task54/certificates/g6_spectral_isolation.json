@@ -6,6 +6,7 @@
     "988171163952541/125000000000000"
   ],
   "eta_rational_upper": "1561/200",
+  "eta_rational_lower": "1951/250",
   "delta6": "1/100",
   "theorem": "c6 is the only physical G6 eigenvalue in (eta,c6], and sigma(H6)\\{c6} is disjoint from [c6-delta6,c6+delta6]",
   "candidate_classification": {
@@ -82,6 +83,7 @@
         "multiplicity": 16,
         "polynomial": "2*y**2 - 16*y + 13",
         "irreducible_over_Q": true,
+        "roots_in_eta_lower_to_eta_upper": 0,
         "roots_in_eta_upper_to_c6_upper": 0,
         "roots_in_secondary_interval": 0
       },
@@ -90,6 +92,7 @@
         "multiplicity": 2,
         "polynomial": "y**4 - 16*y**3 + 68*y**2 - 32*y + 52",
         "irreducible_over_Q": true,
+        "roots_in_eta_lower_to_eta_upper": 0,
         "roots_in_eta_upper_to_c6_upper": 0,
         "roots_in_secondary_interval": 0
       },
@@ -98,6 +101,7 @@
         "multiplicity": 2,
         "polynomial": "9*y**4 - 144*y**3 + 708*y**2 - 1056*y + 404",
         "irreducible_over_Q": true,
+        "roots_in_eta_lower_to_eta_upper": 0,
         "roots_in_eta_upper_to_c6_upper": 0,
         "roots_in_secondary_interval": 0
       },
@@ -106,6 +110,7 @@
         "multiplicity": 2,
         "polynomial": "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256",
         "irreducible_over_Q": true,
+        "roots_in_eta_lower_to_eta_upper": 0,
         "roots_in_eta_upper_to_c6_upper": 1,
         "roots_in_secondary_interval": 0
       },
@@ -114,6 +119,7 @@
         "multiplicity": 4,
         "polynomial": "16*y**10 - 484*y**9 + 5796*y**8 - 34617*y**7 + 105000*y**6 - 135904*y**5 + 7632*y**4 + 60620*y**3 + 57232*y**2 - 52880*y + 64",
         "irreducible_over_Q": true,
+        "roots_in_eta_lower_to_eta_upper": 0,
         "roots_in_eta_upper_to_c6_upper": 1,
         "roots_in_secondary_interval": 1
       }
@@ -137,7 +143,10 @@
   },
   "proof_boundary": "The resultant is used only for candidate completeness. Every non-c6 candidate is rejected by the unsquared interval Evans condition. Resolvent constants then follow from the spectral theorem and a direct finite-range exponential conjugation bound.",
   "checks": {
-    "eta_below_rational_upper": true,
+    "eta_lower_is_strict_lower_bound": true,
+    "eta_upper_is_strict_upper_bound": true,
+    "rational_strip_ordered": true,
+    "no_resultant_root_between_eta_lower_and_eta_upper": true,
     "exactly_two_resultant_roots_in_full_upper_gap": true,
     "secondary_interval_isolates_one_factor_root": true,
     "all_four_unsquared_charts_exclude_secondary": true,

@@ -31,4 +31,6 @@ full resolvent yields the uniform reduced-kernel estimate
 
 All constants are deliberately conservative and exact.
 
-Status: `G6_REDUCED_RESOLVENT_AND_DECAY_PROVED` / PROVED.
+Status: `G6_REDUCED_RESOLVENT_AND_DECAY_PROVED` /
+COMPUTER_ASSISTED_PROVED after the certified isolation input; the resolvent
+and decay estimates are analytic consequences.

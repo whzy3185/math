@@ -20,6 +20,7 @@ OUTPUT = RESEARCH / "proofs" / "task54" / "certificates"
 C6_LOWER = Fraction(7905369311620327, 10**15)
 C6_UPPER = Fraction(7905369311620328, 10**15)
 ETA_UPPER = Fraction(1561, 200)
+ETA_LOWER = Fraction(1951, 250)
 DELTA6 = Fraction(1, 100)
 SECONDARY = Interval(
     Fraction(780868668817504, 10**14),
@@ -40,6 +41,9 @@ def build_certificate() -> dict[str, Any]:
     secondary_factors = []
     for row in elimination["factors"]:
         polynomial = sp.Poly(sp.sympify(row["polynomial"]), y)
+        lower_strip_count = int(
+            polynomial.count_roots(_q(ETA_LOWER), _q(ETA_UPPER))
+        )
         count = int(polynomial.count_roots(_q(ETA_UPPER), _q(C6_UPPER)))
         secondary_count = int(
             polynomial.count_roots(_q(SECONDARY.lo), _q(SECONDARY.hi))
@@ -49,6 +53,7 @@ def build_certificate() -> dict[str, Any]:
             secondary_factors.append(row["polynomial"])
         factors.append({
             **row,
+            "roots_in_eta_lower_to_eta_upper": lower_strip_count,
             "roots_in_eta_upper_to_c6_upper": count,
             "roots_in_secondary_interval": secondary_count,
         })
@@ -75,7 +80,18 @@ def build_certificate() -> dict[str, Any]:
     reduced_distance = DELTA6 - contour_radius
     bulk_distance_lower = C6_LOWER - contour_radius - ETA_UPPER
     checks = {
-        "eta_below_rational_upper": Fraction(0) < ETA_UPPER < C6_LOWER,
+        "eta_lower_is_strict_lower_bound": (
+            Fraction(559, 250) ** 2 < 5
+            and Fraction(559, 250) > Fraction(904401, 125000) - 5
+        ),
+        "eta_upper_is_strict_upper_bound": (
+            Fraction(2237, 1000) ** 2 > 5
+            and Fraction(2237, 1000) < Fraction(579121, 80000) - 5
+        ),
+        "rational_strip_ordered": ETA_LOWER < ETA_UPPER < C6_LOWER,
+        "no_resultant_root_between_eta_lower_and_eta_upper": all(
+            row["roots_in_eta_lower_to_eta_upper"] == 0 for row in factors
+        ),
         "exactly_two_resultant_roots_in_full_upper_gap": total == 2,
         "secondary_interval_isolates_one_factor_root": len(secondary_factors) == 1,
         "all_four_unsquared_charts_exclude_secondary": all(
@@ -102,6 +118,7 @@ def build_certificate() -> dict[str, Any]:
         "evidence": "COMPUTER_ASSISTED_PROVED",
         "c6_interval": [str(C6_LOWER), str(C6_UPPER)],
         "eta_rational_upper": str(ETA_UPPER),
+        "eta_rational_lower": str(ETA_LOWER),
         "delta6": str(DELTA6),
         "theorem": "c6 is the only physical G6 eigenvalue in (eta,c6], and sigma(H6)\\{c6} is disjoint from [c6-delta6,c6+delta6]",
         "candidate_classification": {

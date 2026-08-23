@@ -17,4 +17,6 @@ For the interface, the full Green function has its expected rank-one pole;
 after removing it, the constant is 1200. These estimates are uniform in the
 four translated bulk sectors, both interface orientations, and `z in Gamma`.
 
-Status: `BULK_AND_REDUCED_INTERFACE_GREEN_DECAY_PROVED` / PROVED.
+Status: `BULK_AND_REDUCED_INTERFACE_GREEN_DECAY_PROVED` /
+COMPUTER_ASSISTED_PROVED after the certified G6 isolation input; the
+Combes--Thomas implication is analytic.

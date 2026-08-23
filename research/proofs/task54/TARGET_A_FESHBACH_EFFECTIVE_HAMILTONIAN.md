@@ -1,7 +1,8 @@
 # Feshbach-Schur Effective Hamiltonian
 
-Let `P` project onto the normalized disjoint truncated G6 modes and set
-`Q=I-P`. For `|lambda-c6|<=1/400`, the complement theorem gives
+For `r in {1,2,3}`, put the truncated modes in the column map `Phi`, let
+`G=Phi^*Phi`, set `U=Phi G^(-1/2)`, and let `P=UU^*` project onto their span.
+Set `Q=I-P`. For `|lambda-c6|<=1/400`, the complement theorem gives
 
 ```text
 ||(QHQ-lambda)^(-1)|| <=400.
@@ -10,25 +11,36 @@ Let `P` project onto the normalized disjoint truncated G6 modes and set
 Define
 
 ```text
-H_eff(lambda)=PHP-PHQ(QHQ-lambda)^(-1)QHP.
+H_eff(lambda)=U^*HU-U^*HQ(QHQ-lambda)^(-1)QHU.
 ```
 
-Block Gaussian elimination is by bounded invertible triangular factors.
-Therefore `H-lambda` and `H_eff(lambda)-lambda P` have equal nullity and the
-same local algebraic multiplicity. This is the exact, multiplicity-preserving
-near-`c6` eigenvalue equivalence.
+Block Gaussian elimination by bounded invertible triangular factors shows
+that `H-lambda` and `H_eff(lambda)-lambda P` have equal nullity and the same
+local algebraic multiplicity.
 
-In the truncated-mode basis, exponential localization gives
+Writing `E=(H-c6)Phi`, its exact orthonormal-coordinate form is
+
+```text
+H_eff(lambda)-c6 I
+=G^(-1/2)Phi^*E G^(-1/2)
+ -G^(-1/2)E^*Q(QHQ-lambda)^(-1)QE G^(-1/2).
+```
+
+Use `L_site=floor(D/4)-12` and
+`ell=floor(L_site/8)`. The cutoffs start changing beyond site distance
+`L_site+4`; since `9/25` is a period-eight-cell rate, range four and G6
+localization give `||(H-c6)u_j||=O_r((9/25)^ell)`. Hence
 
 ```text
 H_eff(lambda)=c6 I_r+T_1+R_2(lambda),
-||T_1||=O_r((9/25)^L),
-||R_2(lambda)||=O_r((9/25)^(2L)).
+||T_1||=O_r((9/25)^ell),
+||R_2(lambda)||=O_r((9/25)^(2ell)).
 ```
 
-`T_1` contains direct overlaps along both ring arcs, with orientation and
-holonomy retained. The second-order term is the complement Green-function
-correction. No exact leading scalar coefficient or simplicity assertion is
-made.
+The big-O constants are not explicit. `T_1` retains both ring paths,
+orientation, and holonomy. No universal leading scalar coefficient or
+simplicity theorem is asserted.
 
-Status: `FESHBACH_EFFECTIVE_MATRIX_PROVED` / PROVED.
+Status: `FESHBACH_EFFECTIVE_MATRIX_R123_PROVED` /
+COMPUTER_ASSISTED_PROVED. The Schur-complement implication is analytic, while
+the complement gap inherits computer-assisted G6 isolation.

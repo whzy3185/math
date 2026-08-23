@@ -1,22 +1,18 @@
-# Geometric Resolvent Cross-Check
+# Geometric Resolvent Route: Open Status
 
-On `|z-c6|=1/300`, use the local single-interface reduced Green function and
-the translated bulk Green functions from the Task 54 decay theorem. A
-two-overlap partition gives the standard geometric-resolvent parametrix
+The originally recorded sketch used the local single-interface reduced Green
+function in a putative full parametrix. This does not close, because
 
 ```text
-R_app(z)=sum_j chi_j R_j(z) chi_j.
+(H6-z)R6_red(z)=Q6=I-P6.
 ```
 
-The error consists only of finite-range commutators and exponentially small
-interface tails. Its norm tends to zero as transition width and interface
-separation tend to infinity. Hence `I+K_L(z)` is invertible uniformly on the
-contour for sufficiently large separation.
+The defect therefore retains `-chi_j P_j chi_j`, whose norm does not vanish
+with interface separation. A valid independent route must retain and match
+the pole terms of the full local resolvents, or first construct an explicit
+approximate rank-`r` projection and invert only on its complement.
 
-This supplies an independent resolvent existence check. Rank is taken from
-the complement-gap/min-max proof, not inferred from the nonprojective raw
-parametrix. This avoids the invalid shortcut of assigning a rank directly to
-`sum chi_j P_j chi_j`.
+The corrected complement/min-max argument is the accepted exact-`r` route.
+No rank is inferred from the nonprojective sum `sum chi_j P_j chi_j`.
 
-Status: `GEOMETRIC_RESOLVENT_CROSSCHECK_PROVED`; primary rank proof is the
-complement-gap theorem.
+Status: OPEN. The earlier cross-check claim is withdrawn by red-team audit.
