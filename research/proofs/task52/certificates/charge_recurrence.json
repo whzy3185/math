@@ -1,0 +1,1288 @@
+{
+  "status": "GAP_PLUS_EIGHT_EXACT_EXTERIOR_RECURRENCE_PROVED",
+  "records": [
+    {
+      "gap_residue_mod_8": 1,
+      "representative_gap": 1,
+      "identity": "D_(g+8)=C_r D_g, C_r=R_r N_r R_r^(-1)",
+      "factor_data_sha256": "59847beab3871047268dccb4709725d58e390ae2246fa46323c0e37c075fb390",
+      "factor_step_signatures": {
+        "R": [
+          [
+            1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "N": [
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "R_next": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ]
+      },
+      "factor_determinants": {
+        "R": "1",
+        "N": "1",
+        "R_next": "1"
+      },
+      "recurrence_determinant": "1.0",
+      "polynomial_identity_degree_bound": 32,
+      "exact_integer_evaluation_points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "exterior_recurrence_order_bound": 6,
+      "checks": {
+        "all_33_exact_integer_evaluations": true,
+        "evaluation_count_exceeds_degree_bound": true,
+        "all_eight_step_factors_invertible": true,
+        "recurrence_matrix_unimodular": true,
+        "exterior_square_dimension": true
+      }
+    },
+    {
+      "gap_residue_mod_8": 2,
+      "representative_gap": 2,
+      "identity": "D_(g+8)=C_r D_g, C_r=R_r N_r R_r^(-1)",
+      "factor_data_sha256": "639e6a04cd46128f2d4af2b406263f45b03c3c850c3801c4b8482da9a12ddef4",
+      "factor_step_signatures": {
+        "R": [
+          [
+            -1,
+            1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "N": [
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "R_next": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "factor_determinants": {
+        "R": "-1",
+        "N": "-1",
+        "R_next": "1"
+      },
+      "recurrence_determinant": "1.0",
+      "polynomial_identity_degree_bound": 32,
+      "exact_integer_evaluation_points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "exterior_recurrence_order_bound": 6,
+      "checks": {
+        "all_33_exact_integer_evaluations": true,
+        "evaluation_count_exceeds_degree_bound": true,
+        "all_eight_step_factors_invertible": true,
+        "recurrence_matrix_unimodular": true,
+        "exterior_square_dimension": true
+      }
+    },
+    {
+      "gap_residue_mod_8": 3,
+      "representative_gap": 3,
+      "identity": "D_(g+8)=C_r D_g, C_r=R_r N_r R_r^(-1)",
+      "factor_data_sha256": "aea173f1d9743e6d9d8ccb6ade0fb02a4f3c623166ec0a2652890fded3232f01",
+      "factor_step_signatures": {
+        "R": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "N": [
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "R_next": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ]
+      },
+      "factor_determinants": {
+        "R": "1",
+        "N": "1",
+        "R_next": "1"
+      },
+      "recurrence_determinant": "1.0",
+      "polynomial_identity_degree_bound": 32,
+      "exact_integer_evaluation_points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "exterior_recurrence_order_bound": 6,
+      "checks": {
+        "all_33_exact_integer_evaluations": true,
+        "evaluation_count_exceeds_degree_bound": true,
+        "all_eight_step_factors_invertible": true,
+        "recurrence_matrix_unimodular": true,
+        "exterior_square_dimension": true
+      }
+    },
+    {
+      "gap_residue_mod_8": 4,
+      "representative_gap": 4,
+      "identity": "D_(g+8)=C_r D_g, C_r=R_r N_r R_r^(-1)",
+      "factor_data_sha256": "66483f5c9076d101ac4a67bbadbddbd867b75751e61c81fd031e1cfded4b55a2",
+      "factor_step_signatures": {
+        "R": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "N": [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "R_next": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "factor_determinants": {
+        "R": "1",
+        "N": "1",
+        "R_next": "1"
+      },
+      "recurrence_determinant": "1.0",
+      "polynomial_identity_degree_bound": 32,
+      "exact_integer_evaluation_points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "exterior_recurrence_order_bound": 6,
+      "checks": {
+        "all_33_exact_integer_evaluations": true,
+        "evaluation_count_exceeds_degree_bound": true,
+        "all_eight_step_factors_invertible": true,
+        "recurrence_matrix_unimodular": true,
+        "exterior_square_dimension": true
+      }
+    },
+    {
+      "gap_residue_mod_8": 5,
+      "representative_gap": 5,
+      "identity": "D_(g+8)=C_r D_g, C_r=R_r N_r R_r^(-1)",
+      "factor_data_sha256": "aea173f1d9743e6d9d8ccb6ade0fb02a4f3c623166ec0a2652890fded3232f01",
+      "factor_step_signatures": {
+        "R": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "N": [
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "R_next": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ]
+      },
+      "factor_determinants": {
+        "R": "1",
+        "N": "1",
+        "R_next": "1"
+      },
+      "recurrence_determinant": "1.0",
+      "polynomial_identity_degree_bound": 32,
+      "exact_integer_evaluation_points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "exterior_recurrence_order_bound": 6,
+      "checks": {
+        "all_33_exact_integer_evaluations": true,
+        "evaluation_count_exceeds_degree_bound": true,
+        "all_eight_step_factors_invertible": true,
+        "recurrence_matrix_unimodular": true,
+        "exterior_square_dimension": true
+      }
+    },
+    {
+      "gap_residue_mod_8": 6,
+      "representative_gap": 6,
+      "identity": "D_(g+8)=C_r D_g, C_r=R_r N_r R_r^(-1)",
+      "factor_data_sha256": "66483f5c9076d101ac4a67bbadbddbd867b75751e61c81fd031e1cfded4b55a2",
+      "factor_step_signatures": {
+        "R": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "N": [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "R_next": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "factor_determinants": {
+        "R": "1",
+        "N": "1",
+        "R_next": "1"
+      },
+      "recurrence_determinant": "1.0",
+      "polynomial_identity_degree_bound": 32,
+      "exact_integer_evaluation_points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "exterior_recurrence_order_bound": 6,
+      "checks": {
+        "all_33_exact_integer_evaluations": true,
+        "evaluation_count_exceeds_degree_bound": true,
+        "all_eight_step_factors_invertible": true,
+        "recurrence_matrix_unimodular": true,
+        "exterior_square_dimension": true
+      }
+    },
+    {
+      "gap_residue_mod_8": 7,
+      "representative_gap": 7,
+      "identity": "D_(g+8)=C_r D_g, C_r=R_r N_r R_r^(-1)",
+      "factor_data_sha256": "aea173f1d9743e6d9d8ccb6ade0fb02a4f3c623166ec0a2652890fded3232f01",
+      "factor_step_signatures": {
+        "R": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "N": [
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ],
+        "R_next": [
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ]
+        ]
+      },
+      "factor_determinants": {
+        "R": "1",
+        "N": "1",
+        "R_next": "1"
+      },
+      "recurrence_determinant": "1.0",
+      "polynomial_identity_degree_bound": 32,
+      "exact_integer_evaluation_points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "exterior_recurrence_order_bound": 6,
+      "checks": {
+        "all_33_exact_integer_evaluations": true,
+        "evaluation_count_exceeds_degree_bound": true,
+        "all_eight_step_factors_invertible": true,
+        "recurrence_matrix_unimodular": true,
+        "exterior_square_dimension": true
+      }
+    },
+    {
+      "gap_residue_mod_8": 0,
+      "representative_gap": 8,
+      "identity": "D_(g+8)=C_r D_g, C_r=R_r N_r R_r^(-1)",
+      "factor_data_sha256": "66483f5c9076d101ac4a67bbadbddbd867b75751e61c81fd031e1cfded4b55a2",
+      "factor_step_signatures": {
+        "R": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "N": [
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ]
+        ],
+        "R_next": [
+          [
+            -1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            -1
+          ],
+          [
+            1,
+            1
+          ],
+          [
+            1,
+            -1
+          ],
+          [
+            -1,
+            1
+          ],
+          [
+            1,
+            1
+          ]
+        ]
+      },
+      "factor_determinants": {
+        "R": "1",
+        "N": "1",
+        "R_next": "1"
+      },
+      "recurrence_determinant": "1.0",
+      "polynomial_identity_degree_bound": 32,
+      "exact_integer_evaluation_points": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17,
+        18,
+        19,
+        20,
+        21,
+        22,
+        23,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32
+      ],
+      "exterior_recurrence_order_bound": 6,
+      "checks": {
+        "all_33_exact_integer_evaluations": true,
+        "evaluation_count_exceeds_degree_bound": true,
+        "all_eight_step_factors_invertible": true,
+        "recurrence_matrix_unimodular": true,
+        "exterior_square_dimension": true
+      }
+    }
+  ],
+  "interpretation": "For each fixed gap residue modulo 8, C_r=R_r N_r R_r^(-1) acts on the propagated left two-plane. The matching determinant is a linear functional of its six-dimensional exterior-square orbit and therefore obeys an order-at-most-six Cayley-Hamilton recurrence.",
+  "candidate_simple_identity": "P_(g+8)=M8 P_g is false in the fixed Task 50 cut; the correct factor is the residue-dependent conjugate C_r because eight negative Q sites replace the old right-bulk cell before the cut is restored.",
+  "large_g_boundary": "The recurrence is exact, but no uniform root ordering or monotonicity theorem in g is claimed."
+}

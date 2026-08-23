@@ -1,0 +1,303 @@
+{
+  "status": "PLUS_MINUS_TWO_COMMON_POLYNOMIAL_PROVED",
+  "polynomial": "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256",
+  "q_plus_2_root_interval": [
+    "7905369311620327/1000000000000000",
+    "988171163952541/125000000000000"
+  ],
+  "q_minus_2_root_interval": [
+    "8080985802104273/1000000000000000",
+    "4040492901052137/500000000000000"
+  ],
+  "gap2_evans_certificate": {
+    "gap": 2,
+    "charge": -2,
+    "status": "COMPUTER_ASSISTED_PROVED",
+    "method": "exact-rational interval Evans determinant with automatic derivative enclosure",
+    "y_interval": [
+      "8080985802104273/1000000000000000",
+      "4040492901052137/500000000000000"
+    ],
+    "left_evans": {
+      "lower": "-19851035480439709828533/40000000000000000000000000000",
+      "upper": "-124068971752748186428331/250000000000000000000000000000",
+      "format": "30-decimal outward rational enclosure"
+    },
+    "right_evans": {
+      "lower": "186417644374746529695041/500000000000000000000000000000",
+      "upper": "372835288749493059390083/1000000000000000000000000000000",
+      "format": "30-decimal outward rational enclosure"
+    },
+    "derivative": {
+      "lower": "869110379322526143635579551588474100793/1000000000000000000000000000000",
+      "upper": "869111972198445466436462723270452137759/1000000000000000000000000000000",
+      "format": "30-decimal outward rational enclosure"
+    },
+    "derivative_sign": 1,
+    "stable_multiplier_intervals": [
+      {
+        "lower": "18318063545420277194356426057/100000000000000000000000000000",
+        "upper": "91590317727126286229802415503/500000000000000000000000000000",
+        "format": "30-decimal outward rational enclosure"
+      },
+      {
+        "lower": "116963804785640146093672347667/1000000000000000000000000000000",
+        "upper": "5848190239284447155768228979/50000000000000000000000000000",
+        "format": "30-decimal outward rational enclosure"
+      }
+    ],
+    "checks": {
+      "ordered_interval": true,
+      "endpoint_sign_change": true,
+      "derivative_has_fixed_sign": true,
+      "signs_match_derivative": true,
+      "all_cofactor_vectors_nonzero": true,
+      "unimodular_defect_transfer": true
+    },
+    "endpoint_metadata": {
+      "left": {
+        "cofactor_rows": [
+          0,
+          1,
+          2
+        ],
+        "stable_multiplier_intervals": [
+          {
+            "lower": "45795158863556988611552336967/250000000000000000000000000000",
+            "upper": "183180635454227954446209347869/1000000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          },
+          {
+            "lower": "116963804785664545060153336229/1000000000000000000000000000000",
+            "upper": "11696380478566454506015333623/100000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          }
+        ],
+        "unstable_multiplier_intervals": [
+          {
+            "lower": "2729546159506237279944876150703/500000000000000000000000000000",
+            "upper": "5459092319012474559889752301407/1000000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          },
+          {
+            "lower": "8549653474700945878753414731553/1000000000000000000000000000000",
+            "upper": "4274826737350472939376707365777/500000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          }
+        ],
+        "cofactor_pivots": [
+          {
+            "vector": "left_w_minus",
+            "nonzero_components": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "vector": "left_w_plus",
+            "nonzero_components": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "vector": "right_w_minus",
+            "nonzero_components": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "vector": "right_w_plus",
+            "nonzero_components": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      },
+      "right": {
+        "cofactor_rows": [
+          0,
+          1,
+          2
+        ],
+        "stable_multiplier_intervals": [
+          {
+            "lower": "183180635454227389956959743703/1000000000000000000000000000000",
+            "upper": "22897579431778423744619967963/125000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          },
+          {
+            "lower": "58481902392832272074441795507/500000000000000000000000000000",
+            "upper": "23392760957132908829776718203/200000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          }
+        ],
+        "unstable_multiplier_intervals": [
+          {
+            "lower": "5459092319012491382622783213043/1000000000000000000000000000000",
+            "upper": "1364773079753122845655695803261/250000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          },
+          {
+            "lower": "854965347470094594536411158639/100000000000000000000000000000",
+            "upper": "8549653474700945945364111586391/1000000000000000000000000000000",
+            "format": "30-decimal outward rational enclosure"
+          }
+        ],
+        "cofactor_pivots": [
+          {
+            "vector": "left_w_minus",
+            "nonzero_components": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "vector": "left_w_plus",
+            "nonzero_components": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "vector": "right_w_minus",
+            "nonzero_components": [
+              0,
+              1,
+              2,
+              3
+            ]
+          },
+          {
+            "vector": "right_w_plus",
+            "nonzero_components": [
+              0,
+              1,
+              2,
+              3
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "elimination_gap2": {
+    "gap": 2,
+    "symmetric_evans_degrees": {
+      "degree_lambda": 28,
+      "degree_S": 4,
+      "degree_P": 4,
+      "term_count": 264
+    },
+    "squared_evans_degrees": {
+      "P": 16,
+      "y": 28
+    },
+    "resultant_degree_y": 108,
+    "content": "1",
+    "factors": [
+      {
+        "degree": 2,
+        "multiplicity": 16,
+        "polynomial": "2*y**2 - 16*y + 13",
+        "irreducible_over_Q": true
+      },
+      {
+        "degree": 4,
+        "multiplicity": 2,
+        "polynomial": "y**4 - 16*y**3 + 68*y**2 - 32*y + 52",
+        "irreducible_over_Q": true
+      },
+      {
+        "degree": 4,
+        "multiplicity": 2,
+        "polynomial": "9*y**4 - 144*y**3 + 708*y**2 - 1056*y + 404",
+        "irreducible_over_Q": true
+      },
+      {
+        "degree": 10,
+        "multiplicity": 2,
+        "polynomial": "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256",
+        "irreducible_over_Q": true
+      },
+      {
+        "degree": 10,
+        "multiplicity": 4,
+        "polynomial": "16*y**10 - 484*y**9 + 5796*y**8 - 34617*y**7 + 105000*y**6 - 135904*y**5 + 7632*y**4 + 60620*y**3 + 57232*y**2 - 52880*y + 64",
+        "irreducible_over_Q": true
+      }
+    ]
+  },
+  "elimination_gap6": {
+    "gap": 6,
+    "symmetric_evans_degrees": {
+      "degree_lambda": 32,
+      "degree_S": 4,
+      "degree_P": 4,
+      "term_count": 295
+    },
+    "squared_evans_degrees": {
+      "P": 16,
+      "y": 32
+    },
+    "resultant_degree_y": 108,
+    "content": "1",
+    "factors": [
+      {
+        "degree": 2,
+        "multiplicity": 16,
+        "polynomial": "2*y**2 - 16*y + 13",
+        "irreducible_over_Q": true
+      },
+      {
+        "degree": 4,
+        "multiplicity": 2,
+        "polynomial": "y**4 - 16*y**3 + 68*y**2 - 32*y + 52",
+        "irreducible_over_Q": true
+      },
+      {
+        "degree": 4,
+        "multiplicity": 2,
+        "polynomial": "9*y**4 - 144*y**3 + 708*y**2 - 1056*y + 404",
+        "irreducible_over_Q": true
+      },
+      {
+        "degree": 10,
+        "multiplicity": 2,
+        "polynomial": "16*y**10 - 520*y**9 + 6913*y**8 - 48448*y**7 + 191768*y**6 - 423904*y**5 + 484528*y**4 - 270464*y**3 + 137856*y**2 - 19968*y + 256",
+        "irreducible_over_Q": true
+      },
+      {
+        "degree": 10,
+        "multiplicity": 4,
+        "polynomial": "16*y**10 - 484*y**9 + 5796*y**8 - 34617*y**7 + 105000*y**6 - 135904*y**5 + 7632*y**4 + 60620*y**3 + 57232*y**2 - 52880*y + 64",
+        "irreducible_over_Q": true
+      }
+    ]
+  },
+  "structural_relation": "After removing the same nonzero stable-branch Vandermonde and imposing the exact reciprocal bulk relations, the gap-2 and gap-6 squared Evans eliminants have identical resultants over Q[y].",
+  "transformation_boundary": "No direct constant conjugacy of the unsquared matching matrices is asserted; the proved structural identity is equality after exact stable-branch elimination.",
+  "checks": {
+    "resultants_identical": true,
+    "degree_ten_factor_present_gap2": true,
+    "degree_ten_factor_present_g6": true,
+    "one_polynomial_root_in_gap2_interval": true,
+    "one_polynomial_root_in_c6_interval": true,
+    "gap2_interval_above_8": true,
+    "c6_interval_below_8": true
+  }
+}

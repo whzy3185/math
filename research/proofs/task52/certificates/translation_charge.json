@@ -1,0 +1,313 @@
+{
+  "status": "TRANSLATION_CHARGE_PROVED_CORRECTED_RULE",
+  "canonical_bulk_sectors": [
+    {
+      "name": "B_0",
+      "positive_Q_residue_mod_4": 0,
+      "Q_cell": [
+        1,
+        -1,
+        -1,
+        -1
+      ],
+      "canonical_tau_0_to_7": [
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "tau_antiperiod_over_4": true,
+      "tau_period_over_8": true
+    },
+    {
+      "name": "B_1",
+      "positive_Q_residue_mod_4": 1,
+      "Q_cell": [
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "canonical_tau_0_to_7": [
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1,
+        1,
+        -1
+      ],
+      "tau_antiperiod_over_4": true,
+      "tau_period_over_8": true
+    },
+    {
+      "name": "B_2",
+      "positive_Q_residue_mod_4": 2,
+      "Q_cell": [
+        -1,
+        -1,
+        1,
+        -1
+      ],
+      "canonical_tau_0_to_7": [
+        1,
+        -1,
+        1,
+        1,
+        -1,
+        1,
+        -1,
+        -1
+      ],
+      "tau_antiperiod_over_4": true,
+      "tau_period_over_8": true
+    },
+    {
+      "name": "B_3",
+      "positive_Q_residue_mod_4": 3,
+      "Q_cell": [
+        -1,
+        -1,
+        -1,
+        1
+      ],
+      "canonical_tau_0_to_7": [
+        1,
+        -1,
+        1,
+        -1,
+        -1,
+        1,
+        -1,
+        1
+      ],
+      "tau_antiperiod_over_4": true,
+      "tau_period_over_8": true
+    }
+  ],
+  "definition": "B_s has Q_i=+1 exactly for i congruent to s modulo 4.",
+  "transition_theorem": "An oriented gap g from B_s ends in B_(s+g); since q=g-4, sigma(q)=q modulo 4.",
+  "candidate_rule_q_over_2_mod_4": "FALSIFIED",
+  "smallest_even_counterexample": {
+    "q": 2,
+    "actual_shift": 2,
+    "candidate_shift": 1
+  },
+  "even_charge_image": [
+    0,
+    2
+  ],
+  "interpretation": "All integer charges have a Z4 translation-sector class; even charges occupy only its order-two subgroup. This is distinct from signed-graph holonomy alpha.",
+  "transitions": [
+    {
+      "gap": 1,
+      "charge": -3,
+      "left_sector": 0,
+      "right_sector": 1,
+      "sector_shift": 1,
+      "q_mod_4": 1,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 2,
+      "charge": -2,
+      "left_sector": 0,
+      "right_sector": 2,
+      "sector_shift": 2,
+      "q_mod_4": 2,
+      "candidate_q_over_2_mod_4": 3,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 3,
+      "charge": -1,
+      "left_sector": 0,
+      "right_sector": 3,
+      "sector_shift": 3,
+      "q_mod_4": 3,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 4,
+      "charge": 0,
+      "left_sector": 0,
+      "right_sector": 0,
+      "sector_shift": 0,
+      "q_mod_4": 0,
+      "candidate_q_over_2_mod_4": 0,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 5,
+      "charge": 1,
+      "left_sector": 0,
+      "right_sector": 1,
+      "sector_shift": 1,
+      "q_mod_4": 1,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 6,
+      "charge": 2,
+      "left_sector": 0,
+      "right_sector": 2,
+      "sector_shift": 2,
+      "q_mod_4": 2,
+      "candidate_q_over_2_mod_4": 1,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 7,
+      "charge": 3,
+      "left_sector": 0,
+      "right_sector": 3,
+      "sector_shift": 3,
+      "q_mod_4": 3,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 8,
+      "charge": 4,
+      "left_sector": 0,
+      "right_sector": 0,
+      "sector_shift": 0,
+      "q_mod_4": 0,
+      "candidate_q_over_2_mod_4": 2,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 9,
+      "charge": 5,
+      "left_sector": 0,
+      "right_sector": 1,
+      "sector_shift": 1,
+      "q_mod_4": 1,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 10,
+      "charge": 6,
+      "left_sector": 0,
+      "right_sector": 2,
+      "sector_shift": 2,
+      "q_mod_4": 2,
+      "candidate_q_over_2_mod_4": 3,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 11,
+      "charge": 7,
+      "left_sector": 0,
+      "right_sector": 3,
+      "sector_shift": 3,
+      "q_mod_4": 3,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 12,
+      "charge": 8,
+      "left_sector": 0,
+      "right_sector": 0,
+      "sector_shift": 0,
+      "q_mod_4": 0,
+      "candidate_q_over_2_mod_4": 0,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 13,
+      "charge": 9,
+      "left_sector": 0,
+      "right_sector": 1,
+      "sector_shift": 1,
+      "q_mod_4": 1,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 14,
+      "charge": 10,
+      "left_sector": 0,
+      "right_sector": 2,
+      "sector_shift": 2,
+      "q_mod_4": 2,
+      "candidate_q_over_2_mod_4": 1,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 15,
+      "charge": 11,
+      "left_sector": 0,
+      "right_sector": 3,
+      "sector_shift": 3,
+      "q_mod_4": 3,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 16,
+      "charge": 12,
+      "left_sector": 0,
+      "right_sector": 0,
+      "sector_shift": 0,
+      "q_mod_4": 0,
+      "candidate_q_over_2_mod_4": 2,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 17,
+      "charge": 13,
+      "left_sector": 0,
+      "right_sector": 1,
+      "sector_shift": 1,
+      "q_mod_4": 1,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 18,
+      "charge": 14,
+      "left_sector": 0,
+      "right_sector": 2,
+      "sector_shift": 2,
+      "q_mod_4": 2,
+      "candidate_q_over_2_mod_4": 3,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 19,
+      "charge": 15,
+      "left_sector": 0,
+      "right_sector": 3,
+      "sector_shift": 3,
+      "q_mod_4": 3,
+      "candidate_q_over_2_mod_4": null,
+      "exact_rule_holds": true
+    },
+    {
+      "gap": 20,
+      "charge": 16,
+      "left_sector": 0,
+      "right_sector": 0,
+      "sector_shift": 0,
+      "q_mod_4": 0,
+      "candidate_q_over_2_mod_4": 0,
+      "exact_rule_holds": true
+    }
+  ],
+  "composition_law": "sigma(PQ)=sigma(P)+sigma(Q) modulo 4",
+  "composition_checks": {
+    "tested_pairs": 289,
+    "all_pass": true
+  }
+}
