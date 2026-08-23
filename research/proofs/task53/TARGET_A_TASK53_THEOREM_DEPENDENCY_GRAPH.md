@@ -16,8 +16,12 @@ period-eight edge eta [PROVED]
 G6 global edge [COMPUTER_ASSISTED_PROVED]
   + Task 52 cluster existence [PROVED]
   -> at least r near-c6 levels [PROVED]
-  -> exactly-r Riesz/Feshbach count [OPEN]
-  -> interaction asymptotics [CONDITIONAL]
+  -> exactly-r Riesz/Feshbach count [FALSIFIED BY RANK TWO]
+
+Task 55 rank P_(H6,{c6})=2 [COMPUTER_ASSISTED_PROVED]
+  + codimension-2r complement [COMPUTER_ASSISTED_PROVED]
+  -> exactly-2r Riesz/Feshbach count [COMPUTER_ASSISTED_PROVED]
+  -> interaction asymptotics [OPEN]
 ```
 
 ```text

@@ -1,0 +1,772 @@
+{
+  "schema_version": 1,
+  "status": "EXACT_2R_R123_CLUSTER_AND_FESHBACH_PROVED",
+  "evidence": "COMPUTER_ASSISTED_PROVED",
+  "mathematical_audit_status": "TWO_INDEPENDENT_MATHEMATICAL_AUDITS_PASSED",
+  "integration_status": "INDEPENDENT_CHECKER_PASS",
+  "independent_mathematical_audits": [
+    {
+      "ordinal": 1,
+      "verdict": "PASS",
+      "scope": "exact-2r complement, Riesz count, Gram/Feshbach, orientations, holonomy, and finite controls"
+    },
+    {
+      "ordinal": 2,
+      "verdict": "PASS_WITH_SHARPENING",
+      "scope": "independent mathematical audit of the exact-2r repair"
+    }
+  ],
+  "checker_integration_note": "independent exact-2r checker and 29 tamper tests PASS",
+  "claim": "For r=1,2,3, every legal ring consisting of r G6 interfaces and otherwise period-eight bulk, with minimum cyclic interface separation D>=1040, has Riesz rank exactly 2r in [c6-1/400,c6+1/400].",
+  "evidence_partition": {
+    "computer_assisted_inputs": [
+      "simple positive G6 Evans root",
+      "single-G6 global edge and delta6 isolation",
+      "exact-rational interval Floquet multiplier and eigenbasis bounds"
+    ],
+    "analytic_deductions": [
+      "K-generated negative mode and rank-two local eigenspace",
+      "two-mode cutoff Gram invertibility",
+      "codimension-2r IMS complement",
+      "min-max exact fixed-window count",
+      "Gram-orthogonalized 2r-dimensional Feshbach formula and norm bounds",
+      "explicit residue-wise exponential caps and the sufficient continuous onset N_exp=3120"
+    ]
+  },
+  "dependencies": {
+    "evidence_class": "COMPUTER_ASSISTED_INPUT",
+    "artifacts": [
+      {
+        "path": "research/proofs/task50/certificates/g6_interface_certificate.json",
+        "sha256": "134d5d29ab8aaae5141cc70493a6f0c1955afeda36bc15789076b0a9a8ae49ea",
+        "input": "simple positive unsquared Evans root at +sqrt(c6)"
+      },
+      {
+        "path": "research/proofs/task53/certificates/g6_global_edge.json",
+        "sha256": "299b5a17e8bbb13aaf183798883c52287c01bf3c5c8090aa80bf15ab005b621f",
+        "input": "global single-G6 squared spectral edge c6"
+      },
+      {
+        "path": "research/proofs/task54/certificates/g6_spectral_isolation.json",
+        "sha256": "2c4158bfc890979f2c3eb355db61c803d887d4a6fa8903cf4529756d02bbc29f",
+        "input": "full rank-two-complement isolation delta6=1/100"
+      }
+    ],
+    "checks": {
+      "positive_evans_status": true,
+      "positive_evans_interval": true,
+      "positive_evans_simple": true,
+      "global_edge_status": true,
+      "global_edge_rank_two": true,
+      "global_edge_checks_true": true,
+      "isolation_status": true,
+      "isolation_delta": true,
+      "isolation_checks_true": true
+    }
+  },
+  "rank_two_input": {
+    "operator": "(Ku)_i=(-1)^i u_(9-i)",
+    "coefficient_identities": [
+      "Q_(6-i)=Q_i",
+      "tau_(7-i)=-tau_i"
+    ],
+    "coefficient_check_interval": [
+      -500,
+      500
+    ],
+    "coefficient_identities_exact": true,
+    "periodic_extension": {
+      "left_tail_period_eight": true,
+      "right_tail_period_eight": true,
+      "core_reflection_identity": true,
+      "argument": "the finite core check plus period-eight identities on both tails extends tau_(7-i)=-tau_i to every integer i"
+    },
+    "operator_identities": [
+      "K^2=-I",
+      "KA=-AK",
+      "KH=HK"
+    ],
+    "window_controls": [
+      {
+        "dimension": 58,
+        "index_interval": [
+          -24,
+          33
+        ],
+        "A_sha256": "f62c249c7c163679d609aba569933fa785c97c990a56f50c0ed854802037157c",
+        "K_sha256": "e4a6c2413ccac70fce169f3a13561f96fb65474d31d6786b03c53d7c55fa1ef1",
+        "checks": {
+          "K_squared_is_minus_identity": true,
+          "K_anticommutes_with_A": true,
+          "K_commutes_with_H": true
+        }
+      },
+      {
+        "dimension": 90,
+        "index_interval": [
+          -40,
+          49
+        ],
+        "A_sha256": "00b8867444f64787edac916f4c3c481ec5ab2f6aed64428405b4242b3a2686d4",
+        "K_sha256": "f7769ca1b41d6ce70243a35d2a1f395b70a8cda731760755b7e85933b29147a7",
+        "checks": {
+          "K_squared_is_minus_identity": true,
+          "K_anticommutes_with_A": true,
+          "K_commutes_with_H": true
+        }
+      },
+      {
+        "dimension": 138,
+        "index_interval": [
+          -64,
+          73
+        ],
+        "A_sha256": "5f9d8d337cdaacac6edb527bcf24ae3c665efe1a99b551162c09ce07078aa08b",
+        "K_sha256": "4711fb5df60d917187c19af13177e6b136207a333a1f76e6c76d7aaa2ec24dcb",
+        "checks": {
+          "K_squared_is_minus_identity": true,
+          "K_anticommutes_with_A": true,
+          "K_commutes_with_H": true
+        }
+      }
+    ],
+    "positive_A_root_multiplicity": 1,
+    "negative_A_root_multiplicity": 1,
+    "H_c6_riesz_rank": 2,
+    "negative_mode_definition": "psi_-=K psi_+",
+    "orthogonality_reason": "A is self-adjoint and the two A eigenvalues are distinct"
+  },
+  "bulk_floquet": {
+    "period": 8,
+    "state": "(u_(i+1),u_i,u_(i-1),u_(i-2))",
+    "product_order": "left multiplication in increasing site index",
+    "common_characteristic": "p**4 - 2*p**3*y**2 + 16*p**3*y - 13*p**3 + p**2*y**4 - 16*p**2*y**3 + 80*p**2*y**2 - 128*p**2*y + 40*p**2 - 2*p*y**2 + 16*p*y - 13*p + 1",
+    "stable_multiplier_intervals": [
+      {
+        "lower": "175253058066450016139162764541/500000000000000000000000000000",
+        "upper": "21906632258308947260617343337/62500000000000000000000000000",
+        "format": "30-decimal outward rational enclosure"
+      },
+      {
+        "lower": "61139519571368710873300770089/500000000000000000000000000000",
+        "upper": "122279039142775821836828159521/1000000000000000000000000000000",
+        "format": "30-decimal outward rational enclosure"
+      }
+    ],
+    "unstable_multiplier_intervals": [
+      {
+        "lower": "1426508631336850739136622805877/500000000000000000000000000000",
+        "upper": "2853017262674052494136788411549/1000000000000000000000000000000",
+        "format": "30-decimal outward rational enclosure"
+      },
+      {
+        "lower": "4089008251170411033746945824939/500000000000000000000000000000",
+        "upper": "1022252062792923782969810857263/125000000000000000000000000000",
+        "format": "30-decimal outward rational enclosure"
+      }
+    ],
+    "maximum_stable_modulus_exact": "350506116132943156169877493391692541984594177928312508155242189616735960928733002890175939972844789888756448215027069147/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "maximum_stable_modulus_bound": "9/25",
+    "strict_margin_to_9_over_25": "9493883867056843830122506608307458015405822071687491844757810383264039071266997109824060027155210111243551784972930853/1000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000",
+    "basis_condition_bound": 17,
+    "phase_records": [
+      {
+        "phase": 0,
+        "right_start": 14,
+        "left_start": -16,
+        "right_monodromy_sha256": "96c7877ddc83b2bcd84ddd9102ffb34da9564da4626e7a166f08359bc263146f",
+        "left_monodromy_sha256": "59fc477b9b6bf815cdc082bcd476bfbc61e735032f5b623152031f1d239cdc0b",
+        "right_stable_basis": {
+          "cofactor_rows": [
+            1,
+            2,
+            3
+          ],
+          "column_pivots": [
+            3,
+            2
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "91ee677049a49408e46155a1a43dbf0aeb21c8b3feffe9f4e99062bf36c16345",
+          "condition_squared_numerator_bits": 43036,
+          "condition_squared_denominator_bits": 43031,
+          "condition_upper_decimal_diagnostic": "6.098253257462",
+          "condition_bound_strictly_below_17": true
+        },
+        "left_unstable_basis_for_backward_decay": {
+          "cofactor_rows": [
+            0,
+            1,
+            2
+          ],
+          "column_pivots": [
+            1,
+            0
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "999ad6a93b764e9ca13572da0484d491d57f76e1a9aa0c5b9241a80c018692f6",
+          "condition_squared_numerator_bits": 61372,
+          "condition_squared_denominator_bits": 61366,
+          "condition_upper_decimal_diagnostic": "6.651785016749",
+          "condition_bound_strictly_below_17": true
+        },
+        "checks": {
+          "right_determinant_one": true,
+          "left_determinant_one": true,
+          "right_characteristic_common": true,
+          "left_characteristic_common": true,
+          "right_condition_below_17": true,
+          "left_inverse_condition_below_17": true
+        }
+      },
+      {
+        "phase": 1,
+        "right_start": 15,
+        "left_start": -15,
+        "right_monodromy_sha256": "ee508fd31c78d75028520c6d917093b1b32be146296d6c1ebf4cdcb3200c141a",
+        "left_monodromy_sha256": "1afcc4f7dca0efdfb0c170389a0322e6c4ff7d546a110d564d712392f04f969a",
+        "right_stable_basis": {
+          "cofactor_rows": [
+            0,
+            1,
+            2
+          ],
+          "column_pivots": [
+            1,
+            1
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "9d508f0458e712439a28a2c9e90b389b410b0f2cf1f648944a9f83906a744c75",
+          "condition_squared_numerator_bits": 44600,
+          "condition_squared_denominator_bits": 44594,
+          "condition_upper_decimal_diagnostic": "7.036264132654",
+          "condition_bound_strictly_below_17": true
+        },
+        "left_unstable_basis_for_backward_decay": {
+          "cofactor_rows": [
+            0,
+            1,
+            2
+          ],
+          "column_pivots": [
+            2,
+            1
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "512b4b8351ef9a3dd24d9c909c6223f9d5e09e1256d59f4828cd33f9cc3a55ef",
+          "condition_squared_numerator_bits": 64569,
+          "condition_squared_denominator_bits": 64563,
+          "condition_upper_decimal_diagnostic": "8.037822894039",
+          "condition_bound_strictly_below_17": true
+        },
+        "checks": {
+          "right_determinant_one": true,
+          "left_determinant_one": true,
+          "right_characteristic_common": true,
+          "left_characteristic_common": true,
+          "right_condition_below_17": true,
+          "left_inverse_condition_below_17": true
+        }
+      },
+      {
+        "phase": 2,
+        "right_start": 16,
+        "left_start": -14,
+        "right_monodromy_sha256": "ef2a92cc667c9967669b7b406eabb2d8cecd2b61547e32453870534fca90b762",
+        "left_monodromy_sha256": "be5ae7039cc57d603d8895c9092be869dfba5182fb434aad80add1f610fae620",
+        "right_stable_basis": {
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "column_pivots": [
+            2,
+            2
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "7ad5bb8a67cd5d3e34748505b28cf4ec831d30ce7bff31cad5d34b4f7e0a53e0",
+          "condition_squared_numerator_bits": 47780,
+          "condition_squared_denominator_bits": 47776,
+          "condition_upper_decimal_diagnostic": "4.179513763007",
+          "condition_bound_strictly_below_17": true
+        },
+        "left_unstable_basis_for_backward_decay": {
+          "cofactor_rows": [
+            1,
+            2,
+            3
+          ],
+          "column_pivots": [
+            3,
+            1
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "18b4a255330e077b31b93d14b9c1efbe7d7ae771071f578b8112566ae5c8faee",
+          "condition_squared_numerator_bits": 59777,
+          "condition_squared_denominator_bits": 59774,
+          "condition_upper_decimal_diagnostic": "3.624547943866",
+          "condition_bound_strictly_below_17": true
+        },
+        "checks": {
+          "right_determinant_one": true,
+          "left_determinant_one": true,
+          "right_characteristic_common": true,
+          "left_characteristic_common": true,
+          "right_condition_below_17": true,
+          "left_inverse_condition_below_17": true
+        }
+      },
+      {
+        "phase": 3,
+        "right_start": 17,
+        "left_start": -13,
+        "right_monodromy_sha256": "d87353cfff1df4930db977e341309f4803ce6dd5c285d1ac6e36c0b383a859d5",
+        "left_monodromy_sha256": "c29b1bd15757a8c3660650e2179514c290e8dd8075a5fe6547a180c132fa1ff1",
+        "right_stable_basis": {
+          "cofactor_rows": [
+            1,
+            2,
+            3
+          ],
+          "column_pivots": [
+            0,
+            1
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "aec6d32b9fff964e3c318007b0f3428887ae9f1023dd753d3d34b7433b1749c6",
+          "condition_squared_numerator_bits": 39818,
+          "condition_squared_denominator_bits": 39815,
+          "condition_upper_decimal_diagnostic": "3.320353070405",
+          "condition_bound_strictly_below_17": true
+        },
+        "left_unstable_basis_for_backward_decay": {
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "column_pivots": [
+            2,
+            1
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "2dd2d95d6875c13e2378d314c5b01c858831f9cb938dc7123a702a0618222369",
+          "condition_squared_numerator_bits": 66139,
+          "condition_squared_denominator_bits": 66133,
+          "condition_upper_decimal_diagnostic": "7.312788396120",
+          "condition_bound_strictly_below_17": true
+        },
+        "checks": {
+          "right_determinant_one": true,
+          "left_determinant_one": true,
+          "right_characteristic_common": true,
+          "left_characteristic_common": true,
+          "right_condition_below_17": true,
+          "left_inverse_condition_below_17": true
+        }
+      },
+      {
+        "phase": 4,
+        "right_start": 18,
+        "left_start": -12,
+        "right_monodromy_sha256": "59fc477b9b6bf815cdc082bcd476bfbc61e735032f5b623152031f1d239cdc0b",
+        "left_monodromy_sha256": "96c7877ddc83b2bcd84ddd9102ffb34da9564da4626e7a166f08359bc263146f",
+        "right_stable_basis": {
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "column_pivots": [
+            1,
+            0
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "d0e96ba515e8235724edfd5d06b2ff0aeda482aa9cc3bd1662aea9dc27fb276b",
+          "condition_squared_numerator_bits": 44586,
+          "condition_squared_denominator_bits": 44584,
+          "condition_upper_decimal_diagnostic": "2.329872672668",
+          "condition_bound_strictly_below_17": true
+        },
+        "left_unstable_basis_for_backward_decay": {
+          "cofactor_rows": [
+            0,
+            1,
+            2
+          ],
+          "column_pivots": [
+            3,
+            2
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "820e5095121a80a116d84df1b532b669cb0665660628d8e11028e8b10de8692f",
+          "condition_squared_numerator_bits": 66922,
+          "condition_squared_denominator_bits": 66916,
+          "condition_upper_decimal_diagnostic": "7.653550865202",
+          "condition_bound_strictly_below_17": true
+        },
+        "checks": {
+          "right_determinant_one": true,
+          "left_determinant_one": true,
+          "right_characteristic_common": true,
+          "left_characteristic_common": true,
+          "right_condition_below_17": true,
+          "left_inverse_condition_below_17": true
+        }
+      },
+      {
+        "phase": 5,
+        "right_start": 19,
+        "left_start": -11,
+        "right_monodromy_sha256": "1afcc4f7dca0efdfb0c170389a0322e6c4ff7d546a110d564d712392f04f969a",
+        "left_monodromy_sha256": "ee508fd31c78d75028520c6d917093b1b32be146296d6c1ebf4cdcb3200c141a",
+        "right_stable_basis": {
+          "cofactor_rows": [
+            0,
+            1,
+            2
+          ],
+          "column_pivots": [
+            2,
+            1
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "1d667bd2ffc2aba6a24208cef4c086ca245884b45069c7691943dcab6076186c",
+          "condition_squared_numerator_bits": 47035,
+          "condition_squared_denominator_bits": 47032,
+          "condition_upper_decimal_diagnostic": "2.492742439790",
+          "condition_bound_strictly_below_17": true
+        },
+        "left_unstable_basis_for_backward_decay": {
+          "cofactor_rows": [
+            1,
+            2,
+            3
+          ],
+          "column_pivots": [
+            2,
+            3
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "36cdb7fff9c742f8721cf2a78c4170633c9e5c33eae74fd006abaad45116ef11",
+          "condition_squared_numerator_bits": 58160,
+          "condition_squared_denominator_bits": 58154,
+          "condition_upper_decimal_diagnostic": "7.674834389744",
+          "condition_bound_strictly_below_17": true
+        },
+        "checks": {
+          "right_determinant_one": true,
+          "left_determinant_one": true,
+          "right_characteristic_common": true,
+          "left_characteristic_common": true,
+          "right_condition_below_17": true,
+          "left_inverse_condition_below_17": true
+        }
+      },
+      {
+        "phase": 6,
+        "right_start": 20,
+        "left_start": -10,
+        "right_monodromy_sha256": "be5ae7039cc57d603d8895c9092be869dfba5182fb434aad80add1f610fae620",
+        "left_monodromy_sha256": "ef2a92cc667c9967669b7b406eabb2d8cecd2b61547e32453870534fca90b762",
+        "right_stable_basis": {
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "column_pivots": [
+            2,
+            0
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "ac3f787ac4ee57959cba88dd3deda1ae696bc59a1574c07e0d3bef24c64ea183",
+          "condition_squared_numerator_bits": 46982,
+          "condition_squared_denominator_bits": 46979,
+          "condition_upper_decimal_diagnostic": "3.375721895584",
+          "condition_bound_strictly_below_17": true
+        },
+        "left_unstable_basis_for_backward_decay": {
+          "cofactor_rows": [
+            0,
+            1,
+            2
+          ],
+          "column_pivots": [
+            1,
+            1
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "852eac20b1a4a119f1d1bcd2bea685a141acf035969ea702c161eeb1e408560c",
+          "condition_squared_numerator_bits": 58960,
+          "condition_squared_denominator_bits": 58956,
+          "condition_upper_decimal_diagnostic": "4.179513763009",
+          "condition_bound_strictly_below_17": true
+        },
+        "checks": {
+          "right_determinant_one": true,
+          "left_determinant_one": true,
+          "right_characteristic_common": true,
+          "left_characteristic_common": true,
+          "right_condition_below_17": true,
+          "left_inverse_condition_below_17": true
+        }
+      },
+      {
+        "phase": 7,
+        "right_start": 21,
+        "left_start": -9,
+        "right_monodromy_sha256": "c29b1bd15757a8c3660650e2179514c290e8dd8075a5fe6547a180c132fa1ff1",
+        "left_monodromy_sha256": "d87353cfff1df4930db977e341309f4803ce6dd5c285d1ac6e36c0b383a859d5",
+        "right_stable_basis": {
+          "cofactor_rows": [
+            0,
+            2,
+            3
+          ],
+          "column_pivots": [
+            2,
+            1
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "1e8b6d49710529fd3db53a7f9bf25256e2571cb983dd556338ebbae6d4717966",
+          "condition_squared_numerator_bits": 42250,
+          "condition_squared_denominator_bits": 42244,
+          "condition_upper_decimal_diagnostic": "7.046843034696",
+          "condition_bound_strictly_below_17": true
+        },
+        "left_unstable_basis_for_backward_decay": {
+          "cofactor_rows": [
+            0,
+            1,
+            3
+          ],
+          "column_pivots": [
+            2,
+            2
+          ],
+          "pivots_exclude_zero": true,
+          "condition_bound_method": "kappa(V)^2 <= trace(V*V)^2/det(V*V) by Cauchy-Binet",
+          "condition_squared_upper_sha256": "71fe87edde47d076ce601c5c4372278a70b3826ffd9e24c910c24fcf51810b69",
+          "condition_squared_numerator_bits": 66894,
+          "condition_squared_denominator_bits": 66888,
+          "condition_upper_decimal_diagnostic": "7.036264131126",
+          "condition_bound_strictly_below_17": true
+        },
+        "checks": {
+          "right_determinant_one": true,
+          "left_determinant_one": true,
+          "right_characteristic_common": true,
+          "left_characteristic_common": true,
+          "right_condition_below_17": true,
+          "left_inverse_condition_below_17": true
+        }
+      }
+    ]
+  },
+  "constants": {
+    "c6_interval": [
+      "7905369311620327/1000000000000000",
+      "988171163952541/125000000000000"
+    ],
+    "eta_upper": "1561/200",
+    "single_interface_isolation_delta": "1/100",
+    "floquet_cell_rate_q": "9/25",
+    "tail_basis_condition_bound": 17,
+    "tail_square_prefactor": "10625/2",
+    "normalized_tail_bound": "73*q^ell",
+    "minimum_interface_distance_D0": 1040,
+    "S_at_D0": 260,
+    "L_site_at_D0": 248,
+    "ell_at_D0": 31,
+    "distance_convention": "S=floor(D/4), L_site=S-12, ell=floor(L_site/8)",
+    "ims_constant": 320,
+    "ims_error_at_D0": "4/845",
+    "complement_gap": "1/200",
+    "complement_surplus_at_D0": "9/33800",
+    "fixed_window_radius": "1/400",
+    "Q_resolvent_bound": 400,
+    "single_column_residual": "1752*q^ell",
+    "cluster_bound": "3505*r*q^ell",
+    "N_exp": 3120
+  },
+  "gram": {
+    "columns": "m=2r",
+    "same_interface_cross_term": "|<chi psi_+,chi psi_->|=|<psi_+,(1-chi^2)psi_->|<=73^2 q^(2ell)",
+    "different_interface_cross_term": "overlap occurs only where both modes are in their certified tails",
+    "operator_error": "||G-I_(2r)||<=2r*73^2*q^(2ell)",
+    "worst_error_at_r3_ell31": "4654066193686585905261831961367949034770310338906515353361311494/470197740328915003187494614888898271127466222708835008603500682511366903781890869140625",
+    "inverse_bound": "||G^-1||<=2"
+  },
+  "complement": {
+    "localized_space": "V=span{chi_j psi_(j,+),chi_j psi_(j,-):1<=j<=r}",
+    "dimension": "2r",
+    "exact_local_orthogonality": "x perpendicular V implies <psi_(j,+/-),chi_j x>=0 for every j",
+    "orientation": "reflection and switching transport both modes by unitary conjugacy",
+    "holonomy": "the holonomy cut is placed in an excluded cutoff plateau and cannot enter a range-four local block",
+    "ims_identity_bound": "320/T_min^2<=320/260^2=4/845",
+    "quadratic_form_bound": "QHQ<=c6-1/100+4/845<c6-1/200"
+  },
+  "counting": {
+    "fixed_window": "[c6-1/400,c6+1/400]",
+    "lower_count_method": "spectral-projection contradiction from the 2r-dimensional residual bound",
+    "upper_count_method": "codimension-2r min-max above c6-1/200",
+    "result": "rank 1_[c6-1/400,c6+1/400](H)=2r",
+    "r_records": [
+      {
+        "r": 1,
+        "localized_columns": 2,
+        "gram_error_upper_at_ell0": "1551355397895528635087277320455983011590103446302171784453770498/470197740328915003187494614888898271127466222708835008603500682511366903781890869140625",
+        "normalized_subspace_residual_upper_at_ell0": "1336847567367218194026789245426736/21684043449710088680149056017398834228515625",
+        "feshbach_remainder_upper_at_ell0": "28594582694010383801928695570644678869628786722241630331051897819136/18807909613156600127499784595555930845098648908353400344140027300454676151275634765625",
+        "cluster_radius_upper_at_ell0": "267445817558339027971683579065109/4336808689942017736029811203479766845703125",
+        "cluster_radius_below_fixed_window": true,
+        "exact_fixed_window_riesz_rank": 2
+      },
+      {
+        "r": 2,
+        "localized_columns": 4,
+        "gram_error_upper_at_ell0": "3102710795791057270174554640911966023180206892604343568907540996/470197740328915003187494614888898271127466222708835008603500682511366903781890869140625",
+        "normalized_subspace_residual_upper_at_ell0": "2673695134734436388053578490853472/21684043449710088680149056017398834228515625",
+        "feshbach_remainder_upper_at_ell0": "57189165388020767603857391141289357739257573444483260662103795638272/18807909613156600127499784595555930845098648908353400344140027300454676151275634765625",
+        "cluster_radius_upper_at_ell0": "534891635116678055943367158130218/4336808689942017736029811203479766845703125",
+        "cluster_radius_below_fixed_window": true,
+        "exact_fixed_window_riesz_rank": 4
+      },
+      {
+        "r": 3,
+        "localized_columns": 6,
+        "gram_error_upper_at_ell0": "4654066193686585905261831961367949034770310338906515353361311494/470197740328915003187494614888898271127466222708835008603500682511366903781890869140625",
+        "normalized_subspace_residual_upper_at_ell0": "4010542702101654582080367736280208/21684043449710088680149056017398834228515625",
+        "feshbach_remainder_upper_at_ell0": "85783748082031151405786086711934036608886360166724890993155693457408/18807909613156600127499784595555930845098648908353400344140027300454676151275634765625",
+        "cluster_radius_upper_at_ell0": "802337452675017083915050737195327/4336808689942017736029811203479766845703125",
+        "cluster_radius_below_fixed_window": true,
+        "exact_fixed_window_riesz_rank": 6
+      }
+    ]
+  },
+  "feshbach": {
+    "orthonormal_map": "U=Phi G^(-1/2)",
+    "projectors": "P=UU*, Q=I-P",
+    "effective_operator": "H_eff(z)=U^*HU-U^*HQ(QHQ-z)^(-1)QHU",
+    "spectral_equation": "H_eff(z)-z I_(2r)",
+    "residual": "E=(H-c6)Phi",
+    "exact_gram_formula": "H_eff(z)-c6 I_(2r)=G^(-1/2)Phi^*E G^(-1/2)-G^(-1/2)E^*Q(QHQ-z)^(-1)QE G^(-1/2)",
+    "first_order_bound": "||T1||<=3504*r*q^ell",
+    "second_order_bound": "||R2(z)||<=400*r*3504^2*q^(2ell)<r*q^ell",
+    "cluster_bound": "|lambda_j-c6|<3505*r*q^ell for j=1,...,2r"
+  },
+  "exponential_tail": {
+    "N_exp": 3120,
+    "distance_formulas": {
+      "2": "D=n",
+      "4": "D=n/2",
+      "6": "D=6+4*floor((2k-3)/3), n=8k+6"
+    },
+    "ell_formula": "floor((floor(D/4)-12)/8)",
+    "residue_endpoints": [
+      {
+        "residue": 2,
+        "first_eligible_n": 1042,
+        "interfaces": 1,
+        "cluster_dimension": 2,
+        "D": 1042,
+        "ell": 31,
+        "cap": "140427568447911653615208282010585127054352639589/17763568394002504646778106689453125000000000000",
+        "buffered_threshold": "214704831/27144100",
+        "strict_margin": "21439892842904568666329635354789382708215157322251/4821760768436433863826096057891845703125000000000000"
+      },
+      {
+        "residue": 4,
+        "first_eligible_n": 2084,
+        "interfaces": 2,
+        "cluster_dimension": 4,
+        "D": 1042,
+        "ell": 31,
+        "cap": "140427568449007111683927238669157142994203326053/17763568394002504646778106689453125000000000000",
+        "buffered_threshold": "214708581/27144100",
+        "strict_margin": "22106026360327428959441499996197296166704972847627/4821760768436433863826096057891845703125000000000000"
+      },
+      {
+        "residue": 6,
+        "first_eligible_n": 3126,
+        "interfaces": 3,
+        "cluster_dimension": 6,
+        "D": 1042,
+        "ell": 31,
+        "cap": "140427568450102569752646195327729158934054012517/17763568394002504646778106689453125000000000000",
+        "buffered_threshold": "1932383479/244296900",
+        "strict_margin": "200064457591401914495116302398847277251753095357027/43395846915927904774434864521026611328125000000000000"
+      }
+    ],
+    "period_eight_endpoint": {
+      "n": 3120,
+      "upper": "1561/200",
+      "threshold_lower": "389375/48672",
+      "strict_margin": "237251/1216800"
+    },
+    "predecessor_control": {
+      "n": 3118,
+      "D": 1038,
+      "ell": 30
+    }
+  },
+  "scope": {
+    "included": "exactly r G6 interfaces, otherwise period-eight bulk, r in {1,2,3}, both orientations and both finite-ring holonomies",
+    "excluded": [
+      "rings with additional non-G6 defects",
+      "simplicity of individual finite-ring cluster levels",
+      "universal leading interaction coefficients",
+      "using n=100 or n=102 as evidence for the D>=1040 theorem",
+      "optimality or minimality of the sufficient onset N_exp=3120"
+    ],
+    "formal_manuscripts_modified": false
+  },
+  "checks": {
+    "dependencies_fail_closed": true,
+    "rank_two_exact": true,
+    "eight_bulk_phases_complete": true,
+    "all_phase_checks_true": true,
+    "floquet_rate_strict": true,
+    "tail_prefactor_exact": true,
+    "tail_73_valid": true,
+    "distance_conversion": true,
+    "single_transition_width": true,
+    "multi_transition_width_at_least_single": true,
+    "ims_error_exact": true,
+    "complement_gap_strict": true,
+    "complement_surplus_exact": true,
+    "window_above_complement": true,
+    "gram_invertible_for_six_columns": true,
+    "column_residual_coefficient": true,
+    "all_cluster_bounds_inside_window": true,
+    "feshbach_inverse_bound": true,
+    "second_order_absorbed": true,
+    "supported_r_exact": true,
+    "proof_status_exact": true,
+    "evidence_status_exact": true,
+    "two_math_audits_recorded": true,
+    "independent_checker_passed": true,
+    "exponential_three_endpoints_verified": true,
+    "exponential_strict_margins_verified": true,
+    "exponential_first_eligible_verified": true,
+    "exponential_continuous_onset_verified": true,
+    "N_exp_is_sufficient_not_optimal": true
+  }
+}

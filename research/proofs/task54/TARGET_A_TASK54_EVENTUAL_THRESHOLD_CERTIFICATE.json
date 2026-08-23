@@ -6,6 +6,13 @@
   "N_star": 48,
   "N_observed": 48,
   "analytic": {
+    "g6_global_edge_dependency": {
+      "path": "research/proofs/task53/certificates/g6_global_edge.json",
+      "sha256": "299b5a17e8bbb13aaf183798883c52287c01bf3c5c8090aa80bf15ab005b621f",
+      "status": "GATE_A3_PASS_G6_GLOBAL_EDGE_PROVED",
+      "squared_level_multiplicity": 2,
+      "negative_spectrum_bridge": "K^2=-I and KA=-AK"
+    },
     "tent_normalization": "(2R^2+1)/(3R)",
     "translation_differences_at_R17": {
       "1": "2/193",
@@ -5078,6 +5085,7 @@
     "last_failure_table": true,
     "finite_tail_complete": true,
     "all_finite_ldl_positive": true,
-    "all_finite_bounds_strict": true
+    "all_finite_bounds_strict": true,
+    "g6_negative_spectrum_bridge_bound": true
   }
 }

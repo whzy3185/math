@@ -13,8 +13,9 @@ Consequently every translated bulk Green kernel satisfies
 |G_bulk(z;i,j)| <=12 exp(-|i-j|/40000).
 ```
 
-For the interface, the full Green function has its expected rank-one pole;
-after removing it, the constant is 1200. These estimates are uniform in the
+For the interface, the full Green function has a rank-two pole at the squared
+level `c6`; the old rank-one wording counted only the positive `A` root.
+After removing the full pole, the constant is 1200. These estimates are uniform in the
 four translated bulk sectors, both interface orientations, and `z in Gamma`.
 
 Status: `BULK_AND_REDUCED_INTERFACE_GREEN_DECAY_PROVED` /

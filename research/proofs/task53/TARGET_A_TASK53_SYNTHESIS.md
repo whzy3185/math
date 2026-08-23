@@ -184,15 +184,18 @@ status: PROVED construction comparison
 
 ## 14. Exact-r Localized Excitations
 
-r=1 exact count: inherited single-interface level only
+r=1 exact squared count: old value one `FALSIFIED`; corrected value two
 
-r=2 exact count: OPEN; at least two proved
+r=2 exact squared count: old value two `FALSIFIED`; corrected value four
 
-r=3 exact count: OPEN; at least three proved
+r=3 exact squared count: old value three `FALSIFIED`; corrected value six
 
-Riesz/Feshbach: complementary resolvent open
+Riesz/Feshbach: corrected exact-`2r` theorem independently checked in Task 55
 
-status: `D1_EXACT_R_OPEN`
+historical Task 53 status: `D1_EXACT_R_OPEN`
+
+final status: exact-`r` `FALSIFIED_AS_STATED`; exact-`2r`
+`COMPUTER_ASSISTED_PROVED` for `r=1,2,3`, `D>=1040`
 
 
 ## 15. Interaction Theory
@@ -298,7 +301,7 @@ common residue limit: OPEN
 
 exact finite m_n: OPEN in general
 
-other: exactly-r Riesz count, interaction coefficients, unsquared plus/minus duality
+other: interaction coefficients and physical finite-ring simplicity
 
 
 ## 23. Evidence Inventory
@@ -313,9 +316,11 @@ HIGH_PRECISION: inherited representative multi-slip splitting ladders only
 
 EXPERIMENTAL: observed smaller onset and interaction fits
 
-FALSIFIED: stated-sign nonnegative c6 coboundary on the full reference-containing automaton
+FALSIFIED: exact-r Riesz/Feshbach dimension; stated-sign nonnegative c6
+coboundary on the full reference-containing automaton
 
-OPEN: D1/D2, all-period hierarchy, common residue limit
+OPEN: interaction coefficients and simplicity, all-period hierarchy, common
+residue limit
 
 
 ## 24. Reviewer Verdicts

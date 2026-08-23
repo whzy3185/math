@@ -1,27 +1,28 @@
 # Target A Task 54 Continuation Dependency Graph
 
-## Accepted threshold chain
+## Superseded Cluster Chain
 
 ```text
 Task 53 global single-G6 edge c6
         +
-Task 54 exact G6 isolation delta6=1/100
+Task 54 exact G6 isolation delta6=1/100, rank(c6)=2
         +
-corrected cyclic/interface-bulk complement partition
+old one-mode-per-interface complement partition
         v
-complement cap c6-1/200
+codimension-r complement cap [NOT PROVED]
         +
 localized G6 quasimodes
         v
-exact-r count and rank-r Riesz cluster
+exact-r count and rank-r Riesz cluster [FALSIFIED]
         +
-Feshbach-Schur reduction
+problem-specific r x r Feshbach reduction [OPEN]
         v
-qualitative exponential global cap
+qualitative exponential global cap [OPEN PENDING 2r REPAIR]
 ```
 
-The last arrow supplies existential `C_r` only.  It does not supply numerical
-`C_1,C_2,C_3` or `N_exp`.
+The abstract Schur identity and the cutoff arithmetic survive. A corrected
+chain must use two modes per interface, a codimension-`2r` complement, and a
+`2r x 2r` effective matrix.
 
 Independently,
 
@@ -61,7 +62,7 @@ a proof of globally minimal onset.
 ## Interaction chain
 
 ```text
-exact-r + complement inverse bound 400 + Feshbach
+exact-2r + codimension-2r complement + Feshbach [OPEN]
         v
 T1=O((9/25)^ell), R2=O((9/25)^(2ell)).
 ```
@@ -94,4 +95,3 @@ limits are explicit blockers.
 Task 53's complete primitive periodic frontier remains `p<=24`.  Any extension
 past 24 is a separate exact-finite classification problem and is not a
 dependency of the accepted Task 54 threshold theorem.
-

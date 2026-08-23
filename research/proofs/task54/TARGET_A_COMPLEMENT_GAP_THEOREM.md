@@ -1,5 +1,10 @@
 # Complement Gap for Separated G6 Modes
 
+> **Superseded / not proved.** The single-G6 `H=A^2` eigenspace at `c6` has
+> rank two, not one. The span below removes only one mode per interface, so
+> the asserted codimension-`r` complement cap does not follow. The cutoff and
+> IMS arithmetic remain valid inputs for a future codimension-`2r` proof.
+
 First fix `r in {2,3}` and list the interface centers cyclically as `p_j`. Let
 `d_j` be the forward site distance from `p_j` to `p_(j+1)` and put
 
@@ -93,6 +98,5 @@ cell rather than per site. The Gram matrix
 tends to the identity, so the at-least-`r` spectral-projection argument
 applies to the same span.
 
-Status: `EXACT_R_R123_BY_COMPLEMENT_GAP_PROVED` /
-COMPUTER_ASSISTED_PROVED. The localization/min-max implication is analytic;
-the evidence level inherits the computer-assisted G6 isolation theorem.
+Historical status withdrawn. Current status:
+`OPEN_PENDING_CODIMENSION_2R_RECONSTRUCTION`.

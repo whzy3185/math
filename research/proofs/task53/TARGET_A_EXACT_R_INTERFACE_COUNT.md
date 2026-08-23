@@ -1,5 +1,10 @@
 # Exactly-r Localized Excitations: Status
 
+> **Falsified and superseded by Task 55.** The Task 53 lower bound counted
+> only one of two squared G6 modes per interface. The exact-`2r` replacement
+> is independently checked and `COMPUTER_ASSISTED_PROVED` for
+> `r in {1,2,3}` and `D>=1040`.
+
 The global cap and the Task 52 quasimode construction imply that, for
 `r=1,2,3` well-separated G6 interfaces, at least `r` levels converge to
 `c6`, while no level can remain a fixed distance above `c6`.
@@ -11,4 +16,7 @@ single-interface resultant classification has not yet been converted into a
 uniform resolvent estimate on the complement. Therefore the implication
 "at least r" to "exactly r" is not made.
 
-Status: `D1_EXACT_R_OPEN`; this does not affect the fixed-r global cap.
+Historical Task 53 status: `D1_EXACT_R_OPEN`. Final status:
+`EXACT_R_FALSIFIED_AS_STATED`. The corrected fixed-window count is exactly
+`2r`, not `r`; see Task 55. This correction does not affect the independently
+proved global IMS cap.

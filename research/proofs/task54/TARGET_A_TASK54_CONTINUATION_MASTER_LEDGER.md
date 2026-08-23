@@ -1,18 +1,24 @@
 # Target A Task 54 Continuation Master Ledger
 
+> **Historical ledger.** Task 55 supersedes every `OPEN_PENDING_2R_REPAIR`
+> entry below with an independently checked exact-`2r` theorem, the explicit
+> bound `3505r(9/25)^ell`, and `N_exp=3120`. The falsified exact-`r` rows
+> remain falsified. See `../task55/TARGET_A_TASK55_MASTER_LEDGER.md` for the
+> current project state.
+
 The reference anchor is `07a922ea9fc084f08dc48299dd4535c5a32bbf15`.
 `pending integration commit` means the result is in the preserved central WIP
 and will receive the final Task 54 continuation commit SHA.
 
 | ID | Statement and scope | Lane | Evidence | Verification | Dependencies | Integrated | Paper value / caveat |
 |---|---|---|---|---|---|---|---|
-| T54-I1 | `c6` is the only physical G6 level in `(eta,c6]`; `delta6=1/100`, both orientations | H / inherited repair | COMPUTER_ASSISTED_PROVED | independent exact interval checker; focused tamper tests PASS | Task 50 physical root and stable-branch elimination | yes | APPENDIX; resultant supplies candidates only |
-| T54-I2 | Reduced G6 resolvent constants `150,1200`, bulk constant `12`, decay `exp(-d/40000)` | H | COMPUTER_ASSISTED_PROVED | regenerated certificate and checker PASS | T54-I1 | yes | APPENDIX; conservative constants |
-| T54-X1 | For separated legal `r=1,2,3` G6 rings, the complement is below `c6-1/200` | H / A | COMPUTER_ASSISTED_PROVED | corrected partition audit and arithmetic checker PASS | T54-I1, Task 53 IMS | yes | analytic implication; `D0=1040` sufficient only |
-| T54-X2 | Exactly `r` eigenvalues counted with multiplicity occur in the fixed near-`c6` window | A | COMPUTER_ASSISTED_PROVED | min-max/Riesz audit and focused tests PASS | T54-X1, localized quasimodes | yes | analytic count after certified isolation; no simplicity |
-| T54-X3 | Feshbach reduction preserves near-cluster multiplicity and has `T1=O(q^ell)`, `R2=O(q^(2ell))` | J / inherited repair | COMPUTER_ASSISTED_PROVED | Gram-orthogonalized block reduction; scope audit PASS | T54-X1, T54-X2 | yes | analytic reduction after certified isolation |
+| T54-I1 | `c6` is the only physical G6 level value in `(eta,c6]`; rank two, `delta6=1/100`, both orientations | H / Task55 repair | COMPUTER_ASSISTED_PROVED | positive Evans chart plus exact `K^2=-I`, `KA=-AK` checker | Task 50 physical root and Task55 symmetry | yes | APPENDIX; squared multiplicity is two |
+| T54-I2 | Reduced G6 resolvent constants `150,1200`, bulk constant `12`, decay `exp(-d/40000)` after removing full rank-two pole | H | COMPUTER_ASSISTED_PROVED | isolation and analytic spectral theorem | T54-I1 | yes | APPENDIX; conservative constants |
+| T54-X1 | For separated legal `r=1,2,3` G6 rings, codimension-`r` complement is below `c6-1/200` | H / A | FALSIFIED_AS_STATED | second local mode remains in complement | T54-I1 | withdrawn | requires codimension `2r` |
+| T54-X2 | Exactly `r` squared eigenvalues occur in the fixed near-`c6` window | A | FALSIFIED_AS_STATED | positive/negative `A` partners square to same level | T54-X1 | withdrawn | corrected exact-`2r` theorem subsequently proved in Task 55 |
+| T54-X3 | Problem-specific `r x r` Feshbach cluster theorem | J | OPEN | abstract Schur identity survives; complement and dimension do not | corrected T54-X1/X2 | withdrawn | must use `2r x 2r` |
 | T54-X4 | Geometric reduced-resolvent parametrix independently proves exact-`r` | H | FALSIFIED | nonvanishing `-chi P chi` defect | none | yes, as withdrawn route | DISCUSSION only |
-| T54-A1 | `rho(A_ring)^2<=c6+C_r(9/25)^ell` for fixed `r=1,2,3` and sufficient separation | A | COMPUTER_ASSISTED_PROVED | exact-`r` plus complement ownership | T54-X1, T54-X2 | yes | analytic implication after certified isolation |
+| T54-A1 | `rho(A_ring)^2<=c6+C_r(9/25)^ell` for fixed `r=1,2,3` and sufficient separation | A | OPEN_PENDING_2R_REPAIR | old proof used invalid exact-`r` ownership | corrected T54-X1, T54-X2 | withdrawn pending repair | expected to survive with two modes per interface |
 | T54-A2 | Numerical `C_1,C_2,C_3` and explicit `N_exp` | A | OPEN | normalized tail prefactors absent | T54-A1 | yes, as open status | FUTURE WORK; no fitted constants accepted |
 | T54-B1 | Exact global tent IMS error `(240R-342)/(R(2R^2+1))<=120/R^2` | B | PROVED | independent symbolic/rational recomputation and focused tests PASS | Task 53 local patch theorem | yes | ESSENTIAL |
 | T54-B2 | Every even `n>=240` has an explicit counterexample (`N_IMS=240`) | B | COMPUTER_ASSISTED_PROVED | endpoint checks and algebraic monotonicity PASS | T54-B1, certified G6 edge, residue separations | yes | ESSENTIAL |
@@ -33,15 +39,15 @@ and will receive the final Task 54 continuation commit SHA.
 - `PROVED`: analytic localization/min-max and Schur-complement implications,
   the exact IMS formula, limit-operator direction, charge trichotomy, and the
   restricted dilute-G6 transfer implication.
-- `COMPUTER_ASSISTED_PROVED`: complete G6 isolation and resolvent constants;
-  integrated exact-`r`, exponential and IMS caps; finite bridge and
-  `N_star=48`.
+- `COMPUTER_ASSISTED_PROVED`: complete G6 isolation with rank-two correction,
+  global IMS cap, finite bridge, and `N_star=48`.
 - `EXACT_FINITE`: 96 structured finite-order rows and their rational LDL
   sandwiches.
 - `HIGH_PRECISION`: no high-precision-only claim is integrated as a theorem.
 - `EXPERIMENTAL`: bounded D/E/F/G/J continuation findings, where recorded.
-- `FALSIFIED`: the nonprojective geometric reduced-resolvent gluing argument;
-  the old raw edgewise nonnegative coboundary route.
+- `FALSIFIED`: exact-`r` and codimension-`r` complement claims; the
+  nonprojective geometric reduced-resolvent gluing argument; the old raw
+  edgewise nonnegative coboundary route.
 - `OPEN`: numerical exponential constants, explicit `N_exp`, universal
   interface/excursion/single-gap theorems, extended complete periodic
   frontier, explicit splitting coefficients, and unrestricted common liminf.

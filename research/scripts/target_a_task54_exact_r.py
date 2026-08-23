@@ -1,4 +1,4 @@
-"""Exact rational bookkeeping for the Task 54 complement-gap theorem."""
+"""Retraction record for the dimensionally incorrect Task 54 exact-r claim."""
 
 from __future__ import annotations
 
@@ -43,8 +43,9 @@ def build_certificate() -> dict[str, Any]:
     if not all(checks.values()):
         raise AssertionError(checks)
     return {
-        "status": "EXACT_R_R123_BY_COMPLEMENT_GAP_PROVED",
-        "evidence": "COMPUTER_ASSISTED_PROVED",
+        "status": "TASK54_EXACT_R_SUPERSEDED_BY_RANK_DOUBLING",
+        "evidence": "FALSIFIED_AS_STATED",
+        "original_claim": "EXACT_R_R123_BY_COMPLEMENT_GAP_PROVED",
         "supported_r": [1, 2, 3],
         "constants": {
             "delta6": str(DELTA6),
@@ -61,9 +62,10 @@ def build_certificate() -> dict[str, Any]:
             "quasimode_cell_rate": "9/25",
             "distance_convention": "L_site=floor(D/4)-12 and ell=floor(L_site/8)",
         },
-        "local_orthogonality_identity": (
+        "surviving_local_orthogonality_identity": (
             "phi_j=chi_j psi_j and x perpendicular phi_j imply "
-            "<psi_j,chi_j x>=<chi_j psi_j,x>=0 exactly"
+            "<psi_j,chi_j x>=<chi_j psi_j,x>=0 exactly, but this removes only "
+            "one of the two H=A^2 modes at each G6 interface"
         ),
         "partition_lemma": (
             "For r=2,3, on each interface arc of length d_j, set S=floor(D/4), retain endpoint plateaux "
@@ -76,27 +78,38 @@ def build_certificate() -> dict[str, Any]:
             "At D>=1040, every transition has width at least 260; the IMS bound is 320/260^2."
         ),
         "complement_theorem": (
-            "For fixed r in {1,2,3}, legal r-G6 rings with minimum site separation at least D0 "
-            "and x perpendicular to the sine/cosine truncated-mode span satisfy "
-            "<x,Hx> <= (c6-delta_comp)||x||^2."
+            "NOT_PROVED: the stated codimension-r span omits the negative-A partner. "
+            "A corrected theorem requires a codimension-2r localized space."
         ),
         "counting_theorem": (
-            "For r in {1,2,3} and sufficiently large separation, exactly r eigenvalues counted with multiplicity lie "
-            "in [c6-1/400,c6+1/400], and each is c6+O_r((9/25)^ell)."
+            "NOT_PROVED: exact-r is false. The local H level has rank 2, and a proposed "
+            "exact-2r theorem requires a new complement/min-max proof."
         ),
         "feshbach": {
             "window": "|lambda-c6|<=1/400",
-            "inverse": "||(QHQ-lambda)^(-1)||<=400",
-            "effective_operator": "PHP-PHQ(QHQ-lambda)^(-1)QHP",
-            "equivalence": "multiplicity-preserving Schur-complement equivalence",
-            "expansion": "H_eff(lambda)=c6 I_r+T_1+R_2(lambda)",
-            "orders": "for ell=floor((floor(D/4)-12)/8): ||T_1||=O_r((9/25)^ell), ||R_2||=O_r((9/25)^(2ell))",
+            "status": "OPEN_PENDING_CODIMENSION_2R_COMPLEMENT",
+            "required_dimension": "2r",
+            "correct_coordinate_operator": "H_eff(lambda)-lambda I_(2r)",
+            "formal_effective_operator": "PHP-PHQ(QHQ-lambda)^(-1)QHP",
         },
+        "rank_correction": {
+            "single_positive_A_root_multiplicity": 1,
+            "single_negative_A_root_multiplicity": 1,
+            "single_H_level_rank": 2,
+            "symmetry": "K^2=-I and KA=-AK",
+            "certificate": "research/proofs/task53/certificates/g6_global_edge.json",
+        },
+        "invalidated_dependencies": [
+            "TARGET_A_COMPLEMENT_GAP_THEOREM.md",
+            "TARGET_A_EXACT_R_RIESZ_THEOREM.md",
+            "TARGET_A_EXACT_R_PHASE_SLIP_EXCITATION_THEOREM.md",
+            "TARGET_A_FESHBACH_EFFECTIVE_HAMILTONIAN.md",
+            "TARGET_A_EXPONENTIAL_FIXED_R_GLOBAL_CAP.md",
+        ],
         "proof_boundary": (
-            "The r=1 case uses a separate interface/bulk two-cutoff partition; r=2,3 use the "
-            "cyclic interface-arc partition. The theorem counts multiplicity but does not prove "
-            "simplicity or exact leading interaction coefficients. The constants multiplying the "
-            "inherited exponential quasimode bounds are existential, as in Task52."
+            "The cutoff geometry and arithmetic IMS inequalities remain valid calculations, but "
+            "they do not prove a spectral complement bound after only r modes are removed. "
+            "The independent n>=48 finite-LDL plus global-IMS theorem does not depend on this claim."
         ),
         "checks": checks,
     }
@@ -106,7 +119,7 @@ def run() -> dict[str, Any]:
     OUTPUT.mkdir(parents=True, exist_ok=True)
     payload = build_certificate()
     write_json(OUTPUT / "exact_r_complement_gap.json", payload)
-    print(json.dumps({"status": payload["status"], "delta_comp": payload["constants"]["delta_comp"]}, indent=2))
+    print(json.dumps({"status": payload["status"], "corrected_local_rank": 2}, indent=2))
     return payload
 
 

@@ -1,6 +1,7 @@
 {
-  "status": "EXACT_R_R123_BY_COMPLEMENT_GAP_PROVED",
-  "evidence": "COMPUTER_ASSISTED_PROVED",
+  "status": "TASK54_EXACT_R_SUPERSEDED_BY_RANK_DOUBLING",
+  "evidence": "FALSIFIED_AS_STATED",
+  "original_claim": "EXACT_R_R123_BY_COMPLEMENT_GAP_PROVED",
   "supported_r": [
     1,
     2,
@@ -21,19 +22,32 @@
     "quasimode_cell_rate": "9/25",
     "distance_convention": "L_site=floor(D/4)-12 and ell=floor(L_site/8)"
   },
-  "local_orthogonality_identity": "phi_j=chi_j psi_j and x perpendicular phi_j imply <psi_j,chi_j x>=<chi_j psi_j,x>=0 exactly",
+  "surviving_local_orthogonality_identity": "phi_j=chi_j psi_j and x perpendicular phi_j imply <psi_j,chi_j x>=<chi_j psi_j,x>=0 exactly, but this removes only one of the two H=A^2 modes at each G6 interface",
   "partition_lemma": "For r=2,3, on each interface arc of length d_j, set S=floor(D/4), retain endpoint plateaux of length S, and interpolate adjacent cutoffs by cosine/sine over T_j=d_j-2S. For r=1 and cyclic distance d from the interface, set chi_I=1 for d<=S-8, chi_I=cos(pi(d-S+8)/(2S)) for S-8<d<2S-8, and chi_I=0 for d>=2S-8; set chi_B=sqrt(1-chi_I^2). This gives a width-S transition and an eight-site radial zero plateau around the antipodal bulk seam. Then sum chi_j^2=1 and the cutoff-vector difference is at most pi*d/(2*T_min). At D>=1040, every transition has width at least 260; the IMS bound is 320/260^2.",
-  "complement_theorem": "For fixed r in {1,2,3}, legal r-G6 rings with minimum site separation at least D0 and x perpendicular to the sine/cosine truncated-mode span satisfy <x,Hx> <= (c6-delta_comp)||x||^2.",
-  "counting_theorem": "For r in {1,2,3} and sufficiently large separation, exactly r eigenvalues counted with multiplicity lie in [c6-1/400,c6+1/400], and each is c6+O_r((9/25)^ell).",
+  "complement_theorem": "NOT_PROVED: the stated codimension-r span omits the negative-A partner. A corrected theorem requires a codimension-2r localized space.",
+  "counting_theorem": "NOT_PROVED: exact-r is false. The local H level has rank 2, and a proposed exact-2r theorem requires a new complement/min-max proof.",
   "feshbach": {
     "window": "|lambda-c6|<=1/400",
-    "inverse": "||(QHQ-lambda)^(-1)||<=400",
-    "effective_operator": "PHP-PHQ(QHQ-lambda)^(-1)QHP",
-    "equivalence": "multiplicity-preserving Schur-complement equivalence",
-    "expansion": "H_eff(lambda)=c6 I_r+T_1+R_2(lambda)",
-    "orders": "for ell=floor((floor(D/4)-12)/8): ||T_1||=O_r((9/25)^ell), ||R_2||=O_r((9/25)^(2ell))"
+    "status": "OPEN_PENDING_CODIMENSION_2R_COMPLEMENT",
+    "required_dimension": "2r",
+    "correct_coordinate_operator": "H_eff(lambda)-lambda I_(2r)",
+    "formal_effective_operator": "PHP-PHQ(QHQ-lambda)^(-1)QHP"
   },
-  "proof_boundary": "The r=1 case uses a separate interface/bulk two-cutoff partition; r=2,3 use the cyclic interface-arc partition. The theorem counts multiplicity but does not prove simplicity or exact leading interaction coefficients. The constants multiplying the inherited exponential quasimode bounds are existential, as in Task52.",
+  "rank_correction": {
+    "single_positive_A_root_multiplicity": 1,
+    "single_negative_A_root_multiplicity": 1,
+    "single_H_level_rank": 2,
+    "symmetry": "K^2=-I and KA=-AK",
+    "certificate": "research/proofs/task53/certificates/g6_global_edge.json"
+  },
+  "invalidated_dependencies": [
+    "TARGET_A_COMPLEMENT_GAP_THEOREM.md",
+    "TARGET_A_EXACT_R_RIESZ_THEOREM.md",
+    "TARGET_A_EXACT_R_PHASE_SLIP_EXCITATION_THEOREM.md",
+    "TARGET_A_FESHBACH_EFFECTIVE_HAMILTONIAN.md",
+    "TARGET_A_EXPONENTIAL_FIXED_R_GLOBAL_CAP.md"
+  ],
+  "proof_boundary": "The cutoff geometry and arithmetic IMS inequalities remain valid calculations, but they do not prove a spectral complement bound after only r modes are removed. The independent n>=48 finite-LDL plus global-IMS theorem does not depend on this claim.",
   "checks": {
     "bulk_gap_larger_than_delta6": true,
     "ims_error_below_half_delta6": true,

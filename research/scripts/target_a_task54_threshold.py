@@ -19,6 +19,7 @@ from target_a_task53_global import residue_gap_word
 
 RESEARCH = Path(__file__).resolve().parents[1]
 OUTPUT = RESEARCH / "proofs" / "task54"
+G6_GLOBAL_EDGE = RESEARCH / "proofs" / "task53" / "certificates" / "g6_global_edge.json"
 C6_UPPER = Fraction(7905369311620328, 10**15)
 ETA_UPPER = Fraction(1561, 200)
 N_TAIL = 240
@@ -127,6 +128,7 @@ def finite_witness(n: int) -> dict[str, Any]:
 
 
 def build_certificate() -> dict[str, Any]:
+    g6_global_edge = json.loads(G6_GLOBAL_EDGE.read_text(encoding="utf-8"))
     translation_formulas = {
         str(distance): str(exact_tent_translation_difference(17, distance))
         for distance in range(1, 5)
@@ -177,6 +179,15 @@ def build_certificate() -> dict[str, Any]:
             Fraction(row["rational_upper_on_rho_squared"]) < Fraction(row["antibalanced_rational_lower"])
             for row in witnesses
         ),
+        "g6_negative_spectrum_bridge_bound": (
+            g6_global_edge["status"] == "GATE_A3_PASS_G6_GLOBAL_EDGE_PROVED"
+            and g6_global_edge["squared_level_multiplicity"] == 2
+            and g6_global_edge["negative_spectrum_bridge"]["tau_identity_exact"]
+            and all(
+                row["K_anticommutes_with_A"] and row["K_commutes_with_H"]
+                for row in g6_global_edge["negative_spectrum_bridge"]["window_records"]
+            )
+        ),
     }
     if not all(checks.values()):
         raise AssertionError(checks)
@@ -188,6 +199,13 @@ def build_certificate() -> dict[str, Any]:
         "N_star": N_STAR,
         "N_observed": N_STAR,
         "analytic": {
+            "g6_global_edge_dependency": {
+                "path": "research/proofs/task53/certificates/g6_global_edge.json",
+                "sha256": hashlib.sha256(G6_GLOBAL_EDGE.read_bytes()).hexdigest(),
+                "status": g6_global_edge["status"],
+                "squared_level_multiplicity": g6_global_edge["squared_level_multiplicity"],
+                "negative_spectrum_bridge": "K^2=-I and KA=-AK",
+            },
             "tent_normalization": "(2R^2+1)/(3R)",
             "translation_differences_at_R17": translation_formulas,
             "exact_ims_error": "(240R-342)/(R(2R^2+1))",

@@ -12,7 +12,9 @@ with interface separation. A valid independent route must retain and match
 the pole terms of the full local resolvents, or first construct an explicit
 approximate rank-`r` projection and invert only on its complement.
 
-The corrected complement/min-max argument is the accepted exact-`r` route.
-No rank is inferred from the nonprojective sum `sum chi_j P_j chi_j`.
+The former complement/min-max argument also used only one of the two local
+G6 squared modes and is withdrawn as an exact-`r` route. A replacement must
+use the full rank-two local projection. No rank is inferred from the
+nonprojective sum `sum chi_j P_j chi_j`.
 
 Status: OPEN. The earlier cross-check claim is withdrawn by red-team audit.

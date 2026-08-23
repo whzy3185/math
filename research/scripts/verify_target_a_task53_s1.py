@@ -21,10 +21,17 @@ def verify(path: Path = CERTIFICATE) -> dict[str, bool]:
     checks = {
         "resultant_reconstructed": sp.expand(left - right) == 0,
         "factor_multisets_reconstructed": left_record["factors"] == right_record["factors"],
-        "negative_search_recorded": len(data["tested_exact_transformations"]) == 4 and not any(
+        "raw_core_search_recorded": len(data["tested_exact_transformations"]) == 4 and not any(
             row["equal_up_to_nonzero_scalar"] for row in data["tested_exact_transformations"]
         ),
-        "no_duality_overclaim": data["status"] == "PLUS_MINUS_TWO_ELIMINATION_EQUALITY_ONLY",
+        "legacy_search_superseded": data["status"]
+        == "TASK53_RAW_CORE_SEARCH_SUPERSEDED_BY_TASK55_QUOTIENT_INVOLUTION",
+        "task55_certificate_bound": data["superseded_by"]
+        == "research/proofs/task55/certificates/single_gap_structure.json",
+        "quotient_identity_recorded": "e6(lam,P)=P^3 e2(-lam,P^-1)"
+        in data["task55_correction"],
+        "raw_search_scope_limited": "does not test identities modulo"
+        in data["task53_raw_core_boundary"],
         "s3_stopped": data["s3_decision"].startswith("RECURRENCE_ROUTE_WEAK"),
         "artifact_checks_true": all(data["checks"].values()),
     }

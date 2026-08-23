@@ -11,6 +11,7 @@ import numpy as np
 
 RESEARCH = Path(__file__).resolve().parents[1]
 CERTIFICATE = RESEARCH / "proofs" / "task54" / "TARGET_A_TASK54_EVENTUAL_THRESHOLD_CERTIFICATE.json"
+G6_GLOBAL_EDGE = RESEARCH / "proofs" / "task53" / "certificates" / "g6_global_edge.json"
 C6_UPPER = Fraction(7905369311620328, 10**15)
 ETA_UPPER = Fraction(1561, 200)
 
@@ -45,6 +46,50 @@ def analytic_upper(n: int) -> Fraction:
 
 def threshold_lower(n: int) -> Fraction:
     return Fraction(8) - Fraction(200, n * n)
+
+
+def q_infinite(index: int) -> int:
+    left = index <= 0 and index % 4 == 0
+    right = index >= 6 and (index - 6) % 4 == 0
+    return 1 if left or right else -1
+
+
+def tau_window(low: int, high: int) -> dict[int, int]:
+    tau = {0: 1}
+    for index in range(high):
+        tau[index + 1] = q_infinite(index) * tau[index]
+    for index in range(-1, low - 1, -1):
+        tau[index] = q_infinite(index) * tau[index + 1]
+    return tau
+
+
+def independent_symmetry_bridge() -> bool:
+    representatives = range(-4, 10)
+    if not all(q_infinite(6 - index) == q_infinite(index) for index in representatives):
+        return False
+    tau = tau_window(-8, 16)
+    # The Q identity and this anchor propagate tau_(7-i)=-tau_i in both
+    # directions, so this is an all-integer proof rather than a sampled range.
+    if tau[7] != -tau[0]:
+        return False
+    for dimension in (58, 90, 138):
+        low = (10 - dimension) // 2
+        high = 9 - low
+        local_tau = tau_window(low - 4, high + 4)
+        adjacency = np.zeros((dimension, dimension), dtype=np.int64)
+        symmetry = np.zeros((dimension, dimension), dtype=np.int64)
+        for index in range(low, high + 1):
+            row = index - low
+            if index + 1 <= high:
+                adjacency[row, row + 1] = adjacency[row + 1, row] = 1
+            if index + 2 <= high:
+                adjacency[row, row + 2] = adjacency[row + 2, row] = local_tau[index]
+            symmetry[row, 9 - index - low] = -1 if index % 2 else 1
+        if not np.array_equal(symmetry @ symmetry, -np.eye(dimension, dtype=np.int64)):
+            return False
+        if not np.array_equal(symmetry @ adjacency, -(adjacency @ symmetry)):
+            return False
+    return True
 
 
 def q_from_gaps(n: int, gaps: list[int]) -> tuple[int, ...]:
@@ -151,6 +196,8 @@ def verify(path: Path = CERTIFICATE) -> dict[str, bool]:
         failures = [n for n in admissible if analytic_upper(n) >= threshold_lower(n)]
         last_failures[str(residue)] = max(failures) if failures else None
     analytic = data["analytic"]
+    g6_global_edge = json.loads(G6_GLOBAL_EDGE.read_text(encoding="utf-8"))
+    dependency = analytic["g6_global_edge_dependency"]
     expected_check_keys = {
         "exact_error_closed_form",
         "simple_error_bound_120_over_R2",
@@ -160,6 +207,7 @@ def verify(path: Path = CERTIFICATE) -> dict[str, bool]:
         "finite_tail_complete",
         "all_finite_ldl_positive",
         "all_finite_bounds_strict",
+        "g6_negative_spectrum_bridge_bound",
     }
     preflight = {
         "status_rebuilt": data["status"] == "TASK54_EVENTUAL_THRESHOLD_N_STAR_48_PROVED",
@@ -194,6 +242,16 @@ def verify(path: Path = CERTIFICATE) -> dict[str, bool]:
                 160 * 4**3 - 102 * 4**2 - 262 * 4 - 171)
         ),
         "radius_geometry_rebuilt": analytic["radius"] == "R=floor((D-9)/2)",
+        "g6_dependency_bound": (
+            dependency["path"] == "research/proofs/task53/certificates/g6_global_edge.json"
+            and dependency["sha256"] == hashlib.sha256(G6_GLOBAL_EDGE.read_bytes()).hexdigest()
+            and dependency["status"] == g6_global_edge["status"]
+            == "GATE_A3_PASS_G6_GLOBAL_EDGE_PROVED"
+            and dependency["squared_level_multiplicity"]
+            == g6_global_edge["squared_level_multiplicity"] == 2
+            and dependency["negative_spectrum_bridge"] == "K^2=-I and KA=-AK"
+            and independent_symmetry_bridge()
+        ),
         "analytic_endpoints_rebuilt": analytic["endpoint_checks"] == endpoints,
         "analytic_last_failures_rebuilt": analytic["last_analytic_failures"] == last_failures,
         "scope_not_minimality": "not a globally minimal" in data["scope"],

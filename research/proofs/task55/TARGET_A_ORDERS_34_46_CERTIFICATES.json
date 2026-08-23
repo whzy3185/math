@@ -1,0 +1,133 @@
+{
+  "schema_version": 1,
+  "status": "TASK55_ORDERS_34_46_PARTIAL_N40_ONLY",
+  "evidence": "COMPUTER_ASSISTED_PROVED_FOR_N40_ONLY",
+  "orders": [
+    {
+      "n": 34,
+      "status": "OPEN_BOUNDED_SEARCH_ONLY",
+      "best_observed_alpha": 1,
+      "best_observed_canonical_q_code": "286331153",
+      "best_observed_positive_margin": "0.07072256857384751",
+      "logical_scope": "No counterexample found in recorded searches; nonexistence is not proved."
+    },
+    {
+      "n": 36,
+      "status": "OPEN_BOUNDED_SEARCH_ONLY",
+      "best_observed_alpha": -1,
+      "best_observed_canonical_q_code": "1145311505",
+      "best_observed_positive_margin": "0.05197864446122491",
+      "logical_scope": "No counterexample found in recorded searches; nonexistence is not proved."
+    },
+    {
+      "n": 38,
+      "status": "OPEN_BOUNDED_SEARCH_ONLY",
+      "best_observed_alpha": 1,
+      "best_observed_canonical_q_code": "4567863569",
+      "best_observed_positive_margin": "0.0438583156",
+      "logical_scope": "No counterexample found in recorded searches; nonexistence is not proved."
+    },
+    {
+      "n": 40,
+      "status": "CERTIFIED_COUNTEREXAMPLE",
+      "q_bits": "1000100010001000100010001000100010001000",
+      "canonical_q_code": 73300775185,
+      "alpha": -1,
+      "gap_word": [
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4,
+        4
+      ],
+      "rational_upper_on_rho_squared": "15541/2000",
+      "rational_lower_on_conjectured_threshold_squared": "63/8",
+      "strict_margin": "209/2000",
+      "certificate_statement": "15541 I-2000 A^2 is positive definite",
+      "pivot_count": 40,
+      "pivot_sha256": "4fa777cce0c5439b5ffb6da3652a499b5a9c9f3e5c8deb2f0a014a45eebeab13",
+      "certificate_matrix_sha256": "495ff3d43bdc464ae11218c87fb29f44957f50bfec8c1fafb36a634ee41c10fc",
+      "legacy_candidate_path": "research/experiments/finite_phase_slips/candidates/n40_a-1.json",
+      "legacy_candidate_sha256": "d14580eecaa408d1ec436327a26295ca74f6cb6716c6cb418b9a162a89689b9f",
+      "legacy_certificate_path": "research/experiments/finite_phase_slips/certificates/n40_a-1.json",
+      "legacy_certificate_sha256": "c2e4c58bd2a909f453346ca8501cc7ea54ad2020ff5251dc036b0fad6051a959"
+    },
+    {
+      "n": 42,
+      "status": "OPEN_BOUNDED_SEARCH_ONLY",
+      "best_observed_alpha": 1,
+      "best_observed_canonical_q_code": "73300775185",
+      "best_observed_positive_margin": "0.015267281028362056",
+      "logical_scope": "No counterexample found in recorded searches; nonexistence is not proved."
+    },
+    {
+      "n": 44,
+      "status": "OPEN_BOUNDED_SEARCH_ONLY",
+      "best_observed_alpha": -1,
+      "best_observed_canonical_q_code": "293199745297",
+      "best_observed_positive_margin": "0.011507122838066",
+      "logical_scope": "No counterexample found in recorded searches; nonexistence is not proved."
+    },
+    {
+      "n": 46,
+      "status": "OPEN_BOUNDED_SEARCH_ONLY",
+      "best_observed_alpha": 1,
+      "best_observed_canonical_q_code": "1169373073681",
+      "best_observed_positive_margin": "0.004990282450388",
+      "logical_scope": "No counterexample found in recorded searches; nonexistence is not proved."
+    }
+  ],
+  "bounded_search_provenance": {
+    "beam_canonical_states": 1145182,
+    "annealing_canonical_states": 1439618,
+    "n46_hamming6_raw_states": 9366819,
+    "n46_hamming6_canonical_survivors": 3987,
+    "n46_hamming6_raw_sha256": "6a503ede1e06ba9db063c2b88db1f0e08dd03bebc1416b50a73d70cef7a35a0e",
+    "n46_hamming6_survivor_sha256": "67b6baeddd9078c44fcc75cfd2a32a6f52d45e6b5979436fce3f425194bcb6b1",
+    "local_language": {
+      "42": {
+        "labelled_closed_walks": 266231,
+        "legal_words": 133309,
+        "canonical_classes": 1740
+      },
+      "44": {
+        "labelled_closed_walks": 2530357,
+        "legal_words": 1265397,
+        "canonical_classes": 14830
+      },
+      "46": {
+        "labelled_closed_walks": 4945921,
+        "legal_words": 2473237,
+        "canonical_classes": 27509
+      }
+    },
+    "evidence": "EXPERIMENTAL_BOUNDED_NEGATIVE"
+  },
+  "classification": {
+    "known_holds": "all even 8<=n<=30",
+    "known_first_failure": 32,
+    "task55_interval_failures": [
+      40
+    ],
+    "task55_interval_open": [
+      34,
+      36,
+      38,
+      42,
+      44,
+      46
+    ],
+    "known_eventual_failure": "all even n>=48",
+    "all_even_n_ge_32_fail": "NOT_PROVED"
+  },
+  "checks": {
+    "all_orders_present": true,
+    "only_n40_certified": true,
+    "all_other_orders_explicitly_open": true
+  }
+}

@@ -1,5 +1,11 @@
 # Target A Task 54 Continuation Synthesis
 
+> **Historical synthesis.** Statements below labeled
+> `OPEN_PENDING_2R_REPAIR`, exact-`2r` pending, or `N_exp` open record the end
+> of Task 54, not the current project state. Task 55 proves exact `2r`, the
+> bound `3505r(9/25)^ell`, and the sufficient onset `N_exp=3120`. The Task 55
+> synthesis is authoritative for current status.
+
 ## 1. Baseline Reconciliation
 
 - reference anchor: `07a922ea9fc084f08dc48299dd4535c5a32bbf15`
@@ -26,18 +32,20 @@
   exploration job was deliberately scheduled by the main agent at a time
 - lane worktrees: none, by explicit user instruction
 
-## 3. Inherited Exact-r Audit
+## 3. Exact-r Audit, Superseded By Task 55
 
 - `delta6`: `1/100`
-- single-G6 isolation: complete physical classification in `(eta,c6]`; PASS
-- complement gap: `c6-1/200` for corrected `r=1,2,3` partitions
+- single-G6 isolation: complete physical level-value classification in
+  `(eta,c6]`; PASS, with rank two at `c6`
+- complement gap: old codimension-`r` statement `FALSIFIED_AS_STATED`
 - `320/R^2` audit: valid only for the complement sine/cosine geometry, not a
   replacement for the global tent theorem
-- exact-`r`: exactly `r` eigenvalues counted with multiplicity; PASS
-- Riesz: rank `r`; no simplicity implication
-- Feshbach: inverse norm at most 400 on the fixed window and
-  multiplicity-preserving Schur complement; PASS
-- red-team verdict: PASS after major proof repair
+- exact-`r`: `FALSIFIED`; positive and negative `A` roots square to the same
+  `H` level
+- Riesz: local rank is two, so the expected separated count is `2r`
+- Feshbach: abstract Schur identity PASS; problem-specific `r x r`
+  application `OPEN`, with required dimension `2r`
+- Task 55 red-team verdict: `VERIFIER_CORRECT`, major correction required
 - corrected scope: cell exponent
   `ell=floor((floor(D/4)-12)/8)`; `r=1` uses an interface/bulk two-cutoff
   partition; the geometric reduced-resolvent gluing route remains OPEN
@@ -50,10 +58,10 @@ For fixed `r=1,2,3`,
 rho(A_ring)^2 <= c6+C_r(9/25)^ell
 ```
 
-holds for sufficient separation.  `C_1,C_2,C_3` and their onsets are
-existential.  Status: integrated qualitative theorem
-`COMPUTER_ASSISTED_PROVED`; its cluster-ownership step is analytic. Numerical
-constants are `OPEN`.
+was claimed for sufficient separation, but its integrated proof used the
+invalid rank-`r` cluster ownership. Current status:
+`OPEN_PENDING_2R_REPAIR`. Numerical constants remain `OPEN` in this Task 54
+record.
 
 ## 5. Exponential Residue Threshold
 
@@ -64,8 +72,8 @@ L_6(n)=floor((floor(D_6(n)/4)-12)/8),
 D_6(n)=6+4 floor((2k-3)/3).
 ```
 
-The residue caps are `PROVED` with existential constants.  A numerical
-`N_exp` is `OPEN` because no normalized certified tail prefactor is stored.
+The residue formulas are exact, but the exponential caps are
+`OPEN_PENDING_2R_REPAIR`. A numerical `N_exp` is `OPEN` in Task 54.
 
 ## 6. IMS Optimization
 
@@ -106,10 +114,13 @@ N_observed = 48
 ## 9. Multi-Gap Interface Program
 
 The target class consists of finite-core legal `B0->B2` interfaces modulo
-translation, reflection, diagonal gauge, and insertion/removal of pure
-reference cells.  No universal arbitrary-core lower bound or equality
-classification is accepted in this round.  Bounded structural findings are
-recorded separately.  Status: `OPEN`.
+translation, reflection, and diagonal gauge. Insertion or removal of a pure
+reference cell is **not** a spectral equivalence: it multiplies the transfer
+by a non-scalar bulk monodromy. Zero-charge subwords may be used to define a
+combinatorially primitive core, but not deleted from a spectral problem. No
+universal arbitrary-core lower bound or equality classification is accepted
+in this round. Bounded structural findings are recorded separately. Status:
+`OPEN`.
 
 ## 10. Reference Renormalization
 
@@ -143,14 +154,18 @@ theorem is added.  Status: exact bounded algebra retained; hierarchy `OPEN`.
 
 ## 14. Interaction Theory
 
-The inherited Feshbach matrix gives the exact invariant entries
+Write `S=G^(-1/2)`, `U=Phi S`, `E=(H-c6)Phi`, and `E_tilde=ES`.
+The inherited formal Feshbach identity gives the orthonormal-coordinate
+entries
 
 ```text
-<u_i,e_j>-<e_i,Q(QHQ-lambda)^(-1)Qe_j>.
+<u_i,e_tilde_j>
+-<Qe_tilde_i,(QHQ-lambda)^(-1)Qe_tilde_j>.
 ```
 
-The direct term includes both ring arcs with orientation and holonomy signs;
-the correction is second order in the certified residual scale.  Explicit
+These entries become a problem-specific spectral theorem only after replacing
+the one-mode map by a `2r`-column map and reproving the complement inverse.
+Explicit
 universal coefficients, two-slip simplicity conditions, three-slip
 three-body coefficients, and a complete splitting law remain `OPEN`.
 
@@ -195,9 +210,10 @@ the unrestricted liminf.
 
 ## 19. Falsification Results
 
-- H1 exact-`r` scope gap: found and repaired (site/cell exponent and `r=1`)
+- H1 exact-`r` scope gap: the Task 54 repair was insufficient; Task 55 found
+  the rank-doubling defect and falsified exact-`r`
 - H2 extra G6 physical level: rejected by unsquared interval Evans checks
-- H3 noncluster top: excluded by the corrected complement theorem
+- H3 noncluster top: old codimension-`r` exclusion withdrawn; `2r` repair open
 - H4 multi-gap competitor below `c6`: none certified; universal claim OPEN
 - H5 larger single-gap competitor: none certified; hierarchy OPEN
 - H6 periodic phase above 24 below `c6`: none certified; complete search OPEN
@@ -205,7 +221,7 @@ the unrestricted liminf.
 - H8 negative renormalized excursion: no accepted cost theorem yet
 - H9 finite tail misses an order: rejected by 96-row completeness check
 - H10 aperiodic sequence below `c6`: not excluded; OPEN blocker
-- H11 Feshbach second order too large: no counterexample; constants existential
+- H11 Feshbach: old dimension invalid; abstract formula retained, application open
 - H12 hidden gap2/G6 relation: OPEN structural question
 - H13 residue separation conversion error: audited and corrected where needed
 - H14 Rayleigh-only finite proof: rejected; accepted certificate controls the
@@ -223,8 +239,8 @@ reduced-resolvent parametrix had a nonvanishing projection defect.
 1. Every even `n>=48` has an explicit certified counterexample.
 2. The globally valid exact tent IMS error is at most `120/R^2` and yields
    `N_IMS=240`.
-3. Corrected exact-`r` excitation counting and Feshbach reduction hold for
-   `r=1,2,3` with the period-eight cell exponent.
+3. The G6 squared level has rank two; the old exact-`r` and `r x r` Feshbach
+   claims are withdrawn pending an exact-`2r` reconstruction.
 4. Pointed limits obey the lower-semicontinuity direction needed by a future
    common-liminf proof.
 
@@ -235,15 +251,16 @@ observation is promoted to a theorem.
 
 ## 23. Disputed / Rejected Claims
 
-The original exact-`r` presentation was rejected for an inconsistent distance
-exponent and incomplete `r=1` partition.  It was replaced by the corrected
-construction and passed a fresh hostile review.  The geometric-resolvent
-cross-check remains rejected rather than silently reused.
+The original exact-`r` presentation was first repaired for its distance
+exponent and `r=1` partition, but that repair still missed the negative `A`
+partner. Task 55 proved `K^2=-I`, `KA=-AK` and rank two at `c6`; exact-`r` is
+therefore withdrawn. The geometric-resolvent cross-check also remains
+rejected rather than silently reused.
 
 ## 24. Hostile Review
 
-- spectral/min-max: PASS after isolation and partition repairs
-- resolvent/Feshbach: PASS for Schur reduction; geometric glue OPEN
+- spectral/min-max: MAJOR CORRECTION; exact-`r` false, exact-`2r` pending
+- resolvent/Feshbach: abstract Schur reduction PASS; `2r` application OPEN
 - Floquet/interface: bounded inputs retained; universal interface theorem OPEN
 - signed graph/charge: residue bookkeeping valid; local charge survival false
 - symbolic dynamics: grammar does not exclude aperiodic limits
@@ -257,8 +274,8 @@ cross-check remains rejected rather than silently reused.
 
 - ESSENTIAL MAIN TEXT: `N_star=48`, if the paper is reframed to include the
   strengthened eventual theorem
-- OPTIONAL MAIN TEXT: qualitative exact-`r` cluster ownership
-- APPENDIX: isolation, exact LDL package, IMS constants, Feshbach details
+- OPTIONAL MAIN TEXT: rank-doubling symmetry after independent verification
+- APPENDIX: isolation, exact LDL package, and IMS constants
 - DISCUSSION: limit framework and common-limit blockers
 - FUTURE PAPER: universal interfaces, excursion rigidity, interaction
   coefficients, periodic extension, unrestricted common limit
@@ -277,7 +294,7 @@ The research manuscript itself remained frozen during Task 54.
 
 - continuation focused tests: 45 passed
 - isolation producer/checker: PASS
-- exact-`r` producer/checker: PASS
+- exact-`r` retraction producer/checker: PASS
 - threshold producer/checker: PASS
 - full suite: 550 passed, 3 skipped, 20 subtests passed
 - inherited verifiers: covered by the repository-wide suite

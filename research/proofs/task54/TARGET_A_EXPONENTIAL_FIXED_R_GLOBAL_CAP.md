@@ -1,5 +1,10 @@
 # Qualitative Exponential Fixed-r Global Cap
 
+> **Proof superseded.** The cap is expected to survive with two localized
+> modes per interface, but this proof depends on the invalid exact-`r`
+> complement theorem. Task 55 has since integrated the corrected exact-`2r`
+> certificate; this historical proof must not be used in its place.
+
 For each `r in {1,2,3}`, the corrected complement theorem places every
 noncluster eigenvalue below `c6-1/200`. The exact-`r` theorem puts precisely
 `r` eigenvalues in the fixed near-`c6` window and gives, with
@@ -21,6 +26,7 @@ This is uniform over the finitely many orientations and holonomies for fixed
 `r`. The constants `C_r` and the onset are not explicit in the current
 certificate package.
 
-Status: COMPUTER_ASSISTED_PROVED as an integrated qualitative/existential
-fixed-`r` theorem. The cluster-ownership implication is analytic, while its
-G6 isolation input is computer assisted.
+Historical Task 54 status: `OPEN_PENDING_2R_REPAIR`. Current project status:
+the explicit cap `3505r(9/25)^ell` is `COMPUTER_ASSISTED_PROVED` in Task 55.
+Any use must cite that independently checked certificate rather than this
+withdrawn proof.

@@ -95,8 +95,93 @@
       "classification": "NONPHYSICAL_FOR_G6"
     }
   ],
-  "local_bridge": "Task 50's exact-rational interval Evans certificate has one simple zero in the c6 interval; its fixed-sign derivative excludes every further zero through c6_upper.",
-  "global_argument": "Every physical unsquared zero annihilates the exact stable-branch resultant. Sturm counting finds exactly two candidates on [c6_upper,16], and validated unsquared matching excludes both. The repeated-multiplier energy is represented by the confluent symmetric quotient and is not a resultant candidate. Finally ||H6||<=4 gives y=lambda^2<=16.",
+  "local_bridge": "Task 50's positive-lambda exact-rational interval Evans certificate has one simple zero in the c6 interval; its fixed-sign derivative excludes every further zero through c6_upper.",
+  "negative_spectrum_bridge": {
+    "operator": "(Ku)_i=(-1)^i u_(9-i)",
+    "q_reflection_identity": "Q_(6-i)=Q_i",
+    "tau_reflection_identity": "tau_(7-i)=-tau_i",
+    "q_identity_domain_partition": "i<=0 and i>=6 are period-4 tails; 1<=i<=5 is checked individually",
+    "q_identity_representatives": [
+      -4,
+      -3,
+      -2,
+      -1,
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "q_identity_representative_checks": [
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true,
+      true
+    ],
+    "tau_identity_anchor": {
+      "index": 0,
+      "tau_7": -1,
+      "minus_tau_0": -1
+    },
+    "tau_identity_proof": "Q_(6-i)=Q_i plus tau_7=-tau_0 propagates tau_(7-i)=-tau_i by induction in both directions",
+    "tau_identity_exact": true,
+    "window_records": [
+      {
+        "dimension": 58,
+        "index_interval": [
+          -24,
+          33
+        ],
+        "A_sha256": "f62c249c7c163679d609aba569933fa785c97c990a56f50c0ed854802037157c",
+        "K_sha256": "e4a6c2413ccac70fce169f3a13561f96fb65474d31d6786b03c53d7c55fa1ef1",
+        "K_squared_is_minus_identity": true,
+        "K_anticommutes_with_A": true,
+        "K_commutes_with_H": true
+      },
+      {
+        "dimension": 90,
+        "index_interval": [
+          -40,
+          49
+        ],
+        "A_sha256": "00b8867444f64787edac916f4c3c481ec5ab2f6aed64428405b4242b3a2686d4",
+        "K_sha256": "f7769ca1b41d6ce70243a35d2a1f395b70a8cda731760755b7e85933b29147a7",
+        "K_squared_is_minus_identity": true,
+        "K_anticommutes_with_A": true,
+        "K_commutes_with_H": true
+      },
+      {
+        "dimension": 138,
+        "index_interval": [
+          -64,
+          73
+        ],
+        "A_sha256": "5f9d8d337cdaacac6edb527bcf24ae3c665efe1a99b551162c09ce07078aa08b",
+        "K_sha256": "4711fb5df60d917187c19af13177e6b136207a333a1f76e6c76d7aaa2ec24dcb",
+        "K_squared_is_minus_identity": true,
+        "K_anticommutes_with_A": true,
+        "K_commutes_with_H": true
+      }
+    ],
+    "spectral_consequence": "K maps every A-eigenvector at lambda to one at -lambda. The simple positive G6 Evans root therefore has a simple negative partner, and the corresponding H=A^2 eigenspace at c6 has rank exactly 2."
+  },
+  "squared_level_multiplicity": 2,
+  "global_argument": "Every physical unsquared zero annihilates the exact stable-branch resultant. Sturm counting finds exactly two candidates on [c6_upper,16], and validated unsquared matching excludes both. The repeated-multiplier energy is represented by the confluent symmetric quotient and is not a resultant candidate. The exact anticommuting symmetry K supplies the negative-lambda chart and pairs the simple positive root with a simple negative root. Finally ||A6||<=4 gives y=lambda^2<=16.",
   "gap2_explanation": "The first candidate is physical for gap2, but the G6 defect transfer and sector orientation give a strictly nonzero unsquared determinant on its isolating interval.",
   "proof_boundary": "Resultants provide candidate completeness only. Physical classification uses unsquared matching in certified Grassmann charts; no decimal eigenvalue is an acceptance condition.",
   "checks": {
@@ -106,6 +191,7 @@
     "all_candidate_charts_valid": true,
     "local_c6_unique_root_inherited": true,
     "local_interval_matches": true,
-    "operator_norm_cap": true
+    "operator_norm_cap": true,
+    "negative_spectrum_bridge": true
   }
 }

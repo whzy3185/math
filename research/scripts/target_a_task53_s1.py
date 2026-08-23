@@ -18,7 +18,7 @@ OUTPUT = RESEARCH / "proofs" / "task53" / "certificates"
 
 
 def primitive_core(gap: int) -> sp.Expr:
-    lam, symmetric_sum, product = sp.symbols("lambda S P")
+    lam, symmetric_sum, product = sp.symbols("lam S P")
     symmetric, _degrees = symmetric_evans_core(gap)
     a = -2 * lam**4 + 16 * lam**2 - 13
     substituted = sp.cancel(symmetric.subs(symmetric_sum, -a * product / (product + 1)))
@@ -61,7 +61,7 @@ def build_certificate() -> dict[str, Any]:
     if not all(checks.values()):
         raise AssertionError(checks)
     return {
-        "status": "PLUS_MINUS_TWO_ELIMINATION_EQUALITY_ONLY",
+        "status": "TASK53_RAW_CORE_SEARCH_SUPERSEDED_BY_TASK55_QUOTIENT_INVOLUTION",
         "evidence": "PROVED",
         "gap2_core": str(core2),
         "gap6_core": str(core6),
@@ -71,11 +71,21 @@ def build_certificate() -> dict[str, Any]:
             "After exact stable-branch substitution, lambda-sign squaring, and elimination of P, "
             "gap2 and gap6 have identical resultants over Q[y]."
         ),
-        "not_proved": (
-            "No unsquared conjugacy, inverse duality, or spectral-curve isomorphism was found. "
-            "The equality may still be a projection coincidence."
+        "task53_raw_core_boundary": (
+            "The four direct transformations do not identify the unreduced primitive cores. "
+            "This finite raw-core search does not test identities modulo the reciprocal bulk quartic."
         ),
-        "s3_decision": "RECURRENCE_ROUTE_WEAK: elimination equality supplies no branch-preserving map for a uniform gap hierarchy.",
+        "superseded_by": (
+            "research/proofs/task55/certificates/single_gap_structure.json"
+        ),
+        "task55_correction": (
+            "After canonical reduction modulo the reciprocal bulk quartic, Task 55 proves "
+            "e6(lam,P)=P^3 e2(-lam,P^-1)."
+        ),
+        "s3_decision": (
+            "RECURRENCE_ROUTE_WEAK remains the physical-branch boundary: the Task 55 "
+            "involution exchanges stable and unstable sheets."
+        ),
         "checks": checks,
     }
 

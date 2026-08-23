@@ -17,21 +17,28 @@ explicit constants if available.
 
 ## Strongest Result
 
-statement: existential exponential global caps hold for `r=1,2,3` with the
-correct period-eight-cell exponent.
+historical statement: existential exponential global caps were claimed for
+`r=1,2,3` with the correct period-eight-cell exponent.
 
-evidence: COMPUTER_ASSISTED_PROVED overall; the implication from the certified
-isolation/complement inputs is analytic.
+historical Task 54 evidence: `OPEN_PENDING_2R_REPAIR`; the old proof used an
+invalid one-mode-per-interface complement. Task 55 supersedes this status with
+an independently checked exact-`2r` theorem and the explicit bound
+`3505r(9/25)^ell`.
 
 ## Proof Boundary
 
-proved: cluster ownership of the spectral top and qualitative residue caps.
+withdrawn: cluster ownership of the spectral top and qualitative residue caps
+as stated with only `r` squared modes.
 
-not proved: numerical `C_1,C_2,C_3` or `N_exp`.
+not proved by this Task 54 lane: numerical `C_1,C_2,C_3` or `N_exp`.
+
+proved subsequently in Task 55: `C_r=3505r` and the sufficient onset
+`N_exp=3120`.
 
 ## Dependencies
 
-inherited: corrected exact-`r`, complement gap, G6 cell decay.
+inherited historical inputs: now-withdrawn exact-`r` and complement gap, plus
+the surviving G6 cell decay.
 
 new: canonical site-to-cell distance conversion.
 
@@ -51,7 +58,7 @@ high-precision discovery: not used for acceptance.
 
 ## Certificates
 
-producer: inherited exact-`r` package.
+producer: inherited exact-`r` package, now a retraction record.
 
 checker: red-team distance-unit audit.
 
@@ -61,8 +68,8 @@ tamper tests: distance conversion and complement threshold tests.
 
 commands: Task 54 focused exact-`r` checker.
 
-results: arithmetic checker and corrected theorem red-team pass; numerical
-constants remain OPEN.
+results: the old arithmetic was reproducible but the rank premise was false;
+the theorem and numerical constants remain OPEN in Task 54.
 
 ## Falsification Findings
 
@@ -79,4 +86,5 @@ Reconstruct the matched mode and test every site/cell/core-offset conversion.
 
 ## Integration Recommendation
 
-ACCEPT qualitative theorem; retain explicit constants and `N_exp` as OPEN.
+WITHDRAW Task 54 qualitative theorem. Reassess only through a Task 55
+codimension-`2r` certificate; retain explicit constants and `N_exp` as OPEN.

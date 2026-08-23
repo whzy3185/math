@@ -1,7 +1,7 @@
 # Single-G6 Reduced Resolvent
 
 Use the contour `Gamma: |z-c6|=1/300`. On the orthogonal complement of the
-normalized G6 state, the spectral distance is at least
+full rank-two G6 eigenspace, the spectral distance is at least
 
 ```text
 1/100-1/300=1/150.
@@ -22,7 +22,7 @@ by at most
 ```
 
 The weighted full resolvent is therefore bounded by 600. Contour integration
-gives `|P6(i,j)|<=2 exp(-|i-j|/40000)`. Subtracting the rank-one pole from the
+gives `|P6(i,j)|<=2 exp(-|i-j|/40000)`. Subtracting the rank-two pole from the
 full resolvent yields the uniform reduced-kernel estimate
 
 ```text

@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "status": "TASK55_MULTIGAP_SUPPORT18_COMPUTER_ASSISTED_PROVED",
+  "evidence": "COMPUTER_ASSISTED_PROVED",
+  "scope": {
+    "totals": [
+      2,
+      6,
+      10,
+      14,
+      18
+    ],
+    "minimum_gap_count": 2,
+    "equivalence": "translation fixed by x_0=0; reflection canonical=min(g,reversed(g))",
+    "primitive": "no nonempty contiguous subword has zero charge sum(g_i-4)",
+    "counts_by_total": {
+      "2": 1,
+      "6": 16,
+      "10": 186,
+      "14": 2275,
+      "18": 28530
+    },
+    "total_count": 31008
+  },
+  "open_interface": {
+    "defects": "(-4 Z_{>=0}) union {x_0,...,x_m} union (S+4 Z_{>=0})",
+    "q": "Q_i=+1 at defects and -1 otherwise",
+    "tau_anchor": "tau_0=1",
+    "tau_recurrence": "tau_(i+1)=Q_i tau_i",
+    "operator": "(Av)_k=v_(k-1)+v_(k+1)+tau_(k-2)v_(k-2)+tau_k v_(k+2)",
+    "support": "I_g=[-2,S+2] intersect Z",
+    "image_window": "J_g=[-4,S+4] intersect Z",
+    "forbidden_truncation": "do not replace ||Av||^2 by ||P_I A P_I v||^2"
+  },
+  "witness_generation": {
+    "rule": "round(20*u), divide coordinate gcd, make first nonzero coordinate positive",
+    "top_vector": "FP64 top-branch location followed by 80- and 120-digit Rayleigh-quotient iteration; identical rounded vectors required",
+    "acceptance": "integer recomputation of the full Av on J_g only"
+  },
+  "strict_threshold": {
+    "numerator": 7905369311620328,
+    "denominator": 1000000000000000,
+    "test": "N*1000000000000000 > 7905369311620328*D"
+  },
+  "stream": {
+    "path": "research/proofs/task55/certificates/multigap_support18.jsonl",
+    "format": "one compact ASCII JSON array [[g_1,...,g_m],[v_-2,...,v_(S+2)]] per LF-terminated line",
+    "line_count": 31008,
+    "word_sha256": "1c635aa6c50d8dc2387508cf7ce63f67e6a2ced490a3ca6b4eacbe8b8c912bfb",
+    "sha256": "9c8ef135fc11ca7b8c1761c3d45fb89c65790d97c12f2081787814f046c038bf"
+  },
+  "statistics": {
+    "maximum_absolute_vector_coordinate": 11,
+    "maximum_numerator": 6226,
+    "maximum_denominator": 442,
+    "unique_weakest_word": [
+      3,
+      3
+    ],
+    "unique_weakest_vector": [
+      3,
+      0,
+      5,
+      7,
+      6,
+      9,
+      7,
+      8,
+      6,
+      2,
+      4
+    ],
+    "weakest_numerator": 2930,
+    "weakest_denominator": 369
+  },
+  "c6_dependency": {
+    "path": "research/proofs/task51/certificates/c6_exact_evans_elimination.json",
+    "sha256": "3de93781004929852ebdbd31c7ecbfdf72d125e0eea2b1606b4e472237ecd225",
+    "status": "C6_DEGREE10_EVANS_POLYNOMIAL_PROVED",
+    "polynomial_coefficients_descending": [
+      16,
+      -520,
+      6913,
+      -48448,
+      191768,
+      -423904,
+      484528,
+      -270464,
+      137856,
+      -19968,
+      256
+    ],
+    "isolating_interval": [
+      "7905369311620327/1000000000000000",
+      "988171163952541/125000000000000"
+    ]
+  },
+  "three_three_local_lemma": {
+    "status": "ANALYTIC_PROVED_ARBITRARY_FINITE_CORE_LENGTH",
+    "support_relative_to_first_motif_defect": [
+      -2,
+      8
+    ],
+    "tau_anchor": "tau_x=1",
+    "cases": [
+      {
+        "predecessor_gap": "1",
+        "vector": [
+          1,
+          0,
+          3,
+          4,
+          3,
+          5,
+          4,
+          4,
+          3,
+          1,
+          2
+        ],
+        "N_lower_bound": 874,
+        "possible_N": [
+          874,
+          902
+        ],
+        "D": 106
+      },
+      {
+        "predecessor_gap": "2",
+        "vector": [
+          2,
+          0,
+          0,
+          -3,
+          -2,
+          -2,
+          -2,
+          -2,
+          -1,
+          -1,
+          -1
+        ],
+        "N_lower_bound": 258,
+        "possible_N": [
+          258
+        ],
+        "D": 32
+      },
+      {
+        "predecessor_gap": ">=3",
+        "vector": [
+          1,
+          0,
+          3,
+          4,
+          3,
+          5,
+          4,
+          4,
+          3,
+          1,
+          2
+        ],
+        "N_lower_bound": 838,
+        "possible_N": [
+          838
+        ],
+        "D": 106
+      }
+    ],
+    "finite_dependency_cases_checked": 32,
+    "minimum_exact_margin_over_c6_upper": "1928310515327/6625000000000000",
+    "opposite_tau_lift": "v_i -> (-1)^i v_i because A_(-tau)=-D A_tau D"
+  },
+  "proof_boundary": {
+    "bounded_class": "PROVED only for the 31008 canonical primitive multi-gap cores with S<=18 in the listed residue class",
+    "three_three_subclass": "PROVED for arbitrary finite core length when a consecutive (3,3) motif occurs",
+    "universal_B0_to_B2": "OPEN",
+    "reference_cell_insertion_removal": "REJECTED: it multiplies a non-scalar bulk monodromy and is not a spectral equivalence"
+  }
+}

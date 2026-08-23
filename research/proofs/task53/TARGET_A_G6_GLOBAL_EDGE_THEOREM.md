@@ -20,9 +20,12 @@ In particular, `sigma(H6) intersect (c6,16]` is empty.
 ## Proof
 
 Task 50 proves, by an unsquared interval Evans determinant with fixed-sign
-derivative, that exactly one simple physical G6 level lies in the displayed
-interval. This proves membership of `c6` and excludes a second level between
-`c6` and its rational upper endpoint.
+derivative, that exactly one simple positive-`A` physical G6 root lies in the
+displayed interval. The exact anticommuting symmetry
+`(Ku)_i=(-1)^i u_(9-i)` gives `K^2=-I` and `KA=-AK`, so there is one simple
+negative partner. After squaring, the `H=A^2` level `c6` has multiplicity
+two. This proves membership of `c6` and excludes a second positive root
+between `c6` and its rational upper endpoint.
 
 Above that endpoint, the global Grassmann atlas defines the physical
 matching condition everywhere. Every physical zero annihilates the exact
@@ -45,8 +48,9 @@ The confluent symmetric quotient represents the repeated-multiplier energy.
 It is not a resultant candidate, so no zero is lost there. Finally, the
 signed adjacency has absolute row sum four, hence `||A||<=4` and
 `sigma(A^2)` lies in `[0,16]`. There is no spectrum beyond the checked
-interval. Reflection preserves the spectrum by the unitary equivalence in
-the physical-branch theorem. This proves the claim.
+interval on the positive branch; anticommutation maps the entire negative
+branch to it. Reflection preserves the spectrum by the unitary equivalence
+in the physical-branch theorem. This proves the claim.
 
 The exact resultant supplies candidate completeness only. Physical root
 selection is entirely unsquared and interval-certified.

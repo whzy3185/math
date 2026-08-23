@@ -1,5 +1,10 @@
 # Exact-r Min-Max and Riesz Count
 
+> **Falsified as stated.** Each G6 interface contributes two local modes to
+> `H=A^2`. The claimed exact-`r` count used only positive `A` roots and missed
+> their negative partners. Task 55 now supplies the independently checked
+> corrected exact-`2r` theorem.
+
 For `r in {1,2,3}`, the corrected sine/cosine truncated modes and the spectral
 projection argument supply at least `r` eigenvalues in an exponentially
 shrinking neighborhood of `c6`. The complement estimate shows by min-max
@@ -16,6 +21,6 @@ exactly `r` eigenvalues counted with multiplicity. Equivalently, a contour
 surrounding this interval has a Riesz projection of rank `r`. This does not
 assert simplicity.
 
-Status: `EXACT_R_R123_MINMAX_COUNT_PROVED` / COMPUTER_ASSISTED_PROVED. The
-min-max/Riesz implication is analytic, while its G6 isolation input is
-computer assisted. No independent geometric resolvent proof is claimed.
+Historical Task 54 status withdrawn. Final status:
+`FALSIFIED_AS_STATED`; corrected exact-`2r` count
+`COMPUTER_ASSISTED_PROVED` in Task 55.

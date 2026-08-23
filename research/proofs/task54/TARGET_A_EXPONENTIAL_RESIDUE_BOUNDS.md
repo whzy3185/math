@@ -1,5 +1,10 @@
 # Qualitative Exponential Residue Bounds
 
+> **Superseded.** This Task 54 derivation used the invalid exact-`r` cluster
+> ownership. The residue geometry remains correct, but the spectral bound
+> must be re-established from a codimension-`2r` theorem. Task 55 has now
+> supplied that theorem, the explicit `3505r` bound, and `N_exp=3120`.
+
 Insert the exact site separations of the explicit constructions:
 
 ```text
@@ -25,5 +30,6 @@ This is an upper construction, not a minimizer characterization. Because the
 constants are not explicit, the statement does not supply a numerical
 eventual threshold.
 
-Status: COMPUTER_ASSISTED_PROVED qualitatively after the inherited isolation
-input; explicit constants OPEN.
+Historical Task 54 status: `OPEN_PENDING_2R_REPAIR`. Current project status:
+the corrected residue bounds and explicit constants are
+`COMPUTER_ASSISTED_PROVED` in Task 55.
