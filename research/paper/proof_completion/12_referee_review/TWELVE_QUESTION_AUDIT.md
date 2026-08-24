@@ -2,12 +2,14 @@
 
 ## 1. Is the complete even-order classification logically self-contained?
 
-**CONDITIONAL PASS.** The accepted corpus gives a disjoint exhaustive
-partition: even `8..30`, `32`, `34..46` with `40` separated, `48..238`, and
-`n>=240`. Exact finite or analytic proofs cover every part. A single
-paper-ready canonical package for the earlier Lane A--H material must still
-replace cross-file provenance references during manuscript reframe; the
-truth-value theorem itself is logically closed.
+**CONDITIONAL PASS WITH AN EXPLICIT LOGICAL BOUNDARY.** The accepted corpus
+gives a disjoint exhaustive partition: even `8..30`, `32`, `34..46` with `40`
+separated, `48..238`, and `n>=240`. Exact finite or analytic proofs cover
+strict failure, defined by `m_n<rho_-(n)`. At valid orders the exhaustion
+direction gives `m_n>=rho_-(n)`. If the original conjecture is stated as the
+equality `m_n=rho_-(n)`, the opposite inequality must be supplied by a named
+candidate-attainment lemma; it is not a consequence of exhaustion. The
+manuscript must keep these dependencies separate.
 
 ## 2. Does the proof for orders 34--46 establish exhaustive coverage?
 
@@ -42,9 +44,11 @@ remaining norm-bounded spectral range are also handled.
 ## 6. Has every stale rank-r statement been removed from current proof packages?
 
 **PASS FOR THE CANONICAL-CURRENT LAYER.** The tracked audit classifies 111
-relevant occurrences. Historical files remain by design. Two source-use
-hazards are barred from manuscript import. The new proof packages use rank
-two and exact `2r` throughout.
+relevant occurrences. Historical files remain by design. Two exact source
+paths are `DO_NOT_IMPORT_CURRENT_CLAIMS`, and the superseded exact-`r` corpus
+is `HISTORICAL_ONLY`. The new proof packages use rank two and exact `2r`
+throughout. This is an editorial producer-side audit, not independent
+verification of the spectral results.
 
 ## 7. Does the single-gap theorem cover every `g>=1` except reference gap four?
 
@@ -92,3 +96,6 @@ LANES I-L PROOF PACKAGES: PASS
 COMPUTER BOUNDARY: PASS WITH DISCLOSED p<=24 INDEPENDENCE LIMIT
 MANUSCRIPT REFRAME READINESS: READY WITH MINOR PROOF CLEANUP
 ```
+
+The editorial hierarchy contains exactly seven main theorem families,
+Theorems 1.1--1.7.

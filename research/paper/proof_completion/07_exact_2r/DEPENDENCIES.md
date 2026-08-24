@@ -11,8 +11,16 @@ period-eight Floquet contraction q_F=9/25 and basis bound 17
   -> 2r-mode Gram invertibility
   -> lower spectral count.
 
-single-G6 complement gap 1/100
+finite-ring cutoff geometry
+  + cyclic translation / optional reflection / diagonal switching
+  + quantified holonomy-seam avoidance
+  -> Patch Identification Lemma
+  -> exact transport of both G6 modes and every localized quadratic form.
+
+Patch Identification Lemma
+  + single-G6 complement gap 1/100
   + range-four partition of unity
+  + pure-bulk edge eta
   + IMS error 4/845
   -> codimension-2r cap c6-1/200
   -> upper spectral count
@@ -24,6 +32,15 @@ Gram coordinates + complement resolvent
 ```
 
 No node in this mathematical graph is named by a research task.
+
+The Patch Identification Lemma is a mandatory dependency before the
+single-G6 complement gap: without it, orthogonality to the finite-ring
+columns would not yet be orthogonality to the certified infinite G6
+eigenspace. Its complete proof is
+`PATCH_IDENTIFICATION_LEMMA.md`. It covers `r=1,2,3`, forward/reflected
+interfaces, both `tau` lifts, both holonomies, and cyclic wraparound. The
+single-interface producer supplies certified spectral inputs; it does not
+claim independent verification of this analytic bridge.
 
 ## Exact provenance
 
@@ -39,6 +56,8 @@ No node in this mathematical graph is named by a research task.
   `research/proofs/task54/TARGET_A_G6_SPECTRAL_ISOLATION.md`.
 - Certificate:
   `research/proofs/task55/certificates/exact_2r_cluster.json`.
+- Finite-ring/local-model bridge:
+  `research/paper/proof_completion/07_exact_2r/PATCH_IDENTIFICATION_LEMMA.md`.
 
 ## Historical correction ledger
 

@@ -15,6 +15,10 @@ The formal English and Chinese manuscript trees remained frozen at
 `57ae03fb5b90866f84d0d72b414008678e8f5004`. Task 57 creates a separate
 canonical-current proof layer; it does not rewrite either manuscript.
 
+The Lane D import-safety audit is based on the Task 57 integration checkpoint
+`06316943472d9a1ea22f57b383bd3a0091cd4577`. It changes no theorem and does
+not treat its producer-side scan as independent mathematical verification.
+
 ## 2. Canonical Main Theorems
 
 - **T1: Complete Even-Order Classification.** For every even `n>=8`, the
@@ -31,7 +35,13 @@ canonical-current proof layer; it does not rewrite either manuscript.
   above `c6+1/250`.
 - **T6: Separated Phase-Slip Theorem.** For `r in {1,2,3}` and certified
   separation, exactly `2r` squared levels lie in the fixed near-`c6` window,
-  with explicit exponential control and residue-class upper constructions.
+  with explicit exponential control.
+- **T7: Residue-Class Upper-Constructions Theorem.** Legal one-, two-, and
+  three-G6 words give the residue `limsup` bounds and the explicit large-order
+  counterexample tail.
+
+These are exactly seven main theorem families. T6 and T7 may share a
+manuscript section, but they are not one theorem family.
 
 ## 3. Complete Even-Order Classification
 
@@ -52,6 +62,20 @@ by an explicit exact counterexample, `48<=n<240` by 96 full-matrix rational
 LDL certificates, and `n>=240` by the global IMS construction. This proves a
 truth-value classification, not a classification of minimizers or exact
 values of `m_n`.
+
+The canonical convention is
+
+```text
+theta_n:=rho_-(n)^2,
+failure at n iff m_n<rho_-(n) iff m_n^2<theta_n.
+```
+
+The exhaustive lower-bound argument proves `m_n>=rho_-(n)` at every order
+outside the failure set. Claim `T8.0` now supplies one explicit antibalanced
+signing with `Q_i=-1`, `alpha=-1`, and spectral radius exactly `rho_-(n)` for
+every even `n>=8`. Thus `m_n<=rho_-(n)`, and the two inequalities give
+`m_n=rho_-(n)` on the validity set. The absence of a strict counterexample is
+not used as a substitute for attainment.
 
 Status: `PAPER_READY` subject only to importing the proof package into LaTeX.
 
@@ -80,7 +104,10 @@ Status: `PAPER_READY`.
 
 ## 6. G6 Global Edge
 
-The proof is distilled into four mathematical reductions:
+Claim `T4.0` first proves that the G6 essential spectrum is exactly the
+periodic bulk spectrum with upper edge `eta`, so every higher spectral point
+is a discrete finite-multiplicity eigenvalue with exponentially decaying
+tails. The remaining proof is distilled into four mathematical reductions:
 
 1. bulk hyperbolicity above `eta` gives two-dimensional stable and unstable
    transfer spaces;
@@ -118,7 +145,10 @@ checker, and 12 fail-closed tests bind the corollary. Status: `PAPER_READY`.
 
 ## 8. Exact-2r
 
-The canonical proof begins with two orthonormal G6 modes per interface. It
+Claim `T6.0` first identifies each enlarged finite-ring interface patch with
+the certified infinite G6 local model for both orientations, lifts, and
+holonomies, with the seam outside all interface collars. The canonical proof
+then begins with two orthonormal G6 modes per interface. It
 then applies truncation, Gram control, a `2r`-dimensional residual subspace,
 the codimension-`2r` complementary gap, min-max, and the corrected
 `2r x 2r` Feshbach determinant. This proves exactly `2r` levels counted with
@@ -187,7 +217,7 @@ Task 57 structural/tamper tests: 18 passed
 git diff --check: PASS
 ```
 
-The canonical registry contains 43 accepted claims. Twelve T-series claims
+The canonical registry contains 46 accepted claims. Twelve T-series claims
 are directly labeled `COMPUTER_ASSISTED_PROVED`; the total is 26 after
 including supporting appendix claims and explicit finite lemmas. This count
 does not mean that 26 independent black-box computations are used: many rows
@@ -204,6 +234,12 @@ source-import hazards marked `MUST_UPDATE_BEFORE_MANUSCRIPT`, and six safe
 internal retraction/tamper occurrences. Neither frozen manuscript contains a
 stale rank claim. The full classification is recorded in
 `TARGET_A_STALE_RANK_CLAIM_AUDIT.md`.
+
+For manuscript reconstruction, the operative categories are now
+`CANONICAL_IMPORT`, `IMPORT_WITH_CAUTION`,
+`DO_NOT_IMPORT_CURRENT_CLAIMS`, and `HISTORICAL_ONLY`. Exact-path overrides,
+including the two known hazards and the superseded exact-`r` corpus, are in
+`TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md`.
 
 ## 13. Referee Audit
 
@@ -230,10 +266,11 @@ Recommended order:
 2. reference phase and charge sectors;
 3. elementary G6 phase slip;
 4. complete single-gap optimality;
-5. separated phase slips and residue constructions;
-6. complete even-order classification;
-7. concise discussion and bounded periodic context;
-8. computer-assisted appendices for G6, small orders, exact LDL, and
+5. separated phase slips;
+6. residue-class upper constructions;
+7. complete even-order classification;
+8. concise discussion and bounded periodic context;
+9. computer-assisted appendices for G6, small orders, exact LDL, and
    exact-`2r`.
 
 ## 15. Readiness
@@ -243,7 +280,9 @@ READY_FOR_MANUSCRIPT_REFRAME
 ```
 
 The proof corpus is organized for direct manuscript import. The formal LaTeX
-trees remain intentionally unchanged in Task 57.
+trees remain intentionally unchanged in Task 57. Direct import must follow
+`TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md`; equality wording must not be imported
+without its candidate-attainment dependency.
 
 ## 16. Git
 

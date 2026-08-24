@@ -12,6 +12,14 @@
 
 ## Exactness
 
+- [x] One explicit signing is printed for every even $n\ge8$.
+- [x] Its alternating triangle flux and negative holonomy are checked directly.
+- [x] A complete $2\times2$ antiperiodic Fourier calculation proves
+  $\rho(A_{\sigma_n^-})=\rho_-(n)$ without machine input.
+- [x] On the validity set, candidate attainment gives $m_n\le\rho_-(n)$ and
+  exhaustion gives $m_n\ge\rho_-(n)$, so equality is explicit.
+- [x] On the failure set, a separate witness gives the strict inequality;
+  existence of the threshold candidate does not weaken that conclusion.
 - [x] No floating-point eigenvalue comparison is an accepting endpoint.
 - [x] Lower certificates use exact Rayleigh inequalities or threshold equality.
 - [x] Upper certificates use positivity of $pI-qA^2$ and exact comparison.
@@ -29,6 +37,8 @@
 ## Reproducibility and scope
 
 - [x] Every essential finite artifact has an independent checker.
+- [x] The analytic candidate-attainment lemma is not represented as a producer
+  or independent-verification result and has no machine dependency.
 - [x] Paths and hashes are isolated in the provenance appendix.
 - [x] The mathematical dependency graph has no task-number node.
 - [x] The theorem does not claim that all even $n\ge32$ fail.

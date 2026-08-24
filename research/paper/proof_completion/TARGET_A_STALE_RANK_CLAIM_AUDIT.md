@@ -14,6 +14,10 @@ codimension-2r complement,
 The historical exact-`r`, codimension-`r`, rank-one G6, and `r x r`
 statements are false as stated.
 
+Manuscript import is governed by
+[TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md](TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md).
+Its exact-path decisions override any broad directory classification.
+
 For checker-facing plain-text compatibility, the four category labels are:
 
 ```text
@@ -37,6 +41,11 @@ found 111 relevant line occurrences in 46 files:
 | `HISTORICAL_SUPERSEDED` | 52 | retained old proof/review with canonical supersession |
 | `MUST_UPDATE_BEFORE_MANUSCRIPT` | 2 | source wording must not be imported unchanged |
 | `SAFE_INTERNAL_ARCHIVE` | 6 | retraction certificate/checker or fail-closed tamper token |
+
+These four labels describe occurrence semantics in the historical scan. The
+operative manuscript-import labels are `CANONICAL_IMPORT`,
+`IMPORT_WITH_CAUTION`, `DO_NOT_IMPORT_CURRENT_CLAIMS`, and
+`HISTORICAL_ONLY`; the two systems must not be conflated.
 
 ## Complete file-and-line classification
 
@@ -89,6 +98,41 @@ found 111 relevant line occurrences in 46 files:
 | `research/scripts/verify_target_a_task56_one_g6_degeneracy.py:136,137` | `CURRENT_CORRECT` | Contract rejects withdrawn exact-`r` phrases. |
 | `research/scripts/verify_target_a_task56_single_gap.py:81` | `CURRENT_CORRECT` | Requires the theorem to say rank two, not rank one. |
 
+## Manuscript import disposition
+
+The two exact source hazards are blacklisted as
+`DO_NOT_IMPORT_CURRENT_CLAIMS`:
+
+```text
+research/proofs/task52/TARGET_A_MULTI_SLIP_INTERACTION_ASYMPTOTICS.md
+research/proofs/task54/TARGET_A_COMMON_RESIDUE_LIMIT_SCOPE.md
+```
+
+The exact Task 53--54 superseded files are listed individually as
+`HISTORICAL_ONLY` in the import-safety manifest. No directory-level approval
+may override those exact paths.
+
+## Canonical active-word audit
+
+The canonical-current proof layer was semantically re-audited at the Task 57
+integration checkpoint
+`06316943472d9a1ea22f57b383bd3a0091cd4577`, together with this Lane D repair.
+Occurrences were separated into active positive assertions and explicit
+rejections, historical descriptions, or tamper-test language. The active
+positive counts are:
+
+```text
+rank-one G6 spectral claims:                 0
+exact-r squared-cluster claims:              0
+codimension-r complement claims:             0
+r x r problem-specific Feshbach claims:      0
+```
+
+The accepted active wording is rank two, exact `2r`, codimension `2r`, and a
+`2r x 2r` problem-specific Feshbach operator. The scan and this classification
+are producer-side editorial evidence; they are not described as independent
+mathematical verification.
+
 ## Formal manuscript result
 
 The scan found zero relevant stale-rank occurrences in
@@ -105,5 +149,6 @@ audit.
 
 There is no dangerous positive stale-rank theorem in the canonical-current
 proof layer. The two `MUST_UPDATE_BEFORE_MANUSCRIPT` lines are source-import
-hazards, not accepted claims; both are barred from direct reuse. Historical
-and retraction artifacts remain intentionally preserved.
+hazards, not accepted claims; both are now exact-path
+`DO_NOT_IMPORT_CURRENT_CLAIMS` entries. Historical and retraction artifacts
+remain intentionally preserved under `HISTORICAL_ONLY`.

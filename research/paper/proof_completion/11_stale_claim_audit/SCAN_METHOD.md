@@ -12,6 +12,12 @@ using `git grep`, so untracked proof-completion work was not mistaken for
 historical source material. The formal English and Chinese manuscript trees
 were included in the scan.
 
+A second semantic audit of the canonical-current layer uses the Task 57
+integration checkpoint
+`06316943472d9a1ea22f57b383bd3a0091cd4577` plus the Lane D documentation
+repair. The original 111-occurrence totals below remain the frozen historical
+scan result; they are not silently recomputed against a different corpus.
+
 ## Concepts
 
 The case-insensitive fixed-string scan covered:
@@ -56,3 +62,19 @@ SAFE_INTERNAL_ARCHIVE:                   6
 No positive exact-`r`, codimension-`r`, rank-one G6, or `r x r` Feshbach
 claim occurs in either frozen formal manuscript. Historical files were not
 rewritten.
+
+## Import classification
+
+Occurrence labels describe what a matched line means. Manuscript import uses
+the separate categories
+
+```text
+CANONICAL_IMPORT
+IMPORT_WITH_CAUTION
+DO_NOT_IMPORT_CURRENT_CLAIMS
+HISTORICAL_ONLY
+```
+
+and the exact-path precedence rules in
+`../TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md`. The scan is a producer-side safety
+control, not an independent verifier of any theorem.

@@ -5,6 +5,9 @@ Status: `EDITORIAL_CANONICAL_CURRENT`.
 This hierarchy names mathematical results rather than research stages. Claim
 IDs refer to [TARGET_A_FINAL_CLAIM_INVENTORY_V2.md](TARGET_A_FINAL_CLAIM_INVENTORY_V2.md).
 
+There are exactly seven main theorem families, Theorems 1.1--1.7. No
+six-family abbreviation is canonical.
+
 ## Theorem 1.1: Complete Even-Order Classification
 
 For every even integer `n>=8`,
@@ -25,7 +28,18 @@ Equivalently, the conjectured inequality holds exactly for
 {8,10,...,30,34,36,38,42,44,46}.
 ```
 
-Canonical claim: `T8.4`.
+Here `theta_n:=rho_-(n)^2`. Failure means
+`m_n<rho_-(n)`, equivalently `m_n^2<theta_n`; the theorem never compares
+`m_n` directly with `theta_n`. The displayed strict-failure classification
+is logically distinct from attainment. If the original conjecture is stated
+as the equality `m_n=rho_-(n)`, equality at every order in the displayed
+validity set additionally uses an explicit candidate with spectral radius at
+most `rho_-(n)`, together with the universal lower bound. The exhaustion
+inequality alone does not imply equality.
+
+Canonical claims: `T8.0`, `T8.4`. Claim `T8.0` supplies the explicit
+attaining signing; `T8.4` combines it with the exhaustive lower/strict
+classification.
 
 Role: first theorem in the introduction and final theorem proved in the body.
 The early statement is followed by a roadmap; the proof is completed after
@@ -76,7 +90,8 @@ dim ker(H_6-c6)=2.
 
 The unsquared partners at `+/-sqrt(c6)` are simple.
 
-Canonical claims: `T4.1`-`T4.3`.
+Canonical claims: `T4.0`-`T4.3`. Claim `T4.0` separates the periodic
+essential spectrum from the discrete matching problem.
 
 Role: technical centerpiece. The main text gives a four-lemma proof chain;
 the exact atlas and root audit are isolated in an appendix.
@@ -113,7 +128,9 @@ multiplicity, and
 
 The effective Feshbach space is `2r` dimensional.
 
-Canonical claims: `T6.1`-`T6.4`.
+Canonical claims: `T6.0`-`T6.4`. Claim `T6.0` identifies every localized
+finite-ring patch with the certified line model before local spectral bounds
+are applied.
 
 Role: the IMS cap belongs in the main text; exact-`2r`, complement gap, and
 Feshbach constants belong in the appendix.
@@ -184,3 +201,6 @@ The following are not theorem statements in the final paper:
 The hierarchy is therefore complete without being inflated: seven main
 theorem families, seven supporting propositions, and isolated exact
 computer-assisted lemmas.
+
+All manuscript reuse is additionally governed by
+[TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md](TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md).

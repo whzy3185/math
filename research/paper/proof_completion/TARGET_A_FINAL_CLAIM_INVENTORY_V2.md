@@ -64,6 +64,7 @@ P(y,c)=y^4-16y^3+(80-2c)y^2+(-128+16c)y+c^2-13c+38.
 
 | ID | Canonical claim | Evidence | Placement |
 |---|---|---|---|
+| `T4.0` | For the bilateral G6 squared operator, `sigma_ess(H_6)=sigma(H_ref)` and `sup sigma_ess(H_6)=eta`; every spectral point above `eta` is discrete of finite multiplicity and its unsquared components have exponentially decaying stable/unstable tails. | `PURE_ANALYTIC_PROVED` | `MAIN_TEXT`, `APPENDIX` |
 | `T4.1` | `c6` is the unique root in `(7905369311620327/10^15,7905369311620328/10^15)` of the registered irreducible degree-ten polynomial. | `COMPUTER_ASSISTED_PROVED` | `MAIN_TEXT`, `APPENDIX`, `REPRODUCIBILITY` |
 | `T4.2` | For either orientation of the bilateral G6 interface, `sup sigma(H_6)=c6`; candidate completeness and physical matching exclude all spectral points above `c6`. | `COMPUTER_ASSISTED_PROVED` | `MAIN_TEXT`, `APPENDIX`, `REPRODUCIBILITY` |
 | `T4.3` | The exact symmetry `K^2=-I`, `KA_6=-A_6K`, `KH_6=H_6K` gives `dim ker(H_6-c6)=2`; the unsquared partners at `+/-sqrt(c6)` are simple. | `ANALYTIC_COROLLARY_OF_CERTIFIED_INPUTS` | `MAIN_TEXT`, `APPENDIX` |
@@ -82,6 +83,7 @@ orientations. It does not include arbitrary multi-gap finite cores.
 
 | ID | Canonical claim | Evidence | Placement |
 |---|---|---|---|
+| `T6.0` | Every range-four enlarged interface patch in the explicit separated-G6 rings is, after translation, optional reflection, and diagonal switching, identical to the certified infinite G6 local model; both lifts and holonomies are covered, the seam avoids interface patches, and all remaining patches are reference bulk. | `PURE_ANALYTIC_PROVED` | `MAIN_TEXT`, `APPENDIX` |
 | `T6.1` | The exact discrete IMS identity holds for `H=A^2`; the cyclic tent partition has the stated range-four error bound. | `PURE_ANALYTIC_PROVED` | `MAIN_TEXT`, `APPENDIX` |
 | `T6.2` | A ring made from period-eight bulk and `r in {1,2,3}` sufficiently separated G6 interfaces has only pure-bulk or one-G6 local patches and satisfies the global cap `rho(A)^2<=c6+576/R^2`. | `ANALYTIC_COROLLARY_OF_CERTIFIED_INPUTS` | `MAIN_TEXT`, `APPENDIX` |
 | `T6.3` | For `r in {1,2,3}` and minimum interface distance `D>=1040`, exactly `2r` squared eigenvalues, counted with multiplicity, lie in `[c6-1/400,c6+1/400]`. | `COMPUTER_ASSISTED_PROVED` | `APPENDIX`, `REPRODUCIBILITY` |
@@ -115,6 +117,7 @@ explicit-witness tail, not the first failing order.
 
 | ID | Canonical claim | Evidence | Placement |
 |---|---|---|---|
+| `T8.0` | For every even `n>=8`, the explicit antibalanced signing with `Q_i=-1` and `alpha=-1` has spectral radius exactly `rho_-(n)`; hence `m_n<=rho_-(n)` at every admissible order. | `PURE_ANALYTIC_PROVED` | `MAIN_TEXT`, `APPENDIX` |
 | `T8.1` | No even order `8<=n<=30` is a counterexample, while the displayed order-32 signing is an exact strict counterexample. | `COMPUTER_ASSISTED_PROVED` | `MAIN_TEXT`, `APPENDIX`, `REPRODUCIBILITY` |
 | `T8.2` | No counterexample exists at `n in {34,36,38,42,44,46}`; the parity-lifted finite-state closure has 64 terminal `(Q,alpha)` records and zero unresolved records. | `COMPUTER_ASSISTED_PROVED` | `MAIN_TEXT`, `APPENDIX`, `REPRODUCIBILITY` |
 | `T8.3` | The displayed order-40 signing is an exact strict counterexample. | `COMPUTER_ASSISTED_PROVED` | `MAIN_TEXT`, `APPENDIX`, `REPRODUCIBILITY` |
@@ -169,12 +172,13 @@ reproduce independently of the surrounding mathematical deductions.
 
 The main paper should promote exactly these seven theorem families:
 
-1. `T8.4`, Complete Even-Order Classification.
+1. `T8.0`, `T8.4`, Complete Even-Order Classification and candidate
+   attainment.
 2. `T2.2`, Reference-Phase Edge.
 3. `T3.1`-`T3.3`, Gap/Charge and Sector Shift.
-4. `T4.1`-`T4.3`, Elementary G6 Phase Slip.
+4. `T4.0`-`T4.3`, Elementary G6 Phase Slip.
 5. `T5.1`-`T5.2`, Single-Gap Optimality and Uniform Separation.
-6. `T6.1`-`T6.4`, Separated Phase Slips.
+6. `T6.0`-`T6.4`, Separated Phase Slips.
 7. `T7.1`-`T7.3`, Residue Constructions and the Explicit Tail.
 
 All other accepted claims support those families or belong in appendices.

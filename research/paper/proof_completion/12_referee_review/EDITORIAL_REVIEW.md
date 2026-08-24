@@ -9,12 +9,15 @@ I--L packages. The formal manuscript itself remains intentionally frozen.
 
 ## Recommended hierarchy
 
+The canonical hierarchy has exactly seven main theorem families:
+
 1. Complete Even-Order Classification Theorem.
 2. Reference-Phase Theorem.
 3. Charge and Sector-Shift Theorem.
 4. Elementary Phase-Slip Theorem.
 5. Single-Gap Optimality and Uniform-Separation Theorem.
-6. Separated Phase-Slip and Residue-Class Upper Theorem.
+6. Separated Phase-Slip Theorem.
+7. Residue-Class Upper-Constructions Theorem.
 
 The rank-two symmetry and exact-`2r` count are supporting propositions. The
 general moments and `p<=24` frontier belong in appendices.
@@ -38,11 +41,17 @@ or historical task chronology.
 ## Manuscript-import requirements
 
 1. Display the degree-ten defining polynomial for `c6` before its decimal.
-2. Import no text from the two `MUST_UPDATE_BEFORE_MANUSCRIPT` stale sources.
+2. Apply `TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md`; in particular, import no
+   current claim or formula from either exact path classified
+   `DO_NOT_IMPORT_CURRENT_CLAIMS`.
 3. Preserve the layered-independence disclosure for the `p<=24` appendix.
 4. Replace all task-number dependencies by named lemmas and propositions.
+5. Define `theta_n=rho_-(n)^2`; compare `m_n` with `rho_-(n)` and `m_n^2`
+   with `theta_n`.
+6. If the conjecture is stated as equality, cite candidate attainment in
+   addition to the lower-bound/exhaustion input.
 
-The canonical proof package already satisfies the first, third, and fourth items;
-they remain here to prevent regression during LaTeX import. None of these
-requirements is a proof-package blocker, requires new research, or changes a
-theorem statement.
+Items one through five are canonical import constraints. Item six is a
+logical gate whenever equality wording is used: the named attainment result
+must be present in the classification dependency chain. None of these
+requirements calls for a new theorem or a changed constant.

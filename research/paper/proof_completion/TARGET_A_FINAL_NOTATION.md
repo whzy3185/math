@@ -16,6 +16,27 @@ documents may use different symbols; those symbols do not override this table.
 | `H_sigma=A_sigma^2` | The squared signed adjacency. Its spectral top is `rho(A_sigma)^2`. |
 | `m_n` | `min_sigma rho(A_sigma)`, with the minimum over all signings of `G_n`. |
 | `rho_-(n)` | The comparison value from the conjecture, with `rho_-(n)^2=4+2cos(2pi/n)+2cos(4pi/n)`. |
+| `theta_n` | The squared comparison threshold `theta_n:=rho_-^2(n)=rho_-(n)^2`. Use this symbol when an argument is formulated for `H_sigma`. |
+
+All quantities `m_n` and `rho_-(n)` are nonnegative. Thus
+
+```text
+m_n<rho_-(n)  iff  m_n^2<theta_n.
+```
+
+The phrase "the conjecture fails at `n`" means exactly this strict
+inequality. Its negation gives `m_n>=rho_-(n)`; it does not by itself give
+equality. If the original conjecture is presented as
+`m_n=rho_-(n)`, equality at a valid order requires both
+
+```text
+all signings: rho(A_sigma)>=rho_-(n),
+one explicit candidate: rho(A_sigma_n)<=rho_-(n).
+```
+
+The second line is the candidate-attainment input. Never compare `m_n`
+directly with `theta_n`: compare `m_n` with `rho_-(n)`, or compare `m_n^2`
+with `theta_n`.
 
 Switching by a diagonal matrix with diagonal entries in `{+1,-1}` is denoted
 by `A_sigma -> D A_sigma D`. Switching preserves the spectrum. Do not use
@@ -217,3 +238,9 @@ sigma(q)=q/2 mod 4.
 
 The corrected forms are rank two per G6, exact `2r`, codimension `2r`, a
 `2r x 2r` Feshbach matrix, and `sigma_sec(q)=q mod 4`.
+
+## Editorial Count
+
+The canonical article has exactly seven main theorem families, numbered
+Theorems 1.1--1.7. The interface count `r` and the spectral multiplicity `2r`
+are unrelated to that editorial count.

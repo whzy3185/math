@@ -17,12 +17,14 @@ unnecessary for a minimal review and may rewrite certificates.
 The complete main-chain referee check is:
 
 ```bash
-$PY research/scripts/verify_target_a_task57.py
+$PY research/scripts/verify_target_a_task575.py
 ```
 
-It runs 13 independent checker entry points and finishes with
-`TARGET_A_TASK57_VERIFY_PASS checkers=13`. The family-by-family commands below
-are provided for diagnosis and selective reproduction.
+It runs the 13 inherited independent checker entry points followed by the
+focused proof-connection gate and finishes with
+`TARGET_A_TASK575_VERIFY_PASS inherited_checkers=13 repair_gates=1`. The
+family-by-family commands below are provided for diagnosis and selective
+reproduction.
 
 ## One command group per certificate family
 

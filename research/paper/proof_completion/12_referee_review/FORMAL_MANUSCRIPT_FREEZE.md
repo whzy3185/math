@@ -21,6 +21,10 @@ Both tree hashes were recomputed from the reference checkpoint. Neither
 directory has a tracked diff. Task 57 proof-completion files live outside both
 formal manuscript trees.
 
+The Task 57.5 Lane D consistency repair starts from
+`06316943472d9a1ea22f57b383bd3a0091cd4577` and retains the same two tree
+hashes. Its allowed edit set excludes both manuscript directories.
+
 ## Git policy
 
 This proof-completion pass does not create or switch a branch or worktree and

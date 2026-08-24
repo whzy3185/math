@@ -1,6 +1,16 @@
 # Full Proof
 
-## 1. Bulk hyperbolicity
+Throughout, write
+
+```text
+J_6=[7905369311620327/10^15,7905369311620328/10^15]
+```
+
+for the certified rational isolating interval of `c6`.  This notation avoids
+confusing that interval with equation (1), which is the bulk reciprocal
+quartic below.
+
+## 1. Bulk hyperbolicity and the essential spectrum
 
 Let `M(y)` denote the eight-step transfer matrix of either reference bulk.
 Its reciprocal characteristic polynomial is
@@ -34,7 +44,7 @@ two multipliers lie inside and two outside the unit circle. Their spectral
 subspaces, denoted `S(y)` and `U(y)`, both have algebraic dimension two.
 
 The only multiplier collision in the interval from the upper endpoint of
-(1) through `16` occurs at
+`J_6` through `16` occurs at
 
 ```text
 y_*=4+sqrt(627)/6,   w=95/12>2.                      (4)
@@ -43,12 +53,24 @@ y_*=4+sqrt(627)/6,   w=95/12>2.                      (4)
 Thus the collision is away from the unit circle and does not destroy the
 stable/unstable splitting.
 
-The two limit operators of the G6 interface are translated copies of the
-same period-eight bulk. The standard cutoff Weyl-sequence argument for a
-finite-range step operator therefore identifies its essential spectrum with
-the union of those two bulk spectra. In particular its essential squared
-upper edge is `eta`; every spectral point above `eta` must satisfy the
-decaying-plane matching condition used next.
+The direct argument in `ESSENTIAL_SPECTRUM_LEMMA.md` now applies.  It first
+decouples `H_6` into two periodic half-line operators and a finite middle
+block; the difference is finite rank.  A cutoff Bloch-wave Weyl sequence and
+a resolvent parametrix prove that the essential spectrum of each periodic
+half-line compression equals the spectrum of its whole-line bulk.  Since the
+two G6 limit operators are translated and diagonally switched copies of the
+same period-eight operator,
+
+```text
+sigma_ess(H_6)=sigma(H_L) union sigma(H_R)=sigma(H_ref),
+sup sigma_ess(H_6)=eta.
+```
+
+Consequently every spectral point of `H_6` above `eta` is an isolated
+eigenvalue of finite multiplicity.  Decomposing its eigenvector into the
+`A_6` branches `+sqrt(y)` and `-sqrt(y)` proves exponential decay on both
+tails and places each nonzero branch in the stable/unstable matching problem
+used next.
 
 ## 2. Coordinate-free physical matching
 
@@ -60,15 +82,16 @@ decaying toward `-infinity`, represented at the left cut, and let
 at the right cut. The transfer recurrence is invertible.
 
 A nonzero bilateral solution decays at both ends if and only if its left-cut
-state lies in `U_L(y)` and its transported right-cut state lies in `S_R(y)`.
+state lies in `U_L(lambda)` and its transported right-cut state lies in
+`S_R(lambda)`.
 Equivalently,
 
 ```text
 D_6(lambda) U_L(lambda) intersect S_R(lambda) != {0}. (5)
 ```
 
-For any oriented bases `u_1,u_2` of `U_L(y)` and `s_1,s_2` of `S_R(y)`, (5)
-is equivalent to
+For any oriented bases `u_1,u_2` of `U_L(lambda)` and `s_1,s_2` of
+`S_R(lambda)`, (5) is equivalent to
 
 ```text
 E_6(lambda)=det[D_6(lambda)u_1,D_6(lambda)u_2,s_1,s_2]=0,
@@ -86,14 +109,14 @@ conjugacy.
 
 ## 3. Realization and algebraic identification of `c6`
 
-On the rational interval (1), the stable multipliers are distinct, positive,
+On the rational interval `J_6`, the stable multipliers are distinct, positive,
 and uniformly separated from the unit circle. Cofactor coordinates for the
 four plane vectors are nonzero throughout the interval. Exact outward
 rational interval evaluation of the genuine positive-`lambda` determinant
 (6) gives opposite endpoint signs, while automatic differentiation gives a
 strictly positive derivative enclosure on the whole interval. The
 intermediate-value theorem and the derivative test therefore give exactly
-one simple physical eigenvalue `lambda_+>0` whose square lies in (1).
+one simple physical eigenvalue `lambda_+>0` whose square lies in `J_6`.
 
 To identify that square, symmetrize the matching determinant in the two
 stable multipliers. If `S=z_1+z_2` and `P=z_1z_2`, the reciprocal relations
@@ -107,7 +130,7 @@ P^2+S^2+1-b(y)P=0.                                   (7)
 After eliminating `S`, write the unsquared Evans numerator as
 `E_0(y,P)+lambda E_1(y,P)`. Using `lambda^2=y`, eliminate `P` from (7) and
 `E_0^2-yE_1^2`. Exact factorization contains `p_6(y)^2`, and Sturm isolation
-shows that `p_6` has exactly one root in (1). Since the already established
+shows that `p_6` has exactly one root in `J_6`. Since the already established
 physical root is in that interval, its square is `c6`.
 
 This elimination identifies a known physical zero; by itself, a resultant
@@ -117,7 +140,7 @@ Floquet sheet, or a vanishing chart section may introduce extra factors.
 ## 4. Complete exclusion above `c6`
 
 The small interval argument above proves simplicity and excludes another
-positive zero through the rational upper endpoint in (1). It remains to
+positive zero through the rational upper endpoint of `J_6`. It remains to
 exclude positive physical zeros in
 
 ```text
@@ -206,5 +229,6 @@ ker(H_6-c6)=ker(A_6-sqrt(c6))
 
 so (15) has dimension two. Any negative spectral value of `A_6` with larger
 absolute value would be sent by `K` to an excluded positive value. Hence
-`sup sigma(H_6)=c6`, and (2)-(4) follow. Exponential localization follows
-from the stable and unstable multipliers in Lemma A.
+`sup sigma(H_6)=c6`, and the theorem follows.  Exponential localization is
+the conclusion of the essential-spectrum and tail-matching lemma, applied at
+`y=c6>eta`.

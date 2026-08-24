@@ -6,6 +6,11 @@ This architecture turns the accepted result corpus into a signed-graph paper
 whose primary theorem is the complete truth classification. It does not edit
 either frozen manuscript and does not introduce a new unrestricted theorem.
 
+The architecture has exactly seven main theorem families, numbered 1.1--1.7
+in `TARGET_A_JGT_THEOREM_HIERARCHY.md`. In particular, separated phase slips
+(Theorem 1.6) and residue-class upper constructions (Theorem 1.7) remain
+distinct families even when presented in one manuscript section.
+
 ## Governing Proof Form
 
 Every computer-assisted argument must appear in four explicit stages:
@@ -34,9 +39,18 @@ conjectured inequality, not all minimizers and not exact values of `m_n`.
 `MAIN_TEXT_REQUIRED`:
 
 - the signed-graph problem and `m_n`, `rho_-(n)`;
+- the squared threshold `theta_n:=rho_-(n)^2` and the rule that `m_n` is never
+  compared directly with `theta_n`;
 - the statement of `T8.4`;
+- the explicit candidate-attainment lemma `T8.0` needed by the equality
+  formulation;
 - the partition `8..30`, `32`, `34..46`, `40`, `48..239`, `>=240`;
 - a one-paragraph guide to which pieces are computer-assisted.
+
+Define strict failure by `m_n<rho_-(n)`. If the introduction phrases the
+original conjecture as the equality `m_n=rho_-(n)`, the final proof must cite
+both the universal lower-bound/exhaustion input and a candidate-attainment
+input. Absence of strict failure alone is not an attainment proof.
 
 ### 2. Switching, Flux, And The Reference Phase
 
@@ -81,6 +95,8 @@ Define `c6` mathematically before giving its decimal approximation. State
 - the theorem `sup sigma(H_6)=c6`;
 - a four-lemma proof skeleton: hyperbolicity, physical matching, candidate
   completeness/exclusion, realization;
+- the essential-spectrum and tail-matching bridge `T4.0` before the Evans
+  criterion;
 - the exact symmetry and rank-two consequence.
 
 `APPENDIX_REQUIRED`:
@@ -132,12 +148,19 @@ keeps the main proof short.
 `APPENDIX_REQUIRED`:
 
 - exact `2r` cluster and codimension-`2r` complement;
+- the finite-ring patch-identification bridge `T6.0` before importing the
+  one-interface complement gap;
 - `2r x 2r` Feshbach reduction;
 - `3505r(9/25)^ell` and `N_exp=3120`;
 - the protected double level on the standard one-G6 ring.
 
 The appendix must state that exact-`2r` is a structural strengthening, not a
 premise of the sharper contiguous onset `N_star=48`.
+
+This section contains two main theorem families: Theorem 1.6 is the separated
+phase-slip spectral theorem, while Theorem 1.7 is the residue-class upper
+construction theorem. Shared placement does not merge their statements or
+dependencies.
 
 ### 7. Finite Completion And The Main Theorem
 
@@ -219,6 +242,11 @@ contain unstated mathematical reductions.
    unsquared physical matching.
 6. The exact-`2r` appendix starts from a rank-two one-interface basis and
    never inherits rank-one notation.
+7. A truth classification for the equality conjecture cites candidate
+   attainment in addition to the lower-bound/exhaustion argument.
+8. Every source import obeys
+   `TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md`; an exact-path blacklist overrides a
+   directory-level default.
 
 ## Editorial Exclusions
 
@@ -245,6 +273,7 @@ The later manuscript reframe may begin when each main theorem package has:
 - an independent checker for every logically essential computation;
 - no current rank-`r` language;
 - a direct mapping to `MAIN_TEXT`, `APPENDIX`, and `REPRODUCIBILITY`.
+- an import category under `TARGET_A_MANUSCRIPT_IMPORT_SAFETY.md`.
 
 The canonical registry satisfies the editorial mapping. Completion of the
 remaining theorem-specific packages is tracked outside this Lane A directory.

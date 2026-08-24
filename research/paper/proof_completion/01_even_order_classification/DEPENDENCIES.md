@@ -6,6 +6,9 @@ The graph uses mathematical statements rather than historical task labels.
 
     signed adjacency and switching invariance
         |
+        +-- explicit alternating-flux candidate
+        |      -> antiperiodic Fourier blocks
+        |      -> exact threshold attainment ------------+
         +-- exact finite minimality through order 30 -----+
         +-- exact order-32 upper certificate -------------+
         +-- local compression                              |
@@ -23,8 +26,11 @@ its rank.
 
 ## Logical inputs
 
+The candidate-attainment input is analytic and uniform in every even order.
+
 | input | role | evidence |
 |---|---|---|
+| distinguished alternating-flux signing | $m_n\le\rho_-(n)$ for every even $n\ge8$ | direct $2\times2$ antiperiodic Fourier diagonalisation; no machine input |
 | finite minimality for even $8\le n\le30$ | no smaller failure | exact finite exhaustion |
 | order-32 certificate | explicit strict failure | exact positive definiteness and algebraic comparison |
 | local finite-state theorem | no failure at $34,36,38,42,44,46$ | independent exact finite reconstruction |
@@ -38,6 +44,7 @@ Historical task labels appear only in this source map.
 
 | content | certificate | independent checker |
 |---|---|---|
+| threshold attainment for the explicit candidate | research/paper/proof_completion/01_even_order_classification/CANDIDATE_ATTAINMENT_LEMMA.md | not applicable: analytic proof, no producer claim |
 | $8\le n\le30$ | research/counterexamples/target_a_minimality_certificate.json | research/scripts/verify_target_a_minimality_certificate.py |
 | $n=32$ | research/counterexamples/target_a_n32_period8_certificate.json | research/scripts/verify_target_a_n32_certificate.py |
 | six no-counterexample orders | research/proofs/task55/certificates/small_order_exact_classification.json | research/scripts/verify_target_a_task55_small_order_exact.py |
@@ -57,3 +64,9 @@ e6a01d8bf30088dae1042a237398bee2df138280.
 
 No unrestricted common-liminf theorem, universal multi-gap optimality result,
 arbitrary-period classification, or minimiser classification is used.
+
+The finite validity-set conclusion is an equality, not merely a
+no-counterexample statement. The analytic candidate gives
+$m_n\le\rho_-(n)$; the exhaustive certificates give
+$m_n\ge\rho_-(n)$; hence $m_n=\rho_-(n)$. At every failing order the
+separate witness gives the strict inequality $m_n<\rho_-(n)$.

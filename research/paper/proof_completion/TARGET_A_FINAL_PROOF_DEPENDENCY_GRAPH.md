@@ -55,8 +55,9 @@ elementary combinatorial facts.
 ## Layer 2: Elementary G6 Interface
 
 ```text
+T1.4, T2.2          -> T4.0  two-tail essential spectrum and decay bridge
 T1.4, T2.2          -> T4.1  algebraic root c6 and isolation
-T2.2, T4.1, C.6    -> T4.2  global G6 squared edge
+T4.0, T4.1, C.6    -> T4.2  global G6 squared edge
 T4.2, C.6           -> T4.3  rank-two G6 eigenspace
 ```
 
@@ -94,9 +95,10 @@ claim `O.1`.
 ## Layer 4: Localization And Separated Interfaces
 
 ```text
+T1.2,T1.3,T2.3,T4.3           -> T6.0  finite-ring patch identification
 T1.4                         -> T6.1  exact discrete IMS lemma
-T1.3, T2.2, T4.2, T6.1      -> T6.2  patch classification and global cap
-T4.2, T4.3, T6.1, C.7       -> T6.3  exact 2r cluster
+T2.2, T4.2, T6.0, T6.1      -> T6.2  patch classification and global cap
+T4.2, T4.3, T6.0, T6.1, C.7 -> T6.3  exact 2r cluster
 T6.3, C.7                    -> T6.4  2r Feshbach and 3505r bound
 T2.2, T6.4, T7.1, C.7       -> T6.5  N_exp=3120
 T4.3, T6.3                   -> T6.6  protected one-G6 double level
@@ -139,6 +141,7 @@ There is an arrow `T6.2 -> T7.2`, but no reverse arrow and no arrow from
 ## Layer 6: Finite Classification
 
 ```text
+T1.1, T1.2 -> T8.0  antibalanced candidate attainment for every even n
 T1.1, T1.2 -> C.1  exhaustive exact decisions for 8<=n<=30
 T1.2        -> C.2  exact order-32 witness
 T1.2, T1.4 -> C.3  six-order finite-state closure
@@ -168,7 +171,7 @@ outside the program.
 ## Layer 7: Main Classification
 
 ```text
-T8.1, T8.2, T8.3, T7.3 -> T8.4.
+T8.0, T8.1, T8.2, T8.3, T7.3 -> T8.4.
 ```
 
 Expanded by disjoint regions:
@@ -183,7 +186,8 @@ T2.2,T4.2,T6.1,T6.2   -> failure for every even n>=240
 ```
 
 These regions are pairwise disjoint and exhaust every even `n>=8`.
-Therefore
+On every nonfailure region, `T8.0` supplies the opposite inequality
+`m_n<=rho_-(n)`, so the lower/exhaustion result becomes equality. Therefore
 
 ```text
 m_n<rho_-(n)
