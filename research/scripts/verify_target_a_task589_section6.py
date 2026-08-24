@@ -104,7 +104,7 @@ def verify() -> dict[str, int | bool]:
         r"\text{foreveryeven}n\geq240",
     ):
         require(token in c, f"analytic-tail fact absent: {token}")
-    require("do not decrease" in section and "strictly\nincreases" in section,
+    require("donotdecrease" in c and "strictlyincreases" in c,
             "residue monotonicity boundary absent")
     require("exact-\\(2r\\) count nor the rank-two multiplicity is used" in section,
             "analytic tail depends on structural refinement")

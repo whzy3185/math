@@ -1,30 +1,31 @@
-# Task 58 manuscript scaffold
+# Task 58 manuscript
 
-This directory is the clean first-submission LaTeX tree for Task 58. It does
-not import mathematical prose from an earlier manuscript.
+This directory contains the first-submission manuscript source for
+`Spectral Radius Minimization for Signed Squares of Cycles`.
 
-Build the identified-author version from this directory with the preferred
-full TeX installation:
+Build the identified-author and anonymous versions from this directory with:
+
+```sh
+tectonic main.tex
+tectonic main_anonymous.tex
+```
+
+A conventional full TeX installation may instead use:
 
 ```sh
 latexmk -pdf main.tex
-```
-
-The Task 58.3 baseline was built with the locally available Tectonic engine:
-
-```sh
-tectonic --keep-logs --keep-intermediates main.tex
-```
-
-Build the anonymous version with:
-
-```sh
 latexmk -pdf main_anonymous.tex
 ```
 
 Both entry points share `publication-preamble.tex`, `frontmatter.tex`, and
-`body.tex`. `references.bib` is a mechanical copy of the bibliography database
-from the frozen English publication tree; no old mathematical prose is
-imported. Draft bodies are
-identified by the exact marker `% TASK58_DRAFT_STUB`; the final manuscript
-audit must find no remaining markers.
+`body.tex`. The bibliography is `references.bib`. The compiled Task 58.11
+checkpoint is 38 pages for `main.pdf` and 38 pages for
+`main_anonymous.pdf`; both builds are warning-free under Tectonic 0.17.0.
+
+The separate reproducibility supplement is in the sibling directory
+`../manuscript_tex_task58_supplement/`. It contains the full exact-`2r`
+proof, complete single-gap integer witnesses, and the repository artifact
+manifest.
+
+The historical English and Chinese manuscript trees are separate frozen
+artifacts and are not imported into this manuscript's mathematical prose.

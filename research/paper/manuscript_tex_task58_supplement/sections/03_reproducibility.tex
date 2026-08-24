@@ -1,0 +1,169 @@
+\section{Reproducibility manifest}
+\label{sec:reproducibility}
+
+\subsection{Checkpoint and evidence boundary}
+
+This supplement is assembled against the repository checkpoint
+\begin{center}
+\texttt{e365e1553ad73a8a534fb67f5ee76562521609ce}.
+\end{center}
+Every path listed below exists at that checkpoint.  The JSON certificates
+store exact finite objects and rational enclosures.  The checker chain
+re-evaluates their exact mathematical contracts.  Two coordinate
+implementations separately audit the global unsquared exclusions, while
+some symbolic transfer and elimination routines are shared and disclosed;
+the package therefore does not claim a clean-room implementation of every
+symbolic identity.  A successful checker is evidence only in
+combination with the analytic reductions printed in the article and in this
+supplement; it is not a replacement for those reductions.
+
+No immutable external archive identifier has yet been assigned.  The
+archive record and its persistent identifier are therefore pending and are
+not represented by a provisional or invented DOI.
+
+\subsection{Exact artifact inventory}
+
+\begin{longtable}{@{}>{\raggedright\arraybackslash}p{0.18\textwidth}
+>{\raggedright\arraybackslash}p{0.76\textwidth}@{}}
+\caption{Repository artifacts used by this supplement.}
+\label{tab:artifact-inventory}\\
+\toprule
+Role & Repository-relative path\\
+\midrule
+\endfirsthead
+\toprule
+Role & Repository-relative path\\
+\midrule
+\endhead
+G6 edge certificate &
+\path{research/proofs/task53/certificates/g6_global_edge.json}\\
+G6 local matching certificate &
+\path{research/proofs/task50/certificates/g6_interface_certificate.json}\\
+G6 elimination certificate &
+\path{research/proofs/task51/certificates/c6_exact_evans_elimination.json}\\
+G6 atlas certificate &
+\path{research/proofs/task53/certificates/g6_grassmann_atlas.json}\\
+G6 local matching checker &
+\path{research/scripts/verify_target_a_task50_interface.py}\\
+G6 elimination checker &
+\path{research/scripts/verify_target_a_task51.py}\\
+G6 edge checker &
+\path{research/scripts/verify_target_a_task53_a3.py}\\
+G6 atlas checker &
+\path{research/scripts/verify_target_a_task53_a2.py}\\
+Exact-\(2r\) certificate &
+\path{research/proofs/task55/certificates/exact_2r_cluster.json}\\
+Exact-\(2r\) checker &
+\path{research/scripts/verify_target_a_task55_exact_2r.py}\\
+Exact-\(2r\) tests &
+\path{research/scripts/test_target_a_task55_exact_2r.py}\\
+Single-gap structure certificate &
+\path{research/proofs/task55/certificates/single_gap_structure.json}\\
+Single-gap checker &
+\path{research/scripts/verify_target_a_task55_single_gap.py}\\
+Single-gap tests &
+\path{research/scripts/test_target_a_task55_single_gap.py}\\
+Single-gap integer checker &
+\path{research/scripts/verify_target_a_task56_single_gap.py}\\
+Single-gap integer tests &
+\path{research/scripts/test_target_a_task56_single_gap.py}\\
+Uniform-separation certificate &
+\path{research/proofs/task57/certificates/uniform_single_gap_separation.json}\\
+Uniform-separation checker &
+\path{research/scripts/verify_target_a_task57_uniform_single_gap.py}\\
+Uniform-separation tests &
+\path{research/scripts/test_target_a_task57_uniform_single_gap.py}\\
+Orders 8--30 certificate &
+\path{research/counterexamples/target_a_minimality_certificate.json}\\
+Orders 8--30 checker &
+\path{research/scripts/verify_target_a_minimality_certificate.py}\\
+Orders 8--30 tests &
+\path{research/scripts/test_verify_target_a_minimality_certificate.py}\\
+Order-32 certificate &
+\path{research/counterexamples/target_a_n32_period8_certificate.json}\\
+Order-32 checker &
+\path{research/scripts/verify_target_a_n32_certificate.py}\\
+Order-32 tests &
+\path{research/scripts/test_verify_target_a_n32_certificate.py}\\
+Recovery-order certificate &
+\path{research/proofs/task55/certificates/small_order_exact_classification.json}\\
+Recovery-order checker &
+\path{research/scripts/verify_target_a_task55_small_order_exact.py}\\
+Recovery-order tests &
+\path{research/scripts/test_target_a_task55_small_order_exact.py}\\
+Order-40 certificate &
+\path{research/proofs/task55/TARGET_A_ORDERS_34_46_CERTIFICATES.json}\\
+Order-40 checker &
+\path{research/scripts/verify_target_a_task55_orders_34_46.py}\\
+Order-40 tests &
+\path{research/scripts/test_target_a_task55_orders_34_46.py}\\
+Finite-bridge certificate &
+\path{research/proofs/task54/TARGET_A_TASK54_EVENTUAL_THRESHOLD_CERTIFICATE.json}\\
+Finite-bridge checker &
+\path{research/scripts/verify_target_a_task54_threshold.py}\\
+\bottomrule
+\end{longtable}
+
+The exact-\(2r\) certificate binds the rank-two one-interface input, the
+Floquet contraction and conditioning bounds, the Gram estimate, the
+codimension-\(2r\) complement, the exact count, and the
+\(2r\)-dimensional Feshbach constants.  Its focused suite contains tamper
+tests for dimension, scope, constants, dependencies, and the coordinate
+form of the Schur complement.
+
+The single-gap structure certificate records transfer, Evans, quotient
+symmetry, and recurrence data.  The Task 56 checker independently
+reconstructs every integer vector and its full \(A_gv\) image.  The
+uniform-separation certificate stores the threshold \eqref{eq:T}, all seven
+quotient comparisons, and the minimum exact margin.  Its checker reconstructs
+the rational comparisons and rejects non-strict or altered rows.  The
+mathematical reason that seven
+rows suffice is the finite-propagation argument in
+\cref{sec:single-gap}, not an empirical scan over gap lengths.
+
+\subsection{Verification commands}
+
+From the repository root, the focused independent checks are:
+\begin{verbatim}
+python3 research/scripts/verify_target_a_task53_a2.py
+python3 research/scripts/verify_target_a_task53_a3.py
+python3 research/scripts/verify_target_a_task50_interface.py
+python3 research/scripts/verify_target_a_task51.py
+python3 research/scripts/verify_target_a_task55_exact_2r.py
+python3 -m pytest -q \
+  research/scripts/test_target_a_task55_exact_2r.py
+python3 research/scripts/verify_target_a_task55_single_gap.py
+python3 -m pytest -q \
+  research/scripts/test_target_a_task55_single_gap.py
+python3 research/scripts/verify_target_a_task56_single_gap.py
+python3 -m pytest -q \
+  research/scripts/test_target_a_task56_single_gap.py
+python3 research/scripts/verify_target_a_task57_uniform_single_gap.py
+python3 -m pytest -q \
+  research/scripts/test_target_a_task57_uniform_single_gap.py
+python3 research/scripts/verify_target_a_minimality_certificate.py
+python3 -m pytest -q \
+  research/scripts/test_verify_target_a_minimality_certificate.py
+python3 research/scripts/verify_target_a_n32_certificate.py
+python3 -m pytest -q \
+  research/scripts/test_verify_target_a_n32_certificate.py
+python3 research/scripts/verify_target_a_task55_small_order_exact.py
+python3 -m pytest -q \
+  research/scripts/test_target_a_task55_small_order_exact.py
+python3 research/scripts/verify_target_a_task55_orders_34_46.py
+python3 -m pytest -q \
+  research/scripts/test_target_a_task55_orders_34_46.py
+python3 research/scripts/verify_target_a_task54_threshold.py
+\end{verbatim}
+The commands should be run from a clean checkout of the checkpoint printed
+above.  No floating-point finite-ring eigensolve is required for the exact
+count in \cref{thm:exact-2r}, and no floating-point comparison is required
+for \cref{thm:single-gap}.
+
+\subsection{Scope of the supplement}
+
+The separated-interface theorem is restricted to
+\(r\in\{1,2,3\}\) and \(D\geq1040\).  It counts eigenvalues with
+multiplicity and does not prove individual simplicity or a sign for the
+leading interaction.  The single-gap theorem concerns positive single gaps
+only.  Neither theorem classifies arbitrary multi-interface minimizers.

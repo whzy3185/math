@@ -2,7 +2,7 @@
 
 ```text
 Approved checkpoint: 20eb153560df30980ff5ee842246579af40faae5
-Current HEAD at phase start: f24e5becf1bacce7816982aa63b14c010ac6685e
+Current HEAD at phase start: e365e1553ad73a8a534fb67f5ee76562521609ce
 Branch: agent/target-a-discovery-snapshot
 Checkpoint ancestry: PASS
 Working tree at phase start: clean
@@ -10,14 +10,14 @@ Working tree at phase start: clean
 Historical English freeze: 59e3a8f73a152ef06f994e979b7219a3365efeae
 Historical Chinese freeze: 57ae03fb5b90866f84d0d72b414008678e8f5004
 
-Completed phase: Task 58.10
+Completed phase: Task 58.11
 Current manuscript path: research/paper/manuscript_tex_task58/
 Compiled PDF path: research/paper/manuscript_tex_task58/main.pdf
-Current page count: 23 pages; Section 8 begins on page 23
+Current page count: 38 pages; 23 narrative, 14 appendices, 1 bibliography
 Projected page count: 28--32 main narrative; 36--42 with essential appendices
-Draft stubs remaining: 4
+Draft stubs remaining: 0
 exact-2r placement: one statement and one overview paragraph in manuscript; full proof in supplement
-Immutable archive status: NOT YET CREATED
+Immutable archive status: IMMUTABLE_ARCHIVE_PENDING
 
 Completed deliverables:
 - first-submission scope contract
@@ -85,13 +85,24 @@ Completed deliverables:
 - final disjoint classification table and proof
 - locked Section 7 / Appendix B / supplement split
 - Task58.10 fail-closed Section 7 verifier
+- three-question Concluding Remarks and archive-safe Data/Code statement
+- complete Appendix A algebraic G6 certification
+- complete Appendix B exact finite-classification proof
+- 13-page reproducibility supplement with full exact-2r proof and witnesses
+- all three final monochrome figures explicitly cited and visually audited
+- clean 38-page identified, 38-page anonymous, and 13-page supplement builds
+- zero draft stubs and zero author footnotes
+- Task58.11 layout and length audit
 
 Open issues:
+- Identified-author name, affiliation, corresponding-author email, and ORCID
+  remain pending user-supplied metadata; the anonymous review build does not
+  expose repository or commit identity.
 - Recheck the unpublished fixed-graph signing seminar watchlist before final submission.
 - Immutable archive remains pending.
 MAJOR audit issues: 0
 MINOR audit issues: 0
-Next authorized task: Task 58.11
+Next authorized task: Task 58.12
 
 Notes:
 - The phase commit is the commit containing this handoff; the phase-start SHA
