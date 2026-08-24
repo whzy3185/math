@@ -2,7 +2,7 @@
 
 ```text
 Approved checkpoint: 20eb153560df30980ff5ee842246579af40faae5
-Current HEAD at phase start: e365e1553ad73a8a534fb67f5ee76562521609ce
+Current HEAD at phase start: 96efe50c55df82feb9e58f3fc71009f4292d1652
 Branch: agent/target-a-discovery-snapshot
 Checkpoint ancestry: PASS
 Working tree at phase start: clean
@@ -10,7 +10,7 @@ Working tree at phase start: clean
 Historical English freeze: 59e3a8f73a152ef06f994e979b7219a3365efeae
 Historical Chinese freeze: 57ae03fb5b90866f84d0d72b414008678e8f5004
 
-Completed phase: Task 58.11
+Completed phase: Task 58.12
 Current manuscript path: research/paper/manuscript_tex_task58/
 Compiled PDF path: research/paper/manuscript_tex_task58/main.pdf
 Current page count: 38 pages; 23 narrative, 14 appendices, 1 bibliography
@@ -93,6 +93,12 @@ Completed deliverables:
 - clean 38-page identified, 38-page anonymous, and 13-page supplement builds
 - zero draft stubs and zero author footnotes
 - Task58.11 layout and length audit
+- four-channel hostile mathematical and package attack review
+- repaired G6 normalization, cross-chart necessity, and certificate interfaces
+- repaired exact pytest commands and complete classification manifest coverage
+- anonymous review build stripped of repository and commit identity
+- hostile review verdict READY_FOR_FINAL_SUBMISSION_AUDIT with MAJOR=0
+- Task58.12 fail-closed hostile-review verifier
 
 Open issues:
 - Identified-author name, affiliation, corresponding-author email, and ORCID
@@ -102,7 +108,7 @@ Open issues:
 - Immutable archive remains pending.
 MAJOR audit issues: 0
 MINOR audit issues: 0
-Next authorized task: Task 58.12
+Next authorized task: Task 58.13
 
 Notes:
 - The phase commit is the commit containing this handoff; the phase-start SHA
