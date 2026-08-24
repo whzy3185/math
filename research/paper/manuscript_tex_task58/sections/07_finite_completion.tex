@@ -3,25 +3,272 @@
 
 \subsection{Exact-computation protocol}
 \label{subsec:exact-computation-protocol}
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+
+The finite part of the proof follows one contract throughout:
+\[
+\begin{aligned}
+\text{mathematical reduction}
+&\longrightarrow \text{finite exact object}\\
+&\longrightarrow \text{independent machine verification}
+\longrightarrow \text{mathematical consequence}.
+\end{aligned}
+\]
+These are logical stages, not numerical approximations.
+
+For a signed adjacency matrix \(A\),
+\[
+\rho(A)^2=\lambda_{\max}(A^2)
+=\max_{v\neq0}\frac{\|Av\|^2}{\|v\|^2}.
+\]
+Thus an exact integer vector with quotient at least \(\theta_n\) proves the
+required lower bound for that class.  In the other direction, if positive
+integers \(p,q\) satisfy
+\[
+pI-qA^2\succ0,
+\]
+then \(\rho(A)^2<p/q\).  A strict exact comparison
+\(p/q<\theta_n\) therefore certifies a counterexample.  Positive
+definiteness is established by fraction-free minors or rational
+\(LDL^{\mathsf T}\) pivots, and algebraic thresholds are selected by exact
+root isolation.  Floating-point calculations may suggest a vector or an
+interval, but they make no accepting decision.
+
+The main text proves that the finite domains below are exhaustive and
+explains why their exact terminal decisions imply the spectral statements.
+Appendix~\ref{app:finite-classification} supplies the full mathematical
+finite-object definitions and completeness proofs; removable reconstruction
+records belong to the supplement.
 
 \subsection{Orders 8 through 32}
 \label{subsec:orders-8-32}
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+
+\begin{proposition}\label{prop:orders-8-30}
+For every even \(8\leq n\leq30\),
+\[
+\rho(A_\sigma)^2\geq\theta_n
+\qquad\text{for every signing }\sigma.
+\]
+Consequently \(m_n=\rho_-(n)\) at these orders.
+\end{proposition}
+
+\begin{proof}
+Hamilton gauge reduces every signing to a finite switching quotient.  For
+\(8\leq n\leq20\), every switching class is represented directly.  At
+\(n=22\), the reduced \((Q,\alpha)\) quotient is exhausted, with the two
+\(\tau_0\)-lifts covered by their identical squared spectra.  For
+\(n=24,26,28,30\), fixed-weight cyclic words followed by dihedral
+canonicalization represent the same full quotient without duplication.
+Lift negation preserves the squared spectrum, and both holonomies remain in
+the domain.
+
+Every nonthreshold class has a primitive integer vector whose exact Rayleigh
+quotient is at least \(\theta_n\).  Each remaining threshold class is closed
+by exact characteristic-polynomial equality at the largest squared root.
+An independent reconstruction verifies the represented quotient and repeats
+every terminal spectral decision using integer and algebraic arithmetic.
+Hence the universal lower bound holds.  Proposition
+\ref{prop:candidate-attainment} supplies the reverse inequality
+\(m_n\leq\rho_-(n)\), proving equality.
+\end{proof}
+
+The next order fails.  Take \(\alpha=+1\), all displayed distance-one signs
+positive, and the period-eight triangle-flux word
+\[
+\tau=(+,+,-,+,-,-,+,-)^4.
+\]
+Let \(A_{32}\) be the resulting exact signed matrix.  Bareiss minors and an
+independent rational \(LDL^{\mathsf T}\) decomposition give
+\[
+1561I_{32}-200A_{32}^2\succ0.
+\]
+Therefore
+\[
+\rho(A_{32})^2<\frac{1561}{200}
+<\frac{11896117236720419}{1523321182060814}
+<\theta_{32},
+\]
+where the middle fraction is an exact lower isolating endpoint for
+\(\theta_{32}\).  Thus \(m_{32}<\rho_-(32)\).  Together with
+Proposition~\ref{prop:orders-8-30}, this proves that \(32\) is the first
+failing order.
 
 \subsection{Orders 34 through 46}
 \label{subsec:orders-34-46}
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+
+For \(n\in\{34,36,38,42,44,46\}\), a local finite-state reduction proves the
+universal lower bound.  We give its completeness argument because the
+computation is meaningful only after this reduction.
+
+Fix a support \(S=\{0,\ldots,L-1\}\).  A length-\((L+1)\) local \(Q\)-window
+\(W\) determines the exact integer map
+\[
+C_W:\mathbb R^L\longrightarrow\mathbb R^{L+4},
+\qquad
+M_W=C_W^{\mathsf T}C_W=P_SA^2P_S.
+\]
+For a strict rational upper isolating endpoint \(b_n>\theta_n\), an integral
+vector satisfying
+\[
+v^{\mathsf T}M_Wv>b_n\,v^{\mathsf T}v
+\]
+excludes every global signing containing \(W\).  Exact local Rayleigh
+certificates close the excluded side.  Independently, fraction-free
+Sylvester tests decide every window:
+\[
+a_nI-M_W\succ0\Longrightarrow\lambda_{\max}(M_W)<a_n<\theta_n,
+\]
+\[
+b_nI-M_W\not\succ0\Longrightarrow
+\lambda_{\max}(M_W)\geq b_n>\theta_n.
+\]
+The windows satisfying the first condition form the surviving set, and no
+local window remains undecided.
+
+Build the overlap graph whose edges are the surviving length-\((L+1)\)
+words and whose vertices are their length-\(L\) prefixes and suffixes.
+If the appended bit records \(Q_i=+1\), lift each vertex to
+\((s,\varepsilon)\), \(\varepsilon\in\mathbb Z/2\mathbb Z\), and update
+\[
+(s,\varepsilon)\longmapsto(s',\varepsilon+b_L).
+\]
+A length-\(n\) closed walk gives a cyclic word because consecutive edges
+overlap, the base-state closure enforces the wraparound windows, and parity
+closure says \(\prod_iQ_i=1\).  Conversely, reading any liftable cyclic
+\(Q\)-word with no excluded window produces such a closed walk: all windows
+are surviving edges, cyclicity closes the base state, and liftability closes
+parity.  Hence the remaining global candidates are exactly the parity-even
+closed walks, not a sampled subset.
+
+Rotation and reflection preserve the squared spectrum, so dihedral reduction
+removes duplicates without losing a class.  Both holonomies are then checked
+for every canonical \(Q\)-word.  The exact terminal counts are
+\[
+\begin{array}{c|rrrrrr}
+n&34&36&38&42&44&46\\ \hline
+\text{canonical \(Q\)-classes}&1&1&3&7&10&10\\
+\text{terminal \((Q,\alpha)\)-records}&2&2&6&14&20&20
+\end{array}
+\]
+and total
+\[
+2(1+1+3+7+10+10)=64.
+\]
+Every terminal is closed by either exact threshold-factor equality or a
+strict integral Rayleigh inequality.  Independent reconstruction confirms
+all 64 decisions, and no terminal remains unresolved.
+It follows that every signing satisfies
+\[
+\rho(A_\sigma)^2\geq\theta_n
+\qquad(n=34,36,38,42,44,46).
+\]
+Candidate attainment then proves
+\[
+m_n=\rho_-(n)
+\qquad(n=34,36,38,42,44,46).
+\]
+
+\paragraph{Order \(40\).}
+This order is logically separate from the six lower-bound decisions.  Use
+\[
+Q=1000100010001000100010001000100010001000,
+\qquad \alpha=-1,
+\]
+with \(\tau_0=1\), and reconstruct \(A_{40}\) in Hamilton gauge.  Exact
+rational elimination gives forty positive pivots in
+\[
+15541I_{40}-2000A_{40}^2,
+\]
+so
+\[
+\rho(A_{40})^2<\frac{15541}{2000}
+<\frac{63}{8}
+=8-\frac{200}{40^2}<\theta_{40}.
+\]
+The first strict difference is \(209/2000\), and the last inequality is the
+elementary cosine bound used in Section~\ref{subsec:residue-upper-bounds}.
+Thus \(m_{40}<\rho_-(40)\).
 
 \subsection{The exact bridge from 48 to 238}
 \label{subsec:exact-bridge-48-238}
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+
+The even interval \(48\leq n<240\) contains exactly
+\[
+\frac{238-48}{2}+1=96
+\]
+orders.  At each order use the deterministic signing family
+\[
+\begin{array}{c|l}
+n\bmod8&\text{finite signing}\\ \hline
+0&\text{period-eight repetition}\\
+2&\text{one G6 phase slip}\\
+4&\text{two G6 phase slips}\\
+6&\text{three G6 phase slips}
+\end{array}
+\]
+with holonomy \(-1\) for \(n\equiv0\pmod4\) and \(+1\) for
+\(n\equiv2\pmod4\).  These are the same explicit residue constructions as
+in Section~\ref{sec:finite-rings}; no existence choice is hidden.
+
+For every one of the 96 matrices, an exact rational number \(t_n\) satisfies
+\[
+t_nI-A_n^2\succ0,\qquad
+t_n<8-\frac{200}{n^2}.
+\]
+The finite object is the complete order-indexed list of the explicit signing
+and its rational positive-definiteness certificate.  An independent
+verification rebuilds each full signed matrix and repeats exact sparse
+rational elimination in a different ordering.  Positive definiteness and
+the cosine bound imply
+\[
+\rho(A_n)^2<t_n<8-\frac{200}{n^2}<\theta_n.
+\]
+Hence every even order from \(48\) through \(238\) fails.  This exact finite
+verification, joined to the analytic \(n\geq240\) tail, moves the beginning
+of continuous failure from an eventual statement to the sharp order \(48\).
 
 \subsection{Exhaustive synthesis}
 \label{subsec:exhaustive-synthesis}
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+
+\begin{center}
+\begin{tabularx}{\textwidth}{@{}l l X@{}}
+\toprule
+Orders&Result&Proof mechanism\\
+\midrule
+even \(8\)--\(30\)&equality&exact exhaustion plus candidate attainment\\
+\(32\)&failure&exact positive-definiteness witness\\
+\(34,36,38,42,44,46\)&equality&finite-state closure plus attainment\\
+\(40\)&failure&exact rational \(LDL^{\mathsf T}\) witness\\
+even \(48\)--\(238\)&failure&96 exact rational certificates\\
+even \(n\geq240\)&failure&phase slips, patch identification, and IMS\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{proof}[Proof of Theorem~\ref{thm:complete-classification}]
+The even integers \(n\geq8\) are the disjoint union
+\[
+\begin{gathered}
+\{8,10,\ldots,30\},\quad\{32\},\quad
+\{34,36,38,42,44,46\},\quad\{40\},\\
+\{48,50,\ldots,238\},\quad
+\{240,242,244,\ldots\}.
+\end{gathered}
+\]
+Proposition~\ref{prop:orders-8-30} and the finite-state closure give a
+universal lower bound on the first and third sets.  Candidate attainment
+gives the reverse inequality there, hence equality.  The exact witnesses at
+\(32\) and \(40\), the 96-order finite bridge, and the analytic tail give
+strict counterexamples on the other four sets.  Therefore
+\[
+m_n<\rho_-(n)
+\quad\Longleftrightarrow\quad
+n=32,\quad n=40,\quad\text{or}\quad n\geq48
+\]
+for even \(n\geq8\), and equality holds exactly on the validity set stated
+in Theorem~\ref{thm:complete-classification}.
+\end{proof}
+
+The finite classification determines the irregular small-order pattern.
+The phase-slip argument explains eventual uninterrupted failure.  The sharp
+continuous onset \(48\) is a consequence of the exact finite bridge together
+with the analytic tail; neither component alone supplies that conclusion.

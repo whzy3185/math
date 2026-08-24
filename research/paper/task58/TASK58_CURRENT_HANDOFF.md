@@ -2,7 +2,7 @@
 
 ```text
 Approved checkpoint: 20eb153560df30980ff5ee842246579af40faae5
-Current HEAD at phase start: 3418360374aa48bd1b12ab740bdf9dc3ce440ea6
+Current HEAD at phase start: f24e5becf1bacce7816982aa63b14c010ac6685e
 Branch: agent/target-a-discovery-snapshot
 Checkpoint ancestry: PASS
 Working tree at phase start: clean
@@ -10,12 +10,12 @@ Working tree at phase start: clean
 Historical English freeze: 59e3a8f73a152ef06f994e979b7219a3365efeae
 Historical Chinese freeze: 57ae03fb5b90866f84d0d72b414008678e8f5004
 
-Completed phase: Task 58.9
+Completed phase: Task 58.10
 Current manuscript path: research/paper/manuscript_tex_task58/
 Compiled PDF path: research/paper/manuscript_tex_task58/main.pdf
-Current page count: 20 pages; Section 7 begins on page 19
+Current page count: 23 pages; Section 8 begins on page 23
 Projected page count: 28--32 main narrative; 36--42 with essential appendices
-Draft stubs remaining: 9
+Draft stubs remaining: 4
 exact-2r placement: one statement and one overview paragraph in manuscript; full proof in supplement
 Immutable archive status: NOT YET CREATED
 
@@ -76,13 +76,22 @@ Completed deliverables:
 - final monochrome Figures 2 and 3 with rendered visual QA
 - exact-2r page decision and 34--38 page essential-paper forecast
 - Task58.9 fail-closed Section 6 verifier
+- exact four-stage computer-assisted proof protocol
+- universal lower bounds and equality for every even order 8--30
+- exact first counterexample at order 32
+- sound and complete parity-lifted finite-state closure with 64 resolved terminals
+- exact order-40 witness separated from the six recovery orders
+- complete 96-order rational bridge from 48 through 238
+- final disjoint classification table and proof
+- locked Section 7 / Appendix B / supplement split
+- Task58.10 fail-closed Section 7 verifier
 
 Open issues:
 - Recheck the unpublished fixed-graph signing seminar watchlist before final submission.
 - Immutable archive remains pending.
 MAJOR audit issues: 0
 MINOR audit issues: 0
-Next authorized task: Task 58.10
+Next authorized task: Task 58.11
 
 Notes:
 - The phase commit is the commit containing this handoff; the phase-start SHA
