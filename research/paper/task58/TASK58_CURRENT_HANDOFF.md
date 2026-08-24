@@ -2,7 +2,7 @@
 
 ```text
 Approved checkpoint: 20eb153560df30980ff5ee842246579af40faae5
-Current HEAD at phase start: 6343da285591b81dd7d1b6ce316139c4a227aa03
+Current HEAD at phase start: e870ba023a0e2ac8990cc665b8b4591b54b87fca
 Branch: agent/target-a-discovery-snapshot
 Checkpoint ancestry: PASS
 Working tree at phase start: clean
@@ -10,12 +10,12 @@ Working tree at phase start: clean
 Historical English freeze: 59e3a8f73a152ef06f994e979b7219a3365efeae
 Historical Chinese freeze: 57ae03fb5b90866f84d0d72b414008678e8f5004
 
-Completed phase: Task 58.6
+Completed phase: Task 58.7
 Current manuscript path: research/paper/manuscript_tex_task58/
 Compiled PDF path: research/paper/manuscript_tex_task58/main.pdf
-Current page count: 12 pages; Section 4 begins on page 9
+Current page count: 15 pages; Section 5 begins on page 13
 Projected page count: 28--32 main narrative; 36--42 with essential appendices
-Draft stubs remaining: 24
+Draft stubs remaining: 20
 exact-2r placement: statement/overview in manuscript; full proof supplement candidate
 Immutable archive status: NOT YET CREATED
 
@@ -54,13 +54,21 @@ Completed deliverables:
 - additive sector composition and legal cyclic closure
 - scoped one/two/three six-gap charge preview
 - Task58.6 fail-closed Section 3 verifier
+- bilateral G6 operator and full essential-spectrum proof
+- hyperbolic tail splitting and coordinate-free physical matching
+- exact c6 definition, realization, and candidate-completeness chain
+- global positive-branch exclusion and row-sum closure
+- all-integer K symmetry and rank-two squared eigenspace
+- locked Section 4 / Appendix A / supplement split
+- corrected G6 Appendix A placement in the theorem map
+- Task58.7 fail-closed Section 4 verifier
 
 Open issues:
 - Recheck the unpublished fixed-graph signing seminar watchlist before final submission.
 - Immutable archive remains pending.
 MAJOR audit issues: 0
 MINOR audit issues: 0
-Next authorized task: Task 58.7
+Next authorized task: Task 58.8
 
 Notes:
 - The phase commit is the commit containing this handoff; the phase-start SHA
