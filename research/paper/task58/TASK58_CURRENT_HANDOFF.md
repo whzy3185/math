@@ -2,7 +2,7 @@
 
 ```text
 Approved checkpoint: 20eb153560df30980ff5ee842246579af40faae5
-Current HEAD at phase start: e870ba023a0e2ac8990cc665b8b4591b54b87fca
+Current HEAD at phase start: 0ac624d4c6fc7fdfb7bf5c10b6b3ad46aa002060
 Branch: agent/target-a-discovery-snapshot
 Checkpoint ancestry: PASS
 Working tree at phase start: clean
@@ -10,12 +10,12 @@ Working tree at phase start: clean
 Historical English freeze: 59e3a8f73a152ef06f994e979b7219a3365efeae
 Historical Chinese freeze: 57ae03fb5b90866f84d0d72b414008678e8f5004
 
-Completed phase: Task 58.7
+Completed phase: Task 58.8
 Current manuscript path: research/paper/manuscript_tex_task58/
 Compiled PDF path: research/paper/manuscript_tex_task58/main.pdf
-Current page count: 15 pages; Section 5 begins on page 13
+Current page count: 16 pages; Section 6 begins on page 15
 Projected page count: 28--32 main narrative; 36--42 with essential appendices
-Draft stubs remaining: 20
+Draft stubs remaining: 16
 exact-2r placement: statement/overview in manuscript; full proof supplement candidate
 Immutable archive status: NOT YET CREATED
 
@@ -62,13 +62,19 @@ Completed deliverables:
 - locked Section 4 / Appendix A / supplement split
 - corrected G6 Appendix A placement in the theorem map
 - Task58.7 fail-closed Section 4 verifier
+- canonical positive single-gap operator family and exact Rayleigh threshold
+- six exact small-gap quotient comparisons with strict integer margins
+- one finite-support witness covering every gap at least nine
+- complete both-lift/both-orientation single-gap hierarchy
+- explicit multi-gap and finite-core nonclaim
+- Task58.8 fail-closed Section 5 verifier
 
 Open issues:
 - Recheck the unpublished fixed-graph signing seminar watchlist before final submission.
 - Immutable archive remains pending.
 MAJOR audit issues: 0
 MINOR audit issues: 0
-Next authorized task: Task 58.8
+Next authorized task: Task 58.9
 
 Notes:
 - The phase commit is the commit containing this handoff; the phase-start SHA
