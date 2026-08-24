@@ -53,8 +53,9 @@ that set into four disjoint parts.
    n=34,36,38,42,44,46.
    ```
 
-   The complete terminal set has 84 `(Q,alpha)` records and zero unresolved
-   records. At `n=40`, the separate exact rational LDL certificate proves
+   The complete terminal set has 64 `(Q,alpha)` records: six threshold
+   equalities and 58 strict Rayleigh records, with zero unresolved records.
+   At `n=40`, the separate exact rational LDL certificate proves
    `rho(A)^2<15541/2000<63/8`, so a counterexample exists.
 
 4. For every even `48<=n<240`, one of 96 explicit structured signings has an

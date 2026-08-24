@@ -1,0 +1,86 @@
+{
+  "c6_strict_upper": "988171163952541/125000000000000",
+  "checks": {
+    "all_cross_multiplication_margins_positive": true,
+    "gap4_reference_excluded": true,
+    "gap6_equality_excluded": true,
+    "minimum_margin_is_g8": true,
+    "seven_gap_classes_exhaust_strict_cases": true
+  },
+  "comparison_threshold": "988671163952541/125000000000000",
+  "dependencies": [
+    {
+      "path": "research/proofs/task51/certificates/c6_exact_evans_elimination.json",
+      "sha256": "3de93781004929852ebdbd31c7ecbfdf72d125e0eea2b1606b4e472237ecd225"
+    },
+    {
+      "path": "research/proofs/task56/TARGET_A_SINGLE_GAP_NIGHT_REPORT.md",
+      "sha256": "1e3ca7ffea4a76f98decf5286dbbc3ad224ba4cfe0f022604ead3f6fc756f856"
+    }
+  ],
+  "evidence": "EXACT_RATIONAL_COROLLARY",
+  "minimum_exact_margin": "174815250030533/310875000000000000",
+  "minimum_margin_gap_class": "g=8",
+  "rows": [
+    {
+      "cross_multiplication_margin": 5598897096603523,
+      "exact_margin": "5598897096603523/12125000000000000",
+      "gap_class": "g=1",
+      "witness_denominator": 97,
+      "witness_numerator": 812,
+      "witness_quotient": "812/97"
+    },
+    {
+      "cross_multiplication_margin": 484843129173031,
+      "exact_margin": "484843129173031/13625000000000000",
+      "gap_class": "g=2",
+      "witness_denominator": 109,
+      "witness_numerator": 866,
+      "witness_quotient": "866/109"
+    },
+    {
+      "cross_multiplication_margin": 702232566651387,
+      "exact_margin": "234077522217129/16375000000000000",
+      "gap_class": "g=3",
+      "witness_denominator": 393,
+      "witness_numerator": 3114,
+      "witness_quotient": "1038/131"
+    },
+    {
+      "cross_multiplication_margin": 587568260556064,
+      "exact_margin": "18361508142377/375000000000000",
+      "gap_class": "g=5",
+      "witness_denominator": 96,
+      "witness_numerator": 764,
+      "witness_quotient": "191/24"
+    },
+    {
+      "cross_multiplication_margin": 98897096603523,
+      "exact_margin": "98897096603523/12125000000000000",
+      "gap_class": "g=7",
+      "witness_denominator": 97,
+      "witness_numerator": 768,
+      "witness_quotient": "768/97"
+    },
+    {
+      "cross_multiplication_margin": 174815250030533,
+      "exact_margin": "174815250030533/310875000000000000",
+      "gap_class": "g=8",
+      "witness_denominator": 2487,
+      "witness_numerator": 19672,
+      "witness_quotient": "19672/2487"
+    },
+    {
+      "cross_multiplication_margin": 10563229091557,
+      "exact_margin": "10563229091557/2875000000000000",
+      "gap_class": "g>=9",
+      "witness_denominator": 23,
+      "witness_numerator": 182,
+      "witness_quotient": "182/23"
+    }
+  ],
+  "schema": "target-a-task57-uniform-single-gap-v1",
+  "status": "UNIFORM_SINGLE_GAP_DELTA_1_OVER_250_PROVED",
+  "theorem": "For every positive integer g not in {4,6}, sup sigma(H_g)>c6+1/250.",
+  "uniform_delta": "1/250"
+}

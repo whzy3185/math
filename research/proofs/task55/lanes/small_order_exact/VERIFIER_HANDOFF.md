@@ -76,9 +76,16 @@ are both four.
 | 44 | 14 | 240 | 171 | 353 | 620 | 10 | 20 |
 | 46 | 14 | 240 | 171 | 599 | 690 | 10 | 20 |
 
-The independent local reconstruction has zero unresolved windows.  The
-expected terminal total is 84 and the required final unresolved total is
-zero.
+The independent local reconstruction has zero unresolved windows. The exact
+terminal total is
+
+```text
+2+2+6+14+20+20=64,
+```
+
+and the required final unresolved total is zero. An earlier draft of this
+handoff stated 84; that was a documentation sum error and never appeared in
+the certificate or per-order checker counts.
 
 ## Fail-Closed Boundary
 
