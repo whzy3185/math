@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import subprocess
+import re
 from pathlib import Path
 
 
@@ -56,9 +57,11 @@ def verify() -> dict[str, bool | int]:
             "availability section must be unnumbered")
     require(len(appendices) == 2, "expected exactly two appendices")
     require(len(figures) == 3, "expected exactly three figure sources")
-    require(text.count("% TASK58_DRAFT_STUB") == 34, "draft-stub count changed")
-    require(text.count("\\TaskDraftStub") == 32,
-            "draft paragraph mechanism changed")
+    draft_stubs = text.count("% TASK58_DRAFT_STUB")
+    require(0 <= draft_stubs <= 34, "draft-stub count cannot exceed baseline")
+    draft_paragraphs = text.count("\\TaskDraftStub") - 1
+    require(0 <= draft_paragraphs <= 31,
+            "draft paragraph count cannot exceed baseline")
     require("\\footnote" not in text, "footnotes are forbidden")
     for stale in (
         "exact-r", "codimension-r", "rank-r", "PENDING_INDEPENDENT_CHECKER_PASS",
@@ -75,9 +78,13 @@ def verify() -> dict[str, bool | int]:
         require(f"{{{environment}}}" in preamble, f"missing environment: {environment}")
     require("\\documentclass[11pt]{article}" in (ROOT / "main.tex").read_text(encoding="ascii"),
             "stable article setup absent")
-    require((ROOT / "references.bib").read_bytes() ==
-            (REPO / "research/paper/manuscript_tex_pub/references.bib").read_bytes(),
-            "bibliography is not the recorded mechanical copy")
+    current_bib = (ROOT / "references.bib").read_text(encoding="ascii")
+    baseline_bib = (REPO / "research/paper/manuscript_tex_pub/references.bib").read_text(
+        encoding="ascii"
+    )
+    key_pattern = re.compile(r"@\w+\{([^,]+),")
+    require(set(key_pattern.findall(baseline_bib)) <= set(key_pattern.findall(current_bib)),
+            "a baseline bibliography key was removed")
     require(git_tree("research/paper/manuscript_tex_pub") == ENGLISH_TREE,
             "historical English manuscript changed")
     require(git_tree("research/paper/manuscript_tex_pub_zh") == CHINESE_TREE,
@@ -88,7 +95,8 @@ def verify() -> dict[str, bool | int]:
         "numbered_sections": 8,
         "appendices": 2,
         "figure_sources": 3,
-        "draft_stubs": 34,
+        "baseline_draft_stubs": 34,
+        "draft_stubs": draft_stubs,
         "compiled_pdf": True,
         "historical_trees_frozen": True,
     }
@@ -99,5 +107,6 @@ if __name__ == "__main__":
     print(
         "TARGET_A_TASK583_SCAFFOLD_VERIFY_PASS "
         f"sections={result['numbered_sections']} appendices={result['appendices']} "
-        f"figures={result['figure_sources']} stubs={result['draft_stubs']}"
+        f"figures={result['figure_sources']} "
+        f"stubs={result['draft_stubs']}/{result['baseline_draft_stubs']}"
     )

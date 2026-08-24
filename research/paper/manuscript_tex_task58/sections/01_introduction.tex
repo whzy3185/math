@@ -1,5 +1,202 @@
 \section{Introduction}\label{sec:introduction}
 
-% Structural placeholder for this draft body.
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+% P1
+Let \(n\geq8\) be even.  We write
+\[
+G_n=C_n^2=C_n(1,2)
+\]
+for the graph on \(\mathbb Z/n\mathbb Z\) in which two vertices are adjacent
+when their cyclic distance is one or two.  An edge signing is a map
+\(\sigma:E(G_n)\to\{\pm1\}\), and \(A_\sigma\) is the real symmetric matrix
+whose \(i,j\) entry is \(\sigma(ij)\) on an edge and zero otherwise.  Our
+problem is to determine
+\[
+m_n=\min_{\sigma:E(G_n)\to\{\pm1\}}\rho(A_\sigma).
+\]
+Thus the already formed cycle square is being signed: the distance-one and
+distance-two edges receive signs independently.  It is not the graph obtained
+by first signing a cycle and then squaring that signed object.  Switching at
+vertices conjugates \(A_\sigma\) by a diagonal \(\{\pm1\}\)-matrix, so the
+minimization naturally takes place over switching classes.
+
+% P2
+The problem belongs to the general signing program in spectral graph theory.
+Signings encode the new eigenvalues of two-lifts in the work of Bilu and
+Linial \cite{BiluLinial2006}, while Belardo, Cioab\u{a}, Koolen, and Wang ask
+explicitly which signatures minimize the adjacency spectral radius of a fixed
+connected graph \cite{BelardoCioabaKoolenWang2019}.  Interlacing families give
+strong existence results for one side of the signed spectrum; in the
+bipartite setting spectral symmetry turns this into the two-sided control
+used to construct Ramanujan lifts \cite{MarcusSpielmanSrivastava2015}.  The
+graphs \(C_n^2\) are nonbipartite, however, so a one-sided eigenvalue estimate
+does not by itself control \(\rho(A_\sigma)\).  Here the graph is fixed at each
+order and the question is the exact two-sided optimum, rather than an
+existence bound uniform over a broad graph class.
+
+% P3
+The problem-specific starting point is Suvagiya's preprint
+\cite[Conjecture~3]{Suvagiya2026Signed}.  For \(C_n(1,2)\), it identifies four distinguished
+switching classes in which every quadrilateral is unbalanced, computes the
+spectra of the two twisted classes, verifies global optimality for even orders
+through \(18\), and formulates the all-even-order assertion as Conjecture~3.
+We determine exactly when that twisted candidate is globally minimizing,
+thereby resolving and disproving the conjecture.  In particular, the problem,
+the flux coordinates, and the twisted spectral formula are inputs from that
+work, not novelty claims of the present paper.
+
+% P4
+The answer is unexpectedly nonmonotone.  The proposed equality holds for
+every even order from \(8\) through \(30\), fails first at \(32\), returns at
+\(34,36,38\), fails again at \(40\), and returns once more at \(42,44,46\).
+Only from \(48\) onward does failure persist at every even order.  The first
+counterexample therefore does not mark the beginning of continuous failure,
+and the two isolated failures cannot be inferred from the eventual
+phase-slip mechanism developed below.
+
+% P5
+To state the classification, set
+\[
+\rho_-(n)^2
+=4+2\cos\frac{2\pi}{n}+2\cos\frac{4\pi}{n},
+\qquad
+\theta_n=\rho_-(n)^2.
+\]
+The distinguished class has alternating triangle flux and negative
+Hamilton-cycle holonomy; a direct antiperiodic Fourier calculation shows that
+it attains \(\rho_-(n)\) for every even \(n\geq8\).  This gives the upper
+bound \(m_n\leq\rho_-(n)\) at all orders.  At an order where equality holds,
+the reverse inequality for every signing is a separate conclusion of exact
+exhaustion.
+
+\begin{theorem}[Complete classification]\label{thm:complete-classification}
+For every even \(n\geq8\), the distinguished twisted signing attains
+\(\rho_-(n)\), and
+\[
+m_n<\rho_-(n)
+\quad\Longleftrightarrow\quad
+n=32,\quad n=40,\quad\text{or}\quad n\geq48.
+\]
+Equivalently,
+\[
+m_n=\rho_-(n)
+\quad\Longleftrightarrow\quad
+n\in\{8,10,12,14,16,18,20,22,24,26,28,30,34,36,38,42,44,46\}.
+\]
+\end{theorem}
+
+Theorem~\ref{thm:complete-classification} classifies the truth of the
+proposed equality.  It neither classifies all minimizing signings at the
+valid orders nor determines the exact value of \(m_n\) at the failing orders.
+
+% P6
+Its finite component determines the irregular small-order truth table.  A
+different part of the argument explains why failure is eventually
+uninterrupted: a low-spectral periodic phase supports localized elementary
+interfaces, and well-separated copies of those interfaces can be closed on
+large rings.  The assertion that continuous failure begins at \(48\) uses
+both this analytic tail and an exact finite bridge; the interface theory
+alone gives no such sharp onset.
+
+% P7
+The structural comparison phase is period eight and is distinct from the
+twisted signing that attains \(\rho_-(n)\).  In its quadrilateral-flux word,
+the positive sites occur at spacing four.  Replacing one spacing by a
+positive gap \(g\) creates a single interface; we call \(q=g-4\) its excess
+charge.  For a cyclic collection of gaps, the global closing law is
+\(\sum_j q_j\equiv n\pmod 8\), whereas the local translation sector carried
+by one charge is \(\sigma_{\mathrm{sec}}(q)=q\pmod4\).  These congruences have
+different roles and are not interchangeable.  In particular, one, two, and
+three copies of the gap-six interface, whose charge is two, supply the three
+nonzero even residue classes needed in the finite-ring constructions.
+
+% P8
+The reference squared spectral edge is
+\[
+\eta=4+\sqrt{10+2\sqrt5}.
+\]
+For the bilateral positive single-gap operator \(A_g\), put \(H_g=A_g^2\)
+and \(E(g)=\sup\operatorname{Spec}(H_g)\).  Define \(c_6\) to be the unique
+root in the rational interval
+\[
+\frac{7905369311620327}{10^{15}}<c_6<
+\frac{7905369311620328}{10^{15}}
+\]
+of the degree-ten polynomial
+\[
+\begin{aligned}
+p_6(y)={}&16y^{10}-520y^9+6913y^8-48448y^7+191768y^6\\
+&-423904y^5+484528y^4-270464y^3+137856y^2\\
+&-19968y+256.
+\end{aligned}
+\]
+The exact isolation is important: all later strict comparisons are made
+against rational endpoints, not against a decimal approximation.
+
+\begin{theorem}[Reference and single-gap spectral hierarchy]
+\label{thm:single-gap-hierarchy}
+For both lifts and both orientations,
+\[
+E(4)=\eta<c_6=E(6),
+\qquad
+\operatorname{Spec}_{\mathrm{ess}}(H_6)
+=\operatorname{Spec}(H_{\mathrm{ref}}),
+\qquad
+\dim\ker(H_6-c_6)=2.
+\]
+Moreover, for every positive integer \(g\notin\{4,6\}\),
+\[
+E(g)>c_6+\frac1{250}.
+\]
+\end{theorem}
+
+% P9
+The scope of Theorem~\ref{thm:single-gap-hierarchy} is precise: G6 is the
+unique minimizer among abnormal positive single gaps.  It is not asserted to
+minimize over arbitrary multi-gap or finite-core interfaces.  The strict
+single-gap hierarchy makes G6 the elementary low-cost defect above the
+period-eight bulk.  Its charge allows one, two, or three separated copies to
+close in the required residue classes.  Exact patch identification transfers
+the bilateral reference/G6 bounds to those finite rings, and a discrete IMS
+partition controls the squared spectral top between the patches.  This proves
+failure for every even \(n\geq240\).  Exact finite verification on
+\(48\leq n<240\) then shows that continuous failure begins precisely at
+\(48\).
+
+% P10
+The computer-assisted part is organized as a proof by finite reduction, not
+as numerical evidence.  Switching quotients and local interlacing reduce the
+relevant cases to finite exact objects.  For \(8\leq n\leq32\), complete
+switching-class decisions establish the lower bounds through \(30\) and an
+exact witness at \(32\).  For \(34,36,38,42,44,46\), a parity-lifted finite
+state graph is proved sound, complete, and terminating, and every terminal
+case is closed exactly; a separate rational positive-definiteness certificate
+gives the witness at \(40\).  Finally, rational positive-definiteness
+certificates cover every even order from \(48\) through \(238\).  Independent
+checkers reconstruct the finite objects and repeat the integer, rational, or
+algebraic decisions.  Exhaustive generation and local finite-state reductions
+have established precedents in graph theory \cite{GoedgebeurSchaudt2018,DeVosSamal2011},
+while all-order classifications often combine an analytic tail with finite
+closure \cite{LinNing2021,GoedgebeurRendersWienerZamfirescu2024}.
+
+% P11
+Exact signed spectral-radius classifications are known in settings where the
+underlying graph is also allowed to vary, including unbalanced unicyclic and
+bicyclic graphs \cite{BelardoBrunettiCiampella2021} and connected unbalanced
+signed graphs of fixed order \cite{BrunettiStanic2022}.  Those results make it
+essential to keep the present novelty claim narrow.  To the best of our
+knowledge, no previous work gives an all-order classification of the
+minimizing behavior over all real edge signings of the fixed circulant family
+\(C_n(1,2)\).  The closest direct source remains Suvagiya's conjecture; the
+complete truth set and the elementary single-gap mechanism are the two
+contributions supplied here.  The paper is arranged as follows.
+Section~\ref{sec:switching-reference}
+sets up switching coordinates, the twisted attaining candidate, and the
+period-eight reference phase.  Section~\ref{sec:gaps-charges-sectors}
+develops gaps, charges, and the two closing laws.  Sections~\ref{sec:elementary-g6}
+and \ref{sec:single-gap} prove the G6 edge theorem and the complete
+single-gap hierarchy.  Section~\ref{sec:finite-rings} passes from bilateral
+interfaces to finite rings by patch identification and discrete IMS
+localization.  Section~\ref{sec:finite-completion} closes the remaining
+orders by exact finite arguments, and Section~\ref{sec:concluding} records
+the resulting perspective.  The appendices collect the algebraic G6
+certificate and the exact finite-classification boundary.

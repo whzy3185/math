@@ -14,7 +14,9 @@ def test_visual_budget() -> None:
 
 
 def test_stub_baseline() -> None:
-    assert verify()["draft_stubs"] == 34
+    result = verify()
+    assert result["baseline_draft_stubs"] == 34
+    assert 0 <= result["draft_stubs"] <= result["baseline_draft_stubs"]
 
 
 def test_freezes_and_build() -> None:
