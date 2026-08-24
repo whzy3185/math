@@ -93,9 +93,20 @@ def verify(control: Path = CONTROL, check_git: bool = True) -> dict[str, bool]:
         require(token.lower() in visual.lower(), f"visual contract omits {token}")
 
     require(APPROVED in handoff, "handoff omits approved checkpoint")
-    require("task 58.0" in handoff.lower(), "handoff phase mismatch")
-    require("task 58.1" in handoff.lower(), "handoff next task mismatch")
-    require("not yet created" in handoff.lower(), "handoff manuscript state mismatch")
+    phase_match = re.search(r"Completed phase:\s*Task 58\.(\d+)", handoff)
+    next_match = re.search(r"Next authorized task:\s*Task 58\.(\d+)", handoff)
+    require(phase_match is not None, "handoff phase missing")
+    require(next_match is not None, "handoff next task missing")
+    phase = int(phase_match.group(1))
+    next_phase = int(next_match.group(1))
+    require(0 <= phase < 13 and next_phase == phase + 1,
+            "handoff phase progression mismatch")
+    if phase == 0:
+        require("not yet created" in handoff.lower(),
+                "handoff manuscript state mismatch")
+    else:
+        require("research/paper/manuscript_tex_task58/" in handoff,
+                "handoff manuscript path missing")
 
     if check_git:
         require(git_output("branch", "--show-current") == "agent/target-a-discovery-snapshot", "wrong branch")
