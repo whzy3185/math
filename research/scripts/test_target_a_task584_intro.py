@@ -18,7 +18,8 @@ def test_introduction_contract() -> None:
 def test_page_and_stub_budgets() -> None:
     result = verify()
     assert result["section_two_page"] <= 5
-    assert result["draft_stubs"] == 32
+    assert result["baseline_draft_stubs"] == 32
+    assert 0 <= result["draft_stubs"] <= result["baseline_draft_stubs"]
 
 
 def test_manuscript_freezes() -> None:

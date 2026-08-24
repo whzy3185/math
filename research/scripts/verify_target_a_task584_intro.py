@@ -89,7 +89,8 @@ def verify() -> dict[str, int | bool]:
 
     require("% TASK58_DRAFT_STUB" not in combined, "front matter or Introduction still stubbed")
     all_tex = "\n".join(path.read_text(encoding="ascii") for path in ROOT.rglob("*.tex"))
-    require(all_tex.count("% TASK58_DRAFT_STUB") == 32, "progressive stub count changed")
+    draft_stubs = all_tex.count("% TASK58_DRAFT_STUB")
+    require(0 <= draft_stubs <= 32, "draft-stub count cannot exceed post-Introduction baseline")
     require(r"\footnote" not in all_tex, "footnotes are forbidden")
     for forbidden in (
         "exact-2r", "p<=24", "Grassmann", "internal path", "Task 58",
@@ -119,7 +120,8 @@ def verify() -> dict[str, int | bool]:
         "introduction_paragraphs": 11,
         "introduction_theorems": 2,
         "section_two_page": section_two_page,
-        "draft_stubs": 32,
+        "baseline_draft_stubs": 32,
+        "draft_stubs": draft_stubs,
         "historical_trees_frozen": True,
     }
 
