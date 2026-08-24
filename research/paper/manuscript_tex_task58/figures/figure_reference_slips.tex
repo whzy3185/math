@@ -1,27 +1,71 @@
-% TASK58_DRAFT_STUB
 \begin{tikzpicture}[
   x=0.72cm,
   y=0.72cm,
-  site/.style={circle,draw=black,fill=white,inner sep=1.2pt},
-  slip/.style={draw=black,line width=1.2pt},
-  reference/.style={draw=black,thin},
-  sector/.style={draw=black,dashed,->}
+  line cap=round,
+  line join=round,
+  positive/.style={circle,fill=black,inner sep=1.65pt},
+  negative/.style={circle,draw=black,fill=white,inner sep=1.15pt,
+    line width=0.45pt},
+  reference/.style={draw=black!55,line width=0.55pt},
+  interface/.style={draw=black,line width=1.25pt},
+  sector/.style={-{Latex[length=2.2mm,width=1.25mm]},line width=0.65pt},
+  ring/.style={draw=black!55,line width=0.65pt},
+  slip/.style={fill=black},
+  panel/.style={font=\small\bfseries},
+  note/.style={font=\scriptsize,align=center}
 ]
-  \foreach \i in {0,...,8} {
-    \node[site] (p\i) at (\i,1.8) {};
+  % Panel (a): a reference gap and the elementary G6 phase slip.
+  \node[panel,anchor=west] at (-0.35,3.55) {(a)};
+  \node[note,anchor=east] at (-0.35,2.75) {reference};
+  \foreach \i in {0,...,4} {
+    \coordinate (r\i) at (\i,2.75);
   }
-  \foreach \i in {0,...,7} {
-    \pgfmathtruncatemacro{\j}{\i+1}
-    \draw[reference] (p\i)--(p\j);
+  \draw[reference] (r0)--(r4);
+  \node[positive] at (r0) {};
+  \node[positive] at (r4) {};
+  \foreach \i in {1,2,3} {
+    \node[negative] at (r\i) {};
   }
-  \draw[slip] (p4)--(p5);
-  \draw[sector] (3.6,1.2)--(4.9,1.2);
+  \draw[<->,line width=0.45pt]
+    ($(r0)+(0,-0.36)$)--node[note,fill=white,inner sep=1pt]
+    {$g=4,\ q=0$}($(r4)+(0,-0.36)$);
 
-  \foreach \x/\k in {0/1,3/2,6/3} {
-    \draw[reference] (\x,0) circle (0.82);
-    \foreach \i in {1,...,\k} {
-      \pgfmathsetmacro{\a}{90+360*(\i-1)/\k}
-      \fill[black] ({\x+0.82*cos(\a)},{0.82*sin(\a)}) circle (1.8pt);
+  \node[note,anchor=east] at (-0.35,1.10) {G6};
+  \foreach \i in {0,...,6} {
+    \coordinate (g\i) at ({2*\i/3},1.10);
+  }
+  \draw[interface] (g0)--(g6);
+  \node[positive] at (g0) {};
+  \node[positive] at (g6) {};
+  \foreach \i in {1,...,5} {
+    \node[negative] at (g\i) {};
+  }
+  \draw[<->,line width=0.45pt]
+    ($(g0)+(0,-0.36)$)--node[note,fill=white,inner sep=1pt]
+    {$g=6,\ q=2$}($(g6)+(0,-0.36)$);
+  \draw[sector] (0.75,-0.18)--node[note,above]
+    {$B_s\longmapsto B_{s+2}$} (3.25,-0.18);
+
+  % Panel (b): legal residue rings. Thick ticks are well-separated G6 cores.
+  \node[panel,anchor=west] at (5.10,3.55) {(b)};
+  \foreach \cx/\rslips/\residue/\sectorchange in {
+    6.10/1/2/2,
+    9.10/2/4/0,
+    12.10/3/6/2
+  } {
+    \draw[ring] (\cx,2.25) circle (0.94);
+    \foreach \j in {1,...,\rslips} {
+      \pgfmathsetmacro{\ang}{90+360*(\j-1)/\rslips}
+      \pgfmathsetmacro{\xa}{\cx+0.78*cos(\ang)}
+      \pgfmathsetmacro{\ya}{2.25+0.78*sin(\ang)}
+      \pgfmathsetmacro{\xb}{\cx+1.10*cos(\ang)}
+      \pgfmathsetmacro{\yb}{2.25+1.10*sin(\ang)}
+      \draw[interface] (\xa,\ya)--(\xb,\yb);
+      \fill[slip] (\xb,\yb) circle (1.45pt);
     }
+    \node[note] at (\cx,2.25) {$\rslips\times\mathrm{G6}$};
+    \node[note] at (\cx,0.74)
+      {\(n\bmod8=\residue\)\\
+       \(q_{\rm tot}=\residue,\ \Delta s=\sectorchange\)};
   }
 \end{tikzpicture}
