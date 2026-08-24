@@ -4,20 +4,126 @@
 \subsection{Cyclic gaps and excess charge}
 \label{subsec:cyclic-gaps-excess-charge}
 
-% Structural placeholder for this draft body.
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+Let \(Q\in\{\pm1\}^n\) be a cyclic quadrilateral-flux word that admits a
+cyclic \(\tau\)-lift.  Suppose first that its positive set
+\[
+D(Q)=\{i\in\mathbb Z/n\mathbb Z:Q_i=+1\}
+\]
+is nonempty.  Choose integer representatives
+\[
+x_1<x_2<\cdots<x_d<x_1+n
+\]
+for its \(d\) elements and put \(x_{d+1}=x_1+n\).  The positive cyclic gaps
+and their excess charges are
+\[
+g_j=x_{j+1}-x_j,\qquad q_j=g_j-4
+\qquad(1\leq j\leq d).
+\]
+The reference value is four; positive or negative \(q_j\) measures the
+departure of one gap from that spacing.
+
+\begin{proposition}[Gap and charge identities]\label{prop:gap-charge}
+The gap list satisfies
+\[
+\sum_{j=1}^d g_j=n,\qquad
+\sum_{j=1}^d q_j=n-4d.
+\]
+If \(n\) is even and \(Q\) has a cyclic \(\tau\)-lift, then \(d\) is even
+and
+\[
+\sum_{j=1}^d q_j\equiv n\pmod8.
+\]
+\end{proposition}
+
+\begin{proof}
+The half-open arcs from \(x_j\) to \(x_{j+1}\) partition one traversal of
+the \(n\)-cycle, so their lengths sum to \(n\).  Subtracting four for each
+of the \(d\) arcs gives the second identity.
+
+The word has \(d\) positive and \(n-d\) negative entries.  Hence
+\[
+\prod_{i=0}^{n-1}Q_i=(-1)^{n-d}.
+\]
+A cyclic lift exists only when this product is \(1\).  Thus \(n-d\) is
+even; since \(n\) is even, \(d\) is even.  Write \(d=2h\).  The second
+identity becomes
+\[
+\sum_{j=1}^d q_j=n-8h,
+\]
+which is the asserted congruence.
+\end{proof}
+
+The Hamilton holonomy \(\alpha\) does not occur in this argument.  It is an
+independent step-one cycle sign and cannot change the charge law.  If
+\(D(Q)=\varnothing\), there is no cyclic gap list and Proposition
+\ref{prop:gap-charge} is not invoked; this defect-free word is treated
+separately whenever it occurs.
 
 \subsection{Translation sectors}
 \label{subsec:translation-sectors}
 
-% Structural placeholder for this draft body.
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+Recall the four reference translates \(B_s\), \(s\in\mathbb Z/4\mathbb Z\),
+defined by
+\[
+(B_s)_i=+1\quad\Longleftrightarrow\quad i\equiv s\pmod4.
+\]
+They are sectors of the \(Q\)-word.  Each has two period-eight
+\(\tau\)-lifts, but the sector label itself depends only on the positions of
+the positive \(Q\)-sites.
+
+\begin{proposition}[Oriented gap shift]\label{prop:sector-shift}
+Suppose an oriented gap of length \(g\) leaves the reference sector \(B_s\)
+at a positive site and enters a reference sector on its right.  For its
+charge \(q=g-4\), the right sector is
+\[
+B_{s+\sigma_{\mathrm{sec}}(q)},\qquad
+\sigma_{\mathrm{sec}}(q)=q\pmod4.
+\]
+This law is independent of the \(\tau\)-lift and Hamilton holonomy.
+\end{proposition}
+
+\begin{proof}
+Let the left endpoint be \(x\equiv s\pmod4\).  The next positive site is
+\(x+g\), so the positive lattice continuing to the right is
+\[
+x+g+4\mathbb Z.
+\]
+It is therefore \(B_{s+g}\).  Since \(g=q+4\), the residues of \(g\) and
+\(q\) agree modulo four.  The proof uses only endpoint positions, so neither
+the lift sign nor \(\alpha\) enters.
+\end{proof}
 
 \subsection{Composition and legal cyclic closure}
 \label{subsec:composition-legal-cyclic-closure}
 
-% Structural placeholder for this draft body.
-% TASK58_DRAFT_STUB
-\TaskDraftStub
+For consecutive oriented gaps with charges \(q_1,\ldots,q_k\), repeated use
+of Proposition~\ref{prop:sector-shift} gives
+\[
+B_s\longmapsto B_{s+q_1}\longmapsto\cdots\longmapsto
+B_{s+q_1+\cdots+q_k},
+\]
+with labels reduced modulo four.  Thus sector shifts add:
+\[
+\sigma_{\mathrm{sec}}(q_1+\cdots+q_k)
+\equiv\sum_{j=1}^k\sigma_{\mathrm{sec}}(q_j)\pmod4.
+\]
+On a cyclic gap list, \(\sum_jg_j=n\), so the final reference lattice is
+the translate \(B_{s+n}\); equivalently,
+\[
+\sum_jq_j\equiv n\pmod4.
+\]
+This compatibility is weaker than the mod-eight law in Proposition
+\ref{prop:gap-charge}, because it does not contain the parity information
+needed for a cyclic \(\tau\)-lift.
+
+The modulo-eight charge closure and the modulo-four translation-sector law
+encode different constraints and will be used separately.  The first is a
+global condition on a liftable ring; the second records the local reference
+translate across an interface.
+
+For later use, a gap of length six has charge \(q=6-4=2\) and sector shift
+two modulo four.  One, two, or three such gaps contribute total charges
+\(2,4,6\), respectively, and sector shifts \(2,0,2\) modulo four.  If all
+other gaps have the reference length four, these are precisely the charge
+contributions required for ring orders congruent to \(2,4,6\) modulo eight.
+No spectral comparison is asserted at this stage.
