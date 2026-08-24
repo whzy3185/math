@@ -1,0 +1,434 @@
+\section{Exact \texorpdfstring{\(2r\)}{2r} clusters for separated interfaces}
+\label{sec:exact-2r}
+
+\subsection{Operators and the one-interface input}
+
+Let \(Q^{(6)}\in\{\pm1\}^{\Z}\) be the flux word whose positive sites are
+\[
+ \{ -4j:j\geq 0\}\cup\{6+4j:j\geq0\}.
+\]
+Choose a lift \(\tau^{(6)}\) with
+\(\tau^{(6)}_{i+1}=Q^{(6)}_i\tau^{(6)}_i\), and define
+\begin{equation}
+ (A_6u)_i=u_{i-1}+u_{i+1}
+ +\tau^{(6)}_{i-2}u_{i-2}+\tau^{(6)}_iu_{i+2},
+ \qquad H_6=A_6^2 .
+ \label{eq:g6-operator}
+\end{equation}
+The other lift is \(-\tau^{(6)}\); after squaring it is diagonally unitarily
+equivalent to the displayed operator.  Reflection gives the reverse
+orientation.
+
+Define
+\begin{align}
+ p_6(y)={}&16y^{10}-520y^9+6913y^8-48448y^7+191768y^6
+ -423904y^5 \notag\\
+ &+484528y^4-270464y^3+137856y^2-19968y+256.
+ \label{eq:p6}
+\end{align}
+The constant \(\cSix\) is the unique root of \(p_6\) in the rational
+interval
+\begin{equation}
+ \frac{7905369311620327}{10^{15}}<\cSix<
+ \frac{7905369311620328}{10^{15}}.
+ \label{eq:c6-interval}
+\end{equation}
+The period-eight reference squared edge is
+\begin{equation}
+ \etaRef=4+\sqrt{10+2\sqrt5}<\cSix.
+ \label{eq:eta}
+\end{equation}
+
+The proof below uses the following certified one-interface and Floquet
+inputs.  They are the only computer-assisted spectral inputs to this
+section:
+\begin{align}
+ \ker(H_6-\cSix)&=\Span\{\psi_+,\psi_-\},
+ &\dim\ker(H_6-\cSix)&=2, \label{eq:rank-two-input}\\
+ H_6\big|_{\ker(H_6-\cSix)^\perp}&\leq \cSix-\frac1{100},
+ \label{eq:complement-input}
+\end{align}
+where the modes are orthonormal and satisfy
+\(A_6\psi_\pm=\pm\sqrt{\cSix}\,\psi_\pm\).  For all eight cuts of the
+period-eight bulk, both stable multipliers have modulus below
+\begin{equation}
+ \qF=\frac9{25},
+ \label{eq:qf}
+\end{equation}
+and the selected two-column Floquet bases have condition number below
+\(17\).  These bounds hold for both tails and are uniform under reflection.
+
+\subsection{Finite-ring geometry and patch identification}
+
+Work on \(\Z/n\Z\) in Hamilton gauge.  All step-one signs are positive
+except for a movable seam carrying a holonomy
+\(\alpha\in\{+1,-1\}\).  The flux word is
+\(Q_i=\tau_i\tau_{i+1}\).  Assume that its positive sites have cyclic gaps
+four except at exactly \(r\in\{1,2,3\}\) marked gaps of length six.  Write
+\(p_j\) for the left positive endpoint of the \(j\)-th marked gap, ordered
+cyclically, and put
+\begin{equation}
+ d_j=p_{j+1}-p_j\pmod n,\qquad D=\min_j d_j,
+ \label{eq:separation}
+\end{equation}
+with \(p_{r+1}=p_1\).  For \(r=1\), the return arc has length \(d_1=D=n\).
+Thus \(D\) is a distance in sites, not a number of period-eight cells.
+Assume from now on that
+\begin{equation}
+ D\geq1040,\qquad S=\left\lfloor\frac D4\right\rfloor,
+ \qquad a=S-8.
+ \label{eq:S}
+\end{equation}
+
+On the oriented arc from \(p_j\) to \(p_{j+1}\), use the coordinate
+\(0\leq t\leq d_j\).  Define interface cutoffs \(\chi_j\) and a bulk cutoff
+\(\beta_j\) by
+\begin{equation}
+\begin{array}{c|cc}
+\text{range of }t&\chi_j&\beta_j\\ \hline
+0\leq t\leq a&1&0\\
+a<t<a+S&\cos\vartheta&\sin\vartheta\\
+a+S\leq t\leq d_j-a-S&0&1
+\end{array}
+\qquad
+ \vartheta=\frac{\pi(t-a)}{2S},
+ \label{eq:left-cutoff}
+\end{equation}
+and on the right transition by
+\begin{equation}
+ \beta_j=\cos\varphi,\qquad \chi_{j+1}=\sin\varphi,\qquad
+ \varphi=\frac{\pi(t-d_j+a+S)}{2S}
+ \label{eq:right-cutoff}
+\end{equation}
+for \(d_j-a-S<t<d_j-a\), followed by \(\chi_{j+1}=1\) on
+\(d_j-a\leq t\leq d_j\).  Endpoint values agree.  For \(r=1\), the two
+endpoint pieces are the same cyclic interface cutoff.  Pointwise,
+\begin{equation}
+ \sum_{j=1}^r\chi_j^2+\sum_{j=1}^r\beta_j^2=1.
+ \label{eq:partition}
+\end{equation}
+The pure-bulk plateau on the \(j\)-th arc is
+\([p_j+2S-8,p_{j+1}-2S+8]\), and its length is at least
+\begin{equation}
+ d_j-4S+16\geq D-4\lfloor D/4\rfloor+16\geq16.
+ \label{eq:bulk-plateau}
+\end{equation}
+
+For a set \(E\), let \(E^{[k]}\) denote its cyclic \(k\)-neighborhood.
+Set
+\[
+ I_j=\{i:\chi_j(i)\neq0\},\quad J_j=I_j^{[4]},\qquad
+ B_j=\{i:\beta_j(i)\neq0\},\quad C_j=B_j^{[4]}.
+\]
+Since \(H=A^2\) has range four, the coefficient collar needed to identify a
+compression to \(J_j\) is contained in \(I_j^{[6]}\).  That collar stays at
+distance at least
+\begin{equation}
+ D-2\lfloor D/4\rfloor-4\geq516
+ \label{eq:collar-separation}
+\end{equation}
+from every other marked core.  Likewise \(B_j^{[6]}\) stays at distance at
+least \(S-19\geq241\) from each six-gap core.  Hence every interface patch
+contains exactly one marked core and every bulk patch is a pure
+period-eight patch.
+
+The holonomy seam can be moved by diagonal switching.  Place it on an edge
+of a bulk plateau whose endpoints have distance at least eight from every
+interface support.  It then misses every \(I_j^{[6]}\).  Each interface
+collar is a proper arc, so after unwrapping it, translation, optional
+reflection, and diagonal switching identify its coefficients exactly with
+the corresponding finite section of \(H_6\).  On a proper arc, two lifts of
+the same \(Q\)-word differ by a global sign.  If
+\((D_0u)_i=(-1)^iu_i\), then
+\begin{equation}
+ A_{-\tau}=-D_0A_\tau D_0,\qquad H_{-\tau}=D_0H_\tau D_0.
+ \label{eq:lift-equivalence}
+\end{equation}
+This removes the remaining lift choice after squaring.  The same argument
+identifies each \(C_j\) with a finite section of the period-eight reference
+operator.  We record the result in the form needed below.
+
+\begin{lemma}[Patch identification]
+\label{lem:patch-identification}
+For every allowed orientation, lift, and holonomy, there are local unitaries
+such that:
+\begin{enumerate}[label=\textup{(\roman*)}]
+\item the compression of \(H\) to \(J_j\) is a principal finite section of
+the corresponding infinite G6 operator;
+\item the image under \(H\) of a vector supported in \(I_j\) is supported in
+\(J_j\) and agrees with the image under that infinite operator;
+\item the analogous compression and map on \(B_j\subset C_j\) agree with a
+period-eight reference-bulk finite section.
+\end{enumerate}
+These statements include cyclic wraparound because every collar is first
+unwrapped as a proper arc.
+\end{lemma}
+
+Transport the orthonormal pair \(\psi_+,\psi_-\) through the same local
+unitary, before truncation, and call the transported modes
+\(\psi_{j,+},\psi_{j,-}\).  For every finite-ring vector \(x\), zero
+extension on the unwrapped arc gives
+\begin{equation}
+ \langle\psi_{j,\pm},\chi_jx\rangle_{\ell^2(\Z)}
+ =\langle\chi_j\psi_{j,\pm},x\rangle_{\C^n}.
+ \label{eq:complement-identity}
+\end{equation}
+This identity is the bridge that permits the complete rank-two complement
+bound \eqref{eq:complement-input} to be used on each localized vector.
+
+\subsection{Tails, Gram matrix, and the lower count}
+
+The cutoff starts changing at distance \(S-8\) from a marked core.  Removing
+the propagation range four leaves
+\begin{equation}
+ L_{\mathrm{site}}=S-12,\qquad
+ \ell=\left\lfloor\frac{L_{\mathrm{site}}}{8}\right\rfloor.
+ \label{eq:ell}
+\end{equation}
+The eight site residues, the two tails, the condition-number bound, and the
+geometric series imply, for either normalized local mode,
+\begin{equation}
+ \|\psi_{j,\pm}\|_{\mathrm{tail}}^2
+ \leq\frac{16\cdot17^2}{1-\qF^2}\qF^{2\ell}
+ =\frac{10625}{2}\qF^{2\ell}<73^2\qF^{2\ell}.
+ \label{eq:tail}
+\end{equation}
+Put
+\begin{equation}
+ \phi_{j,\pm}=\chi_j\psi_{j,\pm},
+ \qquad
+ \Phi=(\phi_{1,+},\phi_{1,-},\ldots,\phi_{r,+},\phi_{r,-}),
+ \qquad G=\Phi^*\Phi.
+ \label{eq:phi}
+\end{equation}
+The full modes at one interface are orthogonal.  Their truncated cross term
+is not discarded; rather,
+\[
+ |\langle\phi_{j,+},\phi_{j,-}\rangle|
+ \leq73^2\qF^{2\ell}.
+\]
+The same estimate holds between different interfaces because both vectors
+are then in their tails.  With \(m=2r\),
+\begin{equation}
+ \|G-\Id_m\|\leq m73^2\qF^{2\ell}.
+ \label{eq:gram}
+\end{equation}
+The hypotheses give \(S\geq260\), \(L_{\mathrm{site}}\geq248\), and
+\(\ell\geq31\).  Since \(m\leq6\),
+\begin{equation}
+ 6\cdot73^2\left(\frac9{25}\right)^{62}<\frac12.
+ \label{eq:gram-numeric}
+\end{equation}
+Thus the \(2r\) columns are independent and \(\|G^{-1}\|\leq2\).
+
+The row-sum bound gives \(\|H\|\leq16\), while \(\cSix<8\).  Cutting an
+exact mode only in its tails and using \eqref{eq:tail} yields
+\begin{equation}
+ \|(H-\cSix)\phi_{j,\pm}\|
+ \leq(16+8)73\qF^\ell=1752\qF^\ell.
+ \label{eq:residual-column}
+\end{equation}
+Define the isometry
+\begin{equation}
+ U=\Phi G^{-1/2}:\C^{2r}\longrightarrow\C^n.
+ \label{eq:U}
+\end{equation}
+Then
+\begin{equation}
+ \|(H-\cSix)U\|<3504r\qF^\ell<\frac1{400}.
+ \label{eq:residual-U}
+\end{equation}
+Let \(E_W\) be the spectral projection of \(H\) onto
+\begin{equation}
+ W=\left[\cSix-\frac1{400},\cSix+\frac1{400}\right].
+ \label{eq:window}
+\end{equation}
+If \(\rank E_W<2r\), a nonzero vector in \(\ran U\) is orthogonal to
+\(\ran E_W\).  The spectral theorem then makes its residual at least
+\(1/400\), contradicting \eqref{eq:residual-U}.  Therefore
+\begin{equation}
+ \rank E_W\geq2r.
+ \label{eq:lower-count}
+\end{equation}
+
+\subsection{The codimension-\texorpdfstring{\(2r\)}{2r} complement}
+
+Let \(V=\ran\Phi\).  If \(x\perp V\), then
+\eqref{eq:complement-identity} gives
+\[
+ \langle\psi_{j,+},\chi_jx\rangle
+ =\langle\psi_{j,-},\chi_jx\rangle=0
+\]
+for every interface.  Thus each interface-localized vector is orthogonal to
+the entire two-dimensional space in \eqref{eq:rank-two-input}, and
+\eqref{eq:complement-input} applies.  Each bulk-localized vector satisfies
+the stronger upper bound \(\etaRef<\cSix-1/100\).
+
+The cutoff vector follows a unit-circle quarter arc at angular speed
+\(\pi/(2S)\).  If two sites have cyclic distance \(h\leq4\), the chord bound
+gives
+\[
+ \sum_\gamma|\gamma(u)-\gamma(v)|^2
+ \leq\frac{\pi^2h^2}{4S^2},
+\]
+where \(\gamma\) ranges over all cutoffs.  The exact double-commutator IMS
+identity, the range-four row-sum bound, and \(\pi^2<10\) consequently give
+\begin{equation}
+ \|E_{\mathrm{IMS}}\|<\frac{320}{S^2}
+ \leq\frac{320}{260^2}=\frac4{845}.
+ \label{eq:ims}
+\end{equation}
+Using \eqref{eq:partition} and summing the localized quadratic-form bounds,
+we obtain on \(V^\perp\)
+\begin{equation}
+ H\big|_{V^\perp}
+ \leq\cSix-\frac1{100}+\frac4{845}
+ =\cSix-\frac{89}{16900}
+ <\cSix-\frac1{200}.
+ \label{eq:complement-finite}
+\end{equation}
+By the codimension form of min--max, at most \(\dim V=2r\) eigenvalues lie
+above \(\cSix-1/200\).  Since the entire window \(W\) lies above this
+level, \eqref{eq:lower-count} sharpens to
+\begin{equation}
+ \rank E_W=2r.
+ \label{eq:exact-count}
+\end{equation}
+The equality counts algebraic multiplicity and makes no assertion of
+individual simplicity.
+
+\subsection{The \texorpdfstring{\(2r\)}{2r}-dimensional Feshbach equation}
+
+Let
+\begin{equation}
+ P=UU^*,\qquad \perpQ=\Id-P,\qquad E=(H-\cSix)\Phi.
+ \label{eq:PE}
+\end{equation}
+Because \(\ran U=V\), estimate \eqref{eq:complement-finite} holds on
+\(\ran\perpQ\).  If \(|z-\cSix|\leq1/400\), then
+\begin{equation}
+ \|\big(\perpQ H\perpQ-z\big)^{-1}\|\leq400
+ \quad\text{on }\ran\perpQ.
+ \label{eq:resolvent}
+\end{equation}
+Block Gaussian elimination with respect to \(P+\perpQ=\Id\) gives the
+effective operator on \(\C^{2r}\),
+\begin{equation}
+ H_{\mathrm{eff}}(z)=U^*HU-U^*H\perpQ
+ (\perpQ H\perpQ-z)^{-1}\perpQ HU,
+ \label{eq:feshbach}
+\end{equation}
+and the finite-ring eigenvalue equation in \(W\) is exactly
+\begin{equation}
+ \det\big(H_{\mathrm{eff}}(z)-z\Id_{2r}\big)=0.
+ \label{eq:feshbach-determinant}
+\end{equation}
+Using \(U=\Phi G^{-1/2}\) and
+\(\perpQ HU=\perpQ EG^{-1/2}\), one obtains
+\begin{align}
+ H_{\mathrm{eff}}(z)-\cSix\Id_{2r}
+={}&G^{-1/2}\Phi^*EG^{-1/2} \notag\\
+ &-G^{-1/2}E^*\perpQ(\perpQ H\perpQ-z)^{-1}
+ \perpQ EG^{-1/2}.
+ \label{eq:feshbach-expanded}
+\end{align}
+No orthogonality of the uncorrected columns of \(\Phi\) is assumed.
+Writing the right side as \(T_1+R_2(z)\), the Gram and residual bounds give
+\begin{equation}
+ \|T_1\|\leq3504r\qF^\ell,\qquad
+ \|R_2(z)\|\leq400r\,3504^2\qF^{2\ell}.
+ \label{eq:feshbach-bounds}
+\end{equation}
+Since
+\begin{equation}
+ 400\cdot3504^2\left(\frac9{25}\right)^{31}<1,
+ \label{eq:remainder-numeric}
+\end{equation}
+we have \(\|R_2(z)\|<r\qF^\ell\).  Every root of
+\eqref{eq:feshbach-determinant} in \(W\) therefore satisfies
+\begin{equation}
+ |\lambda_j-\cSix|<3505r\left(\frac9{25}\right)^\ell,
+ \qquad 1\leq j\leq2r.
+ \label{eq:cluster-bound}
+\end{equation}
+
+\begin{theorem}[Separated-interface cluster]
+\label{thm:exact-2r}
+Let an admissible finite ring contain exactly \(r\in\{1,2,3\}\) elementary G6
+interfaces, with arbitrary interface orientations, either lift, and either
+Hamilton holonomy.  If their minimum cyclic site separation satisfies
+\(D\geq1040\), define \(S,L_{\mathrm{site}},\ell\) by
+\eqref{eq:S} and \eqref{eq:ell}.  Then
+\[
+ \rank\one_{[\cSix-1/400,\,\cSix+1/400]}(H)=2r.
+\]
+The \(2r\) eigenvalues in this window, counted with multiplicity, satisfy
+\eqref{eq:cluster-bound}, and their exact finite-ring equation is the
+\(2r\)-dimensional determinant \eqref{eq:feshbach-determinant}.
+\end{theorem}
+
+\subsection{A sufficient exponential onset}
+
+The explicit constants also give a continuous sufficient onset for the
+exponential construction.  For every even \(n\),
+\[
+\rho_-(n)^2>8-\frac{200}{n^2}.
+\]
+For the nonzero residues put
+\[
+B(n)=8-\frac{200}{n^2}-\frac9{100}.
+\]
+If the corresponding residue construction has \(r\) interfaces and minimum
+separation \(D\geq1040\), the cluster bound gives
+\[
+\rho(A_n)^2
+\leq c_6^{\mathrm{up}}
++3505r\left(\frac9{25}\right)^\ell,
+\qquad
+\ell=\left\lfloor
+\frac{\lfloor D/4\rfloor-12}{8}
+\right\rfloor,
+\]
+where \(c_6^{\mathrm{up}}=7905369311620328/10^{15}\).
+The first distance-eligible endpoints are
+\[
+\begin{array}{c|c|c|c|c}
+n\bmod8&n&r&D&\ell\\ \hline
+2&1042&1&1042&31\\
+4&2084&2&1042&31\\
+6&3126&3&1042&31
+\end{array}
+\]
+and exact rational evaluation gives
+\[
+B(n)-\left[
+c_6^{\mathrm{up}}
++3505r\left(\frac9{25}\right)^{31}
+\right]>\frac1{250}
+\]
+in all three rows.  Along each residue subsequence, \(D\) and \(\ell\) do
+not decrease, the spectral cap does not increase, and \(B(n)\) strictly
+increases.
+
+For residue zero, the period-eight cap is \(1561/200\).  At \(n=3120\),
+\[
+8-\frac{200}{3120^2}=\frac{389375}{48672},
+\qquad
+\frac{389375}{48672}-\frac{1561}{200}
+=\frac{237251}{1216800}>0.
+\]
+The first four even orders at or above \(3120\) are \(3120,3122,3124,3126\),
+one in each residue class.  The preceding endpoint checks and residue-wise
+monotonicity therefore prove a strict counterexample for every even
+\(n\geq3120\).  We record
+\[
+N_{\mathrm{exp}}=3120
+\]
+as a sufficient, nonoptimal onset for this exponential estimate.  It is not
+the sharp onset: the finite bridge plus IMS theorem in the main paper gives
+the stronger value \(48\).
+
+The restrictions \(r\leq3\) and \(D\geq1040\) enter, respectively, in the
+uniform Gram estimate and in the seam-clearance, tail, and IMS bounds.  The
+argument proves neither individual simplicity nor a nonzero leading
+interaction coefficient.

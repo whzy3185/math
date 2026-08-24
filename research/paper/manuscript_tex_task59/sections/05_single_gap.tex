@@ -1,0 +1,155 @@
+\section{Optimality Among Single-Gap Interfaces}
+\label{sec:single-gap}
+
+\subsection{Canonical single-gap operators}
+\label{subsec:canonical-single-gap-operators}
+
+For a positive integer \(g\), let
+\[
+D_g=\{-4j:j\geq0\}\cup\{g+4j:j\geq0\}.
+\]
+Define \(Q_i^{(g)}=+1\) exactly on \(D_g\), choose the lift
+\(\tau_0^{(g)}=1\), and set
+\[
+(A_gv)_i=v_{i-1}+v_{i+1}
++\tau_{i-2}^{(g)}v_{i-2}+\tau_i^{(g)}v_{i+2},
+\qquad
+H_g=A_g^2,\qquad
+E(g)=\sup\operatorname{Spec}(H_g).
+\]
+Reflection covers the reverse orientation, and
+equation~\eqref{eq:lift-negation} covers the other \(\tau\)-lift.  It is
+therefore enough to make each comparison for the displayed forward lift.
+
+Gap \(g=4\) continues the same positive lattice and is the reference bulk,
+so \(E(4)=\eta\); it is not an abnormal interface.  Gap \(g=6\) is the
+elementary interface of Section~\ref{sec:elementary-g6}, and
+equation~\eqref{eq:g6-global-edge} gives \(E(6)=c_6\).
+
+For a finitely supported vector \(v\), extend it by zero and compute its full
+range-two image.  Self-adjointness gives the exact Rayleigh identity
+\begin{equation}\label{eq:single-gap-rayleigh}
+\frac{\langle v,H_gv\rangle}{\langle v,v\rangle}
+=\frac{\|A_gv\|^2}{\|v\|^2}.
+\end{equation}
+The certified upper endpoint in equation~\eqref{eq:c6-interval} yields
+\[
+T:=
+\frac{988671163952541}{125000000000000}
+=\frac{7905369311620328}{10^{15}}+\frac1{250}
+>c_6+\frac1{250}.
+\]
+It is enough, therefore, to exhibit a finite vector with quotient strictly
+larger than \(T\).
+
+\subsection{Exact finite-gap comparisons}
+\label{subsec:exact-finite-gap-comparisons}
+
+The positive abnormal gaps below nine other than six are
+\[
+g\in\{1,2,3,5,7,8\}.
+\]
+For each row in the following table, a displayed finite-support integer
+vector in the supplementary witness table has
+\(\|v\|^2=D\) and \(\|A_gv\|^2=N\).  The final column is the exact integer
+\[
+\Delta(N,D)
+=125000000000000\,N-988671163952541\,D.
+\]
+\begin{center}
+\begin{tabular}{c@{\qquad}c@{\qquad}r}
+\toprule
+\(g\)&\(N/D\)&\(\Delta(N,D)\)\\
+\midrule
+1&\(812/97\)&\(5598897096603523\)\\
+2&\(866/109\)&\(484843129173031\)\\
+3&\(3114/393\)&\(702232566651387\)\\
+5&\(764/96\)&\(587568260556064\)\\
+7&\(768/97\)&\(98897096603523\)\\
+8&\(19672/2487\)&\(174815250030533\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every entry in the last column is positive.  Hence every listed quotient
+is strictly larger than \(T\), and
+equation~\eqref{eq:single-gap-rayleigh} proves
+\[
+E(g)>c_6+\frac1{250}
+\qquad(g\in\{1,2,3,5,7,8\}).
+\]
+The smallest margin is the gap-eight value
+\[
+\frac{19672}{2487}-T
+=\frac{174815250030533}{310875000000000000}>0.
+\]
+All vector images are evaluated on the support enlarged by two sites at each
+end, so no outgoing coordinate is omitted.  The full vectors and image
+coordinates are placed in the supplement because they are direct integer
+reconstructions of the six rows above.
+
+\subsection{Uniform control of the large gaps}
+\label{subsec:uniform-large-gap-control}
+
+One fixed vector covers the infinite tail.  On the consecutive interval
+\([-2,11]\), take
+\[
+v_*=(4,0,7,8,8,9,1,7,3,6,1,4,1,2),
+\qquad \|v_*\|^2=391.
+\]
+Only coefficients \(\tau_i^{(g)}\) with \(-4\leq i\leq11\) enter the full
+image on \([-4,13]\).  The right interface endpoint can therefore affect
+the calculation only when \(g=9\) or \(g=10\); every \(g\geq11\) has the
+same local coefficient word.  Direct use of the four-term formula for
+\(A_g\) gives
+\[
+\|A_9v_*\|^2=3102,\qquad
+\|A_{10}v_*\|^2=3094,\qquad
+\|A_gv_*\|^2=3094\quad(g\geq11).
+\]
+Consequently every \(g\geq9\) satisfies
+\[
+E(g)\geq\frac{3094}{391}=\frac{182}{23}.
+\]
+The remaining comparison is again exact:
+\[
+\frac{182}{23}-T
+=\frac{10563229091557}{2875000000000000}>0.
+\]
+This proves the required strict separation uniformly on the entire
+large-gap tail.  The three displayed squared norms, together with finite
+propagation, are a proof for all \(g\geq9\), not a sample of those gaps.
+
+\subsection{Reference and single-gap hierarchy}
+\label{subsec:reference-single-gap-hierarchy}
+
+\begin{theorem}[Complete abnormal single-gap hierarchy]
+\label{thm:complete-single-gap}
+For both \(\tau\)-lifts and both interface orientations,
+\[
+E(4)=\eta<c_6=E(6),
+\]
+and, for every positive integer \(g\notin\{4,6\}\),
+\[
+E(g)>c_6+\frac1{250}.
+\]
+Thus G6 uniquely minimizes the squared spectral edge among abnormal positive
+single-gap interfaces.
+\end{theorem}
+
+\begin{proof}
+The reference and G6 equalities come from
+Proposition~\ref{prop:reference-edge} and
+equation~\eqref{eq:g6-global-edge}; the strict inequality
+\(\eta<c_6\) follows from the exact isolating intervals already displayed.
+Subsection~\ref{subsec:exact-finite-gap-comparisons} treats every positive
+gap below nine except \(4\) and \(6\), and
+Subsection~\ref{subsec:uniform-large-gap-control} treats every gap at least
+nine.  These sets exhaust the remaining positive integers.  Lift negation
+preserves the squared spectrum, and reflection transfers the result to the
+opposite orientation.
+\end{proof}
+
+The theorem compares single abnormal positive gaps only.  It makes no claim
+about arbitrary multi-gap configurations, interacting interfaces, or
+general finite cores.  The constant \(1/250\) is a convenient certified
+uniform separation; no optimality is claimed for the size of that margin.

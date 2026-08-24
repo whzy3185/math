@@ -1,0 +1,61 @@
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{mathtools}
+\usepackage{booktabs,array,tabularx}
+\usepackage{graphicx}
+\usepackage{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,patterns,positioning}
+\usepackage[hidelinks]{hyperref}
+\usepackage[nameinlink,noabbrev]{cleveref}
+\usepackage{geometry}
+
+\ifdefined\TargetAAnonymous
+  \hypersetup{
+    pdftitle={When Is the Twisted Signing of an Even Cycle Square Spectrally Optimal?},
+    pdfauthor={Anonymous}
+  }
+\else
+  \hypersetup{
+    pdftitle={When Is the Twisted Signing of an Even Cycle Square Spectrally Optimal?},
+    pdfauthor={Author metadata pending}
+  }
+\fi
+
+\geometry{margin=1in}
+\emergencystretch=3em
+\raggedbottom
+
+\definecolor{taskgraylight}{gray}{0.90}
+\definecolor{taskgraymid}{gray}{0.55}
+\definecolor{taskgraydark}{gray}{0.25}
+
+\DeclareMathOperator{\Spec}{spec}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\supp}{supp}
+\DeclareMathOperator{\diag}{diag}
+
+\newcommand{\cycleSquare}{C_n(1,2)}
+\newcommand{\signedAdjacency}{A_{\sigma}}
+\newcommand{\minimumRadius}{m_n}
+\newcommand{\candidateRadius}{\rho_{-}(n)}
+\newcommand{\candidateSquare}{\theta_n}
+\newcommand{\squaredOperator}{H_{\tau}}
+\newcommand{\referenceOperator}{H_{\mathrm{ref}}}
+\newcommand{\referenceEdge}{\eta}
+\newcommand{\sixGapEdge}{c_6}
+\newcommand{\TaskDraftStub}{\par\noindent\mbox{}\par\medskip}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}

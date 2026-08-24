@@ -1,0 +1,545 @@
+\section{Exact Spectral Certification of the Reference Phase and G6}
+\label{app:g6-certification}
+
+This appendix supplies the exact algebra behind
+Proposition~\ref{prop:reference-edge},
+Lemma~\ref{lem:c6-realization}, and
+Proposition~\ref{prop:g6-positive-completeness}.  The order of the argument
+is important.  We first construct a genuine bilateral eigenfunction by an
+unsquared stable--unstable matching condition.  Only after physical
+existence has been proved do we use elimination to identify its squared
+energy.  The same unsquared condition is then used to reject every
+additional algebraic candidate.  Thus no zero of a resultant is treated as
+an eigenvalue merely because it survives elimination.
+
+Throughout, all interval endpoints are rational.  An assertion that a
+polynomial or a radical expression has a fixed sign on an interval means
+that repeated squaring, with the sign of each unsquared side retained,
+gives the displayed rational enclosure.  Sturm counts use the ordinary
+signed remainder sequence over \(\mathbb Q\).
+
+\subsection{The reference Floquet calculation}
+\label{appsubsec:reference-floquet}
+
+The reference lift is
+\[
+ \tau_{\mathrm{ref}}=(1,1,-1,1,-1,-1,1,-1).
+\]
+For \(i=8m+r\), put \(u_i=z^m v_r\).  In the ordered basis
+\((v_0,\ldots,v_7)\), the unsquared Bloch fiber is
+{\small
+\[
+A_{\mathrm{ref}}(z)=
+\begin{pmatrix}
+0&1&1&0&0&0&z^{-1}&z^{-1}\\
+1&0&1&1&0&0&0&-z^{-1}\\
+1&1&0&1&-1&0&0&0\\
+0&1&1&0&1&1&0&0\\
+0&0&-1&1&0&1&-1&0\\
+0&0&0&1&1&0&1&-1\\
+z&0&0&0&-1&1&0&1\\
+z&-z&0&0&0&-1&1&0
+\end{pmatrix}.
+\]
+}
+Reversing every undirected transition gives
+\(A_{\mathrm{ref}}(z)^{\mathsf T}=A_{\mathrm{ref}}(z^{-1})\), so the
+fiber is Hermitian for \(|z|=1\).  Fraction-free expansion gives
+\begin{align}
+\det(xI-A_{\mathrm{ref}}(z))={}&x^8-16x^6
+ +(80-2(z+z^{-1}))x^4 \notag\\
+&+(-128+16(z+z^{-1}))x^2
+ +(z^2+z^{-2})-13(z+z^{-1})+40.       \label{eq:app-ref-det}
+\end{align}
+With \(y=x^2\) and \(c=z+z^{-1}\), this becomes
+\begin{equation}
+ P(y,c)=y^4-16y^3+(80-2c)y^2+(-128+16c)y
+        +c^2-13c+38.                 \label{eq:app-ref-P}
+\end{equation}
+On the unit circle, \(c\in[-2,2]\).  At \(c=2\), translation by four in
+the spectral variable gives
+\[
+ P(X+4,2)=X^4-20X^2+80.
+\]
+Consequently the upper squared edge at \(z=1\) is
+\[
+ \eta=4+s,
+ \qquad s=\sqrt{10+2\sqrt5}.
+\]
+To prove that no other fiber reaches it, put \(u=y-\eta\) and \(t=2-c\).
+Direct substitution in~\eqref{eq:app-ref-P} yields
+\begin{align}
+P(\eta+u,2-t)={}&u^4+4su^3+2u^2t
+ +(40+12\sqrt5)u^2+4sut \notag\\
+&+8\sqrt5\,su+t^2+(4\sqrt5-3)t.      \label{eq:app-edge-positive}
+\end{align}
+Every coefficient is positive.  For \(u,t\geq0\), the right-hand side
+vanishes only at \((u,t)=(0,0)\).  Hence \(y\leq\eta\) on every unit-circle
+fiber, and equality forces \(c=2\), hence \(z=1\).  This proves both the
+value and the uniqueness assertion in
+Proposition~\ref{prop:reference-edge}.  It also gives the useful strict
+bound \(\eta<391/50<8\).
+
+The same algebra appears in transfer form.  For a general lift \(\tau\),
+write
+\[
+ X_i=(u_{i+1},u_i,u_{i-1},u_{i-2})^{\mathsf T}.
+\]
+The equation \(A_\tau u=\lambda u\) is equivalent to
+\begin{equation}
+ X_{i+1}=T_i(\lambda)X_i,
+ \qquad
+ T_i(\lambda)=
+ \begin{pmatrix}
+ -\tau_i&\tau_i\lambda&-\tau_i&-\tau_i\tau_{i-2}\\
+ 1&0&0&0\\0&1&0&0\\0&0&1&0
+ \end{pmatrix}.                       \label{eq:app-step-transfer}
+\end{equation}
+Each \(T_i\) is invertible.  For one reference cell set
+\(M_8(\lambda)=T_7(\lambda)\cdots T_0(\lambda)\).  Exact multiplication
+gives, with \(y=\lambda^2\),
+\begin{equation}
+ \det(zI-M_8(\lambda))
+ =z^4+a(y)z^3+b(y)z^2+a(y)z+1,         \label{eq:app-palindromic}
+\end{equation}
+where
+\begin{equation}
+ a(y)=-2y^2+16y-13,\qquad
+ b(y)=y^4-16y^3+80y^2-128y+40.         \label{eq:app-ab}
+\end{equation}
+After division by \(z^2\), the substitution \(w=z+z^{-1}\) reduces the
+quartic to
+\begin{equation}
+ f(w;y)=w^2+a(y)w+b(y)-2=0.             \label{eq:app-w-quadratic}
+\end{equation}
+Its discriminant is \(-12y^2+96y+17\), and the reciprocal multiplier pairs
+are obtained from
+\begin{equation}
+ w_\mp(y)=\frac{2y^2-16y+13
+ \mp\sqrt{-12y^2+96y+17}}2,\qquad
+ z_{s,u}(w)=\frac{w\mp\sqrt{w^2-4}}2.  \label{eq:app-multipliers}
+\end{equation}
+
+Equation~\eqref{eq:app-edge-positive} excludes a unit-circle multiplier for
+every \(y>\eta\).  Reciprocity and continuity then give two multipliers in
+\(|z|<1\) and two in \(|z|>1\), counted algebraically.  The complete
+multiplier discriminant factors as
+\begin{align}
+ &(y^2-12y+34)(y^2-4y+2)(12y^2-96y-17)^2 \notag\\
+ &\hspace{35mm}{}\cdot
+ (y^4-16y^3+76y^2-96y+16).              \label{eq:app-mult-discriminant}
+\end{align}
+Above the upper endpoint of \(J_6\), defined below, the only collision is
+\begin{equation}
+ y_*=4+\frac{\sqrt{627}}6,\qquad w=\frac{95}{12}>2.  \label{eq:app-repeat}
+\end{equation}
+Indeed, the positive roots of the first two quadratic factors in
+\eqref{eq:app-mult-discriminant} satisfy
+\[
+6+\sqrt2<\frac{15}{2}<a_6,\qquad
+2+\sqrt2<\frac72<a_6,
+\]
+and every root of the final quartic is at most \(\eta<a_6\) by the
+reference-edge calculation.  The factor \(12y^2-96y-17\) has one negative
+root and the single positive root \(y_*\).  This proves directly, without a
+floating root comparison, that \(y_*\) is the unique collision on
+\([a_6,16]\).
+It is therefore a collision inside the hyperbolic region, not a loss of the
+stable--unstable splitting.
+
+\subsection{Exact transfer through the G6 core}
+\label{appsubsec:g6-transfer}
+
+For the forward interface, take
+\[
+ Q_i=1
+ \quad\Longleftrightarrow\quad
+ \bigl(i\leq0,\ i\equiv0\pmod4\bigr)
+ \ \hbox{or}\
+ \bigl(i\geq6,\ i\equiv6\pmod4\bigr),
+\]
+fix \(\tau_0=1\), and impose \(\tau_{i+1}=Q_i\tau_i\).  The left and
+right cuts are \(-8\) and \(14\).  Thus
+\begin{equation}
+ D_6(\lambda)=T_{13}(\lambda)\cdots T_{-8}(\lambda),
+ \qquad \det D_6(\lambda)=1.            \label{eq:app-D6}
+\end{equation}
+Equations~\eqref{eq:app-step-transfer} and~\eqref{eq:app-D6}, together with
+the displayed definition of \(Q\), are an exact finite specification of
+every entry of the defect transfer; each entry is an integer polynomial in
+\(\lambda\) of degree at most eleven.  The two bulk monodromies at these
+cuts are
+\[
+ M_L=T_{-9}\cdots T_{-16},\qquad
+ M_R=T_{21}\cdots T_{14}.
+\]
+They are transfer representatives of the translated reference phases
+\(B_0\) and \(B_2\).
+
+For \(y>\eta\) and \(\lambda=\sqrt y>0\), let \(U_L(\lambda)\) be the
+two-dimensional space of left-cut states decaying under backward iteration,
+and let \(S_R(\lambda)\) be the two-dimensional space of right-cut states
+decaying under forward iteration.  Since the recurrence is invertible, a
+nonzero bilateral \(\ell^2\) solution exists if and only if
+\begin{equation}
+ D_6(\lambda)U_L(\lambda)\cap S_R(\lambda)\neq\{0\}.
+                                                        \label{eq:app-physical-match}
+\end{equation}
+If \(u_1,u_2\) and \(s_1,s_2\) are bases of these planes, define
+\begin{equation}
+ \mathcal E_6(y)=
+ \det[D_6(\sqrt y)u_1,D_6(\sqrt y)u_2,s_1,s_2].       \label{eq:app-Evans}
+\end{equation}
+A change of basis multiplies \(\mathcal E_6\) by a nowhere-zero factor.
+Thus its zero set is precisely the coordinate-free condition
+\eqref{eq:app-physical-match}.  In particular, changing cuts by full
+periods or changing Grassmann charts cannot create or remove a physical
+zero.
+
+For the signed interval calculations below we fix the normalization
+completely.  Order the two stable multipliers by
+\[
+0<z_1<z_2<1
+\]
+and the unstable multipliers as \(z_1^{-1},z_2^{-1}\).  For a row set
+\(a<b<c\), define the cofactor vector by
+\[
+\bigl(v_{abc}(z)\bigr)_j
+=(-1)^j\det\bigl((M-zI)_{\{a,b,c\},\,\{0,1,2,3\}\setminus\{j\}}\bigr).
+\]
+Use rows \(012\), divide each two-vector wedge by the ordered Vandermonde
+\(z_1-z_2\), and order the four columns in
+\eqref{eq:app-Evans} as
+\[
+\bigl[D_6u(z_1^{-1}),D_6u(z_2^{-1}),s(z_1),s(z_2)\bigr].
+\]
+This convention fixes a continuous orientation on \(J_6\).  The endpoint
+and derivative signs below refer to this normalized determinant, rather than
+to an arbitrary basis representative of the same zero set.
+
+The essential-spectrum assertion used here can also be seen directly.
+Cutting \(H_6=A_6^2\) on both sides of its finite core changes it by finite
+rank into two periodic half-line compressions and a finite block.  A cutoff
+Bloch wave proves that the spectrum of a whole-line periodic operator lies
+in the essential spectrum of its half-line compression.  Conversely, if
+\(R=(H_{\mathrm{per}}-x)^{-1}\), then the compressed operator \(PRP\) is a
+two-sided inverse modulo finite-rank cross-boundary terms.  Hence the
+half-line compression is Fredholm whenever \(x\) is outside the whole-line
+spectrum.  It follows that
+\[
+ \sigma_{\mathrm{ess}}(H_6)=\sigma(H_{\mathrm{ref}}),
+ \qquad \sup\sigma_{\mathrm{ess}}(H_6)=\eta.
+\]
+For \(y>\eta\), the hyperbolic splitting above shows that every matched
+state decays exponentially.  This proves that
+\eqref{eq:app-physical-match} is both necessary and sufficient for a
+discrete physical level.
+
+\subsection{Physical realization and algebraic identification}
+\label{appsubsec:c6-identification}
+
+Put
+\[
+ a_6=\frac{7905369311620327}{10^{15}},\qquad
+ b_6=\frac{7905369311620328}{10^{15}}
+     =\frac{988171163952541}{125000000000000},
+ \qquad J_6=[a_6,b_6].
+\]
+On \(J_6\), the four multipliers are distinct and positive, with two on
+each side of the unit circle.  Cofactor eigenvectors formed from rows
+\(0,1,2\) of \(M-zI\) have a nonzero component throughout this interval,
+so they define a valid normalization of~\eqref{eq:app-Evans}. Certified
+rational interval evaluation gives
+\[
+ \mathcal E_6(a_6)<0<\mathcal E_6(b_6),
+ \qquad
+ \inf_{y\in J_6}\mathcal E_6'(y)>0.
+\]
+The explicit outward enclosures are recorded in the supplement. The
+derivative is with respect to \(y\). The intermediate-value theorem and
+strict monotonicity therefore prove that there is exactly
+one positive-branch physical zero in \(J_6\).  Since \(y>0\), it is also a
+simple zero as a function of \(\lambda\).  If the matching intersection had
+dimension at least two, the matching matrix in~\eqref{eq:app-Evans} would
+have rank at most two; its adjugate and hence the first derivative of its
+determinant would vanish.  Therefore the positive eigenspace is
+one-dimensional.
+
+It remains to identify the squared energy.  Let \(z_1,z_2\) be the stable
+multipliers and put
+\[
+ S=z_1+z_2,\qquad P=z_1z_2.
+\]
+The reciprocal quartic~\eqref{eq:app-palindromic} gives
+\begin{equation}
+ S(P+1)+a(y)P=0,\qquad
+ P^2+S^2+1-b(y)P=0.                  \label{eq:app-SP-relations}
+\end{equation}
+After dividing the stable wedge by the nonzero Vandermonde
+\(z_1-z_2\), every Pl\"ucker coordinate is symmetric in \(z_1,z_2\) and
+hence polynomial in \(S,P\).  Substituting the first relation in the
+second gives the product equation
+\begin{equation}
+ R(P,y):=(P^2+1-b(y)P)(P+1)^2+a(y)^2P^2=0.            \label{eq:app-product-relation}
+\end{equation}
+After removal of the proved nonzero chart denominators, the genuine
+unsquared matching numerator has the form
+\[
+ E_0(y,P)+\lambda E_1(y,P).
+\]
+This is also a finite exact specification of \(E_0,E_1\): form the matrices
+\(T_i\) in~\eqref{eq:app-step-transfer}, multiply them in the order
+\eqref{eq:app-D6}, form the signed cofactor vectors just defined, divide the
+wedges by their ordered Vandermonde factors, and reduce the resulting
+symmetric polynomials by~\eqref{eq:app-SP-relations}.  No fitted coefficient
+or numerical interpolation enters this construction.
+Thus every physical zero annihilates
+\begin{equation}
+ G(P,y)=E_0(y,P)^2-yE_1(y,P)^2.                       \label{eq:app-squared-Evans}
+\end{equation}
+The resultant of \(R\) and \(G\) with respect to \(P\) has degree 108 in
+\(y\).  Up to a nonzero rational constant, its exact factorization is
+\begin{equation}
+ r_2(y)^{16}r_{4,1}(y)^2r_{4,2}(y)^2p_6(y)^2q_6(y)^4, \label{eq:app-resultant-factorization}
+\end{equation}
+where
+\begin{align*}
+r_2(y)={}&2y^2-16y+13,\\
+r_{4,1}(y)={}&y^4-16y^3+68y^2-32y+52,\\
+r_{4,2}(y)={}&9y^4-144y^3+708y^2-1056y+404,\\
+p_6(y)={}&16y^{10}-520y^9+6913y^8-48448y^7+191768y^6\\
+&-423904y^5+484528y^4-270464y^3+137856y^2\\
+&-19968y+256,\\
+q_6(y)={}&16y^{10}-484y^9+5796y^8-34617y^7+105000y^6\\
+&-135904y^5+7632y^4+60620y^3+57232y^2-52880y+64.
+\end{align*}
+Let \(V_f(x)\) denote the number of sign changes in the Sturm sequence of
+\(f\) at \(x\).  The exact endpoint variations are
+\begin{center}
+\begin{tabular}{c@{\qquad}ccc}
+\toprule
+factor & \(V_f(a_6)\) & \(V_f(b_6)\) & \(V_f(16)\)\\
+\midrule
+\(r_2\)     &0&0&0\\
+\(r_{4,1}\)&2&2&2\\
+\(r_{4,2}\)&0&0&0\\
+\(p_6\)     &3&2&1\\
+\(q_6\)     &2&2&1\\
+\bottomrule
+\end{tabular}
+\end{center}
+In particular, \(p_6\) has exactly one root in \(J_6\), while every other
+factor in~\eqref{eq:app-resultant-factorization} has none there.  Since a
+physical zero was established before the elimination, its square is the
+unique root \(c_6\in J_6\) of \(p_6\).  This proves the algebraic
+identification in Lemma~\ref{lem:c6-realization} without reversing the
+logical implication from a resultant candidate to a physical state.
+
+\subsection{A complete Grassmann atlas above \texorpdfstring{\(c_6\)}{c6}}
+\label{appsubsec:g6-atlas}
+
+We now cover
+\[
+ I=[b_6,16].
+\]
+The stable plane can be continued through the collision
+\eqref{eq:app-repeat} without choosing the two multipliers separately.
+Indeed, if \(t=P+P^{-1}\), then
+\begin{equation}
+ (t+2)(t-b(y))+a(y)^2=0.                              \label{eq:app-t-equation}
+\end{equation}
+The larger real solution \(t=t_+(y)>2\) selects the physical stable branch
+by
+\begin{equation}
+ P=\frac{2}{t_+(y)+\sqrt{t_+(y)^2-4}},
+ \qquad S=-\frac{a(y)P}{P+1}.                         \label{eq:app-SP-branch}
+\end{equation}
+The unstable plane uses the reciprocal multipliers.
+
+For a cofactor row set \(abc\), let \(v_{abc}(z)\) be the signed vector of
+the \(3\times3\) minors of the rows \(a,b,c\) of \(M-zI\).  Then
+\[
+ \Omega_{abc}(z_1,z_2)
+ =\frac{v_{abc}(z_1)\wedge v_{abc}(z_2)}{z_1-z_2}
+\]
+is symmetric and extends at \(z_1=z_2=z\) to
+\(v_{abc}(z)\wedge\partial_zv_{abc}(z)\).  This is the confluent wedge used
+at \(y_*\).  A nonzero Pl\"ucker coordinate of \(\Omega_{abc}\) gives an
+affine chart for the physical plane.
+
+The following three closed charts cover \(I\):
+\begin{center}
+\small
+\begin{tabular}{llll}
+\toprule
+interval & cofactor rows & right stable minor & left unstable minor\\
+\midrule
+\([b_6,31663/4000]\) & \(013\) & \(p_{23}\) & \(p_{01}\)\\
+\([79157/10000,79159/10000]\) & \(012\) & \(p_{01}\) & \(p_{02}\)\\
+\([158317/20000,16]\) & \(013\) & \(p_{23}\) & \(p_{01}\)\\
+\bottomrule
+\end{tabular}
+\end{center}
+For rows \(013\), elimination of either selected section against
+\eqref{eq:app-product-relation} shows that its only possible zero in \(I\)
+comes from
+\[
+ h(y)=3y^2-24y+2.
+\]
+Its Sturm variations at
+\(7915780041490243/10^{15}\) and
+\(7915780041490244/10^{15}\) are respectively one and zero.  Hence its
+unique root lies strictly inside the middle chart and outside both outer
+charts. On the middle interval, certified rational evaluation gives
+\[
+ p_{01}^{R}>0,\qquad p_{02}^{L}<0.
+\]
+The explicit margins are recorded in the supplement. Thus the bridge
+sections do not vanish. The overlap intervals
+\[
+\left[\frac{79157}{10000},\frac{31663}{4000}\right],
+\qquad
+\left[\frac{158317}{20000},\frac{79159}{10000}\right]
+\]
+are nonempty, and the transition function
+is the ratio of two sections already proved nonzero there.  Dividing by the
+chosen section normalizes it to one.  This proves that the atlas has no
+uncovered endpoint or transition point.
+
+The repeated-multiplier energy \(y_*\) lies in the right outer chart.  The
+confluent formula for \(\Omega_{013}\), together with the nonvanishing of
+the selected section there, proves that the physical plane and its matching
+determinant remain represented at \(y_*\).  Equivalently, the root of
+\(12y^2-96y-17\) in \(I\) is a regular point of the Grassmann curve even
+though the individual multiplier labels meet.
+
+\subsection{Exhaustion and genuine unsquared exclusion}
+\label{appsubsec:g6-exhaustion}
+
+Every zero of the physical determinant on \(I\) must annihilate the
+resultant~\eqref{eq:app-resultant-factorization}.  The Sturm table above
+shows that only \(p_6\) and \(q_6\) have roots in \(I\), one each.  They are
+isolated by
+\begin{align}
+ I_1={}&\left[
+ \frac{8080985802104273}{10^{15}},
+ \frac{4040492901052137}{5\cdot10^{14}}
+ \right],                                             \label{eq:app-I1}\\
+ I_2={}&\left[
+ \frac{406992828166963}{5\cdot10^{13}},
+ \frac{101748207041741}{12500000000000}
+ \right].                                             \label{eq:app-I2}
+\end{align}
+There are no other resultant roots on \(I\).  The chart-section root near
+\(7.915780041490243\) is not in this list because the bridge chart shows it
+to be a coordinate degeneracy only.  The repeated-multiplier value
+\eqref{eq:app-repeat} is represented by the confluent quotient and is not a
+missing resultant root.
+
+Here is the cross-chart necessity argument explicitly.  At every
+\(y\in I\), the atlas provides a chart in which both selected Pl\"ucker
+sections are nonzero.  In that chart, the normalized numerator differs from
+the coordinate-free exterior determinant only by the product of those
+nonzero sections and the nonzero ordered Vandermonde factors.  Hence a
+physical zero makes the chart numerator vanish.  Clearing only the
+denominators already proved nonzero gives
+\[
+R(P,y)=G(P,y)=0,
+\]
+so the resultant must vanish.  At the sole section zero the middle chart
+supplies this implication; at \(y_*\) the confluent wedge replaces the
+Vandermonde quotient and gives the same implication.  Thus neither a chart
+transition nor the repeated multiplier can evade the candidate list.
+
+It remains to test the original unsquared equation, not its squared
+elimination. In chart \(013\), direct substitution of the physical branch
+\eqref{eq:app-SP-branch} into~\eqref{eq:app-Evans}, followed by rational
+interval evaluation, gives
+\[
+\sup_{y\in I_1}\mathcal E_6(y)<0,
+\qquad
+\sup_{y\in I_2}\mathcal E_6(y)<0.
+\]
+The corresponding outward enclosures are recorded in the supplement.
+Reconstructing the same planes from
+cofactor rows \(023\) gives strictly negative rational enclosures on
+\(I_1\) and \(I_2\) as well.  The latter reconstruction uses different
+Pl\"ucker sections and therefore also checks that the exclusion is not an
+artifact of the \(013\) normalization.
+
+The root in \(I_1\) is a physical root for a different defect transfer, but
+the first strict sign bound shows that it is not a G6 match. The root in
+\(I_2\) comes from the second algebraic branch retained by squaring and
+clearing denominators; the second strict sign bound excludes it as well.
+Consequently the positive G6 determinant has no zero on \(I\).  Together
+with the unique physical root in \(J_6\), the essential-spectrum reduction,
+and \(\|A_6\|\leq4\), this proves that \(+\sqrt{c_6}\) is the largest
+positive spectral point of \(A_6\).
+
+\subsection{The symmetry and the squared multiplicity}
+\label{appsubsec:g6-rank-two}
+
+We finish by auditing the negative branch and the multiplicity after
+squaring.  Let
+\[
+ D_6^{+}=\{-4j:j\geq0\}\cup\{6+4j:j\geq0\}
+\]
+be the set of positive \(Q\)-sites.  The reflection \(i\mapsto6-i\)
+exchanges its two displayed parts, so
+\begin{equation}
+ Q_{6-i}=Q_i\qquad(i\in\mathbb Z).                    \label{eq:app-Q-reflect}
+\end{equation}
+The finite anchor computation
+\[
+ (Q_0,\ldots,Q_6)=(1,-1,-1,-1,-1,-1,1),\qquad
+ (\tau_0,\ldots,\tau_7)=(1,1,-1,1,-1,1,-1,-1)
+\]
+gives \(\tau_7=-\tau_0\).  If \(\tau_{7-i}=-\tau_i\), then
+\[
+ \tau_{6-i}=Q_{6-i}\tau_{7-i}
+ =-Q_i\tau_i=-\tau_{i+1}.
+\]
+The same recurrence run backwards proves
+\begin{equation}
+ \tau_{7-i}=-\tau_i\qquad(i\in\mathbb Z).             \label{eq:app-tau-reflect}
+\end{equation}
+
+Define the unitary operator
+\[
+ (Ku)_i=(-1)^iu_{9-i}.
+\]
+Then
+\[
+ (K^2u)_i=(-1)^i(-1)^{9-i}u_i=-u_i,
+\]
+so \(K^2=-I\).  Moreover,
+\begin{align*}
+(KA_6u)_i=(-1)^i\bigl(&u_{8-i}+u_{10-i}
+ +\tau_{7-i}u_{7-i}+\tau_{9-i}u_{11-i}\bigr),\\
+(A_6Ku)_i=(-1)^i\bigl(&-u_{10-i}-u_{8-i}
+ +\tau_{i-2}u_{11-i}+\tau_i u_{7-i}\bigr).
+\end{align*}
+Using~\eqref{eq:app-tau-reflect} at \(i\) and \(i-2\) gives
+\[
+ KA_6=-A_6K,\qquad KH_6=H_6K.                         \label{eq:app-K-relations}
+\]
+Thus \(K\) maps the one-dimensional eigenspace at \(+\sqrt{c_6}\)
+bijectively onto a one-dimensional eigenspace at \(-\sqrt{c_6}\).
+It also maps any hypothetical negative spectral point of larger absolute
+value to a positive point already excluded above.
+
+Finally, because \(A_6\) is self-adjoint and \(c_6>0\),
+\begin{equation}
+ \ker(H_6-c_6)
+ =\ker(A_6-\sqrt{c_6})
+ \mathbin{\overset{\perp}{\oplus}}
+ \ker(A_6+\sqrt{c_6}).                                \label{eq:app-rank-two}
+\end{equation}
+Both summands have dimension one.  Therefore
+\[
+ \sup\sigma(H_6)=c_6,\qquad
+ \dim\ker(H_6-c_6)=2.
+\]
+Reflection reverses the interface by unitary conjugacy, and negating the
+lift gives a diagonally conjugate squared operator.  Hence the same global
+edge and rank-two conclusion hold for both orientations and both lifts.

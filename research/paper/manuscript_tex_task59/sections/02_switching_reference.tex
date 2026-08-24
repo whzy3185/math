@@ -1,0 +1,288 @@
+\section{Switching Coordinates and the Reference Phase}
+\label{sec:switching-reference}
+
+\subsection{Edge signings, switching, and Hamilton gauge}
+\label{subsec:edge-signings-switching-hamilton-gauge}
+
+Write the vertices of \(G_n=C_n(1,2)\) as \(\mathbb Z/n\mathbb Z\).  Let
+\(a_i\) be the sign of the distance-one edge \(\{i,i+1\}\), and let \(b_i\)
+be the sign of the distance-two edge \(\{i,i+2\}\), with all subscripts
+read cyclically.  Switching by
+\(\varepsilon=(\varepsilon_i)_{i\in\mathbb Z/n\mathbb Z}\in\{\pm1\}^n\)
+changes these signs to
+\[
+a_i'=\varepsilon_i a_i\varepsilon_{i+1},
+\qquad
+b_i'=\varepsilon_i b_i\varepsilon_{i+2}.
+\]
+At the matrix level this is the orthogonal conjugacy
+\(A_{\sigma'}=D_\varepsilon A_\sigma D_\varepsilon\), where
+\(D_\varepsilon=\operatorname{diag}(\varepsilon_i)\).  Switching therefore
+preserves the complete spectrum, not only the spectral radius.
+
+\begin{lemma}[Hamilton gauge]\label{lem:hamilton-gauge}
+Every signing of \(G_n\) is switching equivalent to one for which
+\[
+a_0=\cdots=a_{n-2}=1,\qquad a_{n-1}=\alpha,
+\]
+where
+\[
+\alpha=\prod_{i=0}^{n-1}a_i\in\{\pm1\}.
+\]
+The residual sign \(\alpha\), the Hamilton-cycle holonomy, is invariant
+under switching.
+\end{lemma}
+
+\begin{proof}
+Set \(\varepsilon_0=1\) and recursively choose
+\(\varepsilon_{i+1}=\varepsilon_i a_i\) for \(0\leq i\leq n-2\).
+Then \(a_i'=1\) along the spanning path \(0,1,\ldots,n-1\).  On the closing
+edge,
+\[
+a_{n-1}'=\varepsilon_{n-1}a_{n-1}\varepsilon_0
+=\prod_{i=0}^{n-1}a_i.
+\]
+The product of the signs around a cycle is unchanged by switching because
+every vertex factor occurs twice.
+\end{proof}
+
+\subsection{Flux words, holonomy, and the attaining candidate}
+\label{subsec:flux-words-holonomy-attaining-candidate}
+
+Before fixing a gauge, define the triangle flux at \(i\) by
+\[
+\tau_i=a_i a_{i+1}b_i.
+\]
+Each switching factor again occurs twice, so \(\tau_i\) is invariant.
+In the Hamilton gauge of Lemma~\ref{lem:hamilton-gauge}, the actual
+distance-two signs are
+\[
+b_i=\tau_i\quad(0\leq i\leq n-3),\qquad
+b_{n-2}=\alpha\tau_{n-2},\qquad
+b_{n-1}=\alpha\tau_{n-1}.
+\]
+Consequently \((\tau,\alpha)\) parametrizes the switching classes
+bijectively once the vertex labels and seam are fixed.  It is often cleaner
+to absorb the closing sign into the boundary condition.  More precisely, let
+\[
+\mathcal U_n^\alpha
+=\{u:\mathbb Z\to\mathbb C:u_{j+n}=\alpha u_j\}.
+\]
+On this \(n\)-dimensional space the signed adjacency takes the form
+\begin{equation}\label{eq:A-tau}
+(A_\tau u)_i
+=u_{i-1}+u_{i+1}+\tau_{i-2}u_{i-2}+\tau_i u_{i+2}.
+\end{equation}
+This twisted-boundary realization includes every edge that crosses the
+Hamilton-gauge seam and is unitarily identical to the original finite
+signed matrix.  We suppress \(\alpha\) from \(A_\tau\) when the boundary
+space \(\mathcal U_n^\alpha\) is displayed explicitly.
+
+The quadrilateral-flux word is
+\[
+Q_i=\tau_i\tau_{i+1}.
+\]
+It satisfies \(\prod_iQ_i=1\).  Conversely, a cyclic word
+\(Q\in\{\pm1\}^n\) has a cyclic \(\tau\)-lift precisely when
+\(\prod_iQ_i=1\); after choosing \(\tau_0\), the recurrence
+\[
+\tau_{i+1}=Q_i\tau_i
+\]
+determines that lift.  The two choices of \(\tau_0\) give \(\tau\) and
+\(-\tau\), while \(\alpha\) remains independent.  Thus the exact cyclic
+data are \((\tau,\alpha)\), or equivalently
+\((Q,\tau_0,\alpha)\).  The reduced pair \((Q,\alpha)\) represents two
+switching classes, a distinction that disappears only after passing to the
+squared spectrum or spectral radius.  The lift condition
+\(\prod_iQ_i=1\) and the Hamilton twist \(\alpha\) are independent.  If
+\(n\) is even and
+\((Du)_i=(-1)^iu_i\), then
+\begin{equation}\label{eq:lift-negation}
+A_{-\tau}=-DA_\tau D,
+\qquad
+H_{-\tau}=DH_\tau D,
+\qquad H_\tau:=A_\tau^2.
+\end{equation}
+The unsquared spectra of the two lifts are reflected through zero; their
+squared spectra and spectral radii agree.
+
+\begin{proposition}[Attainment by the twisted candidate]
+\label{prop:candidate-attainment}
+For every even \(n\geq8\), the class
+\[
+Q_i=-1\quad(0\leq i<n),\qquad \alpha=-1,
+\]
+has a representative \(\tau_i=(-1)^i\) satisfying
+\[
+\rho(A_\tau)^2
+=4\cos^2\frac{\pi}{n}+4\cos^2\frac{2\pi}{n}
+=4+2\cos\frac{2\pi}{n}+2\cos\frac{4\pi}{n}
+=\theta_n.
+\]
+Consequently \(m_n\leq\rho_-(n)\) for every even \(n\geq8\).
+\end{proposition}
+
+\begin{proof}
+Because \(\alpha=-1\), the allowed Fourier parameters on
+\(\mathcal U_n^{-1}\) are
+\[
+\vartheta_k=\frac{(2k+1)\pi}{n},\qquad 0\leq k<n.
+\]
+Multiplication by \((-1)^j\) carries the mode \(e^{ij\vartheta}\) to
+\(e^{ij(\vartheta+\pi)}\).  Hence the span of these two modes is invariant,
+and in the displayed order the restriction of \(A_\tau\) is
+\[
+B(\vartheta)
+=2\begin{pmatrix}
+\cos\vartheta&\cos2\vartheta\\
+\cos2\vartheta&-\cos\vartheta
+\end{pmatrix}.
+\]
+Thus
+\[
+B(\vartheta)^2
+=4\bigl(\cos^2\vartheta+\cos^22\vartheta\bigr)I_2.
+\]
+With \(x=\cos2\vartheta\), the quantity in parentheses is
+\[
+F(x)=x^2+\frac{x}{2}+\frac12.
+\]
+The relevant values lie in
+\([-1,\cos(2\pi/n)]\).  Since \(F\) is convex, its maximum is at an endpoint.
+Now \(F(-1)=1\), whereas \(n\geq8\) gives
+\[
+F\left(\cos\frac{2\pi}{n}\right)
+\geq F\left(\frac1{\sqrt2}\right)
+=1+\frac1{2\sqrt2}>1.
+\]
+The maximum therefore occurs at
+\(\vartheta=\pi/n\) or \(\pi-\pi/n\), which yields the first equality.
+The double-angle identity yields the second.  Since this explicit signing is
+in the minimization domain, the final inequality follows.
+\end{proof}
+
+Figure~\ref{fig:switching-coordinates} summarizes the local edge types and
+the passage from Hamilton gauge to the adjacent flux product \(Q_i\).
+\begin{figure}[t]
+\centering
+\input{figures/figure_cycle_switching}
+\caption{Switching coordinates for the cycle square.  Distance-one and
+distance-two edges are signed independently; after Hamilton gauge, the local
+triangle word \(\tau\) and its adjacent products \(Q_i=\tau_i\tau_{i+1}\)
+record the flux data.}
+\label{fig:switching-coordinates}
+\end{figure}
+
+The candidate in Proposition~\ref{prop:candidate-attainment} is the signing
+that attains the conjectured comparison value.  It is not the period-eight
+reference phase introduced in Subsection~\ref{subsec:period-eight-reference-phase}.
+The latter is a different low-spectral bulk used to construct phase slips.
+
+\subsection{The squared local operator}
+\label{subsec:squared-local-operator}
+
+For a bilateral word \(\tau\), equation~\eqref{eq:A-tau} defines a bounded
+self-adjoint range-two operator on \(\ell^2(\mathbb Z)\).  Its square
+\(H_\tau=A_\tau^2\) is the nonnegative range-four operator
+\begin{align}
+(H_\tau u)_i={}&4u_i+u_{i-2}+u_{i+2}\notag\\
+&+\tau_{i-4}\tau_{i-2}u_{i-4}
++(\tau_{i-3}+\tau_{i-2})u_{i-3}\notag\\
+&+(\tau_{i-2}+\tau_{i-1})u_{i-1}
++(\tau_{i-1}+\tau_i)u_{i+1}\notag\\
+&+(\tau_i+\tau_{i+1})u_{i+3}
++\tau_i\tau_{i+2}u_{i+4}.
+\label{eq:H-range-four}
+\end{align}
+Indeed, this follows by inserting equation~\eqref{eq:A-tau} four times into
+\(A_\tau(A_\tau u)\) and collecting equal displacements.  The extreme
+coefficients may also be written
+\[
+\tau_{i-4}\tau_{i-2}=Q_{i-4}Q_{i-3},
+\qquad
+\tau_i\tau_{i+2}=Q_iQ_{i+1},
+\]
+while, for example,
+\(\tau_i+\tau_{i+1}=\tau_i(1+Q_i)\).  Thus a negative \(Q_i\) cancels the
+associated odd-displacement coupling.  Formula~\eqref{eq:H-range-four} is
+local and precedes every periodic or interface specialization.
+
+Translation of the coefficient word is implemented by the bilateral shift.
+Reflection reverses the word and is unitary after the corresponding index
+change.  Equation~\eqref{eq:lift-negation} handles the two lifts.  We will
+use only these explicit equivalences in the body; the fiber-level
+zone-folding identities are recorded with the Floquet algebra in
+Appendix~\ref{app:g6-certification}.
+
+\subsection{The period-eight reference phase}
+\label{subsec:period-eight-reference-phase}
+
+The canonical reference word and its quadrilateral flux are
+\[
+\tau_{\mathrm{ref}}=(+,+,-,+,-,-,+,-),
+\qquad
+Q_{\mathrm{ref}}=(+,-,-,-,+,-,-,-),
+\]
+extended periodically.  The positive \(Q_{\mathrm{ref}}\)-sites are exactly
+\(4\mathbb Z\).  More generally, for \(s\in\mathbb Z/4\mathbb Z\), let
+\(B_s\) denote the translate whose positive \(Q\)-sites are
+\(s+4\mathbb Z\).  Each \(B_s\) has two \(\tau\)-lifts; since one four-site
+cell has \(Q\)-product \(-1\), those lifts are antiperiodic over four sites
+and periodic over eight.
+
+For a nonzero Bloch multiplier \(z\), impose
+\[
+u_{8m+r}=z^m v_r,\qquad 0\leq r<8,
+\]
+and write \(A_{\mathrm{ref}}(z)\) for the resulting unsquared \(8\times8\)
+fiber.  It is Hermitian when \(|z|=1\).
+
+\begin{proposition}[Reference squared edge]\label{prop:reference-edge}
+Let
+\[
+\eta=4+\sqrt{10+2\sqrt5}.
+\]
+Then
+\[
+\sup_{|z|=1}\rho\bigl(A_{\mathrm{ref}}(z)\bigr)^2=\eta<8,
+\]
+and equality occurs only at \(z=1\).
+\end{proposition}
+
+\begin{proof}
+The exact determinant identity is derived and independently certified in
+Appendix~\ref{app:g6-certification}.  We retain here the two algebraic steps
+that locate the edge.  At \(z=1\), put \(y=x^2\) and \(X=y-4\).  The fiber
+equation reduces to
+\[
+X^4-20X^2+80=0.
+\]
+Its largest \(y\)-root is
+\(4+\sqrt{10+2\sqrt5}=\eta\).
+
+For global maximality, set
+\[
+s=\sqrt{10+2\sqrt5},\qquad u=y-\eta,\qquad
+t=2-(z+z^{-1}).
+\]
+On the unit circle, \(t\in[0,4]\).  The same exact determinant relation,
+after substitution, is
+\begin{align*}
+0={}&u^4+4su^3+2u^2t+(40+12\sqrt5)u^2
++4sut+8\sqrt5\,su\\
+&+t^2+(4\sqrt5-3)t.
+\end{align*}
+Every displayed coefficient is positive.  If a squared fiber eigenvalue
+satisfied \(y\geq\eta\), then \(u,t\geq0\), so the right-hand side could
+vanish only for \(u=t=0\).  Thus \(y\leq\eta\), and equality forces
+\(z+z^{-1}=2\), hence \(z=1\).  Finally,
+\(\sqrt5<9/4\) and
+\(\sqrt{10+2\sqrt5}<191/50\) give
+\(\eta<391/50<8\).
+\end{proof}
+
+The reference phase is also the zero-interface member of the gap language.
+If consecutive positive \(Q\)-sites are separated by \(g=4\), the right
+positive lattice is the continuation of the left lattice in the same
+translate \(B_s\).  Up to translation, reflection, and the lift choice,
+this is precisely the unperturbed reference bulk, not an abnormal interface.

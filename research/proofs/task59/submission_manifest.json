@@ -1,0 +1,112 @@
+{
+  "schema": "target-a-submission-manifest-v1",
+  "submission_tag": "target-a-task59-submission-v1",
+  "evidence_checkpoint": "e365e1553ad73a8a534fb67f5ee76562521609ce",
+  "archive_status": "IMMUTABLE_ARCHIVE_PENDING",
+  "environment": {
+    "python": "3.11 or later",
+    "exact_tasks": "CPU only",
+    "gpu_required": false,
+    "minimum_memory_gib": 8,
+    "recommended_memory_gib": 16
+  },
+  "families": [
+    {
+      "id": "g6_matching_and_edge",
+      "logical_role": "Physical G6 matching, elimination, Grassmann-atlas completeness, and the global one-interface edge.",
+      "certificates": [
+        {"path": "research/proofs/task50/certificates/g6_interface_certificate.json", "sha256": "134d5d29ab8aaae5141cc70493a6f0c1955afeda36bc15789076b0a9a8ae49ea"},
+        {"path": "research/proofs/task51/certificates/c6_exact_evans_elimination.json", "sha256": "3de93781004929852ebdbd31c7ecbfdf72d125e0eea2b1606b4e472237ecd225"},
+        {"path": "research/proofs/task53/certificates/g6_grassmann_atlas.json", "sha256": "ad4dc946cafa00118a0aeafe17a747e82b4c3fad99a633338d31254cf4b908e9"},
+        {"path": "research/proofs/task53/certificates/g6_global_edge.json", "sha256": "299b5a17e8bbb13aaf183798883c52287c01bf3c5c8090aa80bf15ab005b621f"}
+      ],
+      "producers": [
+        "research/scripts/target_a_task50_g6_certificate.py",
+        "research/scripts/target_a_task51_algebra.py",
+        "research/scripts/target_a_task53_grassmann.py",
+        "research/scripts/target_a_task53_a3.py"
+      ],
+      "verifiers": [
+        "research/scripts/verify_target_a_task50_interface.py",
+        "research/scripts/verify_target_a_task51.py",
+        "research/scripts/verify_target_a_task53_a2.py",
+        "research/scripts/verify_target_a_task53_a3.py"
+      ],
+      "independence": "Two coordinate reconstructions audit the global unsquared exclusions; transfer and elimination helpers are shared where disclosed."
+    },
+    {
+      "id": "separated_interface_cluster",
+      "logical_role": "Supplementary exact 2r cluster theorem; not used in the classification.",
+      "certificates": [
+        {"path": "research/proofs/task55/certificates/exact_2r_cluster.json", "sha256": "0cd6e2f107d3aaa28a19cf04ede9e69bdedb152e34a3a3165b89aa79d88a7356"}
+      ],
+      "producers": ["research/scripts/target_a_task55_exact_2r.py"],
+      "verifiers": ["research/scripts/verify_target_a_task55_exact_2r.py"],
+      "independence": "Verifier checks the certificate contract and focused tamper tests cover dimensions, constants, and dependencies."
+    },
+    {
+      "id": "single_gap_hierarchy",
+      "logical_role": "Finite propagation and strict integer Rayleigh comparisons for every abnormal positive single gap.",
+      "certificates": [
+        {"path": "research/proofs/task55/certificates/single_gap_structure.json", "sha256": "a09e055fd07460269ec11857add62c2566f589d40ed9fee0bf006be6f6e75a7f"},
+        {"path": "research/proofs/task57/certificates/uniform_single_gap_separation.json", "sha256": "f65d17e54da605f1fe01afce162b904bb71a40e737b57da1984a72542af1af69"}
+      ],
+      "producers": [
+        "research/scripts/target_a_task55_single_gap.py",
+        "research/scripts/target_a_task57_uniform_single_gap.py"
+      ],
+      "verifiers": [
+        "research/scripts/verify_target_a_task56_single_gap.py",
+        "research/scripts/verify_target_a_task57_uniform_single_gap.py"
+      ],
+      "independence": "The integer checker rebuilds each vector and its complete A_g image; the uniform checker repeats all rational comparisons."
+    },
+    {
+      "id": "orders_8_30",
+      "logical_role": "Complete switching-class lower bounds at the initial equality orders.",
+      "certificates": [
+        {"path": "research/counterexamples/target_a_minimality_certificate.json", "sha256": "a4b5248fee46b56ac763773c90b8087d454b6928a6bcd66622b4fdecac3e8ded"}
+      ],
+      "producers": ["research/scripts/assemble_target_a_minimality_certificate.py"],
+      "verifiers": ["research/scripts/verify_target_a_minimality_certificate.py"],
+      "independence": "Verifier reconstructs the represented classes and exact spectral decisions."
+    },
+    {
+      "id": "order_32",
+      "logical_role": "First strict counterexample and independent matrix reconstruction.",
+      "certificates": [
+        {"path": "research/counterexamples/target_a_n32_period8_certificate.json", "sha256": "db1378c6a7e5ab8526890be41c929a60ee17675d920a5ca0c501f49d888e46b4"}
+      ],
+      "producers": ["research/scripts/target_a_n32_independent_reconstruction.py"],
+      "verifiers": ["research/scripts/verify_target_a_n32_certificate.py"],
+      "independence": "The checker rebuilds the signed matrix and repeats the rational positive-definiteness decision."
+    },
+    {
+      "id": "orders_34_46",
+      "logical_role": "Recovery-order equality decisions and the isolated failure at order 40.",
+      "certificates": [
+        {"path": "research/proofs/task55/certificates/small_order_exact_classification.json", "sha256": "cb12d8502c6fcf31c5e8f1d23f3b9f1bb44b28b05a58f2e02067df08c04132b4"},
+        {"path": "research/proofs/task55/TARGET_A_ORDERS_34_46_CERTIFICATES.json", "sha256": "6385a7e35b69ff32cba41b719faa554eef3060d020d0c54e0fd702d100cb6669"}
+      ],
+      "producers": [
+        "research/scripts/target_a_task55_small_order_exact.py",
+        "research/scripts/target_a_task55_orders_34_46.py"
+      ],
+      "verifiers": [
+        "research/scripts/verify_target_a_task55_small_order_exact.py",
+        "research/scripts/verify_target_a_task55_orders_34_46.py"
+      ],
+      "independence": "Finite-state completeness and terminal spectral decisions are checked separately."
+    },
+    {
+      "id": "orders_48_238",
+      "logical_role": "Exact finite bridge from the first uninterrupted failure order to the analytic tail.",
+      "certificates": [
+        {"path": "research/proofs/task54/TARGET_A_TASK54_EVENTUAL_THRESHOLD_CERTIFICATE.json", "sha256": "18e4a9e8e6d21ba19aa95eb0c117c0b5f8e9bb59ddcfbf881d1c2d110744ea47"}
+      ],
+      "producers": ["research/scripts/target_a_task54_threshold.py"],
+      "verifiers": ["research/scripts/verify_target_a_task54_threshold.py"],
+      "independence": "Verifier rebuilds every finite-ring matrix and checks each rational threshold comparison."
+    }
+  ]
+}

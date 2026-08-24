@@ -1,0 +1,168 @@
+\section{Introduction}\label{sec:introduction}
+
+Let \(n\geq8\) be even and write \(G_n=C_n^2=C_n(1,2)\) for the graph on
+\(\mathbb Z/n\mathbb Z\) whose edges join vertices at cyclic distance one or
+two. An edge signing is a map
+\(\sigma:E(G_n)\to\{\pm1\}\), and \(A_\sigma\) is its signed adjacency
+matrix. We study
+\[
+m_n=\min_{\sigma:E(G_n)\to\{\pm1\}}\rho(A_\sigma),
+\]
+focusing on a conjectured formula \(m_n=\rho_-(n)\) supplied by a
+distinguished twisted signing. Our main result determines exactly when this
+formula holds. It does not determine \(m_n\) when the formula fails or
+classify all minimizers when it holds. The distance-one and distance-two
+edges are signed independently; this is not the graph obtained by squaring
+a previously signed cycle. Switching conjugates \(A_\sigma\) by a diagonal
+\(\{\pm1\}\)-matrix, so the problem naturally lives on switching classes
+\cite{Zaslavsky1982}.
+
+The question belongs to the fixed-graph signing problem highlighted by
+Belardo, Cioab\u{a}, Koolen, and Wang
+\cite{BelardoCioabaKoolenWang2019}. Signings also encode the new eigenvalues
+of two-lifts \cite{BiluLinial2006}, and interlacing families give powerful
+one-sided bounds, which become two-sided for bipartite graphs by spectral
+symmetry \cite{MarcusSpielmanSrivastava2015}. The cycle squares considered
+here are nonbipartite, and the issue is whether one prescribed signing
+attains the exact two-sided optimum. The direct starting point is Suvagiya's
+preprint \cite[Conjecture~3]{Suvagiya2026Signed}. It introduces the relevant
+flux coordinates, identifies the twisted classes, computes their spectra,
+and verifies the conjectured equality through order \(18\). We retain those
+inputs and determine the full truth set.
+
+The answer is nonmonotone. Equality holds at every even order through \(30\),
+fails at \(32\), returns for \(34,36,38\), fails again at \(40\), and returns
+for \(42,44,46\). Failure then persists at every even order from \(48\)
+onward. The pattern is summarized in Table~\ref{tab:truth-pattern}; in
+particular, the first counterexample does not predict the eventual regime.
+
+\begin{table}[t]
+\centering
+\small
+\begin{tabular}{c@{\qquad}cccccc}
+\toprule
+even order \(n\)&\(8\text{--}30\)&\(32\)&\(34\text{--}38\)&\(40\)&\(42\text{--}46\)&\(n\geq48\)\\
+\midrule
+comparison&\(m_n=\rho_-(n)\)&\(m_n<\rho_-(n)\)&\(m_n=\rho_-(n)\)&\(m_n<\rho_-(n)\)&\(m_n=\rho_-(n)\)&\(m_n<\rho_-(n)\)\\
+\bottomrule
+\end{tabular}
+\caption{Truth pattern for the conjectured equality; interval columns contain
+only even orders.}
+\label{tab:truth-pattern}
+\end{table}
+
+Set
+\[
+\rho_-(n)^2=4+2\cos\frac{2\pi}{n}+2\cos\frac{4\pi}{n},
+\qquad \theta_n=\rho_-(n)^2.
+\]
+An antiperiodic Fourier calculation shows that the twisted class attains
+\(\rho_-(n)\) for every even \(n\geq8\), hence \(m_n\leq\rho_-(n)\). The
+reverse inequality at a valid order is a separate global conclusion.
+
+\begin{theorem}[Classification of the conjectured equality]
+\label{thm:complete-classification}
+For every even \(n\geq8\), the distinguished twisted signing attains
+\(\rho_-(n)\), and
+\[
+m_n<\rho_-(n)
+\quad\Longleftrightarrow\quad
+n=32,\quad n=40,\quad\text{or}\quad n\geq48.
+\]
+Equivalently,
+\[
+m_n=\rho_-(n)
+\quad\Longleftrightarrow\quad
+n\in\{8,10,12,14,16,18,20,22,24,26,28,30,34,36,38,42,44,46\}.
+\]
+\end{theorem}
+
+Two proof components have different roles. Finite classification resolves
+the irregular small-order pattern. A structural argument explains why
+failure is eventually uninterrupted: a low-spectral periodic phase supports
+localized interfaces, and well-separated copies close on all sufficiently
+large rings. The sharp onset at \(48\) uses both the analytic tail and a
+finite bridge; neither component alone gives it.
+
+The comparison phase has period eight and is distinct from the twisted
+attaining class. In its quadrilateral-flux word, positive sites occur at
+spacing four. Replacing one spacing by a gap \(g\) creates a phase slip with
+excess charge \(q=g-4\). On a ring, the charges satisfy a mod-eight closing
+law, whereas each charge also transports a local translation sector modulo
+four. These are separate constraints. The six-gap phase slip \(G_6\) has
+charge two, so one, two, or three separated copies close the three nonzero
+even residue classes modulo eight.
+
+The reference phase has upper squared spectral edge
+\[
+\eta=4+\sqrt{10+2\sqrt5}<8.
+\]
+The central local theorem identifies \(G_6\) as the elementary low-cost
+interface above this bulk. For the bilateral positive single-gap operator
+\(A_g\), put \(H_g=A_g^2\) and
+\(E(g)=\sup\operatorname{Spec}(H_g)\).
+
+\begin{theorem}[Reference and single-gap spectral hierarchy]
+\label{thm:single-gap-hierarchy}
+There is an exactly certified level \(c_6\in(\eta,8)\) such that, for both
+lifts and orientations,
+\[
+E(4)=\eta<c_6=E(6),
+\qquad
+\operatorname{Spec}_{\mathrm{ess}}(H_6)
+=\operatorname{Spec}(H_{\mathrm{ref}}),
+\qquad
+\dim\ker(H_6-c_6)=2.
+\]
+Moreover, for every positive integer \(g\notin\{4,6\}\),
+\[
+E(g)>c_6+\frac1{250}.
+\]
+\end{theorem}
+
+Thus \(G_6\) uniquely minimizes the edge among abnormal positive single
+gaps; no claim is made about arbitrary multi-gap or finite-core interfaces.
+The defining polynomial, physical matching argument, and rational isolation
+of \(c_6\) appear in Section~\ref{sec:elementary-g6} and
+Appendix~\ref{app:g6-certification}. Patch identification transfers the
+reference and \(G_6\) bounds to finite rings. A discrete IMS partition then
+controls the squared spectral top between patches and proves failure for all
+even \(n\geq240\). Finite certificates cover \(48\leq n<240\), while
+switching-class and finite-state arguments settle the smaller orders.
+
+Several established strands meet in this proof. Signed-cycle spectra and
+fixed-order signed extremal problems provide the closest spectral context
+\cite{AkbariBelardoDodongehNematollahi2018,
+BelardoBrunettiCiampella2021,BrunettiStanic2022}. Circulant and
+skew-circulant Fourier analysis is classical
+\cite{Davis1979,KarnerSchneidUeberhuber2003}, and Floquet methods on periodic
+discrete graphs underlie the reference and interface calculations
+\cite{Kuchment1993,KorotyaevSaburova2017,KorotyaevSaburova2023,
+KuchmentVainberg2006}. The localization step is a finite-range discrete
+instance of the IMS principle \cite{CyconFroeseKirschSimon1987}. For the
+finite part, necklace and bracelet generation
+\cite{FredricksenMaiorana1978,Sawada2001} and proof-producing exhaustive
+classification \cite{Lam1991,GoedgebeurSchaudt2018,Goedgebeur2020} provide
+methodological precedents. Combining an analytic large-order argument with
+finite closure also occurs in all-order graph classifications
+\cite{LinNing2021,GoedgebeurRendersWienerZamfirescu2024}. These tools are
+standard individually; the new content here is the truth set for the
+twisted candidate and the \(G_6\) mechanism behind eventual failure. To the
+best of our knowledge, no previous work determines, for every even \(n\),
+whether a prescribed signing minimizes spectral radius among all signings of
+\(C_n(1,2)\).
+
+Unless stated otherwise, every finite computation used in a proof is carried
+out in integer, rational, or certified algebraic arithmetic under the
+protocol of Section~\ref{sec:finite-completion} and the supplement. The
+supplement identifies which objects are reconstructed independently and
+which symbolic routines are shared. Section~\ref{sec:switching-reference}
+sets up switching coordinates, the twisted candidate, and the period-eight
+reference. Section~\ref{sec:gaps-charges-sectors} develops gaps, charges,
+and sector transport. Sections~\ref{sec:elementary-g6} and
+\ref{sec:single-gap} prove the local hierarchy. Section~\ref{sec:finite-rings}
+constructs and localizes finite rings, and
+Section~\ref{sec:finite-completion} closes the remaining orders. The
+appendices give the human-checkable algebraic certificate and the
+finite-classification completeness arguments; artifact-level data and
+verification commands are in the supplement.

@@ -1,0 +1,101 @@
+\section{Reproducibility Record}
+\label{sec:reproducibility}
+
+\subsection{Source states and evidence boundary}
+
+\ifdefined\TargetAAnonymous
+Repository identifiers, source hashes, artifact paths, and the verification
+entry-point name are omitted from this review copy. They are included in the
+identified supplement and will be bound to the blinded review archive.
+\else
+The submission source is identified by the repository tag
+\texttt{target-a-task59-submission-v1}. The proof certificates were developed
+against evidence checkpoint
+\[
+\texttt{e365e1553ad73a8a534fb67f5ee76562521609ce}.
+\]
+The submission verifier checks the certificate digests, so the distinction
+between the final editorial source and the frozen evidence state is explicit.
+An immutable external archive and persistent identifier remain pending; no
+provisional DOI is asserted.
+\fi
+
+The checker chain re-evaluates finite mathematical contracts. Two coordinate
+implementations separately audit the global unsquared exclusions, whereas
+some transfer and elimination helpers are shared. The machine-readable
+manifest discloses this boundary family by family. A successful checker is
+evidence only together with the analytic reductions in the article and this
+supplement.
+
+\subsection{Certificate families}
+
+\begin{table}[ht]
+\centering
+\small
+\begin{tabular}{@{}p{0.24\textwidth}p{0.67\textwidth}@{}}
+\toprule
+Family & Logical role\\
+\midrule
+G6 matching and edge &
+Physical matching, elimination, atlas completeness, and the global
+one-interface edge.\\
+Separated interfaces &
+The supplementary exact \(2r\)-cluster theorem; not used in the
+classification.\\
+Single-gap hierarchy &
+Finite propagation and strict integer Rayleigh comparisons for all abnormal
+positive single gaps.\\
+Orders \(8\)--\(30\) &
+Complete switching-class lower bounds at the initial equality orders.\\
+Order \(32\) &
+First strict counterexample and independent signed-matrix reconstruction.\\
+Orders \(34\)--\(46\) &
+Finite-state completeness, the recovery orders, and the isolated failure at
+\(40\).\\
+Orders \(48\)--\(238\) &
+The finite bridge from the uninterrupted failure onset to the analytic tail.\\
+\bottomrule
+\end{tabular}
+\caption{Proof-certificate families and their role in the article.}
+\label{tab:certificate-families}
+\end{table}
+
+\ifdefined\TargetAAnonymous
+The blinded review archive contains a machine-readable manifest mapping each
+family to certificate digests, producer and verifier roles, its independence
+statement, and the hardware profile.
+\else
+The machine-readable manifest
+\[
+\texttt{research/proofs/task59/submission\_manifest.json}
+\]
+maps each family to its certificates and SHA-256 digests, producer programs,
+verifiers, independence statement, and hardware profile. Raw repository
+paths and hashes are kept there rather than repeated as a typeset file list.
+\fi
+
+\subsection{One-command verification}
+
+From the root of a clean checkout, the identified package is verified by
+\ifdefined\TargetAAnonymous
+the single entry point documented in its blinded archive.
+\else
+\begin{verbatim}
+python3 research/scripts/verify_target_a_submission.py --full
+\end{verbatim}
+\fi
+The entry point first audits the manuscript, bibliography, anonymity,
+certificate manifest, digests, and frozen historical source trees. It then
+runs all proof-grade verifiers and the focused tamper-test suites. The exact
+tasks are CPU-only; no GPU library is required. Python 3.11 or later and
+\(8\) GiB of memory suffice, with \(16\) GiB recommended for comfortable
+parallel use. The measured reference runtime for the final checkpoint is
+recorded in the Task 59 handoff rather than hard-coded into this document.
+
+\subsection{Scope}
+
+The separated-interface theorem is restricted to
+\(r\in\{1,2,3\}\) and \(D\geq1040\). It counts eigenvalues with multiplicity
+and proves neither individual simplicity nor a sign for the leading
+interaction. The single-gap theorem concerns positive single gaps only.
+Neither result classifies arbitrary multi-interface minimizers.
