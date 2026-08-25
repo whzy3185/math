@@ -17,8 +17,8 @@ b_i'=\varepsilon_i b_i\varepsilon_{i+2}.
 \]
 At the matrix level this is the orthogonal conjugacy
 \(A_{\sigma'}=D_\varepsilon A_\sigma D_\varepsilon\), where
-\(D_\varepsilon=\operatorname{diag}(\varepsilon_i)\).  Switching therefore
-preserves the complete spectrum, not only the spectral radius.
+\(D_\varepsilon=\operatorname{diag}(\varepsilon_i)\). Switching therefore
+preserves the spectrum and hence the spectral radius.
 
 \begin{lemma}[Hamilton gauge]\label{lem:hamilton-gauge}
 Every signing of \(G_n\) is switching equivalent to one for which
@@ -89,7 +89,7 @@ It satisfies \(\prod_iQ_i=1\).  Conversely, a cyclic word
 \tau_{i+1}=Q_i\tau_i
 \]
 determines that lift.  The two choices of \(\tau_0\) give \(\tau\) and
-\(-\tau\), while \(\alpha\) remains independent.  Thus the exact cyclic
+\(-\tau\), while \(\alpha\) remains independent. Thus the cyclic
 data are \((\tau,\alpha)\), or equivalently
 \((Q,\tau_0,\alpha)\).  The reduced pair \((Q,\alpha)\) represents two
 switching classes, a distinction that disappears only after passing to the
@@ -157,7 +157,7 @@ F\left(\cos\frac{2\pi}{n}\right)
 \]
 The maximum therefore occurs at
 \(\vartheta=\pi/n\) or \(\pi-\pi/n\), which yields the first equality.
-The double-angle identity yields the second.  Since this explicit signing is
+The double-angle identity yields the second. Since this displayed signing is
 in the minimization domain, the final inequality follows.
 \end{proof}
 
@@ -209,7 +209,7 @@ local and precedes every periodic or interface specialization.
 Translation of the coefficient word is implemented by the bilateral shift.
 Reflection reverses the word and is unitary after the corresponding index
 change.  Equation~\eqref{eq:lift-negation} handles the two lifts.  We will
-use only these explicit equivalences in the body; the fiber-level
+use only these equivalences in the body; the fiber-level
 zone-folding identities are recorded with the Floquet algebra in
 Appendix~\ref{app:g6-certification}.
 
@@ -222,7 +222,7 @@ The canonical reference word and its quadrilateral flux are
 \qquad
 Q_{\mathrm{ref}}=(+,-,-,-,+,-,-,-),
 \]
-extended periodically.  The positive \(Q_{\mathrm{ref}}\)-sites are exactly
+extended periodically. The positive \(Q_{\mathrm{ref}}\)-sites are
 \(4\mathbb Z\).  More generally, for \(s\in\mathbb Z/4\mathbb Z\), let
 \(B_s\) denote the translate whose positive \(Q\)-sites are
 \(s+4\mathbb Z\).  Each \(B_s\) has two \(\tau\)-lifts; since one four-site
@@ -249,8 +249,8 @@ and equality occurs only at \(z=1\).
 \end{proposition}
 
 \begin{proof}
-The exact determinant identity is derived and independently certified in
-Appendix~\ref{app:g6-certification}.  We retain here the two algebraic steps
+Appendix~\ref{app:g6-certification} establishes the determinant identity.
+We retain here the two algebraic steps
 that locate the edge.  At \(z=1\), put \(y=x^2\) and \(X=y-4\).  The fiber
 equation reduces to
 \[
@@ -264,7 +264,7 @@ For global maximality, set
 s=\sqrt{10+2\sqrt5},\qquad u=y-\eta,\qquad
 t=2-(z+z^{-1}).
 \]
-On the unit circle, \(t\in[0,4]\).  The same exact determinant relation,
+On the unit circle, \(t\in[0,4]\). The same determinant relation,
 after substitution, is
 \begin{align*}
 0={}&u^4+4su^3+2u^2t+(40+12\sqrt5)u^2

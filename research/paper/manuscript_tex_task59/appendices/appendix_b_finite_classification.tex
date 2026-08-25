@@ -2,10 +2,10 @@
 \label{app:finite-classification}
 
 This appendix gives the finite part of the classification as a mathematical
-proof.  Its computational input consists only of finite integer matrices,
+proof. Its computational input consists of finite integer matrices,
 integer vectors, rational inequalities, polynomial factorization, and
-rational positive-definiteness certificates.  In particular, no conclusion
-below is inferred from a floating-point eigenvalue.
+rational positive-definiteness certificates; every conclusion below follows
+from these data.
 
 \subsection{The finite quotient and its spectral certificates}
 \label{app:finite-quotient}
@@ -40,18 +40,16 @@ unsquared spectrum, but equation~\eqref{eq:lift-negation} gives
  A_{-\tau,\alpha}^{\,2}=DA_{\tau,\alpha}^{\,2}D,
  \qquad D=\diag\bigl((-1)^i\bigr)_{i=0}^{n-1}.
 \]
-They therefore have identical squared spectra and spectral radii.  It is
-legitimate for the present minimization problem to fix \(\tau_0=1\), but it
-is not legitimate to omit either holonomy.  We consequently use
-\((Q,\alpha)\) as a quotient only after this squared-spectral identification.
+They therefore have identical squared spectra and spectral radii. For the
+present minimization problem we fix \(\tau_0=1\) after this identification
+and retain both holonomies.
 
 Rotation of \(Q\) is induced by relabelling the vertices.  Reflection is
 also induced by a graph isomorphism; if the normalization \(\tau_0=1\) is
 restored afterward, it may additionally negate the lift.  Hence both
-operations preserve the squared spectrum and spectral radius.  Passing to a
-dihedral representative loses no possible value of \(\rho(A)\).  Notice,
-however, that neither operation identifies the two values of \(\alpha\),
-which are retained separately throughout.
+operations preserve the squared spectrum and spectral radius. Passing to a
+dihedral representative retains every possible value of \(\rho(A)\), with
+the two values of \(\alpha\) kept separate.
 
 We use two elementary certificate principles. Since \(A\) is real
 symmetric,
@@ -397,7 +395,7 @@ Combining this universal lower bound with Proposition
 \subsection{The finite bridge from forty-eight to two hundred thirty-eight}
 \label{app:finite-bridge}
 
-It remains to record precisely the finite boundary between the isolated
+It remains to record the finite boundary between the isolated
 small orders and the analytic tail.  The even interval
 \[
  48\leq n<240
@@ -415,8 +413,8 @@ n\bmod8&\text{flux construction}&\alpha\\
 \end{array}
 \]
 The gap words are those of Section~\ref{sec:finite-rings}; the cyclic lift
-condition is checked before Hamilton gauge, so every row determines an
-actual signed cycle square rather than an open-chain approximation.
+condition is checked before Hamilton gauge, so every row determines a signed
+cycle square.
 
 For every even \(n\) in this interval, the finite certificate supplies
 positive integers \(p_n,q_n\) such that
@@ -428,8 +426,7 @@ positive integers \(p_n,q_n\) such that
 Each matrix \(A_n\) is reconstructed from its displayed residue rule, and
 each first inequality is verified by a rational
 \(LDL^{\mathsf T}\) factorization with positive diagonal.  Thus the finite
-statement consists of all \(96\) consecutive even orders and has no
-interpolation or sampling step.  Equations
+statement covers all \(96\) consecutive even orders. Equations
 \eqref{eq:appB-pd-consequence}, \eqref{eq:appB-bridge-certificate}, and
 \eqref{eq:appB-cosine-bound} give, separately for every row,
 \[
@@ -443,10 +440,9 @@ Therefore
  m_n<\rho_-(n)
  \qquad(48\leq n<240,\ n\ \text{even}).
 \end{equation}
-The endpoint \(238\) is included in this finite bridge. The next
-even order, \(240\), is the first order handled by the residue-wise IMS
-propagation in Section~\ref{sec:finite-rings}; no order lies between the two
-arguments.
+The endpoint \(238\) is included in this finite bridge, and the residue-wise
+IMS propagation in Section~\ref{sec:finite-rings} begins at the next even
+order, \(240\).
 
 Equations \eqref{eq:appB-small-equality},
 \eqref{eq:appB-recovery-equality}, the strict witnesses at \(32\) and

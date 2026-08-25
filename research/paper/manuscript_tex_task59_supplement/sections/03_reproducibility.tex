@@ -86,10 +86,10 @@ python3 research/scripts/verify_target_a_submission.py --full
 \fi
 The entry point first audits the manuscript, bibliography, anonymity,
 certificate manifest, digests, and frozen historical source trees. It then
-runs all proof-grade verifiers and the focused tamper-test suites. The exact
-tasks are CPU-only; no GPU library is required. Python 3.11 or later and
-\(8\) GiB of memory suffice, with \(16\) GiB recommended for comfortable
-parallel use. The measured reference runtime for the final checkpoint is
+runs all proof-grade verifiers and the focused tamper-test suites. These
+tasks are CPU-only. Python 3.11 or later and \(8\) GiB of memory suffice,
+with \(16\) GiB recommended for parallel use. The measured reference runtime
+for the final checkpoint is
 recorded in the Task 59 handoff rather than hard-coded into this document.
 
 \subsection{Scope}

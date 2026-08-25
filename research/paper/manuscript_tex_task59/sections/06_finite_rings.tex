@@ -114,8 +114,7 @@ any chosen step-one seam.  Move it outside every interface support; if a
 bulk patch crosses the initially displayed seam, the same proper-arc
 switching moves that sign outside the local compression.  Unwrapping a
 proper arc before translation handles cyclic wraparound.  These operations
-prove equality of all coefficients needed by the range-four quadratic form,
-not merely similarity of a central subword.
+prove equality of every coefficient entering the range-four quadratic form.
 \end{proof}
 
 \subsection{Discrete IMS localization}
@@ -127,7 +126,7 @@ Let \(H\) be self-adjoint and let \(\chi_j\) be real diagonal matrices with
 [\chi,[\chi,H]]_{ab}=(\chi(a)-\chi(b))^2H_{ab}.
 \]
 For each pair \(a,b\), the coefficient of \(H_{ab}\) in the following
-expression is one.  Thus the exact discrete IMS identity is
+expression is one. Thus the discrete IMS identity is
 \begin{equation}\label{eq:ims-identity}
 H=\sum_j\chi_jH\chi_j
 +\frac12\sum_j[\chi_j,[\chi_j,H]].
@@ -195,9 +194,9 @@ Proposition~\ref{prop:ims-cap} gives the one-sided conclusion
 \limsup_{k\to\infty}m_{8k+s}^2\leq c_6,
 \qquad s\in\{2,4,6\}.
 \end{equation}
-This proves neither a lower bound nor a limit or common liminf.
+The conclusion is limited to this one-sided limsup bound.
 
-We next obtain an explicit analytic tail.  The comparison threshold obeys
+We next obtain an analytic tail. The comparison threshold obeys
 \[
 \theta_n>8-\frac{200}{n^2},
 \]
@@ -205,7 +204,7 @@ by \(\cos x>1-x^2/2\) and \(\pi^2<10\).  Let
 \[
 \mathcal E(R)=\frac{240R-342}{R(2R^2+1)}.
 \]
-At the first order in each residue class at or above \(240\), exact
+At the first order in each residue class at or above \(240\), rational
 arithmetic gives:
 \begin{center}
 \begin{tabular}{c@{\quad}c@{\quad}c}
@@ -231,7 +230,7 @@ For \(R\geq4\),
 {R(R+1)(2R^2+1)(2R^2+4R+3)}>0.
 \]
 The numerator equals \(7389\) at \(R=4\), and its derivative is positive
-thereafter.  Thus the strict decrease is analytic, not numerical.
+thereafter. Hence \(\mathcal E(R)\) decreases strictly for \(R\geq4\).
 For \(s\in\{2,4,6\}\), \(D_s\) and the chosen \(R\) do not decrease, so the
 spectral cap does not increase, whereas \(8-200/n^2\) strictly increases.
 For residue zero, the period-eight cap \(1561/200\) is constant and the same
@@ -241,11 +240,9 @@ propagate to every later order.  We have proved
 m_n<\rho_-(n)\qquad
 \text{for every even }n\geq240.
 \]
-This phase-slip argument explains why failure is eventually uninterrupted.
-It does not locate the sharp beginning at \(48\); that conclusion also uses
-the exact finite bridge in Section~\ref{sec:finite-completion}.
-Neither the exact-\(2r\) count nor the rank-two multiplicity is used in this
-analytic tail.
+The phase-slip argument proves eventual uninterrupted failure, and the
+finite bridge in Section~\ref{sec:finite-completion} identifies its sharp
+onset at \(48\).
 
 \begin{remark}[Separated-interface clusters]
 The localization picture has a finer spectral refinement. If an admissible

@@ -13,7 +13,7 @@ The finite part of the proof follows one contract throughout:
 \longrightarrow \text{mathematical consequence}.
 \end{aligned}
 \]
-These are logical stages, not numerical approximations.
+Each arrow is a logical implication.
 
 For a signed adjacency matrix \(A\),
 \[
@@ -30,8 +30,8 @@ then \(\rho(A)^2<p/q\). A strict comparison
 \(p/q<\theta_n\) therefore certifies a counterexample.  Positive
 definiteness is established by fraction-free minors or rational
 \(LDL^{\mathsf T}\) pivots, and algebraic thresholds are selected by
-root isolation.  Floating-point calculations may suggest a vector or an
-interval, but they make no accepting decision.
+root isolation. Floating-point calculations are confined to discovery;
+certificate acceptance uses the arithmetic above.
 
 The main text proves that the finite domains below are exhaustive and
 explains why their terminal decisions imply the spectral statements.
@@ -131,13 +131,9 @@ If the appended bit records \(Q_i=+1\), lift each vertex to
 \[
 (s,\varepsilon)\longmapsto(s',\varepsilon+b_L).
 \]
-A length-\(n\) closed walk gives a cyclic word because consecutive edges
-overlap, the base-state closure enforces the wraparound windows, and parity
-closure says \(\prod_iQ_i=1\).  Conversely, reading any liftable cyclic
-\(Q\)-word with no excluded window produces such a closed walk: all windows
-are surviving edges, cyclicity closes the base state, and liftability closes
-parity.  Hence the remaining global candidates are exactly the parity-even
-closed walks, not a sampled subset.
+The construction gives a bijection between liftable cyclic \(Q\)-words
+avoiding excluded windows and parity-even closed walks: overlap enforces
+wraparound, and parity closure enforces \(\prod_iQ_i=1\).
 
 Rotation and reflection preserve the squared spectrum, so dihedral reduction
 removes duplicates without losing a class.  Both holonomies are then checked
@@ -174,8 +170,8 @@ Q=1000100010001000100010001000100010001000,
 \qquad \alpha=-1,
 \]
 where \(1\) encodes \(Q_i=+1\) and \(0\) encodes \(Q_i=-1\).  With
-\(\tau_0=1\), reconstruct \(A_{40}\) in Hamilton gauge.  Exact
-rational elimination gives forty positive pivots in
+\(\tau_0=1\), reconstruct \(A_{40}\) in Hamilton gauge. Rational elimination
+gives forty positive pivots in
 \[
 15541I_{40}-2000A_{40}^2,
 \]
@@ -207,25 +203,25 @@ n\bmod8&\text{finite signing}\\ \hline
 \end{array}
 \]
 with holonomy \(-1\) for \(n\equiv0\pmod4\) and \(+1\) for
-\(n\equiv2\pmod4\).  These are the same explicit residue constructions as
-in Section~\ref{sec:finite-rings}; no existence choice is hidden.
+\(n\equiv2\pmod4\). These are the residue constructions from
+Section~\ref{sec:finite-rings}.
 
 For every one of the \(96\) matrices, a rational number \(t_n\) satisfies
 \[
 t_nI-A_n^2\succ0,\qquad
 t_n<8-\frac{200}{n^2}.
 \]
-The finite object is the complete order-indexed list of the explicit signing
-and its rational positive-definiteness certificate.  An independent
-verification rebuilds each full signed matrix and repeats sparse
+The finite object records the deterministic signing and its rational
+positive-definiteness certificate at every order. An independent
+verification rebuilds each signed matrix and repeats sparse
 rational elimination in a different ordering.  Positive definiteness and
 the cosine bound imply
 \[
 \rho(A_n)^2<t_n<8-\frac{200}{n^2}<\theta_n.
 \]
-Hence every even order from \(48\) through \(238\) fails. This finite
-verification, joined to the analytic \(n\geq240\) tail, moves the beginning
-of continuous failure from an eventual statement to the sharp order \(48\).
+Hence every even order from \(48\) through \(238\) fails. Together with the
+analytic \(n\geq240\) tail, this finite verification places the onset at
+\(48\).
 
 \subsection{Exhaustive synthesis}
 \label{subsec:exhaustive-synthesis}
@@ -270,6 +266,5 @@ in Theorem~\ref{thm:complete-classification}.
 \end{proof}
 
 The finite classification determines the irregular small-order pattern.
-The phase-slip argument explains eventual uninterrupted failure.  The sharp
-uninterrupted-failure onset \(48\) is a consequence of the finite bridge together
-with the analytic tail; neither component alone supplies that conclusion.
+The phase-slip argument explains eventual uninterrupted failure. The finite
+bridge and analytic tail together place its onset at \(48\).

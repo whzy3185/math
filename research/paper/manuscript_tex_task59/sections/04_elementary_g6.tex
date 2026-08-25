@@ -9,7 +9,7 @@ of length six.  On \(\mathbb Z\), let
 \[
 D_6=\{-4j:j\geq0\}\cup\{6+4j:j\geq0\}
 \]
-and set \(Q_i^{(6)}=+1\) exactly for \(i\in D_6\).  Choose the lift
+and set \(Q_i^{(6)}=+1\) for \(i\in D_6\). Choose the lift
 \(\tau_0^{(6)}=1\) and
 \(\tau_{i+1}^{(6)}=Q_i^{(6)}\tau_i^{(6)}\).  We write
 \[
@@ -119,8 +119,8 @@ J_6=
 \frac{7905369311620328}{10^{15}}
 \right).
 \end{equation}
-Thus \(c_6\approx7.905369311620327\), but the rational interval, not this
-decimal, is used in every proof.
+Thus \(c_6\approx7.905369311620327\). The interval supplies the strict
+comparisons below; the decimal is included for orientation.
 
 Fix \(y>\eta\) and first take the positive branch
 \(\lambda=\sqrt y\).  At a left bulk cut let \(U_L(\lambda)\) be the
@@ -154,8 +154,8 @@ c_6\in\operatorname{Spec}(H_6).
 
 \begin{proof}
 On \(J_6\), the two stable multipliers are real, distinct, and uniformly
-separated from the unit circle.  An exact rational interval evaluation of
-the genuine determinant~\eqref{eq:g6-evans} has opposite endpoint signs,
+separated from the unit circle. Rational interval evaluation of the matching
+determinant~\eqref{eq:g6-evans} gives opposite endpoint signs,
 and its derivative has a fixed nonzero sign throughout the interval.
 Hence there is exactly one simple physical positive root.
 At that root the matching intersection is one-dimensional: if its dimension
@@ -166,30 +166,26 @@ one-dimensional intersection with the positive eigenspace.
 
 To identify its square, symmetric coordinates for the two stable
 multipliers reduce the bulk equations and the unsquared matching equation
-to a finite polynomial system.  Exact elimination contains
+to a finite polynomial system. Elimination produces the factor
 \(p_6(y)^2\), and Sturm isolation proves that \(p_6\) has exactly one root in
-\(J_6\).  Since physical existence and uniqueness were established before
-elimination, the squared physical root must be \(c_6\).  The interval
+\(J_6\). Matching establishes physicality before elimination identifies the
+squared energy as \(c_6\). The interval
 enclosures, derivative bound, elimination identity, and Sturm count are
-given in Appendix~\ref{app:g6-certification}.  In particular, an elimination
-root is not declared physical merely because it is a root of a resultant.
+given in Appendix~\ref{app:g6-certification}.
 \end{proof}
 
 \subsection{The global G6 edge}
 \label{subsec:global-g6-edge}
 
-It remains to prove that no other physical level has greater absolute
-unsquared value.  The local argument above excludes another positive root
-through the upper endpoint of \(J_6\).  On the remaining compact energy
-interval up to the row-sum bound \(16\), the stable and unstable planes are
-covered by a finite exact Grassmann atlas.  Exact elimination and Sturm
-counts give a complete finite list of algebraic candidate intervals.
-On every such interval the genuine unsquared determinant is bounded away
-from zero; a second coordinate reconstruction gives the same exclusions.
+It remains to bound every other physical level. The local argument above
+excludes another positive root through the upper endpoint of \(J_6\).
+A finite Grassmann atlas covers the remaining compact energy interval up to
+the row-sum bound \(16\). Elimination and Sturm counts produce a complete
+list of algebraic candidate intervals; determinant bounds and a second
+coordinate reconstruction exclude each candidate.
 The atlas also covers its chart transitions and the sole repeated
-multiplier, which lies away from the unit circle.  These exact finite
-statements are proved in Appendix~\ref{app:g6-certification}; no
-floating-point sign is used.
+multiplier, which lies away from the unit circle. Appendix
+\ref{app:g6-certification} supplies these finite certifications.
 
 \begin{proposition}[Positive-branch completeness]
 \label{prop:g6-positive-completeness}
@@ -200,8 +196,8 @@ eigenvalue larger than \(\sqrt{c_6}\).
 \begin{proof}
 Lemma~\ref{lem:c6-realization} gives existence and simplicity.
 Lemma~\ref{lem:g6-essential} reduces every other positive spectral point
-above \(\eta\) to the physical matching determinant.  The complete exact
-candidate audit just described excludes all its zeros above \(c_6\), and
+above \(\eta\) to the physical matching determinant. The atlas argument
+excludes all its zeros above \(c_6\), and
 \(\|A_6\|\leq4\) closes the squared interval above \(16\).
 \end{proof}
 

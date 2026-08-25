@@ -1,16 +1,13 @@
-\section{Exact Spectral Certification of the Reference Phase and G6}
+\section{Spectral Certification of the Reference Phase and G6}
 \label{app:g6-certification}
 
-This appendix supplies the exact algebra behind
+This appendix supplies the algebra behind
 Proposition~\ref{prop:reference-edge},
 Lemma~\ref{lem:c6-realization}, and
-Proposition~\ref{prop:g6-positive-completeness}.  The order of the argument
-is important.  We first construct a genuine bilateral eigenfunction by an
-unsquared stable--unstable matching condition.  Only after physical
-existence has been proved do we use elimination to identify its squared
-energy.  The same unsquared condition is then used to reject every
-additional algebraic candidate.  Thus no zero of a resultant is treated as
-an eigenvalue merely because it survives elimination.
+Proposition~\ref{prop:g6-positive-completeness}. We first construct a
+bilateral eigenfunction through the unsquared stable--unstable matching
+condition. Elimination then identifies its squared energy, and the original
+matching equation excludes the additional algebraic candidates.
 
 Throughout, all interval endpoints are rational.  An assertion that a
 polynomial or a radical expression has a fixed sign on an interval means
@@ -96,7 +93,7 @@ The equation \(A_\tau u=\lambda u\) is equivalent to
  \end{pmatrix}.                       \label{eq:app-step-transfer}
 \end{equation}
 Each \(T_i\) is invertible.  For one reference cell set
-\(M_8(\lambda)=T_7(\lambda)\cdots T_0(\lambda)\).  Exact multiplication
+\(M_8(\lambda)=T_7(\lambda)\cdots T_0(\lambda)\). Multiplication
 gives, with \(y=\lambda^2\),
 \begin{equation}
  \det(zI-M_8(\lambda))
@@ -122,7 +119,7 @@ are obtained from
 
 Equation~\eqref{eq:app-edge-positive} excludes a unit-circle multiplier for
 every \(y>\eta\).  Reciprocity and continuity then give two multipliers in
-\(|z|<1\) and two in \(|z|>1\), counted algebraically.  The complete
+\(|z|<1\) and two in \(|z|>1\), counted algebraically. The
 multiplier discriminant factors as
 \begin{align}
  &(y^2-12y+34)(y^2-4y+2)(12y^2-96y-17)^2 \notag\\
@@ -141,13 +138,13 @@ Indeed, the positive roots of the first two quadratic factors in
 \]
 and every root of the final quartic is at most \(\eta<a_6\) by the
 reference-edge calculation.  The factor \(12y^2-96y-17\) has one negative
-root and the single positive root \(y_*\).  This proves directly, without a
-floating root comparison, that \(y_*\) is the unique collision on
+root and the single positive root \(y_*\). Thus \(y_*\) is the unique
+collision on
 \([a_6,16]\).
 It is therefore a collision inside the hyperbolic region, not a loss of the
 stable--unstable splitting.
 
-\subsection{Exact transfer through the G6 core}
+\subsection{Transfer through the G6 core}
 \label{appsubsec:g6-transfer}
 
 For the forward interface, take
@@ -165,7 +162,7 @@ right cuts are \(-8\) and \(14\).  Thus
  \qquad \det D_6(\lambda)=1.            \label{eq:app-D6}
 \end{equation}
 Equations~\eqref{eq:app-step-transfer} and~\eqref{eq:app-D6}, together with
-the displayed definition of \(Q\), are an exact finite specification of
+the displayed definition of \(Q\), are a finite specification of
 every entry of the defect transfer; each entry is an integer polynomial in
 \(\lambda\) of degree at most eleven.  The two bulk monodromies at these
 cuts are
@@ -282,23 +279,22 @@ second gives the product equation
 \begin{equation}
  R(P,y):=(P^2+1-b(y)P)(P+1)^2+a(y)^2P^2=0.            \label{eq:app-product-relation}
 \end{equation}
-After removal of the proved nonzero chart denominators, the genuine
-unsquared matching numerator has the form
+After removal of the proved nonzero chart denominators, the unsquared
+matching numerator has the form
 \[
  E_0(y,P)+\lambda E_1(y,P).
 \]
-This is also a finite exact specification of \(E_0,E_1\): form the matrices
+This is also a finite specification of \(E_0,E_1\): form the matrices
 \(T_i\) in~\eqref{eq:app-step-transfer}, multiply them in the order
 \eqref{eq:app-D6}, form the signed cofactor vectors just defined, divide the
 wedges by their ordered Vandermonde factors, and reduce the resulting
-symmetric polynomials by~\eqref{eq:app-SP-relations}.  No fitted coefficient
-or numerical interpolation enters this construction.
+symmetric polynomials by~\eqref{eq:app-SP-relations}.
 Thus every physical zero annihilates
 \begin{equation}
  G(P,y)=E_0(y,P)^2-yE_1(y,P)^2.                       \label{eq:app-squared-Evans}
 \end{equation}
 The resultant of \(R\) and \(G\) with respect to \(P\) has degree 108 in
-\(y\).  Up to a nonzero rational constant, its exact factorization is
+\(y\). Up to a nonzero rational constant, its factorization is
 \begin{equation}
  r_2(y)^{16}r_{4,1}(y)^2r_{4,2}(y)^2p_6(y)^2q_6(y)^4, \label{eq:app-resultant-factorization}
 \end{equation}
@@ -314,7 +310,7 @@ q_6(y)={}&16y^{10}-484y^9+5796y^8-34617y^7+105000y^6\\
 &-135904y^5+7632y^4+60620y^3+57232y^2-52880y+64.
 \end{align*}
 Let \(V_f(x)\) denote the number of sign changes in the Sturm sequence of
-\(f\) at \(x\).  The exact endpoint variations are
+\(f\) at \(x\). The endpoint variations are
 \begin{center}
 \begin{tabular}{c@{\qquad}ccc}
 \toprule
@@ -436,7 +432,7 @@ to be a coordinate degeneracy only.  The repeated-multiplier value
 \eqref{eq:app-repeat} is represented by the confluent quotient and is not a
 missing resultant root.
 
-Here is the cross-chart necessity argument explicitly.  At every
+For cross-chart necessity, at every
 \(y\in I\), the atlas provides a chart in which both selected Pl\"ucker
 sections are nonzero.  In that chart, the normalized numerator differs from
 the coordinate-free exterior determinant only by the product of those
@@ -448,11 +444,11 @@ R(P,y)=G(P,y)=0,
 \]
 so the resultant must vanish.  At the sole section zero the middle chart
 supplies this implication; at \(y_*\) the confluent wedge replaces the
-Vandermonde quotient and gives the same implication.  Thus neither a chart
-transition nor the repeated multiplier can evade the candidate list.
+Vandermonde quotient and gives the same implication. Consequently the
+candidate list covers chart transitions and the repeated multiplier.
 
-It remains to test the original unsquared equation, not its squared
-elimination. In chart \(013\), direct substitution of the physical branch
+The final exclusion uses the original unsquared equation. In chart \(013\),
+substitution of the physical branch
 \eqref{eq:app-SP-branch} into~\eqref{eq:app-Evans}, followed by rational
 interval evaluation, gives
 \[
@@ -463,9 +459,8 @@ interval evaluation, gives
 The corresponding outward enclosures are recorded in the supplement.
 Reconstructing the same planes from
 cofactor rows \(023\) gives strictly negative rational enclosures on
-\(I_1\) and \(I_2\) as well.  The latter reconstruction uses different
-Pl\"ucker sections and therefore also checks that the exclusion is not an
-artifact of the \(013\) normalization.
+\(I_1\) and \(I_2\) as well. The latter reconstruction uses different
+Pl\"ucker sections and provides a second normalization check.
 
 The root in \(I_1\) is a physical root for a different defect transfer, but
 the first strict sign bound shows that it is not a G6 match. The root in
