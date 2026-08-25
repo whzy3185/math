@@ -36,6 +36,6 @@
 Task 59 is complete when all three PDFs compile, the Task 58 mathematical
 verification chain still passes, the Task 59 textual and anonymity audits
 pass, representative pages pass rendered visual inspection, and the branch
-is pushed with no pull request. Until author metadata and an immutable
-archive identifier are supplied, the strongest honest status is
-`SUBMISSION_READY_MODULO_AUTHOR_METADATA_AND_ARCHIVE`.
+is pushed with no pull request. Until the submitting/corresponding-author
+designation and an immutable archive identifier are supplied, the strongest honest status is
+`SUBMISSION_READY_MODULO_SUBMITTER_DESIGNATION_AND_ARCHIVE`.

@@ -18,7 +18,7 @@ Spectrally Optimal?`.
   one-command verification, evidence boundaries, and archive status.
 
 The evidence checkpoint is `e365e1553ad73a8a534fb67f5ee76562521609ce`;
-the submission source is tagged `target-a-task59-submission-v1`. An immutable
+the submission source is tagged `target-a-task59-identified-v1`. An immutable
 external archive and persistent identifier are pending.
 
 ## Build

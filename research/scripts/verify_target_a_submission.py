@@ -20,6 +20,7 @@ MAIN = REPO / "research/paper/manuscript_tex_task59"
 SUPP = REPO / "research/paper/manuscript_tex_task59_supplement"
 MANIFEST = REPO / "research/proofs/task59/submission_manifest.json"
 TITLE = "When Is the Twisted Signing of an Even Cycle Square Spectrally Optimal?"
+AUTHORS = "Yicheng Zhao; Jiachen Li"
 FROZEN_ENGLISH = "59e3a8f73a152ef06f994e979b7219a3365efeae"
 FROZEN_CHINESE = "57ae03fb5b90866f84d0d72b414008678e8f5004"
 
@@ -103,6 +104,18 @@ def source_audit() -> dict[str, int]:
             "exact-2r theorem remains in the main line")
     require("Separated-interface cluster" in supp_tex,
             "exact-2r theorem missing from supplement")
+    for required in (
+        "Yicheng Zhao", "Jiachen Li", "2023213805@cqupt.edu.cn",
+        "2023213809@stu.cqupt.edu.cn", "0009-0003-7618-1661",
+        "0009-0006-5119-3369",
+    ):
+        require(required in main_tex, f"identified author field absent: {required}")
+    for placeholder in (
+        "[AUTHOR NAME]", "[AFFILIATION]", "[DEPARTMENT]", "[INSTITUTION]",
+        "[CITY]", "[COUNTRY]", "[EMAIL]", "[ORCID]",
+    ):
+        require(placeholder not in main_tex + supp_tex,
+                f"author placeholder remains: {placeholder}")
 
     forbidden = ("TODO", "TBD", "FIXME", "Lorem", "proof to be added")
     all_tex = main_tex + "\n" + supp_tex
@@ -158,12 +171,19 @@ def pdf_audit() -> dict[str, int]:
             "anonymous PDF title mismatch")
     require(readers["anonymous"].metadata.author == "Anonymous",
             "anonymous author metadata mismatch")
+    require(readers["main"].metadata.author == AUTHORS,
+            "identified main author metadata mismatch")
+    require(readers["supplement"].metadata.author == AUTHORS,
+            "identified supplement author metadata mismatch")
     require(readers["supplement_anonymous"].metadata.author == "Anonymous",
             "anonymous supplement author metadata mismatch")
     anonymous_text = "\n".join(
         page.extract_text() or "" for page in readers["anonymous"].pages
     )
-    for leak in ("whzy3185", "e365e155", "[AUTHOR NAME]", "[AFFILIATION]"):
+    for leak in (
+        "whzy3185", "e365e155", "Yicheng Zhao", "Jiachen Li",
+        "2023213805", "2023213809", "0009-0003", "0009-0006",
+    ):
         require(leak not in anonymous_text, f"anonymous PDF leak: {leak}")
     anonymous_supp_text = "\n".join(
         page.extract_text() or ""
@@ -213,7 +233,7 @@ def verify(*, full: bool = False, require_tag: bool = False) -> dict[str, object
         **manifest,
         "pages": pages,
         "full_runtime_seconds": runtime,
-        "verdict": "SUBMISSION_READY_MODULO_AUTHOR_METADATA_AND_ARCHIVE",
+        "verdict": "SUBMISSION_READY_MODULO_SUBMITTER_DESIGNATION_AND_ARCHIVE",
     }
 
 

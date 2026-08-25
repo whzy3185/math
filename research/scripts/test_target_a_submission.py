@@ -25,5 +25,5 @@ def test_submission_pdf_inventory() -> None:
 
 def test_submission_status_is_truthful() -> None:
     assert verify()["verdict"] == (
-        "SUBMISSION_READY_MODULO_AUTHOR_METADATA_AND_ARCHIVE"
+        "SUBMISSION_READY_MODULO_SUBMITTER_DESIGNATION_AND_ARCHIVE"
     )

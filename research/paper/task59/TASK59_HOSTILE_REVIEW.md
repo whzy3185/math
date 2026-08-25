@@ -27,7 +27,7 @@ PDFs, manifest, and complete verifier chain.
 - Open MAJOR findings: 0
 - Open MINOR findings: 0
 - Mathematical conclusions changed: none
-- Submission status: `SUBMISSION_READY_MODULO_AUTHOR_METADATA_AND_ARCHIVE`
+- Submission status: `SUBMISSION_READY_MODULO_SUBMITTER_DESIGNATION_AND_ARCHIVE`
 
 The two remaining blockers require external data rather than manuscript work:
-identified author metadata and an immutable archive identifier.
+submitting/corresponding-author designation and an immutable archive identifier.

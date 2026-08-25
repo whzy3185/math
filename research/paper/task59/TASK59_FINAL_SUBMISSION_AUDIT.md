@@ -4,9 +4,9 @@
 
 | Artifact | Pages | PDF metadata author |
 |---|---:|---|
-| Identified main manuscript | 37 | Author metadata pending |
+| Identified main manuscript | 37 | Yicheng Zhao; Jiachen Li |
 | Anonymous main manuscript | 37 | Anonymous |
-| Identified supplement | 12 | Author metadata pending |
+| Identified supplement | 12 | Yicheng Zhao; Jiachen Li |
 | Anonymous supplement | 12 | Anonymous |
 
 The title is `When Is the Twisted Signing of an Even Cycle Square Spectrally
@@ -62,8 +62,8 @@ unreadable type, black block, or incoherent page break remains.
 
 ## External blockers
 
-- `PENDING_USER_METADATA`: author, affiliation, corresponding-author email,
-  and ORCID.
+- `PENDING_SUBMITTER_DESIGNATION`: the submitting/corresponding-author
+  designation has not been supplied.
 - `IMMUTABLE_ARCHIVE_PENDING`: archive DOI or equivalent persistent record.
 
-Final verdict: `SUBMISSION_READY_MODULO_AUTHOR_METADATA_AND_ARCHIVE`.
+Final verdict: `SUBMISSION_READY_MODULO_SUBMITTER_DESIGNATION_AND_ARCHIVE`.

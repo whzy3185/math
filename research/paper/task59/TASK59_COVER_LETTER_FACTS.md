@@ -46,5 +46,5 @@ through one CPU-only command.
 
 The package contains identified and anonymous 37-page manuscripts plus
 identified and anonymous 12-page supplements. All four compile without
-warnings. Author metadata and an immutable archive identifier remain to be
-inserted before formal submission.
+warnings. The submitting/corresponding-author designation and an immutable
+archive identifier remain to be supplied before formal submission.
