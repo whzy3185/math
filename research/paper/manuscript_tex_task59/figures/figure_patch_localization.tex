@@ -1,71 +1,60 @@
 \begin{tikzpicture}[
-  x=0.78cm,
-  y=0.78cm,
-  site/.style={circle,draw=black,fill=white,inner sep=1.15pt,line width=0.45pt},
-  ring/.style={draw=black,line width=0.55pt},
-  window/.style={draw=black,line width=1.05pt},
-  enlarged/.style={draw=black,dashed,line width=0.65pt},
-  core/.style={draw=black,line width=1.7pt},
-  reference/.style={draw=black,line width=0.55pt},
-  identify/.style={draw=black,dashed,-{Latex[length=2.2mm]},line width=0.55pt},
-  label/.style={font=\small,inner sep=1pt}
+  x=0.92cm,
+  y=0.82cm,
+  line cap=round,
+  line join=round,
+  site/.style={circle,draw=black,fill=white,inner sep=1.05pt,
+    line width=0.42pt},
+  ring/.style={draw=black!55,line width=0.65pt},
+  window/.style={draw=black,line width=1.10pt},
+  enlarged/.style={draw=black,dashed,line width=0.72pt},
+  core/.style={draw=black,line width=1.75pt},
+  identify/.style={draw=black,dashed,-{Latex[length=2.1mm]},
+    line width=0.60pt},
+  panel/.style={font=\small\bfseries,anchor=west},
+  label/.style={font=\footnotesize,inner sep=1pt}
 ]
-  % Finite ring and its cyclic sites.
-  \draw[ring] (0,2.85) ellipse [x radius=4.55,y radius=1.45];
-  \foreach \k in {0,...,23} {
-    \pgfmathsetmacro{\a}{90-15*\k}
-    \node[site] (r\k) at ({4.55*cos(\a)},{2.85+1.45*sin(\a)}) {};
+  % (a) Finite-ring localization geometry.
+  \node[panel] at (-0.20,4.70) {(a)};
+  \draw[ring] (4.0,3.10) ellipse [x radius=3.45,y radius=1.18];
+  \foreach \k in {0,...,19} {
+    \pgfmathsetmacro{\a}{90-18*\k}
+    \node[site] at ({4.0+3.45*cos(\a)},{3.10+1.18*sin(\a)}) {};
   }
-  \node[label] at (0,4.62) {finite ring};
-
-  % The dashed arc is the enlarged support; the solid arc is the
-  % localization window.  Their complement contains the chosen seam.
   \draw[enlarged]
-    ({4.82*cos(160)},{2.85+1.60*sin(160)})
-    arc[start angle=160,end angle=20,x radius=4.82,y radius=1.60];
-  \draw[enlarged]
-    ({4.82*cos(160)},{2.85+1.60*sin(160)}) --
-    ({4.55*cos(160)},{2.85+1.45*sin(160)});
-  \draw[enlarged]
-    ({4.82*cos(20)},{2.85+1.60*sin(20)}) --
-    ({4.55*cos(20)},{2.85+1.45*sin(20)});
+    ({4.0+3.68*cos(160)},{3.10+1.38*sin(160)})
+    arc[start angle=160,end angle=20,x radius=3.68,y radius=1.38];
   \draw[window]
-    ({4.55*cos(135)},{2.85+1.45*sin(135)})
-    arc[start angle=135,end angle=45,x radius=4.55,y radius=1.45];
+    ({4.0+3.45*cos(132)},{3.10+1.18*sin(132)})
+    arc[start angle=132,end angle=48,x radius=3.45,y radius=1.18];
   \draw[core]
-    ({4.55*cos(104)},{2.85+1.45*sin(104)})
-    arc[start angle=104,end angle=76,x radius=4.55,y radius=1.45];
+    ({4.0+3.45*cos(104)},{3.10+1.18*sin(104)})
+    arc[start angle=104,end angle=76,x radius=3.45,y radius=1.18];
+  \node[label] at (4.0,3.80) {$W_R$};
+  \node[label] at (6.72,4.18) {$W_R^+$};
+  \node[label] at (4.0,4.46) {$G_6$};
 
-  \node[label] at (0,3.74) {interface core};
-  \node[label] at (0,2.02) {localization window};
-  \node[label,anchor=east] at (-3.30,3.84) {reference region};
-  \node[label,anchor=west] at (3.30,3.84) {reference region};
-  \node[label,anchor=east] at (-2.30,1.08) {dashed: enlarged support};
+  % Holonomy seam in the complement of W_R^+.
+  \draw[line width=1.0pt] (3.84,1.94)--(3.96,2.09);
+  \draw[line width=1.0pt] (4.04,2.09)--(4.16,1.94);
+  \node[label,anchor=west] at (4.30,1.82) {$e_\alpha$};
 
-  % The seam is deliberately placed in the complement of the support.
-  \draw[line width=1.0pt] (-0.18,1.37)--(-0.06,1.52);
-  \draw[line width=1.0pt] (0.06,1.52)--(0.18,1.37);
-  \node[label,anchor=west] at (1.15,1.08) {seam outside support};
+  % One proof-local identification arrow.
+  \draw[identify] (4.0,1.55)--(4.0,0.45);
 
-  % Identify the enlarged cyclic window with a segment of the infinite G6
-  % interface.  The line continues into the two periodic reference tails.
-  \draw[identify]
-    ({4.82*cos(160)},{2.85+1.60*sin(160)}) -- (-5.15,-0.48);
-  \draw[identify]
-    ({4.82*cos(20)},{2.85+1.60*sin(20)}) -- (5.15,-0.48);
-
-  \draw[reference] (-5.65,-0.82)--(5.65,-0.82);
-  \foreach \x in {-5.4,-4.8,...,5.4} {
-    \node[site] at (\x,-0.82) {};
+  % (b) The corresponding bilateral patch.
+  \node[panel] at (-0.20,0.20) {(b)};
+  \draw[ring] (0.35,-0.70)--(7.65,-0.70);
+  \foreach \x in {0.55,0.95,...,7.45} {
+    \node[site] at (\x,-0.70) {};
   }
-  \draw[core] (-0.72,-0.82)--(0.72,-0.82);
-  \draw[window] (-2.10,-1.12)--(-2.10,-0.52);
-  \draw[window] (2.10,-1.12)--(2.10,-0.52);
-
-  \node[label,above] at (0,-0.42) {G6 interface core};
-  \node[label,below] at (-3.75,-1.13) {period-eight reference};
-  \node[label,below] at (3.75,-1.13) {period-eight reference};
-  \node[label,below] at (0,-1.53) {identified infinite G6 line patch};
-  \node[label] at (-5.88,-0.82) {$\cdots$};
-  \node[label] at (5.88,-0.82) {$\cdots$};
+  \draw[core] (3.35,-0.70)--(4.65,-0.70);
+  \draw[enlarged] (1.35,-1.05)--(1.35,-0.35);
+  \draw[enlarged] (6.65,-1.05)--(6.65,-0.35);
+  \node[label] at (4.0,-0.22) {$G_6$};
+  \node[label] at (2.15,-1.18) {$B_0$};
+  \node[label] at (5.85,-1.18) {$B_2$};
+  \node[label] at (4.0,-1.58) {$W_R^+$};
+  \node[label] at (0.12,-0.70) {$\cdots$};
+  \node[label] at (7.88,-0.70) {$\cdots$};
 \end{tikzpicture}

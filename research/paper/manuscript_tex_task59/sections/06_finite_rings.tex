@@ -54,16 +54,14 @@ Proposition~\ref{prop:sector-shift}: the total shifts are \(2,0,2\) modulo
 four, equal respectively to \(n\) modulo four.  After these two independent
 closure checks, either Hamilton holonomy \(\alpha=\pm1\) may be chosen.
 
-Figure~\ref{fig:reference-slips} separates the mod-eight charge bookkeeping
-from the mod-four sector transport in these three families.
+Figure~\ref{fig:residue-rings} shows the one-, two-, and three-interface
+closures. Their mod-four sector compatibility is the separate calculation
+above.
 \begin{figure}[t]
 \centering
-\input{figures/figure_reference_slips}
-\caption{Reference gaps and charge-compatible phase slips.  A G6 replaces
-\(g=4,q=0\) by \(g=6,q=2\); one, two, and three copies provide the mod-eight
-total charges for residues \(2,4,6\), while their mod-four sector transport
-is checked independently.}
-\label{fig:reference-slips}
+\input{figures/figure_residue_rings}
+\caption{Charge-compatible one-, two-, and three-slip finite rings.}
+\label{fig:residue-rings}
 \end{figure}
 
 \subsection{Identification of local patches}
@@ -72,9 +70,19 @@ is checked independently.}
 Consider any of the preceding rings with \(r\in\{1,2,3\}\) marked G6 cores,
 and let \(D\) be their minimum cyclic site separation; for \(r=1\), set
 \(D=n\).  Here \(D\) is measured in ring sites, not period-eight cells.
-Let a real cutoff be supported in a cyclic interval of radius
-\(R\).  Since \(H=A^2\) has range four, its enlarged support has radius
-\(R+4\).
+Let a real cutoff be supported in a cyclic interval \(W_R\) of radius
+\(R\). Since \(H=A^2\) has range four, write \(W_R^+\) for its enlargement
+of radius \(R+4\).
+
+Figure~\ref{fig:patch-localization} shows the branch in which \(W_R^+\)
+meets one G6 core; the seam \(e_\alpha\) lies in its complement.
+\begin{figure}[t]
+\centering
+\input{figures/figure_patch_localization}
+\caption{Identification of a finite localization patch with the bilateral
+G6 model.}
+\label{fig:patch-localization}
+\end{figure}
 
 \begin{proposition}[Finite-ring patch identification]
 \label{prop:patch-identification}
@@ -109,19 +117,6 @@ proper arc before translation handles cyclic wraparound.  These operations
 prove equality of all coefficients needed by the range-four quadratic form,
 not merely similarity of a central subword.
 \end{proof}
-
-The unwrapping and seam placement in the proof are illustrated in
-Figure~\ref{fig:patch-localization}.
-\begin{figure}[t]
-\centering
-\input{figures/figure_patch_localization}
-\caption{Local-to-global identification.  A finite-ring cutoff and its
-range-four enlargement see either reference coefficients or one interface
-core; after unwrapping and switching, the latter is exactly a finite section
-of the bilateral G6 model.  The holonomy seam is placed outside the interface
-support.}
-\label{fig:patch-localization}
-\end{figure}
 
 \subsection{Discrete IMS localization}
 \label{subsec:discrete-ims-localization}
