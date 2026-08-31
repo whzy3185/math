@@ -56,6 +56,7 @@ def verify() -> dict[str, int]:
         REPORTS / "current_reference_audit.md",
         REPORTS / "new_related_work_structure.md",
         REPORTS / "final_literature_report.md",
+        REPORTS / "literature_review.md",
     ):
         require(path.is_file() and path.stat().st_size > 300,
                 f"missing or stubbed artifact: {path.relative_to(ROOT)}")
