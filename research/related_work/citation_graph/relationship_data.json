@@ -1,0 +1,26 @@
+{
+  "nodes": [
+    {"id": "H1", "role": "historical signing origin"},
+    {"id": "H2", "role": "historical bipartite benchmark"},
+    {"id": "S1", "role": "published fixed-graph problem source"},
+    {"id": "S2", "role": "published signed-radius extremal analogue"},
+    {"id": "S3", "role": "periodic flux/Floquet method"},
+    {"id": "S4", "role": "direct C_n(1,2) preprint predecessor"},
+    {"id": "A5", "role": "local defect method"},
+    {"id": "A6", "role": "all-order classification architecture"},
+    {"id": "A7", "role": "exhaustive-computation architecture"}
+  ],
+  "edges": [
+    {"from": "H1", "to": "H2", "relation": "bipartite two-sided benchmark"},
+    {"from": "H1", "to": "S1", "relation": "general signing problem context"},
+    {"from": "S1", "to": "S4", "relation": "specific fixed-family conjecture"},
+    {"from": "S2", "to": "S4", "relation": "published extremal-classification context"},
+    {"from": "S3", "to": "A5", "relation": "periodic bulk to local defect"},
+    {"from": "A6", "to": "A7", "relation": "analytic tail plus finite completeness"},
+    {"from": "S3", "to": "present-paper", "relation": "Floquet/flux background"},
+    {"from": "A5", "to": "present-paper", "relation": "interface localization background"},
+    {"from": "A6", "to": "present-paper", "relation": "classification packaging"},
+    {"from": "A7", "to": "present-paper", "relation": "finite proof architecture"},
+    {"from": "S4", "to": "present-paper", "relation": "direct conjecture source"}
+  ]
+}
