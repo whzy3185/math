@@ -6,7 +6,9 @@ No Lean declaration is claimed until it compiles in a pinned Lean/mathlib projec
 |---|---|---|---|---|
 | switching conjugacy | `switching_spectrum` | `TargetA/Switching.lean` | finite matrices, diagonal signs | FORMALIZATION_OPEN |
 | twisted Fourier block | `twisted_spectrum` | `TargetA/Twisted.lean` | cyclic shift/Fourier API | FORMALIZATION_OPEN |
-| phase-slip endpoint charge | `gap_charge_additive` | `TargetA/PhaseSlip.lean` | finite words, `ZMod 4` | FORMALIZATION_OPEN |
+| residue-zero arithmetic | `residueZero_mod`, `residueZero_even`, `residueZero_admissible` | `TargetA/Definitions.lean` | natural divisibility and parity | LEAN_PROVED |
+| one-gap sector rule | `gapCharge_mod_four`, `sector_after_gap` | `TargetA/PhaseSlip.lean` | natural subtraction and modulus | LEAN_PROVED |
+| phase-slip word additivity | `gap_charge_additive` | `TargetA/PhaseSlip.lean` | finite words, `ZMod 4` | FORMALIZATION_OPEN |
 | fourth moment | `trace_fourth_eq` | `TargetA/Equality.lean` | finite sums/matrices | FORMALIZATION_OPEN |
 | period-eight residue-zero failure | `periodEight_failure_of_dvd_eight` | `TargetA/Failure.lean` | Floquet theorem, cosine inequalities | FORMALIZATION_OPEN |
 | G6 algebraic interval | `g6_root_isolated` | `TargetA/G6.lean` | polynomials, Sturm certificate verifier | FORMALIZATION_OPEN |
