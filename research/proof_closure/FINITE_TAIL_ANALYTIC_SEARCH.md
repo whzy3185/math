@@ -78,9 +78,10 @@ theorem and the residue-specific IMS ranges, the remaining finite rows are:
 | 6 | `54,62,...,238` | 24 |
 | total | | 45 |
 
-This is a reduction of 51 exact LDL certificates. It does not prove a
-transfer-power theorem for the nonzero residues, so the 45 remaining rows are
-still `FINITE_FORMAL_PROVED` backup evidence.
+The first reduction left 45 rows. The additional exact period-10, 12, 14, 18,
+and 22 Floquet families now cover 20 more rows; see
+`PERIODIC_COUNTEREXAMPLE_COVERAGE.md`. The remaining 25 rows are still
+`FINITE_FORMAL_PROVED` backup evidence.
 
 ## Attempted F1--F4 routes and current obstruction
 

@@ -46,6 +46,7 @@ REQUIRED_DOCUMENTS = (
     "LEAN_THEOREM_MAP.md",
     "LEAN_BUILD_STATUS.md",
     "UNIFORM_RESIDUE_CAP_PROGRAM.md",
+    "PERIODIC_COUNTEREXAMPLE_COVERAGE.md",
 )
 
 EXACT_VERIFIERS = (
@@ -132,6 +133,15 @@ def verify(full: bool = False) -> dict[str, int]:
     )
     require("T2 = 198/25" in residue_caps and "Riccati" in residue_caps,
             "uniform residue-cap reduction is absent")
+    periodic = (CLOSURE / "PERIODIC_COUNTEREXAMPLE_COVERAGE.md").read_text(
+        encoding="utf-8"
+    )
+    require(
+        all(f"| {period} |" in periodic for period in (10, 12, 14, 18, 22)),
+        "auxiliary periodic-family record is absent",
+    )
+    require("stop rule" in periodic and "25" in periodic,
+            "periodic-family boundary or accounting is absent")
 
     if full:
         for verifier in EXACT_VERIFIERS:
