@@ -63,6 +63,14 @@ This removes the multiplicity ambiguity and halves the transfer dimension.
 The boundary magnetic flux prevents a complete real gauge, so a scalar
 Perron/M-matrix argument is unavailable.
 
+An independent exact Schur reduction gives a second route.  In the
+interior-first order, retaining four left-boundary and eight forward vertices
+produces a fixed `12 x 12` rational state.  The repeated bulk update is
+independent of `n`; after it, a fixed `8 x 8` boundary Schur complement
+remains.  This has been checked exactly against the full LDL factorization at
+the six former residue-two finite base orders.  See
+`R2_SCHUR_RICCATI_REDUCTION.md`.
+
 ## Proposed analytic closure
 
 At each fixed energy `T_r`, write `M_n=T_r I-A_n^2`. In an interior-first

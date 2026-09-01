@@ -47,6 +47,7 @@ REQUIRED_DOCUMENTS = (
     "LEAN_BUILD_STATUS.md",
     "UNIFORM_RESIDUE_CAP_PROGRAM.md",
     "PERIODIC_COUNTEREXAMPLE_COVERAGE.md",
+    "R2_SCHUR_RICCATI_REDUCTION.md",
 )
 
 EXACT_VERIFIERS = (
@@ -142,6 +143,11 @@ def verify(full: bool = False) -> dict[str, int]:
     )
     require("stop rule" in periodic and "25" in periodic,
             "periodic-family boundary or accounting is absent")
+    r2_schur = (CLOSURE / "R2_SCHUR_RICCATI_REDUCTION.md").read_text(
+        encoding="utf-8"
+    )
+    require("12 x 12" in r2_schur and "8 x 8" in r2_schur,
+            "residue-two fixed-width Schur reduction is absent")
 
     if full:
         for verifier in EXACT_VERIFIERS:
