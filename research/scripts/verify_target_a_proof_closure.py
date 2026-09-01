@@ -51,6 +51,7 @@ REQUIRED_DOCUMENTS = (
     "R2_BLOCK_SCHUR_THEOREM.md",
     "R2_BULK_INVARIANT_BOX.md",
     "R2_K_REDUCTION_COMPARISON.md",
+    "R2_BULK_HYPERBOLICITY.md",
 )
 
 EXACT_VERIFIERS = (
@@ -166,6 +167,11 @@ def verify(full: bool = False) -> dict[str, int]:
     )
     require("not used\nas a second propagation program" in r2_k,
             "residue-two K-route decision is absent")
+    r2_hyper = (CLOSURE / "R2_BULK_HYPERBOLICITY.md").read_text(
+        encoding="utf-8"
+    )
+    require("strictly below `1/3`" in r2_hyper,
+            "residue-two bulk multiplier bound is absent")
 
     if full:
         for verifier in EXACT_VERIFIERS:
