@@ -37,6 +37,14 @@ REQUIRED_DOCUMENTS = (
     "MANUSCRIPT_ARCHITECTURE_PLAN.md",
     "CITATION_PLACEMENT_PLAN.md",
     "SUPPLEMENT_BOUNDARY_PLAN.md",
+    "ANALYTIC_PROOF_PROGRAM.md",
+    "EQUALITY_ANALYTIC_SEARCH.md",
+    "FINITE_TAIL_ANALYTIC_SEARCH.md",
+    "G6_ANALYTIC_REDUCTION.md",
+    "FINAL_THEOREM_PROOF_MAP.md",
+    "ANALYTIC_PROOF_RED_TEAM.md",
+    "LEAN_THEOREM_MAP.md",
+    "LEAN_BUILD_STATUS.md",
 )
 
 EXACT_VERIFIERS = (
@@ -102,6 +110,22 @@ def verify(full: bool = False) -> dict[str, int]:
             "architecture plan crosses the manuscript freeze")
     require("Exact finite failures and universal optimality" in architecture,
             "finite proof section lacks a proof role")
+
+    analytic = (CLOSURE / "ANALYTIC_PROOF_PROGRAM.md").read_text(encoding="utf-8")
+    require("T10 failures 32/40" in analytic and "ANALYTIC_PROVED" in analytic,
+            "period-eight analytic replacement is absent")
+    finite_tail = (CLOSURE / "FINITE_TAIL_ANALYTIC_SEARCH.md").read_text(
+        encoding="utf-8"
+    )
+    require("remaining finite rows are" in finite_tail and "45" in finite_tail,
+            "finite-tail compression is absent")
+    equality = (CLOSURE / "EQUALITY_ANALYTIC_SEARCH.md").read_text(
+        encoding="utf-8"
+    )
+    require("not yet an analytic proof" in equality,
+            "finite-language boundary is overstated")
+    g6 = (CLOSURE / "G6_ANALYTIC_REDUCTION.md").read_text(encoding="utf-8")
+    require("does not imply" in g6, "G6 physical-branch boundary is absent")
 
     if full:
         for verifier in EXACT_VERIFIERS:
