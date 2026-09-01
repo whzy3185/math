@@ -53,6 +53,7 @@ REQUIRED_DOCUMENTS = (
     "R2_K_REDUCTION_COMPARISON.md",
     "R2_BULK_HYPERBOLICITY.md",
     "R2_BOUNDARY_RESPONSE_REDUCTION.md",
+    "ANALYTIC_GAP_AUDIT_CURRENT.md",
 )
 
 EXACT_VERIFIERS = (
@@ -178,6 +179,18 @@ def verify(full: bool = False) -> dict[str, int]:
     )
     require("R_(j+1)" in r2_boundary and "six-by-six" in r2_boundary,
             "residue-two boundary response reduction is absent")
+    gap_audit = (CLOSURE / "ANALYTIC_GAP_AUDIT_CURRENT.md").read_text(
+        encoding="utf-8"
+    )
+    for phrase in (
+        "EXACT_COMPUTER_ASSISTED_ONLY",
+        "P0-1: residue-two boundary response closure",
+        "P0-2: common finite-interface theorem for residues four and six",
+        "P0-3: analytic local obstruction for equality at 34 and 36",
+        "P0-4: recurrent-core rigidity for equality at 38,42,44,46",
+        "Do not call the global G6 edge a pure analytic theorem",
+    ):
+        require(phrase in gap_audit, f"analytic-gap audit omits: {phrase}")
 
     if full:
         for verifier in EXACT_VERIFIERS:
