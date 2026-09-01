@@ -52,6 +52,7 @@ REQUIRED_DOCUMENTS = (
     "R2_BULK_INVARIANT_BOX.md",
     "R2_K_REDUCTION_COMPARISON.md",
     "R2_BULK_HYPERBOLICITY.md",
+    "R2_BOUNDARY_RESPONSE_REDUCTION.md",
 )
 
 EXACT_VERIFIERS = (
@@ -172,6 +173,11 @@ def verify(full: bool = False) -> dict[str, int]:
     )
     require("strictly below `1/3`" in r2_hyper,
             "residue-two bulk multiplier bound is absent")
+    r2_boundary = (CLOSURE / "R2_BOUNDARY_RESPONSE_REDUCTION.md").read_text(
+        encoding="utf-8"
+    )
+    require("R_(j+1)" in r2_boundary and "six-by-six" in r2_boundary,
+            "residue-two boundary response reduction is absent")
 
     if full:
         for verifier in EXACT_VERIFIERS:
