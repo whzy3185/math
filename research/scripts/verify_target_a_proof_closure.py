@@ -1,0 +1,118 @@
+"""Fail-closed audit entry point for the Target A proof-closure package."""
+
+from __future__ import annotations
+
+import argparse
+import subprocess
+import sys
+from pathlib import Path
+
+from pypdf import PdfReader
+
+
+REPO = Path(__file__).resolve().parents[2]
+CLOSURE = REPO / "research" / "proof_closure"
+SUVAGIYA = (
+    REPO
+    / "research"
+    / "related_work"
+    / "papers"
+    / "core"
+    / "2026_Suvagiya_SignedCirculants_PREPRINT.pdf"
+)
+
+REQUIRED_DOCUMENTS = (
+    "BASELINE_FREEZE.md",
+    "SUVAGIYA_CLAIM_SOURCE_MAP.md",
+    "PROOF_PROVENANCE_MAP.md",
+    "PROOF_OBLIGATION_MATRIX.md",
+    "TWISTED_SIGNING_SPECTRUM.md",
+    "PHASE_SLIP_AND_G6_CLOSURE.md",
+    "ANALYTIC_THRESHOLD_LEDGER.md",
+    "FINITE_CERTIFICATE_SEMANTICS.md",
+    "ORDER_COVERAGE_LEDGER.md",
+    "FINAL_MATHEMATICAL_PROOF_STATUS.md",
+    "STRUCTURE_REFERENCE_AUDIT.md",
+    "THEOREM_DEPENDENCY_DAG.md",
+    "MANUSCRIPT_ARCHITECTURE_PLAN.md",
+    "CITATION_PLACEMENT_PLAN.md",
+    "SUPPLEMENT_BOUNDARY_PLAN.md",
+)
+
+EXACT_VERIFIERS = (
+    "research/scripts/verify_target_a_task50_interface.py",
+    "research/scripts/verify_target_a_task51.py",
+    "research/scripts/verify_target_a_task53_a2.py",
+    "research/scripts/verify_target_a_task53_a3.py",
+    "research/scripts/verify_target_a_task55_exact_2r.py",
+    "research/scripts/verify_target_a_task55_single_gap.py",
+    "research/scripts/verify_target_a_task56_single_gap.py",
+    "research/scripts/verify_target_a_task57_uniform_single_gap.py",
+    "research/scripts/verify_target_a_minimality_certificate.py",
+    "research/scripts/verify_target_a_n32_certificate.py",
+    "research/scripts/verify_target_a_task55_small_order_exact.py",
+    "research/scripts/verify_target_a_task55_orders_34_46.py",
+    "research/scripts/verify_target_a_task54_threshold.py",
+)
+
+
+def require(condition: bool, message: str) -> None:
+    if not condition:
+        raise AssertionError(message)
+
+
+def verify(full: bool = False) -> dict[str, int]:
+    for name in REQUIRED_DOCUMENTS:
+        require((CLOSURE / name).is_file(), f"missing closure document: {name}")
+
+    source_map = (CLOSURE / "SUVAGIYA_CLAIM_SOURCE_MAP.md").read_text(
+        encoding="utf-8"
+    )
+    for phrase in (
+        "Conjecture 3",
+        "{8,10,12,14,16,18}",
+        "`32`",
+        "every even `n>=48`",
+    ):
+        require(phrase in source_map, f"Suvagiya source map omits: {phrase}")
+
+    source_text = "\n".join(page.extract_text() or "" for page in PdfReader(SUVAGIYA).pages)
+    require("Conjecture 3" in source_text, "source PDF lacks Conjecture 3")
+    require("{8,10,12,14,16,18}" in source_text.replace(" ", ""),
+            "source PDF check-range mismatch")
+
+    matrix = (CLOSURE / "PROOF_OBLIGATION_MATRIX.md").read_text(encoding="utf-8")
+    require("| CLASS |" in matrix, "classification row missing")
+    require("CLOSED_EXACT_COMPUTER_ASSISTED" in matrix, "closed status absent")
+    require("B0 -> B2" in matrix and "| OPEN |" in matrix,
+            "open interface boundary omitted")
+
+    coverage = (CLOSURE / "ORDER_COVERAGE_LEDGER.md").read_text(encoding="utf-8")
+    for phrase in ("8,10,12,14,16,18,20,22,24,26,28,30", "`32`", "`40`", "48<=n<240", "n>=240"):
+        require(phrase in coverage, f"coverage gap in ledger: {phrase}")
+
+    dag = (CLOSURE / "THEOREM_DEPENDENCY_DAG.md").read_text(encoding="utf-8")
+    require("complete classification theorem" in dag, "classification DAG sink absent")
+    require("This graph is acyclic." in dag, "DAG cycle audit absent")
+
+    architecture = (CLOSURE / "MANUSCRIPT_ARCHITECTURE_PLAN.md").read_text(
+        encoding="utf-8"
+    )
+    require("does not modify any manuscript source" in architecture,
+            "architecture plan crosses the manuscript freeze")
+    require("Exact finite failures and universal optimality" in architecture,
+            "finite proof section lacks a proof role")
+
+    if full:
+        for verifier in EXACT_VERIFIERS:
+            subprocess.run([sys.executable, verifier], cwd=REPO, check=True)
+
+    return {"documents": len(REQUIRED_DOCUMENTS), "verifiers": len(EXACT_VERIFIERS) if full else 0}
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--full", action="store_true")
+    args = parser.parse_args()
+    report = verify(full=args.full)
+    print("TARGET_A_PROOF_CLOSURE_PASS", report)
