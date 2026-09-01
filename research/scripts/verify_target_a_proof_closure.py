@@ -48,6 +48,9 @@ REQUIRED_DOCUMENTS = (
     "UNIFORM_RESIDUE_CAP_PROGRAM.md",
     "PERIODIC_COUNTEREXAMPLE_COVERAGE.md",
     "R2_SCHUR_RICCATI_REDUCTION.md",
+    "R2_BLOCK_SCHUR_THEOREM.md",
+    "R2_BULK_INVARIANT_BOX.md",
+    "R2_K_REDUCTION_COMPARISON.md",
 )
 
 EXACT_VERIFIERS = (
@@ -148,6 +151,21 @@ def verify(full: bool = False) -> dict[str, int]:
     )
     require("12 x 12" in r2_schur and "8 x 8" in r2_schur,
             "residue-two fixed-width Schur reduction is absent")
+    r2_block = (CLOSURE / "R2_BLOCK_SCHUR_THEOREM.md").read_text(
+        encoding="utf-8"
+    )
+    require("state is a symmetric four-by-four matrix" in r2_block,
+            "residue-two minimal propagated state is absent")
+    r2_box = (CLOSURE / "R2_BULK_INVARIANT_BOX.md").read_text(
+        encoding="utf-8"
+    )
+    require("membership in `B0` after four block pivots" in r2_box,
+            "residue-two invariant box is absent")
+    r2_k = (CLOSURE / "R2_K_REDUCTION_COMPARISON.md").read_text(
+        encoding="utf-8"
+    )
+    require("not used\nas a second propagation program" in r2_k,
+            "residue-two K-route decision is absent")
 
     if full:
         for verifier in EXACT_VERIFIERS:
