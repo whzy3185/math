@@ -45,6 +45,7 @@ REQUIRED_DOCUMENTS = (
     "ANALYTIC_PROOF_RED_TEAM.md",
     "LEAN_THEOREM_MAP.md",
     "LEAN_BUILD_STATUS.md",
+    "UNIFORM_RESIDUE_CAP_PROGRAM.md",
 )
 
 EXACT_VERIFIERS = (
@@ -126,6 +127,11 @@ def verify(full: bool = False) -> dict[str, int]:
             "finite-language boundary is overstated")
     g6 = (CLOSURE / "G6_ANALYTIC_REDUCTION.md").read_text(encoding="utf-8")
     require("does not imply" in g6, "G6 physical-branch boundary is absent")
+    residue_caps = (CLOSURE / "UNIFORM_RESIDUE_CAP_PROGRAM.md").read_text(
+        encoding="utf-8"
+    )
+    require("T2 = 198/25" in residue_caps and "Riccati" in residue_caps,
+            "uniform residue-cap reduction is absent")
 
     if full:
         for verifier in EXACT_VERIFIERS:
