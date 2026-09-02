@@ -48,6 +48,11 @@ right analytic object is a **two-arc response system**, not a single bulk
 Riccati orbit with two isolated exceptional blocks.  This was checked by
 direct exact block extraction at orders 52 and 60.
 
+The exact template verifier now checks at orders 52, 60, 68, and 76 that the
+partition consisting of one four-site block followed by eight-site cells
+covers every vertex and makes \(T_4I-A^2\) cyclic block-tridiagonal.  This
+establishes the algebraic reduction input, not the required positive cap.
+
 ## What cannot be shared blindly
 
 The residue-two proof does not transfer verbatim.
