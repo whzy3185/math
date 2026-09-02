@@ -73,7 +73,9 @@ The inverse perturbation identity and the lower bounds
 \(X,F_+(X)\succeq I/3\) imply, in upper-triangular coordinate norm,
 
 \[
-\|L(X)-L(X_{12})\|_P<10^{-4}.
+\|L(X)-L(X_{12})\|_P<10^{-4},
+\qquad
+\|L(X)-L(X_{12})\|_Q<10^{-4}.
 \]
 
 For clarity, a deliberately loose derivation uses
@@ -83,10 +85,14 @@ Lipschitz constant is below \(1.5\cdot141000\), which is still below
 \(10^6\); multiplying by the radius \(10^{-10}\) gives the displayed
 bound with substantial slack after the norm-equivalence factors are applied.
 
-Since \(\sqrt{2/5}<2/3-10^{-4}\), it follows that
+Since both metrics satisfy the same rational norm sandwich and
+\(\sqrt{2/5}<2/3-10^{-4}\), it follows that
 
 \[
-\|L(X)\|_P<\frac23\qquad(X\in\mathcal B).
+\|L(X)\|_P<\frac23,
+\qquad
+\|L(X)\|_Q<\frac23
+\qquad(X\in\mathcal B).
 \]
 
 Thus every response product that remains in the local bulk regime has a

@@ -1,0 +1,27 @@
+# Line audit of the residue-two tail draft
+
+## Scope
+
+This audit examines only the proposed analytic tail from the exact response
+entrance to the cyclic boundary core.  It does not certify the all-even
+classification or any nonzero residue other than two.
+
+## Findings
+
+| Check | Verdict | Evidence / required repair |
+|---|---|---|
+| Exact response recurrence | PASS | The terminal rule `W_final = W_propagated + E_terminal` is reconstructed and agrees with direct rational Schur elimination at six orders. |
+| Orientation of response metric | REPAIRED | Row responses require `L Q L^T`, not only `L^T P L`. The dual rational matrix `Q` is now checked and the local perturbation statement records the Q-norm as well. |
+| Bulk entrance into local ball | PASS | `X_12=Phi^12(D)` is exact; the local self-map proof applies from that point. |
+| Response entrance | PASS | Exact bounds after 24 block eliminations are checked with Fraction-LDL. |
+| Seed positivity | PASS | `S_410-9I/20` is positive definite by exact fixed-core LDL. |
+| Tail indexing | PENDING | The proof must write the exact reindexing of right-response terms when chain length changes, including the 38 complete two-cell count at `m=102`. |
+| Tail constants | PENDING | The stated coarse bounds are plausible from the displayed norms, but each contribution to `G,H,C` must be itemized in one fixed inequality table before theorem promotion. |
+| Limit parity | PENDING | The proof must state that the residue-two family has even block count `m=2k`, so a single period-two limiting core is being used. |
+
+## Promotion rule
+
+Do not change `ANALYTIC_TAIL_DRAFT_PENDING_LINE_AUDIT` until the last three
+rows are discharged with a deterministic symbolic/rational calculation or a
+fully written hand derivation.  No numerical comparison of `S_250`, `S_410`,
+or larger cores can discharge them.
