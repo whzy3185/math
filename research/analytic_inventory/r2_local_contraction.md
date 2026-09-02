@@ -60,14 +60,14 @@ are
 \[
 \|DF_E(X)\|\le216,
 \qquad
-\|D^2F_E(X)\|\le1728.
+\|D^2F_E(X)\|\le2000.
 \]
 
 The chain rule for \(\Phi=F_-\circ F_+\) then yields
 
 \[
 \|D\Phi(X)-D\Phi(X_{12})\|_W
-<\frac1{70}
+<\frac1{60}
 \qquad(X\in\mathcal B).
 \]
 
@@ -77,7 +77,7 @@ uses \(9I/10\preceq W\preceq2I\): one may use the conservative factors
 inequality gives
 
 \[
-\|D\Phi(X)\|_W<\frac12+\frac1{70}=\frac{18}{35}.
+\|D\Phi(X)\|_W<\frac12+\frac1{60}=\frac{31}{60}.
 \]
 
 Finally the centre residual has \(W\)-norm below \(3\cdot10^{-10}/80\).
@@ -85,7 +85,7 @@ Thus
 
 \[
 \|\Phi(X)-X_{12}\|_W
-\le \frac3{80}10^{-10}+\frac{18}{35}10^{-10}<10^{-10},
+\le \frac3{80}10^{-10}+\frac{31}{60}10^{-10}<10^{-10},
 \]
 
 so \(\Phi(\mathcal B)\subset\mathcal B\).  Banach's theorem proves the
