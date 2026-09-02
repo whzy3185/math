@@ -14,6 +14,9 @@ import verify_target_a_r2_schur_reduction as reduction
 
 
 RADIUS = Fraction(1, 10**10)
+MATRIX_PERTURBATION_FACTOR = Fraction(33, 20)
+DPHI_LIPSCHITZ_BOUND = Fraction(7_000_000)
+WEIGHTED_NORM_CONVERSION = Fraction(3, 2)
 W0 = (
     (10125, 118, 156, -171, 30, 73, -78, 64, -140, 77),
     (118, 10141, 107, -96, 39, 79, -79, 24, -32, 6),
@@ -160,6 +163,14 @@ def verify():
             subtract(scale(Fraction(6, 25), weight), multiply(transpose(derivative), multiply(weight, derivative)))
         ),
         "residual_lt_radius_over_40": residual_squared < (RADIUS / 40) ** 2,
+        "matrix_perturbation_below_one_sixth": MATRIX_PERTURBATION_FACTOR * RADIUS < Fraction(1, 6),
+        "dphi_neighbourhood_variation_below_one_sixtieth": (
+            WEIGHTED_NORM_CONVERSION
+            * DPHI_LIPSCHITZ_BOUND
+            * MATRIX_PERTURBATION_FACTOR
+            * RADIUS
+            < Fraction(1, 60)
+        ),
         "response_weight_ge_nine_tenths_identity": positive_definite(
             subtract(response_weight, scale(Fraction(9, 10), identity4))
         ),

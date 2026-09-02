@@ -59,15 +59,33 @@ and differentiation once more, the deliberately coarse coordinate bounds
 are
 
 \[
-\|DF_E(X)\|\le216,
+\|DF_E(X)\|\le126,
 \qquad
-\|D^2F_E(X)\|\le2000.
+\|DF_E(X)-DF_E(X_0)\|\le420\|X-X_0\|_2.
 \]
 
-The chain rule for \(\Phi=F_-\circ F_+\) then yields
+More explicitly, the \(W\)-ball gives the matrix perturbation estimate
+
+\[
+\|X-X_{12}\|_2\le\frac{33}{20}\,10^{-10}=:\varepsilon.
+\]
+
+The inverse identity gives
+\(\|X^{-1}-X_{12}^{-1}\|_2\le6\varepsilon\), and hence
+\(\|F_+(X)-F_+(X_{12})\|_2\le126\varepsilon\).  Applying the preceding
+derivative estimate twice in the chain rule gives the deliberately loose
+bound
+
+\[
+\|D\Phi(X)-D\Phi(X_{12})\|_2
+\le7{,}000{,}000\varepsilon.
+\]
+
+The coordinate-to-\(W\)-norm conversion is at most \(3/2\), so
 
 \[
 \|D\Phi(X)-D\Phi(X_{12})\|_W
+\le\frac32\cdot7{,}000{,}000\cdot\frac{33}{20}\,10^{-10}
 <\frac1{60}
 \qquad(X\in\mathcal B).
 \]
