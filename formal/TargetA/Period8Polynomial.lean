@@ -97,4 +97,13 @@ theorem period8_polynomial_positive {y c : ℝ}
     0 < period8Polynomial y c :=
   lt_of_lt_of_le (period8_at_two_positive hy) (period8_polynomial_monotone_in_flux hy hc)
 
+theorem period8_root_lt_bound {y c : ℝ} (hc : c ≤ 2)
+    (hroot : period8Polynomial y c = 0) :
+    y < period8Bound := by
+  by_contra h
+  have hy : period8Bound ≤ y := le_of_not_gt h
+  have hpositive : 0 < period8Polynomial y c :=
+    period8_polynomial_positive hy hc
+  linarith
+
 end TargetA
