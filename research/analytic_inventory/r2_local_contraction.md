@@ -91,6 +91,19 @@ Thus
 so \(\Phi(\mathcal B)\subset\mathcal B\).  Banach's theorem proves the
 claim.
 
+## Consequence for the actual bulk orbit
+
+No separate entrance theorem is needed for the standard bulk initial state:
+by definition \(X_{12}=\Phi^{12}(D)\).  The first twelve two-step iterates
+are finite rational matrices, and the companion exact data checks show that
+the centre and intervening one-step pivot have a uniform lower bound.  From
+the twelfth two-step iterate onwards the contraction argument applies.
+
+Together with the already direct finite entrance calculation, this gives an
+all-length analytic proof that every repeated residue-two bulk pivot is
+positive.  The statement concerns the open bulk chain only.  It does not
+settle the cyclic wrap-around boundary core.
+
 ## Boundary
 
 This lemma proves only the bulk two-cycle.  It does not yet bound the
