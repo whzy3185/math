@@ -10,6 +10,7 @@ from __future__ import annotations
 from fractions import Fraction
 
 from verify_target_a_r2_bulk_invariant_box import D, E_MINUS, E_PLUS, inverse, riccati
+import verify_target_a_r2_schur_reduction as reduction
 
 
 RADIUS = Fraction(1, 10**10)
@@ -108,6 +109,31 @@ def jacobian(center):
     return transpose(columns)
 
 
+def response_entrance(dual_weight):
+    """Exact response data after 24 open-chain block eliminations."""
+    matrix = reduction._matrix(50)
+    blocks = [[0, 1]] + [list(range(2 + 4 * j, 6 + 4 * j)) for j in range(12)]
+
+    def block(i, j):
+        return [[matrix[row][column] / 25 for column in blocks[j]] for row in blocks[i]]
+
+    left = block(0, 1)
+    right = block(1, 12)
+    pivot = block(1, 1)
+    for index in range(1, 25):
+        coupling = E_PLUS if index % 2 else E_MINUS
+        pivot_inverse = inverse(pivot)
+        left = [[-entry for entry in row] for row in multiply(left, multiply(pivot_inverse, coupling))]
+        right = [[-entry for entry in row] for row in multiply(transpose(coupling), multiply(pivot_inverse, right))]
+        pivot = subtract(D, multiply(transpose(coupling), multiply(pivot_inverse, coupling)))
+    bound2 = [[Fraction(1, 10**10) if i == j else Fraction(0) for j in range(2)] for i in range(2)]
+    bound4 = [[Fraction(1, 10**10) if i == j else Fraction(0) for j in range(4)] for i in range(4)]
+    return {
+        "left_small": positive_definite(subtract(bound2, multiply(left, multiply(dual_weight, transpose(left))))),
+        "right_small": positive_definite(subtract(bound4, multiply(transpose(right), multiply(dual_weight, right)))),
+    }
+
+
 def verify():
     center = [row[:] for row in D]
     for _ in range(12):
@@ -159,6 +185,7 @@ def verify():
             )
         ),
     }
+    checks.update({f"response_entrance_{key}": value for key, value in response_entrance(response_dual_weight).items()})
     if not all(checks.values()):
         raise AssertionError(checks)
     return {

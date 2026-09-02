@@ -92,6 +92,24 @@ Since \(\sqrt{2/5}<2/3-10^{-4}\), it follows that
 Thus every response product that remains in the local bulk regime has a
 geometric \((2/3)^j\) bound in the correctly oriented \(Q\)-norm.
 
+## Exact entrance bound
+
+Starting with the three fixed wrap couplings and carrying out 24 open-chain
+block eliminations gives exact rational response matrices satisfying
+
+\[
+RQ R^{\mathsf T}\prec10^{-10}I_2,
+\qquad
+W^{\mathsf T}QW\prec10^{-10}I_4.
+\]
+
+This finite entrance calculation is checked by the same Fraction verifier.
+Combined with the local two-cell \(Q\)-contraction, it supplies an explicit
+geometric bound on all later propagated response terms.  The only remaining
+work for the residue-two family is to insert these bounds into the fixed
+terminal-coupling formula for the six-by-six core and derive one rational
+tail inequality.
+
 ## Scope
 
 This is not yet the cyclic boundary theorem.  The final core also contains
