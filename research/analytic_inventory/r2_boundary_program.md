@@ -90,6 +90,23 @@ The proof must bound the actual response products.  It may not infer a norm
 bound solely from the reciprocal multiplier roots, because a transfer
 eigenvalue bound need not control the chosen finite coordinate chart.
 
+## First rejected shortcut
+
+The direct Euclidean operator-norm estimate on the existing Loewner boxes is
+not contractive.  The elementary bound
+
+\[
+\|DF_E(X)\|\leq\|X^{-1}E\|_2^2
+\]
+
+gives approximately \(1.01990\) for each alternating step, and approximately
+\(1.04020\) for their product when evaluated at the rational lower-box
+corners.  These figures are diagnostics, not proof data, but they rule out
+using this unweighted estimate as a contraction argument.
+
+The next legitimate options are a weighted Lyapunov/cone metric for the
+linearized two-cycle, or a direct Woodbury estimate on the boundary response.
+
 ## Stop rule
 
 Abandon this route if the response map fails to be contractive on every
