@@ -27,6 +27,27 @@ The statement was checked at two different admissible orders in each residue:
 \(52,60\) and \(54,62\).  The locations of the finite defect patterns vary
 with the balanced gap placement, but their matrix types do not proliferate.
 
+### Blocking correction
+
+A naive four-site blocking is unsuitable for residue four: the bulk has
+period eight, so the apparent number of non-modal four-site blocks grows with
+the order.  Reblocking as one four-site boundary block followed by eight-site
+cells exposes the correct structure:
+
+\[
+\text{fixed boundary/interface data}
+\; + \;
+\text{period-eight arc I}
+\; + \;
+\text{period-eight arc II}.
+\]
+
+The arcs can carry different translates of the same period-eight bulk.  Their
+lengths vary with the balanced placement of the two G6 slips.  Hence the
+right analytic object is a **two-arc response system**, not a single bulk
+Riccati orbit with two isolated exceptional blocks.  This was checked by
+direct exact block extraction at orders 52 and 60.
+
 ## What cannot be shared blindly
 
 The residue-two proof does not transfer verbatim.
@@ -42,7 +63,8 @@ The residue-two proof does not transfer verbatim.
 ## Proposed work order
 
 1. **R4 template.**  Fix the symmetric two-G6 word, derive its four-site
-   block matrix at \(T_4\), and isolate the finite two-interface core.
+   boundary plus eight-site two-arc matrix at \(T_4\), and isolate the
+   finite two-interface core.
 2. **R4 bulk.**  Search for a rational invariant two-cycle and local
    Lyapunov metric, as in residue two.
 3. **R4 boundary.**  Derive a response recurrence with two arc responses and
