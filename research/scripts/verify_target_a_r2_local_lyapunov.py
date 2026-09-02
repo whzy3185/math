@@ -31,6 +31,12 @@ P0 = (
     (19, 148, 10093, -25),
     (974, -2418, -25, 14009),
 )
+Q0 = (
+    (11503, 614, 990, -1101),
+    (614, 10470, 15, 113),
+    (990, 15, 12299, -2632),
+    (-1101, 113, -2632, 13260),
+)
 
 
 def transpose(matrix):
@@ -114,6 +120,7 @@ def verify():
     identity10 = [[Fraction(i == j) for j in range(10)] for i in range(10)]
     weight = [[Fraction(entry, 10**4) for entry in row] for row in W0]
     response_weight = [[Fraction(entry, 10**4) for entry in row] for row in P0]
+    response_dual_weight = [[Fraction(entry, 10**4) for entry in row] for row in Q0]
     derivative = jacobian(center)
     response_transfer = multiply(
         multiply(inverse(center), E_PLUS), multiply(inverse(middle), E_MINUS)
@@ -137,6 +144,18 @@ def verify():
             subtract(
                 scale(Fraction(2, 5), response_weight),
                 multiply(transpose(response_transfer), multiply(response_weight, response_transfer)),
+            )
+        ),
+        "response_dual_weight_ge_nine_tenths_identity": positive_definite(
+            subtract(response_dual_weight, scale(Fraction(9, 10), identity4))
+        ),
+        "response_dual_weight_le_two_identity": positive_definite(
+            subtract(scale(Fraction(2), identity4), response_dual_weight)
+        ),
+        "response_dual_transfer_two_fifths": positive_definite(
+            subtract(
+                scale(Fraction(2, 5), response_dual_weight),
+                multiply(response_transfer, multiply(response_dual_weight, transpose(response_transfer))),
             )
         ),
     }

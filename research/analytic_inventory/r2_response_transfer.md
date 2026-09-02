@@ -38,6 +38,29 @@ L^{\mathsf T}PL\prec\frac25P.
 Therefore the centre two-cell response transfer contracts the \(P\)-norm by
 strictly less than \(\sqrt{2/5}\).
 
+For row-response propagation one needs the dual orientation.  Define
+
+\[
+Q=10^{-4}
+\begin{pmatrix}
+11503&614&990&-1101\\
+614&10470&15&113\\
+990&15&12299&-2632\\
+-1101&113&-2632&13260
+\end{pmatrix}.
+\]
+
+Exact rational LDL checks also give
+
+\[
+\frac9{10}I\preceq Q\preceq2I,
+\qquad LQL^{\mathsf T}\prec\frac25Q.
+\]
+
+This is the correctly oriented certificate for \(R\mapsto RL\) and
+\(W\mapsto L^{\mathsf T}W\).  The earlier \(P\)-certificate controls the
+column/linearized Riccati action; both metrics are needed.
+
 ## Uniform local transfer bound
 
 On the Riccati ball \(\mathcal B\) from `r2_local_contraction.md`, write
@@ -67,7 +90,7 @@ Since \(\sqrt{2/5}<2/3-10^{-4}\), it follows that
 \]
 
 Thus every response product that remains in the local bulk regime has a
-geometric \((2/3)^j\) bound in the \(P\)-norm.
+geometric \((2/3)^j\) bound in the correctly oriented \(Q\)-norm.
 
 ## Scope
 
