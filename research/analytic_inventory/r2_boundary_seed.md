@@ -4,7 +4,7 @@ The exact fixed-width Schur reduction at \(n=250\) gives an eight-by-eight
 rational final core \(S_{250}\).  Fraction-LDL elimination verifies
 
 \[
-S_{250}-\frac25I_8\succ0.
+S_{250}-\frac9{20}I_8\succ0.
 \]
 
 This is a finite exact seed, not an all-length proof.  Its role is to provide
@@ -13,7 +13,7 @@ a fixed positive margin for the final step of the analytic boundary argument.
 The remaining theorem is:
 
 \[
-\|S_{8k+2}-S_{250}\|<\frac1{50}
+\|S_{8k+2}-S_{250}\|<\frac1{20}
 \qquad(k\ge31),
 \]
 
