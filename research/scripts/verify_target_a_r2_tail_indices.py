@@ -31,8 +31,8 @@ def verify():
         "quadratic_series_below_one_over_billion": (
             Fraction(48, 10**8) * Q**76 / (1 - Q**2) < Fraction(1, 10**9)
         ),
-        "terminal_cross_bound_below_one_over_million": (
-            24 * Fraction(4, 10**4) * Q**38 < Fraction(1, 10**6)
+        "terminal_cross_bound_below_two_nanounits": (
+            24 * Fraction(4, 10**4) * Q**38 < Fraction(2, 10**9)
         ),
     }
     if not all(checks.values()):

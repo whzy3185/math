@@ -94,7 +94,7 @@ The terminal cross term in (B) has norm at most
 
 \[
 2\|E_+\|_F\|X^{-1}\|_2\|W_{m-1}\|_2
-<24\cdot4\cdot10^{-4}q^{38}<10^{-9}.
+<24\cdot4\cdot10^{-4}q^{38}<2\cdot10^{-9}.
 \tag{C}
 \]
 
