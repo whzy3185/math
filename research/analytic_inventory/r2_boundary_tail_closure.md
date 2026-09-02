@@ -27,9 +27,10 @@ The local dual transfer theorem gives a two-cell contraction by \(2/3\) in
 the associated response norm.  The terminal core at the seed is separated
 from the entrance by at least 38 complete two-cell transfers.
 
-## Tail lemma
+## Tail lemma target
 
-The exact response recurrence has a limit \(S_\infty\), and
+The desired conclusion is that the exact response recurrence has a limit
+\(S_\infty\), with
 
 \[
 \|S_m-S_\infty\|_2<\frac1{2000}
@@ -48,7 +49,7 @@ This proves the residue-two family for \(n\ge410\).  The exact finite-base
 verifier covers the remaining orders \(50\le n<410\) with \(n\equiv2
 \pmod8\).
 
-## Proof of (3)
+## Reduction of (3)
 
 The proof uses the recurrence, not numerical convergence.  Split the tail
 into:
@@ -116,45 +117,31 @@ terminal cross term is bounded by
 <24\cdot3\cdot10^{-10}<10^{-8}.
 \]
 
-The quadratic Schur increments in \(G,H,C\) are bounded by a constant
-multiple of \((3\cdot10^{-5})^2q^{2h}\).  Even using the crude factor
-\(3\cdot12^2\) for the inverse and odd-step transfer, their geometric tail
-is below \(10^{-10}\).  Finally, because \(31/60<2/3\), (5) gives a
-terminal pivot error below \(2\cdot10^{-10}/125000\); after multiplication
-by the fixed boundary matrices and inverse bounds this is below \(10^{-9}\).
-Thus
+The remaining missing step is a **term-by-term majorant lemma**: it must
+bound the difference between the actual pivot inverses and their limiting
+two-cycle, then insert those bounds into every increment of \(G,H,C\).
+The informal phrase “a constant multiple” is not a proof of this lemma.
+Once its explicit rational constants have been supplied, the geometric-series
+calculation above will imply (3).  No floating difference between large
+finite cores may be used to supply the missing lemma.
+
+## Conditional residue-two theorem
+
+If (3) is proved, then the exact finite boundary base for
+\(50\le n<410\), together with (1), gives
 
 \[
-\|S_m-S_\infty\|_2<10^{-6}<\frac1{2000}
-\qquad(m\ge102),
+198I-25A_{8k+2}^2\succ0\qquad(k\ge6).
 \]
 
-which establishes (3).  All constants above are rational upper bounds; no
-floating difference between large finite cores is used.
-
-## Residue-two theorem
-
-For every \(n=8k+2\ge50\), the standard one-G6 signing satisfies
-
-\[
-198I-25A_n^2\succ0.
-\]
-
-For \(50\le n<410\), this follows from the exact six-by-six boundary base
-and the analytic bulk-pivot theorem.  For \(n\ge410\), it follows from
-(1)--(3).  Hence
-
-\[
-\rho(A_n)^2<\frac{198}{25}<\rho_-(n)^2.
-\]
-
-The final strict benchmark comparison holds at \(n=50\) by
-\(\cos t>1-t^2/2\) and \(\pi^2<10\), and remains true because
-\(\rho_-(n)^2\) increases with even \(n\).
+The benchmark comparison then yields
+\(\rho(A_{8k+2})^2<198/25<\rho_-(8k+2)^2\).  This conditional statement is
+recorded to make the final dependency explicit; it is not yet promoted to a
+theorem.
 
 ## Status
 
-`ANALYTIC_TAIL_DRAFT_PENDING_LINE_AUDIT`.  The proof has replaced the
-former unbounded LDL family by a local contraction, a response recurrence,
-an exact finite boundary base, and a geometric tail.  It must receive a
-separate line audit before being promoted into a manuscript theorem.
+`ANALYTIC_TAIL_MAJORANT_OPEN`.  The proof has reduced the former unbounded
+LDL family to one finite-dimensional majorant lemma.  It must not be promoted
+into a manuscript theorem until that lemma is explicit and independently
+audited.

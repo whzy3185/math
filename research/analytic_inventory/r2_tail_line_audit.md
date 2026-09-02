@@ -16,7 +16,7 @@ classification or any nonzero residue other than two.
 | Response entrance | PASS | Exact bounds after 24 block eliminations are checked with Fraction-LDL. |
 | Seed positivity | PASS | `S_410-9I/20` is positive definite by exact fixed-core LDL. |
 | Tail indexing | PASS | The open-chain sequences are length-independent; the terminal is at `j=m-1`, and `m=2k` makes its coupling parity fixed. At `m=102` this leaves 38 complete two-cell transfers after the 24-step entrance. |
-| Tail constants | PASS (internal) | The draft now separates the linear terminal cross term, quadratic Schur series, and pivot error. It still requires an independent human line audit before manuscript promotion. |
+| Tail constants | OPEN | The draft separates the linear terminal cross term, quadratic Schur series, and pivot error, but it does not yet provide an explicit term-by-term majorant for the pivot-inverse differences. |
 | Limit parity | PASS | The proof records that `m=2k` is even and therefore one fixed terminal parity defines the limiting core. |
 
 ## Promotion rule
