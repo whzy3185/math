@@ -162,8 +162,10 @@ is increasing for \(n\ge8\).  At \(n=32\), apply
 \qquad(0<t<1)
 \]
 
-to \(t=\pi/16\) and \(t=\pi/8\), using \(9<\pi^2<10\) in the
-favourable directions.  This gives
+to \(t=\pi/16\) and \(t=\pi/8\).  This inequality is the alternating Taylor
+bound: for \(0<t<1\), its omitted terms start with a positive term and
+decrease in magnitude.  Using \(9<\pi^2<10\) separately in each monomial
+in the favourable direction gives
 
 \[
 \rho_-(32)^2>
