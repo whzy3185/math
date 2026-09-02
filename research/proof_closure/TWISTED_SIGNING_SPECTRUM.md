@@ -23,7 +23,16 @@ where `theta_k=2pi k/n`. Hence its two eigenvalues are
 g(theta)=cos^2(theta)+cos^2(2theta).
 ```
 
-The sampled angles are `(2k+1)pi/n`. Put `u=cos^2(theta)`. Then `g(theta)=4u^2-3u+1`. On `[0,pi/2]`, this decreases until `cos^2(theta)=1/4` and then increases; the symmetry `g(pi-theta)=g(theta)` reduces the maximum on the shifted grid to the smallest positive angle, provided `g(pi/n)>1`. For even `n>=8`, `pi/n<=pi/8`, and
+The sampled angles are `(2k+1)pi/n`. Put `u=cos^2(theta)`. Then
+`g(theta)=4u^2-3u+1`. The symmetry `g(pi-theta)=g(theta)`
+reduces the grid to `[pi/n,pi/2]`. On `[pi/6,pi/2]`, one has
+`0<=u<=3/4` and hence `g(theta)<=1`. On `(0,pi/6]`,
+
+```text
+g'(theta)=-sin(2theta)(1+4cos(2theta))<0.
+```
+
+For even `n>=8`, `pi/n<=pi/8`, and
 
 ```text
 g(pi/n)>=g(pi/8)=(4+sqrt(2))/4>1.
