@@ -1,0 +1,77 @@
+import Mathlib
+
+namespace TargetA
+
+/-!
+The forward-edge part of the finite Hamilton-gauge realization. A periodic
+lift has coefficient one on a step-one edge and tau(i) on a step-two edge;
+crossing the cut from n - 1 back to 0 multiplies the coefficient by the
+holonomy alpha. The reverse entries are their symmetric counterparts.
+-/
+
+def periodEightValue (tau : Fin 8 → ℤ) (i : ℕ) : ℤ :=
+  tau ⟨i % 8, Nat.mod_lt _ (by omega)⟩
+
+def forwardStepOne (n : ℕ) (alpha : ℤ) (i : ℕ) : ℤ :=
+  if i + 1 < n then 1 else alpha
+
+def forwardStepTwo (n : ℕ) (alpha : ℤ) (tau : ℕ → ℤ) (i : ℕ) : ℤ :=
+  if i + 2 < n then tau i else alpha * tau i
+
+def IsSign (x : ℤ) : Prop := x = 1 ∨ x = -1
+
+theorem period_eight_value_is_sign (tau : Fin 8 → ℤ)
+    (htau : ∀ r, IsSign (tau r)) (i : ℕ) :
+    IsSign (periodEightValue tau i) := by
+  exact htau ⟨i % 8, Nat.mod_lt _ (by omega)⟩
+
+theorem forward_step_one_is_sign (n : ℕ) (alpha : ℤ) (halpha : IsSign alpha)
+    (i : ℕ) :
+    IsSign (forwardStepOne n alpha i) := by
+  simp only [forwardStepOne]
+  split <;> simp_all [IsSign]
+
+theorem forward_step_two_is_sign (n : ℕ) (alpha : ℤ) (tau : ℕ → ℤ)
+    (halpha : IsSign alpha) (htau : ∀ i, IsSign (tau i)) (i : ℕ) :
+    IsSign (forwardStepTwo n alpha tau i) := by
+  simp only [forwardStepTwo]
+  split
+  · exact htau i
+  · rcases halpha with rfl | rfl
+    · simpa using htau i
+    · rcases htau i with h | h <;> simp [h, IsSign]
+
+theorem period_eight_repeat (tau : Fin 8 → ℤ) (i L : ℕ) :
+    periodEightValue tau (i + 8 * L) = periodEightValue tau i := by
+  simp [periodEightValue, Nat.add_mul_mod_self_left]
+
+theorem step_one_cut_rule {n i : ℕ} :
+    forwardStepOne n (-1) i = if i + 1 < n then 1 else -1 := by
+  rfl
+
+theorem step_two_cut_rule {n i : ℕ} (tau : ℕ → ℤ) :
+    forwardStepTwo n (-1) tau i = if i + 2 < n then tau i else -tau i := by
+  simp [forwardStepTwo]
+
+theorem step_one_no_cut {n i : ℕ} (h : i + 1 < n) (alpha : ℤ) :
+    forwardStepOne n alpha i = 1 := by
+  simp [forwardStepOne, h]
+
+theorem step_one_cut {n i : ℕ} (h : ¬ i + 1 < n) (alpha : ℤ) :
+    forwardStepOne n alpha i = alpha := by
+  simp [forwardStepOne, h]
+
+theorem step_two_no_cut {n i : ℕ} (h : i + 2 < n) (alpha : ℤ) (tau : ℕ → ℤ) :
+    forwardStepTwo n alpha tau i = tau i := by
+  simp [forwardStepTwo, h]
+
+theorem step_two_cut {n i : ℕ} (h : ¬ i + 2 < n)
+    (alpha : ℤ) (tau : ℕ → ℤ) :
+    forwardStepTwo n alpha tau i = alpha * tau i := by
+  simp [forwardStepTwo, h]
+
+theorem period_eight_fits_multiple {L : ℕ} :
+    8 ∣ 8 * L := by
+  exact ⟨L, by ring⟩
+
+end TargetA
