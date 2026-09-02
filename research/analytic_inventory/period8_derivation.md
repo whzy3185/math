@@ -65,6 +65,46 @@ P(y,c)=y^4-16y^3+(80-2c)y^2+(-128+16c)y+c^2-13c+38.
 The remaining presentation task is to record a short row-elimination proof
 of this displayed determinant, rather than delegating the equality to a CAS.
 
+## Chiral reduction to four dimensions
+
+The determinant calculation has a structural reduction.  Let \(T_4(z)\)
+be translation by four sites in the displayed cell basis, let
+\(D=\operatorname{diag}((-1)^r)_{r=0}^7\), and choose \(\xi\) with
+\(\xi^2=z\).  Directly from the displayed matrix,
+
+\[
+J_z=\xi^{-1}DT_4(z),\qquad J_z^2=I,\qquad J_zH(z)=-H(z)J_z.
+\]
+
+In the \(\pm1\) eigenspaces of \(J_z\), both of dimension four,
+
+\[
+H(z)=\begin{pmatrix}0&B\\C&0\end{pmatrix}.
+\]
+
+With the basis \(e_r\pm J_ze_r\) for \(0\le r<4\), direct multiplication
+gives
+
+\[
+BC=
+\begin{pmatrix}
+4-\xi-\xi^{-1}&0&1+\xi^{-1}&2\\
+0&4-\xi-\xi^{-1}&2&1-\xi^{-1}\\
+1+\xi&2&4+\xi+\xi^{-1}&0\\
+2&1-\xi&0&4+\xi+\xi^{-1}
+\end{pmatrix}.
+\]
+
+Consequently it suffices to expand the four-by-four determinant
+
+\[
+\det(yI_4-BC)=P(y,\xi^2+\xi^{-2}).
+\]
+
+This is the preferred hand-check for the fiber identity: chiral symmetry
+explains the even polynomial in \(x\), and reduces the only raw determinant
+from size eight to size four.
+
 ## Uniform spectral bound
 
 Put \(B=1561/200\).  For \(u\geq0\), direct expansion gives
