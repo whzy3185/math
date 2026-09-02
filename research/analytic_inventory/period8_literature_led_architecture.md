@@ -17,6 +17,24 @@ computer-assisted exception paper.
 
 ## Chosen non-appendix structure
 
+## The two-act mathematical story
+
+**Act I — the benchmark breaks for a structural reason.**  The twisted phase
+is a natural benchmark with an explicit Fourier spectrum and small-order
+support.  A different period-eight flux phase has a chiral fiber symmetry.
+That symmetry reduces its spectral problem to a two-by-two determinant, whose
+uniform algebraic bound beats the benchmark on every finite ring of length
+\(8L\), \(L\ge4\).
+
+**Act II — the construction is not accidental within period eight.**  The
+local square identity converts flux defects into closed-walk moments.  These
+moments rule out every other legal eight-periodic geometry below the
+eight-barrier, leaving the antipodal two-defect phase as the unique one.
+
+The first act proves the headline theorem before the reader has to absorb
+the defect combinatorics.  The second act returns to the natural question
+“why this word?” and supplies the structural explanation.
+
 ### 1. Introduction: a conjectural benchmark fails
 
 Start from the published fixed-underlying-graph signing question, then state
