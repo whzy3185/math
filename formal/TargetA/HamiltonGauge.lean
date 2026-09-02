@@ -18,6 +18,24 @@ def forwardStepOne (n : ℕ) (alpha : ℤ) (i : ℕ) : ℤ :=
 def forwardStepTwo (n : ℕ) (alpha : ℤ) (tau : ℕ → ℤ) (i : ℕ) : ℤ :=
   if i + 2 < n then tau i else alpha * tau i
 
+def cyclicNext {n : ℕ} (i : Fin n) (step : ℕ) : Fin n :=
+  ⟨(i.val + step) % n, Nat.mod_lt _ (Fin.pos i)⟩
+
+def hamiltonGaugeMatrix {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
+    Matrix (Fin n) (Fin n) ℤ :=
+  fun i j =>
+    (if j = cyclicNext i 1 then forwardStepOne n alpha i.val else 0) +
+    (if i = cyclicNext j 1 then forwardStepOne n alpha j.val else 0) +
+    (if j = cyclicNext i 2 then forwardStepTwo n alpha tau i.val else 0) +
+    (if i = cyclicNext j 2 then forwardStepTwo n alpha tau j.val else 0)
+
+theorem hamilton_gauge_matrix_symmetric {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
+    Matrix.transpose (hamiltonGaugeMatrix (n := n) alpha tau) =
+      hamiltonGaugeMatrix (n := n) alpha tau := by
+  ext i j
+  simp only [Matrix.transpose_apply, hamiltonGaugeMatrix]
+  ac_rfl
+
 def IsSign (x : ℤ) : Prop := x = 1 ∨ x = -1
 
 theorem period_eight_value_is_sign (tau : Fin 8 → ℤ)
