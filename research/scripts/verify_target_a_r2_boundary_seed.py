@@ -7,7 +7,7 @@ from fractions import Fraction
 import verify_target_a_r2_schur_reduction as reduction
 
 
-SEED_ORDER = 250
+SEED_ORDER = 410
 
 
 def positive_definite(matrix):
@@ -55,7 +55,7 @@ def verify():
     return {
         "status": "R2_BOUNDARY_SEED_PASS",
         "order": SEED_ORDER,
-        "margin": "S_250 - 9/20 I is positive definite",
+        "margin": "S_410 - 9/20 I is positive definite",
         "checks": checks,
     }
 
