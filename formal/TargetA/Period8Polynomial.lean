@@ -11,6 +11,26 @@ def period8Polynomial (y c : ℝ) : ℝ :=
 theorem period8_bound_positive : 0 < period8Bound := by
   norm_num [period8Bound]
 
+theorem period8_boundary_factorization (y : ℝ) :
+    period8Polynomial y 2 =
+      (y^2 - 8 * y + 6 - 2 * Real.sqrt 5) *
+        (y^2 - 8 * y + 6 + 2 * Real.sqrt 5) := by
+  have hsqrt : (Real.sqrt 5)^2 = (5 : ℝ) := by
+    exact Real.sq_sqrt (by norm_num)
+  simp only [period8Polynomial]
+  nlinarith
+
+theorem period8_edge_is_boundary_root :
+    period8Polynomial (4 + Real.sqrt (10 + 2 * Real.sqrt 5)) 2 = 0 := by
+  have hsqrt_five : (Real.sqrt 5)^2 = (5 : ℝ) := by
+    exact Real.sq_sqrt (by norm_num)
+  have hnonneg : 0 ≤ (10 : ℝ) + 2 * Real.sqrt 5 := by positivity
+  have hsqrt_edge :
+      (Real.sqrt (10 + 2 * Real.sqrt 5))^2 = 10 + 2 * Real.sqrt 5 := by
+    exact Real.sq_sqrt hnonneg
+  rw [period8_boundary_factorization]
+  nlinarith
+
 theorem period8_at_two_positive {y : ℝ} (hy : period8Bound ≤ y) :
     0 < period8Polynomial y 2 := by
   have hu : 0 ≤ y - period8Bound := sub_nonneg.mpr hy
