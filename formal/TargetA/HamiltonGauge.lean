@@ -36,6 +36,35 @@ theorem hamilton_gauge_matrix_symmetric {n : ℕ} (alpha : ℤ) (tau : ℕ → �
   simp only [Matrix.transpose_apply, hamiltonGaugeMatrix]
   ac_rfl
 
+theorem cyclic_next_one_ne_self {n : ℕ} (hn : 2 ≤ n) (i : Fin n) :
+    cyclicNext i 1 ≠ i := by
+  intro h
+  have hval : (i.val + 1) % n = i.val := by
+    exact Fin.ext_iff.mp h
+  by_cases hcut : i.val + 1 < n
+  · rw [Nat.mod_eq_of_lt hcut] at hval
+    omega
+  · have hseam : i.val + 1 = n := by omega
+    rw [hseam, Nat.mod_self] at hval
+    omega
+
+theorem cyclic_next_two_ne_self {n : ℕ} (hn : 3 ≤ n) (i : Fin n) :
+    cyclicNext i 2 ≠ i := by
+  intro h
+  have hval : (i.val + 2) % n = i.val := by
+    exact Fin.ext_iff.mp h
+  by_cases hcut : i.val + 2 < n
+  · rw [Nat.mod_eq_of_lt hcut] at hval
+    omega
+  · have hbound : n ≤ i.val + 2 := by omega
+    have hupper : i.val + 2 < 2 * n := by omega
+    have hmod : (i.val + 2) % n = i.val + 2 - n := by
+      rw [Nat.mod_eq_sub_mod hbound]
+      apply Nat.mod_eq_of_lt
+      omega
+    rw [hmod] at hval
+    omega
+
 def IsSign (x : ℤ) : Prop := x = 1 ∨ x = -1
 
 theorem period_eight_value_is_sign (tau : Fin 8 → ℤ)
