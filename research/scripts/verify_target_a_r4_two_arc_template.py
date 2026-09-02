@@ -14,6 +14,7 @@ from target_a_task54_threshold import gap_word
 
 CAP = Fraction(2679, 338)
 ORDERS = (52, 60, 68, 76)
+ARC_ORDERS = (76, 92, 108)
 
 
 def matrix(n):
@@ -57,12 +58,38 @@ def verify():
             if i != j and cyclic_distance(i, j, count) > 1
         )
         checks[f"n{n}_two_g6_word"] = gap_word(n)[1].count(6) == 2
+
+    def arc_templates(n):
+        data = matrix(n)
+        partition = blocks(n)
+
+        def block(i, j):
+            return tuple(tuple(data[row][column] for column in partition[j]) for row in partition[i])
+
+        diagonal = [block(i, i) for i in range(len(partition))]
+        links = [block(i, i + 1) for i in range(len(partition) - 1)]
+        templates = []
+        start = 1
+        while start < len(diagonal):
+            stop = start + 1
+            while stop < len(diagonal) and diagonal[stop] == diagonal[start]:
+                stop += 1
+            if stop - start >= 2:
+                templates.append((diagonal[start], links[start]))
+            start = stop
+        if len(templates) != 2:
+            raise AssertionError(f"unexpected R4 arc decomposition at n={n}")
+        return tuple(templates)
+
+    arc_base = arc_templates(ARC_ORDERS[0])
+    checks.update({f"n{n}_same_two_bulk_arcs": arc_templates(n) == arc_base for n in ARC_ORDERS})
     if not all(checks.values()):
         raise AssertionError(checks)
     return {
         "status": "R4_TWO_ARC_TEMPLATE_PASS",
         "orders": ORDERS,
         "block_shape": "one 4-site boundary block plus 8-site cyclic bulk cells",
+        "bulk_arc_templates": "two exact 8-site templates stable at n=76,92,108",
         "conclusion": "exact cyclic block-tridiagonal template; no cap theorem asserted",
         "checks": checks,
     }
