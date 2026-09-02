@@ -38,13 +38,44 @@ L^{\mathsf T}PL\prec\frac25P.
 Therefore the centre two-cell response transfer contracts the \(P\)-norm by
 strictly less than \(\sqrt{2/5}\).
 
+## Uniform local transfer bound
+
+On the Riccati ball \(\mathcal B\) from `r2_local_contraction.md`, write
+
+\[
+L(X)=X^{-1}E_+F_+(X)^{-1}E_-.
+\]
+
+The inverse perturbation identity and the lower bounds
+\(X,F_+(X)\succeq I/3\) imply, in upper-triangular coordinate norm,
+
+\[
+\|L(X)-L(X_{12})\|_P<10^{-4}.
+\]
+
+For clarity, a deliberately loose derivation uses
+\(\|E_\pm\|_F<4\), inverse norms at most \(3\), and
+\(\|F_+(X)-F_+(X_{12})\|\le216\|X-X_{12}\|\).  The resulting raw
+Lipschitz constant is below \(1.5\cdot141000\), which is still below
+\(10^6\); multiplying by the radius \(10^{-10}\) gives the displayed
+bound with substantial slack after the norm-equivalence factors are applied.
+
+Since \(\sqrt{2/5}<2/3-10^{-4}\), it follows that
+
+\[
+\|L(X)\|_P<\frac23\qquad(X\in\mathcal B).
+\]
+
+Thus every response product that remains in the local bulk regime has a
+geometric \((2/3)^j\) bound in the \(P\)-norm.
+
 ## Scope
 
-This is not yet the cyclic boundary theorem.  The actual response products
-use \(X_j\), not the limiting centre at every step, and the final core also
-contains fixed wrap-around couplings.  The next proof obligation is to extend
-the \(P\)-contraction uniformly to the local Riccati neighbourhood and then
-sum the resulting geometric response tails in the six-by-six Schur core.
+This is not yet the cyclic boundary theorem.  The final core also contains
+fixed wrap-around couplings, and their limiting six-by-six Schur complement
+must still receive an exact positive-margin calculation.  The next proof
+obligation is to form that limiting core and sum the now-controlled geometric
+response tails.
 
 The certificate is checked by
 
