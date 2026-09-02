@@ -1,6 +1,6 @@
 # Residue-two local contraction lemma
 
-## Proposition
+## Local contraction lemma (draft)
 
 Let \(\Phi=F_-\circ F_+\) be the two-step residue-two Riccati map on the
 ten-dimensional space of symmetric four-by-four matrices.  Let
@@ -12,9 +12,10 @@ closed ball
 \mathcal B=\{X:\|X-X_{12}\|_W\le10^{-10}\}
 \]
 
-is mapped into itself and \(\Phi\) is a strict contraction on \(\mathcal B\).
-Consequently it contains a unique fixed point \(X_*\), and the even bulk
-Riccati iterates converge to it geometrically.
+is intended to be mapped into itself with \(\Phi\) a strict contraction.
+If the neighbourhood estimate below survives independent line audit, Banach's
+theorem gives a unique fixed point \(X_*\) and geometric convergence of the
+even bulk Riccati iterates.
 
 ## Exact finite premises
 
@@ -91,7 +92,7 @@ Thus
 so \(\Phi(\mathcal B)\subset\mathcal B\).  Banach's theorem proves the
 claim.
 
-## Consequence for the actual bulk orbit
+## Conditional consequence for the actual bulk orbit
 
 No separate entrance theorem is needed for the standard bulk initial state:
 by definition \(X_{12}=\Phi^{12}(D)\).  The first twelve two-step iterates
@@ -99,14 +100,20 @@ are finite rational matrices, and the companion exact data checks show that
 the centre and intervening one-step pivot have a uniform lower bound.  From
 the twelfth two-step iterate onwards the contraction argument applies.
 
-Together with the already direct finite entrance calculation, this gives an
-all-length analytic proof that every repeated residue-two bulk pivot is
-positive.  The statement concerns the open bulk chain only.  It does not
-settle the cyclic wrap-around boundary core.
+Together with the already direct finite entrance calculation, the audited
+lemma would give an all-length analytic proof that every repeated residue-two
+bulk pivot is positive.  The statement concerns the open bulk chain only. It
+does not settle the cyclic wrap-around boundary core.
 
 ## Boundary
 
-This lemma proves only the bulk two-cycle.  It does not yet bound the
+Even after audit, this lemma proves only the bulk two-cycle.  It does not yet bound the
 propagated cyclic response variables or establish positivity of the final
 six-by-six boundary core.  It is therefore a rigorously isolated analytic
-component, not the complete residue-two family theorem.
+target, not the complete residue-two family theorem.
+
+## Status
+
+`LOCAL_CONTRACTION_DRAFT_PENDING_LINE_AUDIT`.  The centre Lyapunov and
+residual premises are exactly verified; the neighbourhood derivative bound is
+the remaining proof text to audit.
