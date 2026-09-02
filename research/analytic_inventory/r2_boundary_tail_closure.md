@@ -59,6 +59,25 @@ into:
 3. the quadratic increments in \(G,H,C\);
 4. the fixed terminal correction \(W_{m-1}^{\rm total}=W_{m-1}+E_{m-1}\).
 
+For the residue-two family, \(m=2k\) is even.  Starting with the fixed
+initial matrices \(R_0,W_0,X_0\), define the open-chain sequences by the
+displayed response recurrence.  They are independent of the eventual chain
+length.  The terminal core of a chain of length \(m\) is obtained by stopping
+these sequences at \(j=m-1\) and replacing the final propagated response by
+\(W_{m-1}+E_{m-1}\).  Since \(m-1\) is always odd, the terminal coupling has
+one fixed parity.  This is the required reindexing: no parity subsequence is
+being silently mixed in the limit.
+
+Consequently \(G,H,C\) are partial sums of the convergent Schur series
+
+\[
+RX^{-1}R^{\mathsf T},\qquad
+W^{\mathsf T}X^{-1}W,\qquad
+RX^{-1}W,
+\]
+
+plus the fixed-parity terminal correction.  This defines \(S_\infty\).
+
 After the exact 24-step entrance, the dual response bounds and the local
 two-cell contraction give, with \(q=2/3\),
 
@@ -106,7 +125,7 @@ by the fixed boundary matrices and inverse bounds this is below \(10^{-9}\).
 Thus
 
 \[
-\|S_m-S_\infty\|_2<\frac1{10000}<\frac1{2000}
+\|S_m-S_\infty\|_2<10^{-6}<\frac1{2000}
 \qquad(m\ge102),
 \]
 

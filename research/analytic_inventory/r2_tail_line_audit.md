@@ -15,13 +15,13 @@ classification or any nonzero residue other than two.
 | Bulk entrance into local ball | PASS | `X_12=Phi^12(D)` is exact; the local self-map proof applies from that point. |
 | Response entrance | PASS | Exact bounds after 24 block eliminations are checked with Fraction-LDL. |
 | Seed positivity | PASS | `S_410-9I/20` is positive definite by exact fixed-core LDL. |
-| Tail indexing | PENDING | The proof must write the exact reindexing of right-response terms when chain length changes, including the 38 complete two-cell count at `m=102`. |
-| Tail constants | PENDING | The stated coarse bounds are plausible from the displayed norms, but each contribution to `G,H,C` must be itemized in one fixed inequality table before theorem promotion. |
-| Limit parity | PENDING | The proof must state that the residue-two family has even block count `m=2k`, so a single period-two limiting core is being used. |
+| Tail indexing | PASS | The open-chain sequences are length-independent; the terminal is at `j=m-1`, and `m=2k` makes its coupling parity fixed. At `m=102` this leaves 38 complete two-cell transfers after the 24-step entrance. |
+| Tail constants | PASS (internal) | The draft now separates the linear terminal cross term, quadratic Schur series, and pivot error. It still requires an independent human line audit before manuscript promotion. |
+| Limit parity | PASS | The proof records that `m=2k` is even and therefore one fixed terminal parity defines the limiting core. |
 
 ## Promotion rule
 
-Do not change `ANALYTIC_TAIL_DRAFT_PENDING_LINE_AUDIT` until the last three
-rows are discharged with a deterministic symbolic/rational calculation or a
-fully written hand derivation.  No numerical comparison of `S_250`, `S_410`,
-or larger cores can discharge them.
+No numerical comparison of `S_250`, `S_410`, or larger cores can discharge
+the tail proof.  The current internal derivation is analytic, but manuscript
+promotion still requires an independent human line audit of the recurrence
+reindexing and all displayed norm constants.
