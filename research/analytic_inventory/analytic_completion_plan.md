@@ -10,7 +10,7 @@ begins only after all four work packages below are frozen.
 |---|---|---|---|
 | A | Self-contained twisted-benchmark Fourier lemma | explicit \(2\times2\) Fourier block, correct grid maximization, and an independent symbolic audit | complete |
 | B | Exact non-antipodal two-defect lemma | recurrence, all intermediate moments through the first positive excess, and the trace-to-edge implication in one human-readable proof | complete |
-| C | General-period moment-obstruction theorem | direct local-square derivation, complete sixth-moment catalogue, and stated defect-density/clustering corollaries | drafted; independent line audit pending |
+| C | General-period moment-obstruction theorem | direct local-square derivation, complete sixth-moment catalogue, and stated defect-density/clustering corollaries | complete |
 | D | Mechanism-integration theorem map | each article theorem has only prior dependencies; no computation-only or open module enters the proof line | pending |
 
 ## Execution order

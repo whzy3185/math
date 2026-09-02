@@ -10,6 +10,14 @@ d=\#\{i:Q_i=1\},
 \]
 
 and let \(a,b\) count positive \(Q\)-pairs at cyclic distances one and two.
+Write
+
+\[
+R_p(\tau)=\sup_{|z|=1}\lambda_{\max}(H(z)^2)
+\]
+
+for its squared Bloch spectral edge.  For the phase-averaged even Floquet
+moments
 For the phase-averaged even Floquet moments
 
 \[
@@ -26,7 +34,7 @@ M_3=118p+168d+96a+48b.
 \tag{1}
 \]
 
-If the squared Bloch spectral edge is at most \(8\), then
+If \(R_p(\tau)\le8\), then
 
 \[
 d\le\frac{3p}{4},\qquad
@@ -61,7 +69,24 @@ row in (3) gives
 After summation, \(M_2=28p+8\sum_iQ_i=20p+16d\).
 
 For \(M_3\), the exact rooted length-six closed-walk catalogue has 430
-words.  Grouping its monomials by translate gives
+words.  Its complete nonzero monomial table is
+
+\[
+\begin{array}{c|rrrrrrrrr}
+\text{support}&\varnothing&-5&-4&-3&-2&-1&0&1&2\\ \hline
+\text{coefficient}&238&2&4&34&38&38&34&4&2
+\end{array}
+\]
+
+\[
+\begin{array}{c|rrrrrrrrrrr}
+\text{support}&-5,-3&-4,-3&-4,-2&-3,-2&-3,-1&
+-2,-1&-2,0&-1,0&-1,1&0,1&0,2\\ \hline
+\text{coefficient}&2&4&2&4&2&8&2&4&2&4&2
+\end{array}
+\]
+
+The entries sum to \(430\).  Grouping this table by translate gives
 
 \[
 M_3=238p+156\sum_iQ_i+
@@ -69,10 +94,9 @@ M_3=238p+156\sum_iQ_i+
 \tag{4}
 \]
 
-The complete 20-row catalogue is printed in
-periodic_moment_lemma.md; it is a finite integer expansion of (3), not a
-floating-point calculation.  With \(Q_i=2I_i-1\), the three sums in (4)
-become \(2d-p\), \(4a-4d+p\), and \(4b-4d+p\), proving (1).
+This is a finite integer expansion of (3), not a floating-point calculation.
+With \(Q_i=2I_i-1\), the three sums in (4) become \(2d-p\),
+\(4a-4d+p\), and \(4b-4d+p\), proving (1).
 
 Finally, every Floquet squared eigenvalue \(y\) satisfies
 \(0\le y\le8\) under the assumed edge bound.  Hence \(y^{k+1}\le8y^k\);
