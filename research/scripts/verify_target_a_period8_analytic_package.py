@@ -55,6 +55,35 @@ def moments(q, maximum):
     return output
 
 
+def finite_lift_matrix(tau, n, alpha):
+    matrix = sp.zeros(n)
+    for output in range(n):
+        for delta, coefficient in (
+            (-2, tau[(output - 2) % n]),
+            (-1, 1),
+            (1, 1),
+            (2, tau[output]),
+        ):
+            source = output + delta
+            wrap, residue = divmod(source, n)
+            matrix[output, residue] += coefficient * alpha ** abs(wrap)
+    return matrix
+
+
+def finite_gauge_matrix(tau, n, alpha):
+    matrix = sp.zeros(n)
+    for index in range(n):
+        step_one = alpha if index == n - 1 else 1
+        step_two = tau[index]
+        if index >= n - 2:
+            step_two *= alpha
+        matrix[index, (index + 1) % n] = step_one
+        matrix[(index + 1) % n, index] = step_one
+        matrix[index, (index + 2) % n] = step_two
+        matrix[(index + 2) % n, index] = step_two
+    return matrix
+
+
 def verify():
     x, y, z, xi, c = sp.symbols("x y z xi c", nonzero=True)
     h = floquet(TAU, z)
@@ -91,6 +120,10 @@ def verify():
         )
     )
     checks = {
+        "finite_gauge_realization": all(
+            finite_lift_matrix(TAU * 4, 32, alpha) == finite_gauge_matrix(TAU * 4, 32, alpha)
+            for alpha in (-1, 1)
+        ),
         "chiral_square": (involution_xi**2 - sp.eye(8)).applyfunc(sp.expand) == sp.zeros(8),
         "chiral_anticommutation": (involution_xi * h_xi + h_xi * involution_xi).applyfunc(sp.expand) == sp.zeros(8),
         "floquet_determinant": sp.expand(determinant - determinant_expected) == 0,

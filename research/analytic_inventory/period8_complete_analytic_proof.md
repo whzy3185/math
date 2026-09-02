@@ -14,6 +14,11 @@ eight at least \(32\).
 
 ## Proof
 
+The elementary realization lemma hamilton_gauge_realization.md shows that it
+is enough to construct a periodic triangle-flux word and choose either finite
+holonomy.  We give that construction explicitly below, so no
+switching-class enumeration enters the proof.
+
 Use Hamilton gauge and the period-eight triangle-flux word
 
 \[

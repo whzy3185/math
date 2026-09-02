@@ -18,7 +18,8 @@ pattern.
 ## Main theorem package
 
 1. **Switching and flux coordinates.**  State the gauge reduction and the
-   cycle-flux parametrization used to define the periodic phases.
+   cycle-flux parametrization used to define the periodic phases.  The direct
+   finite realization is now isolated in hamilton_gauge_realization.md.
 2. **Period-eight trichotomy.**  The unique sub-eight phase theorem from
    `period8_trichotomy_analytic_proof.md`.
 3. **Chiral Floquet theorem.**  The target phase reduces from an eight by
