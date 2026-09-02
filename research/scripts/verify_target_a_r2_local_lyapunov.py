@@ -25,6 +25,12 @@ W0 = (
     (-140, -32, -527, 639, -27, 49, -78, -641, 11592, -992),
     (77, 6, 307, -386, 16, -54, 79, 387, -992, 10638),
 )
+P0 = (
+    (10766, 87, 19, 974),
+    (87, 12664, 148, -2418),
+    (19, 148, 10093, -25),
+    (974, -2418, -25, 14009),
+)
 
 
 def transpose(matrix):
@@ -107,7 +113,11 @@ def verify():
     identity4 = [[Fraction(i == j) for j in range(4)] for i in range(4)]
     identity10 = [[Fraction(i == j) for j in range(10)] for i in range(10)]
     weight = [[Fraction(entry, 10**4) for entry in row] for row in W0]
+    response_weight = [[Fraction(entry, 10**4) for entry in row] for row in P0]
     derivative = jacobian(center)
+    response_transfer = multiply(
+        multiply(inverse(center), E_PLUS), multiply(inverse(middle), E_MINUS)
+    )
     checks = {
         "center_ge_half_identity": positive_definite(subtract(center, scale(Fraction(1, 2), identity4))),
         "middle_ge_half_identity": positive_definite(subtract(middle, scale(Fraction(1, 2), identity4))),
@@ -117,6 +127,18 @@ def verify():
             subtract(scale(Fraction(6, 25), weight), multiply(transpose(derivative), multiply(weight, derivative)))
         ),
         "residual_lt_radius_over_40": residual_squared < (RADIUS / 40) ** 2,
+        "response_weight_ge_nine_tenths_identity": positive_definite(
+            subtract(response_weight, scale(Fraction(9, 10), identity4))
+        ),
+        "response_weight_le_two_identity": positive_definite(
+            subtract(scale(Fraction(2), identity4), response_weight)
+        ),
+        "response_transfer_two_fifths": positive_definite(
+            subtract(
+                scale(Fraction(2, 5), response_weight),
+                multiply(transpose(response_transfer), multiply(response_weight, response_transfer)),
+            )
+        ),
     }
     if not all(checks.values()):
         raise AssertionError(checks)
