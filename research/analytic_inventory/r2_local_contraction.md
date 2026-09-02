@@ -1,0 +1,99 @@
+# Residue-two local contraction lemma
+
+## Proposition
+
+Let \(\Phi=F_-\circ F_+\) be the two-step residue-two Riccati map on the
+ten-dimensional space of symmetric four-by-four matrices.  Let
+\(X_{12}=\Phi^{12}(D)\), and use the rational Gram matrix \(W\) in
+`r2_lyapunov_certificate.md`.  In the coordinate norm induced by \(W\), the
+closed ball
+
+\[
+\mathcal B=\{X:\|X-X_{12}\|_W\le10^{-10}\}
+\]
+
+is mapped into itself and \(\Phi\) is a strict contraction on \(\mathcal B\).
+Consequently it contains a unique fixed point \(X_*\), and the even bulk
+Riccati iterates converge to it geometrically.
+
+## Exact finite premises
+
+The companion verifier checks, using Fraction arithmetic and LDL positivity,
+
+\[
+X_{12}\succeq\tfrac12I,quad F_+(X_{12})\succeq\tfrac12I,quad
+\tfrac9{10}I\preceq W\preceq2I,
+\]
+
+\[
+D\Phi(X_{12})^{\mathsf T}W D\Phi(X_{12})prec\frac6{25}W,
+\qquad
+\|\Phi(X_{12})-X_{12}\|_F<\frac1{40}\,10^{-10}.
+\]
+
+Run:
+
+```text
+python research/scripts/verify_target_a_r2_local_lyapunov.py
+```
+
+## Neighbourhood estimate
+
+Write a symmetric perturbation as upper-triangular coordinates.  Its matrix
+Frobenius norm is at most \(\sqrt2\) times the coordinate Euclidean norm.
+For \(X\in\mathcal B\), the preceding lower bounds and
+\(\sqrt2<3/2\) give
+
+\[
+\|X^{-1}\|_2,\ \|F_+(X)^{-1}\|_2\le3.
+\]
+
+Both coupling matrices have Frobenius norm below \(4\).  From
+
+\[
+DF_E(X)[H]=E^{\mathsf T}X^{-1}HX^{-1}E
+\]
+
+and differentiation once more, the deliberately coarse coordinate bounds
+are
+
+\[
+\|DF_E(X)\|\le216,
+\qquad
+\|D^2F_E(X)\|\le1728.
+\]
+
+The chain rule for \(\Phi=F_-\circ F_+\) then yields
+
+\[
+\|D\Phi(X)-D\Phi(X_{12})\|_W
+<\frac1{70}
+\qquad(X\in\mathcal B).
+\]
+
+Here the conversion between the coordinate Euclidean norm and the \(W\)-norm
+uses \(9I/10\preceq W\preceq2I\): one may use the conservative factors
+\(10/9\) and \(3/2\).  Combining this with the exact centre
+inequality gives
+
+\[
+\|D\Phi(X)\|_W<\frac12+\frac1{70}=\frac{18}{35}.
+\]
+
+Finally the centre residual has \(W\)-norm below \(3\cdot10^{-10}/80\).
+Thus
+
+\[
+\|\Phi(X)-X_{12}\|_W
+\le \frac3{80}10^{-10}+\frac{18}{35}10^{-10}<10^{-10},
+\]
+
+so \(\Phi(\mathcal B)\subset\mathcal B\).  Banach's theorem proves the
+claim.
+
+## Boundary
+
+This lemma proves only the bulk two-cycle.  It does not yet bound the
+propagated cyclic response variables or establish positivity of the final
+six-by-six boundary core.  It is therefore a rigorously isolated analytic
+component, not the complete residue-two family theorem.
