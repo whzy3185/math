@@ -6,6 +6,11 @@ import sympy as sp
 
 
 TAU = (1, 1, -1, 1, -1, -1, 1, -1)
+TWO_DEFECT_MOMENTS = {
+    1: (32, 192, 1376, 10976, 93312),
+    2: (32, 192, 1328, 9888, 76832, 612624, 4965328),
+    3: (32, 192, 1280, 9056, 66592, 503088, 3877920, 30363808, 240761792, 1928966432),
+}
 
 
 def floquet(tau, z):
@@ -98,6 +103,9 @@ def verify():
         q = [-1] * 8
         q[0] = q[separation] = 1
         values = moments(q, 10)
+        checks[f"moment_table_{separation}"] = values[: len(TWO_DEFECT_MOMENTS[separation])] == list(
+            TWO_DEFECT_MOMENTS[separation]
+        )
         checks[f"moment_separation_{separation}"] = values[index] - 8 * values[index - 1] == value
     if not all(checks.values()):
         raise AssertionError(checks)

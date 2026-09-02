@@ -64,7 +64,7 @@ For \(d=8\), \(M_2-8M_1=32>0\).  Hence all phases with \(d\ge4\) have
 
 For \(d=2\), place the two positive entries at \(0\) and
 \(s\in\{1,2,3,4\}\), up to dihedral symmetry.  The finite exact
-closed-walk sublemma gives
+closed-walk recurrence in `period8_two_defect_closed_walk_lemma.md` gives
 
 \[
 \begin{array}{c|c|c}
@@ -83,6 +83,6 @@ target Floquet proof in `period8_complete_analytic_proof.md` gives
 ## Evidence boundary
 
 The zero-defect and high-defect parts are hand derivations.  The three
-non-antipodal two-defect cases use a small exact closed-walk table; it should
-remain visible as a finite algebraic sublemma in any manuscript or
-supplementary proof note.
+non-antipodal two-defect cases use a small exact closed-walk recurrence and
+table; it should remain visible as a finite algebraic sublemma in any
+manuscript or supplementary proof note.
