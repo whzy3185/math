@@ -66,6 +66,53 @@ diagonal of \(A^4\) and \(A^6\), grouping translates, and replacing
 computer enumeration of closed walks may cross-check the coefficients but
 does not replace this calculation.
 
+### Direct fourth-moment calculation
+
+The \(A^4\) identity is already completely local.  Since
+
+\[
+(A^4)_{ii}=\sum_j(A^2_{ij})^2,
+\]
+
+the two displacement-four and two displacement-two terms contribute
+\(2+2\), the diagonal term contributes \(16\), and the four odd-distance
+terms contribute
+
+\[
+2(1+Q_{i-3})+2(1+Q_i)
++2(1+Q_{i-2})+2(1+Q_{i-1}).
+\]
+
+Thus
+
+\[
+(A^4)_{ii}=28+2(Q_{i-3}+Q_{i-2}+Q_{i-1}+Q_i).
+\]
+
+Summing over a period gives
+
+\[
+M_2=28p+8\sum_iQ_i=20p+16d.
+\]
+
+This part requires no walk enumeration or symbolic computation.
+
+### Sixth-moment boundary
+
+For \(M_3\), the same method expands
+\(\operatorname{tr}(A^2)^3\), but the local catalogue is larger.  The
+current coefficient statement is equivalent to the finite translation-class
+catalogue
+
+\[
+238+156Q_i+24Q_iQ_{i+1}+12Q_iQ_{i+2}.
+\]
+
+Before it is called a fully hand-derived lemma, the manuscript must either
+include a compact combinatorial derivation of this catalogue or place the
+complete finite table in a supplementary proof note.  It must not simply say
+“computer calculation gives \(M_3\)”.
+
 ## Scope
 
 The inequalities are necessary only.  They do not prove that a word below
