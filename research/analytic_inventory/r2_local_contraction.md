@@ -21,12 +21,12 @@ Riccati iterates converge to it geometrically.
 The companion verifier checks, using Fraction arithmetic and LDL positivity,
 
 \[
-X_{12}\succeq\tfrac12I,quad F_+(X_{12})\succeq\tfrac12I,quad
+X_{12}\succeq\tfrac12I,\qquad F_+(X_{12})\succeq\tfrac12I,\qquad
 \tfrac9{10}I\preceq W\preceq2I,
 \]
 
 \[
-D\Phi(X_{12})^{\mathsf T}W D\Phi(X_{12})prec\frac6{25}W,
+D\Phi(X_{12})^{\mathsf T}W D\Phi(X_{12})\prec\frac6{25}W,
 \qquad
 \|\Phi(X_{12})-X_{12}\|_F<\frac1{40}\,10^{-10}.
 \]
