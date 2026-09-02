@@ -65,6 +65,20 @@ theorem cyclic_next_two_ne_self {n : ℕ} (hn : 3 ≤ n) (i : Fin n) :
     rw [hmod] at hval
     omega
 
+theorem cyclic_next_one_then_one {n : ℕ} (i : Fin n) :
+    cyclicNext (cyclicNext i 1) 1 = cyclicNext i 2 := by
+  apply Fin.ext
+  simp only [cyclicNext, Fin.val_mk]
+  simp [Nat.add_assoc, Nat.mod_add_mod]
+
+theorem cyclic_next_one_ne_two {n : ℕ} (hn : 2 ≤ n) (i : Fin n) :
+    cyclicNext i 1 ≠ cyclicNext i 2 := by
+  intro h
+  have hself : cyclicNext (cyclicNext i 1) 1 = cyclicNext i 1 := by
+    rw [cyclic_next_one_then_one]
+    exact h.symm
+  exact cyclic_next_one_ne_self hn (cyclicNext i 1) hself
+
 def IsSign (x : ℤ) : Prop := x = 1 ∨ x = -1
 
 theorem period_eight_value_is_sign (tau : Fin 8 → ℤ)
