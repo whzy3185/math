@@ -12,7 +12,7 @@ let \(\tau_0=1\), \(\tau_{i+1}=Q_i\tau_i\).  Put
 
 \[
 M_k=\sum_{r=0}^{7}(A_\tau^{\,2k})_{r,r},
-\qquad E_k=M_{k+1}-8M_k.
+\qquad E_k=F_k:=M_{k+1}-8M_k.
 \]
 
 Then the first positive \(E_k\) is respectively
@@ -38,7 +38,19 @@ f^{(r)}_{\ell+1}(j)=f^{(r)}_\ell(j-1)+f^{(r)}_\ell(j+1)
 \tag{1}
 \]
 
-Then \(M_k=\sum_{r=0}^{7}f^{(r)}_{2k}(r)\).  Formula (1) only involves
+Then \(M_k=\sum_{r=0}^{7}f^{(r)}_{2k}(r)\).  This is also the normalized
+Floquet trace moment:
+
+\[
+M_k=\frac1{2\pi}\int_0^{2\pi}
+\operatorname{tr}\bigl(H(e^{it})^{2k}\bigr)\,dt.
+\tag{2}
+\]
+
+Indeed, expanding the fiber trace gives the signed closed walks together with
+a phase recording their net cell displacement.  Integration kills every
+nonzero displacement, leaving exactly the closed walks on the infinite
+periodic lift counted by the recurrence.  Formula (1) only involves
 integer additions and signs.  For the largest displayed calculation it has
 length \(20\) and support in \([-40,47]\), so the following table can be
 checked directly by hand or by a short exact recurrence.
@@ -52,7 +64,7 @@ s\backslash k&1&2&3&4&5&6&7&8&9&10\\ \hline
 \end{array}
 \]
 
-The corresponding excesses through the first positive entry are
+The corresponding \(F_k=E_k\) through the first positive entry are
 
 \[
 \begin{array}{c|rrrrrrrrr}

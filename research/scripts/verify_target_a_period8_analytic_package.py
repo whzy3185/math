@@ -161,6 +161,10 @@ def verify():
             TWO_DEFECT_MOMENTS[separation]
         )
         checks[f"moment_separation_{separation}"] = values[index] - 8 * values[index - 1] == value
+        checks[f"first_positive_excess_{separation}"] = (
+            all(values[j] - 8 * values[j - 1] <= 0 for j in range(1, index))
+            and values[index] - 8 * values[index - 1] > 0
+        )
     if not all(checks.values()):
         raise AssertionError(checks)
     return {"status": "PERIOD8_ANALYTIC_PACKAGE_AUDIT_PASS", "checks": checks}
