@@ -12,7 +12,7 @@ lemmas does not qualify.
 | ID | Informal article content | Lean target | Current status |
 |---|---|---|---|
 | L1 | finite Hamilton-gauge realization | exact matrix equality for every \(n=8L\) and both holonomies | in progress: seam/sign closure checked |
-| L2 | twisted benchmark | anti-periodic Fourier block and shifted-grid maximum | open |
+| L2 | twisted benchmark | anti-periodic Fourier block and shifted-grid maximum | in progress: fiber block algebra checked |
 | L3 | period-eight fiber | explicit \(8\times8\) fiber and chiral block reduction | open |
 | L4 | polynomial certificate | \(P(y,c)>0\) for \(y\ge1561/200,\ c\le2\) | complete: kernel-checked |
 | L5 | finite-ring spectral implication | every allowed fiber has squared eigenvalues below the bound | open |
