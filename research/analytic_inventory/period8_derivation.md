@@ -101,9 +101,40 @@ Consequently it suffices to expand the four-by-four determinant
 \det(yI_4-BC)=P(y,\xi^2+\xi^{-2}).
 \]
 
+There is one further elementary reduction.  Put \(s=\xi+\xi^{-1}\).  The
+diagonal blocks of \(BC\) are \((4-s)I_2\) and \((4+s)I_2\), while its
+off-diagonal blocks are
+
+\[
+Q=\begin{pmatrix}1+\xi^{-1}&2\\2&1-\xi^{-1}\end{pmatrix},
+\qquad
+R=\begin{pmatrix}1+\xi&2\\2&1-\xi\end{pmatrix}.
+\]
+
+The two-by-two block determinant formula therefore yields
+
+\[
+\det(yI_4-BC)=
+\det\!\left(
+\bigl((y-4)^2-s^2\bigr)I_2-RQ
+\right).
+\]
+
+Expanding this two-by-two determinant gives
+
+\[
+\begin{aligned}
+&y^4-16y^3+80y^2-128y+40\\
+&\quad +(\xi^2+\xi^{-2})(-2y^2+16y-13)
++(\xi^4+\xi^{-4}).
+\end{aligned}
+\]
+
+Since \(c=\xi^2+\xi^{-2}\) and
+\(\xi^4+\xi^{-4}=c^2-2\), this is exactly \(P(y,c)\).
 This is the preferred hand-check for the fiber identity: chiral symmetry
 explains the even polynomial in \(x\), and reduces the only raw determinant
-from size eight to size four.
+from size eight to a two-by-two expansion.
 
 ## Uniform spectral bound
 
