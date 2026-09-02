@@ -55,8 +55,13 @@ F_2:=M_3-8M_2=-336+40d+96a+48b\le0.
 \tag{1}
 \]
 
-For \(d=4\), the four cyclic positive gaps sum to eight.  Their elementary
-gap cases imply \(2a+b\ge4\); therefore
+For \(d=4\), let \(g_1,\ldots,g_4\) be the four cyclic positive gaps, so
+\(g_j\ge1\) and \(\sum g_j=8\).  Here \(a=\#\{j:g_j=1\}\), while \(b\)
+counts the gaps equal to \(2\) together with consecutive pairs of gaps both
+equal to \(1\).  If \(a\ge2\), then \(2a+b\ge4\).  If \(a=1\), the other
+three gaps are at least two and have total seven, so at least two of them
+equal two, giving \(2a+b\ge4\).  If \(a=0\), all four gaps equal two and
+\(b=4\).  Therefore \(2a+b\ge4\), and
 \(F_2=-176+48(2a+b)>0\).  For \(d=6\), the two negative sites destroy at
 most four adjacent positive-positive edges, so \(a\ge4\) and \(F_2>0\).
 For \(d=8\), \(M_2-8M_1=32>0\).  Hence all phases with \(d\ge4\) have
