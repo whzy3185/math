@@ -97,21 +97,59 @@ M_2=28p+8\sum_iQ_i=20p+16d.
 
 This part requires no walk enumeration or symbolic computation.
 
-### Sixth-moment boundary
+### Complete sixth-moment catalogue
 
-For \(M_3\), the same method expands
-\(\operatorname{tr}(A^2)^3\), but the local catalogue is larger.  The
-current coefficient statement is equivalent to the finite translation-class
-catalogue
+For \(M_3\), enumerate the 430 rooted step words of length six in
+\(\{-2,-1,1,2\}\) with total displacement zero.  A \(\pm2\) step toggles the
+triangle variable at its departing (for \(+2\)) or arriving (for \(-2\))
+site.  Pairing the remaining triangle variables in increasing order replaces
+them by the intervening \(Q\)-intervals.  The resulting rooted catalogue is
+the following complete 20-row table; an empty support means the monomial
+\(1\).
 
 \[
-238+156Q_i+24Q_iQ_{i+1}+12Q_iQ_{i+2}.
+\begin{array}{c|rrrrrrrrr}
+\text{support}&\varnothing&-5&-4&-3&-2&-1&0&1&2\\ \hline
+\text{coefficient}&238&2&4&34&38&38&34&4&2
+\end{array}
 \]
 
-Before it is called a fully hand-derived lemma, the manuscript must either
-include a compact combinatorial derivation of this catalogue or place the
-complete finite table in a supplementary proof note.  It must not simply say
-“computer calculation gives \(M_3\)”.
+\[
+\begin{array}{c|rrrrrrrrrrr}
+\text{support}&-5,-3&-4,-3&-4,-2&-3,-2&-3,-1&
+-2,-1&-2,0&-1,0&-1,1&0,1&0,2\\ \hline
+\text{coefficient}&2&4&2&4&2&8&2&4&2&4&2
+\end{array}
+\]
+
+The entries sum to \(430\).  On summing over every root, all singleton
+translates have total coefficient \(156\), adjacent pairs total \(24\), and
+distance-two pairs total \(12\).  Thus
+
+\[
+M_3=238p+156\sum_iQ_i+
+24\sum_iQ_iQ_{i+1}+12\sum_iQ_iQ_{i+2}.
+\tag{2}
+\]
+
+Writing \(Q_i=2I_i-1\) gives
+
+\[
+\sum_iQ_i=2d-p,\quad
+\sum_iQ_iQ_{i+1}=4a-4d+p,\quad
+\sum_iQ_iQ_{i+2}=4b-4d+p.
+\]
+
+Substitution into (2) yields
+
+\[
+M_3=118p+168d+96a+48b.
+\]
+
+This is a finite combinatorial table, not a floating-point or spectral
+calculation.  In a manuscript it may sit in a compact appendix; the
+fourth-moment derivation and the subsequent barrier argument remain in the
+main text.
 
 ## Scope
 
