@@ -95,6 +95,24 @@ def verify():
     involution = xi**-1 * sp.diag(*((-1) ** index for index in range(8))) * translation
     h_xi = h.subs(z, xi**2)
     involution_xi = involution.subs(z, xi**2)
+    eigenbasis = []
+    for sign in (1, -1):
+        for residue in range(4):
+            vector = sp.eye(8).col(residue)
+            eigenbasis.append(vector + sign * involution_xi * vector)
+    basis = sp.Matrix.hstack(*eigenbasis)
+    chiral_block = (basis.inv() * h_xi * basis).applyfunc(sp.simplify)
+    b_block = chiral_block[:4, 4:]
+    c_block = chiral_block[4:, :4]
+    s = xi + xi**-1
+    expected_bc = sp.Matrix(
+        [
+            [4 - s, 0, 1 + xi**-1, 2],
+            [0, 4 - s, 2, 1 - xi**-1],
+            [1 + xi, 2, 4 + s, 0],
+            [2, 1 - xi, 0, 4 + s],
+        ]
+    )
     determinant = sp.expand((x * sp.eye(8) - h).det())
     expected = y**4 - 16*y**3 + (80 - 2*c)*y**2 + (-128 + 16*c)*y + c**2 - 13*c + 38
     determinant_expected = expected.subs({y: x**2, c: z + z**-1})
@@ -126,6 +144,9 @@ def verify():
         ),
         "chiral_square": (involution_xi**2 - sp.eye(8)).applyfunc(sp.expand) == sp.zeros(8),
         "chiral_anticommutation": (involution_xi * h_xi + h_xi * involution_xi).applyfunc(sp.expand) == sp.zeros(8),
+        "chiral_block_reduction": chiral_block[:4, :4] == sp.zeros(4)
+        and chiral_block[4:, 4:] == sp.zeros(4)
+        and (b_block * c_block - expected_bc).applyfunc(sp.simplify) == sp.zeros(4),
         "floquet_determinant": sp.expand(determinant - determinant_expected) == 0,
         "boundary_factorization": sp.expand(expected.subs(c, 2) - boundary_factorization) == 0
         and sp.simplify(expected.subs({y: eta, c: 2})) == 0,
