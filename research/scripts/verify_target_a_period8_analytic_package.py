@@ -64,10 +64,35 @@ def verify():
     determinant = sp.expand((x * sp.eye(8) - h).det())
     expected = y**4 - 16*y**3 + (80 - 2*c)*y**2 + (-128 + 16*c)*y + c**2 - 13*c + 38
     determinant_expected = expected.subs({y: x**2, c: z + z**-1})
+    eta = 4 + sp.sqrt(10 + 2 * sp.sqrt(5))
+    boundary_factorization = (y**2 - 8 * y + 6 - 2 * sp.sqrt(5)) * (
+        y**2 - 8 * y + 6 + 2 * sp.sqrt(5)
+    )
+    taylor_lower_bound = (
+        4
+        + 2
+        * (
+            1
+            - sp.Rational(10, 2 * 16**2)
+            + sp.Rational(81, 24 * 16**4)
+            - sp.Rational(1000, 720 * 16**6)
+        )
+        + 2
+        * (
+            1
+            - sp.Rational(10, 2 * 8**2)
+            + sp.Rational(81, 24 * 8**4)
+            - sp.Rational(1000, 720 * 8**6)
+        )
+    )
     checks = {
         "chiral_square": (involution_xi**2 - sp.eye(8)).applyfunc(sp.expand) == sp.zeros(8),
         "chiral_anticommutation": (involution_xi * h_xi + h_xi * involution_xi).applyfunc(sp.expand) == sp.zeros(8),
         "floquet_determinant": sp.expand(determinant - determinant_expected) == 0,
+        "boundary_factorization": sp.expand(expected.subs(c, 2) - boundary_factorization) == 0
+        and sp.simplify(expected.subs({y: eta, c: 2})) == 0,
+        "cosine_threshold_arithmetic": taylor_lower_bound == sp.Rational(1178731111, 150994944)
+        and taylor_lower_bound > sp.Rational(1561, 200),
     }
     for separation, index, value in ((1, 4, 5504), (2, 6, 64336), (3, 9, 2872096)):
         q = [-1] * 8

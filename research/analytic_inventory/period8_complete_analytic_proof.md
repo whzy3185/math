@@ -95,6 +95,27 @@ Equation (3) shows that the spectrum of \(H(z)\) is symmetric about zero,
 and (4) therefore gives the characteristic equation for its squared
 eigenvalues.  Since \(|z|=1\), we have \(c\in[-2,2]\).
 
+For later use, this also identifies the exact infinite-volume squared edge.
+Indeed,
+
+\[
+P(y,2)=(y^2-8y+6-2\sqrt5)(y^2-8y+6+2\sqrt5),
+\]
+
+whose largest root is
+
+\[
+\eta=4+\sqrt{10+2\sqrt5}.
+\tag{5}
+\]
+
+For \(y\ge\eta\),
+\(y^2-8y+13/2\ge 1/2+2\sqrt5>2\), so
+\(\partial_cP(y,c)<0\) on \([-2,2]\).  Hence
+\(P(y,c)\ge P(y,2)>0\) for \(y>\eta\), while \(P(\eta,2)=0\).
+The fiber \(z=1\) is allowed on the infinite periodic operator, so its
+squared spectral edge is exactly \(\eta\).
+
 Set \(B_0=1561/200\).  For \(y\ge B_0\),
 
 \[
@@ -120,7 +141,7 @@ so
 
 \[
 \rho(A)^2<B_0.
-\tag{5}
+\tag{6}
 \]
 
 Finally,
@@ -143,10 +164,10 @@ favourable directions.  This gives
 \rho_-(32)^2>
 \frac{1178731111}{150994944}>
 \frac{1561}{200}=B_0.
-\tag{6}
+\tag{7}
 \]
 
-Monotonicity extends (6) to every \(n=8L\ge32\).  Combining (5) and (6)
+Monotonicity extends (7) to every \(n=8L\ge32\).  Combining (6) and (7)
 proves the theorem. \(\square\)
 
 ## Boundary of this theorem
