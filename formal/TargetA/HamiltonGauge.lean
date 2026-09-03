@@ -29,6 +29,22 @@ def hamiltonGaugeMatrix {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
     (if j = cyclicNext i 2 then forwardStepTwo n alpha tau i.val else 0) +
     (if i = cyclicNext j 2 then forwardStepTwo n alpha tau j.val else 0)
 
+def hamiltonGaugeForwardMatrix {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
+    Matrix (Fin n) (Fin n) ℤ :=
+  fun i j =>
+    (if j = cyclicNext i 1 then forwardStepOne n alpha i.val else 0) +
+    (if j = cyclicNext i 2 then forwardStepTwo n alpha tau i.val else 0)
+
+theorem hamilton_gauge_matrix_eq_forward_add_transpose {n : ℕ}
+    (alpha : ℤ) (tau : ℕ → ℤ) :
+    hamiltonGaugeMatrix (n := n) alpha tau =
+      hamiltonGaugeForwardMatrix (n := n) alpha tau +
+        Matrix.transpose (hamiltonGaugeForwardMatrix (n := n) alpha tau) := by
+  ext i j
+  simp only [hamiltonGaugeMatrix, hamiltonGaugeForwardMatrix,
+    Matrix.add_apply, Matrix.transpose_apply]
+  ac_rfl
+
 theorem hamilton_gauge_matrix_symmetric {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
     Matrix.transpose (hamiltonGaugeMatrix (n := n) alpha tau) =
       hamiltonGaugeMatrix (n := n) alpha tau := by
