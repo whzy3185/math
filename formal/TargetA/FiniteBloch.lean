@@ -3,6 +3,31 @@ import TargetA.HamiltonGauge
 
 namespace TargetA
 
+/-!
+The finite Fourier transform used below is Mathlib's transform on `ZMod L`.
+We record explicitly the translation identity needed to turn a block-circulant
+cell operator into its Bloch fibres.
+-/
+
+noncomputable def cellTranslation {L : ℕ} (a : ZMod L)
+    (f : ZMod L → ℂ) : ZMod L → ℂ :=
+  fun j => f (a + j)
+
+theorem dft_cellTranslation {L : ℕ} [NeZero L] (a k : ZMod L)
+    (f : ZMod L → ℂ) :
+    ZMod.dft (cellTranslation a f) k =
+      ZMod.stdAddChar (a * k) * ZMod.dft f k := by
+  classical
+  rw [ZMod.dft_apply, ZMod.dft_apply, Finset.mul_sum]
+  refine Fintype.sum_equiv (Equiv.addLeft a) _ _ ?_
+  intro j
+  change ZMod.stdAddChar (-(j * k)) * f (a + j) =
+    ZMod.stdAddChar (a * k) *
+      (ZMod.stdAddChar (-((a + j) * k)) * f (a + j))
+  rw [← mul_assoc, ← AddChar.map_add_eq_mul]
+  congr 2
+  ring
+
 def cellReindex (L : ℕ) (_hL : 0 < L) :
     Fin (8 * L) ≃ Fin L × Fin 8 where
   toFun i :=
