@@ -88,6 +88,44 @@ theorem cell_unindex_next_two_interior (L : ℕ) (hL : 0 < L)
   rw [Nat.mod_eq_of_lt hbound]
   omega
 
+theorem cell_unindex_next_one_seam (L : ℕ) (hL : 0 < L)
+    (m : Fin L) :
+    cyclicNext ((cellReindex L hL).symm (m, (7 : Fin 8))) 1 =
+      (cellReindex L hL).symm (cyclicNext m 1, (0 : Fin 8)) := by
+  apply Fin.ext
+  change (8 * m.val + 7 + 1) % (8 * L) =
+    8 * ((m.val + 1) % L) + 0
+  rw [show 8 * m.val + 7 + 1 = 8 * (m.val + 1) by omega]
+  rw [Nat.mul_mod_mul_left]
+  omega
+
+theorem cell_unindex_next_two_seam_six (L : ℕ) (hL : 0 < L)
+    (m : Fin L) :
+    cyclicNext ((cellReindex L hL).symm (m, (6 : Fin 8))) 2 =
+      (cellReindex L hL).symm (cyclicNext m 1, (0 : Fin 8)) := by
+  apply Fin.ext
+  change (8 * m.val + 6 + 2) % (8 * L) =
+    8 * ((m.val + 1) % L) + 0
+  rw [show 8 * m.val + 6 + 2 = 8 * (m.val + 1) by omega]
+  rw [Nat.mul_mod_mul_left]
+  omega
+
+theorem cell_unindex_next_two_seam_seven (L : ℕ) (hL : 0 < L)
+    (m : Fin L) :
+    cyclicNext ((cellReindex L hL).symm (m, (7 : Fin 8))) 2 =
+      (cellReindex L hL).symm (cyclicNext m 1, (1 : Fin 8)) := by
+  apply Fin.ext
+  change (8 * m.val + 7 + 2) % (8 * L) =
+    8 * ((m.val + 1) % L) + 1
+  rw [show 8 * m.val + 7 + 2 = 8 * (m.val + 1) + 1 by omega]
+  rw [Nat.add_mod, Nat.mul_mod_mul_left]
+  have hone : 1 % (8 * L) = 1 := Nat.mod_eq_of_lt (by nlinarith)
+  rw [hone]
+  have hmod : (m.val + 1) % L < L := Nat.mod_lt _ (by omega)
+  have hbound : 8 * ((m.val + 1) % L) + 1 < 8 * L := by
+    nlinarith
+  rw [Nat.mod_eq_of_lt hbound]
+
 noncomputable def cellZModReindex (L : ℕ) (hL : 0 < L) :
     Fin (8 * L) ≃ ZMod L × Fin 8 := by
   haveI : NeZero L := ⟨Nat.ne_of_gt hL⟩
