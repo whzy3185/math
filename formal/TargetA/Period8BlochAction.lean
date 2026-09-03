@@ -69,6 +69,29 @@ noncomputable def period8ForwardCellOperatorFin (L : ℕ)
   period8ForwardIntraCell.mulVec (F m) +
     period8ForwardCell.mulVec (F (cyclicNext m 1))
 
+noncomputable def period8BackwardCellOperatorFin (L : ℕ)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) : Fin 8 → ℂ :=
+  (Matrix.transpose period8ForwardIntraCell).mulVec (F m) +
+    (Matrix.transpose period8ForwardCell).mulVec (F (cyclicPrev m))
+
+noncomputable def period8CellActionFin (L : ℕ)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) : Fin 8 → ℂ :=
+  period8IntraCell.mulVec (F m) +
+    period8ForwardCell.mulVec (F (cyclicNext m 1)) +
+      period8BackwardCell.mulVec (F (cyclicPrev m))
+
+theorem period8_cell_action_fin_eq_forward_add_backward (L : ℕ)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) :
+    period8CellActionFin L F m =
+      period8ForwardCellOperatorFin L F m +
+        period8BackwardCellOperatorFin L F m := by
+  simp only [period8CellActionFin, period8ForwardCellOperatorFin,
+    period8BackwardCellOperatorFin]
+  rw [period8_intra_as_forward_add_transpose,
+    period8_backward_is_forward_transpose]
+  simp only [Matrix.add_mulVec]
+  abel
+
 theorem period8_forward_cell_operator_fin_apply (L : ℕ)
     (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
     period8ForwardCellOperatorFin L F m r =
