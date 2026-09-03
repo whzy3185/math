@@ -55,6 +55,21 @@ theorem hamilton_gauge_forward_matrix_mulVec {n : ℕ}
   rw [Finset.sum_add_distrib]
   simp
 
+noncomputable def hamiltonGaugeForwardMatrixC {n : ℕ}
+    (alpha : ℤ) (tau : ℕ → ℤ) : Matrix (Fin n) (Fin n) ℂ :=
+  fun i j => (hamiltonGaugeForwardMatrix (n := n) alpha tau i j : ℂ)
+
+theorem hamilton_gauge_forward_matrixC_mulVec {n : ℕ}
+    (alpha : ℤ) (tau : ℕ → ℤ) (x : Fin n → ℂ) (i : Fin n) :
+    (hamiltonGaugeForwardMatrixC (n := n) alpha tau).mulVec x i =
+      (forwardStepOne n alpha i.val : ℂ) * x (cyclicNext i 1) +
+        (forwardStepTwo n alpha tau i.val : ℂ) * x (cyclicNext i 2) := by
+  simp only [hamiltonGaugeForwardMatrixC, hamiltonGaugeForwardMatrix,
+    Matrix.mulVec, dotProduct, Int.cast_add, Int.cast_ite, Int.cast_zero]
+  simp_rw [add_mul]
+  rw [Finset.sum_add_distrib]
+  simp
+
 theorem hamilton_gauge_matrix_symmetric {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
     Matrix.transpose (hamiltonGaugeMatrix (n := n) alpha tau) =
       hamiltonGaugeMatrix (n := n) alpha tau := by

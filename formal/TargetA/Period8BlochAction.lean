@@ -80,6 +80,14 @@ theorem period8_forward_cell_operator_fin_apply (L : ℕ)
       period8ForwardCell, period8TargetTau, cellForwardOne, cellForwardTwo,
       Matrix.vecHead, Matrix.vecTail]
 
+theorem period8_forward_reindex_actionC_eq_cell_operator (L : ℕ) (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift).mulVec
+        (cellEncodeC L hL F) ((cellReindex L hL).symm (m, r)) =
+      period8ForwardCellOperatorFin L F m r := by
+  rw [period8_forward_reindex_actionC]
+  exact (period8_forward_cell_operator_fin_apply L F m r).symm
+
 set_option maxHeartbeats 1500000 in
 theorem period8_fiber_as_cell_symbol (xi : ℂ) :
     period8Fiber xi = period8IntraCell +

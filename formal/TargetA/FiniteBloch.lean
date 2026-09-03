@@ -161,6 +161,10 @@ def cellEncode (L : ℕ) (hL : 0 < L)
     (F : Fin L × Fin 8 → ℤ) : Fin (8 * L) → ℤ :=
   fun i => F (cellReindex L hL i)
 
+noncomputable def cellEncodeC (L : ℕ) (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) : Fin (8 * L) → ℂ :=
+  fun i => F (cellReindex L hL i).1 (cellReindex L hL i).2
+
 def period8ForwardCellAction (L : ℕ) (F : Fin L × Fin 8 → ℤ)
     (p : Fin L × Fin 8) : ℤ :=
   F (cellForwardOne L p) + period8TargetTau p.2 * F (cellForwardTwo L p)
@@ -180,6 +184,24 @@ theorem period8_forward_reindex_action (L : ℕ) (hL : 0 < L)
       period8TargetLift (8 * m.val + r.val) * F (cellForwardTwo L (m, r)) = _
   rw [period8_target_lift_cell_value]
   rfl
+
+theorem period8_forward_reindex_actionC (L : ℕ) (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift).mulVec
+        (cellEncodeC L hL F) ((cellReindex L hL).symm (m, r)) =
+      F (cellForwardOne L (m, r)).1 (cellForwardOne L (m, r)).2 +
+        (period8TargetTau r : ℂ) *
+          F (cellForwardTwo L (m, r)).1 (cellForwardTwo L (m, r)).2 := by
+  rw [hamilton_gauge_forward_matrixC_mulVec]
+  rw [forward_step_one_periodic_holonomy,
+    forward_step_two_periodic_holonomy]
+  simp only [Int.cast_one, one_mul, cellEncodeC]
+  rw [cell_unindex_next_one, cell_unindex_next_two]
+  simp only [Equiv.apply_symm_apply]
+  change F (cellForwardOne L (m, r)).1 (cellForwardOne L (m, r)).2 +
+      (period8TargetLift (8 * m.val + r.val) : ℂ) *
+        F (cellForwardTwo L (m, r)).1 (cellForwardTwo L (m, r)).2 = _
+  rw [period8_target_lift_cell_value]
 
 noncomputable def cellZModReindex (L : ℕ) (hL : 0 < L) :
     Fin (8 * L) ≃ ZMod L × Fin 8 := by
