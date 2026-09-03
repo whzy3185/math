@@ -36,6 +36,24 @@ theorem hamilton_gauge_matrix_symmetric {n : ℕ} (alpha : ℤ) (tau : ℕ → �
   simp only [Matrix.transpose_apply, hamiltonGaugeMatrix]
   ac_rfl
 
+/-!
+The next two lemmas record the graph-theoretic content of the matrix
+definition, independently of the values of the edge signs.  In particular,
+no entry away from the four cyclic step-neighbours can be created by the
+Hamilton gauge convention, and (once the two step sizes do not wrap onto the
+base vertex) there is no diagonal entry.
+-/
+
+theorem hamilton_gauge_matrix_zero_of_not_neighbour {n : ℕ}
+    (alpha : ℤ) (tau : ℕ → ℤ) (i j : Fin n)
+    (hforwardOne : j ≠ cyclicNext i 1)
+    (hbackwardOne : i ≠ cyclicNext j 1)
+    (hforwardTwo : j ≠ cyclicNext i 2)
+    (hbackwardTwo : i ≠ cyclicNext j 2) :
+    hamiltonGaugeMatrix alpha tau i j = 0 := by
+  simp [hamiltonGaugeMatrix, hforwardOne, hbackwardOne, hforwardTwo,
+    hbackwardTwo]
+
 theorem cyclic_next_one_ne_self {n : ℕ} (hn : 2 ≤ n) (i : Fin n) :
     cyclicNext i 1 ≠ i := by
   intro h
@@ -78,6 +96,15 @@ theorem cyclic_next_one_ne_two {n : ℕ} (hn : 2 ≤ n) (i : Fin n) :
     rw [cyclic_next_one_then_one]
     exact h.symm
   exact cyclic_next_one_ne_self hn (cyclicNext i 1) hself
+
+theorem hamilton_gauge_matrix_diagonal_zero {n : ℕ} (hn : 3 ≤ n)
+    (alpha : ℤ) (tau : ℕ → ℤ) (i : Fin n) :
+    hamiltonGaugeMatrix alpha tau i i = 0 := by
+  apply hamilton_gauge_matrix_zero_of_not_neighbour
+  · exact (cyclic_next_one_ne_self hn i).symm
+  · exact (cyclic_next_one_ne_self hn i).symm
+  · exact (cyclic_next_two_ne_self hn i).symm
+  · exact (cyclic_next_two_ne_self hn i).symm
 
 def IsSign (x : ℤ) : Prop := x = 1 ∨ x = -1
 
@@ -143,6 +170,12 @@ theorem period8_target_matrix_symmetric (L : ℕ) (alpha : ℤ) :
     Matrix.transpose (period8TargetMatrix L alpha) =
       period8TargetMatrix L alpha :=
   hamilton_gauge_matrix_symmetric alpha period8TargetLift
+
+theorem period8_target_matrix_diagonal_zero {L : ℕ} (hL : 0 < L)
+    (alpha : ℤ) (i : Fin (8 * L)) :
+    period8TargetMatrix L alpha i i = 0 := by
+  apply hamilton_gauge_matrix_diagonal_zero
+  omega
 
 theorem step_one_cut_rule {n i : ℕ} :
     forwardStepOne n (-1) i = if i + 1 < n then 1 else -1 := by
