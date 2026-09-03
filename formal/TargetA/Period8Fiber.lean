@@ -248,4 +248,30 @@ theorem period8_complex_squared_block_eigen_root {xi y : ℂ}
       _ = 0 := hentry
   exact (mul_eq_zero.mp hfactor).resolve_left hroot
 
+def period8TopEmbed (v : Fin 4 → ℂ) : Fin 8 → ℂ :=
+  ![v 0, v 1, v 2, v 3, 0, 0, 0, 0]
+
+def period8BottomEmbed (v : Fin 4 → ℂ) : Fin 8 → ℂ :=
+  ![0, 0, 0, 0, v 0, v 1, v 2, v 3]
+
+set_option maxHeartbeats 1500000 in
+theorem period8_chiral_top_action (xi : ℂ) (v : Fin 4 → ℂ) :
+    (period8ChiralCoordinateMatrix xi).mulVec (period8TopEmbed v) =
+      period8BottomEmbed ((period8ComplexNegativeToPositive xi).mulVec v) := by
+  ext i
+  fin_cases i <;>
+    simp [period8ChiralCoordinateMatrix, period8TopEmbed, period8BottomEmbed,
+      period8ComplexNegativeToPositive, Matrix.mulVec, Matrix.vecHead,
+      Matrix.vecTail]
+
+set_option maxHeartbeats 1500000 in
+theorem period8_chiral_bottom_action (xi : ℂ) (v : Fin 4 → ℂ) :
+    (period8ChiralCoordinateMatrix xi).mulVec (period8BottomEmbed v) =
+      period8TopEmbed ((period8ComplexPositiveToNegative xi).mulVec v) := by
+  ext i
+  fin_cases i <;>
+    simp [period8ChiralCoordinateMatrix, period8TopEmbed, period8BottomEmbed,
+      period8ComplexPositiveToNegative, Matrix.mulVec, Matrix.vecHead,
+      Matrix.vecTail]
+
 end TargetA
