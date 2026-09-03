@@ -1,4 +1,5 @@
 import Mathlib
+import TargetA.Period8ChiralBlock
 
 namespace TargetA
 
@@ -254,6 +255,43 @@ def period8TopEmbed (v : Fin 4 → ℂ) : Fin 8 → ℂ :=
 def period8BottomEmbed (v : Fin 4 → ℂ) : Fin 8 → ℂ :=
   ![0, 0, 0, 0, v 0, v 1, v 2, v 3]
 
+def period8TopProject (w : Fin 8 → ℂ) : Fin 4 → ℂ :=
+  ![w 0, w 1, w 2, w 3]
+
+def period8BottomProject (w : Fin 8 → ℂ) : Fin 4 → ℂ :=
+  ![w 4, w 5, w 6, w 7]
+
+theorem period8_top_project_embed (v : Fin 4 → ℂ) :
+    period8TopProject (period8TopEmbed v) = v := by
+  funext i
+  fin_cases i <;> simp [period8TopProject, period8TopEmbed, Matrix.vecHead,
+    Matrix.vecTail]
+
+theorem period8_bottom_project_embed (v : Fin 4 → ℂ) :
+    period8BottomProject (period8BottomEmbed v) = v := by
+  funext i
+  fin_cases i <;> simp [period8BottomProject, period8BottomEmbed, Matrix.vecHead,
+    Matrix.vecTail]
+
+theorem period8_top_project_bottom_embed (v : Fin 4 → ℂ) :
+    period8TopProject (period8BottomEmbed v) = 0 := by
+  funext i
+  fin_cases i <;> simp [period8TopProject, period8BottomEmbed, Matrix.vecHead,
+    Matrix.vecTail]
+
+theorem period8_bottom_project_top_embed (v : Fin 4 → ℂ) :
+    period8BottomProject (period8TopEmbed v) = 0 := by
+  funext i
+  fin_cases i <;> simp [period8BottomProject, period8TopEmbed, Matrix.vecHead,
+    Matrix.vecTail]
+
+theorem period8_embed_project_reconstruct (w : Fin 8 → ℂ) :
+    period8TopEmbed (period8TopProject w) +
+      period8BottomEmbed (period8BottomProject w) = w := by
+  funext i
+  fin_cases i <;> simp [period8TopEmbed, period8BottomEmbed,
+    period8TopProject, period8BottomProject, Matrix.vecHead, Matrix.vecTail]
+
 set_option maxHeartbeats 1500000 in
 theorem period8_chiral_top_action (xi : ℂ) (v : Fin 4 → ℂ) :
     (period8ChiralCoordinateMatrix xi).mulVec (period8TopEmbed v) =
@@ -273,5 +311,196 @@ theorem period8_chiral_bottom_action (xi : ℂ) (v : Fin 4 → ℂ) :
     simp [period8ChiralCoordinateMatrix, period8TopEmbed, period8BottomEmbed,
       period8ComplexPositiveToNegative, Matrix.mulVec, Matrix.vecHead,
       Matrix.vecTail]
+
+theorem period8_chiral_coordinate_action (xi : ℂ) (w : Fin 8 → ℂ) :
+    (period8ChiralCoordinateMatrix xi).mulVec w =
+      period8TopEmbed
+        ((period8ComplexPositiveToNegative xi).mulVec (period8BottomProject w)) +
+      period8BottomEmbed
+        ((period8ComplexNegativeToPositive xi).mulVec (period8TopProject w)) := by
+  ext i
+  fin_cases i <;>
+    simp [period8ChiralCoordinateMatrix, period8TopEmbed, period8BottomEmbed,
+      period8TopProject, period8BottomProject, period8ComplexPositiveToNegative,
+      period8ComplexNegativeToPositive, Matrix.mulVec, Matrix.vecHead,
+      Matrix.vecTail]
+
+theorem period8_chiral_top_equation {xi lambda : ℂ} {w : Fin 8 → ℂ}
+    (hEig : (period8ChiralCoordinateMatrix xi).mulVec w = lambda • w) :
+    (period8ComplexPositiveToNegative xi).mulVec (period8BottomProject w) =
+      lambda • period8TopProject w := by
+  funext i
+  fin_cases i
+  · simpa [period8ChiralCoordinateMatrix, period8TopProject,
+      period8BottomProject, period8ComplexPositiveToNegative, Matrix.mulVec,
+      Matrix.vecHead, Matrix.vecTail] using congrFun hEig (0 : Fin 8)
+  · simpa [period8ChiralCoordinateMatrix, period8TopProject,
+      period8BottomProject, period8ComplexPositiveToNegative, Matrix.mulVec,
+      Matrix.vecHead, Matrix.vecTail] using congrFun hEig (1 : Fin 8)
+  · simpa [period8ChiralCoordinateMatrix, period8TopProject,
+      period8BottomProject, period8ComplexPositiveToNegative, Matrix.mulVec,
+      Matrix.vecHead, Matrix.vecTail] using congrFun hEig (2 : Fin 8)
+  · simpa [period8ChiralCoordinateMatrix, period8TopProject,
+      period8BottomProject, period8ComplexPositiveToNegative, Matrix.mulVec,
+      Matrix.vecHead, Matrix.vecTail] using congrFun hEig (3 : Fin 8)
+
+theorem period8_chiral_bottom_equation {xi lambda : ℂ} {w : Fin 8 → ℂ}
+    (hEig : (period8ChiralCoordinateMatrix xi).mulVec w = lambda • w) :
+    (period8ComplexNegativeToPositive xi).mulVec (period8TopProject w) =
+      lambda • period8BottomProject w := by
+  funext i
+  fin_cases i
+  · simpa [period8ChiralCoordinateMatrix, period8TopProject,
+      period8BottomProject, period8ComplexNegativeToPositive, Matrix.mulVec,
+      Matrix.vecHead, Matrix.vecTail] using congrFun hEig (4 : Fin 8)
+  · simpa [period8ChiralCoordinateMatrix, period8TopProject,
+      period8BottomProject, period8ComplexNegativeToPositive, Matrix.mulVec,
+      Matrix.vecHead, Matrix.vecTail] using congrFun hEig (5 : Fin 8)
+  · simpa [period8ChiralCoordinateMatrix, period8TopProject,
+      period8BottomProject, period8ComplexNegativeToPositive, Matrix.mulVec,
+      Matrix.vecHead, Matrix.vecTail] using congrFun hEig (6 : Fin 8)
+  · simpa [period8ChiralCoordinateMatrix, period8TopProject,
+      period8BottomProject, period8ComplexNegativeToPositive, Matrix.mulVec,
+      Matrix.vecHead, Matrix.vecTail] using congrFun hEig (7 : Fin 8)
+
+theorem period8_chiral_top_nonzero {xi lambda : ℂ} {w : Fin 8 → ℂ}
+    (hlambda : lambda ≠ 0)
+    (hEig : (period8ChiralCoordinateMatrix xi).mulVec w = lambda • w)
+    (hw : w ≠ 0) :
+    period8TopProject w ≠ 0 := by
+  intro htop
+  have hbottom :=
+    period8_chiral_bottom_equation (xi := xi) (lambda := lambda) hEig
+  rw [htop] at hbottom
+  simp at hbottom
+  have hbotzero : period8BottomProject w = 0 := by
+    exact (smul_eq_zero.mp hbottom.symm).resolve_left hlambda
+  have hreconstruct := period8_embed_project_reconstruct w
+  rw [htop, hbotzero] at hreconstruct
+  apply hw
+  calc
+    w = period8TopEmbed 0 + period8BottomEmbed 0 := hreconstruct.symm
+    _ = 0 := by
+      funext i
+      fin_cases i <;> simp [period8TopEmbed, period8BottomEmbed]
+
+theorem period8_chiral_squared_top_eigen {xi lambda : ℂ} {w : Fin 8 → ℂ}
+    (hxi : xi ≠ 0) (hlambda : lambda ≠ 0)
+    (hEig : (period8ChiralCoordinateMatrix xi).mulVec w = lambda • w)
+    (hw : w ≠ 0) :
+    (period8ComplexSquaredBlock xi).mulVec (period8TopProject w) =
+      (lambda^2) • period8TopProject w := by
+  let x := period8TopProject w
+  let y := period8BottomProject w
+  have htop :=
+    period8_chiral_top_equation (xi := xi) (lambda := lambda) hEig
+  have hbottom :=
+    period8_chiral_bottom_equation (xi := xi) (lambda := lambda) hEig
+  have htop_nonzero :=
+    period8_chiral_top_nonzero (xi := xi) (lambda := lambda) hlambda hEig hw
+  have htop' :
+      (period8ComplexPositiveToNegative xi).mulVec y = lambda • x := by
+    simpa [x, y] using htop
+  have hbottom' :
+      (period8ComplexNegativeToPositive xi).mulVec x = lambda • y := by
+    simpa [x, y] using hbottom
+  have hbc :
+      (period8ComplexPositiveToNegative xi *
+        period8ComplexNegativeToPositive xi).mulVec x =
+        (lambda^2) • x := by
+    rw [← Matrix.mulVec_mulVec, hbottom', Matrix.mulVec_smul, htop']
+    simp [pow_two, smul_smul, mul_comm]
+  rw [← period8_complex_squared_block (xi := xi) hxi]
+  simpa [x] using hbc
+
+theorem period8_chiral_eigen_square_root {xi lambda : ℂ} {w : Fin 8 → ℂ}
+    (hxi : xi ≠ 0) (hlambda : lambda ≠ 0)
+    (hEig : (period8ChiralCoordinateMatrix xi).mulVec w = lambda • w)
+    (hw : w ≠ 0) :
+    period8FiberPolynomialC (lambda^2) (xi^2 + xi⁻¹^2) = 0 := by
+  apply period8_complex_squared_block_eigen_root hxi (period8TopProject w)
+  · exact period8_chiral_squared_top_eigen hxi hlambda hEig hw
+  · exact period8_chiral_top_nonzero hlambda hEig hw
+
+theorem period8_fiber_inverse_intertwines {xi : ℂ} (hxi : xi ≠ 0) :
+    period8ChiralCoordinateMatrix xi * period8ChiralBasisInverse xi =
+      period8ChiralBasisInverse xi * period8Fiber xi := by
+  calc
+    period8ChiralCoordinateMatrix xi * period8ChiralBasisInverse xi =
+        (period8ChiralBasisInverse xi * period8Fiber xi *
+          period8ChiralBasis xi) * period8ChiralBasisInverse xi := by
+            rw [period8_fiber_similar_to_chiral_coordinates hxi]
+    _ = period8ChiralBasisInverse xi * period8Fiber xi *
+          (period8ChiralBasis xi * period8ChiralBasisInverse xi) := by
+            rw [Matrix.mul_assoc, Matrix.mul_assoc]
+    _ = period8ChiralBasisInverse xi * period8Fiber xi := by
+            rw [period8_chiral_basis_right_inverse hxi, Matrix.mul_one]
+
+theorem period8_fiber_eigen_square_root {xi lambda : ℂ} {u : Fin 8 → ℂ}
+    (hxi : xi ≠ 0) (hlambda : lambda ≠ 0)
+    (hEig : (period8Fiber xi).mulVec u = lambda • u)
+    (hu : u ≠ 0) :
+    period8FiberPolynomialC (lambda^2) (xi^2 + xi⁻¹^2) = 0 := by
+  let V := period8ChiralBasisInverse xi
+  let U := period8ChiralBasis xi
+  let w := V.mulVec u
+  have hw : w ≠ 0 := by
+    intro hwzero
+    apply hu
+    calc
+      u = (U * V).mulVec u := by
+        rw [period8_chiral_basis_right_inverse hxi, Matrix.one_mulVec]
+      _ = U.mulVec (V.mulVec u) := by
+        rw [← Matrix.mulVec_mulVec]
+      _ = 0 := by
+        rw [show V.mulVec u = w by rfl, hwzero, Matrix.mulVec_zero]
+  have hEigW : (period8ChiralCoordinateMatrix xi).mulVec w = lambda • w := by
+    calc
+      (period8ChiralCoordinateMatrix xi).mulVec w =
+          (period8ChiralCoordinateMatrix xi * V).mulVec u := by
+            rw [show w = V.mulVec u by rfl, ← Matrix.mulVec_mulVec]
+      _ = (V * period8Fiber xi).mulVec u := by
+            rw [period8_fiber_inverse_intertwines hxi]
+      _ = V.mulVec ((period8Fiber xi).mulVec u) := by
+            rw [← Matrix.mulVec_mulVec]
+      _ = lambda • V.mulVec u := by rw [hEig, Matrix.mulVec_smul]
+      _ = lambda • w := by rw [show w = V.mulVec u by rfl]
+  exact period8_chiral_eigen_square_root hxi hlambda hEigW hw
+
+theorem period8_fiber_polynomialC_eq (y c : ℂ) :
+    period8FiberPolynomialC y c = period8PolynomialC y c := by
+  simp [period8FiberPolynomialC, period8PolynomialC]
+
+theorem period8_fiber_real_eigen_square_lt_bound
+    {xi z alpha : ℂ} {L : ℕ} {lambda : ℝ} {u : Fin 8 → ℂ}
+    (hL : L ≠ 0) (hxi_sq : xi^2 = z) (hz : z^L = alpha)
+    (halpha : alpha^2 = 1)
+    (hEig : (period8Fiber xi).mulVec u = (lambda : ℂ) • u)
+    (hu : u ≠ 0) :
+    lambda^2 < period8Bound := by
+  by_cases hlambda : lambda = 0
+  · rw [hlambda]
+    simpa using period8_bound_positive
+  · have hcast : (lambda : ℂ) ≠ 0 := by
+      exact_mod_cast hlambda
+    have hxi : xi ≠ 0 := by
+      intro hzero
+      have hzzero : z = 0 := by
+        calc
+          z = xi^2 := hxi_sq.symm
+          _ = 0 := by simp [hzero]
+      rw [hzzero] at hz
+      simp [hL] at hz
+      have : alpha = 0 := hz.symm
+      rw [this] at halpha
+      norm_num at halpha
+    have hroot_fiber :=
+      period8_fiber_eigen_square_root (xi := xi) (lambda := (lambda : ℂ))
+        hxi hcast hEig hu
+    have hroot :
+        period8PolynomialC ((lambda^2 : ℝ) : ℂ) (xi^2 + xi⁻¹^2) = 0 := by
+      rw [← period8_fiber_polynomialC_eq]
+      simpa using hroot_fiber
+    exact period8_holonomy_root_lt_bound hL hxi_sq hz halpha hroot
 
 end TargetA
