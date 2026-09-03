@@ -1,4 +1,5 @@
 import TargetA.Definitions
+import TargetA.FiniteBloch
 import TargetA.PhaseSlip
 import TargetA.HamiltonGauge
 import TargetA.Period8ChiralBlock
