@@ -129,6 +129,14 @@ theorem forward_step_two_is_sign (n : ℕ) (alpha : ℤ) (tau : ℕ → ℤ)
     · simpa using htau i
     · rcases htau i with h | h <;> simp [h, IsSign]
 
+theorem forward_step_one_periodic_holonomy (n i : ℕ) :
+    forwardStepOne n 1 i = 1 := by
+  simp [forwardStepOne]
+
+theorem forward_step_two_periodic_holonomy (n i : ℕ) (tau : ℕ → ℤ) :
+    forwardStepTwo n 1 tau i = tau i := by
+  simp [forwardStepTwo]
+
 theorem period_eight_repeat (tau : Fin 8 → ℤ) (i L : ℕ) :
     periodEightValue tau (i + 8 * L) = periodEightValue tau i := by
   simp [periodEightValue, Nat.add_mul_mod_self_left]
@@ -138,6 +146,14 @@ def period8TargetTau : Fin 8 → ℤ :=
 
 def period8TargetLift (i : ℕ) : ℤ :=
   periodEightValue period8TargetTau i
+
+theorem period8_target_lift_cell_value (m : ℕ) (r : Fin 8) :
+    period8TargetLift (8 * m + r.val) = period8TargetTau r := by
+  simp [period8TargetLift, periodEightValue]
+  congr 1
+  apply Fin.ext
+  change r.val % 8 = r.val
+  exact Nat.mod_eq_of_lt r.isLt
 
 theorem period8_target_tau_is_sign (r : Fin 8) :
     IsSign (period8TargetTau r) := by
