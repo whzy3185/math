@@ -503,4 +503,14 @@ theorem period8_fiber_real_eigen_square_lt_bound
       simpa using hroot_fiber
     exact period8_holonomy_root_lt_bound hL hxi_sq hz halpha hroot
 
+set_option maxHeartbeats 1500000 in
+theorem period8_fiber_isHermitian {xi : ℂ}
+    (hunit : xi * (starRingEnd ℂ) xi = 1) :
+    (period8Fiber xi).IsHermitian := by
+  have hconj := period8_unit_conj_eq_inv hunit
+  rw [Matrix.IsHermitian]
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [period8Fiber, Matrix.conjTranspose, hconj, map_pow]
+
 end TargetA
