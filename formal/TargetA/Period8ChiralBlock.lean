@@ -44,6 +44,31 @@ theorem period8_unit_parameter_real {xi : ℂ}
   simp [map_add, map_pow, hconj]
   ring
 
+theorem period8_unit_parameter_re_le_two {xi : ℂ}
+    (hunit : xi * (starRingEnd ℂ) xi = 1) :
+    (xi^2 + xi⁻¹^2).re ≤ 2 := by
+  have hnormsq : Complex.normSq xi = 1 := by
+    have hr := congrArg Complex.re hunit
+    simpa [Complex.normSq_apply, Complex.mul_re, Complex.conj_re,
+      Complex.conj_im] using hr
+  have hnorm : ‖xi‖ = 1 := by
+    have hsquare : ‖xi‖ ^ 2 = 1 := by
+      rw [Complex.sq_norm, hnormsq]
+    nlinarith [norm_nonneg xi]
+  have hnormpow : ‖xi^2‖ = 1 := by
+    rw [norm_pow, hnorm]
+    norm_num
+  have hinv : xi⁻¹ = (starRingEnd ℂ) xi := by
+    exact (period8_unit_conj_eq_inv hunit).symm
+  have hc : xi^2 + xi⁻¹^2 = xi^2 + (starRingEnd ℂ) (xi^2) := by
+    rw [hinv]
+    simp [map_pow]
+  have hcre : (xi^2 + xi⁻¹^2).re = 2 * (xi^2).re := by
+    rw [hc, Complex.add_conj]
+    simp
+  rw [hcre]
+  nlinarith [Complex.re_le_norm (xi^2)]
+
 theorem period8_polynomialC_ofReal (y c : ℝ) :
     period8PolynomialC (y : ℂ) (c : ℂ) =
       (period8Polynomial y c : ℂ) := by
@@ -55,6 +80,23 @@ theorem period8_complex_root_is_real_root {y c : ℝ}
   apply Complex.ofReal_injective
   rw [← period8_polynomialC_ofReal]
   simpa using hroot
+
+theorem period8_unit_complex_root_is_real_root {xi : ℂ} {y : ℝ}
+    (hunit : xi * (starRingEnd ℂ) xi = 1)
+    (hroot : period8PolynomialC (y : ℂ) (xi^2 + xi⁻¹^2) = 0) :
+    period8Polynomial y (xi^2 + xi⁻¹^2).re = 0 := by
+  have hreal := period8_unit_parameter_real hunit
+  have hcast : ((xi^2 + xi⁻¹^2).re : ℂ) = xi^2 + xi⁻¹^2 :=
+    Complex.conj_eq_iff_re.mp hreal
+  rw [← hcast] at hroot
+  exact period8_complex_root_is_real_root hroot
+
+theorem period8_unit_complex_root_lt_bound {xi : ℂ} {y : ℝ}
+    (hunit : xi * (starRingEnd ℂ) xi = 1)
+    (hroot : period8PolynomialC (y : ℂ) (xi^2 + xi⁻¹^2) = 0) :
+    y < period8Bound := by
+  apply period8_root_lt_bound (period8_unit_parameter_re_le_two hunit)
+  exact period8_unit_complex_root_is_real_root hunit hroot
 
 noncomputable def period8Q (xi : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
   !![1 + xi⁻¹, 2;
