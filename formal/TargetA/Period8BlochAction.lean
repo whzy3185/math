@@ -121,6 +121,23 @@ noncomputable def period8ReindexedForwardMatrixC (L : ℕ) (hL : 0 < L) :
   fun p q => (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift)
     ((cellReindex L hL).symm p) ((cellReindex L hL).symm q)
 
+noncomputable def period8ForwardCellMatrixFin (L : ℕ) :
+    Matrix (Fin L × Fin 8) (Fin L × Fin 8) ℂ :=
+  fun p q =>
+    (if q.1 = p.1 then period8ForwardIntraCell p.2 q.2 else 0) +
+      if q.1 = cyclicNext p.1 1 then period8ForwardCell p.2 q.2 else 0
+
+theorem period8_forward_cell_matrix_fin_mulVec (L : ℕ)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    (period8ForwardCellMatrixFin L).mulVec (fun p => F p.1 p.2) (m, r) =
+      period8ForwardCellOperatorFin L F m r := by
+  simp only [period8ForwardCellMatrixFin, period8ForwardCellOperatorFin,
+    Matrix.mulVec, dotProduct, Fintype.sum_prod_type]
+  simp_rw [add_mul]
+  simp_rw [Finset.sum_add_distrib]
+  simp
+  rfl
+
 theorem period8_reindexed_forward_matrix_mulVec (L : ℕ) (hL : 0 < L)
     (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
     (period8ReindexedForwardMatrixC L hL).mulVec (fun p => F p.1 p.2) (m, r) =
@@ -140,6 +157,44 @@ theorem period8_reindexed_forward_matrix_mulVec (L : ℕ) (hL : 0 < L)
   change (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift).mulVec
       (cellEncodeC L hL F) ((cellReindex L hL).symm (m, r)) = _
   exact period8_forward_reindex_actionC_eq_cell_operator L hL F m r
+
+theorem period8_reindexed_forward_matrix_eq_cell_matrix (L : ℕ) (hL : 0 < L) :
+    period8ReindexedForwardMatrixC L hL = period8ForwardCellMatrixFin L := by
+  ext p q
+  let F : Fin L → Fin 8 → ℂ := fun m r => if (m, r) = q then 1 else 0
+  have hleft := period8_reindexed_forward_matrix_mulVec L hL F p.1 p.2
+  have hright := period8_forward_cell_matrix_fin_mulVec L F p.1 p.2
+  have haction :
+      (period8ReindexedForwardMatrixC L hL).mulVec (fun x => F x.1 x.2) p =
+        (period8ForwardCellMatrixFin L).mulVec (fun x => F x.1 x.2) p :=
+    hleft.trans hright.symm
+  simpa [F, Matrix.mulVec, dotProduct] using haction
+
+noncomputable def period8ReindexedMatrixC (L : ℕ) (hL : 0 < L) :
+    Matrix (Fin L × Fin 8) (Fin L × Fin 8) ℂ :=
+  fun p q => period8TargetMatrixC L 1
+    ((cellReindex L hL).symm p) ((cellReindex L hL).symm q)
+
+noncomputable def period8CellMatrixFin (L : ℕ) :
+    Matrix (Fin L × Fin 8) (Fin L × Fin 8) ℂ :=
+  period8ForwardCellMatrixFin L + Matrix.transpose (period8ForwardCellMatrixFin L)
+
+theorem period8_reindexed_matrix_eq_forward_add_transpose (L : ℕ) (hL : 0 < L) :
+    period8ReindexedMatrixC L hL =
+      period8ReindexedForwardMatrixC L hL +
+        Matrix.transpose (period8ReindexedForwardMatrixC L hL) := by
+  ext p q
+  simp [period8ReindexedMatrixC, period8ReindexedForwardMatrixC,
+    period8TargetMatrixC, period8TargetMatrix, hamiltonGaugeMatrix,
+    hamiltonGaugeForwardMatrixC, hamiltonGaugeForwardMatrix,
+    Matrix.transpose_apply]
+  ac_rfl
+
+theorem period8_reindexed_matrix_eq_cell_matrix (L : ℕ) (hL : 0 < L) :
+    period8ReindexedMatrixC L hL = period8CellMatrixFin L := by
+  rw [period8_reindexed_matrix_eq_forward_add_transpose,
+    period8_reindexed_forward_matrix_eq_cell_matrix]
+  rfl
 
 theorem period8_reindexed_forward_operator_eq (L : ℕ) (hL : 0 < L)
     (F : Fin L → Fin 8 → ℂ) :
