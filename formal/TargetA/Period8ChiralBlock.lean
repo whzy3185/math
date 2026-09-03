@@ -106,6 +106,60 @@ theorem period8_squared_block_annihilated {xi : ℝ} (hxi : xi ≠ 0) :
   all_goals
     field_simp [hxi] <;> ring
 
+theorem period8_matrix_power_on_eigenvector {S : Matrix (Fin 4) (Fin 4) ℝ}
+    {y : ℝ} {v : Fin 4 → ℝ} (hv : S.mulVec v = y • v) :
+    ∀ k : ℕ, (S^k).mulVec v = y^k • v
+  | 0 => by simp
+  | k + 1 => by
+      rw [pow_succ, ← Matrix.mulVec_mulVec, hv, Matrix.mulVec_smul,
+        period8_matrix_power_on_eigenvector hv k]
+      simp [pow_succ, smul_smul, mul_comm]
+
+theorem period8_squared_block_eigen_root {xi y : ℝ}
+    (hxi : xi ≠ 0) (v : Fin 4 → ℝ)
+    (hv : (period8SquaredChiralBlock xi).mulVec v = y • v)
+    (hv_ne : v ≠ 0) :
+    period8Polynomial y (xi^2 + xi⁻¹^2) = 0 := by
+  let S := period8SquaredChiralBlock xi
+  let c := xi^2 + xi⁻¹^2
+  have hannih :
+      S^4 - (16 : ℝ) • S^3 + (80 - 2 * c) • S^2 +
+        (-128 + 16 * c) • S + (c^2 - 13 * c + 38) • 1 = 0 := by
+    simpa [S, c] using period8_squared_block_annihilated (xi := xi) hxi
+  have hvS : S.mulVec v = y • v := by
+    simpa [S] using hv
+  have hpow := period8_matrix_power_on_eigenvector (S := S) (y := y) (v := v) hv
+  have hvector := congrArg (fun M : Matrix (Fin 4) (Fin 4) ℝ => M.mulVec v) hannih
+  simp only [Matrix.add_mulVec, Matrix.sub_mulVec, Matrix.smul_mulVec,
+    Matrix.zero_mulVec, Matrix.one_mulVec] at hvector
+  rw [hpow 4, hpow 3, hpow 2, hvS] at hvector
+  by_contra hroot
+  apply hv_ne
+  funext i
+  have hentry := congrFun hvector i
+  simp only [smul_eq_mul, Pi.add_apply, Pi.sub_apply, Pi.smul_apply,
+    Pi.zero_apply] at hentry
+  have hpoly : period8Polynomial y c ≠ 0 := hroot
+  have hfactor : period8Polynomial y c * v i = 0 := by
+    calc
+      period8Polynomial y c * v i =
+          y^4 * v i - 16 * (y^3 * v i) +
+            (80 - 2 * c) * (y^2 * v i) +
+            (-128 + 16 * c) * (y * v i) +
+            (c^2 - 13 * c + 38) * v i := by
+              simp [period8Polynomial]
+              ring
+      _ = 0 := hentry
+  exact (mul_eq_zero.mp hfactor).resolve_left hpoly
+
+theorem period8_squared_block_eigen_lt_bound {xi y : ℝ}
+    (hxi : xi ≠ 0) (hc : xi^2 + xi⁻¹^2 ≤ 2)
+    (v : Fin 4 → ℝ) (hv : (period8SquaredChiralBlock xi).mulVec v = y • v)
+    (hv_ne : v ≠ 0) :
+    y < period8Bound := by
+  apply period8_root_lt_bound hc
+  exact period8_squared_block_eigen_root hxi v hv hv_ne
+
 noncomputable def period8ChiralDeterminant (y xi : ℝ) : ℝ :=
   let s := xi + xi⁻¹
   let scalar := (y - 4)^2 - s^2
