@@ -21,6 +21,24 @@ def forwardStepTwo (n : ℕ) (alpha : ℤ) (tau : ℕ → ℤ) (i : ℕ) : ℤ :
 def cyclicNext {n : ℕ} (i : Fin n) (step : ℕ) : Fin n :=
   ⟨(i.val + step) % n, Nat.mod_lt _ (Fin.pos i)⟩
 
+def cyclicPrev {n : ℕ} (i : Fin n) : Fin n :=
+  cyclicNext i (n - 1)
+
+theorem cyclic_next_prev {n : ℕ} (hn : 0 < n) (i : Fin n) :
+    cyclicNext (cyclicPrev i) 1 = i := by
+  by_cases hunit : n = 1
+  · subst n
+    fin_cases i
+    rfl
+  have hn2 : 1 < n := by omega
+  apply Fin.ext
+  change (((i.val + (n - 1)) % n) + 1) % n = i.val
+  have hone : 1 % n = 1 := Nat.mod_eq_of_lt hn2
+  rw [← hone, ← Nat.add_mod]
+  simp only [Nat.mod_eq_of_lt (by omega)]
+  have hsum : i.val + (n - 1) + 1 = i.val + n := by omega
+  rw [hsum, Nat.add_mod_right, Nat.mod_eq_of_lt i.isLt]
+
 def hamiltonGaugeMatrix {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
     Matrix (Fin n) (Fin n) ℤ :=
   fun i j =>
