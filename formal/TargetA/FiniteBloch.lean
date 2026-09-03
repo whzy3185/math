@@ -64,6 +64,30 @@ theorem cell_reindex_unindex (L : ℕ) (hL : 0 < L)
       ⟨8 * m.val + r.val, by omega⟩ := by
   rfl
 
+theorem cell_unindex_next_one_interior (L : ℕ) (hL : 0 < L)
+    (m : Fin L) (r : Fin 8) (hr : r.val + 1 < 8) :
+    cyclicNext ((cellReindex L hL).symm (m, r)) 1 =
+      (cellReindex L hL).symm
+        (m, ⟨r.val + 1, by omega⟩) := by
+  apply Fin.ext
+  change (8 * m.val + r.val + 1) % (8 * L) = 8 * m.val + (r.val + 1)
+  have hbound : 8 * m.val + r.val + 1 < 8 * L := by
+    nlinarith [m.isLt]
+  rw [Nat.mod_eq_of_lt hbound]
+  omega
+
+theorem cell_unindex_next_two_interior (L : ℕ) (hL : 0 < L)
+    (m : Fin L) (r : Fin 8) (hr : r.val + 2 < 8) :
+    cyclicNext ((cellReindex L hL).symm (m, r)) 2 =
+      (cellReindex L hL).symm
+        (m, ⟨r.val + 2, by omega⟩) := by
+  apply Fin.ext
+  change (8 * m.val + r.val + 2) % (8 * L) = 8 * m.val + (r.val + 2)
+  have hbound : 8 * m.val + r.val + 2 < 8 * L := by
+    nlinarith [m.isLt]
+  rw [Nat.mod_eq_of_lt hbound]
+  omega
+
 noncomputable def cellZModReindex (L : ℕ) (hL : 0 < L) :
     Fin (8 * L) ≃ ZMod L × Fin 8 := by
   haveI : NeZero L := ⟨Nat.ne_of_gt hL⟩
