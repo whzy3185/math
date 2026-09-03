@@ -155,6 +155,10 @@ def period8TargetMatrix (L : ℕ) (alpha : ℤ) :
     Matrix (Fin (8 * L)) (Fin (8 * L)) ℤ :=
   hamiltonGaugeMatrix alpha period8TargetLift
 
+noncomputable def period8TargetMatrixC (L : ℕ) (alpha : ℤ) :
+    Matrix (Fin (8 * L)) (Fin (8 * L)) ℂ :=
+  fun i j => (period8TargetMatrix L alpha i j : ℂ)
+
 theorem period8_target_step_two_is_sign (L : ℕ) (alpha : ℤ)
     (halpha : IsSign alpha) (i : ℕ) :
     IsSign (forwardStepTwo (8 * L) alpha period8TargetLift i) := by
@@ -170,6 +174,15 @@ theorem period8_target_matrix_symmetric (L : ℕ) (alpha : ℤ) :
     Matrix.transpose (period8TargetMatrix L alpha) =
       period8TargetMatrix L alpha :=
   hamilton_gauge_matrix_symmetric alpha period8TargetLift
+
+theorem period8_target_matrix_isHermitian (L : ℕ) (alpha : ℤ) :
+    (period8TargetMatrixC L alpha).IsHermitian := by
+  rw [Matrix.IsHermitian]
+  ext i j
+  have hsymm : period8TargetMatrix L alpha j i =
+      period8TargetMatrix L alpha i j := by
+    exact congrFun (congrFun (period8_target_matrix_symmetric L alpha) i) j
+  simp [period8TargetMatrixC, Matrix.conjTranspose, hsymm]
 
 theorem period8_target_matrix_diagonal_zero {L : ℕ} (hL : 0 < L)
     (alpha : ℤ) (i : Fin (8 * L)) :
