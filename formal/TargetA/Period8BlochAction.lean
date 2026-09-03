@@ -116,6 +116,31 @@ noncomputable def period8ReindexedForwardOperator (L : ℕ) (hL : 0 < L)
   (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift).mulVec
     (cellEncodeC L hL F) ((cellReindex L hL).symm (m, r))
 
+noncomputable def period8ReindexedForwardMatrixC (L : ℕ) (hL : 0 < L) :
+    Matrix (Fin L × Fin 8) (Fin L × Fin 8) ℂ :=
+  fun p q => (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift)
+    ((cellReindex L hL).symm p) ((cellReindex L hL).symm q)
+
+theorem period8_reindexed_forward_matrix_mulVec (L : ℕ) (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    (period8ReindexedForwardMatrixC L hL).mulVec (fun p => F p.1 p.2) (m, r) =
+      period8ForwardCellOperatorFin L F m r := by
+  change (∑ q : Fin L × Fin 8,
+    (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift)
+      ((cellReindex L hL).symm (m, r)) ((cellReindex L hL).symm q) * F q.1 q.2) = _
+  let g : Fin (8 * L) → ℂ := fun i =>
+    (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift)
+      ((cellReindex L hL).symm (m, r)) i * cellEncodeC L hL F i
+  have hencode (q : Fin L × Fin 8) :
+      cellEncodeC L hL F ((cellReindex L hL).symm q) = F q.1 q.2 := by
+    simp [cellEncodeC]
+  simp_rw [← hencode]
+  change (∑ q : Fin L × Fin 8, g ((cellReindex L hL).symm q)) = _
+  rw [(cellReindex L hL).symm.sum_comp]
+  change (hamiltonGaugeForwardMatrixC (n := 8 * L) 1 period8TargetLift).mulVec
+      (cellEncodeC L hL F) ((cellReindex L hL).symm (m, r)) = _
+  exact period8_forward_reindex_actionC_eq_cell_operator L hL F m r
+
 theorem period8_reindexed_forward_operator_eq (L : ℕ) (hL : 0 < L)
     (F : Fin L → Fin 8 → ℂ) :
     period8ReindexedForwardOperator L hL F =
