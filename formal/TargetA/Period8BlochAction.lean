@@ -138,6 +138,34 @@ theorem period8_forward_cell_matrix_fin_mulVec (L : ℕ)
   simp
   rfl
 
+theorem period8_forward_cell_matrix_fin_transpose_mulVec (L : ℕ) (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    (Matrix.transpose (period8ForwardCellMatrixFin L)).mulVec
+        (fun p => F p.1 p.2) (m, r) =
+      period8BackwardCellOperatorFin L F m r := by
+  simp only [period8ForwardCellMatrixFin, period8BackwardCellOperatorFin,
+    Matrix.mulVec, dotProduct, Matrix.transpose_apply, Fintype.sum_prod_type]
+  simp_rw [add_mul, Finset.sum_add_distrib]
+  have hnext (q : Fin L) : m = cyclicNext q 1 ↔ q = cyclicPrev m := by
+    rw [eq_comm, cyclic_next_eq_iff hL]
+  simp_rw [hnext]
+  simp
+  rfl
+
+noncomputable def period8CellMatrixFin (L : ℕ) :
+    Matrix (Fin L × Fin 8) (Fin L × Fin 8) ℂ :=
+  period8ForwardCellMatrixFin L + Matrix.transpose (period8ForwardCellMatrixFin L)
+
+theorem period8_cell_matrix_fin_mulVec (L : ℕ) (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    (period8CellMatrixFin L).mulVec (fun p => F p.1 p.2) (m, r) =
+      period8CellActionFin L F m r := by
+  simp only [period8CellMatrixFin, Matrix.add_mulVec]
+  simp only [Pi.add_apply]
+  rw [period8_forward_cell_matrix_fin_mulVec L F m r,
+    period8_forward_cell_matrix_fin_transpose_mulVec L hL F m r]
+  exact (congrFun (period8_cell_action_fin_eq_forward_add_backward L F m).symm r)
+
 theorem period8_reindexed_forward_matrix_mulVec (L : ℕ) (hL : 0 < L)
     (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
     (period8ReindexedForwardMatrixC L hL).mulVec (fun p => F p.1 p.2) (m, r) =
@@ -175,10 +203,6 @@ noncomputable def period8ReindexedMatrixC (L : ℕ) (hL : 0 < L) :
   fun p q => period8TargetMatrixC L 1
     ((cellReindex L hL).symm p) ((cellReindex L hL).symm q)
 
-noncomputable def period8CellMatrixFin (L : ℕ) :
-    Matrix (Fin L × Fin 8) (Fin L × Fin 8) ℂ :=
-  period8ForwardCellMatrixFin L + Matrix.transpose (period8ForwardCellMatrixFin L)
-
 theorem period8_reindexed_matrix_eq_forward_add_transpose (L : ℕ) (hL : 0 < L) :
     period8ReindexedMatrixC L hL =
       period8ReindexedForwardMatrixC L hL +
@@ -195,6 +219,13 @@ theorem period8_reindexed_matrix_eq_cell_matrix (L : ℕ) (hL : 0 < L) :
   rw [period8_reindexed_matrix_eq_forward_add_transpose,
     period8_reindexed_forward_matrix_eq_cell_matrix]
   rfl
+
+theorem period8_reindexed_matrix_mulVec (L : ℕ) (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    (period8ReindexedMatrixC L hL).mulVec (fun p => F p.1 p.2) (m, r) =
+      period8CellActionFin L F m r := by
+  rw [period8_reindexed_matrix_eq_cell_matrix]
+  exact period8_cell_matrix_fin_mulVec L hL F m r
 
 theorem period8_reindexed_forward_operator_eq (L : ℕ) (hL : 0 < L)
     (F : Fin L → Fin 8 → ℂ) :

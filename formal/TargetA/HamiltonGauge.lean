@@ -39,6 +39,32 @@ theorem cyclic_next_prev {n : ℕ} (hn : 0 < n) (i : Fin n) :
   have hsum : i.val + (n - 1) + 1 = i.val + n := by omega
   rw [hsum, Nat.add_mod_right, Nat.mod_eq_of_lt i.isLt]
 
+theorem cyclic_prev_next {n : ℕ} (hn : 0 < n) (i : Fin n) :
+    cyclicPrev (cyclicNext i 1) = i := by
+  by_cases hunit : n = 1
+  · subst n
+    fin_cases i
+    rfl
+  apply Fin.ext
+  change (((i.val + 1) % n + (n - 1)) % n) = i.val
+  by_cases hinterior : i.val + 1 < n
+  · rw [Nat.mod_eq_of_lt hinterior]
+    have hsum : i.val + 1 + (n - 1) = i.val + n := by omega
+    rw [hsum, Nat.add_mod_right, Nat.mod_eq_of_lt i.isLt]
+  · have hseam : i.val + 1 = n := by omega
+    rw [hseam, Nat.mod_self]
+    have hi : i.val = n - 1 := by omega
+    rw [hi, Nat.mod_eq_of_lt (by omega)]
+    omega
+
+theorem cyclic_next_eq_iff {n : ℕ} (hn : 0 < n) (i j : Fin n) :
+    cyclicNext i 1 = j ↔ i = cyclicPrev j := by
+  constructor
+  · intro h
+    rw [← h, cyclic_prev_next hn]
+  · intro h
+    rw [h, cyclic_next_prev hn]
+
 def hamiltonGaugeMatrix {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
     Matrix (Fin n) (Fin n) ℤ :=
   fun i j =>
