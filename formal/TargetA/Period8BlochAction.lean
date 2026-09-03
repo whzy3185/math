@@ -19,6 +19,16 @@ noncomputable def period8IntraCell : Matrix (Fin 8) (Fin 8) ℂ :=
      0, 0, 0, 0, -1, 1, 0, 1;
      0, 0, 0, 0, 0, -1, 1, 0]
 
+noncomputable def period8ForwardIntraCell : Matrix (Fin 8) (Fin 8) ℂ :=
+  !![0, 1, 1, 0, 0, 0, 0, 0;
+     0, 0, 1, 1, 0, 0, 0, 0;
+     0, 0, 0, 1, -1, 0, 0, 0;
+     0, 0, 0, 0, 1, 1, 0, 0;
+     0, 0, 0, 0, 0, 1, -1, 0;
+     0, 0, 0, 0, 0, 0, 1, -1;
+     0, 0, 0, 0, 0, 0, 0, 1;
+     0, 0, 0, 0, 0, 0, 0, 0]
+
 noncomputable def period8ForwardCell : Matrix (Fin 8) (Fin 8) ℂ :=
   !![0, 0, 0, 0, 0, 0, 0, 0;
      0, 0, 0, 0, 0, 0, 0, 0;
@@ -38,6 +48,21 @@ noncomputable def period8BackwardCell : Matrix (Fin 8) (Fin 8) ℂ :=
      0, 0, 0, 0, 0, 0, 0, 0;
      0, 0, 0, 0, 0, 0, 0, 0;
      0, 0, 0, 0, 0, 0, 0, 0]
+
+set_option maxHeartbeats 1500000 in
+theorem period8_intra_as_forward_add_transpose :
+    period8IntraCell = period8ForwardIntraCell +
+      Matrix.transpose period8ForwardIntraCell := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [period8IntraCell, period8ForwardIntraCell, Matrix.transpose_apply]
+
+set_option maxHeartbeats 1500000 in
+theorem period8_backward_is_forward_transpose :
+    period8BackwardCell = Matrix.transpose period8ForwardCell := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [period8BackwardCell, period8ForwardCell, Matrix.transpose_apply]
 
 set_option maxHeartbeats 1500000 in
 theorem period8_fiber_as_cell_symbol (xi : ℂ) :
