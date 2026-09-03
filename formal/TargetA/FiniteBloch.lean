@@ -126,6 +126,37 @@ theorem cell_unindex_next_two_seam_seven (L : ℕ) (hL : 0 < L)
     nlinarith
   rw [Nat.mod_eq_of_lt hbound]
 
+def cellForwardOne (L : ℕ) (p : Fin L × Fin 8) : Fin L × Fin 8 :=
+  if h : p.2.val + 1 < 8 then
+    (p.1, ⟨p.2.val + 1, h⟩)
+  else
+    (cyclicNext p.1 1, (0 : Fin 8))
+
+def cellForwardTwo (L : ℕ) (p : Fin L × Fin 8) : Fin L × Fin 8 :=
+  if h : p.2.val + 2 < 8 then
+    (p.1, ⟨p.2.val + 2, h⟩)
+  else
+    (cyclicNext p.1 1, ⟨p.2.val + 2 - 8, by omega⟩)
+
+theorem cell_unindex_next_one (L : ℕ) (hL : 0 < L)
+    (m : Fin L) (r : Fin 8) :
+    cyclicNext ((cellReindex L hL).symm (m, r)) 1 =
+      (cellReindex L hL).symm (cellForwardOne L (m, r)) := by
+  fin_cases r <;> simp [cellForwardOne]
+  all_goals first
+    | exact cell_unindex_next_one_interior L hL m _ (by omega)
+    | exact cell_unindex_next_one_seam L hL m
+
+theorem cell_unindex_next_two (L : ℕ) (hL : 0 < L)
+    (m : Fin L) (r : Fin 8) :
+    cyclicNext ((cellReindex L hL).symm (m, r)) 2 =
+      (cellReindex L hL).symm (cellForwardTwo L (m, r)) := by
+  fin_cases r <;> simp [cellForwardTwo]
+  all_goals first
+    | exact cell_unindex_next_two_interior L hL m _ (by omega)
+    | exact cell_unindex_next_two_seam_six L hL m
+    | exact cell_unindex_next_two_seam_seven L hL m
+
 noncomputable def cellZModReindex (L : ℕ) (hL : 0 < L) :
     Fin (8 * L) ≃ ZMod L × Fin 8 := by
   haveI : NeZero L := ⟨Nat.ne_of_gt hL⟩
