@@ -28,6 +28,14 @@ theorem dft_cellTranslation {L : ℕ} [NeZero L] (a k : ZMod L)
   congr 2
   ring
 
+theorem stdAddChar_pow_modulus {L : ℕ} [NeZero L] (k : ZMod L) :
+    (ZMod.stdAddChar k)^L = 1 := by
+  rw [← AddChar.map_nsmul_eq_pow]
+  have hzero : L • k = 0 := by
+    rw [nsmul_eq_mul]
+    simp
+  rw [hzero, AddChar.map_zero_eq_one]
+
 def cellReindex (L : ℕ) (_hL : 0 < L) :
     Fin (8 * L) ≃ Fin L × Fin 8 where
   toFun i :=
