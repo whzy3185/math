@@ -90,7 +90,21 @@ theorem period8_squared_chiral_block {xi : ℝ} (hxi : xi ≠ 0) :
   fin_cases i <;> fin_cases j <;>
     simp [period8PositiveToNegative, period8NegativeToPositive,
       period8SquaredChiralBlock, hxi]
-  all_goals field_simp [hxi] <;> ring
+  all_goals
+    field_simp [hxi] <;> ring
+
+set_option maxHeartbeats 4000000 in
+theorem period8_squared_block_annihilated {xi : ℝ} (hxi : xi ≠ 0) :
+    let S := period8SquaredChiralBlock xi
+    let c := xi^2 + xi⁻¹^2
+    S^4 - (16 : ℝ) • S^3 + (80 - 2 * c) • S^2 +
+      (-128 + 16 * c) • S + (c^2 - 13 * c + 38) • 1 = 0 := by
+  dsimp
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [period8SquaredChiralBlock, pow_succ]
+  all_goals
+    field_simp [hxi] <;> ring
 
 noncomputable def period8ChiralDeterminant (y xi : ℝ) : ℝ :=
   let s := xi + xi⁻¹
