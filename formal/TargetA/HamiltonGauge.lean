@@ -45,6 +45,16 @@ theorem hamilton_gauge_matrix_eq_forward_add_transpose {n : ℕ}
     Matrix.add_apply, Matrix.transpose_apply]
   ac_rfl
 
+theorem hamilton_gauge_forward_matrix_mulVec {n : ℕ}
+    (alpha : ℤ) (tau : ℕ → ℤ) (x : Fin n → ℤ) (i : Fin n) :
+    (hamiltonGaugeForwardMatrix (n := n) alpha tau).mulVec x i =
+      forwardStepOne n alpha i.val * x (cyclicNext i 1) +
+        forwardStepTwo n alpha tau i.val * x (cyclicNext i 2) := by
+  simp only [hamiltonGaugeForwardMatrix, Matrix.mulVec, dotProduct]
+  simp_rw [add_mul]
+  rw [Finset.sum_add_distrib]
+  simp
+
 theorem hamilton_gauge_matrix_symmetric {n : ℕ} (alpha : ℤ) (tau : ℕ → ℤ) :
     Matrix.transpose (hamiltonGaugeMatrix (n := n) alpha tau) =
       hamiltonGaugeMatrix (n := n) alpha tau := by
