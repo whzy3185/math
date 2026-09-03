@@ -64,6 +64,22 @@ theorem period8_backward_is_forward_transpose :
   fin_cases i <;> fin_cases j <;>
     simp [period8BackwardCell, period8ForwardCell, Matrix.transpose_apply]
 
+noncomputable def period8ForwardCellOperatorFin (L : ℕ)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) : Fin 8 → ℂ :=
+  period8ForwardIntraCell.mulVec (F m) +
+    period8ForwardCell.mulVec (F (cyclicNext m 1))
+
+theorem period8_forward_cell_operator_fin_apply (L : ℕ)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    period8ForwardCellOperatorFin L F m r =
+      F (cellForwardOne L (m, r)).1 (cellForwardOne L (m, r)).2 +
+        (period8TargetTau r : ℂ) *
+          F (cellForwardTwo L (m, r)).1 (cellForwardTwo L (m, r)).2 := by
+  fin_cases r <;>
+    simp [period8ForwardCellOperatorFin, period8ForwardIntraCell,
+      period8ForwardCell, period8TargetTau, cellForwardOne, cellForwardTwo,
+      Matrix.vecHead, Matrix.vecTail]
+
 set_option maxHeartbeats 1500000 in
 theorem period8_fiber_as_cell_symbol (xi : ℂ) :
     period8Fiber xi = period8IntraCell +
