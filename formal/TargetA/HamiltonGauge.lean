@@ -101,8 +101,8 @@ theorem hamilton_gauge_matrix_diagonal_zero {n : ℕ} (hn : 3 ≤ n)
     (alpha : ℤ) (tau : ℕ → ℤ) (i : Fin n) :
     hamiltonGaugeMatrix alpha tau i i = 0 := by
   apply hamilton_gauge_matrix_zero_of_not_neighbour
-  · exact (cyclic_next_one_ne_self hn i).symm
-  · exact (cyclic_next_one_ne_self hn i).symm
+  · exact (cyclic_next_one_ne_self (by omega) i).symm
+  · exact (cyclic_next_one_ne_self (by omega) i).symm
   · exact (cyclic_next_two_ne_self hn i).symm
   · exact (cyclic_next_two_ne_self hn i).symm
 
