@@ -44,6 +44,18 @@ theorem period8_unit_parameter_real {xi : ℂ}
   simp [map_add, map_pow, hconj]
   ring
 
+theorem period8_polynomialC_ofReal (y c : ℝ) :
+    period8PolynomialC (y : ℂ) (c : ℂ) =
+      (period8Polynomial y c : ℂ) := by
+  simp [period8PolynomialC, period8Polynomial]
+
+theorem period8_complex_root_is_real_root {y c : ℝ}
+    (hroot : period8PolynomialC (y : ℂ) (c : ℂ) = 0) :
+    period8Polynomial y c = 0 := by
+  apply Complex.ofReal_injective
+  rw [← period8_polynomialC_ofReal]
+  simpa using hroot
+
 noncomputable def period8Q (xi : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
   !![1 + xi⁻¹, 2;
      2, 1 - xi⁻¹]
