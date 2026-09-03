@@ -81,4 +81,74 @@ theorem period8_cell_dft_matrix {L : ℕ} [NeZero L]
   intro m _
   ring
 
+noncomputable def period8CellAction {L : ℕ}
+    (F : ZMod L → Fin 8 → ℂ) : ZMod L → Fin 8 → ℂ :=
+  fun m =>
+    period8IntraCell.mulVec (F m) +
+      period8ForwardCell.mulVec (F (1 + m)) +
+        period8BackwardCell.mulVec (F (-1 + m))
+
+theorem period8_cell_dft_action {L : ℕ} [NeZero L]
+    (F : ZMod L → Fin 8 → ℂ) (k : ZMod L) (xi : ℂ)
+    (hxi : xi^2 = ZMod.stdAddChar k) :
+    period8CellDFT (period8CellAction F) k =
+      (period8Fiber xi).mulVec (period8CellDFT F k) := by
+  let D := period8CellDFT F k
+  have hzero :
+      period8CellDFT (fun m => period8IntraCell.mulVec (F m)) k =
+        period8IntraCell.mulVec D := by
+    simpa [D] using period8_cell_dft_matrix period8IntraCell F k
+  have hforward :
+      period8CellDFT (fun m => period8ForwardCell.mulVec (F (1 + m))) k =
+        ZMod.stdAddChar k • period8ForwardCell.mulVec D := by
+    calc
+      period8CellDFT (fun m => period8ForwardCell.mulVec (F (1 + m))) k =
+          period8ForwardCell.mulVec
+            (period8CellDFT (period8CellTranslation 1 F) k) := by
+              simpa [period8CellTranslation] using
+                period8_cell_dft_matrix period8ForwardCell
+                  (period8CellTranslation 1 F) k
+      _ = period8ForwardCell.mulVec
+            (ZMod.stdAddChar k • period8CellDFT F k) := by
+              rw [period8_cell_dft_translation]
+              simp only [one_mul]
+      _ = ZMod.stdAddChar k • period8ForwardCell.mulVec D := by
+              rw [Matrix.mulVec_smul]
+  have hbackward :
+      period8CellDFT (fun m => period8BackwardCell.mulVec (F (-1 + m))) k =
+        ZMod.stdAddChar (-k) • period8BackwardCell.mulVec D := by
+    calc
+      period8CellDFT (fun m => period8BackwardCell.mulVec (F (-1 + m))) k =
+          period8BackwardCell.mulVec
+            (period8CellDFT (period8CellTranslation (-1) F) k) := by
+              simpa [period8CellTranslation] using
+                period8_cell_dft_matrix period8BackwardCell
+                  (period8CellTranslation (-1) F) k
+      _ = period8BackwardCell.mulVec
+            (ZMod.stdAddChar ((-1) * k) • period8CellDFT F k) := by
+              rw [period8_cell_dft_translation]
+      _ = ZMod.stdAddChar (-k) • period8BackwardCell.mulVec D := by
+              rw [Matrix.mulVec_smul]
+              simp [D]
+  have hsplit : period8CellDFT (period8CellAction F) k =
+      period8CellDFT (fun m => period8IntraCell.mulVec (F m)) k +
+        period8CellDFT (fun m => period8ForwardCell.mulVec (F (1 + m))) k +
+          period8CellDFT (fun m => period8BackwardCell.mulVec (F (-1 + m))) k := by
+    change ZMod.dft (period8CellAction F) k =
+      ZMod.dft (fun m => period8IntraCell.mulVec (F m)) k +
+        ZMod.dft (fun m => period8ForwardCell.mulVec (F (1 + m))) k +
+          ZMod.dft (fun m => period8BackwardCell.mulVec (F (-1 + m))) k
+    rw [show period8CellAction F =
+      (fun m => period8IntraCell.mulVec (F m)) +
+        (fun m => period8ForwardCell.mulVec (F (1 + m))) +
+          (fun m => period8BackwardCell.mulVec (F (-1 + m))) by rfl]
+    simp only [map_add]
+    rfl
+  rw [hsplit, hzero, hforward, hbackward, period8_fiber_as_cell_symbol]
+  have hback : ZMod.stdAddChar (-k) = xi⁻¹^2 := by
+    rw [AddChar.map_neg_eq_inv, ← hxi, inv_pow]
+  rw [hxi, hback]
+  simp only [Matrix.add_mulVec, Matrix.smul_mulVec]
+  rfl
+
 end TargetA
