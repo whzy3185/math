@@ -31,4 +31,15 @@ theorem cell_reindex_unindex (L : ℕ) (hL : 0 < L)
       ⟨8 * m.val + r.val, by omega⟩ := by
   rfl
 
+noncomputable def cellZModReindex (L : ℕ) (hL : 0 < L) :
+    Fin (8 * L) ≃ ZMod L × Fin 8 := by
+  haveI : NeZero L := ⟨Nat.ne_of_gt hL⟩
+  exact (cellReindex L hL).trans
+    (Equiv.prodCongr (ZMod.finEquiv L).toEquiv (Equiv.refl (Fin 8)))
+
+theorem cell_zmod_reindex_residue (L : ℕ) (hL : 0 < L)
+    (i : Fin (8 * L)) :
+    (cellZModReindex L hL i).2.val = i.val % 8 := by
+  rfl
+
 end TargetA
