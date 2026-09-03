@@ -42,4 +42,22 @@ theorem period8_chiral_anticommutes {xi : ℂ} (hxi : xi ≠ 0) :
     field_simp [hxi]
     ring
 
+theorem period8_chiral_maps_plus_to_minus {xi : ℂ} (hxi : xi ≠ 0)
+    (v : Fin 8 → ℂ)
+    (hv : (period8ChiralInvolution xi).mulVec v = v) :
+    (period8ChiralInvolution xi).mulVec ((period8Fiber xi).mulVec v) =
+      -((period8Fiber xi).mulVec v) := by
+  let J := period8ChiralInvolution xi
+  let H := period8Fiber xi
+  have hjh : J * H = -(H * J) := by
+    exact eq_neg_iff_add_eq_zero.mpr (period8_chiral_anticommutes hxi)
+  calc
+    J.mulVec (H.mulVec v) = (J * H).mulVec v :=
+      Matrix.mulVec_mulVec v J H
+    _ = (-(H * J)).mulVec v := by rw [hjh]
+    _ = -(H * J).mulVec v := Matrix.neg_mulVec v (H * J)
+    _ = -H.mulVec (J.mulVec v) := by
+      rw [Matrix.mulVec_mulVec]
+    _ = -H.mulVec v := by rw [hv]
+
 end TargetA
