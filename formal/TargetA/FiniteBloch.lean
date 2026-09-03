@@ -157,6 +157,30 @@ theorem cell_unindex_next_two (L : ℕ) (hL : 0 < L)
     | exact cell_unindex_next_two_seam_six L hL m
     | exact cell_unindex_next_two_seam_seven L hL m
 
+def cellEncode (L : ℕ) (hL : 0 < L)
+    (F : Fin L × Fin 8 → ℤ) : Fin (8 * L) → ℤ :=
+  fun i => F (cellReindex L hL i)
+
+def period8ForwardCellAction (L : ℕ) (F : Fin L × Fin 8 → ℤ)
+    (p : Fin L × Fin 8) : ℤ :=
+  F (cellForwardOne L p) + period8TargetTau p.2 * F (cellForwardTwo L p)
+
+theorem period8_forward_reindex_action (L : ℕ) (hL : 0 < L)
+    (F : Fin L × Fin 8 → ℤ) (m : Fin L) (r : Fin 8) :
+    (hamiltonGaugeForwardMatrix (n := 8 * L) 1 period8TargetLift).mulVec
+        (cellEncode L hL F) ((cellReindex L hL).symm (m, r)) =
+      period8ForwardCellAction L F (m, r) := by
+  rw [hamilton_gauge_forward_matrix_mulVec]
+  rw [forward_step_one_periodic_holonomy,
+    forward_step_two_periodic_holonomy]
+  simp only [one_mul, cellEncode]
+  rw [cell_unindex_next_one, cell_unindex_next_two]
+  simp only [Equiv.apply_symm_apply]
+  change F (cellForwardOne L (m, r)) +
+      period8TargetLift (8 * m.val + r.val) * F (cellForwardTwo L (m, r)) = _
+  rw [period8_target_lift_cell_value]
+  rfl
+
 noncomputable def cellZModReindex (L : ℕ) (hL : 0 < L) :
     Fin (8 * L) ≃ ZMod L × Fin 8 := by
   haveI : NeZero L := ⟨Nat.ne_of_gt hL⟩
