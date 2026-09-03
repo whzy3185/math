@@ -65,4 +65,20 @@ theorem period8_cell_dft_translation {L : ℕ} [NeZero L]
     Finset.sum_apply, Pi.smul_apply, smul_eq_mul]
   exact dft_cellTranslation a k (fun m => F m r)
 
+theorem period8_cell_dft_matrix {L : ℕ} [NeZero L]
+    (B : Matrix (Fin 8) (Fin 8) ℂ) (F : ZMod L → Fin 8 → ℂ)
+    (k : ZMod L) :
+    period8CellDFT (fun m => B.mulVec (F m)) k =
+      B.mulVec (period8CellDFT F k) := by
+  ext r
+  simp only [period8CellDFT, ZMod.dft_apply, Finset.sum_apply,
+    Pi.smul_apply, smul_eq_mul, Matrix.mulVec, dotProduct]
+  simp_rw [Finset.mul_sum]
+  rw [Finset.sum_comm]
+  apply Finset.sum_congr rfl
+  intro s _
+  apply Finset.sum_congr rfl
+  intro m _
+  ring
+
 end TargetA
