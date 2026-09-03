@@ -37,6 +37,29 @@ theorem period8_unit_conj_eq_inv {xi : ℂ}
   field_simp [hxi]
   exact mul_comm xi _ ▸ hunit
 
+theorem period8_unit_of_pow_eq_one {xi : ℂ} {m : ℕ}
+    (hm : m ≠ 0) (hpow : xi^m = 1) :
+    xi * (starRingEnd ℂ) xi = 1 := by
+  have hnorm : ‖xi‖ = 1 :=
+    Complex.norm_eq_one_of_pow_eq_one hpow hm
+  have hnormsq : Complex.normSq xi = 1 := by
+    rw [← Complex.norm_mul_self_eq_normSq, hnorm]
+    norm_num
+  simpa [Complex.mul_conj] using hnormsq
+
+theorem period8_xi_unit_from_holonomy {xi z alpha : ℂ} {L : ℕ}
+    (hL : L ≠ 0) (hxi : xi^2 = z) (hz : z^L = alpha)
+    (halpha : alpha^2 = 1) :
+    xi * (starRingEnd ℂ) xi = 1 := by
+  apply period8_unit_of_pow_eq_one (m := 4 * L)
+  · omega
+  · calc
+      xi^(4 * L) = (xi^2)^(2 * L) := by ring_nf
+      _ = z^(2 * L) := by rw [hxi]
+      _ = (z^L)^2 := by ring_nf
+      _ = alpha^2 := by rw [hz]
+      _ = 1 := halpha
+
 theorem period8_unit_parameter_real {xi : ℂ}
     (hunit : xi * (starRingEnd ℂ) xi = 1) :
     (starRingEnd ℂ) (xi^2 + xi⁻¹^2) = xi^2 + xi⁻¹^2 := by
@@ -97,6 +120,15 @@ theorem period8_unit_complex_root_lt_bound {xi : ℂ} {y : ℝ}
     y < period8Bound := by
   apply period8_root_lt_bound (period8_unit_parameter_re_le_two hunit)
   exact period8_unit_complex_root_is_real_root hunit hroot
+
+theorem period8_holonomy_root_lt_bound {xi z alpha : ℂ} {L : ℕ} {y : ℝ}
+    (hL : L ≠ 0) (hxi : xi^2 = z) (hz : z^L = alpha)
+    (halpha : alpha^2 = 1)
+    (hroot : period8PolynomialC (y : ℂ) (xi^2 + xi⁻¹^2) = 0) :
+    y < period8Bound := by
+  apply period8_unit_complex_root_lt_bound
+  exact period8_xi_unit_from_holonomy hL hxi hz halpha
+  exact hroot
 
 noncomputable def period8Q (xi : ℝ) : Matrix (Fin 2) (Fin 2) ℝ :=
   !![1 + xi⁻¹, 2;
