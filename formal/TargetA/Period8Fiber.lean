@@ -79,6 +79,34 @@ noncomputable def period8ChiralCoordinateMatrix (xi : ℂ) :
      1 - xi, 1, 0, 1, 0, 0, 0, 0;
      xi, 1 - xi, 1, 0, 0, 0, 0, 0]
 
+noncomputable def period8ChiralBasisInverse (xi : ℂ) : Matrix (Fin 8) (Fin 8) ℂ :=
+  !![(2 : ℂ)⁻¹, 0, 0, 0, (2 * xi)⁻¹, 0, 0, 0;
+     0, (2 : ℂ)⁻¹, 0, 0, 0, -(2 * xi)⁻¹, 0, 0;
+     0, 0, (2 : ℂ)⁻¹, 0, 0, 0, (2 * xi)⁻¹, 0;
+     0, 0, 0, (2 : ℂ)⁻¹, 0, 0, 0, -(2 * xi)⁻¹;
+     (2 : ℂ)⁻¹, 0, 0, 0, -(2 * xi)⁻¹, 0, 0, 0;
+     0, (2 : ℂ)⁻¹, 0, 0, 0, (2 * xi)⁻¹, 0, 0;
+     0, 0, (2 : ℂ)⁻¹, 0, 0, 0, -(2 * xi)⁻¹, 0;
+     0, 0, 0, (2 : ℂ)⁻¹, 0, 0, 0, (2 * xi)⁻¹]
+
+set_option maxHeartbeats 1500000 in
+theorem period8_chiral_basis_left_inverse {xi : ℂ} (hxi : xi ≠ 0) :
+    period8ChiralBasisInverse xi * period8ChiralBasis xi =
+      (1 : Matrix (Fin 8) (Fin 8) ℂ) := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [period8ChiralBasisInverse, period8ChiralBasis, hxi]
+  all_goals field_simp [hxi] <;> ring
+
+set_option maxHeartbeats 1500000 in
+theorem period8_chiral_basis_right_inverse {xi : ℂ} (hxi : xi ≠ 0) :
+    period8ChiralBasis xi * period8ChiralBasisInverse xi =
+      (1 : Matrix (Fin 8) (Fin 8) ℂ) := by
+  ext i j
+  fin_cases i <;> fin_cases j <;>
+    simp [period8ChiralBasisInverse, period8ChiralBasis, hxi]
+  all_goals field_simp [hxi] <;> ring
+
 theorem period8_xi_mul_inv_sq {xi : ℂ} (hxi : xi ≠ 0) :
     xi * xi⁻¹ ^ 2 = xi⁻¹ := by
   calc
@@ -107,5 +135,22 @@ theorem period8_fiber_in_chiral_basis {xi : ℂ} (hxi : xi ≠ 0) :
   all_goals try ring
   all_goals try linear_combination period8_xi_mul_inv hxi
   all_goals linear_combination -(period8_xi_mul_inv hxi)
+
+theorem period8_fiber_similar_to_chiral_coordinates {xi : ℂ} (hxi : xi ≠ 0) :
+    period8ChiralBasisInverse xi * period8Fiber xi * period8ChiralBasis xi =
+      period8ChiralCoordinateMatrix xi := by
+  calc
+    period8ChiralBasisInverse xi * period8Fiber xi * period8ChiralBasis xi =
+        period8ChiralBasisInverse xi *
+          (period8Fiber xi * period8ChiralBasis xi) := by
+            rw [Matrix.mul_assoc]
+    _ = period8ChiralBasisInverse xi *
+          (period8ChiralBasis xi * period8ChiralCoordinateMatrix xi) := by
+            rw [period8_fiber_in_chiral_basis hxi]
+    _ = (period8ChiralBasisInverse xi * period8ChiralBasis xi) *
+          period8ChiralCoordinateMatrix xi := by
+            rw [← Matrix.mul_assoc]
+    _ = period8ChiralCoordinateMatrix xi := by
+            rw [period8_chiral_basis_left_inverse hxi, Matrix.one_mul]
 
 end TargetA
