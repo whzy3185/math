@@ -106,6 +106,44 @@ theorem period_eight_repeat (tau : Fin 8 → ℤ) (i L : ℕ) :
     periodEightValue tau (i + 8 * L) = periodEightValue tau i := by
   simp [periodEightValue, Nat.add_mul_mod_self_left]
 
+def period8TargetTau : Fin 8 → ℤ :=
+  ![1, 1, -1, 1, -1, -1, 1, -1]
+
+def period8TargetLift (i : ℕ) : ℤ :=
+  periodEightValue period8TargetTau i
+
+theorem period8_target_tau_is_sign (r : Fin 8) :
+    IsSign (period8TargetTau r) := by
+  fin_cases r <;> simp [period8TargetTau, IsSign]
+
+theorem period8_target_lift_is_sign (i : ℕ) :
+    IsSign (period8TargetLift i) := by
+  exact period_eight_value_is_sign period8TargetTau period8_target_tau_is_sign i
+
+theorem period8_target_lift_periodic (i L : ℕ) :
+    period8TargetLift (i + 8 * L) = period8TargetLift i := by
+  exact period_eight_repeat period8TargetTau i L
+
+def period8TargetMatrix (L : ℕ) (alpha : ℤ) :
+    Matrix (Fin (8 * L)) (Fin (8 * L)) ℤ :=
+  hamiltonGaugeMatrix alpha period8TargetLift
+
+theorem period8_target_step_two_is_sign (L : ℕ) (alpha : ℤ)
+    (halpha : IsSign alpha) (i : ℕ) :
+    IsSign (forwardStepTwo (8 * L) alpha period8TargetLift i) := by
+  exact forward_step_two_is_sign (8 * L) alpha period8TargetLift halpha
+    period8_target_lift_is_sign i
+
+theorem period8_target_step_one_is_sign (L : ℕ) (alpha : ℤ)
+    (halpha : IsSign alpha) (i : ℕ) :
+    IsSign (forwardStepOne (8 * L) alpha i) := by
+  exact forward_step_one_is_sign (8 * L) alpha halpha i
+
+theorem period8_target_matrix_symmetric (L : ℕ) (alpha : ℤ) :
+    Matrix.transpose (period8TargetMatrix L alpha) =
+      period8TargetMatrix L alpha :=
+  hamilton_gauge_matrix_symmetric alpha period8TargetLift
+
 theorem step_one_cut_rule {n i : ℕ} :
     forwardStepOne n (-1) i = if i + 1 < n then 1 else -1 := by
   rfl
