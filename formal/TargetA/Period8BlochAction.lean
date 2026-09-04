@@ -308,6 +308,16 @@ theorem period8_fin_cell_action_to_zmod (L : ℕ) [NeZero L] (hL : 0 < L)
   rw [period8CellAction, hzero, hforward, hbackward]
   rfl
 
+theorem exists_nonzero_period8_cell_dft {L : ℕ} [NeZero L]
+    (F : ZMod L → Fin 8 → ℂ) (hF : F ≠ 0) :
+    ∃ k : ZMod L, period8CellDFT F k ≠ 0 := by
+  by_contra h
+  push Not at h
+  apply hF
+  apply (ZMod.dft (N := L)).injective
+  funext k
+  simpa [period8CellDFT] using h k
+
 theorem period8_cell_dft_action {L : ℕ} [NeZero L]
     (F : ZMod L → Fin 8 → ℂ) (k : ZMod L) (xi : ℂ)
     (hxi : xi^2 = ZMod.stdAddChar k) :
@@ -370,5 +380,19 @@ theorem period8_cell_dft_action {L : ℕ} [NeZero L]
   rw [hxi, hback]
   simp only [Matrix.add_mulVec, Matrix.smul_mulVec]
   rfl
+
+theorem period8_cell_eigen_dft_fiber {L : ℕ} [NeZero L]
+    (F : ZMod L → Fin 8 → ℂ) (lambda : ℂ) (k : ZMod L) (xi : ℂ)
+    (hxi : xi^2 = ZMod.stdAddChar k)
+    (hEig : period8CellAction F = lambda • F) :
+    (period8Fiber xi).mulVec (period8CellDFT F k) =
+      lambda • period8CellDFT F k := by
+  calc
+    (period8Fiber xi).mulVec (period8CellDFT F k) =
+        period8CellDFT (period8CellAction F) k := by
+          rw [period8_cell_dft_action F k xi hxi]
+    _ = period8CellDFT (lambda • F) k := by rw [hEig]
+    _ = lambda • period8CellDFT F k := by
+          simpa [period8CellDFT] using congrFun ((ZMod.dft (N := L)).map_smul lambda F) k
 
 end TargetA
