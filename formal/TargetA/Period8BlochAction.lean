@@ -395,4 +395,22 @@ theorem period8_cell_eigen_dft_fiber {L : ℕ} [NeZero L]
     _ = lambda • period8CellDFT F k := by
           simpa [period8CellDFT] using congrFun ((ZMod.dft (N := L)).map_smul lambda F) k
 
+theorem period8_zmod_real_eigen_square_lt_bound {L : ℕ} [NeZero L]
+    (F : ZMod L → Fin 8 → ℂ) (lambda : ℝ)
+    (hF : F ≠ 0)
+    (hEig : period8CellAction F = (lambda : ℂ) • F) :
+    lambda^2 < period8Bound := by
+  obtain ⟨k, hk⟩ := exists_nonzero_period8_cell_dft F hF
+  obtain ⟨xi, hxi⟩ :=
+    IsAlgClosed.exists_pow_nat_eq (ZMod.stdAddChar k) (by norm_num : 0 < 2)
+  apply period8_fiber_real_eigen_square_lt_bound
+    (L := L) (xi := xi) (z := ZMod.stdAddChar k) (alpha := 1)
+    (u := period8CellDFT F k)
+  · exact NeZero.ne L
+  · exact hxi
+  · simpa using stdAddChar_pow_modulus k
+  · norm_num
+  · exact period8_cell_eigen_dft_fiber F (lambda : ℂ) k xi hxi hEig
+  · exact hk
+
 end TargetA
