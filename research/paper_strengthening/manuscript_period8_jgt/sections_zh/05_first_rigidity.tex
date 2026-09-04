@@ -1,0 +1,169 @@
+\section{首次出现与刚性}
+\label{sec:first-rigidity}
+
+上一节给出一个特殊的八周期相，但求解一个 word 并不能解释周期本身。现在依次问：更短的
+本原 word 能否使平方 Bloch 谱边小于 $8$？若不能，在第一个可行周期上有多少低谱相？
+一个局部平方恒等式和前三个迹矩把两个问题都约化到少数精确构型。
+
+\subsection{局部平方与矩约化}
+
+对 \eqref{eq:hamilton-operator} 直接平方得到
+\begin{align}
+(A_\tau^2x)_i={}&4x_i+x_{i-2}+x_{i+2}
+ +\tau_{i-4}\tau_{i-2}x_{i-4}+\tau_i\tau_{i+2}x_{i+4}\notag\\
+&+\tau_{i-3}(1+Q_{i-3})x_{i-3}
+ +\tau_{i-2}(1+Q_{i-2})x_{i-1}\notag\\
+&+\tau_{i-1}(1+Q_{i-1})x_{i+1}
+ +\tau_i(1+Q_i)x_{i+3}.
+\label{eq:local-square-row}
+\end{align}
+因此 $Q_i=-1$ 时相应奇位移耦合被消去，$Q_i=1$ 时产生绝对值为二的项。我们把正
+$Q$-位置称为缺陷。
+
+对 $p$-周期 word 定义相位平均偶矩
+\begin{equation}
+ M_k(\tau)=\frac1{2\pi}\int_0^{2\pi}
+ \tr\!\left(H_\tau^{(p)}(e^{\mathrm i\theta})^{2k}\right)d\theta.
+ \label{eq:phase-averaged-moments}
+\end{equation}
+令 $d$ 为正 $Q$ 元个数，并令
+\begin{equation}
+ a=\#\{i:Q_i=Q_{i+1}=1\},\qquad
+ b=\#\{i:Q_i=Q_{i+2}=1\}.
+ \label{eq:defect-statistics}
+\end{equation}
+取 \eqref{eq:local-square-row} 的对角元与行范数分别得到前两个矩。第三个矩由同一九个位移
+展开
+\[
+ \sum_{i,j,k}(A_\tau^2)_{ij}(A_\tau^2)_{jk}(A_\tau^2)_{ki},
+\]
+并把平移等价项按单个正位置、相邻正元对和距离二正元对分组。结果为
+\begin{equation}
+ M_1=4p,\qquad M_2=20p+16d,\qquad
+ M_3=118p+168d+96a+48b.
+ \label{eq:first-three-moments}
+\end{equation}
+$M_2$ 中使用 $(1+Q_i)^2=2(1+Q_i)$，且每个 $Q_i$ 在四个奇位移行元中出现，故贡献
+$16d$；$M_3$ 的三个附加系数正是上述三类局部闭游走的分组权重。
+若 $R_p(\tau)\leq8$，每个平方 fiber 本征值 $y$ 满足 $0\leq y\leq8$，故
+$M_{k+1}\leq8M_k$。取 $k=1,2$ 得
+\begin{equation}
+ 16d-12p\leq0,\qquad 40d+96a+48b-42p\leq0.
+ \label{eq:moment-excess-inequalities}
+\end{equation}
+有限检查之前，正是这两个不等式完成结构约化。
+
+\subsection{小于八的周期}
+
+合法 $Q$-word 满足 $\prod_iQ_i=1$。结合合法性、
+\eqref{eq:moment-excess-inequalities} 与命题~\ref{prop:invariances} 的二面体不变性，
+$p<8$ 时只留下
+\begin{equation}
+\begin{array}{c|l}
+p&\text{未被矩不等式排除的代表元}\\ \hline
+1&\text{无}\\
+2&--\\
+3&--+\\
+4&----\\
+5&----+\\
+6&------,\;----++,\;---+-+,\;--+--+\\
+7&------+ ,\;---+-++,\;--+--++,\;--+-+-+
+\end{array}
+\label{eq:short-survivors}
+\end{equation}
+全负 word 只在偶周期合法；其 lift 是交错相，平方谱边恰为 $8$。其余行由一个精确引理
+统一收尾。
+
+选取 $\tau_0=1$ 的 lift，并记
+$C_\tau(z)=8I-H_\tau^{(p)}(z)^2$。若
+$v^*C_\tau(z)v<0$，则相应平方 fiber 必有本征值大于 $8$。
+
+\begin{lemma}[短周期余项的精确闭合]
+\label{lem:short-certificates}
+对 \eqref{eq:short-survivors} 中 $p=3$ 的代表元，在
+$z=e^{\pi\mathrm i/3}$ 处有 $\det C_\tau(z)=-1$。其余非 balanced 代表元均由
+表~\ref{tab:certificates} 中的 $z,v$ 满足 $v^*C_\tau(z)v<0$。
+\end{lemma}
+
+\begin{table}[t]
+\centering
+\caption{矩约化与二面体约化后的精确 Rayleigh 证书。末列为
+$v^*(8I-H^2)v$ 的精确值。}
+\label{tab:certificates}
+\scriptsize
+\begin{tabularx}{\textwidth}{@{}c l c >{\raggedright\arraybackslash}X r@{}}
+\toprule
+$p$&$Q$&$z$&$v$&精确值\\
+\midrule
+5&$----+$&$1$&$(1,1,1,0,1)$&$-4$\\
+6&$----++$&$1$&$(1,1,1,0,1,1)$&$-12$\\
+6&$---+-+$&$-1$&$(0,0,2,-1,2,-2)$&$-4$\\
+6&$--+--+$&$\mathrm i$&$(3+\mathrm i,3,3+2\mathrm i,1+3\mathrm i,
+2+2\mathrm i,4\mathrm i)$&$-4$\\
+7&$------+$&$1$&$(1,1,1,0,1,0,1)$&$-2$\\
+7&$---+-++$&$1$&$(1,1,1,0,0,1,1)$&$-4$\\
+7&$--+--++$&$1$&$(1,1,1,1,1,1,1)$&$-8$\\
+7&$--+-+-+$&$-1$&$(1,1,1,1,1,1,-1)$&$-8$\\
+\bottomrule
+\end{tabularx}
+\end{table}
+
+\begin{proof}
+表中每一行都是至多七阶矩阵的一次直接乘法。精确值为负说明 $C_\tau(z)$ 非半正定，故
+$H_\tau^{(p)}(z)^2$ 有本征值大于 $8$。$p=3$ 时 $C_\tau(z)$ 为 Hermitian 且行列式
+为负，同样必有负本征值。所有计算均为精确代数，不使用浮点谱近似。
+\end{proof}
+
+\begin{theorem}[最小本原周期]
+\label{thm:minimal-period}
+本原周期小于八的合法 word，其平方 Bloch 谱边均不小于 $8$。$\tau_*$ 的本原周期为八，
+且谱边为 $\etaedge<8$。
+\end{theorem}
+
+\begin{proof}
+展示周期结论由 \eqref{eq:short-survivors}、引理~\ref{lem:short-certificates} 和 balanced
+交错 word 的精确谱边得到。式 \eqref{eq:zone-folding} 表明重复胞元不改变 Bloch 谱边。
+最后，$\tau_{i+4}=-\tau_i$ 排除周期四，前四个符号排除周期一和二，故 $\tau_*$ 的本原
+周期确为八。
+\end{proof}
+
+\subsection{周期八上的刚性}
+
+当 $p=8$ 时，合法性与 \eqref{eq:moment-excess-inequalities} 在二面体对称下只留下 balanced
+word 和四个双缺陷 word。其中一个缺陷对互为对径，即 $Q_*$；另外三个的循环距离分别为
+$1,2,3$。
+
+balanced lift 是周期二交错相，谱边为 $8$；对径 word 的谱边由第~\ref{sec:period8} 节
+得 $\etaedge<8$。对其余三个构型，用一个精确闭游走递推。令 $f_\ell^{(r)}(j)$ 为从
+$r$ 到 $j$ 的长度 $\ell$ 符号游走和，$f_0^{(r)}(j)=\delta_{rj}$，则
+\begin{equation}
+ f_{\ell+1}^{(r)}(j)=f_\ell^{(r)}(j-1)+f_\ell^{(r)}(j+1)
+ +\tau_{j-2}f_\ell^{(r)}(j-2)+\tau_jf_\ell^{(r)}(j+2).
+ \label{eq:walk-recurrence}
+\end{equation}
+令 $E_k=M_{k+1}-8M_k$。若平方谱边不超过 $8$，则所有 $E_k\leq0$。对于缺陷距离
+$1,2,3$，递推分别给出第一个正余量
+\begin{equation}
+ E_4=5504,\qquad E_6=64336,\qquad E_9=2872096.
+ \label{eq:period8-excesses}
+\end{equation}
+这些整数由上式直接生成，因此三个非对径 word 的谱边均大于 $8$。
+
+\begin{theorem}[八周期三分律]
+\label{thm:period8-trichotomy}
+在合法八周期 $Q$-word 中，模平移、反射与 lift，$Q_*$ 是唯一平方 Bloch 谱边小于 $8$
+的类；balanced 类的谱边等于 $8$，其他类的谱边均大于 $8$。
+\end{theorem}
+
+\begin{proof}
+矩约化只留下上述五类。balanced 类与对径类已有精确值，式
+\eqref{eq:period8-excesses} 排除其余三类。命题~\ref{prop:invariances} 保证轨道约化与 lift
+选择的合法性。
+\end{proof}
+
+定理~\ref{thm:minimal-period} 与定理~\ref{thm:period8-trichotomy} 共同证明
+定理~\ref{thm:main-rigidity}。周期八不仅是某个特选例子成立的最小胞元；在首次越过阈值
+的周期上，低谱轨道本身也是刚性的。
+
+最后还需问：这种刚性是否只来自检查短周期，还是任意低谱周期 word 的局部缺陷都受共同
+限制？同一组矩给出后一个问题的答案，而无需作全周期分类。

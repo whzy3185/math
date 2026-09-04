@@ -1,0 +1,261 @@
+\section{The exact period-eight phase}
+\label{sec:period8}
+
+Theorem~\ref{thm:flux-chiral} explains a dimension-halving mechanism but does
+not solve the resulting block at a general period.  The word $\tau_*$ is the
+first sub-eight phase and has enough additional structure to reduce its
+$4\times4$ squared block once more.  This section carries that calculation
+through to the complete dispersion and then returns to the finite rings.
+
+\subsection{The target fiber and its chiral block}
+
+For $|z|=1$, the period-eight fiber in the residue order $0,1,\ldots,7$ is
+\begin{equation}
+ H(z)=\begin{pmatrix}
+0&1&1&0&0&0&z^{-1}&z^{-1}\\
+1&0&1&1&0&0&0&-z^{-1}\\
+1&1&0&1&-1&0&0&0\\
+0&1&1&0&1&1&0&0\\
+0&0&-1&1&0&1&-1&0\\
+0&0&0&1&1&0&1&-1\\
+z&0&0&0&-1&1&0&1\\
+z&-z&0&0&0&-1&1&0
+\end{pmatrix}.
+\label{eq:period8-fiber}
+\end{equation}
+The boundary entries occur in conjugate pairs, so $H(z)$ is Hermitian.  Since
+$\tau_{i+4}=-\tau_i$, Section~\ref{sec:chiral} applies.  Choose $\xi$ with
+$\xi^2=z$.  Here $m=4$, so $\gamma_4(z)=\xi^{-1}$, and the normalized signed
+four-site shift is the chiral involution $J_z$.
+
+In bases of its two eigenspaces, $H(z)$ is off diagonal.  Multiplying the two
+off-diagonal blocks gives the following squared block:
+\begin{equation}
+ S(\xi)=
+ \begin{pmatrix}
+4-s&0&1+\xi^{-1}&2\\
+0&4-s&2&1-\xi^{-1}\\
+1+\xi&2&4+s&0\\
+2&1-\xi&0&4+s
+ \end{pmatrix},
+ \qquad s=\xi+\xi^{-1}.
+ \label{eq:period8-squared-block}
+\end{equation}
+The squared eigenvalues of $H(z)$ are the eigenvalues of $S(\xi)$, each
+occurring in both chiral blocks.  Replacing $\xi$ by $-\xi$ exchanges the two
+chiral coordinate spaces; the final characteristic data depend only on $z$.
+
+\subsection{The period-eight polynomial}
+
+Write \eqref{eq:period8-squared-block} in $2\times2$ blocks as
+\[
+ S(\xi)=
+ \begin{pmatrix}(4-s)I_2&R(\xi)\\Q(\xi)&(4+s)I_2\end{pmatrix},
+\]
+where
+\[
+ R(\xi)=\begin{pmatrix}1+\xi^{-1}&2\\2&1-\xi^{-1}\end{pmatrix},
+ \qquad
+ Q(\xi)=\begin{pmatrix}1+\xi&2\\2&1-\xi\end{pmatrix}.
+\]
+Because the diagonal blocks are scalar, the elementary block determinant
+identity gives, without an exceptional Schur-complement value,
+\begin{equation}
+ \det(yI_4-S(\xi))
+ =\det\!\left(\bigl((y-4)^2-s^2\bigr)I_2-R(\xi)Q(\xi)\right).
+ \label{eq:two-by-two-determinant}
+\end{equation}
+Using $\xi^2=z$ and
+$c=z+z^{-1}=\xi^2+\xi^{-2}$, expansion of the $2\times2$ determinant yields
+\begin{equation}
+\begin{split}
+ P(y,c)={}&y^4-16y^3+(80-2c)y^2\\
+          &+(-128+16c)y+c^2-13c+38.
+\end{split}
+\label{eq:period8-polynomial}
+\end{equation}
+Thus
+\begin{equation}
+ \det(\lambda I_8-H(z))=P(\lambda^2,z+z^{-1}).
+ \label{eq:period8-characteristic}
+\end{equation}
+This identity is the full bridge from the general chiral theorem to an exact
+period-eight spectrum.
+
+\subsection{Complete dispersion}
+
+Put $y=X+4$.  The quartic becomes even in $X$:
+\begin{equation}
+ P(X+4,c)=X^4-(16+2c)X^2+c^2+19c+38.
+ \label{eq:centered-quartic}
+\end{equation}
+With $W=X^2$, the two roots are
+\begin{equation}
+ W_\tau(c)=8+c+\tau\sqrt{26-3c},\qquad \tau\in\{\pm1\}.
+ \label{eq:w-branches}
+\end{equation}
+For $-2\leq c\leq2$, both are positive.  Indeed,
+\[
+ (8+c)^2-(26-3c)=c^2+19c+38\geq4,
+\]
+and $8+c>0$.  The four squared branches are therefore
+\begin{equation}
+ y_{\sigma,\tau}(c)=4+\sigma\sqrt{W_\tau(c)},
+ \qquad \sigma,\tau\in\{\pm1\}.
+ \label{eq:four-squared-branches}
+\end{equation}
+Since $0<W_-<W_+<16$, their order is uniform:
+\[
+ y_{+,+}>y_{+,-}>y_{-,-}>y_{-,+}>0.
+\]
+Moreover,
+\[
+ W_+'(c)=1-\frac{3}{2\sqrt{26-3c}}>0,
+ \qquad
+ W_-'(c)=1+\frac{3}{2\sqrt{26-3c}}>0.
+\]
+Thus the two upper branches increase with $c$, while the two lower branches
+decrease.  In particular the top squared edge is
+\begin{equation}
+ r(c)=4+\sqrt{8+c+\sqrt{26-3c}},
+ \label{eq:top-dispersion}
+\end{equation}
+strictly increasing on $[-2,2]$.
+
+For completeness, set
+\[
+ a=\sqrt{10+2\sqrt5},\qquad b=\sqrt{10-2\sqrt5}.
+\]
+At $c=-2$ the four squared roots are
+\[
+ 6+\sqrt2,\quad6-\sqrt2,\quad2+\sqrt2,\quad2-\sqrt2,
+\]
+whereas at $c=2$ they are $4+a,4+b,4-b,4-a$.  The four squared bands are
+therefore
+\begin{equation}
+\begin{array}{ll}
+ [6+\sqrt2,\,4+a],&[6-\sqrt2,\,4+b],\\
+ {}[4-b,\,2+\sqrt2],&[4-a,\,2-\sqrt2].
+\end{array}
+\label{eq:squared-bands}
+\end{equation}
+They are disjoint.  Equation \eqref{eq:period8-characteristic} then recovers
+the eight simple Hermitian eigenvalues
+\[
+ \{\,\pm\sqrt{y_{\sigma,\tau}(c)}:
+       \sigma,\tau\in\{\pm1\}\,\}.
+\]
+In particular, the spectrum has the exact central gap
+\begin{equation}
+ \left(-\sqrt{4-a},\sqrt{4-a}\right).
+ \label{eq:central-gap}
+\end{equation}
+
+\subsection{Finite phase quantization}
+
+The infinite unit-circle maximum occurs uniquely at $c=2$, or $z=1$, and is
+\[
+ r(2)=4+a=\etaedge.
+\]
+For positive holonomy the finite grid $z^L=1$ always contains $z=1$.
+Proposition~\ref{prop:finite-bloch} therefore gives both an upper bound and an
+attaining fiber:
+\begin{equation}
+ \rho(A_{8L,+}^{*})^2=\etaedge
+ \qquad(L\geq1).
+ \label{eq:positive-finite-exact}
+\end{equation}
+The two edge eigenvalues $\pm\sqrt\etaedge$ are simple in $H(1)$ because the
+four squared roots at $c=2$ are distinct.
+
+For negative holonomy, the allowed phases are
+\[
+ z_j=\exp\!\left(\frac{(2j+1)\pi\mathrm i}{L}\right).
+\]
+The largest value of $z+z^{-1}$ is $2\cos(\pi/L)$.  Strict monotonicity of
+$r$ gives the second exact finite formula
+\begin{equation}
+ \rho(A_{8L,-}^{*})^2
+ =4+\sqrt{8+2\cos(\pi/L)+
+                \sqrt{26-6\cos(\pi/L)}}.
+ \label{eq:negative-finite-exact}
+\end{equation}
+It is strictly below $\etaedge$ for every finite $L$ and increases to
+$\etaedge$ as $L\to\infty$.  Both holonomy sectors are therefore samples of
+one dispersion law; their difference is entirely the finite phase grid.
+
+\subsection{The twisted comparison}
+\label{sec:twisted}
+
+We now compare the exactly solved phase with the natural twisted signing.  In
+Hamilton-gauge coordinates, this is the alternating triangle-flux class with
+negative Hamilton holonomy.  Its two-site Fourier block is
+\begin{equation}
+ B(t)=2\begin{pmatrix}
+ \cos t&\cos2t\\
+ \cos2t&-\cos t
+ \end{pmatrix},
+ \label{eq:twisted-block}
+\end{equation}
+so its eigenvalues have squared magnitude $4g(t)$, where
+$g(t)=\cos^2t+\cos^22t$.  The shifted finite grid is
+$t=(2k+1)\pi/(8L)$.  By $g(-t)=g(t)=g(\pi-t)$ it is enough to consider
+$t\in[\pi/(8L),\pi/2]$.  With $u=\cos^2t$,
+\[
+ g(t)=4u^2-3u+1.
+\]
+Thus $g(t)\leq1$ on $[\pi/6,\pi/2]$.  On $(0,\pi/6]$,
+\[
+ g'(t)=-\sin(2t)(1+4\cos(2t))<0.
+\]
+Finally $g(\pi/(8L))\geq g(\pi/8)=(4+\sqrt2)/4>1$.  Hence the first positive grid
+phase is maximal, and
+\begin{equation}
+ \rho(A_{8L}^{\mathrm{tw}})^2
+ =4+2\cos\frac{\pi}{4L}+2\cos\frac{\pi}{2L}.
+ \label{eq:twisted-radius}
+\end{equation}
+
+\begin{proof}[Proof of Theorem~\ref{thm:main-exact}]
+It remains to compare \eqref{eq:positive-finite-exact} and
+\eqref{eq:twisted-radius}.  The latter is increasing in $L\geq4$, so it is
+enough to use $L=4$.  We record an exact rational separator only for this
+short comparison:
+\begin{equation}
+ \etaedge<\frac{1561}{200}<
+ 4+2\cos\frac{\pi}{16}+2\cos\frac{\pi}{8}.
+ \label{eq:rational-separator}
+\end{equation}
+For the first inequality, $\sqrt5<2239/1000$ and
+\[
+ 10+2\sqrt5<\frac{7239}{500}<\left(\frac{761}{200}\right)^2.
+\]
+For the second, repeated half-angle identities give
+\[
+ 2\cos\frac{\pi}{16}=\sqrt{2+\sqrt{2+\sqrt2}},
+ \qquad
+ 2\cos\frac{\pi}{8}=\sqrt{2+\sqrt2}.
+\]
+The elementary square comparisons
+\[
+ \sqrt{2+\sqrt2}>\frac{923}{500},
+ \qquad
+ \sqrt{2+\sqrt{2+\sqrt2}}>\frac{1961}{1000}
+\]
+make the right-hand side of \eqref{eq:rational-separator} larger than
+$4+3807/1000>1561/200$.  This proves the strict comparison for every
+$L\geq4$.  The conclusion for $m(C_{8L}(1,2))$ follows by using
+$A_{8L,+}^{*}$ as an admissible signing.
+\end{proof}
+
+The rational number in \eqref{eq:rational-separator} is not a spectral
+constant; it only separates two exact values.  A supplementary Lean
+development checks the $\alpha=+1$ finite comparison through this separator
+in Hermitian eigenvalue form.  The complete dispersion and
+\eqref{eq:negative-finite-exact} are analytic results independently checked by
+exact symbolic scripts, not claims about the scope of that formalization.
+
+The exact solution establishes a low-edge phase.  It does not yet explain why
+the first such phase has period eight or whether several unrelated
+period-eight words share the same behavior.  Those are the two questions of
+the next section.

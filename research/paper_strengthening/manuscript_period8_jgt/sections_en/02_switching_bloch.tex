@@ -1,0 +1,185 @@
+\section{Switching coordinates and periodic fibers}
+\label{sec:gauge}
+
+The optimization in \eqref{eq:fixed-minimum} is stated in terms of edge
+signs, but edge signs are not the invariant data.  We first pass to local
+cycle signs and retain the one global sign that cannot be removed on a finite
+Hamilton cycle.  Periodicity of the resulting word then supplies the finite
+Bloch decomposition used throughout the paper.
+
+\subsection{Signed cycle squares and Hamilton gauge}
+
+Write $s_i$ for the sign of the step-one edge $\{i,i+1\}$ and $t_i$ for the
+sign of the step-two edge $\{i,i+2\}$, with indices modulo $n$.  A switching
+function $\varepsilon: \mathbb Z/n\mathbb Z\to\{\pm1\}$ sends
+\[
+ s_i\longmapsto \varepsilon_i s_i\varepsilon_{i+1},
+ \qquad
+ t_i\longmapsto \varepsilon_i t_i\varepsilon_{i+2}.
+\]
+If $D_\varepsilon=\diag(\varepsilon_i)$, the signed adjacency matrices are
+related by $A\mapsto D_\varepsilon A D_\varepsilon$.  Thus switching is an
+orthogonal similarity.
+
+The sign of the triangle $(i,i+1,i+2)$ is
+\begin{equation}
+ \tau_i=s_i s_{i+1}t_i,
+ \label{eq:triangle-flux}
+\end{equation}
+and the sign of the step-one Hamilton cycle is
+\begin{equation}
+ \alpha=\prod_{i=0}^{n-1}s_i.
+ \label{eq:ham-holonomy}
+\end{equation}
+Both are switching invariant.  Conversely, they determine the switching
+class.  Indeed, choose $\varepsilon_0=1$ and then recursively choose
+$\varepsilon_{i+1}=\varepsilon_i s_i$ along the cut-open Hamilton path.  All
+local step-one signs become positive, the step-two sign based at $i$ becomes
+$\tau_i$, and the mismatch after one circuit is $\alpha$.
+
+This construction is best stated on the lift.  A vector obeys
+\begin{equation}
+ x_{i+n}=\alpha x_i,
+ \label{eq:finite-holonomy-boundary}
+\end{equation}
+and the Hamilton-gauge operator is
+\begin{equation}
+ (A_\tau x)_i=x_{i-1}+x_{i+1}
+   +\tau_{i-2}x_{i-2}+\tau_i x_{i+2}.
+ \label{eq:hamilton-operator}
+\end{equation}
+Thus ``positive step-one gauge'' is a local normalization on the cut-open
+lift; negative holonomy is carried by the boundary condition, not by a claim
+that the product of positive finite-cycle edges is negative.
+
+\subsection{Symmetries and primitive period}
+\label{sec:symmetries}
+
+The local-square word
+\begin{equation}
+ Q_i=\tau_i\tau_{i+1}
+ \label{eq:q-word}
+\end{equation}
+is invariant under replacing $\tau$ by $-\tau$.  A $p$-periodic $Q$-word has
+a $p$-periodic lift precisely when $\prod_{i=0}^{p-1}Q_i=1$; after $\tau_0$
+is chosen, the recurrence $\tau_{i+1}=Q_i\tau_i$ gives the two lifts $\tau$
+and $-\tau$.
+
+For later orbit reductions we record the spectral effect of this choice.  Let
+$\mathcal B_z^{(p)}$ be the space of sequences with $x_{i+p}=zx_i$, where
+$|z|=1$, and let $H_\tau^{(p)}(z)$ be the restriction of
+\eqref{eq:hamilton-operator}.  Set
+\begin{equation}
+ R_p(\tau)=\max_{|z|=1}\rho(H_\tau^{(p)}(z))^2.
+ \label{eq:bloch-edge}
+\end{equation}
+
+\begin{proposition}[Lift and dihedral invariance]
+\label{prop:invariances}
+The quantity $R_p$ has the following properties.
+\begin{enumerate}
+ \item $R_p(-\tau)=R_p(\tau)$.
+ \item A cyclic translate of $\tau$ has the same fiber spectrum at each
+       phase $z$.
+ \item If $\tau^\vee_i=\tau_{-i-2}$, then
+       $\Spec H_{\tau^\vee}^{(p)}(z^{-1})=
+        \Spec H_\tau^{(p)}(z)$.
+\end{enumerate}
+Consequently $R_p$ is constant on the dihedral orbits of legal $Q$-words and
+is independent of the choice of lift.
+\end{proposition}
+
+\begin{proof}
+Let $(Dx)_i=(-1)^i x_i$.  Displacement-one terms change sign under conjugation
+by $D$, while displacement-two terms do not, and hence
+\[
+ D A_\tau D=-A_{-\tau}.
+\]
+The map $D$ sends $\mathcal B_z^{(p)}$ to
+$\mathcal B_{(-1)^p z}^{(p)}$.  Negating an operator leaves squared
+eigenvalues unchanged, and $z\mapsto(-1)^pz$ permutes the unit circle.  This
+proves the first assertion.
+
+For the other two, use $(S_kx)_i=x_{i+k}$ and $(\mathcal Rx)_i=x_{-i}$.
+Substitution in \eqref{eq:hamilton-operator} gives
+\[
+ A_{\operatorname{rot}_k\tau}S_k=S_kA_\tau,
+ \qquad
+ A_{\tau^\vee}\mathcal R=\mathcal RA_\tau.
+\]
+The shift $S_k$ preserves $\mathcal B_z^{(p)}$, whereas $\mathcal R$ maps it
+to $\mathcal B_{z^{-1}}^{(p)}$.  Both maps are unitary.  The induced actions on
+$Q$ may change the chosen lift only by a global minus sign, which has already
+been handled.
+\end{proof}
+
+A displayed cell need not be primitive.  If $\tau$ has least period $q$ but
+is displayed in a cell of length $p=kq$, translation by $q$ further
+diagonalizes the $p$-fiber and gives the zone-folding identity
+\begin{equation}
+ \Spec H_\tau^{(p)}(z)
+  =\bigcup_{w^k=z}\Spec H_\tau^{(q)}(w),
+ \label{eq:zone-folding}
+\end{equation}
+with multiplicities.  Taking the union over $|z|=1$ proves that cell
+repetition does not change $R_p$.  We therefore use \emph{primitive period}
+for the least period of $\tau$ and reserve \emph{displayed period} for the
+chosen cell size.
+
+\subsection{Finite Bloch decomposition}
+\label{sec:finite-bloch}
+
+Suppose now that $\tau$ has displayed period $p$ and $n=pL$.  Group the
+coordinates into $L$ cells,
+\[
+ X_r=(x_{rp},x_{rp+1},\ldots,x_{rp+p-1})^{\mathsf T},
+ \qquad 0\leq r<L.
+\]
+The cell shift is unitary and its $L$ eigenvalues are precisely the phases
+satisfying $z^L=\alpha$.  Its eigenspace with eigenvalue $z$ consists of
+$X_r=z^rX_0$.  Since the Hamilton-gauge operator commutes with the cell shift,
+these eigenspaces are invariant and its restriction is the $p\times p$
+Hermitian matrix $H_\tau^{(p)}(z)$.
+
+\begin{proposition}[Finite Bloch sum]
+\label{prop:finite-bloch}
+For every $L\geq1$ and $\alpha\in\{\pm1\}$,
+\begin{equation}
+ A_{pL,\alpha}(\tau)
+ \simeq\bigoplus_{z^L=\alpha}H_\tau^{(p)}(z).
+ \label{eq:finite-bloch-sum}
+\end{equation}
+In particular,
+\begin{equation}
+ \rho(A_{pL,\alpha}(\tau))
+ =\max_{z^L=\alpha}\rho(H_\tau^{(p)}(z)).
+ \label{eq:finite-radius-max}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The eigenspaces of the unitary cell shift are mutually orthogonal, each has
+dimension $p$, and there are $L$ of them.  Their dimensions sum to $pL$, so
+the restrictions give the full matrix with no missing multiplicities.  For
+$|z|=1$, every boundary-crossing entry is paired with its complex conjugate;
+hence each fiber is Hermitian.  The spectral-radius identity follows from the
+orthogonal direct sum.
+\end{proof}
+
+Figure~\ref{fig:finite-bloch} summarizes the three roles that must remain
+separate: $\tau$ specifies the repeated local operator, $\alpha$ specifies the
+finite seam, and $z$ labels a cell-shift eigenspace.
+
+\begin{figure}[t]
+ \centering
+ \input{figures/finite_bloch_cells}
+ \caption{A finite ring of $L$ periodic cells.  Local coefficients repeat from
+ cell to cell, the seam carries the Hamilton holonomy $\alpha$, and
+ diagonalizing the cell shift gives the allowed phases $z^L=\alpha$.}
+ \label{fig:finite-bloch}
+\end{figure}
+
+The decomposition reduces a periodic signing to a family of finite Hermitian
+matrices.  The next question is structural: which flux patterns force these
+fiber spectra to be symmetric about zero?  The half-cell criterion answering
+this question is independent of period eight.

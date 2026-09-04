@@ -1,0 +1,112 @@
+\section{半胞 chiral 对称}
+\label{sec:chiral}
+
+有限 Bloch 直和降低了整体维数，但通常不会继续简化单个 fiber。当半周期平移反转
+step-two 系数 word 时，反转 step-one 部分所需的交错符号会产生一个反对易单项式算子。
+下面在这一自然算子类中完整刻画该机制。
+
+\subsection{半胞算子}
+
+令 $p=2m$，并在 lift 上定义
+\begin{equation}
+ (Dx)_i=(-1)^ix_i,\qquad (T_mx)_i=x_{i+m},\qquad K_m=DT_m.
+ \label{eq:half-cell-operators}
+\end{equation}
+$D$ 反转所有位移一耦合并保持位移二耦合，$T_m$ 比较两个半胞，因此 $K_m$ 是最自然的
+chiral 候选。
+
+\begin{theorem}[系数判据]
+\label{thm:coefficient-chiral}
+对 $2m$-周期符号 word $\tau$，以下两项等价：
+\begin{enumerate}
+ \item $K_mA_\tau=-A_\tau K_m$；
+ \item 对每个 $i\in\mathbb Z$，$\tau_{i+m}=-\tau_i$。
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+把反对易子作用到任意序列，位移一项相消，剩余系数为
+\begin{align}
+ ((A_\tau K_m+K_mA_\tau)x)_i=(-1)^i\bigl[&
+ (\tau_{i-2}+\tau_{i+m-2})x_{i+m-2}\notag\\
+ &+(\tau_i+\tau_{i+m})x_{i+m+2}\bigr].
+ \label{eq:anticommutator-coefficients}
+\end{align}
+后半 word 是前半 word 的相反数时两项均消失。反之，若反对易子对所有序列为零，则
+$x_{i+m+2}$ 的系数为零，从而 $\tau_{i+m}=-\tau_i$。
+\end{proof}
+
+$K_m$ 保持每个 $\mathcal B_z^{(2m)}$，但尚未归一化为对合。在该空间上
+\begin{equation}
+ T_m^2=zI,\qquad T_mD=(-1)^mDT_m,\qquad K_m^2=(-1)^mzI.
+ \label{eq:km-square}
+\end{equation}
+选择单位复数 $\gamma_m(z)$ 使
+\begin{equation}
+ \gamma_m(z)^2=(-1)^mz^{-1}.
+ \label{eq:gamma-normalization}
+\end{equation}
+若 $\xi^2=z$，则 $m$ 为偶数时可取 $\xi^{-1}$，$m$ 为奇数时可取
+$\mathrm i\xi^{-1}$。于是
+\begin{equation}
+ J_z=\gamma_m(z)K_m|_{\mathcal B_z^{(2m)}}
+ \label{eq:normalized-j}
+\end{equation}
+是酉对合，因而自伴。改变 $z$ 的平方根只把 $J_z$ 换成 $-J_z$，交换两个 chiral 子空间。
+
+\subsection{Flux 判据}
+
+\begin{theorem}[负半胞通量]
+\label{thm:flux-chiral}
+对 $2m$-周期符号 word，以下两项等价：
+\begin{enumerate}
+ \item 对所有 $i$，$\tau_{i+m}=-\tau_i$；
+ \item 对所有 $i$，$Q_{i+m}=Q_i$，且 $\prod_{j=0}^{m-1}Q_j=-1$。
+\end{enumerate}
+此时
+\begin{equation}
+ J_zH_\tau^{(2m)}(z)=-H_\tau^{(2m)}(z)J_z.
+ \label{eq:fiber-anticommutation}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+若 $\tau_{i+m}=-\tau_i$，则
+$Q_{i+m}=(-\tau_i)(-\tau_{i+1})=Q_i$，并由望远镜相消得到
+$\prod_{j=0}^{m-1}Q_j=\tau_0\tau_m=-1$。
+
+反之，令 $r_i=\tau_{i+m}/\tau_i$。$Q$ 的半周期性给出 $r_ir_{i+1}=1$，故所有
+$r_i$ 等于同一常数 $r$。再次望远镜相消可得
+$r=\tau_m/\tau_0=\prod_{j=0}^{m-1}Q_j=-1$。最后由
+定理~\ref{thm:coefficient-chiral} 得到反对易关系。
+\end{proof}
+
+\begin{figure}[t]
+ \centering
+ \input{figures_zh/halfcell_chiral}
+ \caption{半胞 chiral 机制。$m$ 位平移交换两个半胞，交错对角因子反转 step-one 耦合；
+ $\tau_{i+m}=-\tau_i$，等价地，半周期 $Q$ 具有负半胞通量，从而也反转 step-two 耦合。}
+ \label{fig:half-cell-chiral}
+\end{figure}
+
+\subsection{代数后果}
+
+$J_z$ 的单项式矩阵没有固定坐标，故迹为零。它在 $2m$ 维空间上的两个本征子空间维数均为
+$m$，反对易关系把二者相互映射。在适应该分解的酉基下，
+\begin{equation}
+ H_\tau^{(2m)}(z)\simeq
+ \begin{pmatrix}0&B(z)^*\\B(z)&0\end{pmatrix},\qquad
+ H_\tau^{(2m)}(z)^2\simeq
+ \begin{pmatrix}B(z)^*B(z)&0\\0&B(z)B(z)^*\end{pmatrix}.
+ \label{eq:general-chiral-block}
+\end{equation}
+因此谱关于零对称，并且
+\begin{equation}
+ \det(\lambda I_{2m}-H_\tau^{(2m)}(z))
+ =\det(\lambda^2I_m-B(z)^*B(z)).
+ \label{eq:general-even-characteristic}
+\end{equation}
+
+一般定理并不使任意 $m\times m$ block 可显式求解。它的作用是找出一个能消去一半谱维数
+的结构类。式 \eqref{eq:target-words} 的相属于该类且 $m=4$；它也是本文中首次越过平方
+谱边 $8$ 的相。下一节对这一 fiber 作完整求解。

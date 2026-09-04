@@ -1,0 +1,149 @@
+\section{Half-cell chiral symmetry}
+\label{sec:chiral}
+
+The finite Bloch sum reduces dimension but does not normally simplify an
+individual fiber.  A further reduction becomes possible when half-period
+translation reverses the step-two coefficient word.  The alternating sign
+needed to reverse the step-one part then produces an anticommuting monomial
+operator.  We now characterize this mechanism within that natural class.
+
+\subsection{The half-cell operator}
+
+Let $p=2m$.  On the lifted sequence space define
+\begin{equation}
+ (Dx)_i=(-1)^i x_i,\qquad
+ (T_mx)_i=x_{i+m},\qquad K_m=DT_m.
+ \label{eq:half-cell-operators}
+\end{equation}
+The operator $D$ reverses every displacement-one coupling and preserves every
+displacement-two coupling.  Translation by $m$ compares the two half-cells.
+Their product is therefore the first monomial candidate for an operator that
+anticommutes with $A_\tau$.
+
+\begin{theorem}[Coefficient criterion]
+\label{thm:coefficient-chiral}
+For a $2m$-periodic sign word $\tau$, the following are equivalent:
+\begin{enumerate}
+ \item $K_mA_\tau=-A_\tau K_m$;
+ \item $\tau_{i+m}=-\tau_i$ for every $i\in\mathbb Z$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+Apply the anticommutator to an arbitrary sequence.  The displacement-one
+terms cancel, and direct collection of the two remaining coordinates gives
+\begin{align}
+ ((A_\tau K_m+K_mA_\tau)x)_i
+ =(-1)^i\bigl[&
+   (\tau_{i-2}+\tau_{i+m-2})x_{i+m-2}\notag\\
+  &+(\tau_i+\tau_{i+m})x_{i+m+2}\bigr].
+ \label{eq:anticommutator-coefficients}
+\end{align}
+If the second half-word is the negative of the first, both coefficients
+vanish.  Conversely, if the anticommutator vanishes on every sequence, the
+coefficient of $x_{i+m+2}$ vanishes for every $i$, which gives
+$\tau_{i+m}=-\tau_i$.  The other coefficient then vanishes as well.
+\end{proof}
+
+The operator $K_m$ preserves every Bloch space $\mathcal B_z^{(2m)}$, but it
+is not yet an involution.  On this space,
+\begin{equation}
+ T_m^2=zI,\qquad T_mD=(-1)^mDT_m,\qquad
+ K_m^2=(-1)^mzI.
+ \label{eq:km-square}
+\end{equation}
+Choose a unit scalar $\gamma_m(z)$ satisfying
+\begin{equation}
+ \gamma_m(z)^2=(-1)^m z^{-1}.
+ \label{eq:gamma-normalization}
+\end{equation}
+If $\xi^2=z$, one may take $\gamma_m(z)=\xi^{-1}$ for even $m$ and
+$\gamma_m(z)=\mathrm i\xi^{-1}$ for odd $m$.  Then
+\begin{equation}
+ J_z=\gamma_m(z)K_m|_{\mathcal B_z^{(2m)}}
+ \label{eq:normalized-j}
+\end{equation}
+is unitary and satisfies $J_z^2=I$; hence $J_z=J_z^*$.  Changing the square
+root of $z$ replaces $J_z$ by $-J_z$ and only interchanges its two eigenspaces.
+
+\subsection{The flux criterion}
+
+The coefficient condition is transparent in $\tau$, but $Q$ is the local word
+used in the extremal analysis.  The next equivalence shows that chirality is
+visible without choosing either lift of $Q$.
+
+\begin{theorem}[Negative half-cell flux]
+\label{thm:flux-chiral}
+For a $2m$-periodic sign word $\tau$, the following are equivalent:
+\begin{enumerate}
+ \item $\tau_{i+m}=-\tau_i$ for every $i$;
+ \item $Q_{i+m}=Q_i$ for every $i$ and
+       $\prod_{j=0}^{m-1}Q_j=-1$.
+\end{enumerate}
+Under these conditions the operators $J_z$ in
+\eqref{eq:normalized-j} are chiral involutions:
+\begin{equation}
+ J_zH_\tau^{(2m)}(z)=-H_\tau^{(2m)}(z)J_z
+ \qquad(|z|=1).
+ \label{eq:fiber-anticommutation}
+\end{equation}
+\end{theorem}
+
+\begin{proof}
+If $\tau_{i+m}=-\tau_i$, then
+\[
+ Q_{i+m}=(-\tau_i)(-\tau_{i+1})=Q_i,
+ \qquad
+ \prod_{j=0}^{m-1}Q_j=\tau_0\tau_m=-1.
+\]
+For the converse, put $r_i=\tau_{i+m}/\tau_i\in\{\pm1\}$.  Half-periodicity
+of $Q$ gives $r_ir_{i+1}=1$, so all $r_i$ equal one constant $r$.  Telescoping
+over a half-cell gives
+\[
+ r=\frac{\tau_m}{\tau_0}=\prod_{j=0}^{m-1}Q_j=-1.
+\]
+Thus $\tau_{i+m}=-\tau_i$.  The anticommutation follows from
+Theorem~\ref{thm:coefficient-chiral}; scalar normalization does not change it.
+\end{proof}
+
+Figure~\ref{fig:half-cell-chiral} records the mechanism: the alternating
+diagonal sign reverses the nearest-neighbor part, while negative half-cell
+flux forces translation to reverse the step-two coefficients.
+
+\begin{figure}[t]
+ \centering
+ \input{figures/halfcell_chiral}
+ \caption{The half-cell chiral mechanism.  Translation by $m$ exchanges the
+ two half-cells; the alternating diagonal factor reverses step-one couplings.
+ The local condition $\tau_{i+m}=-\tau_i$, equivalently half-periodic $Q$ with
+ negative half-cell flux, reverses the step-two couplings as well.}
+ \label{fig:half-cell-chiral}
+\end{figure}
+
+\subsection{Algebraic consequences}
+
+The monomial matrix of $J_z$ has no fixed coordinate, so its trace is zero.
+As an involution on a $2m$-dimensional space, its $+1$ and $-1$ eigenspaces
+therefore both have dimension $m$.  Equation
+\eqref{eq:fiber-anticommutation} sends either eigenspace to the other.  In a
+unitary basis adapted to this decomposition,
+\begin{equation}
+ H_\tau^{(2m)}(z)\simeq
+ \begin{pmatrix}0&B(z)^*\\ B(z)&0\end{pmatrix},
+ \qquad
+ H_\tau^{(2m)}(z)^2\simeq
+ \begin{pmatrix}B(z)^*B(z)&0\\0&B(z)B(z)^*\end{pmatrix}.
+ \label{eq:general-chiral-block}
+\end{equation}
+Consequently the spectrum is symmetric about zero and
+\begin{equation}
+ \det(\lambda I_{2m}-H_\tau^{(2m)}(z))
+ =\det(\lambda^2I_m-B(z)^*B(z)).
+ \label{eq:general-even-characteristic}
+\end{equation}
+
+The theorem does not make the general $m\times m$ block explicitly solvable.
+Its role is to locate a structural class in which half of the spectral
+dimension disappears.  The phase \eqref{eq:target-words} belongs to this class
+with $m=4$.  It is also the first member of the class known here to cross the
+squared edge $8$.  We now solve that fiber completely.

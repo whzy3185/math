@@ -1,0 +1,21 @@
+\begin{tikzpicture}[x=1.25cm,y=1cm,>=Latex,
+ cell/.style={draw,rounded corners=2pt,minimum width=1.0cm,minimum height=.7cm,
+              fill=blue!5,font=\small}]
+ \node[cell] (c0) at (0,0) {$\tau$};
+ \node[cell] (c1) at (1.35,0) {$\tau$};
+ \node[cell] (c2) at (2.70,0) {$\tau$};
+ \node (dots) at (4.0,0) {$\cdots$};
+ \node[cell] (cl) at (5.25,0) {$\tau$};
+ \draw[->] (c0)--node[above,font=\scriptsize] {$S$}(c1);
+ \draw[->] (c1)--(c2);
+ \draw[->] (c2)--(dots);
+ \draw[->] (dots)--(cl);
+ \draw[->,bend right=42,red!70!black]
+   (cl.north) to node[above=5pt,font=\small] {seam $\alpha$} (c0.north);
+ \draw[decorate,decoration={brace,mirror,amplitude=4pt}]
+   (-.55,-.55)--node[below=5pt,font=\small] {$L$ cells, $n=pL$}(5.8,-.55);
+ \node[align=center,font=\small] at (2.65,-1.85)
+ {$SX=zX$ and $S^L=\alpha I$\\[1pt]
+  $\Longrightarrow\quad z^L=\alpha,\qquad
+  A_{pL,\alpha}\simeq\displaystyle\bigoplus_{z^L=\alpha}H_\tau^{(p)}(z)$};
+\end{tikzpicture}

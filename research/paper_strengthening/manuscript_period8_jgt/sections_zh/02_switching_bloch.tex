@@ -1,0 +1,130 @@
+\section{Switching 坐标与周期 fiber}
+\label{sec:gauge}
+
+式 \eqref{eq:fixed-minimum} 用边符号表述优化，但边符号并非不变量。我们先转到局部圈符号，
+同时保留有限 Hamilton 圈上无法消去的一个全局符号。所得 word 的周期性随后给出全文所用
+的有限 Bloch 分解。
+
+\subsection{符号圈平方图与 Hamilton 规范}
+
+记 step-one 边 $\{i,i+1\}$ 的符号为 $s_i$，step-two 边 $\{i,i+2\}$ 的符号为
+$t_i$。switching 函数 $\varepsilon$ 作用为
+\[
+ s_i\mapsto\varepsilon_i s_i\varepsilon_{i+1},\qquad
+ t_i\mapsto\varepsilon_i t_i\varepsilon_{i+2}.
+\]
+相应邻接矩阵由 $D_\varepsilon=\diag(\varepsilon_i)$ 作正交相似变换。以 $i$ 为起点的
+三角形符号与 step-one Hamilton 圈符号分别为
+\begin{equation}
+ \tau_i=s_is_{i+1}t_i,
+ \label{eq:triangle-flux}
+\end{equation}
+\begin{equation}
+ \alpha=\prod_{i=0}^{n-1}s_i.
+ \label{eq:ham-holonomy}
+\end{equation}
+二者均在 switching 下不变，并共同决定 switching 类。沿切开的 Hamilton 路径递归选取
+$\varepsilon_{i+1}=\varepsilon_i s_i$ 后，局部 step-one 符号均变为正，step-two 符号
+变为 $\tau_i$，绕行一周后的不匹配正是 $\alpha$。
+
+在 lift 上，这一规范写成
+\begin{equation}
+ x_{i+n}=\alpha x_i,
+ \label{eq:finite-holonomy-boundary}
+\end{equation}
+以及
+\begin{equation}
+ (A_\tau x)_i=x_{i-1}+x_{i+1}
+   +\tau_{i-2}x_{i-2}+\tau_i x_{i+2}.
+ \label{eq:hamilton-operator}
+\end{equation}
+因此“正 step-one 规范”是切开 lift 上的局部归一化；负 holonomy 位于边界条件，而不是
+说有限圈上所有正边的乘积可以为负。
+
+\subsection{对称性与本原周期}
+\label{sec:symmetries}
+
+令
+\begin{equation}
+ Q_i=\tau_i\tau_{i+1}.
+ \label{eq:q-word}
+\end{equation}
+$Q$ 在 $\tau\mapsto-\tau$ 下不变。$p$-周期 $Q$ 存在 $p$-周期 lift 当且仅当
+$\prod_iQ_i=1$；固定 $\tau_0$ 后由 $\tau_{i+1}=Q_i\tau_i$ 得到两个 lifts。
+
+设 $\mathcal B_z^{(p)}$ 为满足 $x_{i+p}=zx_i$ 的序列空间，$H_\tau^{(p)}(z)$ 为
+\eqref{eq:hamilton-operator} 在该空间上的限制，并定义
+\begin{equation}
+ R_p(\tau)=\max_{|z|=1}\rho(H_\tau^{(p)}(z))^2.
+ \label{eq:bloch-edge}
+\end{equation}
+
+\begin{proposition}[Lift 与二面体不变性]
+\label{prop:invariances}
+$R_p$ 满足：$R_p(-\tau)=R_p(\tau)$；循环平移在同一 $z$ 上保持 fiber 谱；若
+$\tau_i^\vee=\tau_{-i-2}$，则
+\[
+ \Spec H_{\tau^\vee}^{(p)}(z^{-1})=\Spec H_\tau^{(p)}(z).
+\]
+从而 $R_p$ 在合法 $Q$-word 的二面体轨道上为常数，并与 lift 的选择无关。
+\end{proposition}
+
+\begin{proof}
+令 $(Dx)_i=(-1)^ix_i$。位移一项在 $D$ 共轭下变号，位移二项不变，故
+$DA_\tau D=-A_{-\tau}$。同时 $D$ 把 $\mathcal B_z^{(p)}$ 送到
+$\mathcal B_{(-1)^pz}^{(p)}$。单位圆在相位映射下不变，因此平方谱边相同。
+
+循环平移与反射分别由 $(S_kx)_i=x_{i+k}$ 和 $(\mathcal Rx)_i=x_{-i}$ 实现。直接代入得
+\[
+ A_{\operatorname{rot}_k\tau}S_k=S_kA_\tau,
+ \qquad A_{\tau^\vee}\mathcal R=\mathcal RA_\tau.
+\]
+$S_k$ 保持 $\mathcal B_z^{(p)}$，$\mathcal R$ 把它送到
+$\mathcal B_{z^{-1}}^{(p)}$，结论随即成立。
+\end{proof}
+
+若 $\tau$ 的最小周期为 $q$，但在 $p=kq$ 的胞元中展示，则由 $q$ 位平移进一步分解得到
+\begin{equation}
+ \Spec H_\tau^{(p)}(z)=\bigcup_{w^k=z}\Spec H_\tau^{(q)}(w).
+ \label{eq:zone-folding}
+\end{equation}
+故胞元重复不改变 Bloch 谱边。下文把最小周期称为本原周期，把所选胞元长度称为展示周期。
+
+\subsection{有限 Bloch 分解}
+\label{sec:finite-bloch}
+
+设 $\tau$ 的展示周期为 $p$ 且 $n=pL$。把坐标分成 $L$ 个胞元。胞元平移是酉算子，
+其本征值恰为满足 $z^L=\alpha$ 的相位；对应本征空间内 $X_r=z^rX_0$。因为 Hamilton
+规范算子与胞元平移可交换，每个本征空间都不变，其限制就是 $p\times p$ Hermitian
+fiber $H_\tau^{(p)}(z)$。
+
+\begin{proposition}[有限 Bloch 直和]
+\label{prop:finite-bloch}
+对任意 $L\geq1$ 与 $\alpha\in\{\pm1\}$，
+\begin{equation}
+ A_{pL,\alpha}(\tau)\simeq\bigoplus_{z^L=\alpha}H_\tau^{(p)}(z),
+ \label{eq:finite-bloch-sum}
+\end{equation}
+并且
+\begin{equation}
+ \rho(A_{pL,\alpha}(\tau))=max_{z^L=\alpha}\rho(H_\tau^{(p)}(z)).
+ \label{eq:finite-radius-max}
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+胞元平移的本征空间两两正交，每个维数为 $p$，共有 $L$ 个，维数总和为 $pL$，故没有
+遗漏任何本征值或重数。$|z|=1$ 时，所有跨胞元项与其共轭配对，所以 fiber 为 Hermitian。
+谱半径公式由正交直和立即得到。
+\end{proof}
+
+\begin{figure}[t]
+ \centering
+ \input{figures_zh/finite_bloch_cells}
+ \caption{由 $L$ 个周期胞元构成的有限环。局部系数按胞重复，seam 携带 Hamilton
+ holonomy $\alpha$，胞元平移的对角化给出允许相位 $z^L=\alpha$。}
+ \label{fig:finite-bloch}
+\end{figure}
+
+有限直和把周期符号问题化成一族有限 Hermitian 矩阵。接下来需要回答结构问题：何种周期
+flux 会迫使 fiber 谱关于零对称？这一判据并不依赖于周期八。

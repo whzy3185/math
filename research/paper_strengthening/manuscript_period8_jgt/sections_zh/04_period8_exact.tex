@@ -1,0 +1,197 @@
+\section{八周期相的精确谱}
+\label{sec:period8}
+
+定理~\ref{thm:flux-chiral} 给出一般降维机制，但不会求解任意周期的约化 block。
+$\tau_*$ 是第一个 sub-eight 相，并具有足够的额外结构，使 $4\times4$ 平方 block 再次
+约化。本节完成这一计算，得到完整色散并回到有限环。
+
+\subsection{目标 fiber 与 chiral block}
+
+对 $|z|=1$，按余数 $0,1,\ldots,7$ 排列的 fiber 为
+\begin{equation}
+ H(z)=\begin{pmatrix}
+0&1&1&0&0&0&z^{-1}&z^{-1}\\
+1&0&1&1&0&0&0&-z^{-1}\\
+1&1&0&1&-1&0&0&0\\
+0&1&1&0&1&1&0&0\\
+0&0&-1&1&0&1&-1&0\\
+0&0&0&1&1&0&1&-1\\
+z&0&0&0&-1&1&0&1\\
+z&-z&0&0&0&-1&1&0
+\end{pmatrix}.
+\label{eq:period8-fiber}
+\end{equation}
+跨边界元成共轭对，因此 $H(z)$ 为 Hermitian。由于 $\tau_{i+4}=-\tau_i$，
+第~\ref{sec:chiral} 节适用。取 $\xi^2=z$；此处 $m=4$，故
+$\gamma_4(z)=\xi^{-1}$。
+
+在 $J_z$ 两个本征子空间的基下，$H(z)$ 为非对角 block 矩阵。两个非对角 block 相乘得
+\begin{equation}
+ S(\xi)=\begin{pmatrix}
+4-s&0&1+\xi^{-1}&2\\
+0&4-s&2&1-\xi^{-1}\\
+1+\xi&2&4+s&0\\
+2&1-\xi&0&4+s
+\end{pmatrix},\qquad s=\xi+\xi^{-1}.
+\label{eq:period8-squared-block}
+\end{equation}
+$H(z)$ 的平方本征值就是 $S(\xi)$ 的本征值。把 $\xi$ 换成 $-\xi$ 只交换两个 chiral
+坐标空间；最终特征数据只依赖 $z$。
+
+\subsection{八周期多项式}
+
+把 \eqref{eq:period8-squared-block} 写成
+\[
+ S(\xi)=\begin{pmatrix}(4-s)I_2&R(\xi)\\Q(\xi)&(4+s)I_2\end{pmatrix},
+\]
+其中
+\[
+ R(\xi)=\begin{pmatrix}1+\xi^{-1}&2\\2&1-\xi^{-1}\end{pmatrix},
+ \quad
+ Q(\xi)=\begin{pmatrix}1+\xi&2\\2&1-\xi\end{pmatrix}.
+\]
+对角 block 为标量矩阵，因此初等 block 行列式恒等式直接给出
+\begin{equation}
+ \det(yI_4-S(\xi))
+ =\det\!\left(\bigl((y-4)^2-s^2\bigr)I_2-R(\xi)Q(\xi)\right).
+ \label{eq:two-by-two-determinant}
+\end{equation}
+令 $c=z+z^{-1}=\xi^2+\xi^{-2}$，展开上述 $2\times2$ 行列式得
+\begin{equation}
+\begin{split}
+ P(y,c)={}&y^4-16y^3+(80-2c)y^2\\
+          &+(-128+16c)y+c^2-13c+38.
+\end{split}
+\label{eq:period8-polynomial}
+\end{equation}
+从而
+\begin{equation}
+ \det(\lambda I_8-H(z))=P(\lambda^2,z+z^{-1}).
+ \label{eq:period8-characteristic}
+\end{equation}
+
+\subsection{完整色散}
+
+令 $y=X+4$，则
+\begin{equation}
+ P(X+4,c)=X^4-(16+2c)X^2+c^2+19c+38.
+ \label{eq:centered-quartic}
+\end{equation}
+再令 $W=X^2$，两个根为
+\begin{equation}
+ W_\tau(c)=8+c+\tau\sqrt{26-3c},\qquad\tau\in\{\pm1\}.
+ \label{eq:w-branches}
+\end{equation}
+当 $-2\leq c\leq2$ 时，二者均为正，因为
+$(8+c)^2-(26-3c)=c^2+19c+38\geq4$。四条平方色散支为
+\begin{equation}
+ y_{\sigma,\tau}(c)=4+\sigma\sqrt{W_\tau(c)},
+ \qquad\sigma,\tau\in\{\pm1\}.
+ \label{eq:four-squared-branches}
+\end{equation}
+由 $0<W_-<W_+<16$，它们在整个区间上的顺序固定：
+\[
+ y_{+,+}>y_{+,-}>y_{-,-}>y_{-,+}>0.
+\]
+并且
+\[
+ W_+'(c)=1-\frac{3}{2\sqrt{26-3c}}>0,\qquad
+ W_-'(c)=1+\frac{3}{2\sqrt{26-3c}}>0.
+\]
+故顶部平方谱边
+\begin{equation}
+ r(c)=4+\sqrt{8+c+\sqrt{26-3c}}
+ \label{eq:top-dispersion}
+\end{equation}
+在 $[-2,2]$ 上严格递增。
+
+记
+\[
+ a=\sqrt{10+2\sqrt5},\qquad b=\sqrt{10-2\sqrt5}.
+\]
+在 $c=-2$ 处四个平方根为
+$6+\sqrt2,6-\sqrt2,2+\sqrt2,2-\sqrt2$；在 $c=2$ 处为
+$4+a,4+b,4-b,4-a$。因此四条平方谱带为
+\begin{equation}
+\begin{array}{ll}
+[6+\sqrt2,\,4+a],&[6-\sqrt2,\,4+b],\\
+{}[4-b,\,2+\sqrt2],&[4-a,\,2-\sqrt2].
+\end{array}
+\label{eq:squared-bands}
+\end{equation}
+四条谱带互不相交，$H(z)$ 的八个简单本征值为
+$\{\pm\sqrt{y_{\sigma,\tau}(c)}\}$，并具有精确中心谱隙
+\begin{equation}
+ \left(-\sqrt{4-a},\sqrt{4-a}\right).
+ \label{eq:central-gap}
+\end{equation}
+
+\subsection{有限相位量子化}
+
+单位圆上的唯一最大值位于 $c=2$，即 $z=1$，其值为
+$r(2)=4+a=\etaedge$。正 holonomy 网格 $z^L=1$ 总包含 $z=1$，故
+\begin{equation}
+ \rho(A_{8L,+}^{*})^2=\etaedge\qquad(L\geq1).
+ \label{eq:positive-finite-exact}
+\end{equation}
+负 holonomy 的允许相位为
+$z_j=\exp((2j+1)\pi\mathrm i/L)$，最大的 $z+z^{-1}$ 为
+$2\cos(\pi/L)$，从而
+\begin{equation}
+ \rho(A_{8L,-}^{*})^2
+ =4+\sqrt{8+2\cos(\pi/L)+\sqrt{26-6\cos(\pi/L)}}.
+ \label{eq:negative-finite-exact}
+\end{equation}
+对有限 $L$，该值严格小于 $\etaedge$，并随 $L\to\infty$ 收敛到 $\etaedge$。
+
+\subsection{与 twisted benchmark 的比较}
+\label{sec:twisted}
+
+twisted 符号在 Hamilton 规范下是交错三角 flux 且具有负 Hamilton holonomy 的类。
+其二点 Fourier block 为
+\begin{equation}
+ B(t)=2\begin{pmatrix}\cos t&\cos2t\\\cos2t&-\cos t\end{pmatrix},
+ \label{eq:twisted-block}
+\end{equation}
+本征值平方为 $4g(t)$，其中 $g(t)=\cos^2t+\cos^22t$，平移后的有限网格为
+$t=(2k+1)\pi/(8L)$。由 $g(-t)=g(t)=g(\pi-t)$，只需考虑
+$t\in[\pi/(8L),\pi/2]$。令 $u=\cos^2t$，则 $g(t)=4u^2-3u+1$，所以
+$t\in[\pi/6,\pi/2]$ 时 $g(t)\leq1$。另一方面，
+\[
+ g'(t)=-\sin(2t)(1+4\cos(2t))<0\qquad(0<t\leq\pi/6).
+\]
+又有 $g(\pi/(8L))\geq g(\pi/8)=(4+\sqrt2)/4>1$，故最大值位于第一个正网格相位。因此
+\begin{equation}
+ \rho(A_{8L}^{\mathrm{tw}})^2
+ =4+2\cos\frac{\pi}{4L}+2\cos\frac{\pi}{2L}.
+ \label{eq:twisted-radius}
+\end{equation}
+
+\begin{proof}[定理~\ref{thm:main-exact} 的证明]
+式 \eqref{eq:twisted-radius} 在 $L\geq4$ 时递增，所以只需比较 $L=4$。使用一次精确有理
+分隔：
+\begin{equation}
+ \etaedge<\frac{1561}{200}<
+ 4+2\cos\frac{\pi}{16}+2\cos\frac{\pi}{8}.
+ \label{eq:rational-separator}
+\end{equation}
+由 $\sqrt5<2239/1000$，
+$10+2\sqrt5<7239/500<(761/200)^2$，得到左侧不等式。半角公式给出
+\[
+2\cos\frac{\pi}{16}=\sqrt{2+\sqrt{2+\sqrt2}},\qquad
+2\cos\frac{\pi}{8}=\sqrt{2+\sqrt2}.
+\]
+再由直接平方比较
+\[
+\sqrt{2+\sqrt2}>\frac{923}{500},\qquad
+\sqrt{2+\sqrt{2+\sqrt2}}>\frac{1961}{1000}
+\]
+得到右侧不等式。结合 \eqref{eq:positive-finite-exact} 即完成证明。
+\end{proof}
+
+式 \eqref{eq:rational-separator} 中的有理数不是谱常数，只用于分隔两个精确值。补充 Lean
+开发以 Hermitian 本征值形式验证了通过该分隔量的 $\alpha=+1$ 有限比较；完整色散与
+\eqref{eq:negative-finite-exact} 是另行作精确符号复核的解析结果，不属于该形式化声明。
+
+精确解给出了一个低谱相，但尚未说明周期八为何最先出现，也未说明该周期内是否存在许多
+不相关的低谱 word。下一节回答这两个问题。

@@ -1,0 +1,150 @@
+\section{引言与主要结果}
+\label{sec:introduction}
+
+\subsection{从 switching 到固定底图谱优化}
+
+符号图由一个底图及每条边上的正负号构成。它的邻接矩阵与普通邻接矩阵具有相同的零元
+位置，但非零元可以取 $1$ 或 $-1$。这一改变把两类信息分开：单条边的符号依赖于代表元；
+在顶点上作 switching 等价于用对角符号矩阵共轭邻接矩阵，因此不改变其谱。另一方面，
+沿圈的边符号乘积在 switching 下保持不变。自 Harary 与 Zaslavsky 的工作以来，平衡性、
+switching 类和圈符号一直是符号图理论的基本坐标
+\cite{Harary1953,Zaslavsky1982}。
+
+相关谱问题有两种不同形式。第一种问一个图是否存在某种符号，使新本征值受一个普适界
+控制。这一路线在 two-lift 理论中居于核心地位：Bilu--Linial 把符号与 lift 的新本征值
+联系起来，Marcus--Spielman--Srivastava 则用交错多项式方法在二部情形构造了
+Ramanujan 符号 \cite{BiluLinial2006,MarcusSpielmanSrivastava2015}。第二种更精细：
+完全固定底图，并在其全部符号中求最小谱半径
+\begin{equation}
+ m(G)=\min_{\sigma:E(G)\to\{\pm1\}}\rho(A_\sigma).
+ \label{eq:fixed-minimum}
+\end{equation}
+此时矩阵的支撑、阶数和度序列均保持不变，优化只发生在 switching 不变的圈结构之间。
+这一问题自然属于符号图谱理论的整体研究纲领 \cite{BelardoEtAl2018}，并且若干受限图族
+已有精确极值结果 \cite{BrunettiStanic2022,GhorbaniMajidi2024}。然而，固定底图问题
+具有额外刚性：良好符号的存在性结果并不给出精确最小值，高度对称的候选也未必最优。
+
+\subsection{为何选择圈平方图与周期符号}
+
+本文研究
+\[
+ C_n(1,2),\qquad V=\mathbb Z/n\mathbb Z,\qquad
+ i\sim j\iff i-j\equiv\pm1,\pm2\pmod n.
+\]
+在本文所考虑的阶数范围内，它就是 $n$-圈的平方。该图一方面具有清楚的 Fourier 结构：
+无符号图是 circulant，其谱可由标量 Fourier 符号读出 \cite{Davis1979}，近期非二部
+Cayley 图的符号谱工作提供了相邻的更广背景 \cite{HuLiu2025}；另一方面，
+相邻两条 step-one 边与相应的 step-two 边组成三角形。相互重叠的三角形使圈信息既局部
+又耦合：改变一条边会同时改变若干相邻圈。
+
+任意符号会破坏单点平移不变性。周期圈符号则恢复胞元平移，把标量 Fourier 符号替换为
+一个小型 Hermitian 矩阵值符号。这是周期离散算子 Bloch 分解在有限图上的版本。在单位
+gain 图和周期 magnetic 图理论中，gauge、flux 与准动量同样承担彼此不同的角色
+\cite{Reff2012,KorotyaevSaburova2017,KorotyaevSaburova2023}。本文只需有限维
+形式：由 $L$ 个胞元构成的环正交分解成 $L$ 个有限 fiber。
+
+这说明何种变量才是自然的。在 switching 把 step-one Hamilton 圈局部规范为正以后，
+令 $\tau_i$ 表示以 $i$ 为起点的三角形符号，并用 $\alpha\in\{\pm1\}$ 保留全局
+Hamilton 圈 holonomy。有限边界条件为 $x_{i+n}=\alpha x_i$。进一步令
+\[
+ Q_i=\tau_i\tau_{i+1}.
+\]
+对算子平方以后，$Q$ 记录哪些奇位移耦合被消去。因此，引入周期性不是为了缩小枚举，
+而是为了在同一框架中精确比较局部 flux、胞元平移与谱边。
+
+本文的核心相具有本原周期八：
+\begin{equation}
+ \tau_*=(1,1,-1,1,-1,-1,1,-1),\qquad
+ Q_*=(1,-1,-1,-1,1,-1,-1,-1).
+ \label{eq:target-words}
+\end{equation}
+$Q_*$ 的两个正元互为对径。更重要的是，$\tau_*$ 的后半段等于前半段的相反数。正是这一
+半周期关系产生反对易对称，而不是某个 $8\times8$ 行列式的偶然性质。
+图~\ref{fig:period8-cell} 展示胞元及两层 flux 数据。
+
+\begin{figure}[t]
+ \centering
+ \input{figures_zh/period8_flux_cell}
+ \caption{八周期胞元。实线圈边是局部为正的 step-one 规范，灰色弦为 step-two 边。
+ 三角形符号组成 $\tau_*$，两个标记位置是 $Q_*$ 的正元。第二个半胞的 $\tau$-word
+ 等于第一个半胞的相反数。}
+ \label{fig:period8-cell}
+\end{figure}
+
+\subsection{主要结果}
+
+令 $A_{8L,+}^{*}$ 表示把 \eqref{eq:target-words} 重复 $L$ 次并取正 Hamilton
+holonomy 所得到的有限符号邻接矩阵，并记
+\begin{equation}
+ \etaedge=4+\sqrt{10+2\sqrt5}.
+ \label{eq:eta}
+\end{equation}
+第一项结果给出精确有限值，而不仅是渐近谱边或数值上界。
+
+\begin{theorem}[八周期有限相的精确谱半径]
+\label{thm:main-exact}
+对每个整数 $L\geq1$，
+\[
+ \rho(A_{8L,+}^{*})^2=\etaedge.
+\]
+若 $A_{8L}^{\mathrm{tw}}$ 表示第~\ref{sec:twisted} 节定义的 twisted 符号，则对每个
+$L\geq4$，
+\[
+ \rho(A_{8L,+}^{*})^2=\etaedge
+   <\rho(A_{8L}^{\mathrm{tw}})^2.
+\]
+从而 $m(C_{8L}(1,2))<\rho(A_{8L}^{\mathrm{tw}})$。
+\end{theorem}
+
+精确解来自一个对所有偶周期成立的结构定理。该定理刻画何时最自然的符号半胞平移给出
+chiral 对称。这里 chiral 只取线性代数含义：一个自伴对合与 Hermitian fiber 反对易。
+符号图 Laplacian 及 chiral Floquet 系统中存在相邻的谱对称机制
+\cite{AtayHua2016,CedzichEtAl2021}；下述判据针对本文的符号邻接算子及局部 flux word。
+
+\begin{theorem}[半胞通量判据]
+\label{thm:main-chiral}
+令 $p=2m$，并设 $\tau$ 是 $2m$-周期 Hamilton 规范 word。在“交错对角符号乘以半周期
+平移”这一单项式算子类中，每个 Bloch fiber 上存在归一化 chiral 对合，当且仅当
+\[
+ \tau_{i+m}=-\tau_i\qquad(i\in\mathbb Z).
+\]
+等价地，
+\[
+ Q_{i+m}=Q_i\quad(i\in\mathbb Z),\qquad
+ \prod_{j=0}^{m-1}Q_j=-1.
+\]
+条件成立时，特征多项式为偶多项式，平方 fiber 问题由 $2m$ 维约化为 $m$ 维。
+\end{theorem}
+
+一般判据解释了八周期 fiber 为何可约化，却没有解释为什么阈值 $8$ 会选择周期八。下一
+定理给出这一极值结论。以下 period 均指本原周期；重复短胞元不视为新相。
+
+\begin{theorem}[首次出现与刚性]
+\label{thm:main-rigidity}
+八是平方 Bloch 谱边能够严格小于 $8$ 的合法 Hamilton 规范符号的最小本原周期。在本原
+周期八内，除循环平移、反射以及两个 lifts $\tau$ 与 $-\tau$ 外，
+\eqref{eq:target-words} 中的 $Q_*$ 是唯一的 sub-eight 类。balanced 类的平方谱边等于
+$8$，其他合法八周期类的平方谱边均严格大于 $8$。
+\end{theorem}
+
+前三个相位平均偶矩还给出一个与周期无关的约束。若 $d$ 为 $Q$ 中正元的数量，$a,b$
+分别计数循环距离一和二的正元对，则谱边不超过 $8$ 必须满足
+\begin{equation}
+ d\leq\frac{3p}{4},\qquad 40d+96a+48b\leq42p.
+ \label{eq:intro-moment-obstruction}
+\end{equation}
+该结论不分类长周期 word；它识别了短周期结果背后的稀疏、弱聚集缺陷几何。
+
+\subsection{文献位置与证明架构}
+
+定理~\ref{thm:main-exact} 还解决了一个具体的近期问题。文献 \cite{Suvagiya2026}
+把 twisted 符号作为该图族的最优候选。本文不依赖这一提法：固定底图优化问题、八周期相
+和 chiral 判据都独立定义。该近期猜想只是严格比较的一个推论，而不是研究问题的来源。
+
+证明按数学依赖排列。第~\ref{sec:gauge} 节从边符号转到 $(\tau,\alpha)$，证明所有对称
+约定并建立有限 Bloch 直和。第~\ref{sec:chiral} 节通过系数计算和 flux 望远镜恒等式证明
+定理~\ref{thm:main-chiral}。第~\ref{sec:period8} 节对八周期约化作专门求解，得到完整
+色散、两种有限 holonomy，并完成定理~\ref{thm:main-exact}。第~\ref{sec:first-rigidity}
+节提出“周期八是否偶然”的问题，并由矩不等式与有限个精确证书证明
+定理~\ref{thm:main-rigidity}。第~\ref{sec:defect-obstruction} 节提取一般缺陷约束，
+第~\ref{sec:conclusion} 节以尚未解决的精确极小化问题结束全文。
