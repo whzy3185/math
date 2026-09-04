@@ -283,6 +283,31 @@ noncomputable def period8CellAction {L : ℕ}
       period8ForwardCell.mulVec (F (1 + m)) +
         period8BackwardCell.mulVec (F (-1 + m))
 
+noncomputable def finCellToZModState (L : ℕ) [NeZero L]
+    (F : Fin L → Fin 8 → ℂ) : ZMod L → Fin 8 → ℂ :=
+  fun z r => F ((ZMod.finEquiv L).symm z) r
+
+theorem period8_fin_cell_action_to_zmod (L : ℕ) [NeZero L] (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) :
+    period8CellAction (finCellToZModState L F) (ZMod.finEquiv L m) =
+      period8CellActionFin L F m := by
+  have hzero : finCellToZModState L F (ZMod.finEquiv L m) = F m := by
+    funext r
+    simp [finCellToZModState]
+  have hforward :
+      finCellToZModState L F (1 + ZMod.finEquiv L m) = F (cyclicNext m 1) := by
+    rw [add_comm, ← zmod_finEquiv_cyclic_next L hL]
+    funext r
+    simp [finCellToZModState]
+  have hbackward :
+      finCellToZModState L F (-1 + ZMod.finEquiv L m) = F (cyclicPrev m) := by
+    rw [show (-1 : ZMod L) + ZMod.finEquiv L m = ZMod.finEquiv L m - 1 by ring,
+      ← zmod_finEquiv_cyclic_prev L hL]
+    funext r
+    simp [finCellToZModState]
+  rw [period8CellAction, hzero, hforward, hbackward]
+  rfl
+
 theorem period8_cell_dft_action {L : ℕ} [NeZero L]
     (F : ZMod L → Fin 8 → ℂ) (k : ZMod L) (xi : ℂ)
     (hxi : xi^2 = ZMod.stdAddChar k) :

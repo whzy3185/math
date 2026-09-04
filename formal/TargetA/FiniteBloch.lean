@@ -209,6 +209,27 @@ noncomputable def cellZModReindex (L : ℕ) (hL : 0 < L) :
   exact (cellReindex L hL).trans
     (Equiv.prodCongr (ZMod.finEquiv L).toEquiv (Equiv.refl (Fin 8)))
 
+theorem zmod_finEquiv_eq_natCast (L : ℕ) [NeZero L] (m : Fin L) :
+    ZMod.finEquiv L m = (m.val : ZMod L) := by
+  cases L with
+  | zero => exact (NeZero.ne 0 rfl).elim
+  | succ L =>
+    change (show ZMod (L + 1) from m) = (m.val : ZMod (L + 1))
+    exact (ZMod.natCast_zmod_val (show ZMod (L + 1) from m)).symm
+
+theorem zmod_finEquiv_cyclic_next (L : ℕ) [NeZero L] (hL : 0 < L) (m : Fin L) :
+    ZMod.finEquiv L (cyclicNext m 1) = ZMod.finEquiv L m + 1 := by
+  rw [zmod_finEquiv_eq_natCast, zmod_finEquiv_eq_natCast]
+  change (((m.val + 1) % L : ℕ) : ZMod L) = (m.val : ZMod L) + 1
+  rw [ZMod.natCast_mod, Nat.cast_add]
+  norm_num
+
+theorem zmod_finEquiv_cyclic_prev (L : ℕ) [NeZero L] (hL : 0 < L) (m : Fin L) :
+    ZMod.finEquiv L (cyclicPrev m) = ZMod.finEquiv L m - 1 := by
+  have h := zmod_finEquiv_cyclic_next L hL (cyclicPrev m)
+  rw [cyclic_next_prev hL] at h
+  linear_combination -h
+
 theorem cell_zmod_reindex_residue (L : ℕ) (hL : 0 < L)
     (i : Fin (8 * L)) :
     (cellZModReindex L hL i).2.val = i.val % 8 := by
