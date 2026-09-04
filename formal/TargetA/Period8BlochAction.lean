@@ -514,4 +514,16 @@ theorem period8_target_eigenvalue_beats_twisted (L : ℕ) (hL : 4 ≤ L)
   exact (period8_target_eigenvalue_square_lt_bound L (by omega) i).trans
     (twisted_multiple_of_eight_gt_bound L hL)
 
+/-- Main theorem kernel in Hermitian spectral form.  Since the target matrix
+is Hermitian, its real eigenvalue list is the finite spectrum, so this is the
+eigenvalue-radius formulation of the strict comparison with the twisted
+benchmark.  The formal scope is the explicit alpha = +1 witness. -/
+theorem period8_alpha_plus_main_theorem (L : ℕ) (hL : 4 ≤ L) :
+    ∀ i : Fin (8 * L),
+      ((period8_target_matrix_isHermitian L 1).eigenvalues i)^2 <
+        4 + 2 * Real.cos (Real.pi / (4 * (L : ℝ))) +
+          2 * Real.cos (Real.pi / (2 * (L : ℝ))) := by
+  intro i
+  exact period8_target_eigenvalue_beats_twisted L hL i
+
 end TargetA
