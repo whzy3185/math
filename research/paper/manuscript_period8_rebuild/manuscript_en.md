@@ -80,3 +80,7 @@ minimizers, or the excluded R2/R4/R6/G6 families.
 The alpha = +1 finite theorem kernel underlying Sections 2--5 was
 independently checked in Lean.  This statement covers the explicit witness,
 not the structural extensions of Sections 6--7 or alpha = -1 packaging.
+
+The current prose draft for Sections 2--5 is maintained in
+`sections_2_to_5_draft.md` while the journal-specific reference and notation
+pass is pending.
