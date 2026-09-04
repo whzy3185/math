@@ -496,4 +496,13 @@ theorem period8_raw_real_eigen_square_lt_bound (L : ℕ) (hL : 0 < L)
     simpa [G, rawToZModCellState, finCellToZModState, F, Pi.smul_apply] using hentry
   exact period8_zmod_real_eigen_square_lt_bound G lambda hG hGEig
 
+theorem period8_target_eigenvalue_square_lt_bound (L : ℕ) (hL : 0 < L)
+    (i : Fin (8 * L)) :
+    ((period8_target_matrix_isHermitian L 1).eigenvalues i)^2 < period8Bound := by
+  apply period8_raw_real_eigen_square_lt_bound L hL
+    (u := ⇑((period8_target_matrix_isHermitian L 1).eigenvectorBasis i))
+  · exact (WithLp.ofLp_eq_zero 2).ne.2 <|
+      (period8_target_matrix_isHermitian L 1).eigenvectorBasis.orthonormal.ne_zero i
+  · exact (period8_target_matrix_isHermitian L 1).mulVec_eigenvectorBasis i
+
 end TargetA
