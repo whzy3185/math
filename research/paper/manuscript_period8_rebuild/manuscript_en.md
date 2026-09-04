@@ -84,3 +84,7 @@ not the structural extensions of Sections 6--7 or alpha = -1 packaging.
 The current prose draft for Sections 2--5 is maintained in
 `sections_2_to_5_draft.md` while the journal-specific reference and notation
 pass is pending.
+
+The compact structural draft for Sections 6--7 is maintained in
+`sections_6_to_7_draft.md`. It contains only the exact recurrence and the
+moment identities needed to explain the construction.

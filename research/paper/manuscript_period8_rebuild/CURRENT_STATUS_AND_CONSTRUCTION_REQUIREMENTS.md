@@ -88,11 +88,11 @@ generic spectral-radius API theorem.
 
 | Need | Why it is needed | Current state |
 |---|---|---|
-| Author-approved contribution sentence | ARS requires the author, not the system, to choose the article's central contribution wording | missing |
-| Target venue decision | Determines length, citation style, introduction balance, and whether the compact structural Sections 6--7 stay in main text | provisional only: JGT/LAA have been discussed |
+| Author-approved contribution sentence | ARS requires the author, not the system, to choose the article's central contribution wording | approved: overturn the original twisted-optimality conjecture by an infinite explicit period-eight counterexample family with an analytic proof |
+| Target venue decision | Determines length, citation style, introduction balance, and whether the compact structural Sections 6--7 stay in main text | JGT first choice; LAA fallback |
 | Verified reference shortlist | Direct predecessor, fixed-graph signing context, periodic/Floquet precedent, and one or two editorial architecture precedents | candidates exist; final source verification pending |
 | Author list, affiliations, corresponding author, funding | Required for a submission package; placeholders are acceptable during anonymous drafting | missing / placeholders permitted |
-| Decision on Sections 6--7 | Determines whether the paper is a concise six-section mechanism article or the requested eight-section structural article | user requested eight sections; word-budget decision still needed |
+| Decision on structural extensions | Determines whether trichotomy and moment results stay in the article | include both in short analytic sections; they are explanatory supplements, not extra classification claims |
 | Exact notation and theorem labels | Prevents conflict between the new article and historical manuscript trees | dependency map exists; journal draft labels pending |
 | Lean disclosure wording | Must state alpha = +1 and Hermitian eigenvalue-form coverage precisely | draft wording exists |
 
@@ -102,7 +102,9 @@ generic spectral-radius API theorem.
 2. Use the new directory `manuscript_period8_rebuild/` only; do not overwrite
    frozen publication trees.
 3. Keep computer material out of Sections 1--5.  In Section 6, retain only
-   the explicit integer closed-walk recurrence and its displayed values.
+   the explicit integer closed-walk recurrence and its three first-positive
+   values.  In Section 7, retain only the analytic moment identities and
+   resulting necessary inequalities.
 4. Do not call any finite enumeration, numerical eigenvalue calculation, or
    certificate archive an analytic proof.
 5. Keep alpha = -1 out of the Lean verification statement.  The analytic
@@ -115,8 +117,7 @@ generic spectral-radius API theorem.
 
 ## 6. Immediate next work
 
-1. Resolve the author-owned configuration questions below.
-2. Build a verified reference matrix and choose the target journal.
-3. Expand Sections 1 and 6--8 from the approved contribution statement.
-4. Perform a human line audit of the displayed fiber, chiral reduction, and
+1. Build a verified JGT-first reference matrix.
+2. Expand the compact main text from the approved contribution statement.
+3. Perform a human line audit of the displayed fiber, chiral reduction, and
    polynomial expansion before calling the manuscript ready for review.
