@@ -7,12 +7,16 @@ All narratives must use the same verified core and the same scope boundary.  The
 ### Core theorem ladder
 
 - **A1 — Gauge coordinates.** Switching classes on the finite cycle square are encoded by the triangle-flux word (\tau) and Hamilton holonomy (\alpha).
-- **A2 — Finite period-eight decomposition.** The explicit witness satisfies
+- **A2 — General half-cell criterion.** A natural monomial half-cell chiral
+  involution exists exactly when `tau_(i+m)=-tau_i`, equivalently when the
+  local `Q` word is half-periodic with negative half-cell flux.
+- **A3 — Finite period-eight decomposition.** The explicit witness satisfies
   \[
   A_{8L,\alpha}\simeq\bigoplus_{z^L=\alpha}H(z).
   \]
-- **A3 — Chiral polynomial.** The target fiber has an anticommuting involution and reduces to (P(y,c)), (y=\lambda^2), (c=z+z^{-1}).
-- **A4 — Exact dispersion.** The upper squared edge is
+- **A4 — Complete period-eight dispersion.** The target fiber reduces to
+  (P(y,c)), and all four squared branches are explicit.  In particular the
+  upper squared edge is
   \[
   r(c)=4+\sqrt{8+c+\sqrt{26-3c}},
   \]
@@ -59,8 +63,8 @@ This is the result that turns the witness into a graph-theoretic phase.
 
 ### Section movement
 
-- A1 before any Floquet matrix;
-- A2–A5 in one exact-solution arc;
+- A1 and the flux form of A2 before the period-eight Floquet matrix;
+- A3–A5 in one exact-solution arc;
 - A6 immediately after A5, so the main theorem closes early;
 - A7–A8 next, answering “why eight?”;
 - A9 last, broadening from the solved phase to arbitrary periodic defects.
@@ -85,7 +89,9 @@ A structured family of signed circulant Hermitian matrices has a hidden half-per
 
 ### Headline theorem
 
-Combine A3–A5.  The exact (\alpha=-1) formula is promoted rather than treated as an optional remark.
+Combine A2–A5.  The general iff is the matrix theorem; the complete
+period-eight dispersion and exact (\alpha=-1) formula are its strongest
+explicit realization.
 
 ### Second theorem
 
@@ -96,15 +102,15 @@ A7–A8 becomes a structural application showing that the exactly solved matrix 
 1. define the signed-circulant matrix family and its finite spectral-radius question;
 2. explain switching as diagonal similarity and periodic words as block-circulant coefficients;
 3. identify the obstacle: a nonconstant signing replaces scalar Fourier symbols by matrix-valued fibers;
-4. state the hidden anticommuting involution;
-5. state the exact dispersion and finite formulas;
+4. state the general half-cell chiral criterion and dimension-halving consequence;
+5. specialize it to period eight and state the exact four-branch dispersion and finite formulas;
 6. state the extremal comparison and minimal-period application;
 7. situate the method among signed matrices, gain graphs, and periodic magnetic graph operators.
 
 ### Section movement
 
-- A1 and A2 compressed into matrix setup;
-- A3 and A4 form the technical center;
+- A1 and A3 compressed into matrix setup;
+- A2 and A4 form the technical center;
 - A5 has its own finite-quantization theorem;
 - A6 is an application;
 - A7–A8 are retained but shortened;
@@ -114,7 +120,10 @@ A7–A8 becomes a structural application showing that the exactly solved matrix 
 
 Risk: anticommuting block matrices and quartic solution are individually standard.
 
-Mathematical response: novelty rests on the exact structured family, closed dispersion, holonomy-dependent finite radii, and minimal-period extremal consequence.  Do not claim the abstract chiral block principle is new.
+Mathematical response: novelty rests on the gauge-invariant iff within the
+specified monomial class, the exact structured family, closed dispersion,
+holonomy-dependent finite radii, and minimal-period extremal consequence.  Do
+not inflate this into a classification of arbitrary chiral involutions.
 
 ### Candidate titles
 
@@ -122,24 +131,30 @@ Mathematical response: novelty rests on the exact structured family, closed disp
 - *Chiral reduction and exact spectra for period-eight signed circulants*
 - *Holonomy and exact spectral edges in a signed circulant family*
 
-## Narrative 3: SIGMA counterfactual
+## Narrative 3: SIGMA long-shot
 
 ### Gate result
 
-This narrative is not currently viable.
+The new general criterion makes this narrative mathematically viable, but the
+venue audit still rates it high risk because the direct SIGMA community is
+small and the paper has only one exactly solved primitive sub-eight family.
 
 ### What the story would require
 
-Periodic magnetic graph operators with signed half-period translation would need a general necessary-and-sufficient chiral criterion, a general (p\times p\to p/2\times p/2) reduction, and consequences for more than one primitive family.  The period-eight matrix would then be the minimal example.
+The available story is now: periodic magnetic graph operators with negative
+half-cell flux admit a monomial chiral involution and a general
+(2m\times2m\to m\times m) squared reduction; the period-eight matrix is the
+first sub-eight realization and is exactly solvable.
 
 ### Missing theorem ladder
 
-- general gauge-invariant criterion for chiral symmetry;
-- classification under periodic word symmetries;
-- general block determinant or band symmetry result;
-- multiple examples or a physical/topological consequence.
+- multiple primitive examples or a physical/topological consequence;
+- a reason that the general `m x m` blocks matter to a recognized SIGMA community.
 
-None is part of the frozen strengthened package.  The current A3 is a specific exact mechanism, not the first case of a proved general theory.  Therefore the SIGMA narrative must not be drafted.
+The first three former gaps—criterion, symmetry-class statement, and general
+dimension halving—are closed.  The remaining community-reach gaps are not.
+Therefore do not select SIGMA first and do not add speculative physics to fill
+them.
 
 ## Recommended narrative
 
@@ -148,6 +163,7 @@ Use the **JGT narrative** for the master manuscript because it gives every theor
 \[
 \text{fixed graph}
 \to\text{switching-invariant flux}
+\to\text{general half-cell chiral mechanism}
 \to\text{first possible low-edge period}
 \to\text{hidden chiral exact solution}
 \to\text{infinite finite-ring consequence}

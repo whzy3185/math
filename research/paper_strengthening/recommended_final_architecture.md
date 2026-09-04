@@ -9,7 +9,9 @@
 - **Appendix:** none.
 - **Main-text computation:** only the exact finite certificate table needed for periods below eight and the already closed short recurrence needed for the period-eight trichotomy.
 - **Supplementary verification:** repository scripts and frozen Lean source; the body contains one factual sentence about their scope.
-- **Excluded:** R2/R4/R6/G6, all-even classification, old enumeration, old rational-certificate narrative, global minimizer claims, speculative general chiral theory.
+- **Excluded:** R2/R4/R6/G6, all-even classification, old enumeration,
+  old rational-certificate narrative, global minimizer claims, arbitrary
+  chiral-involution classification beyond the proved monomial half-cell class.
 
 ## Provisional title and abstract content
 
@@ -27,7 +29,9 @@ It names the graph object, structural phenomenon, and exact result.  It does not
 2. State the exact positive-holonomy period-eight formula for every (L\ge1).
 3. State the strict twisted comparison for every (L\ge4).
 4. State that period eight is the first legal periodic phase with squared Bloch edge below eight and give the uniqueness qualifier.
-5. Name the mechanisms: switching-invariant triangle flux, finite Bloch decomposition, chiral reduction, and local moment constraints.
+5. Name the mechanisms: switching-invariant triangle flux, the general
+   half-cell chiral criterion, finite Bloch decomposition, exact block
+   reduction, and local moment constraints.
 
 Do not mention (1561/200), Lean, the Suvagiya preprint, “computer-assisted,” or unsolved classifications in the abstract.
 
@@ -71,22 +75,30 @@ State the main theorem in two clauses:
 
 Define the twisted signing directly and mathematically.  Do not yet discuss who conjectured its optimality.
 
-### 1.5 Structural theorem: why period eight
+### 1.5 General theorem: negative half-cell flux and chiral symmetry
+
+State the necessary-and-sufficient criterion within the natural monomial
+half-cell class, first in `tau` language and then in the gauge-invariant `Q`
+language.  State only the dimension-halving consequence here; defer the proof
+and normalization scalar to Section 3.
+
+### 1.6 Structural theorem: why period eight
 
 State the combined minimal-period and period-eight-rigidity theorem with every equivalence explicitly named.  Avoid the phrase “unique signing” without qualifiers.
 
-### 1.6 Proof ideas and organization
+### 1.7 Proof ideas and organization
 
 One paragraph, in dependency order:
 
 1. switching gives ((\tau,\alpha));
 2. periodicity gives finite (8\times8) fibers with (z^L=\alpha);
-3. signed half-period translation anticommutes with the target fiber;
-4. block reduction yields a quartic in (y=\lambda^2);
-5. a shift makes the upper band explicit and monotone;
-6. moment constraints reduce periods below eight to nine exact certificates.
+3. negative half-cell flux is equivalent to a natural monomial chiral involution;
+4. the period-eight word satisfies this general criterion;
+5. its block reduction yields a quartic in (y=\lambda^2);
+6. a shift makes all four bands explicit and monotone;
+7. moment constraints reduce periods below eight to nine exact certificates.
 
-### 1.7 Relation to earlier work
+### 1.8 Relation to earlier work
 
 Use four compact paragraphs:
 
@@ -149,13 +161,75 @@ Record that multiplicities add across fibers.  This is needed later to justify e
 
 **Figure 2.** Ring split into (L) eight-site cells; show the cell shift, seam holonomy (\alpha), and allowed phase condition (z^L=\alpha).
 
-## 3. The chiral period-eight fiber
+## 3. Half-cell chiral symmetry and the period-eight fiber
 
-### 3.1 The target word and its (8\times8) Hermitian fiber
+### 3.1 The natural monomial half-cell operator
+
+For a general even period `p=2m`, define the alternating diagonal operator
+`D`, the half-period translation `T_m`, and `K_m=D T_m` on the periodic lift.
+State explicitly that only this natural monomial symmetry class is being
+classified.
+
+### 3.2 Necessary and sufficient anticommutation criterion
+
+Compute `(A_tau K_m+K_m A_tau)x` coefficient by coefficient.  Prove the iff
+
+```text
+K_m A_tau=-A_tau K_m
+  <-> tau_(i+m)=-tau_i for every i.
+```
+
+The step-one terms cancel because of `D`; the two step-two coefficients give
+necessity directly.
+
+### 3.3 Bloch normalization and the parity of the half-cell
+
+On `x_(i+2m)=z x_i`, prove
+
+```text
+(D T_m)^2=(-1)^m z I.
+```
+
+Derive—not guess—the normalization
+
+```text
+gamma_m(z)^2=(-1)^m z^(-1),
+J_z=gamma_m(z)D T_m.
+```
+
+Record the even/odd `m` choices and prove that `J_z` is a self-adjoint unitary
+involution for `|z|=1`.
+
+### 3.4 Gauge-invariant flux criterion
+
+For `Q_i=tau_i tau_(i+1)`, prove the equivalence
+
+```text
+tau_(i+m)=-tau_i
+ <-> Q_(i+m)=Q_i and prod_(j=0)^(m-1)Q_j=-1.
+```
+
+Use the ratio `r_i=tau_(i+m)/tau_i` for the converse.  This is the conceptual
+statement that should be cited later: half-periodic local defects with
+negative half-cell flux produce chiral symmetry.
+
+### 3.5 General algebraic consequence
+
+Show that the two eigenspaces of `J_z` both have dimension `m` and that, in an
+adapted unitary basis,
+
+```text
+H_tau(z) ~ [[0,B(z)^*],[B(z),0]].
+```
+
+Conclude spectral symmetry, even characteristic polynomial, and the general
+`2m -> m` squared reduction.  Do not investigate the general `m x m` block.
+
+### 3.6 The target word and its (8\times8) Hermitian fiber
 
 Write (H(z)) explicitly.  Check (H(z)^*=H(z)) for (|z|=1).  State the ordering of basis vectors so every later block can be reproduced.
 
-### 3.2 Signed half-period translation
+### 3.7 Specialization of the half-period involution
 
 Choose (\xi) with (\xi^2=z) and define (J_z) on the basis.  Verify
 
@@ -167,7 +241,7 @@ J_zH(z)=-H(z)J_z.
 
 Do the verification by edge types or four basis-pair identities.  Explain that replacing (\xi) by (-\xi) exchanges the chiral subspaces but does not alter the final polynomial.
 
-### 3.3 The (8\times8\to4\times4) reduction
+### 3.8 The (8\times8\to4\times4) reduction
 
 Choose bases for the (\pm1) eigenspaces of (J_z).  Write
 
@@ -181,13 +255,14 @@ Then
 \det(\lambda I-H(z))=\det(\lambda^2I-C(z)B(z)).
 \]
 
-Keep the argument at the exact level needed; do not assert a new general chiral theorem.
+Identify this block as the `m=4` specialization of Subsection 3.5; do not
+repeat the general argument.
 
-### 3.4 The (4\times4\to2\times2) determinant identity
+### 3.9 The (4\times4\to2\times2) determinant identity
 
 Display the remaining block symmetry/permutation and the (2\times2) determinant formula.  This subsection must be the human-readable bridge to the polynomial, replacing any opaque “CAS simplification.”
 
-### 3.5 The squared-fiber polynomial
+### 3.10 The squared-fiber polynomial
 
 Derive and box
 
@@ -211,9 +286,15 @@ P(X+4,c)=X^4-(16+2c)X^2+c^2+19c+38.
 
 Then set (W=X^2).  Show the quadratic discriminant and its two roots.
 
-### 4.2 The upper squared-edge branch
+### 4.2 All four squared branches
 
-Identify the largest branch
+Derive and order
+
+```text
+y_(sigma,tau)(c)=4+sigma sqrt(8+c+tau sqrt(26-3c)).
+```
+
+Then identify the largest branch
 
 \[
 r(c)=4+\sqrt{8+c+\sqrt{26-3c}}.
@@ -420,13 +501,17 @@ Ask one focused question:
 
 > Determine whether (\sqrt\eta) is the actual minimum on (C_{8L}(1,2)) for any infinite subfamily, and characterize the switching classes attaining the minimum.
 
-Do not promise all-even classification or a general chiral theory.
+Do not promise all-even classification or a classification of arbitrary
+chiral involutions.
 
 ## Theorem dependency DAG
 
 ```text
 switching conjugacy
   └─> gauge coordinates (tau, alpha)
+       ├─> negative half-cell flux criterion
+       │    └─> monomial chiral involution
+       │         └─> general 2m x 2m -> m x m squared reduction
        ├─> finite p-cell Bloch decomposition
        │    └─> explicit period-8 fiber H(z)
        │         └─> chiral involution J_z
@@ -455,6 +540,7 @@ minimal-period theorem + period-8 trichotomy
 
 | result | first statement | proof closure | later use |
 |---|---|---|---|
+| general half-cell chiral criterion | 1.5 brief preview | 3.1–3.5 | 3.7–3.8, period-eight interpretation |
 | exact positive radius | 1.4 | 4.4 | 5.2, 7.2 |
 | negative radius | 1.4 or 4.5 preview | 4.5 | LAA conversion |
 | twisted comparison | 1.4 | 5.2 | 5.3 |

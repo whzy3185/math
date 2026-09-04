@@ -66,10 +66,13 @@ JGT tolerates a special family when the result is complete within that family or
 For the present paper the theorem ladder should be:
 
 1. **Exact family theorem:** for every (L\ge1), the positive-holonomy period-eight signing has squared spectral radius (4+\sqrt{10+2\sqrt5}).
-2. **Counterexample consequence:** for every (L\ge4), it strictly beats the twisted signing on (C_{8L}(1,2)).
-3. **Minimal-period theorem:** no legal phase of period below eight has squared Bloch edge below eight.
-4. **Period-eight rigidity:** at period eight, the antipodal two-defect class is the unique sub-eight class modulo the stated symmetries.
-5. **General obstruction:** moment inequalities constrain defect density and clustering for arbitrary periodic words.
+2. **General chiral mechanism:** negative half-cell flux is equivalent to a
+   natural monomial half-cell chiral involution and a dimension-halving squared
+   problem.
+3. **Counterexample consequence:** for every (L\ge4), the exact family strictly beats the twisted signing on (C_{8L}(1,2)).
+4. **Minimal-period theorem:** no legal phase of primitive period below eight has squared Bloch edge below eight.
+5. **Period-eight rigidity:** at period eight, the antipodal two-defect class is the unique sub-eight class modulo the stated symmetries.
+6. **General obstruction:** moment inequalities constrain defect density and clustering for arbitrary periodic words.
 
 The first theorem is exact, the third explains “why eight,” and the fourth turns an explicit example into a graph-structural phase.  This is substantially stronger than leading with a rational separator.
 
@@ -109,7 +112,9 @@ The fixed underlying graph, switching classes, triangle-sign/flux word, Hamilton
 
 ### 4. Which operator details should be compressed?
 
-General magnetic-operator formalism, abstract direct-integral terminology, and speculative chiral classifications.  State only the finite direct sum actually used.
+General magnetic-operator formalism, abstract direct-integral terminology, and
+classifications of arbitrary chiral involutions.  Retain the proved monomial
+half-cell iff, but state only the finite direct sum actually used.
 
 ### 5. Is the period-eight trichotomy a sufficient second theorem?
 

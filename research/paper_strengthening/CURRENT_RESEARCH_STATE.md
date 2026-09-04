@@ -2,7 +2,11 @@
 
 ## Authority rule
 
-For the strengthening paper, this file and `strengthening_results.md` are the current editorial authority.  `current_verified_kernel.md` remains the immutable Phase-0 snapshot of what was known before strengthening; its “open questions” section is historical and has been resolved by the later Task 1A/1B/2A reports.
+For the strengthening paper, this file, `strengthening_results.md`, and
+`final_theorem_package.md` are the current editorial authority.
+`current_verified_kernel.md` remains the immutable Phase-0 snapshot of what
+was known before strengthening; its “open questions” section is historical
+and has been resolved or procedurally closed by the later reports.
 
 Mathematical statements are authoritative only when they are backed by the named analytic note and its independent verifier or by the frozen Lean kernel within its exact scope.
 
@@ -19,6 +23,9 @@ Mathematical statements are authoritative only when they are backed by the named
 | N7 | no legal displayed period below eight has squared Bloch edge below eight | moment reduction + nine exact certificates + independent audit | `task2A_minimal_period.md` | Main Theorem B |
 | N8 | at period eight, the antipodal two-defect class is the unique sub-eight class modulo the stated symmetries | analytic + finite exact | K8–K9 | rigidity theorem |
 | N9 | arbitrary periodic low-edge words satisfy the (M_1,M_2,M_3) density/clustering inequalities | analytic + finite closed-walk expansion | K10 | structural extension |
+| N10 | for period (2m), the natural monomial half-cell operator gives a chiral involution iff (tau_(i+m)=-tau_i), equivalently (Q) is half-periodic with negative half-cell flux | analytic + independent exact matrix audit | `general_chiral_criterion.md` | Main Theorem I |
+| N11 | the period-eight fiber has four explicit squared bands, simple fiber eigenvalues, and exact gaps | analytic + independent symbolic audit | `full_period8_dispersion.md` | completion of Main Theorem II |
+| N12 | lift, cyclic, reflection, and zone-folding invariance justify the orbit quotient and primitive-period formulation | analytic + independent exact matrix audit | `symmetry_invariance_lemmas.md` | proof hygiene |
 
 ## Superseded claims and proof routes
 
@@ -30,7 +37,7 @@ Mathematical statements are authoritative only when they are backed by the named
 | an unexplained finite/infinite edge transition | replace by the finite direct-sum theorem and phase-grid attainment argument | exact finite spectral radius requires this bridge |
 | alpha-negative holonomy as merely a uniform bound | replace by its exact closed formula | the top branch is explicit and monotone |
 | one recent conjecture as the origin of the research question | remove from main narrative | fixed-graph signing optimization, switching, periodic graph spectra, and magnetic flux provide an independent mature context |
-| broad claims that the chiral mechanism is general | remove | no general chiral classification was pursued or proved |
+| unrestricted claims about arbitrary chiral symmetries | replace by the delimited monomial half-cell iff | the natural class is now classified, but arbitrary unitary involutions are not |
 | claims that Lean checks the exact edge, negative sector, or minimal-period theorem | remove | frozen Lean scope is only the (\alpha=+1) L1–L7 comparison kernel |
 
 ## Material excluded from the paper
@@ -40,7 +47,7 @@ Mathematical statements are authoritative only when they are backed by the named
 - stored certificates for abandoned scopes;
 - global claims about (m_n) or all minimizers;
 - M4/M5 exploration and a general defect classification;
-- general chiral periodic-word classification;
+- classification of arbitrary chiral involutions beyond the natural monomial half-cell class;
 - period 16/24/(8k) searches;
 - quantitative second-best period-eight gap;
 - repository history, failed approaches, and discovery chronology.
@@ -51,7 +58,10 @@ These items are not “future sections.”  They are out of scope unless a later
 
 The frozen public endpoint is `TargetA.period8_alpha_plus_main_theorem`.  It checks the strict (\alpha=+1) comparison through the rational separator and does not contain placeholders or new axioms according to the frozen L1–L7 build record.
 
-The strengthened exact equality, negative-holonomy formula, and minimal-period theorem are analytic/finite-exact and have independent SymPy verifiers.  They are not Lean-checked.  No manuscript sentence may merge these provenance categories.
+The strengthened exact equality, negative-holonomy formula, minimal-period
+theorem, symmetry lemmas, complete dispersion, and half-cell criterion are
+analytic/finite-exact and have independent SymPy verifiers.  They are not
+Lean-checked.  No manuscript sentence may merge these provenance categories.
 
 ## Construction now authorized
 
@@ -62,7 +72,7 @@ Required new construction:
 1. a neutral notation ledger for (s,t,\tau,Q,\alpha,z,c,y,r,\eta);
 2. final theorem statements with exact equivalence and quantifier language;
 3. a manuscript-only proof of finite Bloch decomposition;
-4. a manuscript-only derivation of the chiral polynomial and exact branch;
+4. a concise general half-cell criterion followed by a manuscript-only derivation of the period-eight chiral polynomial and all four exact branches;
 5. a compact exact-certificate presentation for the minimal-period theorem;
 6. a precise period-eight trichotomy proof with only the necessary recurrence;
 7. two vector figures (period-eight cell and finite cell decomposition), plus an optional dispersion plot;
@@ -74,4 +84,4 @@ Required new construction:
 
 - **JGT:** credible first target if the minimal-period and rigidity results organize the story.
 - **LAA:** strongest direct fit and safer fallback because the exact matrix formulas are the most immediately recognizable contribution.
-- **SIGMA:** unsuitable under the predefined corpus and general-mechanism gates.
+- **SIGMA:** the general-mechanism gate now passes, but the direct-literature/community-fit gate remains weak; treat it as a high-risk third option rather than the recommended target.

@@ -97,9 +97,14 @@ The negative sector adds a second exact formula,
 
 This is a good secondary theorem because it demonstrates how holonomy changes the finite phase grid.
 
-### Would a general chiral criterion be necessary?
+### Value of the now-proved general chiral criterion
 
-It would raise the ceiling, but it is not necessary for an LAA submission now.  The strong-stop rule was correctly applied: exact finite radius plus minimal-period rigidity already forms a coherent package.  A weak or rushed general criterion would create novelty disputes and delay the paper.
+The final strengthening round proves an iff in the explicitly delimited
+monomial half-cell class.  This raises the LAA ceiling because the
+`8 x 8 -> 4 x 4` reduction is now an instance of a gauge-invariant theorem,
+not an isolated basis choice.  The manuscript must retain the limitation to
+that class and must not imply a classification of arbitrary unitary chiral
+involutions.
 
 ### How much graph background?
 
@@ -107,13 +112,14 @@ Keep enough to define switching, triangle fluxes, the fixed graph (C_n(1,2)), an
 
 ## Recommended LAA theorem ladder
 
-1. finite Bloch decomposition for the displayed period-eight signed circulant;
-2. chiral reduction and exact characteristic polynomial;
-3. exact dispersion and positive-holonomy finite spectral radius;
-4. exact negative-holonomy finite spectral radius;
-5. comparison with the twisted family;
-6. minimal-period result and period-eight uniqueness as a structural application;
-7. moment obstruction, only if space permits.
+1. general monomial half-cell chiral iff and dimension-halving consequence;
+2. finite Bloch decomposition for the displayed period-eight signed circulant;
+3. period-eight chiral reduction and exact characteristic polynomial;
+4. complete four-branch dispersion and positive-holonomy finite spectral radius;
+5. exact negative-holonomy finite spectral radius;
+6. comparison with the twisted family;
+7. primitive-period result and period-eight uniqueness as a structural application;
+8. moment obstruction, only if space permits.
 
 ## LAA-specific decision
 

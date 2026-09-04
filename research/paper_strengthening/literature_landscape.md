@@ -153,10 +153,37 @@ H^2=\begin{pmatrix}B^*B&0\\0&BB^*\end{pmatrix}.
 For the target period-eight word, a signed half-cell translation supplies (J_z).  The ordinary (8\times8) fiber problem therefore becomes a (4\times4) singular-value problem, and the remaining symmetry reduces its determinant to a (2\times2) calculation.  This produces
 
 \[
-P(y,c),\qquad y=\lambda^2,quad c=z+z^{-1}.
+P(y,c),\qquad y=\lambda^2,\qquad c=z+z^{-1}.
 \]
 
-We should call this a hidden chiral symmetry, but we should not claim a general classification because the planned general criterion was deliberately stopped after the two strong-stop results were obtained.
+The final strengthening round proves more than the period-eight instance.  For
+a `2m`-periodic Hamilton-gauge word, the natural alternating-diagonal
+half-cell translation yields a chiral involution exactly when
+`tau_(i+m)=-tau_i`; equivalently, the local `Q` word is half-periodic with
+negative half-cell flux.  This is a general classification inside that
+specified monomial symmetry class, not a classification of arbitrary unitary
+chiral involutions.
+
+The closest literature found in the focused post-proof audit concerns three
+adjacent but distinct traditions:
+
+- spectral symmetry mechanisms for signed graph Laplacians: Atay and Hua,
+  *On the symmetry of the Laplacian spectra of signed graphs*, Linear Algebra
+  Appl. 495 (2016), 24–37, DOI
+  [10.1016/j.laa.2016.01.027](https://doi.org/10.1016/j.laa.2016.01.027);
+- chiral index theory for quantum walks: C. Bourne, *Index Theory of Chiral
+  Unitaries and Split-Step Quantum Walks*, SIGMA 19 (2023), 053,
+  [journal page](https://sigma-journal.com/2023/053/);
+- half-period structure in periodically driven chiral systems: Cedzich et al.,
+  *Chiral Floquet systems and quantum walks at half period*,
+  [arXiv:2006.04634](https://arxiv.org/abs/2006.04634).
+
+These sources justify the general vocabulary of spectral symmetry,
+off-diagonal reduction, and half-period operators.  They should not be cited
+as proving the present signed-coefficient criterion.  The focused search did
+not locate the same equivalence between negative half-cell graph flux and the
+specific monomial involution, but that search result is a novelty lead rather
+than proof of bibliographic exhaustiveness.
 
 ### Moment line
 
@@ -173,7 +200,7 @@ M_3=118p+168d+96a+48b.
 Here (d) is defect count and (a,b) record specified local clustering statistics.  If the squared Bloch edge is at most eight, then positivity of the spectral measure gives
 
 \[
-M_2\le 8M_1,qquad M_3\le 8M_2,
+M_2\le 8M_1,\qquad M_3\le 8M_2,
 \]
 
 hence
@@ -192,7 +219,7 @@ The two tools work at different scales:
 
 | tool | input | output | role |
 |---|---|---|---|
-| chiral reduction | one rigid period-eight word | exact fiber polynomial and exact edge | solves the witness |
+| chiral reduction | half-periodic negative-flux words; then the rigid period-eight word | general dimension-halving criterion; then exact fiber polynomial and edge | explains and solves the witness |
 | trace moments | arbitrary periodic word | local necessary inequalities | explains structural scarcity |
 
 This complementarity is the conceptual link that should organize the article.

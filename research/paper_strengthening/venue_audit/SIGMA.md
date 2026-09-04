@@ -2,15 +2,30 @@
 
 ## Decision first
 
-**SIGMA is unsuitable for the present theorem package.**  The planned gate required at least five papers directly related to spectral graphs, signed graphs, periodic graph operators, or finite matrix spectra.  A screen of recent SIGMA volumes found only one genuinely close chiral-spectral analogue and, at most, two broader magnetic/graph-operator analogues.  The journal's recent periodic and exactly solvable papers overwhelmingly belong to integrable systems, mathematical physics, geometry, or special-function communities.
+**Final reassessment: technically reopened, but still a high-risk third
+choice.**  The last mathematical round proved a general half-cell chiral iff
+inside a natural monomial symmetry class, so the former general-mechanism gate
+now passes.  However, the planned corpus gate required at least five papers
+directly related to spectral graphs, signed graphs, periodic graph operators,
+or finite matrix spectra.  A screen of recent SIGMA volumes found only one
+genuinely close chiral-spectral analogue and, at most, two broader
+magnetic/graph-operator analogues.  The journal's recent periodic and exactly
+solvable papers overwhelmingly belong to integrable systems, mathematical
+physics, geometry, or special-function communities.
 
-This negative result is substantive.  “Floquet,” “chiral,” and “exactly solvable” are not by themselves a venue match.
+The distinction remains substantive.  “Floquet,” “chiral,” and “exactly
+solvable” are not by themselves a venue match; the new theorem improves the
+mathematical form but does not create a large SIGMA readership.
 
 Official sources: [about SIGMA](https://sigma-journal.com/about.html), [2025 volume](https://sigma-journal.com/2025/), [2024 volume](https://sigma-journal.com/2024/), [2023 volume](https://sigma-journal.com/2023/), [2022 volume](https://sigma-journal.com/2022/).
 
 ## Twenty-paper scope screen
 
-This table records the scope screen that triggered the kill decision.  It is not represented as a twenty-paper *directly related* corpus.  Page counts and titles are taken from SIGMA's official volume pages.  `Directness` is assessed against the actual period-eight paper, not keyword overlap.
+This table records the scope screen that triggered the original negative
+decision and still controls the community-fit assessment.  It is not
+represented as a twenty-paper *directly related* corpus.  Page counts and
+titles are taken from SIGMA's official volume pages.  `Directness` is assessed
+against the actual period-eight paper, not keyword overlap.
 
 | # | paper | year/pages | screening role | directness |
 |---:|---|---|---|---|
@@ -41,22 +56,36 @@ Ten screened papers are from 2024–2025, satisfying the recency screen.  The di
 
 Recent SIGMA articles commonly assume an identifiable mathematical-physics or geometry community from the title onward.  Long papers develop a general formalism before examples; short papers still address a recognized problem inside one of those communities.  Exact formulas are attached to integrability, index theory, special functions, geometric operators, or a physical model.  A graph-specific Floquet calculation is not made suitable merely by expanding its terminology.
 
-The present paper lacks all three conditions that would justify a SIGMA narrative:
+The present package now has a real general statement:
 
-1. no general characterization of chiral periodic signings;
-2. no general theorem for periodic magnetic graph operators;
-3. no developed condensed-matter or topological interpretation with consequences beyond the graph family.
+1. a natural monomial half-cell chiral involution exists iff the coefficient
+   word is half-antiperiodic;
+2. equivalently, the local flux word is half-periodic with negative half-cell
+   flux;
+3. every such `2m` fiber reduces to an `m`-dimensional squared problem.
 
-The half-period anticommuting involution is elegant but currently solves one rigid word.  The general-chiral exploration was intentionally killed by the strong-stop criterion, so it would be misleading to market the paper as a general mathematical-physics result.
+What remains absent is a developed condensed-matter/topological consequence
+or several primitive exactly solvable families.  The period-eight word is the
+first sub-eight realization, but the general theorem does not solve the
+resulting `m x m` blocks.  A SIGMA framing is therefore mathematically honest
+but still strategically weaker than JGT or LAA.
 
-## What would have been required to reopen SIGMA
+## What would be required for a competitive SIGMA version
 
-SIGMA should be reconsidered only after a separate project proves a theorem of the following scale:
+The newly proved criterion supplies the first clause of the following scale,
+but not the final breadth:
 
 > For a broad class of even-period magnetic graph operators, characterize signed half-period translations that anticommute with the Floquet fibers, derive the resulting block reduction, and obtain nontrivial band or topological consequences for multiple primitive families.
 
-That is materially larger than the present paper and should not be pursued merely to change venue.
+Multiple primitive examples or a recognized physical/topological consequence
+would still be needed for a competitive SIGMA version.  Those additions are
+expressly outside the closed strengthening scope and should not be pursued
+merely to change venue.
 
 ## Editorial consequence
 
-Do not prepare a SIGMA version, do not insert speculative physical language, and do not add a generic “chiral periodic operators” section.  Preserve the hidden chiral symmetry as the exact mechanism inside the period-eight proof.  The realistic venue comparison is JGT versus LAA.
+Do not make SIGMA the first submission and do not insert speculative physical
+language.  The general criterion deserves a concise theorem section in the
+JGT/LAA manuscript.  SIGMA remains a possible later re-framing only if an
+external editorial reason arises; the realistic first decision is still JGT
+versus LAA.

@@ -6,10 +6,14 @@
 independent verifier passed.  
 **Lean status:** not pursued under the frozen-kernel instruction.
 
-## Theorem
+## Theorem (primitive-period form)
 
-Let tau be a periodic Hamilton-gauge word of displayed period `p<8`, and let
-`R_p(tau)` be the supremum of the squared Bloch spectral radius. Then
+Eight is the smallest primitive period of a legal Hamilton-gauge signing with
+squared Bloch edge below eight.
+
+Equivalently, in the earlier displayed-cell language: if `tau` is displayed
+with period `p<8` and `R_p(tau)` denotes the supremum of its squared Bloch
+spectral radius, then
 
 ```text
 R_p(tau) >= 8.
@@ -23,10 +27,15 @@ with squared edge
 eta=4+sqrt(10+2sqrt(5))<8.
 ```
 
-Thus eight is the first displayed period supporting a legal phase with
-squared Bloch edge below eight. Together with the period-eight trichotomy,
+Cell repetition does not change the full Bloch edge: a `p=kq` fiber decomposes
+into the `q`-cell fibers with phases `w^k=z`.  The target word has primitive
+period eight.  Thus the displayed-period theorem is exactly the stated
+primitive-period result.  Together with the period-eight trichotomy,
 the antipodal two-defect class is the unique first-period sub-eight phase,
 modulo translation, reflection, lift ambiguity, and cell repetition.
+
+Lift invariance and the cyclic/reflection conjugacies used for this orbit
+reduction are proved in `symmetry_invariance_lemmas.md`.
 
 ## Proof architecture
 
