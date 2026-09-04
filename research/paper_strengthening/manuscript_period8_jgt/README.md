@@ -8,5 +8,10 @@
 - `STRUCTURE_RATIONALE.md`: one-page architecture explanation.
 - `BIBLIOGRAPHY_VERIFICATION.md`: metadata verification ledger.
 
+The organized canonical reference index is `../reference_library/`.  The
+local `references.bib` is intentionally retained as an identical mirror so the
+manuscript source remains self-contained; `verify_reference_library.py`
+enforces byte-for-byte synchronization.
+
 The mathematical authority is `../final_theorem_package.md`.  The manuscript
 does not import prose from the superseded paper trees.

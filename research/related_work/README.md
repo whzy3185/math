@@ -1,5 +1,13 @@
 # Spectral Related-Work Library
 
+> **Current-scope notice.** This directory is the provenance archive assembled
+> for earlier Target A manuscript scopes, including all-even, interface, and
+> computation-heavy variants.  The canonical index for the closed
+> period-eight-only paper is now
+> `research/paper_strengthening/reference_library/`.  Existing PDFs and notes
+> remain here and are referenced by that index; editorial role decisions in
+> this older README do not control the new manuscript.
+
 This library is a selective manuscript-reconstruction resource for
 *When Is the Twisted Signing of an Even Cycle Square Spectrally Optimal?*
 It is not a general signed-graph bibliography.
