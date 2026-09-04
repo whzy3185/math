@@ -1,5 +1,9 @@
 # Stage 2.5 Integrity Report
 
+> Historical pre-rewrite gate.  The current gate is
+> `INTEGRITY_REPORT_AUTHORIAL_REWRITE.md`; the bibliography was reduced from
+> 15 to 14 functional citations during the narrative audit.
+
 ## Verdict
 
 **PASS.**  The registered populations below are complete for the current

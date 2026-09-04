@@ -4,7 +4,7 @@
 
 These are real and potentially useful, but they are not currently cited.
 
-| ID | work | reason not in the 15-entry core |
+| ID | work | reason not in the 14-entry core |
 |---|---|---|
 | `V001` | Belardo--Brunetti (2024), limit points for signed spectral radii | duplicates the broad signed-radius programme role already covered; no direct period-eight or fixed-support theorem |
 | `V002` | Brunetti--Trevisan (2026), unbalanced signed-radius limit points | current but outside the exact fixed-graph mechanism; recency alone is not a reason to cite |

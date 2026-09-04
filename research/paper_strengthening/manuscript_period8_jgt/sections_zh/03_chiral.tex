@@ -3,7 +3,7 @@
 
 有限 Bloch 直和降低了整体维数，但通常不会继续简化单个 fiber。当半周期平移反转
 step-two 系数 word 时，反转 step-one 部分所需的交错符号会产生一个反对易单项式算子。
-下面在这一自然算子类中完整刻画该机制。
+下面的系数计算在这一自然算子类中完整刻画该机制。
 
 \subsection{半胞算子}
 
@@ -15,7 +15,7 @@ step-two 系数 word 时，反转 step-one 部分所需的交错符号会产生�
 $D$ 反转所有位移一耦合并保持位移二耦合，$T_m$ 比较两个半胞，因此 $K_m$ 是最自然的
 chiral 候选。
 
-\begin{theorem}[系数判据]
+\begin{theorem}
 \label{thm:coefficient-chiral}
 对 $2m$-周期符号 word $\tau$，以下两项等价：
 \begin{enumerate}
@@ -56,7 +56,7 @@ $\mathrm i\xi^{-1}$。于是
 
 \subsection{Flux 判据}
 
-\begin{theorem}[负半胞通量]
+\begin{theorem}
 \label{thm:flux-chiral}
 对 $2m$-周期符号 word，以下两项等价：
 \begin{enumerate}
@@ -81,14 +81,6 @@ $r=\tau_m/\tau_0=\prod_{j=0}^{m-1}Q_j=-1$。最后由
 定理~\ref{thm:coefficient-chiral} 得到反对易关系。
 \end{proof}
 
-\begin{figure}[t]
- \centering
- \input{figures_zh/halfcell_chiral}
- \caption{半胞 chiral 机制。$m$ 位平移交换两个半胞，交错对角因子反转 step-one 耦合；
- $\tau_{i+m}=-\tau_i$，等价地，半周期 $Q$ 具有负半胞通量，从而也反转 step-two 耦合。}
- \label{fig:half-cell-chiral}
-\end{figure}
-
 \subsection{代数后果}
 
 $J_z$ 的单项式矩阵没有固定坐标，故迹为零。它在 $2m$ 维空间上的两个本征子空间维数均为
@@ -107,6 +99,12 @@ $m$，反对易关系把二者相互映射。在适应该分解的酉基下，
  \label{eq:general-even-characteristic}
 \end{equation}
 
-一般定理并不使任意 $m\times m$ block 可显式求解。它的作用是找出一个能消去一半谱维数
-的结构类。式 \eqref{eq:target-words} 的相属于该类且 $m=4$；它也是本文中首次越过平方
-谱边 $8$ 的相。下一节对这一 fiber 作完整求解。
+两种表述从不同层次描述同一现象。式 \eqref{eq:anticommutator-coefficients} 是算子陈述：
+交错对角符号反转位移一耦合，半胞平移反转位移二系数。定理~\ref{thm:flux-chiral} 则把
+判据变成符号图自身的陈述：只从 switching 不变的局部圈 word $Q$ 及其半胞乘积即可读出
+chirality。
+
+这一对称把谱维数减半，却不会使任意 $m\times m$ block 可显式求解，也不保证谱边小于
+$8$：周期二交错 word 已满足判据，但谱边恰为 $8$。八周期 word
+\eqref{eq:target-words} 还具有两项额外性质：它首次严格越过参考谱边，而且其
+$4\times4$ 平方 block 存在第二层代数对称。正是这层额外结构使完整色散可以显式求出。

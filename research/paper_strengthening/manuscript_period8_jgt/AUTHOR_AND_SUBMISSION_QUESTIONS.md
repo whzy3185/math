@@ -16,5 +16,10 @@ establish the following submission facts.
 7. What contribution statement, if any, should accompany the submission?
 8. Should the first submission be anonymous, and does the selected JGT route
    require a separate title page?
+9. Please confirm the working title, *Half-Cell Flux and an Exactly Solvable
+   Period-Eight Phase in Signed Cycle Squares*, or provide the preferred final
+   title.
+10. What Chinese characters should be used for the two author names in the
+    Chinese companion?
 
 No other author metadata are currently missing from the manuscript source.

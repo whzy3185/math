@@ -13,7 +13,6 @@ does not ask cited literature to verify mathematics proved in the manuscript.
 | `BrunettiStanic2022` | exact signed spectral-radius extrema in a restricted family | Introduction 1.1 | analogue, not predecessor for the cycle square |
 | `GhorbaniMajidi2024` | exact eigenvalue extrema with a fixed complete underlying graph family | Introduction 1.1 | analogue, not same objective or graph |
 | `Davis1979` | scalar Fourier diagonalization of circulant matrices | Introduction 1.2 | classical matrix background only |
-| `HuLiu2025` | neighboring modern signed spectral work on nonbipartite Cayley-type graphs | Introduction 1.2 | explicitly described as neighboring context |
 | `Reff2012` | unit-gain graph vocabulary and gauge-invariant spectrum | Introduction 1.2 | finite gain-graph background, not the periodic theorem used here |
 | `KorotyaevSaburova2017` | periodic magnetic graph operator and Floquet framework | Introduction 1.2 | method lineage only |
 | `KorotyaevSaburova2023` | magnetic flux in finite fiber/trace formulas on periodic graphs | Introduction 1.2 | method lineage only |
@@ -29,7 +28,6 @@ does not ask cited literature to verify mathematics proved in the manuscript.
 | signed adjacency spectra and fixed-graph optimization | `BelardoEtAl2018`, `BrunettiStanic2022`, `GhorbaniMajidi2024` |
 | two-lifts and signing existence | `BiluLinial2006`, `MarcusSpielmanSrivastava2015` |
 | circulant spectra | `Davis1979` |
-| signed Cayley neighbors | `HuLiu2025` |
 | gain/magnetic/periodic graph operators | `Reff2012`, `KorotyaevSaburova2017`, `KorotyaevSaburova2023` |
 | chiral and spectral symmetry | `AtayHua2016`, `CedzichEtAl2021` |
 | specific recent conjecture | `Suvagiya2026` |

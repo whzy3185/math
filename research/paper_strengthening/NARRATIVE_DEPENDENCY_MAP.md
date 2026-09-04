@@ -1,55 +1,51 @@
-# Narrative Dependency Map
+# Narrative dependency map
 
-| section | previous question | current answer | next natural question |
+| section | mathematical question inherited | answer | question created |
 |---|---|---|---|
-| 1. Introduction | Why optimize spectra over signings of a fixed graph? | switching leaves spectra invariant but cycle fluxes remain; cycle squares provide a tractable fixed family with nontrivial local cycles | Which invariant coordinates and finite spectral decomposition make the problem exact? |
-| 2. Switching coordinates and periodic fibers | Raw edge signs are gauge-dependent; how should a periodic signing be represented and diagonalized? | triangle flux and Hamilton holonomy give the coordinates; cell periodicity yields finite Hermitian Bloch fibers | Which periodic flux patterns force a structural spectral simplification? |
-| 3. Half-cell chiral symmetry | Can a signed half-cell translation force symmetry about zero? | exactly within the natural monomial class: half-periodic `Q` with negative half-cell flux is equivalent to an anticommuting involution and dimension halving | Does the first low-edge phase satisfy this condition, and can its reduced block be solved exactly? |
-| 4. Exact period-eight phase | The general theorem halves dimension but does not solve a general block | the target period-eight word reduces further, giving all four bands, exact finite radii, and the twisted comparison | Is period eight a selected example, or is it the first possible low-edge period? |
-| 5. First occurrence and rigidity | Could a shorter phase work, and are there many phases at the first feasible period? | moments plus exact survivors exclude all shorter periods; the period-eight trichotomy gives a unique sub-eight orbit | What local feature makes low-edge words scarce beyond period eight? |
-| 6. Periodic defect obstructions | Are minimality and rigidity isolated finite facts? | the first three moments impose defect-density and clustering constraints for every periodic word | What exact global minimization problem remains after this structural picture? |
-| 7. Concluding remarks | What does the combined mechanism establish, and what remains genuinely open? | summarize the closed chain and isolate the true-minimum/equality-class problem | none; the paper closes on a precise mathematical question |
+| 1. Introduction | how small can the signed adjacency radius be on a fixed support? | switching makes cycle flux the relevant variable; the cycle square has local triangles and periodic Fourier structure; period eight is the first rigid sub-eight phase | how are the invariant coordinates and finite fibers constructed? |
+| 2. Switching coordinates and periodic fibers | how do local flux, global holonomy, symmetry, and cell phase remain distinct? | Hamilton gauge gives `(tau,alpha)`; finite cell translation gives `z^L=alpha`; lift/dihedral/zone-folding invariance fixes the classification conventions | which coefficient structure can reduce an individual fiber? |
+| 3. Half-cell chiral symmetry | when does signed half-translation force zero-symmetric spectrum? | half-antiperiodic `tau` is equivalent to half-periodic `Q` with negative half-cell product and to a monomial chiral involution | chirality already occurs at period two; what extra structure makes a strict crossing solvable? |
+| 4. Exact period-eight phase | can the first sub-eight phase be solved on finite rings? | additional centered-quartic symmetry gives four exact bands; two holonomies sample the same law; the positive sector beats twisted | why is eight the first effective period, and is its phase unique? |
+| 5. First occurrence, rigidity, and defect constraints | what excludes shorter periods and competing first-period phases? | moments measure density and near clustering; cyclic-gap reduction plus exact certificates gives minimal period and rigidity; the same formulas yield arbitrary-period necessary bounds | does the attained radius equal the unrestricted fixed-graph minimum? |
+| 6. Concluding remarks | what remains after the periodic mechanism is closed? | isolate the global minimum and equality-class problem without reopening all-even classification | none |
 
-## Theorem dependency order
+## Proof dependencies
 
 ```text
-switching conjugacy
- -> (tau, alpha) coordinates
- -> finite Bloch decomposition
+switching -> (tau, alpha) -> finite Bloch fibers
 
-Q half-periodic + negative half-cell flux
- <-> tau half-antiperiodic
+negative half-cell Q flux
+ <-> half-antiperiodic tau
  <-> normalized monomial chiral involution
- -> even characteristic polynomial and 2m -> m reduction
+ -> 2m to m squared reduction
 
-period-eight word
- -> chiral 8 -> 4 block
- -> 4 -> 2 determinant identity
- -> P(y,c)
- -> four exact branches
- -> positive/negative finite radii
+period-eight specialization
+ -> explicit UV product
+ -> centered quartic
+ -> four bands and exact gaps
+ -> two finite holonomy radii
  -> twisted comparison
 
-lift/dihedral/repetition invariance + M1--M3
- -> short-period survivor lemma
- -> exact certificate table
+local square
+ -> M1, M2, four-class M3 expansion
+ -> density/clustering inequalities
+ -> cyclic-gap survivor completeness
+ -> exact Rayleigh table
  -> smallest primitive period
 
-period-eight exact phase + short recurrence
- -> period-eight trichotomy
- -> unique first sub-eight phase
+period-eight two-defect separations
+ -> integer recurrence
+ -> trichotomy
+ -> unique first sub-eight orbit
 ```
 
-## Deletion test
+## Deletion decisions
 
-- Section 3 cannot be deleted: without it, the period-eight reduction is an
-  isolated calculation and the main conceptual contribution disappears.
-- Section 6 can remain only in its present compact form: it answers the local
-  geometry question raised by Section 5.  Any further moment catalogue is
-  deleted.
-- A separate related-work section is deleted: it would break the motivation
-  chain and is not supported by the JGT corpus.
-- A separate computer-verification section is deleted: exact finite material
-  belongs inside the theorem it closes.
-- A separate negative-holonomy section is deleted: it is one phase-grid
-  consequence of the same dispersion.
+- The independent general-moment section was merged into Section 5 because it
+  repeated formulas already needed there.
+- The half-cell box diagram was removed because the coefficient identity is
+  clearer than the graphic.
+- A defect-orbit figure was added because it makes the four period-eight
+  geometries and the antipodal survivor immediately visible.
+- Related work stays inside the Introduction at the exact point where it
+  supports a problem transition.

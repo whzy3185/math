@@ -7,24 +7,24 @@
 
 \subsection{符号圈平方图与 Hamilton 规范}
 
-记 step-one 边 $\{i,i+1\}$ 的符号为 $s_i$，step-two 边 $\{i,i+2\}$ 的符号为
-$t_i$。switching 函数 $\varepsilon$ 作用为
+记 step-one 边 $\{i,i+1\}$ 的符号为 $a_i$，step-two 边 $\{i,i+2\}$ 的符号为
+$b_i$。switching 函数 $\varepsilon$ 作用为
 \[
- s_i\mapsto\varepsilon_i s_i\varepsilon_{i+1},\qquad
- t_i\mapsto\varepsilon_i t_i\varepsilon_{i+2}.
+ a_i\mapsto\varepsilon_i a_i\varepsilon_{i+1},\qquad
+ b_i\mapsto\varepsilon_i b_i\varepsilon_{i+2}.
 \]
 相应邻接矩阵由 $D_\varepsilon=\diag(\varepsilon_i)$ 作正交相似变换。以 $i$ 为起点的
 三角形符号与 step-one Hamilton 圈符号分别为
 \begin{equation}
- \tau_i=s_is_{i+1}t_i,
+ \tau_i=a_ia_{i+1}b_i,
  \label{eq:triangle-flux}
 \end{equation}
 \begin{equation}
- \alpha=\prod_{i=0}^{n-1}s_i.
+ \alpha=\prod_{i=0}^{n-1}a_i.
  \label{eq:ham-holonomy}
 \end{equation}
 二者均在 switching 下不变，并共同决定 switching 类。沿切开的 Hamilton 路径递归选取
-$\varepsilon_{i+1}=\varepsilon_i s_i$ 后，局部 step-one 符号均变为正，step-two 符号
+$\varepsilon_{i+1}=\varepsilon_i a_i$ 后，局部 step-one 符号均变为正，step-two 符号
 变为 $\tau_i$，绕行一周后的不匹配正是 $\alpha$。
 
 在 lift 上，这一规范写成
@@ -59,7 +59,7 @@ $\prod_iQ_i=1$；固定 $\tau_0$ 后由 $\tau_{i+1}=Q_i\tau_i$ 得到两个 lift
  \label{eq:bloch-edge}
 \end{equation}
 
-\begin{proposition}[Lift 与二面体不变性]
+\begin{proposition}
 \label{prop:invariances}
 $R_p$ 满足：$R_p(-\tau)=R_p(\tau)$；循环平移在同一 $z$ 上保持 fiber 谱；若
 $\tau_i^\vee=\tau_{-i-2}$，则
@@ -98,7 +98,7 @@ $\mathcal B_{z^{-1}}^{(p)}$，结论随即成立。
 规范算子与胞元平移可交换，每个本征空间都不变，其限制就是 $p\times p$ Hermitian
 fiber $H_\tau^{(p)}(z)$。
 
-\begin{proposition}[有限 Bloch 直和]
+\begin{proposition}
 \label{prop:finite-bloch}
 对任意 $L\geq1$ 与 $\alpha\in\{\pm1\}$，
 \begin{equation}
@@ -126,5 +126,5 @@ fiber $H_\tau^{(p)}(z)$。
  \label{fig:finite-bloch}
 \end{figure}
 
-有限直和把周期符号问题化成一族有限 Hermitian 矩阵。接下来需要回答结构问题：何种周期
-flux 会迫使 fiber 谱关于零对称？这一判据并不依赖于周期八。
+有限直和把周期符号问题化成一族有限 Hermitian 矩阵。若要继续约化，就必须在每个 fiber
+内部找到对称。系数 word 在半周期平移下反转，恰好能够迫使谱关于零对称。

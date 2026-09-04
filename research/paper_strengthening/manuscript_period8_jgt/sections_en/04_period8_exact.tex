@@ -33,12 +33,12 @@ off-diagonal blocks gives the following squared block:
 \begin{equation}
  S(\xi)=
  \begin{pmatrix}
-4-s&0&1+\xi^{-1}&2\\
-0&4-s&2&1-\xi^{-1}\\
-1+\xi&2&4+s&0\\
-2&1-\xi&0&4+s
+4-h&0&1+\xi^{-1}&2\\
+0&4-h&2&1-\xi^{-1}\\
+1+\xi&2&4+h&0\\
+2&1-\xi&0&4+h
  \end{pmatrix},
- \qquad s=\xi+\xi^{-1}.
+ \qquad h=\xi+\xi^{-1}.
  \label{eq:period8-squared-block}
 \end{equation}
 The squared eigenvalues of $H(z)$ are the eigenvalues of $S(\xi)$, each
@@ -50,23 +50,34 @@ chiral coordinate spaces; the final characteristic data depend only on $z$.
 Write \eqref{eq:period8-squared-block} in $2\times2$ blocks as
 \[
  S(\xi)=
- \begin{pmatrix}(4-s)I_2&R(\xi)\\Q(\xi)&(4+s)I_2\end{pmatrix},
+ \begin{pmatrix}(4-h)I_2&U(\xi)\\V(\xi)&(4+h)I_2\end{pmatrix},
 \]
 where
 \[
- R(\xi)=\begin{pmatrix}1+\xi^{-1}&2\\2&1-\xi^{-1}\end{pmatrix},
+ U(\xi)=\begin{pmatrix}1+\xi^{-1}&2\\2&1-\xi^{-1}\end{pmatrix},
  \qquad
- Q(\xi)=\begin{pmatrix}1+\xi&2\\2&1-\xi\end{pmatrix}.
+ V(\xi)=\begin{pmatrix}1+\xi&2\\2&1-\xi\end{pmatrix}.
 \]
+Their product has the form
+\begin{equation}
+ U(\xi)V(\xi)=
+ \begin{pmatrix}
+ 6+h&4+2(\xi^{-1}-\xi)\\
+ 4+2(\xi-\xi^{-1})&6-h
+ \end{pmatrix},
+ \quad \tr(UV)=12,\quad \det(UV)=10+3c.
+ \label{eq:uv-invariants}
+\end{equation}
 Because the diagonal blocks are scalar, the elementary block determinant
 identity gives, without an exceptional Schur-complement value,
 \begin{equation}
  \det(yI_4-S(\xi))
- =\det\!\left(\bigl((y-4)^2-s^2\bigr)I_2-R(\xi)Q(\xi)\right).
+ =\det\!\left(\bigl((y-4)^2-h^2\bigr)I_2-U(\xi)V(\xi)\right).
  \label{eq:two-by-two-determinant}
 \end{equation}
-Using $\xi^2=z$ and
-$c=z+z^{-1}=\xi^2+\xi^{-2}$, expansion of the $2\times2$ determinant yields
+Using $h^2=c+2$, the determinant in
+\eqref{eq:two-by-two-determinant} is $q^2-12q+10+3c$, where
+$q=(y-4)^2-h^2$.  Expanding this scalar quadratic yields
 \begin{equation}
 \begin{split}
  P(y,c)={}&y^4-16y^3+(80-2c)y^2\\
@@ -79,8 +90,8 @@ Thus
  \det(\lambda I_8-H(z))=P(\lambda^2,z+z^{-1}).
  \label{eq:period8-characteristic}
 \end{equation}
-This identity is the full bridge from the general chiral theorem to an exact
-period-eight spectrum.
+The Bloch phase enters the characteristic polynomial only through the real
+variable $c\in[-2,2]$.
 
 \subsection{Complete dispersion}
 
@@ -91,7 +102,7 @@ Put $y=X+4$.  The quartic becomes even in $X$:
 \end{equation}
 With $W=X^2$, the two roots are
 \begin{equation}
- W_\tau(c)=8+c+\tau\sqrt{26-3c},\qquad \tau\in\{\pm1\}.
+ W_\delta(c)=8+c+\delta\sqrt{26-3c},\qquad \delta\in\{\pm1\}.
  \label{eq:w-branches}
 \end{equation}
 For $-2\leq c\leq2$, both are positive.  Indeed,
@@ -100,8 +111,8 @@ For $-2\leq c\leq2$, both are positive.  Indeed,
 \]
 and $8+c>0$.  The four squared branches are therefore
 \begin{equation}
- y_{\sigma,\tau}(c)=4+\sigma\sqrt{W_\tau(c)},
- \qquad \sigma,\tau\in\{\pm1\}.
+ y_{\varepsilon,\delta}(c)=4+\varepsilon\sqrt{W_\delta(c)},
+ \qquad \varepsilon,\delta\in\{\pm1\}.
  \label{eq:four-squared-branches}
 \end{equation}
 Since $0<W_-<W_+<16$, their order is uniform:
@@ -122,7 +133,7 @@ decrease.  In particular the top squared edge is
 \end{equation}
 strictly increasing on $[-2,2]$.
 
-For completeness, set
+Set
 \[
  a=\sqrt{10+2\sqrt5},\qquad b=\sqrt{10-2\sqrt5}.
 \]
@@ -139,17 +150,25 @@ therefore
 \end{array}
 \label{eq:squared-bands}
 \end{equation}
-They are disjoint.  Equation \eqref{eq:period8-characteristic} then recovers
+The middle separation has length $4-2\sqrt2>0$.  The other two are equal to
+$2+\sqrt2-b>0$; the last inequality follows after squaring from
+$10-2\sqrt5<6+4\sqrt2$.  Hence the four intervals are disjoint.  Equation
+\eqref{eq:period8-characteristic} then recovers
 the eight simple Hermitian eigenvalues
 \[
- \{\,\pm\sqrt{y_{\sigma,\tau}(c)}:
-       \sigma,\tau\in\{\pm1\}\,\}.
+ \{\,\pm\sqrt{y_{\varepsilon,\delta}(c)}:
+       \varepsilon,\delta\in\{\pm1\}\,\}.
 \]
 In particular, the spectrum has the exact central gap
 \begin{equation}
  \left(-\sqrt{4-a},\sqrt{4-a}\right).
  \label{eq:central-gap}
 \end{equation}
+
+The substitution $y=X+4$ reveals more than a convenient solution of the
+quartic: all odd powers of $X$ disappear.  This second algebraic symmetry is
+special to the period-eight block and goes beyond the dimension halving forced
+by chirality alone.
 
 \subsection{Finite phase quantization}
 
@@ -187,26 +206,28 @@ one dispersion law; their difference is entirely the finite phase grid.
 \subsection{The twisted comparison}
 \label{sec:twisted}
 
-We now compare the exactly solved phase with the natural twisted signing.  In
+The natural twisted signing provides the comparison relevant to
+\eqref{eq:fixed-minimum}.  In
 Hamilton-gauge coordinates, this is the alternating triangle-flux class with
 negative Hamilton holonomy.  Its two-site Fourier block is
 \begin{equation}
- B(t)=2\begin{pmatrix}
- \cos t&\cos2t\\
- \cos2t&-\cos t
+ B(\theta)=2\begin{pmatrix}
+ \cos\theta&\cos2\theta\\
+ \cos2\theta&-\cos\theta
  \end{pmatrix},
  \label{eq:twisted-block}
 \end{equation}
-so its eigenvalues have squared magnitude $4g(t)$, where
-$g(t)=\cos^2t+\cos^22t$.  The shifted finite grid is
-$t=(2k+1)\pi/(8L)$.  By $g(-t)=g(t)=g(\pi-t)$ it is enough to consider
-$t\in[\pi/(8L),\pi/2]$.  With $u=\cos^2t$,
+so its eigenvalues have squared magnitude $4g(\theta)$, where
+$g(\theta)=\cos^2\theta+\cos^22\theta$.  The shifted finite grid is
+$\theta=(2k+1)\pi/(8L)$.  By
+$g(-\theta)=g(\theta)=g(\pi-\theta)$ it is enough to consider
+$\theta\in[\pi/(8L),\pi/2]$.  With $u=\cos^2\theta$,
 \[
- g(t)=4u^2-3u+1.
+ g(\theta)=4u^2-3u+1.
 \]
-Thus $g(t)\leq1$ on $[\pi/6,\pi/2]$.  On $(0,\pi/6]$,
+Thus $g(\theta)\leq1$ on $[\pi/6,\pi/2]$.  On $(0,\pi/6]$,
 \[
- g'(t)=-\sin(2t)(1+4\cos(2t))<0.
+ g'(\theta)=-\sin(2\theta)(1+4\cos(2\theta))<0.
 \]
 Finally $g(\pi/(8L))\geq g(\pi/8)=(4+\sqrt2)/4>1$.  Hence the first positive grid
 phase is maximal, and
@@ -216,46 +237,35 @@ phase is maximal, and
  \label{eq:twisted-radius}
 \end{equation}
 
-\begin{proof}[Proof of Theorem~\ref{thm:main-exact}]
-It remains to compare \eqref{eq:positive-finite-exact} and
-\eqref{eq:twisted-radius}.  The latter is increasing in $L\geq4$, so it is
-enough to use $L=4$.  We record an exact rational separator only for this
-short comparison:
+\begin{proof}
+The expression in \eqref{eq:twisted-radius} is increasing for $L\geq4$, so
+comparison with \eqref{eq:positive-finite-exact} reduces to $L=4$.  The
+half-angle identities give
 \begin{equation}
- \etaedge<\frac{1561}{200}<
- 4+2\cos\frac{\pi}{16}+2\cos\frac{\pi}{8}.
+ 2\cos\frac{\pi}{16}=\sqrt{2+\sqrt{2+\sqrt2}},
+ \qquad 2\cos\frac{\pi}{8}=\sqrt{2+\sqrt2}.
  \label{eq:rational-separator}
 \end{equation}
-For the first inequality, $\sqrt5<2239/1000$ and
+The three rational bounds
 \[
- 10+2\sqrt5<\frac{7239}{500}<\left(\frac{761}{200}\right)^2.
-\]
-For the second, repeated half-angle identities give
-\[
- 2\cos\frac{\pi}{16}=\sqrt{2+\sqrt{2+\sqrt2}},
- \qquad
- 2\cos\frac{\pi}{8}=\sqrt{2+\sqrt2}.
-\]
-The elementary square comparisons
-\[
+ \sqrt5<\frac{179121}{80000},\qquad
  \sqrt{2+\sqrt2}>\frac{923}{500},
  \qquad
  \sqrt{2+\sqrt{2+\sqrt2}}>\frac{1961}{1000}
 \]
-make the right-hand side of \eqref{eq:rational-separator} larger than
-$4+3807/1000>1561/200$.  This proves the strict comparison for every
+follow by squaring positive quantities.  The first gives
+$\etaedge<1561/200$, while the other two make the $L=4$ twisted value larger
+than $4+3807/1000>1561/200$.  This proves the strict comparison for every
 $L\geq4$.  The conclusion for $m(C_{8L}(1,2))$ follows by using
 $A_{8L,+}^{*}$ as an admissible signing.
 \end{proof}
 
-The rational number in \eqref{eq:rational-separator} is not a spectral
-constant; it only separates two exact values.  A supplementary Lean
-development checks the $\alpha=+1$ finite comparison through this separator
-in Hermitian eigenvalue form.  The complete dispersion and
-\eqref{eq:negative-finite-exact} are analytic results independently checked by
-exact symbolic scripts, not claims about the scope of that formalization.
+The separator appears only in this comparison of two exact values.  The
+original $\alpha=+1$ finite comparison also admits a supplementary Lean
+verification.
 
-The exact solution establishes a low-edge phase.  It does not yet explain why
-the first such phase has period eight or whether several unrelated
-period-eight words share the same behavior.  Those are the two questions of
-the next section.
+The period-eight calculation explains both solvability and finite attainment.
+It does not select the period: a shorter chiral word might conceivably have
+crossed the same threshold.  Nor does it decide whether $Q_*$ is isolated
+among period-eight words.  Both questions concern defect geometry rather than
+the solved quartic.

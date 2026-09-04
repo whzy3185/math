@@ -1,6 +1,6 @@
 # Bibliography verification ledger
 
-Every item currently in `references.bib` has been matched to an authoritative
+Every one of the 14 items currently in `references.bib` has been matched to an authoritative
 publisher, journal, institutional, library, or arXiv record.  The ledger is a
 metadata-existence check; citation-to-claim alignment remains a separate draft
 audit.
@@ -18,12 +18,13 @@ audit.
 | `Davis1979` | book | Wiley 1979; ISBN `9780471057710`; WorldCat/OCLC `4804321` |
 | `BrunettiStanic2022` | published | DOI `10.1007/s40314-022-01814-5`, volume 41, article 118 |
 | `GhorbaniMajidi2024` | published | DOI `10.1016/j.disc.2023.113860`, volume 347(4), article 113860 |
-| `HuLiu2025` | published | DOI `10.1016/j.ejc.2025.104200`; arXiv `2306.05306` |
 | `AtayHua2016` | published | DOI `10.1016/j.laa.2016.01.027`; arXiv `1411.6113` |
 | `CedzichEtAl2021` | published | DOI `10.1007/s00023-020-00982-6`; arXiv `2006.04634` |
 | `Suvagiya2026` | preprint | arXiv `2607.18334`; no published status claimed |
 
-The current bibliography contains fifteen nonredundant entries.  It covers the
+The current bibliography contains fourteen nonredundant entries.  Hu--Liu was
+removed during the narrative audit because its neighboring Cayley-graph role
+did not advance a claim in the problem chain.  The bibliography covers the
 required lines: switching/balance, signed adjacency spectra, signing
 optimization and two-lifts, circulants, gain/magnetic/periodic graph operators,
 chiral spectral symmetry, and the specific recent benchmark.  JGT style

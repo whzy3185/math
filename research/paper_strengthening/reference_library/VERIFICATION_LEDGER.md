@@ -5,17 +5,17 @@
 | check | population | result |
 |---|---:|---|
 | unique master IDs | 30 | PASS |
-| unique nonempty citation keys | 15 | PASS |
+| unique nonempty citation keys | 14 | PASS |
 | unique nonempty DOIs | 28 | PASS |
 | unique nonempty arXiv identifiers | checked | PASS |
-| manuscript-core rows | 14 mature + 1 recent-context row | PASS |
+| manuscript-core rows | 13 mature + 1 recent-context row | PASS |
 | JGT structure corpus | 10 | PASS |
 | reserve collection | 5 | PASS |
 | local paths declared in manifest | all existing | PASS |
-| canonical vs manuscript BibTeX keys | 15/15 | PASS |
+| canonical vs manuscript BibTeX keys | 14/14 | PASS |
 | canonical vs manuscript BibTeX bytes | identical | PASS |
-| claim-map core coverage | 15/15 | PASS |
-| cited vs bibliography keys | 15/15 both languages | PASS |
+| claim-map core coverage | 14/14 | PASS |
+| cited vs bibliography keys | 14/14 both languages | PASS |
 
 ## Bibliographic verification authority
 

@@ -29,13 +29,13 @@ assert english_labels == chinese_labels
 for language, text in (("en", english), ("zh", chinese)):
     references = groups(r"\\(?:ref|eqref|cref)\{([^}]+)\}", text)
     assert not references - groups(r"\\label\{([^}]+)\}", text)
-    assert len(re.findall(r"\\section\{", text)) == 7
+    assert len(re.findall(r"\\section\{", text)) == 6
     assert "PLACEHOLDER" not in text
     assert "TODO" not in text
 
 bib_text = (ROOT / "references.bib").read_text(encoding="utf-8")
 bib_keys = set(re.findall(r"^@\w+\{([^,]+),", bib_text, re.M))
-assert len(bib_keys) == 15
+assert len(bib_keys) == 14
 
 for text in (english, chinese):
     citation_keys = set()
@@ -55,7 +55,7 @@ required_phrases = (
     r"\tau_{i+m}=-\tau_i",
     r"\gamma_m(z)^2=(-1)^m z^{-1}",
     r"4+\sqrt{10+2\sqrt5}",
-    r"E_4=5504",
+    r"(k,E_k)=(4,5504)",
     r"M_3=118p+168d+96a+48b",
 )
 all_sources = "\n".join(

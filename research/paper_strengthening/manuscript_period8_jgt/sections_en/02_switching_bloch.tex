@@ -9,13 +9,13 @@ Bloch decomposition used throughout the paper.
 
 \subsection{Signed cycle squares and Hamilton gauge}
 
-Write $s_i$ for the sign of the step-one edge $\{i,i+1\}$ and $t_i$ for the
+Write $a_i$ for the sign of the step-one edge $\{i,i+1\}$ and $b_i$ for the
 sign of the step-two edge $\{i,i+2\}$, with indices modulo $n$.  A switching
 function $\varepsilon: \mathbb Z/n\mathbb Z\to\{\pm1\}$ sends
 \[
- s_i\longmapsto \varepsilon_i s_i\varepsilon_{i+1},
+ a_i\longmapsto \varepsilon_i a_i\varepsilon_{i+1},
  \qquad
- t_i\longmapsto \varepsilon_i t_i\varepsilon_{i+2}.
+ b_i\longmapsto \varepsilon_i b_i\varepsilon_{i+2}.
 \]
 If $D_\varepsilon=\diag(\varepsilon_i)$, the signed adjacency matrices are
 related by $A\mapsto D_\varepsilon A D_\varepsilon$.  Thus switching is an
@@ -23,17 +23,17 @@ orthogonal similarity.
 
 The sign of the triangle $(i,i+1,i+2)$ is
 \begin{equation}
- \tau_i=s_i s_{i+1}t_i,
+ \tau_i=a_i a_{i+1}b_i,
  \label{eq:triangle-flux}
 \end{equation}
 and the sign of the step-one Hamilton cycle is
 \begin{equation}
- \alpha=\prod_{i=0}^{n-1}s_i.
+ \alpha=\prod_{i=0}^{n-1}a_i.
  \label{eq:ham-holonomy}
 \end{equation}
 Both are switching invariant.  Conversely, they determine the switching
 class.  Indeed, choose $\varepsilon_0=1$ and then recursively choose
-$\varepsilon_{i+1}=\varepsilon_i s_i$ along the cut-open Hamilton path.  All
+$\varepsilon_{i+1}=\varepsilon_i a_i$ along the cut-open Hamilton path.  All
 local step-one signs become positive, the step-two sign based at $i$ becomes
 $\tau_i$, and the mismatch after one circuit is $\alpha$.
 
@@ -74,7 +74,7 @@ $|z|=1$, and let $H_\tau^{(p)}(z)$ be the restriction of
  \label{eq:bloch-edge}
 \end{equation}
 
-\begin{proposition}[Lift and dihedral invariance]
+\begin{proposition}
 \label{prop:invariances}
 The quantity $R_p$ has the following properties.
 \begin{enumerate}
@@ -141,7 +141,7 @@ $X_r=z^rX_0$.  Since the Hamilton-gauge operator commutes with the cell shift,
 these eigenspaces are invariant and its restriction is the $p\times p$
 Hermitian matrix $H_\tau^{(p)}(z)$.
 
-\begin{proposition}[Finite Bloch sum]
+\begin{proposition}
 \label{prop:finite-bloch}
 For every $L\geq1$ and $\alpha\in\{\pm1\}$,
 \begin{equation}
@@ -180,6 +180,6 @@ finite seam, and $z$ labels a cell-shift eigenspace.
 \end{figure}
 
 The decomposition reduces a periodic signing to a family of finite Hermitian
-matrices.  The next question is structural: which flux patterns force these
-fiber spectra to be symmetric about zero?  The half-cell criterion answering
-this question is independent of period eight.
+matrices.  A further reduction requires a symmetry inside each fiber.  The
+reversal of the coefficient word under half-period translation is precisely
+the structure that can force symmetry about zero.

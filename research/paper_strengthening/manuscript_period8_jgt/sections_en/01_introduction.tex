@@ -1,122 +1,96 @@
-\section{Introduction and main results}
+\section{Introduction}
 \label{sec:introduction}
 
-\subsection{From switching to fixed-graph spectral optimization}
-
-A signed graph consists of an underlying graph and a choice of sign on each
-edge.  Its adjacency matrix has the same zero pattern as the ordinary
-adjacency matrix, but its nonzero entries may be $1$ or $-1$.  This modest
-change separates two kinds of information.  Individual edge signs depend on
-the chosen representative: switching at vertices conjugates the adjacency
-matrix by a diagonal sign matrix and therefore leaves its spectrum unchanged.
-Products of signs around cycles, by contrast, survive switching.  Balance,
-switching classes, and cycle signs have consequently been central coordinates
-in signed graph theory since the work of Harary and Zaslavsky
-\cite{Harary1953,Zaslavsky1982}.
-
-The spectral question has two distinct forms.  One may ask whether a graph
-admits a signing with eigenvalues controlled by a universal benchmark.  This
-viewpoint is fundamental in the theory of two-lifts: Bilu and Linial connected
-signings with new eigenvalues of lifts, and the interlacing-polynomial method
-of Marcus, Spielman, and Srivastava produced Ramanujan signings in the
-bipartite setting \cite{BiluLinial2006,MarcusSpielmanSrivastava2015}.  A finer
-problem fixes the entire underlying graph and asks for the least spectral
-radius among all its signings,
+For a fixed graph $G$, consider
 \begin{equation}
  m(G)=\min_{\sigma:E(G)\to\{\pm1\}}\rho(A_\sigma).
  \label{eq:fixed-minimum}
 \end{equation}
-Here the support, order, and degree sequence are held constant; the remaining
-optimization takes place among switching-invariant cycle patterns.  This
-problem appears naturally in the broader signed spectral programme
-\cite{BelardoEtAl2018}, and exact extremal results are known for several
-restricted signed graph families \cite{BrunettiStanic2022,GhorbaniMajidi2024}.
-The fixed-graph version is nevertheless rigid: an existence theorem for a good
-signing does not identify the minimum, and a highly symmetric candidate need
-not be optimal.
+Only the signs of the nonzero adjacency entries vary; the support, degrees,
+and underlying cycles remain fixed.  Switching at vertices conjugates
+$A_\sigma$ by a diagonal sign matrix, so its spectrum depends on the switching
+class rather than on the individual edge labels.  Products of signs around
+cycles are the surviving coordinates.  This passage from edge signs to cycle
+data is already present in the balance and switching theory of Harary and
+Zaslavsky \cite{Harary1953,Zaslavsky1982}, and it makes
+\eqref{eq:fixed-minimum} a problem about organizing cycle signs on a fixed
+support.
 
-\subsection{Why cycle squares and periodic signings}
+Spectral control by signings also has an important existence theory.  In a
+two-lift, a signing governs the new eigenvalues; Bilu and Linial used this
+relation in their work on discrepancy and spectral gaps, while Marcus,
+Spielman, and Srivastava obtained sharp bipartite Ramanujan signings through
+interlacing polynomials \cite{BiluLinial2006,MarcusSpielmanSrivastava2015}.
+Those results ask whether some signing meets a universal benchmark.  The exact
+fixed-graph problem asks more: what is the least radius for this particular
+$G$, and which switching classes attain it?  This question belongs to the
+broader spectral theory of signed graphs \cite{BelardoEtAl2018}; exact extrema
+for restricted signed families show that fixing the underlying structure can
+lead to rigid equality classes \cite{BrunettiStanic2022,GhorbaniMajidi2024}.
 
-We study \eqref{eq:fixed-minimum} for
+We study \eqref{eq:fixed-minimum} on
 \[
- C_n(1,2),\qquad
- V=\mathbb Z/n\mathbb Z,\qquad
+ C_n(1,2),\qquad V=\mathbb Z/n\mathbb Z,\qquad
  i\sim j\iff i-j\equiv\pm1,\pm2\pmod n.
 \]
-This graph is the square of the $n$-cycle when $n$ is in the range considered
-below.  It occupies a useful middle ground.  The unsigned graph is circulant,
-so its spectrum is read from scalar Fourier symbols \cite{Davis1979}; recent
-signed spectral work on nonbipartite Cayley graphs provides a broader
-neighboring setting \cite{HuLiu2025}.  At the same time, every pair of consecutive step-one edges
-and the corresponding step-two edge forms a triangle.  These overlapping
-triangles make the cycle data local and strongly coupled: changing one edge
-alters several nearby cycles.
+The graph combines a one-dimensional cyclic backbone with an overlapping
+triangle based at every vertex.  The first feature makes ordinary circulant
+spectra accessible by Fourier analysis \cite{Davis1979}; the second localizes
+the switching-invariant cycle data.  A periodic triangle-sign pattern preserves
+translation by one cell even when one-site translation is lost.  Thus
+$C_n(1,2)$ has both nontrivial local signed-cycle geometry and a tractable
+matrix-valued Bloch symbol.  The gauge and flux language used below is the
+finite signed-graph counterpart of the corresponding framework for unit-gain
+and periodic magnetic graph operators
+\cite{Reff2012,KorotyaevSaburova2017,KorotyaevSaburova2023}.
 
-An arbitrary signing destroys one-site translation invariance.  A periodic
-cycle-sign pattern restores translation by a cell, replacing a scalar Fourier
-symbol with a small Hermitian matrix-valued symbol.  This is the finite graph
-counterpart of the Bloch decomposition for periodic discrete operators.
-Gauge, flux, and quasi-momentum play the same distinct roles in unit-gain and
-periodic magnetic graph theory \cite{Reff2012,KorotyaevSaburova2017,
-KorotyaevSaburova2023}.  In the present finite setting no direct-integral
-machinery is required: a ring consisting of $L$ cells is an orthogonal direct
-sum of $L$ finite fibers.
+There is a natural reference level among periodic phases.  After the step-one
+cycle is put in Hamilton gauge, the alternating triangle word
+$\tau_i=(-1)^i$ has local square word $Q_i=\tau_i\tau_{i+1}=-1$ and squared
+Bloch edge exactly $8$.  It is already chiral: an alternating diagonal sign
+combined with half-period translation anticommutes with its fibers.  The
+extremal question is therefore not whether chirality can occur at short
+period, but whether a primitive periodic phase can push the squared edge
+strictly below $8$.
 
-These observations point to the correct variables.  After switching the
-step-one Hamilton cycle to a local positive gauge, let $\tau_i$ denote the sign
-of the triangle based at $i$, and let $\alpha\in\{\pm1\}$ retain the global
-Hamilton-cycle holonomy.  The finite boundary condition is quasi-periodic,
-$x_{i+n}=\alpha x_i$.  For local square calculations it is convenient to pass
-once more to
-\[
- Q_i=\tau_i\tau_{i+1}.
-\]
-The word $Q$ records where odd-displacement couplings survive after the
-operator is squared.  Thus periodicity is not imposed to make an enumeration
-smaller; it is the setting in which local flux, cell translation, and the
-spectral edge can be compared exactly.
-
-The phase central to this paper has primitive period eight,
+The first such phase occurs at period eight.  In Hamilton-gauge triangle
+coordinates and the associated local square coordinates it is
 \begin{equation}
  \tau_*=(1,1,-1,1,-1,-1,1,-1),\qquad
  Q_*=(1,-1,-1,-1,1,-1,-1,-1).
  \label{eq:target-words}
 \end{equation}
-The two positive entries of $Q_*$ are antipodal.  More importantly, the second
-half of $\tau_*$ is the negative of the first.  That half-period relation is
-the source of an anticommuting symmetry, not an accidental property of an
-$8\times8$ determinant.  Figure~\ref{fig:period8-cell} displays the cell and
-the two levels of flux data.
+The two positive entries of $Q_*$ are antipodal; the second half of $\tau_*$
+is the negative of the first.  Figure~\ref{fig:period8-cell} shows both
+features on the cycle square.
 
 \begin{figure}[t]
  \centering
  \input{figures/period8_flux_cell}
- \caption{The period-eight cell.  Solid cycle edges are the locally positive
- step-one gauge; curved chords are step-two edges.  The triangle signs form
- $\tau_*$, while the two marked positions are the positive entries of $Q_*$.
- The second half-cell carries the negative of the first $\tau$-word.}
+ \caption{The period-eight phase.  The black cycle is the locally positive
+ step-one gauge.  Blue solid and gray dashed chords have positive and negative
+ triangle flux, respectively.  The red vertices mark the two positive entries
+ of $Q_*$.  Vertices $0,1,2,3$ form the first half-cell and vertices
+ $4,5,6,7$ the second.}
  \label{fig:period8-cell}
 \end{figure}
 
-\subsection{Main results}
-
 Let $A_{8L,+}^{*}$ be the finite signed adjacency matrix obtained by repeating
-\eqref{eq:target-words} over $L$ cells with positive Hamilton holonomy.  Set
+\eqref{eq:target-words} over $L$ cells with positive Hamilton holonomy, and set
 \begin{equation}
  \etaedge=4+\sqrt{10+2\sqrt5}.
  \label{eq:eta}
 \end{equation}
-Our first result gives an exact finite value rather than an asymptotic band
-edge or a numerical upper bound.
+The first main result gives the radius of every finite member of this family.
 
-\begin{theorem}[Exact finite period-eight phase]
+\begin{theorem}
 \label{thm:main-exact}
 For every integer $L\geq1$,
 \[
  \rho(A_{8L,+}^{*})^2=\etaedge.
 \]
 If $A_{8L}^{\mathrm{tw}}$ denotes the twisted signing defined in
-\cref{sec:twisted}, then for every $L\geq4$,
+\cref{sec:twisted}, then, for every $L\geq4$,
 \[
  \rho(A_{8L,+}^{*})^2=\etaedge
    <\rho(A_{8L}^{\mathrm{tw}})^2.
@@ -124,16 +98,18 @@ If $A_{8L}^{\mathrm{tw}}$ denotes the twisted signing defined in
 Consequently $m(C_{8L}(1,2))<\rho(A_{8L}^{\mathrm{tw}})$ for every $L\geq4$.
 \end{theorem}
 
-The exact solution comes from a structural statement valid at every even
-period.  It identifies precisely when the most natural signed half-cell
-translation is a chiral symmetry.  The term \emph{chiral} is used here in its
-linear-algebraic sense: a self-adjoint involution anticommutes with the
-Hermitian fiber.  Related spectral-symmetry mechanisms occur for signed graph
-Laplacians and chiral Floquet systems
-\cite{AtayHua2016,CedzichEtAl2021}; the criterion below concerns the present
-signed adjacency operator and its local flux word.
+The equality holds on each finite ring, including $L=1$: it is not an
+infinite-volume edge approached asymptotically.  The maximizing fiber is
+present in every positive-holonomy phase grid.  The strict comparison begins
+at $L=4$ and produces an infinite family of improvements over the twisted
+benchmark.  These facts still leave the exact solvability unexplained.  Its
+visible clue is the sign reversal $\tau_{i+4}=-\tau_i$.
 
-\begin{theorem}[Half-cell flux criterion]
+That reversal is not peculiar to eight sites.  At an arbitrary even period it
+is exactly the condition for a natural monomial half-cell symmetry, and the
+same condition can be read without choosing a lift of the local square word.
+
+\begin{theorem}
 \label{thm:main-chiral}
 Let $p=2m$ and let $\tau$ be a $2m$-periodic Hamilton-gauge word.  Within the
 monomial class consisting of the alternating diagonal sign followed by
@@ -142,62 +118,59 @@ fiber if and only if
 \[
  \tau_{i+m}=-\tau_i\qquad(i\in\mathbb Z).
 \]
-Equivalently,
+Equivalently, with $Q_i=\tau_i\tau_{i+1}$,
 \[
  Q_{i+m}=Q_i\quad(i\in\mathbb Z),\qquad
  \prod_{j=0}^{m-1}Q_j=-1.
 \]
-Whenever these conditions hold, the characteristic polynomial is even and
-the squared fiber problem reduces from dimension $2m$ to dimension $m$.
+Under these conditions the characteristic polynomial is even, and the squared
+fiber problem reduces from dimension $2m$ to dimension $m$.
 \end{theorem}
 
-The general criterion explains why the period-eight fiber reduces, but does
-not by itself explain why period eight is selected by the spectral threshold
-$8$.  The next theorem supplies that missing extremal statement.  Period is
-understood primitively; repeating a shorter cell does not count as a new
-phase.
+The equivalence converts an operator symmetry into switching-invariant local
+graph data: half-periodicity of $Q$ and the sign accumulated over one
+half-cell determine chirality.  Spectral symmetry for signed graph operators
+and half-period chiral constructions occur in related settings
+\cite{AtayHua2016,CedzichEtAl2021}; here the criterion is tied to the adjacency
+operator on the cycle square.  Chirality alone does not lower the edge, as the
+alternating period-two phase shows.  When, then, does the half-cell mechanism
+first become spectrally effective?
 
-\begin{theorem}[First occurrence and rigidity]
-\label{thm:main-rigidity}
+\begin{theorem}
+\label{thm:main-minimal}
 Eight is the smallest primitive period of a legal Hamilton-gauge signing whose
-squared Bloch edge is strictly below $8$.  At primitive period eight, the word
-$Q_*$ in \eqref{eq:target-words} is the unique sub-eight class, up to cyclic
-translation, reflection, and the two lifts $\tau$ and $-\tau$.  The balanced
-class has squared edge $8$, and every other legal period-eight class has edge
-strictly above $8$.
+squared Bloch edge is strictly below $8$.
 \end{theorem}
 
-The first three phase-averaged even moments also give a period-independent
-constraint.  If $d$ is the number of positive $Q$-sites and $a,b$ count
-positive pairs at cyclic distances one and two, respectively, then an edge at
-most $8$ forces
-\begin{equation}
- d\leq\frac{3p}{4},\qquad
- 40d+96a+48b\leq42p.
- \label{eq:intro-moment-obstruction}
-\end{equation}
-This does not classify longer words; it identifies the sparse, weakly
-clustered defect geometry behind the short-period result.
+Thus period eight is selected by the spectral threshold, not by the first
+appearance of an anticommuting symmetry.  At the first effective period a
+second question becomes unavoidable: is the low-edge phase isolated, or does
+period eight contain several unrelated examples?
 
-\subsection{Position and proof architecture}
+\begin{theorem}
+\label{thm:main-rigidity}
+Among legal period-eight $Q$-words, $Q_*$ is the unique dihedral orbit with
+squared Bloch edge below $8$.  Its two $\tau$-lifts differ by a global sign and
+have the same squared edge.  The all-negative $Q$-word has edge $8$, and every
+other legal period-eight orbit has edge strictly above $8$.
+\end{theorem}
 
-Theorem~\ref{thm:main-exact} also resolves a specific recent proposal.  The
-twisted signing was put forward as an optimal candidate for this family in
-\cite{Suvagiya2026}.  Our formulation does not rely on that proposal: the
-fixed-graph optimization problem, the period-eight phase, and the chiral
-criterion are defined independently.  The recent conjecture is one consequence
-of the strict comparison, rather than the source of the problem.
+The surviving orbit has two defects and places them as far apart as the cell
+allows.  Low-order trace moments first penalize defect density and then
+short-range clustering.  This explains the geometry of the short-period
+classification without asserting a sufficiency theorem for arbitrary periods.
+The same moments yield general necessary restrictions on defect density and
+clustering, recorded after the period-eight proof.
 
-The proof follows the mathematical dependencies.  Section~\ref{sec:gauge}
-passes from edge signs to $(\tau,\alpha)$, proves the symmetry conventions, and
-derives the finite Bloch sum.  Section~\ref{sec:chiral} proves
-Theorem~\ref{thm:main-chiral} by a coefficient calculation and a flux
-telescoping identity.  Section~\ref{sec:period8} specializes the reduction,
-solves the period-eight polynomial, quantizes both finite holonomy sectors, and
-proves Theorem~\ref{thm:main-exact}.  Section~\ref{sec:first-rigidity} asks
-whether the appearance of period eight is accidental; moment inequalities and
-exact finite certificates prove Theorem~\ref{thm:main-rigidity}.
-Section~\ref{sec:defect-obstruction} extracts the general defect obstruction
-\eqref{eq:intro-moment-obstruction}, and
-Section~\ref{sec:conclusion} closes with the remaining exact minimization
-problem.
+A recent preprint proposed the twisted class as a global optimizer for every
+even order \cite{Suvagiya2026}.  The strict inequality in
+Theorem~\ref{thm:main-exact} disproves that proposal on every order $8L$ with
+$L\geq4$.
+
+Two ingredients drive the proofs.  A finite Bloch decomposition and the
+half-cell involution reduce the period-eight spectrum to a centered quartic,
+whose four bands and two finite holonomy sectors can be solved exactly.  A
+local square identity and its first three trace moments reduce all shorter
+periods and all period-eight competitors to a small set of configurations;
+explicit integer and Rayleigh certificates close that set.  The first method
+explains solvability, while the second explains first occurrence and rigidity.

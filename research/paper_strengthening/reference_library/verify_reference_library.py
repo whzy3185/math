@@ -52,9 +52,9 @@ citation_rows = [
     row for row in rows
     if row["collection"] in {"manuscript_core", "specific_recent_context"}
 ]
-assert len(citation_rows) == 15
+assert len(citation_rows) == 14
 assert sum(row["collection"] == "jgt_structure_corpus" for row in rows) == 10
-assert sum(row["collection"] == "reserve" for row in rows) == 5
+assert sum(row["collection"] == "reserve" for row in rows) == 6
 assert all(row["cite_key"] for row in citation_rows)
 assert all(not row["cite_key"] for row in rows if row not in citation_rows)
 
@@ -89,4 +89,4 @@ for language in ("en", "zh"):
     assert cited == index_keys, f"{language} citations do not match core"
 
 print("PERIOD8_REFERENCE_LIBRARY_INTEGRITY_PASS")
-print("rows=30 citation_core=15 jgt_corpus=10 reserve=5")
+print("rows=30 citation_core=14 jgt_corpus=10 reserve=6")

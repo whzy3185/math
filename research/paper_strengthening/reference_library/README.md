@@ -8,7 +8,7 @@ moving or deleting the older `research/related_work/` archive.
 
 | collection | purpose | may appear in manuscript bibliography? |
 |---|---|---|
-| `manuscript_core` | sources that support a statement actually made in the paper | yes; currently 15/15 cited |
+| `manuscript_core` | sources that support a statement actually made in the paper | yes; currently 14/14 cited |
 | `jgt_structure_corpus` | full-text JGT papers used to determine section and proof architecture | no, unless a later mathematical claim independently requires one |
 | `reserve` | legitimate, verified sources whose present role is redundant or outside the final scope | not by default |
 | `specific_recent_context` | the Suvagiya preprint, isolated from the mature background | yes, once and late in the Introduction |
@@ -32,7 +32,7 @@ retained merely because it is recent, highly cited, or topically adjacent.
 ## Files
 
 - `MASTER_REFERENCE_INDEX.csv`: one row per unique work and its editorial decision.
-- `bibliography/manuscript_core.bib`: canonical 15-entry BibTeX file.
+- `bibliography/manuscript_core.bib`: canonical 14-entry BibTeX file.
 - `CLAIM_REFERENCE_MAP.md`: exact claim/function assigned to every cited source.
 - `ACCESS_AND_FULLTEXT.md`: local full-text inventory and authoritative landing pages.
 - `JGT_STRUCTURE_CORPUS.md`: compact index of the ten full-text architecture exemplars.

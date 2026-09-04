@@ -20,7 +20,6 @@ publisher, institutional, or arXiv sources rather than placeholder files.
 | `Davis1979` | book not stored | ISBN 9780471057710; WorldCat OCLC 4804321 |
 | `BrunettiStanic2022` | `research/related_work/papers/core/2022_Brunetti_UnbalancedSignedGraphsExtremal.pdf` | https://doi.org/10.1007/s40314-022-01814-5 |
 | `GhorbaniMajidi2024` | structured source note only | https://doi.org/10.1016/j.disc.2023.113860 |
-| `HuLiu2025` | `research/related_work/papers/core/2025_Hu_VertexIsoperimetrySignedCayley.pdf` | https://doi.org/10.1016/j.ejc.2025.104200 |
 | `AtayHua2016` | not duplicated | https://doi.org/10.1016/j.laa.2016.01.027; https://arxiv.org/abs/1411.6113 |
 | `CedzichEtAl2021` | not duplicated | https://doi.org/10.1007/s00023-020-00982-6; https://arxiv.org/abs/2006.04634 |
 | `Suvagiya2026` | `research/related_work/papers/core/2026_Suvagiya_SignedCirculants_PREPRINT.pdf` | https://arxiv.org/abs/2607.18334 |
@@ -45,6 +44,14 @@ Full-text sources used in the completed structure audit:
 These PDFs were read from temporary audit storage and are not committed as a
 second corpus.  Their extracted structural conclusions are preserved in
 `../JGT_RECENT_STRUCTURE_AUDIT.md`.
+
+## Reserve full text
+
+Hu--Liu (2025) remains available at
+`research/related_work/papers/core/2025_Hu_VertexIsoperimetrySignedCayley.pdf`
+and DOI `10.1016/j.ejc.2025.104200`.  It is not cited because its neighboring
+Cayley-graph role does not support a necessary sentence in the revised
+Introduction.
 
 ## Access labels
 

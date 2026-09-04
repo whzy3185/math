@@ -1,5 +1,8 @@
 # Final Article Architecture
 
+> Superseded by `FINAL_ARTICLE_ARCHITECTURE_V2.md` after the JGT authorial
+> rewrite.  This file records the pre-rewrite seven-section decision only.
+
 ## Section 1. Introduction and Main Results
 
 ### 1.1 From switching to fixed-graph spectral optimization
