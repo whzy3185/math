@@ -287,6 +287,39 @@ noncomputable def finCellToZModState (L : ℕ) [NeZero L]
     (F : Fin L → Fin 8 → ℂ) : ZMod L → Fin 8 → ℂ :=
   fun z r => F ((ZMod.finEquiv L).symm z) r
 
+noncomputable def rawToFinCellState (L : ℕ) (hL : 0 < L)
+    (u : Fin (8 * L) → ℂ) : Fin L → Fin 8 → ℂ :=
+  fun m r => u ((cellReindex L hL).symm (m, r))
+
+noncomputable def rawToZModCellState (L : ℕ) [NeZero L] (hL : 0 < L)
+    (u : Fin (8 * L) → ℂ) : ZMod L → Fin 8 → ℂ :=
+  finCellToZModState L (rawToFinCellState L hL u)
+
+theorem cellEncode_rawToFinCell (L : ℕ) (hL : 0 < L)
+    (u : Fin (8 * L) → ℂ) :
+    cellEncodeC L hL (rawToFinCellState L hL u) = u := by
+  funext i
+  simp [cellEncodeC, rawToFinCellState]
+
+theorem period8_reindexed_matrix_mulVec_raw (L : ℕ) (hL : 0 < L)
+    (F : Fin L → Fin 8 → ℂ) (m : Fin L) (r : Fin 8) :
+    (period8ReindexedMatrixC L hL).mulVec (fun p => F p.1 p.2) (m, r) =
+      (period8TargetMatrixC L 1).mulVec (cellEncodeC L hL F)
+        ((cellReindex L hL).symm (m, r)) := by
+  change (∑ q : Fin L × Fin 8,
+    period8TargetMatrixC L 1 ((cellReindex L hL).symm (m, r))
+      ((cellReindex L hL).symm q) * F q.1 q.2) = _
+  let g : Fin (8 * L) → ℂ := fun i =>
+    period8TargetMatrixC L 1 ((cellReindex L hL).symm (m, r)) i *
+      cellEncodeC L hL F i
+  have hencode (q : Fin L × Fin 8) :
+      cellEncodeC L hL F ((cellReindex L hL).symm q) = F q.1 q.2 := by
+    simp [cellEncodeC]
+  simp_rw [← hencode]
+  change (∑ q : Fin L × Fin 8, g ((cellReindex L hL).symm q)) = _
+  rw [(cellReindex L hL).symm.sum_comp]
+  rfl
+
 theorem period8_fin_cell_action_to_zmod (L : ℕ) [NeZero L] (hL : 0 < L)
     (F : Fin L → Fin 8 → ℂ) (m : Fin L) :
     period8CellAction (finCellToZModState L F) (ZMod.finEquiv L m) =
@@ -412,5 +445,55 @@ theorem period8_zmod_real_eigen_square_lt_bound {L : ℕ} [NeZero L]
   · norm_num
   · exact period8_cell_eigen_dft_fiber F (lambda : ℂ) k xi hxi hEig
   · exact hk
+
+theorem period8_raw_real_eigen_square_lt_bound (L : ℕ) (hL : 0 < L)
+    (u : Fin (8 * L) → ℂ) (lambda : ℝ)
+    (hu : u ≠ 0)
+    (hEig : (period8TargetMatrixC L 1).mulVec u = (lambda : ℂ) • u) :
+    lambda^2 < period8Bound := by
+  haveI : NeZero L := ⟨Nat.ne_of_gt hL⟩
+  let F := rawToFinCellState L hL u
+  let G := rawToZModCellState L hL u
+  have hF : F ≠ 0 := by
+    intro hFzero
+    apply hu
+    rw [← cellEncode_rawToFinCell L hL u]
+    change cellEncodeC L hL F = 0
+    rw [hFzero]
+    funext i
+    simp [cellEncodeC]
+  have hG : G ≠ 0 := by
+    intro hGzero
+    apply hF
+    funext m r
+    have hentry := congrFun (congrFun hGzero (ZMod.finEquiv L m)) r
+    simpa [G, rawToZModCellState, finCellToZModState, F] using hentry
+  have hFinEig : ∀ m r, period8CellActionFin L F m r =
+      (lambda : ℂ) * F m r := by
+    intro m r
+    calc
+      period8CellActionFin L F m r =
+          (period8ReindexedMatrixC L hL).mulVec (fun p => F p.1 p.2) (m, r) := by
+            symm
+            exact period8_reindexed_matrix_mulVec L hL F m r
+      _ = (period8TargetMatrixC L 1).mulVec (cellEncodeC L hL F)
+          ((cellReindex L hL).symm (m, r)) := by
+            exact period8_reindexed_matrix_mulVec_raw L hL F m r
+      _ = (period8TargetMatrixC L 1).mulVec u
+          ((cellReindex L hL).symm (m, r)) := by
+            rw [cellEncode_rawToFinCell L hL u]
+      _ = (lambda : ℂ) * u ((cellReindex L hL).symm (m, r)) := by
+            have hentry := congrFun hEig ((cellReindex L hL).symm (m, r))
+            simpa [Pi.smul_apply] using hentry
+      _ = (lambda : ℂ) * F m r := by rfl
+  have hGEig : period8CellAction G = (lambda : ℂ) • G := by
+    funext z r
+    obtain ⟨m, rfl⟩ := (ZMod.finEquiv L).surjective z
+    change period8CellAction (finCellToZModState L F) (ZMod.finEquiv L m) r =
+      (lambda : ℂ) * finCellToZModState L F (ZMod.finEquiv L m) r
+    rw [period8_fin_cell_action_to_zmod L hL]
+    have hentry := hFinEig m r
+    simpa [G, rawToZModCellState, finCellToZModState, F, Pi.smul_apply] using hentry
+  exact period8_zmod_real_eigen_square_lt_bound G lambda hG hGEig
 
 end TargetA
