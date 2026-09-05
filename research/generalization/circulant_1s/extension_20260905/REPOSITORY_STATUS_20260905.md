@@ -1,5 +1,11 @@
 # 仓库现状与交接基线（2026-09-05）
 
+**后续整理补记：**用户已授权独立修复中英文结尾。纠错现已完成于
+[`paper/period8-conclusion-correction` / `2dc5b90`](https://github.com/whzy3185/math/tree/paper/period8-conclusion-correction)，
+两份PDF已重新编译。原冻结稿不变；下文“尚未修改”描述的是当时冻结
+分支。全仓库新的入口、成果索引和过时覆盖见
+[研究总览](../../../README.md)。本轮暂停新增数学探索，先完成整理和已知纠错。
+
 供能够直接访问 GitHub 的网页端 GPT 阅读。仓库：
 [`whzy3185/math`](https://github.com/whzy3185/math)。
 **请切换到 [`research/circulant-1s-extension`](https://github.com/whzy3185/math/tree/research/circulant-1s-extension)

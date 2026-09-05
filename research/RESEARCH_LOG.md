@@ -336,3 +336,23 @@
 - **验证：** 带 external-root 的独立 checker `TARGET_A_FULL_SLOW_REPRODUCTION_PASS`；新增 tests 10/10 PASS；全套 default tests 为 225 PASS、3 个既有 slow tests SKIP、17 subtests PASS。首次全套收集因当前 venv 未自动暴露 bundled NumPy 而在 collection 阶段停止；显式恢复同一 runtime 的 site-packages 后完整重跑通过，不计作代码回归。
 - **产物：** `research/reproducibility/target_a_full_slow_reproduction_summary.json`（SHA-256 `6ab911dfee4f69e41b4afcfd8964bf24417944c2524c9ab2802366bf6f3f0f66`）；`research/reproducibility/TARGET_A_FULL_SLOW_REPRODUCTION.md`（SHA-256 `ae58e24dba756d71c41e9353d26e641388ca0b682ba3d466a251fa0c876b6b06`）；checker SHA-256 `7a2ea507a709f89633dce7512fd5260f987d2e25b7b212f072793131d86f8d93`；tests SHA-256 `d49e8d58b384bed15a6b54b4ace7c4431e20219bd315ebfa5a3f2c5d54cda4d0`。
 - **下一步：** 执行 Reviewer Zero 与 theorem dependency graph，统一 notation 并压缩证明依赖；在该预审包完成前不写 manuscript，不扩大到 period 17 以上或 all-period optimality。
+
+---
+
+## 2026-09-05 — 仓库导航整合与独立中英文结尾纠错
+
+- 用户将本轮限定为保留目录、完整盘点、重建入口/成果索引/过时标记，
+  以及独立纠错；没有开展新的数学探索或新一轮外部文献研究。
+- 基线 `d81a188` 的3,000个tracked文件已逐字节盘点，615份Markdown
+  做标题/状态索引，1,893个JSON语法检查通过。该覆盖不等于重证全部
+  历史数学。细读范围见 `repository_guide/COVERAGE_AND_COMPLETION.md`。
+- 新增总入口、成果—证据—复用索引、分支地图、过时覆盖表、稿件初步
+  评估；旧research README原文保留为快照，未删除任何历史成果或日志。
+- 旧结尾的 `m(8L,2)=sqrt(eta)` 无限子族问题被同文负holonomy严格界
+  否定。纠错在 `paper/period8-conclusion-correction` 完成，提交
+  `2dc5b90`；两份PDF重编译（英文16页、中文15页），结构/引用检查
+  与尾页视觉检查通过。原 `6766ecb` 和freeze tag不变。
+- 一般跳长、八周期、历史G6/残余类/计算分类分别索引；未把历史
+  computer-assisted声明重新标成纯解析，也未扩张Lean范围。
+- 后续需要的是论文级独立审查、原始文献对照与有限修订计划。本文
+  “仅剩作者信息”“稳投某刊”的旧判断不再沿用，详见初步评估。

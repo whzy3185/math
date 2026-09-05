@@ -1,5 +1,11 @@
 # Task 60.0-60.1 Handoff
 
+> Historical Task 60 checkpoint; its formulas remain reusable foundations.
+> The active extension is documented in
+> [the current result index](../../../repository_guide/RESULTS_INDEX.md).
+> “Next authorized task” below records the original stage, not the present
+> task authorization.
+
 ```text
 Branch: exp/circulant-1s-generalization
 Frozen parent: target-a-task59-submission-v1

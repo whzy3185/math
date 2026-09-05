@@ -1,5 +1,12 @@
 # Analytic-first inventory
 
+> Historical phase snapshot. The period-eight polynomial/edge targets below
+> have since been completed in `paper_strengthening`; the R2/R4/R6/G6 items
+> have different remaining proof boundaries. Read the
+> [current result index](../repository_guide/RESULTS_INDEX.md) and
+> [supersession map](../repository_guide/SUPERSESSION_MAP.md) before using
+> this document's “current” or “next” labels. The original plan remains below.
+
 ## Purpose and baseline
 
 This directory starts the analytic-first rewrite on branch
