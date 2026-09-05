@@ -1,0 +1,124 @@
+{
+  "scope": "Finite exact audit of the analytic polynomial-gap proof",
+  "freeze": {
+    "baseline_commit": "6766ecbc20b084c648b29b0bf3813b8c1ecf86cb",
+    "protected_git_trees": {
+      "research/paper_strengthening": "c311b3e707a00cde45281f9b24bd97657e1755a2",
+      "research/paper": "6674444a0051d928d31c1d2308f45fddcc9a8f04",
+      "formal/TargetA": "cf3ca9f85f01bc6ecec743ac7f8bdb16ae8b3c6f"
+    },
+    "unchanged": true
+  },
+  "rational_inequalities": {
+    "r": [
+      2,
+      24
+    ],
+    "exact_h_values": [
+      "-2",
+      "-1",
+      "0",
+      "1",
+      "2",
+      "-8/5",
+      "8/5"
+    ],
+    "rational_inequality_cases": 161
+  },
+  "derivative_identity": {
+    "even_jumps": [
+      4,
+      6,
+      8,
+      10,
+      12
+    ],
+    "exact_phase_cases": 15,
+    "inverse_trace_equals_log_determinant_derivative": true
+  },
+  "numerical_conjecture_evidence": {
+    "status": "NUMERICAL_EVIDENCE_ONLY; Q6 and Q7 remain unproved",
+    "endpoint_values_are_not_global_Bloch_gap_certificates": true,
+    "endpoint_rows": [
+      {
+        "s": 4,
+        "gap_at_z_1": 0.24398642473098728,
+        "s_squared_times_gap": 3.9037827956957964,
+        "scaled_over_pi_squared": 0.3955358935424926,
+        "eigenpair_residual": 1.1331502684927196e-15
+      },
+      {
+        "s": 8,
+        "gap_at_z_1": 0.10887756653375685,
+        "s_squared_times_gap": 6.968164258160439,
+        "scaled_over_pi_squared": 0.7060226504510482,
+        "eigenpair_residual": 4.028731845712335e-15
+      },
+      {
+        "s": 16,
+        "gap_at_z_1": 0.0324602643135539,
+        "s_squared_times_gap": 8.309827664269799,
+        "scaled_over_pi_squared": 0.8419615748076591,
+        "eigenpair_residual": 2.0772636900963557e-15
+      },
+      {
+        "s": 32,
+        "gap_at_z_1": 0.00883332241485172,
+        "s_squared_times_gap": 9.045322152808161,
+        "scaled_over_pi_squared": 0.9164827469487818,
+        "eigenpair_residual": 1.9722077796052344e-15
+      },
+      {
+        "s": 64,
+        "gap_at_z_1": 0.0023060723132007676,
+        "s_squared_times_gap": 9.445672194870344,
+        "scaled_over_pi_squared": 0.9570466870817819,
+        "eigenpair_residual": 2.3905823859836104e-15
+      },
+      {
+        "s": 128,
+        "gap_at_z_1": 0.0005892703362382135,
+        "s_squared_times_gap": 9.65460518892689,
+        "scaled_over_pi_squared": 0.9782160253415286,
+        "eigenpair_residual": 2.8348354344801834e-15
+      },
+      {
+        "s": 256,
+        "gap_at_z_1": 0.00014894616391433459,
+        "s_squared_times_gap": 9.761335798289831,
+        "scaled_over_pi_squared": 0.9890300970130499,
+        "eigenpair_residual": 3.3821577246417697e-15
+      }
+    ],
+    "phase_rows": [
+      {
+        "s": 4,
+        "phase_points": 65,
+        "sample_min_gap": 0.24398642473098786,
+        "endpoint_gap": 0.24398642473098786,
+        "endpoint_minus_sample_min": 0.0
+      },
+      {
+        "s": 8,
+        "phase_points": 65,
+        "sample_min_gap": 0.10887756653375211,
+        "endpoint_gap": 0.10887756653375581,
+        "endpoint_minus_sample_min": 3.70536934468646e-15
+      },
+      {
+        "s": 16,
+        "phase_points": 65,
+        "sample_min_gap": 0.03246026431355284,
+        "endpoint_gap": 0.03246026431355284,
+        "endpoint_minus_sample_min": 0.0
+      },
+      {
+        "s": 32,
+        "phase_points": 65,
+        "sample_min_gap": 0.008833322414850322,
+        "endpoint_gap": 0.00883332241485154,
+        "endpoint_minus_sample_min": 1.2177758801357186e-15
+      }
+    ]
+  }
+}
