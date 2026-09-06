@@ -1,0 +1,17 @@
+name: Lean Lonely Runner Formalization
+
+on:
+  push:
+    branches: [lean-lonely-runner-ci]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: leanprover/lean-action@v1
+        with:
+          lake-package-directory: formal/lean-lonely-runner
+      - run: lake build
+        working-directory: formal/lean-lonely-runner
