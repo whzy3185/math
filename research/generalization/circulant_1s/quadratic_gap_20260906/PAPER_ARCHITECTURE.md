@@ -1,54 +1,46 @@
-# Manuscript architecture: parity-resolved quadratic gaps in signed circulants
+# Manuscript architecture: sharp parity-resolved Bloch gaps in signed circulants
 
 Date: 2026-09-06
 Branch: `research/quadratic-gap-upgrade`
 
 ## Working title
 
-**Parity-Resolved Quadratic Bloch Gaps in Periodic Signings of `C_N(1,s)`**
-
-Alternative title if the even sharp limit is closed:
-
 **Sharp Quadratic Bloch Gaps for Explicit Signings of `C_N(1,s)` for All Jumps**
 
-## Intended contribution package
+Alternative:
 
-The paper should now be organized around the full jump parameter `s>=2`, not
-only even jumps.  The parity split is mathematically meaningful:
+**Parity, Phase Slip, and Sharp `pi^2` Gaps in Signed Circulants**
 
-- odd `s`: the alternating-flux word is exactly solvable and already has a
-  strict interior Bloch edge below `8`;
-- even `s`: the alternating word touches `8`, and an antipodal defect family
-  is needed to open a gap.
+## Core contribution package
+
+The paper should be organized around the full jump parameter `s>=2`.
+The parity mechanisms are different, but the leading asymptotic is now the
+same and fully proved for the explicit family.
 
 Current rigorous package:
 
 1. an explicit periodic sub-eight signing for every integer jump `s>=2`;
-2. a parity-free quadratic envelope
+2. parity-free quadratic envelope
    `1/(6s(s+2)) <= 8-Rhat_s <= 4 sin^2(pi/(s+2))`;
-3. therefore `8-Rhat_s = Theta(s^-2)` for all jumps;
-4. for odd `s`, a unique maximizing phase, algebraic Chebyshev equation and
-   sharp asymptotic `s^2(8-M_s)->pi^2`;
-5. for even `s`, the primitive antipodal construction and exact continuant
-   determinant reduction;
-6. for even `s`, the new two-sided quadratic gap and endpoint sharp
-   `pi^2` asymptotic;
-7. an exact `s=10` counterexample to phase-zero maximality;
-8. finite odd-jump coverage for every admissible even order `N`;
-9. the even finite comparison threshold improved from `O(s^(3/2))`
-   repetitions to `O(s)`;
-10. symbolic verification scripts and a separate Lean formalization track.
+3. sharp parity-free asymptotic
+   `s^2(8-Rhat_s) -> pi^2`;
+4. odd `s`: exact Fourier dispersion, unique interior optimizer, Chebyshev
+   critical equation, `O(s^-3)` phase localization;
+5. even `s`: primitive period-`4s` antipodal defect family and exact
+   continuant determinant;
+6. even `s`: quadratic inverse-trace lower bound;
+7. even `s`: exact `s=10` phase-zero counterexample;
+8. even `s`: global phase localization and sharp `pi^2` limit despite the
+   phase slip;
+9. finite odd-jump coverage for every admissible even order `N`;
+10. even finite comparison threshold improved from `O(s^(3/2))`
+    repetitions to `O(s)`;
+11. exact odd-order obstruction to the naive one-defect repair;
+12. symbolic verification scripts and a separate Lean formalization track.
 
-The strongest desired addition before submission remains the even global
-sharp limit
-
-` s^2(8-R_s) -> pi^2  (s even). `
-
-Once this is closed, the parity-free explicit family will satisfy
-
-` s^2(8-Rhat_s) -> pi^2 `
-
-through all integer jumps.
+The leading asymptotic problem is therefore closed.  The strongest optional
+addition before submission is now **second-order phase-slip asymptotics**, not
+the leading constant.
 
 ## Proposed theorem hierarchy
 
@@ -57,16 +49,13 @@ through all integer jumps.
 Define the parity-dependent construction:
 
 - odd `s`: `tau_i=(-1)^i`, period two;
-- even `s`: the primitive period-`4s` antipodal word.
+- even `s`: primitive period-`4s` antipodal word.
 
-Prove `Rhat_s<8` for every integer `s>=2` and the common estimate
+Prove `Rhat_s<8` for every integer `s>=2` and
 
 `1/(6s(s+2)) <= 8-Rhat_s <= 4 sin^2(pi/(s+2))`.
 
-This should be the headline theorem because it removes the jump-parity
-restriction from the main existence statement.
-
-### Theorem B — odd-jump exact model and sharp gap
+### Theorem B — odd-jump exact model
 
 For odd `s>=3`, prove
 
@@ -74,160 +63,184 @@ For odd `s>=3`, prove
 
 and
 
-`8-M_s = 4 min_theta [sin^2 theta + cos^2(s theta)]`.
+`8-M_s=4 min_theta [sin^2 theta+cos^2(s theta)]`.
 
-Show the unique minimizer `theta_s` lies in `(0,pi/(2s))` and satisfies
+Show the unique minimizer `theta_s` satisfies
 
-`s U_(s-1)(cos(2 theta_s))=1`.
+`s U_(s-1)(cos(2 theta_s))=1`
 
-Prove the quantitative localization
+and
 
-`0 < pi/(2s)-theta_s <= pi^2/(4s^3)`
+`0 < pi/(2s)-theta_s <= pi^2/(4s^3)`.
 
-and the sharp two-sided estimate
-
-`4 sin^2(pi/(2s)-pi^2/(4s^3))
- <= 8-M_s <= 4 sin^2(pi/(2s))`.
-
-Hence
+Conclude
 
 ` s^2(8-M_s) -> pi^2. `
 
-This section supplies an exactly tractable reference model for the harder
-even phase-slip analysis.
+### Theorem C — all-even antipodal construction
 
-### Theorem C — all-even antipodal sub-eight family
-
-State the primitive period-`4s` signing and prove `R_s<8` for every even
-`s>=2` via chirality, the reduced threshold matrix and determinant positivity.
+Prove `R_s<8` for every even `s>=2` using chirality, reduced threshold
+matrix, continuants and determinant positivity.
 
 ### Theorem D — even quadratic-order gap
 
-State
+Prove
 
 `1/(6s(s+2)) <= 8-R_s <= 4 sin^2(pi/(s+2))`.
 
-The proof should emphasize:
+Main ingredients:
 
-- factorization of the threshold denominator into two Chebyshev channels;
+- two-Chebyshev factorization;
 - two-point mixture/covariance inequality;
 - Pell-square derivative kernel;
-- exact coefficient convolution retaining the cancellation lost in the old
-  cubic estimate;
-- inverse-trace lower bound for the least threshold eigenvalue.
+- coefficient convolution retaining the cancellation lost in the old cubic
+  estimate;
+- inverse-trace bridge.
 
-### Theorem E — even endpoint sharp constant
+### Theorem E — endpoint sharp constant
 
 Prove
 
-` s^2(8-rho(H_s(1))^2) -> pi^2. `
+` s^2(8-rho(H_s(1))^2) -> pi^2 `
 
-Interpret the limiting equation as a soft-channel Dirichlet--Robin boundary
-condition becoming asymptotically Neumann at the far endpoint.
+through even jumps, with the limiting soft-channel Robin equation.
 
-### Proposition F — phase-zero failure
+### Proposition F — exact phase-zero failure
 
-Give the exact `s=10` Sturm certificate:
+Give the `s=10` Sturm certificate with
 
-- endpoint parameter `h=2`;
-- interior parameter `h=19997/10000`;
-- separator `y=317/40`;
-- zero roots above the separator at the endpoint and one root above it at
-  the interior phase.
+- `h=2`;
+- `h=19997/10000`;
+- separator `y=317/40`.
 
-This should be presented as an exact algebraic certificate, not numerical
-sampling.
+This establishes a genuine phase slip, so the global sharp theorem cannot be
+reduced to the endpoint theorem by a false phase-location claim.
 
-### Theorem G — even global sharp limit (target)
+### Theorem G — even global sharp limit
 
-Desired statement:
+Prove
 
 ` s^2(8-R_s) -> pi^2  (s even). `
 
-Sufficient route:
+The proof architecture is:
 
-- identify the two near-degenerate endpoint soft modes;
-- derive a two-mode effective matrix for phase `phi=O(r^-2)`;
-- prove the optimizer remains in that window;
-- show the phase improvement is `o(r^-2)`.
+1. choose a global root and write `mu=2-h`;
+2. derive the exact hard-divided root equation;
+3. prove `mu=O(r^-2)` using the explicit hyperbolic localization lemma;
+4. rule out the hyperbolic soft scaling because the normalized limit would
+   require `cosh x=0`;
+5. in the oscillatory regime recover the endpoint Robin limit `cos x=0`;
+6. obtain `r theta->pi/2`;
+7. compare with the endpoint upper bound to force `r^2 mu->0`;
+8. conclude `4r^2 g_(2r)->pi^2`.
 
-A stronger second-order theorem may record the scaling of the phase slip and
-the `r^-4` correction.
+The companion `GLOBAL_PI2_LOCALIZATION_LEMMA.md` supplies the delicate step
+with explicit constants: `|R_r|<=2 sqrt(11)` and the factorization
 
-### Corollary H — finite signed-circulant consequences
+`(p-lambda q)(p-lambda^(-1)q)/p`.
+
+### Corollary H — sharp all-jump limit
+
+Combine Theorems B and G:
+
+` s^2(8-Rhat_s) -> pi^2 `
+
+through all integer jumps.
+
+This should be the final headline asymptotic theorem in the introduction.
+
+### Corollary I — finite signed-circulant consequences
 
 Odd `s`:
 
 - every admissible even `N` is covered by the period-two word;
-- both holonomy sectors satisfy `rho^2<=M_s<8`.
+- both holonomy sectors have `rho^2<8`.
 
 Even `s`:
 
-- for `N=4sL`, the antipodal family gives `rho^2<=R_s<8`;
-- the explicit sufficient comparison condition is
+- for `N=4sL`, the antipodal word gives `rho^2<8`;
+- sufficient comparison threshold
   `L > pi * sqrt(3 (s+2)(1+s^2)/(2s))`.
 
-The remaining order-compatibility problem should be stated separately:
-odd `N` for odd jumps and non-`4s`-divisible orders for even jumps.
+### Proposition J — odd-order one-defect obstruction
+
+At `(N,s)=(21,7)`, exact integer Rayleigh certificates show that all four
+holonomy/anchor representatives of the cyclic one-`Q`-defect near-alternating
+Ansatz satisfy `rho^2>8`.
+
+This prevents the finite-order section from suggesting an invalid trivial
+repair for odd `N`.
+
+## Optional second-order theorem target
+
+Numerics strongly suggest that for even `s=2r`, if
+`h_r=2 cos(phi_r)` is globally optimizing and `e_r` is the endpoint gap,
+
+`r^2 phi_r -> pi/(4 sqrt(2))`
+
+and
+
+`r^4(e_r-g_(2r)) -> pi^2/32`.
+
+Equivalently, the conjectural effective law is
+
+`g_(2r)(phi)=e_r+phi^2-(pi/(2sqrt2)) |phi|/r^2+o(r^-4)`.
+
+This would be a valuable refinement, but the manuscript no longer depends on
+it for a sharp leading theorem.
 
 ## Section plan
 
 1. **Introduction and positioning**
-   - fixed-underlying-graph signing minimization;
-   - signed circulants and the `C_n(1,2)` benchmark;
-   - the parity mechanism for general `C_N(1,s)`;
-   - statement of the all-jump explicit theorem;
-   - precise boundary: no global minimizer classification is claimed.
 2. **Gauge and universal squared-operator algebra**
 3. **Odd jumps: exact Fourier model**
 4. **Odd jumps: unique phase and sharp `pi^2` gap**
 5. **Even jumps: antipodal chirality and reduced threshold matrix**
-6. **Exact continuant determinant for even jumps**
+6. **Exact continuant determinant**
 7. **Positive generating functions and threshold positivity**
 8. **Even quadratic gap via the Pell derivative kernel**
-9. **Endpoint `pi^2` asymptotics and the limiting Robin condition**
+9. **Endpoint `pi^2` asymptotics**
 10. **Exact phase-slip counterexample**
-11. **Small-phase effective theory and even global sharp asymptotics**
-12. **Finite-order consequences and compatibility obstructions**
-13. **Formal verification and reproducibility boundary**
-14. **Literature comparison and open problems**
+11. **Global phase localization**
+12. **Even global `pi^2` theorem**
+13. **All-jump sharp corollary**
+14. **Finite-order consequences and compatibility obstructions**
+15. **Second-order phase-slip numerics/conjecture**
+16. **Formal verification and reproducibility boundary**
+17. **Literature comparison and open problems**
 
 ## Publication-strength boundary
 
 The paper should not claim:
 
-- a closed formula for the global minimum `m(N,s)` over all signings;
-- that either parity-dependent family is globally optimal;
-- that phase zero is the maximizing Bloch phase for even jumps;
+- a closed formula for `m(N,s)` over all signings;
+- global optimality of the parity-dependent family;
+- phase-zero maximality for even jumps;
 - coverage of every order `N`;
-- novelty of general spectral-radius-two signed-graph theory;
-- priority before the periodic/magnetic operator literature audit is
+- the second-order phase-slip constants as theorems;
+- novelty or priority before the broader periodic/magnetic operator audit is
   completed.
 
-The all-`s` theorem is already a coherent main result.  Closing Theorem G
-would make the asymptotic story substantially stronger by giving a universal
-sharp constant through both parity classes.
+The sharp all-`s` explicit-family theorem is already a complete central
+result; second-order phase slip is an enhancement rather than a prerequisite.
 
 ## Formalization plan
 
-The new Lean development remains separate from frozen `formal/TargetA`.
+The Lean development remains separate from frozen `formal/TargetA`.
 Suggested dependency order:
 
-1. `OddJumpCore.lean` — weighted-distance/Cauchy algebra for the odd coarse
-   bound;
-2. `OddJumpTrig.lean` — trigonometric variational identity and monotonicity of
-   `sin(sx)/sin x` on the first cell;
-3. `OddJumpSharp.lean` — unique critical point, phase localization and sharp
-   odd asymptotic;
-4. `CoreInequalities.lean` — even denominator factorization and two-point
-   covariance;
-5. `ChebyshevMixture.lean` — `B_i B_j <= 2 B_(i+j)` and mixture bound;
-6. `PellKernel.lean` — Pell-square generating kernel and exponential bound;
-7. `CoefficientConvolution.lean` — formal derivative coefficient estimate;
-8. `TraceGap.lean` — abstract positive-definite inverse-trace bridge;
-9. `QuadraticGapTheorem.lean` — assemble the even analytic inequality;
-10. `AllSTheorem.lean` — combine parity cases once the analytic interfaces are
-    formalized.
+1. `OddJumpCore.lean` — weighted-distance/Cauchy algebra;
+2. `OddJumpTrig.lean` — trigonometric variational identity and monotonicity;
+3. `OddJumpSharp.lean` — unique phase and sharp odd limit;
+4. `CoreInequalities.lean` — even factorization and covariance;
+5. `ChebyshevMixture.lean`;
+6. `PellKernel.lean`;
+7. `CoefficientConvolution.lean`;
+8. `TraceGap.lean`;
+9. `GlobalPhaseLocalization.lean` — hyperbolic coefficient factorization and
+   endpoint localization;
+10. `EvenGlobalPi2.lean` — limiting Robin argument;
+11. `AllSTheorem.lean` — parity-free sharp assembly.
 
-The exact Sturm `s=10` certificate can be formalized later by a verified
-polynomial certificate; it should not block the analytic Lean track.
+The exact Sturm and integer Rayleigh certificates can be formalized later as
+finite algebraic witnesses and should not block the analytic Lean track.
