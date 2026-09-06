@@ -5,18 +5,19 @@ After Hamilton gauge and width-three reordering, an arbitrary chord signing is
 an arbitrary word of 9 signed-triangle states (8^9 possibilities), together
 with Hamilton holonomy alpha=+/-1.
 
-Directly scanning 2*8^9 matrices is unnecessary.  Any global matrix with
-norm squared <=8 must have every open prefix principal block with norm squared
-<=8.  We recursively prune a prefix as soon as an exact integer witness proves
+The proof uses quantitative exact pruning.  A floating eigensolver only
+PROPOSES an integer vector; a prefix or full cycle is certified only when
+integer arithmetic verifies
 
-    w^T (M^2 - 8 I) w > 0.
+    70 * w^T (M^2 - 8 I) w >= w^T w > 0.
 
-Only 968 length-8 prefixes survive.  Their 8 extensions give 7,744 full
-9-column candidates per holonomy; every one has an exact full-cycle witness.
-Thus the exact certificate covers all 2*8^9 Hamilton-gauge signings.
+Using the 1/70 target leaves 1,064 length-8 prefixes.  Their 8 extensions in
+both holonomy sectors give 17,024 final cyclic checks.  Together with the
+exactly pruned prefixes, this covers all
 
-Every certificate also satisfies q/||w||^2 >= 1/1038, yielding the uniform
-bound rho(A)^2 >= 8 + 1/1038.
+    2*8^9 = 268,435,456
+
+Hamilton-gauge representatives and proves rho(A)^2 >= 8 + 1/70.
 """
 
 from __future__ import annotations
@@ -26,8 +27,9 @@ import numpy as np
 
 
 STATES = list(itertools.product((+1, -1), repeat=3))
-SCALES = (6, 8, 10, 12, 16, 20, 24, 32, 48, 64, 96, 128)
-EXPECTED_PREFIX_COUNTS = (8, 56, 152, 440, 488, 704, 656, 968)
+SCALES = (32, 48, 64, 96, 128, 192, 256, 384, 512)
+EXPECTED_PREFIX_COUNTS = (8, 56, 152, 440, 488, 1016, 656, 1064)
+MARGIN_DENOMINATOR = 70
 
 
 def triangle(state: tuple[int, int, int]) -> np.ndarray:
@@ -70,11 +72,11 @@ def cycle_strip(word: tuple[int, ...], alpha: int) -> np.ndarray:
     return M
 
 
-def exact_positive_witness(M: np.ndarray):
+def exact_margin_witness(M: np.ndarray):
     K = M @ M - 8 * np.eye(M.shape[0], dtype=np.int64)
     vals, vecs = np.linalg.eigh(K.astype(float))
     for eig_index in np.argsort(vals)[::-1][:4]:
-        if vals[eig_index] <= 1e-10:
+        if vals[eig_index] <= 1.0 / MARGIN_DENOMINATOR + 1e-8:
             continue
         direction = vecs[:, eig_index]
         for scale in SCALES:
@@ -83,9 +85,7 @@ def exact_positive_witness(M: np.ndarray):
                 continue
             q = int(w @ (K @ w))
             norm = int(w @ w)
-            if q > 0:
-                # Exact uniform theorem margin.
-                assert 1038 * q >= norm
+            if q > 0 and MARGIN_DENOMINATOR * q >= norm:
                 return w, q, norm
     return None
 
@@ -95,13 +95,12 @@ def main() -> None:
     counts = [8]
     prefix_pruned = 0
 
-    # Exact prefix pruning through length 8.
     for length in range(2, 9):
         next_survivors = []
         for prefix in survivors:
             for state in range(8):
                 word = prefix + (state,)
-                if exact_positive_witness(open_strip(word)) is None:
+                if exact_margin_witness(open_strip(word)) is None:
                     next_survivors.append(word)
                 else:
                     prefix_pruned += 1
@@ -109,29 +108,25 @@ def main() -> None:
         counts.append(len(survivors))
 
     assert tuple(counts) == EXPECTED_PREFIX_COUNTS
-    assert len(survivors) == 968
+    assert len(survivors) == 1064
 
     full_checked = 0
     for alpha in (+1, -1):
         for prefix in survivors:
             for state in range(8):
                 word = prefix + (state,)
-                cert = exact_positive_witness(cycle_strip(word, alpha))
+                cert = exact_margin_witness(cycle_strip(word, alpha))
                 assert cert is not None
                 full_checked += 1
 
-    assert full_checked == 2 * 968 * 8
-
-    # Population covered: each of the 8^9 triangle-state words for each alpha
-    # is either eliminated by an exact prefix witness or reaches the exact
-    # full-cycle check above.
+    assert full_checked == 2 * 1064 * 8
     assert 2 * (8 ** 9) == 268_435_456
 
     print(f"prefix survivor counts: {counts}")
     print(f"exactly pruned prefix extensions: {prefix_pruned}")
     print(f"full cyclic candidates checked exactly: {full_checked}")
     print("Hamilton-gauge population covered: 2*8^9 = 268435456")
-    print("uniform theorem: rho(A)^2 >= 8 + 1/1038")
+    print("uniform theorem: rho(A)^2 >= 8 + 1/70")
     print("C_27(1,9) all-signing obstruction passed")
 
 
