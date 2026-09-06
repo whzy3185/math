@@ -5,6 +5,10 @@ on:
     branches: [lean-lonely-runner-ci]
   workflow_dispatch:
 
+concurrency:
+  group: lean-lonely-runner-ci
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
