@@ -66,7 +66,7 @@ which imply (2).
 
 ## 3. Sharp parity-free asymptotic
 
-The leading constant is now known on both parity subsequences.
+The leading constant is known on both parity subsequences.
 
 For odd jumps, `ODD_JUMP_SHARP_GAP.md` proves
 
@@ -96,28 +96,59 @@ through **all integer jumps**.
 
 This is the sharp all-`s` theorem for the explicit parity-dependent family.
 
-## 4. What the even phase slip does
+## 4. Even phase slip at second order
 
 For even `s=2r`, the maximizing phase is not always phase zero;
 `PHASE_SLIP_COUNTEREXAMPLE.md` gives an exact `s=10` Sturm certificate.
-Nevertheless `EVEN_GLOBAL_PI2_THEOREM.md` proves that if `h_r` is any global
-maximizing square-root phase parameter chosen in `[0,2]`, then
+The leading theorem only needed the weaker localization
 
 \[
  r^2(2-h_r)\to0.
+\]
+
+`EVEN_SECOND_ORDER_PHASE_SLIP_THEOREM.md` now sharpens this to the true
+boundary-layer scale.  If
+
+\[
+ h_r=2\cos\phi_r
+\]
+
+is a globally optimizing square-root Bloch phase and `e_r` is the endpoint
+gap, then
+
+\[
+ \boxed{
+ r^2\phi_r\longrightarrow\frac\pi{4\sqrt2}}
 \tag{7}
 \]
 
-Hence the phase drift cannot alter the leading `pi^2/s^2` gap.  The stronger
-second-order numerical prediction
+and
 
 \[
- r^2\phi_r\to\frac\pi{4\sqrt2},
- \qquad
- r^4(e_r-g_{2r})\to\frac{\pi^2}{32}
+ \boxed{
+ r^4(e_r-g_{2r})\longrightarrow\frac{\pi^2}{32}.}
+\tag{8}
 \]
 
-remains a separate conjectural refinement.
+Equivalently,
+
+\[
+ g_{2r}=e_r-\frac{\pi^2}{32r^4}+o(r^{-4}).
+\tag{9}
+\]
+
+The local two-branch law is
+
+\[
+ r^4\bigl(g_{2r}(z/r^2)-e_r\bigr)
+ \to
+ z^2-\frac\pi{2\sqrt2}z
+\tag{10}
+\]
+
+on the lower soft branch.  The companion branch has the opposite sign in
+the linear term.  Thus the nonzero phase is an avoided-crossing effect in an
+exponentially near-degenerate first soft pair.
 
 ## 5. Finite `C_N(1,s)` consequence
 
@@ -147,24 +178,25 @@ The parity mechanisms are different but meet at the same sharp scale.
   `pi^2/s^2` gap.
 - Even jumps require an antipodal defect construction, a reduced continuant
   determinant, a quadratic inverse-trace estimate, and a phase-localization
-  argument; the global phase can slip, but only below leading order.
+  argument.  Their phase slip is now quantified to second order by (7)--(9).
 
-Thus the natural manuscript story is now a **parity-resolved all-jump sharp
-theory**, not merely an even-jump extension.
+Thus the natural manuscript story is a **parity-resolved all-jump sharp
+theory with an explicit second-order even avoided crossing**, not merely an
+even-jump extension.
 
 ## 7. Remaining scope boundary
 
-The sharp jump-parameter problem is closed for this explicit family, but the
-following are still open:
+The sharp jump-parameter problem and the second-order even phase slip are
+closed for this explicit family, but the following remain open:
 
 1. global minimization over all signings, i.e. a closed formula for
    `m(N,s)`;
 2. finite-order coverage for odd `N`;
 3. finite-order coverage for even `s` when `4s` does not divide `N`;
-4. the second-order even phase-slip constants;
+4. higher-order (`r^-5`, `r^-6`, ...) expansion of the even phase slip;
 5. full Lean formalization of the all-`s` analytic proof;
 6. publication-priority comparison with periodic/magnetic operator
    literature beyond the currently audited signed-circulant sources.
 
-These should not be conflated with the now-proved sharp all-`s` Bloch-gap
-asymptotic (6).
+These should not be conflated with the proved sharp all-`s` Bloch-gap
+asymptotic (6) or the proved second-order refinement (7)--(9).
