@@ -11,7 +11,7 @@ signings of `C_N(1,s)`.  The parity split is structural:
 
 The frozen period-eight manuscript and `formal/TargetA` remain unchanged.
 
-## Headline results
+## Headline Bloch results
 
 For the parity-dependent explicit family, write `Rhat_s` for the continuous
 squared Bloch radius and `ghat_s=8-Rhat_s`.  The workstream proves
@@ -22,43 +22,68 @@ squared Bloch radius and `ghat_s=8-Rhat_s`.  The workstream proves
 
 through **all integer jumps**.
 
-For even `s=2r`, the phase slip is now also resolved to second order.  If
+For even `s=2r`, the phase slip is resolved beyond leading order.  If
 `h_r=2 cos(phi_r)` is globally optimizing and `e_r` is the phase-zero gap,
 then
 
 \[
- \boxed{r^2\phi_r\to\frac\pi{4\sqrt2}},
- \qquad
- \boxed{r^4(e_r-g_{2r})\to\frac{\pi^2}{32}}.
+ \phi_r=
+ \frac\pi{4\sqrt2\,r^2}
+ -\frac{3\pi}{16r^3}
+ +o(r^{-3}),
 \]
 
-Thus the global even edge has the expansion
+and
 
 \[
- g_{2r}=e_r-\frac{\pi^2}{32r^4}+o(r^{-4}),
+ e_r-g_{2r}
+ =\frac{\pi^2}{32r^4}
+ -\frac{3\pi^2}{32\sqrt2\,r^5}
+ +o(r^{-5}).
 \]
 
-and the lower soft branch obeys the boundary-layer law
+The lower soft branch has the avoided-crossing boundary-layer law
 
 \[
  r^4\bigl(g_{2r}(z/r^2)-e_r\bigr)
  \to z^2-\frac\pi{2\sqrt2}z.
 \]
 
+## New finite-order obstruction
+
+The finite-order problem is genuinely different from the Bloch problem.
+`C21_S7_GLOBAL_OBSTRUCTION.md` proves by exhaustive exact certification that
+for **every** signing of `C_21(1,7)`,
+
+\[
+ \boxed{
+ \rho(A)^2\ge\frac{1066}{131}>8.}
+\]
+
+The exhaustive reduction contains `49,940` admissible cyclic `Q`-necklaces
+and `199,760` Hamilton-gauge representatives after scanning both anchors and
+both holonomies.  For every representative the verifier constructs an
+integer vector `w` and checks the exact inequality
+
+\[
+ w^T(8I-A^2)w<0.
+\]
+
+Thus not every admissible finite pair `(N,s)` can inherit a sub-`sqrt(8)`
+signing, even though every jump has a periodic Bloch construction below the
+threshold.
+
 ## Current result map
 
 1. `ALL_S_UNIFIED_THEOREM.md`
-   - parity-dependent explicit signing for every integer `s>=2`;
+   - explicit parity-dependent family for every `s>=2`;
    - common quadratic envelope;
    - sharp parity-free `pi^2` limit;
    - second-order even phase-slip refinement.
 2. `ODD_JUMP_SHARP_GAP.md`
-   - unique odd-jump maximizing phase;
-   - exact Chebyshev critical equation;
-   - `O(s^-3)` phase localization;
-   - sharp odd `pi^2` limit.
+   - exact odd dispersion, unique optimizer and sharp `pi^2` limit.
 3. `QUADRATIC_GAP_THEOREM.md`
-   - even-jump lower bound upgraded from `Omega(s^-3)` to `Omega(s^-2)`.
+   - even lower bound upgraded from `Omega(s^-3)` to `Omega(s^-2)`.
 4. `ENDPOINT_PI2_ASYMPTOTIC.md`
    - sharp even phase-zero endpoint limit.
 5. `PHASE_SLIP_COUNTEREXAMPLE.md`
@@ -69,46 +94,52 @@ and the lower soft branch obeys the boundary-layer law
    - explicit hyperbolic localization with bounded RHS and factored
      coefficient.
 8. `EVEN_SECOND_ORDER_PHASE_SLIP_THEOREM.md`
-   - proves `r^2 phi_r -> pi/(4sqrt2)`;
-   - proves `r^4(e_r-g_(2r)) -> pi^2/32`;
-   - derives the cusp/effective-parabola law.
+   - proves `r^2 phi_r -> pi/(4sqrt2)` and
+     `r^4(e_r-g_(2r)) -> pi^2/32`.
 9. `SECOND_ORDER_LOCAL_IMPLICIT_LEMMA.md`
-   - bootstraps `mu=o(r^-2)` to `mu=O(r^-4)` from global optimality;
-   - gives the sharp Robin-coordinate displacement coefficient
-     `1/(2sqrt2)`.
-10. `FINITE_COMPARISON_LINEAR_THRESHOLD.md`
+   - bootstraps the phase mass to `mu=O(r^-4)` and extracts the exact cusp
+     coefficient `1/(2sqrt2)`.
+10. `EVEN_THIRD_ORDER_PHASE_SLIP_REFINEMENT.md`
+    - proves the `-3pi/(16r^3)` phase correction and the
+      `-3pi^2/(32sqrt2 r^5)` gain correction.
+11. `FINITE_COMPARISON_LINEAR_THRESHOLD.md`
     - even finite comparison threshold improved to `O(s)` repetitions.
-11. `ODD_ORDER_ONE_DEFECT_OBSTRUCTION.md`
-    - exact integer Rayleigh certificates at `(N,s)=(21,7)`;
-    - rules out the naive one-defect odd-order repair.
-12. `verify_quadratic_gap_upgrade.py`, `verify_odd_jump_gap.py`,
+12. `ODD_ORDER_ONE_DEFECT_OBSTRUCTION.md`
+    - exact one-defect failure certificate at `(21,7)`.
+13. `C21_S7_GLOBAL_OBSTRUCTION.md`
+    - exhaustive all-signing obstruction with uniform exact margin
+      `rho^2>=1066/131`.
+14. `verify_c21_s7_all_signings.py`
+    - exact integer certificate stage for all `199,760` representatives.
+15. `verify_quadratic_gap_upgrade.py`, `verify_odd_jump_gap.py`,
     `verify_odd_order_obstruction.py`, `verify_second_order_phase_slip.py`
     - declared-scope exact/symbolic/numerical audits.
-13. `../../../formal/QuadraticGap/`
-    - separate Lean formalization track; frozen `formal/TargetA` untouched.
+16. `../../../formal/QuadraticGap/`
+    - separate Lean track, now including `PhaseSlipConstants.lean`;
+    - frozen `formal/TargetA` remains untouched.
 
 ## What remains mathematically
 
-The leading and second-order Bloch asymptotics are now closed for the
-explicit family.  The main remaining mathematical directions are:
+The main remaining directions are now:
 
-- higher-order even phase-slip expansion beyond `r^-4`;
-- odd-order finite-ring constructions using balanced multi-defect or
-  genuinely odd-period words;
+- structural classification of finite obstructions, beginning with the
+  resonance family `N=3s` for odd `s`;
+- exact determination of `m(21,7)` rather than only a strict lower bound;
+- construction/classification of odd orders that do admit sub-`sqrt(8)`
+  signings;
 - removal of the `4s | N` restriction for even jumps;
-- global minimization over all signings (`m(N,s)`), which is a different and
-  substantially harder problem;
-- Lean formalization of the odd sharp theorem, global localization and
-  second-order bootstrap.
+- higher corrections beyond the currently proved `r^-5` phase-slip gain;
+- global minimization over all signings for general `(N,s)`;
+- Lean formalization of the odd sharp theorem, global localization,
+  boundary-layer bootstrap and finite certificate.
 
 ## Finite-order coverage
 
-- odd `s`: every admissible even `N` is covered by the period-two word;
-- even `s`: the current explicit theorem covers `N=4sL`.
+- odd `s`, even `N`: period-two word gives `rho^2<8` for every admissible
+  pair;
+- even `s`: current explicit finite theorem covers `N=4sL`;
+- odd `N`: arithmetic obstructions occur; `C_21(1,7)` has no sub-`sqrt(8)`
+  signing at all.
 
-The jump parameter is fully covered, while finite-order compatibility is not.
-The exact `(21,7)` obstruction shows that odd orders require more than a
-single alternating defect.
-
-No global optimality over all signings and no final publication-priority
-claim are made here.
+No general formula for `m(N,s)` and no final publication-priority claim are
+made here.
