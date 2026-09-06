@@ -24,6 +24,7 @@ jobs:
           python formal/lean-lonely-runner/patch_v2.py
           python formal/lean-lonely-runner/patch_v3.py
           python formal/lean-lonely-runner/patch_v4.py
+          python formal/lean-lonely-runner/patch_v5.py
           sha256sum /tmp/lonely_runner_lean_v0_3.zip
           test -f formal/lean-lonely-runner/project/lakefile.lean
           test -f formal/lean-lonely-runner/project/lean-toolchain
