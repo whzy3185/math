@@ -13,7 +13,7 @@ Alternative:
 
 ## Central message
 
-The paper now has two complementary theorem packages.
+The manuscript now has two complementary theorem packages.
 
 ### Package I — periodic/Bloch sharp asymptotics
 
@@ -27,7 +27,7 @@ For an explicit parity-dependent periodic signing for every integer jump
 \]
 
 Odd and even jumps reach the same leading constant by different mechanisms.
-The even family has a genuine nonzero phase slip, with the refined expansion
+For even `s=2r`, the true edge has a nonzero phase slip with
 
 \[
  \phi_r=
@@ -56,18 +56,17 @@ For the infinite resonance line
 prove for **every edge signing**
 
 \[
- \boxed{\rho(A)^2\ge8+1/1038.}
+ \boxed{\rho(A)^2\ge8+1/70.}
 \]
 
 Thus every jump has a periodic sub-`sqrt(8)` Bloch construction, while an
-infinite family of finite rings admits no sub-`sqrt(8)` signing at all.  This
-is the strongest conceptual contrast in the current project.
+infinite family of finite rings admits no sub-`sqrt(8)` signing at all.
 
 ## Theorem hierarchy
 
 ### Theorem A — all-jump explicit Bloch family
 
-Define the parity-dependent family:
+Define the parity-dependent construction:
 
 - odd `s`: period-two alternating flux;
 - even `s`: primitive period-`4s` antipodal defect word.
@@ -134,65 +133,66 @@ Prove
 
 `phi_r = pi/(4sqrt2 r^2) - 3pi/(16r^3) + o(r^-3)`
 
-and
-
-`e_r-g_(2r) = pi^2/(32r^4)
-              -3pi^2/(32sqrt2 r^5)+o(r^-5)`.
+and the corresponding `r^-5` gain correction.
 
 ### Corollary J — parity-free sharp Bloch limit
 
 Combine odd and even subsequences:
 
-`s^2(8-Rhat_s)->pi^2` through all integer jumps.
+`s^2(8-Rhat_s)->pi^2`.
 
 ### Theorem K — exact finite base obstruction at `(21,7)`
 
 Exhaust all switching classes after cyclic `Q`-necklace reduction and prove
 
-`rho(A)^2 >= 1066/131`
+`rho(A)^2 >= 1066/131`.
 
-for every signing of `C_21(1,7)`.
-
-### Lemma L — nine-column signed-triangle rule
+### Lemma L — quantitative nine-column signed-triangle rule
 
 For an open width-three strip of nine arbitrary signed triangles, prove by
 exact finite certification that either
 
-`||M||^2 >= 8+1/1038`
+`||M||^2 >= 8+1/70`
 
 or the six middle transitions satisfy `B_(j+1)=-B_j`.
 
-The certificate is exact at the decision stage: floating arithmetic only
-proposes integer Rayleigh witnesses.
+The integer witness search leaves exactly 128 final survivors.  The constant
+`1/70` is close to the local finite-state boundary: a violating word occurs
+numerically near `8.014397`, so `1/69` is already too strong for this lemma.
 
 ### Proposition M — exact finite base obstruction at `(27,9)`
 
-Use exact prefix pruning to reduce all
+After Hamilton gauge there are
 
 `2*8^9 = 268,435,456`
 
-Hamilton-gauge representatives to 15,488 final cyclic checks, and prove the
-same uniform `1/1038` margin.
+triangle-state/holonomy representatives.  Quantitative exact prefix pruning
+at margin `1/70` leaves 1064 length-eight prefixes; their eight extensions in
+both holonomy sectors require only
+
+`2*1064*8 = 17,024`
+
+final cyclic checks.  This proves `rho(A)^2>=8+1/70` for every signing of
+`C_27(1,9)`.
 
 ### Theorem N — infinite `N=3s` all-signing obstruction
 
 For every odd `s>=7`, prove
 
 \[
- m(3s,s)^2\ge8+1/1038.
+ m(3s,s)^2\ge8+1/70.
 \]
 
-For `s>=11`, use Lemma L on sliding nine-column windows.  Absence of a local
-witness forces all ordinary triangle columns to alternate `B,-B`.  Across the
-helical seam this would require an orthogonal similarity `SBS^T=-B`, which is
-impossible because
+For `s>=11`, apply Lemma L to sliding nine-column windows.  Absence of a
+local witness forces all ordinary signed-triangle columns to alternate
+`B,-B`.  Across the helical seam this would require an orthogonal similarity
+`SBS^T=-B`, impossible because
 
 `tr(B^3)=+/-6`
 
 changes sign under `B -> -B`.
 
-This theorem is the manuscript's finite-arithmetic counterpart to the Bloch
-sharp theorem.
+This theorem is the finite-arithmetic counterpart to the Bloch sharp theorem.
 
 ## Suggested section plan
 
@@ -206,25 +206,34 @@ sharp theorem.
 8. Global even sharp `pi^2` theorem
 9. Avoided crossing and higher phase-slip asymptotics
 10. Width-three representation of the resonance line `N=3s`
-11. Exact nine-column finite-state lemma
+11. Quantitative nine-column finite-state lemma
 12. Base cases `C_21(1,7)` and `C_27(1,9)`
 13. Infinite all-signing `N=3s` obstruction
 14. Other finite orders: constructions, resonances and open classification
 15. Formal verification and reproducibility boundary
 16. Literature comparison and open problems
 
+## Positioning
+
+The block-Jacobi/direct-integral viewpoint is standard periodic-operator
+framework and should be cited as such.  The closest direct signed-circulant
+comparison is Suvagiya's 2026 `C_n(1,2)` preprint.  The manuscript should
+focus novelty claims, if ultimately justified, on the all-jump sharp gap,
+even avoided-crossing constants and the all-signing finite arithmetic
+obstruction, not on Bloch decomposition itself.
+
+See `LITERATURE_UPDATE_20260906.md` for the current bounded audit.
+
 ## Publication-strength boundary
 
-The paper may claim a genuine all-signing theorem only on the proved
-`N=3s`, odd `s>=7` family and the explicitly certified base cases.  It should
-not claim:
+Do not claim:
 
 - a closed formula for `m(N,s)` in general;
 - global optimality of the periodic parity-dependent family on arbitrary
   finite orders;
-- that every short odd chord-cycle length is obstructed;
+- obstruction for every short odd chord-cycle length;
 - phase-zero maximality for even Bloch fibers;
-- kernel-checked Lean coverage for files not actually compiled;
+- kernel-checked Lean coverage for uncompiled files;
 - publication priority before the broader periodic/magnetic operator audit is
   completed.
 
