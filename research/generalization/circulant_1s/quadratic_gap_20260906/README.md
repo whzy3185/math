@@ -28,29 +28,40 @@ The old frozen period-eight manuscript and `formal/TargetA` remain unchanged.
      `s^2 (8-M_s) -> pi^2`;
    - for every admissible even `N`, gives an explicit odd-jump finite signing
      with squared spectral radius below `8`.
-3. `QUADRATIC_GAP_THEOREM.md`
+3. `ODD_ORDER_ONE_DEFECT_OBSTRUCTION.md`
+   - tests the first natural attempt to remove the odd-`N` lift obstruction;
+   - proves by integer Rayleigh certificates that at `(N,s)=(21,7)` every
+     translated single-`Q`-defect near-alternating representative in both
+     holonomy/anchor sectors has `rho^2>8`;
+   - shows that odd-order coverage needs a multi-defect or genuinely odd-period
+     construction, not a single concentrated parity defect.
+4. `QUADRATIC_GAP_THEOREM.md`
    - upgrades the even-jump lower bound from `Omega(s^-3)` to `Omega(s^-2)`;
    - proves
      `1/(6 s (s+2)) <= 8-R_s <= 4 sin^2(pi/(s+2))`.
-4. `ENDPOINT_PI2_ASYMPTOTIC.md`
+5. `ENDPOINT_PI2_ASYMPTOTIC.md`
    - proves the sharp even endpoint limit
      `s^2 (8-rho(H_s(1))^2) -> pi^2`;
    - identifies the limiting soft-channel Dirichlet--Robin equation.
-5. `PHASE_SLIP_COUNTEREXAMPLE.md`
+6. `PHASE_SLIP_COUNTEREXAMPLE.md`
    - disproves the even-jump phase-zero conjecture Q7;
    - gives an exact rational/Sturm certificate at `s=10`.
-6. `FINITE_COMPARISON_LINEAR_THRESHOLD.md`
+7. `FINITE_COMPARISON_LINEAR_THRESHOLD.md`
    - improves the even-jump sufficient repetition threshold from
      `O(s^(3/2))` to `O(s)`.
-7. `verify_quadratic_gap_upgrade.py`
+8. `verify_quadratic_gap_upgrade.py`
    - exact symbolic checks for the even-jump generating-function identities;
    - exact Sturm verification of the `s=10` phase-slip certificate.
-8. `verify_odd_jump_gap.py`
+9. `verify_odd_jump_gap.py`
    - exact Chebyshev derivative identities for odd jumps;
    - numerical verification of the unique phase and sharp finite-`s` bounds;
    - symbolic verification of the first recorded asymptotic coefficients.
-9. `../../../formal/QuadraticGap/CoreInequalities.lean`
-   - separate Lean formalization track for the new proof;
+10. `verify_odd_order_obstruction.py`
+   - reproduces the four `(21,7)` obstruction certificates using exact SymPy
+     integer/rational arithmetic.
+11. `../../../formal/QuadraticGap/CoreInequalities.lean` and
+    `../../../formal/QuadraticGap/OddJumpCore.lean`
+   - separate Lean formalization track for the new all-`s` proof;
    - leaves the frozen `formal/TargetA` kernel untouched.
 
 ## Current theorem picture
@@ -75,8 +86,8 @@ with rigorous bracket
 
 `1/6 <= liminf s^2 ghat_s <= limsup s^2 ghat_s <= pi^2`.
 
-Therefore the only obstruction to a parity-free sharp `pi^2` theorem is the
-even phase-slip problem.
+Therefore the only obstruction to a parity-free sharp `pi^2` theorem in the
+**jump parameter** is the even phase-slip problem.
 
 ## Finite-order coverage
 
@@ -84,14 +95,15 @@ even phase-slip problem.
 - even `s`: the current explicit theorem covers `N=4sL`.
 
 Thus the jump parameter has been extended to all `s`, but order-compatibility
-has not yet been removed for every `N`.  Odd `N` and non-`4s`-divisible even
-orders are separate finite-ring extension problems.
+has not yet been removed for every `N`.  The exact `(21,7)` obstruction shows
+that the most naive odd-order repair—one concentrated alternating defect—is
+not sufficient.
 
 ## Next proof targets
 
 - close the even global sharp limit by a two-mode small-phase analysis;
-- investigate near-alternating defect words for odd `N` to remove the
-  period-two lift obstruction;
+- for odd `N`, replace the failed one-defect Ansatz by a balanced multi-defect
+  or odd-period construction and derive its transfer/scattering equation;
 - investigate seam/phase interpolation for even `s` when `4s` does not divide
   `N`;
 - formalize the odd Chebyshev critical-point lemmas in Lean;
