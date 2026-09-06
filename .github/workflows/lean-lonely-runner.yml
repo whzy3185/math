@@ -20,6 +20,7 @@ jobs:
           base64 -d /tmp/lonely_runner_lean_v0_3.b64 > /tmp/lonely_runner_lean_v0_3.zip
           unzip -q /tmp/lonely_runner_lean_v0_3.zip -d /tmp/lr_unpacked
           cp -a /tmp/lr_unpacked/lonely_runner_lean_v0_3/. formal/lean-lonely-runner/project/
+          python formal/lean-lonely-runner/patch_v1.py
           sha256sum /tmp/lonely_runner_lean_v0_3.zip
           test -f formal/lean-lonely-runner/project/lakefile.lean
           test -f formal/lean-lonely-runner/project/lean-toolchain
