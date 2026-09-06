@@ -23,15 +23,25 @@ jobs:
           python formal/lean-lonely-runner/patch_v1.py
           python formal/lean-lonely-runner/patch_v2.py
           python formal/lean-lonely-runner/patch_v3.py
+          python formal/lean-lonely-runner/patch_v4.py
           sha256sum /tmp/lonely_runner_lean_v0_3.zip
           test -f formal/lean-lonely-runner/project/lakefile.lean
           test -f formal/lean-lonely-runner/project/lean-toolchain
+      - name: Cache Lean toolchain and Lake packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.elan
+            formal/lean-lonely-runner/project/.lake/packages
+          key: lonely-runner-lean4331-mathlib4331-v1
       - name: Install elan and pinned Lean
         shell: bash
         run: |
           set -euo pipefail
-          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
-          sh /tmp/elan-init.sh -y --default-toolchain none
+          if [ ! -x "$HOME/.elan/bin/elan" ]; then
+            curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh -o /tmp/elan-init.sh
+            sh /tmp/elan-init.sh -y --default-toolchain none
+          fi
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           "$HOME/.elan/bin/elan" toolchain install leanprover/lean4:v4.33.1
           "$HOME/.elan/bin/elan" default leanprover/lean4:v4.33.1
