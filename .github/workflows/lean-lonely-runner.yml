@@ -26,16 +26,19 @@ jobs:
           python formal/lean-lonely-runner/patch_v4.py
           python formal/lean-lonely-runner/patch_v5.py
           python formal/lean-lonely-runner/patch_v6.py
+          python formal/lean-lonely-runner/patch_v7.py
           sha256sum /tmp/lonely_runner_lean_v0_3.zip
           test -f formal/lean-lonely-runner/project/lakefile.lean
           test -f formal/lean-lonely-runner/project/lean-toolchain
-      - name: Cache Lean toolchain and Lake packages
+      - name: Cache Lean toolchain and Lake state
         uses: actions/cache@v4
         with:
           path: |
             ~/.elan
             formal/lean-lonely-runner/project/.lake/packages
-          key: lonely-runner-lean4331-mathlib4331-v1
+            formal/lean-lonely-runner/project/.lake/build
+          key: lonely-runner-lean4331-mathlib4331-v2
+          save-always: true
       - name: Install elan and pinned Lean
         shell: bash
         run: |
