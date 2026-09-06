@@ -2,8 +2,8 @@
 
 Date: 2026-09-06.
 
-This note upgrades the finite-order analysis from isolated examples and
-one-defect families to an infinite all-signing theorem.
+This note gives an infinite all-signing finite-order theorem, now with the
+sharpened local margin `1/70`.
 
 ## 1. Main theorem
 
@@ -18,7 +18,7 @@ arbitrary edge signing of
 
 \[
  \boxed{
- \rho(A_\sigma)^2\ge 8+\frac1{1038}>8.}
+ \rho(A_\sigma)^2\ge 8+\frac1{70}>8.}
  \tag{1}
 \]
 
@@ -27,17 +27,16 @@ edge signings of `C_N(1,s)`, then
 
 \[
  \boxed{
- m(3s,s)^2\ge8+\frac1{1038}
+ m(3s,s)^2\ge8+\frac1{70}
  \qquad(s\ge7\text{ odd}).}
  \tag{2}
 \]
 
-Thus the line `N=3s` is a genuine arithmetic obstruction family.  This is not
-merely a period-compatibility failure of the alternating construction: no
-edge signing can enter the sub-`sqrt(8)` regime.
+Thus the line `N=3s` is a genuine arithmetic obstruction family.  No edge
+signing enters the sub-`sqrt(8)` regime.
 
-The proof has one finite computer-assisted lemma with exact integer witnesses,
-plus a structural signed-triangle argument.  The two short base cases
+The proof has one finite computer-assisted local lemma with exact integer
+witnesses, plus a structural signed-triangle argument.  The short cases
 `s=7,9` are independently covered by exact exhaustive certificates.
 
 ## 2. Hamilton gauge and width-three triangular strip
@@ -59,225 +58,197 @@ Write vertices as
 
 For fixed `j`, the three `s`-chords form a signed triangle.  Let its 3-by-3
 signed adjacency matrix be `B_j`.  Each `B_j` has zero diagonal and all three
-off-diagonal entries in `{+1,-1}`.  Hence there are exactly eight possible
-column states.
+off-diagonal entries in `{+1,-1}`, hence exactly eight possible states.
 
-Between columns `j` and `j+1` for `0<=j<s-1`, the step-one edges give the
-identity matching `I_3`.  The closing matching from column `s-1` to column
-`0` is an orthogonal signed cyclic permutation `S_alpha`.
+Between ordinary neighboring columns the step-one edges give `I_3`.  The
+closing matching from column `s-1` to column `0` is an orthogonal signed cyclic
+permutation `S_alpha`.
 
-For fixed `alpha`, the map from the `3s` Hamilton-gauge chord signs to the
-sequence
+For fixed `alpha`, the `3s` Hamilton-gauge chord signs are in bijection with
+the arbitrary triangle-state word
 
 \[
- (B_0,\ldots,B_{s-1})
+ (B_0,\ldots,B_{s-1}).
 \]
 
-is bijective: the three edge signs of each triangle are independent.  Thus
-this width-three model represents every switching class.
+Thus the width-three model represents every switching class.
 
 ## 3. Exact nine-column local rule
 
-Consider an open chain of nine signed-triangle columns
+For an open chain of nine signed-triangle columns let
 
 \[
- M(B_0,\ldots,B_8)=
- \begin{pmatrix}
- B_0&I&&&&\\
- I&B_1&I&&&\\
- &I&B_2&\ddots&&\\
- &&\ddots&\ddots&I&\\
- &&&I&B_8
- \end{pmatrix}.
+ M(B_0,\ldots,B_8)
 \]
 
-`verify_triangle_strip_local_rule.py` proves the following finite statement.
+be the block tridiagonal matrix with diagonal blocks `B_j` and identity
+matchings between successive columns.
 
-**Lemma 3S-L (nine-column rule).** For every choice of the eight-state
-triangle word `(B_0,...,B_8)`, either
+`verify_triangle_strip_local_rule.py` proves:
+
+**Lemma 3S-L (nine-column rule).** For every eight-state word
+`(B_0,...,B_8)`, either
 
 \[
- \|M\|^2\ge8+\frac1{1038},
+ \boxed{\|M\|^2\ge8+\frac1{70}}
  \tag{3}
 \]
 
 or the six middle transitions satisfy
 
 \[
- \boxed{
- B_{j+1}=-B_j\qquad(j=1,2,\ldots,6).}
+ \boxed{B_{j+1}=-B_j\qquad(j=1,2,\ldots,6).}
  \tag{4}
 \]
 
 ### Exact certification boundary
 
-The verifier does not trust floating eigenvalues for a pruning decision.
-Starting from the eight one-column states, it extends words recursively.
-Whenever a prefix is pruned, a floating eigensolver merely proposes an
-integer vector `w`; the script then checks exactly
+The verifier recursively extends words.  Floating arithmetic only proposes
+integer vectors.  A prefix is pruned only when exact integer arithmetic
+verifies
 
 \[
- w^T(M^2-8I)w>0
+ 70\,w^T(M^2-8I)w\ge w^Tw>0.
+ \tag{5}
 \]
 
-and, cross-multiplied over the integers,
+The counts of unpruned prefixes at lengths `1,...,9` are
 
 \[
- 1038\,w^T(M^2-8I)w\ge w^Tw.
-\tag{5}
+ 8,56,152,440,488,1016,656,1064,128.
+ \tag{6}
 \]
 
-The numbers of unpruned prefixes at lengths `1,...,9` are
+Every final survivor satisfies (4).  Hence every word violating (4) carries
+an exact local Rayleigh certificate for (3).
 
-\[
- 8,56,152,440,488,704,656,968,128.
-\tag{6}
-\]
-
-Every one of the final 128 survivors satisfies (4).  Therefore any
-nine-column word violating (4) was removed by an exact prefix witness and
-obeys (3).  Floating arithmetic can only fail to propose a witness and leave
-an extra survivor; it cannot make the exact inequality (5) pass falsely.
-
-This is the only finite-state computer-assisted ingredient needed for all
-odd `s>=11`.
+The clean constant `1/70` is close to the true finite-state boundary.  A
+numerical branch-and-bound search finds a violating 9-word with squared norm
+approximately `8.014397`, so `1/69` is already too strong for this local
+dichotomy.  This numerical observation is only a sharpness comment; the
+`1/70` theorem is certified by (5).
 
 ## 4. Straightening a window across the helical seam
 
-Take any nine consecutive cyclic columns of `C_(3s)(1,s)`.  When `s>=11`,
-these nine columns form a proper open principal subgraph: at least two columns
-remain outside the window.
+Take any nine consecutive cyclic columns of `C_(3s)(1,s)`.  For `s>=11`
+these form a proper open principal subgraph.
 
-If the window does not cross the Hamilton seam, its intercolumn matchings are
-already `I_3`, so Lemma 3S-L applies directly.
+A window not crossing the Hamilton seam already has identity intercolumn
+matchings.  If a window crosses the seam, conjugate all columns after the
+unique exceptional matching by the same signed permutation `S_alpha^T`.
+This straightens the seam matching to `I_3`; signed-permutation conjugation
+maps a signed triangle to another signed triangle and preserves norm.
 
-If it crosses the seam, its unique exceptional matching is the orthogonal
-signed permutation `S_alpha`.  Since the window is an open chain, conjugate
-all columns after that matching by the same signed permutation
-`S_alpha^T`.  This changes the seam matching to `I_3` and leaves every later
-matching equal to `I_3`.  Conjugation by a signed permutation maps a signed
-triangle to another signed triangle, so Lemma 3S-L again applies without
-changing the operator norm.
+Therefore every nine-column cyclic window obeys the same dichotomy (3)--(4).
 
-Thus every nine-column cyclic window has the same dichotomy: either it already
-carries the local margin (3), or its six middle transitions alternate after
-the obvious seam straightening.
+## 5. Absence of a local witness forces global alternation
 
-## 5. If no local witness exists, all bulk triangle states alternate
-
-Assume, toward a contradiction, that
+Assume for contradiction
 
 \[
- \rho(A_\sigma)^2<8+\frac1{1038}.
+ \rho(A_\sigma)^2<8+\frac1{70}.
  \tag{7}
 \]
 
-Then no nine-column principal window can satisfy (3), since compression
-cannot increase operator norm.  Hence every such window obeys the alternating
-rule (4).
-
-Choose windows so that each ordinary transition `j -> j+1`,
-`0<=j<s-1`, appears as one of the six middle transitions.  If a chosen window
-crosses the seam elsewhere, both columns of the ordinary transition receive
-the same signed-permutation conjugation, so the relation transforms back
-unchanged.  Therefore
+Then no nine-column principal window can satisfy (3).  Applying (4) in
+sliding windows forces every ordinary transition to alternate:
 
 \[
  \boxed{B_{j+1}=-B_j\qquad(0\le j<s-1).}
  \tag{8}
 \]
 
-Since `s` is odd, `s-1` is even, and (8) gives
+Since `s` is odd,
 
 \[
  B_{s-1}=B_0.
  \tag{9}
 \]
 
-Now choose a nine-column window in which the helical seam itself is one of the
-middle transitions.  Straightening its matching as in Section 4 and applying
-(4) gives
+Apply the local rule to a window in which the helical seam is a middle
+transition.  After straightening that matching, (4) gives
 
 \[
  S_\alpha B_0S_\alpha^T=-B_{s-1}=-B_0
  \tag{10}
 \]
 
-(up to replacing `S_alpha` by its transpose, which is immaterial below).
+(up to transposing `S_alpha`).
 
-## 6. A signed triangle cannot be orthogonally similar to its negative
+## 6. Signed-triangle trace obstruction
 
-For a signed triangle `B`, let its three edge signs be `u,v,w`.  A direct
-three-step closed-walk count gives
+If a signed triangle `B` has edge signs `u,v,w`, then
 
 \[
  \operatorname{tr}(B^3)=6uvw\in\{+6,-6\}.
  \tag{11}
 \]
 
-Orthogonal similarity preserves `tr(B^3)`, while
+Orthogonal similarity preserves this trace, whereas
 
 \[
  \operatorname{tr}((-B)^3)=-\operatorname{tr}(B^3).
 \]
 
-Therefore no signed triangle is orthogonally similar to its negative.
-Equation (10) is impossible.
+Thus no signed triangle is orthogonally similar to its negative.  Equation
+(10) is impossible.  This proves (1) for every odd `s>=11`.
 
-This contradiction proves (1) for every odd `s>=11`.
-
-Equivalently, one may use the two possible triangle spectra
+Equivalently, the two signed-triangle spectra are
 
 \[
  \{2,-1,-1\},\qquad\{-2,1,1\},
 \]
 
-which are exchanged rather than preserved by `B -> -B`.
+and negation exchanges rather than preserves them.
 
-## 7. The two short odd cases
-
-The nine-column sliding argument requires a proper nine-column window, so the
-short resonance cases are certified separately.
+## 7. Short odd base cases
 
 ### `s=7`, `N=21`
 
-`C21_S7_GLOBAL_OBSTRUCTION.md` exhausts all switching classes (after rotation
-reduction) and proves the stronger bound
+`C21_S7_GLOBAL_OBSTRUCTION.md` exhausts all switching classes and proves the
+stronger bound
 
 \[
  \rho(A)^2\ge8+\frac{18}{131}.
 \]
 
+Since `18/131>1/70`, Theorem 3S holds here.
+
 ### `s=9`, `N=27`
 
-`verify_c27_s9_all_signings.py` gives a pruned exact exhaustive certificate.
-After Hamilton gauge there are
+`verify_c27_s9_all_signings.py` gives a prefix-pruned exact exhaustive
+certificate.  Hamilton gauge has
 
 \[
  2\cdot8^9=268,435,456
 \]
 
-triangle-state/holonomy representatives.  Exact open-prefix witnesses reduce
-the only unresolved length-eight prefixes to 968; their eight final
-extensions are checked in both holonomy sectors, so only
+triangle-state/holonomy representatives.  Quantitative prefix pruning at
+margin `1/70` leaves `1064` length-eight prefixes.  Their eight extensions in
+both holonomy sectors require only
 
 \[
- 2\cdot968\cdot8=15,488
+ 2\cdot1064\cdot8=17,024
 \]
 
-full cyclic matrices require final certification.  Every pruning and final
-certificate obeys the uniform exact margin `1/1038`.
+final cyclic exact checks.  All pruning and final certificates verify
 
-Thus (1) also holds for `s=7,9`, completing the proof for every odd `s>=7`.
+\[
+ 70\,w^T(A^2-8I)w\ge w^Tw>0.
+\]
+
+Thus (1) holds for `s=9` as well.
+
+Combining Sections 5--7 proves Theorem 3S for every odd `s>=7`.
 
 ## 8. Consequences
 
-The project now has two qualitatively different sharp statements.
+The project now has two complementary phenomena.
 
 ### Continuous/jump-parameter side
 
-For every integer jump `s>=2`, the parity-dependent explicit periodic family
-has Bloch edge below `sqrt(8)` and
+Every integer jump `s>=2` has an explicit periodic Bloch family below
+`sqrt(8)` with
 
 \[
  s^2(8-\widehat R_s)\to\pi^2.
@@ -285,30 +256,32 @@ has Bloch edge below `sqrt(8)` and
 
 ### Finite arithmetic side
 
-For the infinite resonance line
+On the infinite resonance line
 
 \[
  N=3s,\qquad s\ge7\text{ odd},
 \]
 
-**every** finite signing remains uniformly above `sqrt(8)` by (1).
+**every** finite signing remains a fixed positive distance above `sqrt(8)`:
 
-Hence passage from the periodic Bloch problem to a finite circulant is not a
-mere sampling issue.  The arithmetic topology of the chord cycles can create
-a robust spectral obstruction that no signing removes.
+\[
+ \rho(A)^2\ge8+\frac1{70}.
+\]
 
-## 9. Next research directions
+Thus finite-order passage is not merely sampling the periodic Bloch edge.  The
+short odd chord cycles create a robust arithmetic/topological obstruction.
 
-1. Determine the exact values `m(3s,s)` or their large-`s` asymptotics.
+## 9. Next directions
+
+1. Determine the exact values or large-`s` asymptotics of `m(3s,s)`.
 2. Classify other short odd chord-cycle lengths
-   `L=N/gcd(N,s)` using the same finite-state strip method.
-3. Identify whether `L=5,7,...` have all-signing obstruction subfamilies or
-   only defeat low-defect constructions.
-4. Replace the exact 9-column finite-state lemma by a hand proof, if a compact
-   matrix inequality can be found.
-5. Formalize the eight-state local lemma and the signed-triangle trace
-   obstruction in Lean.
+   `L=N/gcd(N,s)` by width-`L` strip methods.
+3. Seek a hand matrix inequality replacing the exact nine-column state
+   certificate.
+4. Formalize the signed-triangle trace argument and finite-state certificate
+   interface in Lean.
+5. Compare the finite strip mechanism with magnetic/flux-phase operator
+   literature before making priority claims.
 
-Theorem 3S is a theorem about all signings; unlike the preceding explicit
-Bloch-family results, it is a genuine partial classification result for the
-finite minimization problem.
+Unlike the explicit Bloch-family theorems, Theorem 3S is an all-signing
+partial classification result for the finite minimization problem.
