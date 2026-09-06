@@ -1,4 +1,4 @@
-# Unified all-`s` sub-eight theorem for `C_N(1,s)`
+# Unified all-`s` sharp quadratic-gap theorem for `C_N(1,s)`
 
 Date: 2026-09-06.
 
@@ -24,9 +24,9 @@ corresponding periodic operator, and put
  \widehat g_s=8-\widehat R_s.
 \]
 
-## 2. Main theorem
+## 2. Uniform all-jump theorem
 
-**Theorem (all jumps).** For every integer `s>=2`,
+**Theorem A (all jumps).** For every integer `s>=2`,
 
 \[
  \boxed{\widehat R_s<8.}
@@ -53,71 +53,73 @@ Consequently
 
 without any parity restriction on `s`.
 
-### Proof
-
-For even `s`, (1)--(2) are exactly the quadratic-gap theorem already proved
-in `QUADRATIC_GAP_THEOREM.md`.
-
-For odd `s`, `ODD_JUMP_SHARP_GAP.md` proves
+For even `s`, (1)--(2) are the result of `QUADRATIC_GAP_THEOREM.md`.
+For odd `s`, `ODD_JUMP_SHARP_GAP.md` proves the stronger estimates
 
 \[
- \widehat g_s=g_s^{\rm odd}\ge\frac4{1+s^2}
+ \widehat g_s\ge\frac4{1+s^2},
+ \qquad
+ \widehat g_s\le4\sin^2\frac\pi{2s},
 \]
 
-and
+which imply (2).
+
+## 3. Sharp parity-free asymptotic
+
+The leading constant is now known on both parity subsequences.
+
+For odd jumps, `ODD_JUMP_SHARP_GAP.md` proves
 
 \[
- \widehat g_s\le4\sin^2\frac\pi{2s}.
-\]
-
-The lower estimate in (2) follows from
-
-\[
- \frac4{1+s^2}\ge\frac1{6s(s+2)},
-\]
-
-and, for odd `s>=3`,
-
-\[
- \frac\pi{2s}<\frac\pi{s+2}<\frac\pi2,
-\]
-
-so monotonicity of sine gives the upper estimate in (2).  Strict positivity
-of the gap proves (1), and (2) proves (3).
-
-## 3. Odd subsequence has the sharp constant
-
-The odd-jump theorem is substantially sharper than the unified envelope:
-
-\[
- \boxed{
- s^2\widehat g_s\to\pi^2
- \quad(s\to\infty,\ s\text{ odd}).}
+ s^2\widehat g_s\to\pi^2.
 \tag{4}
 \]
 
-For the even subsequence, the phase-zero edge also has constant `pi^2`, but
-the global phase-slip problem remains open.  The current rigorous even
-bracket is
+For even jumps, `EVEN_GLOBAL_PI2_THEOREM.md` proves the same limit despite
+the exact phase slip:
 
 \[
- \frac16\le
- \liminf_{s\to\infty,\ s\ even}s^2\widehat g_s
- \le
- \limsup_{s\to\infty,\ s\ even}s^2\widehat g_s
- \le\pi^2.
+ s^2\widehat g_s\to\pi^2.
 \tag{5}
 \]
 
-Thus the remaining obstacle to a parity-free sharp limit
+Therefore
 
 \[
- s^2\widehat g_s\to\pi^2
+ \boxed{
+ s^2(8-\widehat R_s)\longrightarrow\pi^2
+ \qquad(s\to\infty)}
+\tag{6}
 \]
 
-is entirely on the even subsequence.
+through **all integer jumps**.
 
-## 4. Finite `C_N(1,s)` consequence
+This is the sharp all-`s` theorem for the explicit parity-dependent family.
+
+## 4. What the even phase slip does
+
+For even `s=2r`, the maximizing phase is not always phase zero;
+`PHASE_SLIP_COUNTEREXAMPLE.md` gives an exact `s=10` Sturm certificate.
+Nevertheless `EVEN_GLOBAL_PI2_THEOREM.md` proves that if `h_r` is any global
+maximizing square-root phase parameter chosen in `[0,2]`, then
+
+\[
+ r^2(2-h_r)\to0.
+\tag{7}
+\]
+
+Hence the phase drift cannot alter the leading `pi^2/s^2` gap.  The stronger
+second-order numerical prediction
+
+\[
+ r^2\phi_r\to\frac\pi{4\sqrt2},
+ \qquad
+ r^4(e_r-g_{2r})\to\frac{\pi^2}{32}
+\]
+
+remains a separate conjectural refinement.
+
+## 5. Finite `C_N(1,s)` consequence
 
 The construction gives explicit finite signings as follows.
 
@@ -129,28 +131,40 @@ The construction gives explicit finite signings as follows.
 
 Hence every jump `s>=2` has infinitely many finite circulants `C_N(1,s)`
 with an explicit signing of spectral radius below `sqrt(8)`.  For odd jumps
-the result covers every admissible even order rather than only a periodic
-subsequence.
+the result covers every admissible even order.
 
-## 5. Research significance
+The order-compatibility problem is genuinely separate.  In particular,
+`ODD_ORDER_ONE_DEFECT_OBSTRUCTION.md` proves exactly that the most naive
+odd-order repair—one concentrated alternating defect—fails at
+`(N,s)=(21,7)` in both holonomy/anchor sectors.
 
-The earlier project state had a parity split:
+## 6. Research significance
 
-- even jumps required a new defect construction to move the Bloch edge
-  below `8`;
-- odd jumps had a qualitative interior maximum below `8`, but no uniform
-  large-`s` gap theorem.
+The parity mechanisms are different but meet at the same sharp scale.
 
-The two new quantitative results now produce a single all-jump statement at
-quadratic scale.  The natural manuscript organization is therefore no
-longer "even-jump extension" but "parity-resolved all-jump construction":
-odd jumps are the exactly tractable reference model and even jumps are the
-defect/phase-slip model.
+- Odd jumps are exactly tractable: the alternating-flux dispersion has a
+  unique interior optimizer satisfying a Chebyshev equation and
+  `pi^2/s^2` gap.
+- Even jumps require an antipodal defect construction, a reduced continuant
+  determinant, a quadratic inverse-trace estimate, and a phase-localization
+  argument; the global phase can slip, but only below leading order.
 
-## 6. Remaining scope boundary
+Thus the natural manuscript story is now a **parity-resolved all-jump sharp
+theory**, not merely an even-jump extension.
 
-This theorem does not yet cover every order `N`: the odd alternating word
-requires even `N`, while the current even antipodal construction is stated
-for `N` divisible by `4s`.  Removing these order-compatibility restrictions
-is a separate finite-ring problem and should not be conflated with the
-all-`s` jump-parameter theorem above.
+## 7. Remaining scope boundary
+
+The sharp jump-parameter problem is closed for this explicit family, but the
+following are still open:
+
+1. global minimization over all signings, i.e. a closed formula for
+   `m(N,s)`;
+2. finite-order coverage for odd `N`;
+3. finite-order coverage for even `s` when `4s` does not divide `N`;
+4. the second-order even phase-slip constants;
+5. full Lean formalization of the all-`s` analytic proof;
+6. publication-priority comparison with periodic/magnetic operator
+   literature beyond the currently audited signed-circulant sources.
+
+These should not be conflated with the now-proved sharp all-`s` Bloch-gap
+asymptotic (6).
