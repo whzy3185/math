@@ -31,6 +31,7 @@ jobs:
           sh /tmp/elan-init.sh -y --default-toolchain none
           echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
           "$HOME/.elan/bin/elan" toolchain install leanprover/lean4:v4.33.1
+          "$HOME/.elan/bin/elan" default leanprover/lean4:v4.33.1
           "$HOME/.elan/bin/lean" --version
           "$HOME/.elan/bin/lake" --version
       - name: Resolve dependencies
