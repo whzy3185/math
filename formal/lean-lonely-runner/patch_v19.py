@@ -4,7 +4,7 @@ p = Path('formal/lean-lonely-runner/project/LonelyRunner/FirstLaurent.lean')
 s = p.read_text()
 
 start = s.index('theorem eval_qBase')
-end = s.index('/-- Signed-integer version', start)
+end = s.index('noncomputable def firstCertificateAtInt', start)
 
 replacement = r'''theorem eval_qBase (v : Fin 4 → ℤ) (i : Fin 4) (t : ℝ) :
     evalSparse v t (qBase i) = ((2 - 2 * Real.cos (phaseAngleInt v i t) : ℝ) : ℂ) := by
