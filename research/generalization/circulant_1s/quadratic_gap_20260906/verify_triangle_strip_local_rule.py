@@ -5,20 +5,24 @@ A column state is one of the 8 signed adjacency matrices of a triangle.  An
 open strip has diagonal triangle blocks and identity matchings between
 neighboring columns.
 
-The script recursively extends words.  Whenever the open strip already has
-operator norm squared > 8, a floating eigensolver is used only to PROPOSE a
-small integer vector.  The pruning decision is made solely by the exact
-integer check
+The script recursively extends words.  A floating eigensolver is used only to
+PROPOSE an integer vector.  A word is pruned only when integer arithmetic
+certifies the quantitative inequality
 
-    w^T (M^2 - 8 I) w > 0.
+    70 * w^T (M^2 - 8 I) w >= w^T w > 0.
 
-A successful run proves the following finite lemma:
+A successful run proves:
 
-If a 9-column open strip has norm squared <= 8, then for positions 1,...,6
-(0-based transitions) its triangle states satisfy B_(j+1) = -B_j.
+For every 9-column open strip, either
 
-Moreover every word violating this conclusion has an exact local witness with
-Rayleigh excess at least 1/1038.
+    ||M||^2 >= 8 + 1/70,
+
+or its six middle transitions satisfy B_(j+1) = -B_j.
+
+The rational constant 1/70 is close to the actual finite-state boundary.  A
+numerical branch-and-bound search finds a violating 9-word with squared norm
+about 8.014397, so the stronger clean constant 1/69 is not valid for this
+local dichotomy.
 """
 
 from __future__ import annotations
@@ -28,8 +32,9 @@ import numpy as np
 
 
 STATES = list(itertools.product((+1, -1), repeat=3))
-EXPECTED_COUNTS = (8, 56, 152, 440, 488, 704, 656, 968, 128)
-SCALES = (8, 12, 16, 24, 32, 48, 64, 96)
+EXPECTED_COUNTS = (8, 56, 152, 440, 488, 1016, 656, 1064, 128)
+SCALES = (32, 48, 64, 96, 128, 192, 256, 384, 512)
+MARGIN_DENOMINATOR = 70
 
 
 def triangle(state: tuple[int, int, int]) -> np.ndarray:
@@ -54,12 +59,13 @@ def open_strip(word: tuple[int, ...]) -> np.ndarray:
     return M
 
 
-def exact_positive_witness(M: np.ndarray):
-    """Return exact integer certificate q>0, or None if proposer fails."""
+def exact_margin_witness(M: np.ndarray):
+    """Return an exact integer 1/70-margin certificate, or None."""
     K = M @ M - 8 * np.eye(M.shape[0], dtype=np.int64)
     vals, vecs = np.linalg.eigh(K.astype(float))
     for eig_index in np.argsort(vals)[::-1][:3]:
-        if vals[eig_index] <= 1e-10:
+        # This floating check only avoids pointless rounding attempts.
+        if vals[eig_index] <= 1.0 / MARGIN_DENOMINATOR + 1e-8:
             continue
         direction = vecs[:, eig_index]
         for scale in SCALES:
@@ -68,15 +74,12 @@ def exact_positive_witness(M: np.ndarray):
                 continue
             q = int(w @ (K @ w))
             norm = int(w @ w)
-            if q > 0:
-                # Uniform exact margin q/norm >= 1/1038.
-                assert 1038 * q >= norm
+            if q > 0 and MARGIN_DENOMINATOR * q >= norm:
                 return w, q, norm
     return None
 
 
 def complement(index: int) -> int:
-    # With the lexicographic STATES ordering, sign reversal is index 7-i.
     assert STATES[7 - index] == tuple(-x for x in STATES[index])
     return 7 - index
 
@@ -91,7 +94,7 @@ def main() -> None:
         for prefix in survivors:
             for state in range(8):
                 word = prefix + (state,)
-                cert = exact_positive_witness(open_strip(word))
+                cert = exact_margin_witness(open_strip(word))
                 if cert is None:
                     next_survivors.append(word)
                 else:
@@ -102,8 +105,6 @@ def main() -> None:
     assert tuple(counts) == EXPECTED_COUNTS
     assert len(survivors) == 128
 
-    # Every unpruned 9-word has exact sign reversal in the six middle
-    # transitions: 1->2, ..., 6->7.
     for word in survivors:
         for j in range(1, 7):
             assert word[j + 1] == complement(word[j])
@@ -112,7 +113,7 @@ def main() -> None:
     print(f"exactly pruned extensions: {pruned}")
     print("9-column survivors: 128")
     print("forced middle rule: B_(j+1) = -B_j for j=1,...,6")
-    print("uniform forbidden-word margin: rho^2 >= 8 + 1/1038")
+    print("uniform forbidden-word margin: rho^2 >= 8 + 1/70")
     print("signed-triangle strip local rule passed")
 
 
