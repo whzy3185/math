@@ -27,18 +27,19 @@ jobs:
           python formal/lean-lonely-runner/patch_v5.py
           python formal/lean-lonely-runner/patch_v6.py
           python formal/lean-lonely-runner/patch_v7.py
+          python formal/lean-lonely-runner/patch_v8.py
           sha256sum /tmp/lonely_runner_lean_v0_3.zip
           test -f formal/lean-lonely-runner/project/lakefile.lean
           test -f formal/lean-lonely-runner/project/lean-toolchain
-      - name: Cache Lean toolchain and Lake state
-        uses: actions/cache@v4
+      - name: Restore Lean toolchain and Lake state
+        id: lean-cache
+        uses: actions/cache/restore@v4
         with:
           path: |
             ~/.elan
             formal/lean-lonely-runner/project/.lake/packages
             formal/lean-lonely-runner/project/.lake/build
-          key: lonely-runner-lean4331-mathlib4331-v2
-          save-always: true
+          key: lonely-runner-lean4331-mathlib4331-v3
       - name: Install elan and pinned Lean
         shell: bash
         run: |
@@ -66,3 +67,12 @@ jobs:
         run: |
           set -euo pipefail
           ! grep -RInE '(^|[[:space:]])(sorry|admit)([[:space:]]|$)|by[[:space:]]+native_decide' formal/lean-lonely-runner/project/LonelyRunner*.lean formal/lean-lonely-runner/project/LonelyRunner || exit 1
+      - name: Save Lean toolchain and Lake state
+        if: always() && steps.lean-cache.outputs.cache-hit != 'true'
+        uses: actions/cache/save@v4
+        with:
+          path: |
+            ~/.elan
+            formal/lean-lonely-runner/project/.lake/packages
+            formal/lean-lonely-runner/project/.lake/build
+          key: lonely-runner-lean4331-mathlib4331-v3
