@@ -36,6 +36,7 @@ jobs:
           python formal/lean-lonely-runner/patch_v10.py
           python formal/lean-lonely-runner/patch_v11.py
           python formal/lean-lonely-runner/patch_v12.py
+          python formal/lean-lonely-runner/patch_v13.py
           sha256sum /tmp/lonely_runner_lean_v0_3.zip
           test -f formal/lean-lonely-runner/project/lakefile.lean
           test -f formal/lean-lonely-runner/project/lean-toolchain
@@ -47,7 +48,7 @@ jobs:
             ~/.elan
             formal/lean-lonely-runner/project/.lake/packages
             formal/lean-lonely-runner/project/.lake/build
-          key: lonely-runner-lean4331-mathlib4331-v3
+          key: lonely-runner-lean4331-mathlib4331-v4
       - name: Install elan and pinned Lean
         shell: bash
         run: |
@@ -83,4 +84,4 @@ jobs:
             ~/.elan
             formal/lean-lonely-runner/project/.lake/packages
             formal/lean-lonely-runner/project/.lake/build
-          key: lonely-runner-lean4331-mathlib4331-v3
+          key: lonely-runner-lean4331-mathlib4331-v4
