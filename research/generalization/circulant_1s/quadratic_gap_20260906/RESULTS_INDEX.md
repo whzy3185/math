@@ -53,6 +53,7 @@ package without changing its proved statements.
 | F15 | canonical one-defect family on `N=11s`: favorable sector is sub-eight for all odd `s<=21`; every sector fails at `s=23`; for odd `s>=25`, `rho^2>=8+1/192` | `L11_L15_L17_ONE_DEFECT_STAIRCASE.md`, `verify_l11_l15_l17_one_defect_staircase.py` | Exact endpoint family theorem + fixed seam witnesses |
 | F16 | canonical one-defect family on `N=15s`: favorable sector is sub-eight for all odd `s<=31`; every sector has `rho^2>=8+1/695` for odd `s>=33` | `L11_L15_L17_ONE_DEFECT_STAIRCASE.md`, `verify_l11_l15_l17_one_defect_staircase.py` | Exact family theorem with endpoint LDL + fixed seam witnesses |
 | F17 | canonical one-defect family on `N=17s`: favorable sector is sub-eight for all odd `s<=35`; every sector has `rho^2>=8+1/1368` for odd `s>=37` | `L11_L15_L17_ONE_DEFECT_STAIRCASE.md`, `verify_l11_l15_l17_one_defect_staircase.py` | Exact family theorem with endpoint LDL + fixed seam witnesses |
+| F18 | canonical one-defect family on `N=19s`: favorable sector is sub-eight for all odd `s<=39`; every sector has `rho^2>=8+1/2062` for odd `s>=41` | `L11_L15_L17_ONE_DEFECT_STAIRCASE.md`, `verify_l11_l15_l17_one_defect_staircase.py` | Exact family theorem with endpoint LDL + fixed seam witnesses |
 
 ## C. Corrected one-defect resonance picture
 
@@ -68,14 +69,14 @@ L & \text{last favorable odd }s & \text{first all-sector failure }s\\ \hline
 11&21&23\\
 13&27&29\\
 15&31&33\\
-17&35&37.
+17&35&37\\
+19&39&41.
 \end{array}
 \]
 
-The first five rows happen to lie near the simple rule `s=2L`; `L=13` gives
-an exact counterexample to the old extrapolation, and the `L=15,17` rows show
-that the correction is a genuine staircase rather than a single exceptional
-case.
+The first five rows lie near the simple rule `s=2L`; `L=13` gives an exact
+counterexample to the old extrapolation, and the later rows show that the
+correction is a genuine staircase rather than a single exceptional case.
 
 Using F14, numerical scans for larger odd `L` show further staircase jumps.
 For example, the endpoint minimum suggests the `2L+3 / 2L+5` step begins near
@@ -103,8 +104,9 @@ Independently reproduced in the current analysis environment:
 - F13: exact rational endpoint LDL is positive through `s=27`, while the `s=29` endpoint has one negative pivot; the fixed 364-vertex seam window gives exact `1/940` witnesses for every sector from `s=29` onward;
 - F14: the full threshold block pattern agrees entry-by-entry with the analytic formula in representative cases, and full/endpoint negative inertia agrees across both sides of the threshold;
 - F15: exact LDL is positive for the favorable `L=11` sector through `s=21`; all four endpoint sectors have one negative direction at `s=23`; the 24-column tail window certifies `1/192` from `s=25` onward;
-- F16: exact LDL is positive for the favorable `L=15` sector through `s=31`; the 32-column seam window gives the exact tail witness `q=1510`, `||w||^2=1048602`, hence margin `1/695` from `s=33` onward;
-- F17: exact LDL is positive for the favorable `L=17` sector through `s=35`; all four endpoint sectors have one negative direction at `s=37`; the 36-column window gives `q=766`, `||w||^2=1047612`, hence margin `1/1368`.
+- F16: exact LDL is positive for the favorable `L=15` sector through `s=31`; the 32-column seam window gives `q=1510`, `||w||^2=1048602`, hence margin `1/695` from `s=33` onward;
+- F17: exact LDL is positive for the favorable `L=17` sector through `s=35`; all four endpoint sectors have one negative direction at `s=37`; the 36-column window gives `q=766`, `||w||^2=1047612`, hence margin `1/1368`;
+- F18: exact LDL is positive for the favorable `L=19` sector through `s=39`; all four endpoint sectors have one negative direction at `s=41`; the 40-column window gives `q=2034`, `||w||^2=4193544`, hence margin `1/2062`.
 
 A stronger randomized/pair-flip search on `C_55(1,11)` has not found a
 sub-eight signing; the best observed squared radius was about `8.1034` in
@@ -127,6 +129,6 @@ No new file in `formal/QuadraticGap/` is called kernel-checked until a real `lak
 The project does **not** give a closed formula for `m(N,s)` for arbitrary
 pairs.  The exact finite all-signing classification currently completed is
 the `sqrt(8)` threshold on `N=3s`, plus the universal flat `m=2`
-classification.  F10--F17 deepen the canonical one-defect resonance theory
+classification.  F10--F18 deepen the canonical one-defect resonance theory
 and provide an exact finite-dimensional reduction, but they do not yet
 classify all signings on `L>=5` resonance lines.
