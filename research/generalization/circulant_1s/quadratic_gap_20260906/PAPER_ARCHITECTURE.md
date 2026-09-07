@@ -1,24 +1,25 @@
-# Manuscript architecture: sharp Bloch gaps and arithmetic obstructions
+# Manuscript architecture: sharp Bloch gaps and an arithmetic resonance transition
 
-Date: 2026-09-06
+Current status date: 2026-09-07
 Branch: `research/quadratic-gap-upgrade`
 
 ## Working title
 
-**Sharp Bloch Gaps and Arithmetic Obstructions in Signed Circulants `C_N(1,s)`**
+**Sharp Bloch Gaps and an Arithmetic Phase Transition in Signed Circulants**
 
 Alternative:
 
-**Parity, Phase Slip, and Finite Resonance in Signed Circulants**
+**Parity, Phase Slip, and Finite Resonance in Signed `C_N(1,s)`**
 
-## Central message
+## Central contribution package
 
-The manuscript now has two complementary theorem packages.
+The paper can now be organized around two complementary theorems, neither of
+which depends on an open conjecture.
 
-### Package I — periodic/Bloch sharp asymptotics
+### Main periodic theorem
 
 For an explicit parity-dependent periodic signing for every integer jump
-`s>=2`, prove
+`s>=2`, with squared Bloch radius `Rhat_s`,
 
 \[
  Rhat_s<8,
@@ -26,94 +27,84 @@ For an explicit parity-dependent periodic signing for every integer jump
  s^2(8-Rhat_s)\to\pi^2.
 \]
 
-Odd and even jumps reach the same leading constant by different mechanisms.
-For even `s=2r`, the true edge has a nonzero phase slip with
+Odd and even jumps use different sign patterns but have the same sharp
+leading constant.
+
+For even `s=2r`, the endpoint is not exactly phase-maximizing.  The phase
+slip is proved to satisfy
 
 \[
- \phi_r=
- \frac\pi{4\sqrt2\,r^2}
- -\frac{3\pi}{16r^3}
- +o(r^{-3}),
+ r^2\phi_r\to\frac\pi{4\sqrt2},
+ \qquad
+ r^4(e_r-g_{2r})\to\frac{\pi^2}{32}.
 \]
 
-and
+This turns the exact `s=10` phase-zero counterexample into a quantitative
+avoided-crossing theorem.
+
+### Main finite theorem
+
+Let `m(N,s)` minimize spectral radius over all edge signings of `C_N(1,s)`.
+On the full resonance line `N=3s`,
 
 \[
- e_r-g_{2r}
- =\frac{\pi^2}{32r^4}
- -\frac{3\pi^2}{32\sqrt2\,r^5}
- +o(r^{-5}).
+ \boxed{
+ m(3s,s)<\sqrt8
+ \iff s\text{ is even, or }s\in\{3,5\}.}
 \]
 
-### Package II — finite arithmetic obstruction
-
-For the infinite resonance line
+For every odd `s>=7`, the stronger uniform all-signing obstruction is
 
 \[
- N=3s,\qquad s\ge7\text{ odd},
+ m(3s,s)^2\ge8+\frac1{70}.
 \]
 
-prove for **every edge signing**
+The short odd cases `s=3,5` have exact positive-definiteness certificates,
+and even `s` has an explicit antiperiodic alternating signing below the
+threshold.  Hence odd `s=7` is a genuine threshold transition, not a proof
+artifact.
+
+The universal flat theorem can be stated alongside this:
 
 \[
- \boxed{\rho(A)^2\ge8+1/70.}
+ m(N,s)=2\iff N=2s+2,
+ \qquad
+ N\ne2s+2\Rightarrow m(N,s)\ge\sqrt5.
 \]
 
-Thus every jump has a periodic sub-`sqrt(8)` Bloch construction, while an
-infinite family of finite rings admits no sub-`sqrt(8)` signing at all.
+## Proposed theorem hierarchy
 
-## Theorem hierarchy
-
-### Theorem A — all-jump explicit Bloch family
+### Theorem A — all-jump explicit periodic family
 
 Define the parity-dependent construction:
 
-- odd `s`: period-two alternating flux;
-- even `s`: primitive period-`4s` antipodal defect word.
+- odd `s`: period-two alternating-flux word;
+- even `s`: primitive period-`4s` antipodal word.
 
-Prove `Rhat_s<8` and the common quadratic envelope
-
-`1/(6s(s+2)) <= 8-Rhat_s <= 4 sin^2(pi/(s+2))`.
+Prove `Rhat_s<8` and the common quadratic envelope.
 
 ### Theorem B — odd-jump exact model
 
-Derive the exact Fourier dispersion, prove uniqueness of the odd optimizer,
-obtain
+Prove the exact Fourier dispersion, unique maximizing phase, Chebyshev
+critical equation, and `s^2(8-M_s)->pi^2`.
 
-`s U_(s-1)(cos(2 theta_s))=1`,
+### Theorem C — even antipodal determinant and quadratic gap
 
-and conclude `s^2(8-M_s)->pi^2`.
+Develop chirality, the reduced threshold matrix, continuants, positive
+generating functions and the inverse-trace quadratic lower bound.
 
-### Theorem C — even antipodal determinant theorem
+### Proposition D — exact phase-zero failure
 
-Develop chirality, the reduced threshold matrix and the exact continuant
-characteristic determinant for every even `s`.
+Give the `s=10` rational/Sturm certificate showing an interior phase beats
+zero phase.
 
-### Theorem D — even quadratic gap
+### Theorem E — even global sharp leading constant
 
-Use the two-Chebyshev factorization, covariance/mixture inequality,
-Pell-square derivative kernel, coefficient convolution and inverse trace to
-prove the `Theta(s^-2)` gap.
+Use phase localization and the limiting Robin equation to prove
 
-### Theorem E — phase-zero endpoint asymptotic
+` s^2(8-R_s)->pi^2 ` through even jumps.
 
-Prove the endpoint Robin limit and
-
-`s^2(8-rho(H_s(1))^2)->pi^2`.
-
-### Proposition F — exact phase-zero failure
-
-Give the exact `s=10` Sturm certificate showing that the true even Bloch edge
-need not be at zero phase.
-
-### Theorem G — even global sharp limit
-
-Use hyperbolic localization, exclusion of the soft hyperbolic branch and the
-oscillatory Robin limit to prove
-
-`s^2(8-R_s)->pi^2` for even `s`.
-
-### Theorem H — second-order phase slip
+### Theorem F — even second-order phase slip
 
 Prove
 
@@ -121,135 +112,97 @@ Prove
 
 and
 
-`r^4(e_r-g_(2r))->pi^2/32`.
+`r^4(e_r-g_(2r)) -> pi^2/32`,
 
-Interpret this as a two-soft-mode avoided crossing with effective law
+with the local effective parabola
 
 `z^2-(pi/(2sqrt2))z`.
 
-### Theorem I — first finite-`r` correction
-
-Prove
-
-`phi_r = pi/(4sqrt2 r^2) - 3pi/(16r^3) + o(r^-3)`
-
-and the corresponding `r^-5` gain correction.
-
-### Corollary J — parity-free sharp Bloch limit
+### Corollary G — parity-free sharp Bloch theorem
 
 Combine odd and even subsequences:
 
-`s^2(8-Rhat_s)->pi^2`.
+` s^2(8-Rhat_s)->pi^2 `.
 
-### Theorem K — exact finite base obstruction at `(21,7)`
+### Theorem H — universal flat finite minimum
 
-Exhaust all switching classes after cyclic `Q`-necklace reduction and prove
+State and prove
 
-`rho(A)^2 >= 1066/131`.
+`m(N,s)=2 iff N=2s+2`, otherwise `m(N,s)>=sqrt5`.
 
-### Lemma L — quantitative nine-column signed-triangle rule
+### Theorem I — exact `N=3s` threshold phase transition
 
-For an open width-three strip of nine arbitrary signed triangles, prove by
-exact finite certification that either
+Prove
 
-`||M||^2 >= 8+1/70`
+`m(3s,s)<sqrt8 iff s even or s in {3,5}`.
 
-or the six middle transitions satisfy `B_(j+1)=-B_j`.
+Proof pieces:
 
-The integer witness search leaves exactly 128 final survivors.  The constant
-`1/70` is close to the local finite-state boundary: a violating word occurs
-numerically near `8.014397`, so `1/69` is already too strong for this lemma.
+- even `s`: exact antiperiodic Fourier bound
+  `rho^2<=8-4 sin^2(pi/(3s))`;
+- `s=3,5`: exact Sylvester certificates;
+- odd `s>=7`: uniform all-signing obstruction `8+1/70`.
 
-### Proposition M — exact finite base obstruction at `(27,9)`
+### Lemma J — nine-column signed-triangle rule
 
-After Hamilton gauge there are
-
-`2*8^9 = 268,435,456`
-
-triangle-state/holonomy representatives.  Quantitative exact prefix pruning
-at margin `1/70` leaves 1064 length-eight prefixes; their eight extensions in
-both holonomy sectors require only
-
-`2*1064*8 = 17,024`
-
-final cyclic checks.  This proves `rho(A)^2>=8+1/70` for every signing of
-`C_27(1,9)`.
-
-### Theorem N — infinite `N=3s` all-signing obstruction
-
-For every odd `s>=7`, prove
-
-\[
- m(3s,s)^2\ge8+1/70.
-\]
-
-For `s>=11`, apply Lemma L to sliding nine-column windows.  Absence of a
-local witness forces all ordinary signed-triangle columns to alternate
-`B,-B`.  Across the helical seam this would require an orthogonal similarity
-`SBS^T=-B`, impossible because
-
-`tr(B^3)=+/-6`
-
-changes sign under `B -> -B`.
-
-This theorem is the finite-arithmetic counterpart to the Bloch sharp theorem.
+For an open nine-column width-three strip, either a local integer Rayleigh
+certificate gives squared norm at least `8+1/70`, or the six middle
+transitions alternate exactly.  Sliding this rule around an odd helical cycle
+forces a signed triangle to be orthogonally similar to its negative, which is
+impossible because `tr(B^3)=+/-6` changes sign.
 
 ## Suggested section plan
 
-1. Introduction: periodic versus finite signed-circulant minimization
-2. Gauge and universal squared-operator algebra
-3. Odd jumps: exact Fourier model and sharp `pi^2` gap
-4. Even jumps: antipodal chirality and exact continuant determinant
-5. Positive generating functions and quadratic inverse-trace gap
-6. Endpoint Robin asymptotics
-7. Exact phase-zero failure
-8. Global even sharp `pi^2` theorem
-9. Avoided crossing and higher phase-slip asymptotics
-10. Width-three representation of the resonance line `N=3s`
-11. Quantitative nine-column finite-state lemma
-12. Base cases `C_21(1,7)` and `C_27(1,9)`
-13. Infinite all-signing `N=3s` obstruction
-14. Other finite orders: constructions, resonances and open classification
-15. Formal verification and reproducibility boundary
-16. Literature comparison and open problems
+1. **Introduction** — fixed-graph signing minimization; statement of both main
+   phenomena.
+2. **Switching, Hamilton gauge and finite/Bloch models**.
+3. **Odd jumps: exact Fourier theory**.
+4. **Even jumps: antipodal chirality and continuant determinant**.
+5. **Quadratic gap and sharp `pi^2` leading asymptotics**.
+6. **Phase slip and the second-order avoided-crossing law**.
+7. **Finite minima: the exact flat line**.
+8. **Width-three resonance model on `N=3s`**.
+9. **Exact nine-column forbidden-word lemma**.
+10. **Short cases and complete `N=3s` threshold classification**.
+11. **Reproducibility and formalization boundary**.
+12. **Literature positioning and open problems**.
 
-## Positioning
+## Evidence/reproducibility presentation
 
-The block-Jacobi/direct-integral viewpoint is standard periodic-operator
-framework and should be cited as such.  The closest direct signed-circulant
-comparison is Suvagiya's 2026 `C_n(1,2)` preprint.  The manuscript should
-focus novelty claims, if ultimately justified, on the all-jump sharp gap,
-even avoided-crossing constants and the all-signing finite arithmetic
-obstruction, not on Bloch decomposition itself.
+The manuscript must distinguish:
 
-See `LITERATURE_UPDATE_20260906.md` for the current bounded audit.
+- analytic proofs;
+- exact finite computer-assisted lemmas/theorems;
+- numerical experiments used only for discovery/audit;
+- uncompiled Lean source.
 
-## Publication-strength boundary
+The finite `N=3s` proof is computer-assisted only through bounded exact
+integer certificates.  The final accepted inequalities are not floating
+claims.  On 2026-09-07 the key local rule and both exhaustive base cases were
+independently rerun in the current analysis environment.
+
+## Higher-order phase-slip refinement
+
+`EVEN_THIRD_ORDER_PHASE_SLIP_REFINEMENT.md` derives candidate/provisional
+`r^-3` phase and `r^-5` gain corrections.  These are **not required** for the
+paper's main claims and should remain in an appendix or future-work section
+until the uniform `o(r^-1)` remainder is audited at the same level as the
+second-order theorem.
+
+## Publication boundary
 
 Do not claim:
 
-- a closed formula for `m(N,s)` in general;
+- an exact formula for `m(N,s)` for every pair;
 - global optimality of the periodic parity-dependent family on arbitrary
-  finite orders;
-- obstruction for every short odd chord-cycle length;
-- phase-zero maximality for even Bloch fibers;
-- kernel-checked Lean coverage for uncompiled files;
-- publication priority before the broader periodic/magnetic operator audit is
-  completed.
+  finite rings;
+- novelty of switching, Floquet theory, block-Jacobi methods, or flux-phase
+  ideas themselves;
+- a complete finite classification beyond the explicitly proved `N=3s`
+  threshold and flat line;
+- final priority before the broader magnetic/flux-phase audit is complete.
 
-## Formalization plan
-
-Keep the new Lean development separate from frozen `formal/TargetA`.
-Priority order:
-
-1. odd-jump algebra/trigonometric core;
-2. even Chebyshev/Pell/inverse-trace chain;
-3. global phase localization;
-4. second-order bootstrap and phase-slip constants;
-5. signed-triangle identities (`tr(B^3)=6uvw`);
-6. finite eight-state local-rule certificate interface;
-7. all-`s` Bloch assembly;
-8. `N=3s` structural obstruction assembly.
-
-Exact Sturm, Rayleigh and finite-state witnesses should remain reproducible
-finite certificates even before full Lean import.
+Closest direct 2026 comparison remains Suvagiya's `C_n(1,2)` work, together
+with the companion parity-family framework.  The current safe distinct
+package is arbitrary-jump sharp Bloch asymptotics, even phase-slip constants,
+and the exact all-signing arithmetic transition on `N=3s`.
