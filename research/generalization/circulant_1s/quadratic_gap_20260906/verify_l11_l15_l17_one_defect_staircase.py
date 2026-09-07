@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Exact certification for the L=11,15,17 one-defect staircase theorems.
+"""Exact certification for the L=11,15,17,19 one-defect staircase theorems.
 
 Positive side: exact rational LDL on the full s=3 threshold and on the exact
 4L endpoint Schur matrices for all subsequent favorable odd s through the last
@@ -12,7 +12,6 @@ Floating eigensolvers only propose integer vectors; acceptance is exact.
 
 from __future__ import annotations
 
-import math
 import numpy as np
 import sympy as sp
 
@@ -137,7 +136,7 @@ def exact_seam_margin(
     half_width: int,
     denominator: int,
 ) -> None:
-    scales = (64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536)
+    scales = (64, 96, 128, 192, 256, 384, 512, 768, 1024, 1536, 2048)
     for epsilon in (+1, -1):
         for alpha in (+1, -1):
             B = seam_window(L, first_s, half_width, epsilon, alpha)
@@ -146,7 +145,7 @@ def exact_seam_margin(
                 seam_window(L, first_s + 2, half_width, epsilon, alpha),
             )
             K = B @ B - 8 * np.eye(B.shape[0], dtype=np.int64)
-            vals, vecs = np.linalg.eigh(K.astype(float))
+            _, vecs = np.linalg.eigh(K.astype(float))
             direction = vecs[:, -1]
 
             found = False
@@ -165,21 +164,22 @@ def exact_seam_margin(
 
 
 def main() -> None:
-    # L=11: transition 21/23; quantitative fixed-window tail starts at 25.
     exact_positive_side(11, 21)
     endpoint_negative_all_sectors(11, 23)
     exact_seam_margin(11, 25, 12, 192)
 
-    # L=15: transition 31/33 and fixed window already applies at 33.
     exact_positive_side(15, 31)
     exact_seam_margin(15, 33, 16, 695)
 
-    # L=17: transition 35/37 and fixed window applies at 37.
     exact_positive_side(17, 35)
     endpoint_negative_all_sectors(17, 37)
     exact_seam_margin(17, 37, 18, 1368)
 
-    print("L=11,15,17 staircase certificates passed")
+    exact_positive_side(19, 39)
+    endpoint_negative_all_sectors(19, 41)
+    exact_seam_margin(19, 41, 20, 2062)
+
+    print("L=11,15,17,19 staircase certificates passed")
 
 
 if __name__ == "__main__":
