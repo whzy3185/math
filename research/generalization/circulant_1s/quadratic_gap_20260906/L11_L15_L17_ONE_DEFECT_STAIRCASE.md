@@ -1,4 +1,4 @@
-# Exact one-defect staircase at `L=11,15,17`
+# Exact one-defect staircase at `L=11,15,17,19`
 
 Date: 2026-09-07.
 
@@ -120,6 +120,36 @@ we have the uniform tail estimate
 
 Thus the transition lies exactly between `s=35` and `s=37`.
 
+## Theorem 19S
+
+For `L=19`, the favorable sector satisfies
+
+\[
+ \boxed{\rho(A)^2<8\qquad 3\le s\le39,\ s\text{ odd}.}
+\]
+
+At `s=41`, all four endpoint matrices have exactly one negative LDL pivot.
+The fixed 40-column seam window (20 columns on each side) is independent of
+odd `s>=41` and yields in every sector
+
+\[
+ w^T(B^2-8I)w=2034,
+ \qquad
+ w^Tw=4193544.
+\]
+
+Since
+
+\[
+ 2062\cdot2034\ge4193544,
+\]
+
+\[
+ \boxed{\rho(A)^2\ge8+\frac1{2062}\qquad(s\ge41\text{ odd}).}
+\]
+
+Hence the transition lies exactly between `s=39` and `s=41`.
+
 ## Exact certification
 
 The companion verifier
@@ -134,8 +164,8 @@ performs:
 3. exact inertia checks at the first negative endpoint where used;
 4. exact integer quadratic-form checks for all fixed seam witnesses.
 
-Floating eigensolvers are used only to *propose* the stored integer seam
-vectors during discovery.  The theorem checks are integer/rational.
+Floating eigensolvers are used only to *propose* the integer seam vectors.
+The theorem checks are integer/rational.
 
 ## Corrected staircase
 
@@ -151,13 +181,14 @@ L & \text{last favorable odd }s & \text{first all-sector failure }s\\ \hline
 11&21&23\\
 13&27&29\\
 15&31&33\\
-17&35&37.
+17&35&37\\
+19&39&41.
 \end{array}
 \]
 
-The jump at `L=13` already disproves the old exact law `s_c=2L`; the new rows
-show that the phenomenon is genuinely staircase-like rather than a single
-integer formula.
+The jump at `L=13` disproves the old exact law `s_c=2L`; the later rows show
+that the correction is a genuine staircase rather than a single exceptional
+case.
 
 These are theorems only for the canonical one-defect family.  For `L>=5`,
 all-signing repair beyond the one-defect threshold remains open.
