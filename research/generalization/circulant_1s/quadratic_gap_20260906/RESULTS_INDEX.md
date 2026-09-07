@@ -1,24 +1,24 @@
 # Current theorem / evidence index
 
-Date: 2026-09-06
+Current status date: 2026-09-07
 Branch: `research/quadratic-gap-upgrade`
 
-This index supersedes the 2026-09-05 status **for this workstream only**.  The
-older repository-wide index remains a historical snapshot and should not be
-used to infer that Q6/Q7 are still open.
+The current synthesis is `FINAL_THEOREM_PACKAGE_20260907.md`.
 
 ## Evidence labels
 
 - **Analytic theorem** — readable mathematical proof present; not yet
   independently refereed.
-- **Exact finite computer-assisted theorem** — exhaustive finite step whose
-  correctness is decided by integer/rational identities; floating arithmetic
-  may only propose witnesses.
-- **Analytic + exact finite lemma** — structural proof with bounded exact
-  finite-state component.
-- **Lean source, uncompiled here** — source exists but no current Lean/Lake
-  build record.
-- **Numerical exploration** — evidence only; never a theorem dependency.
+- **Exact finite computer-assisted theorem** — finite exhaustive/pruned step
+  whose acceptance is decided by integer/rational identities; floating
+  arithmetic may only propose witnesses.
+- **Analytic + exact finite lemma** — structural infinite proof with a bounded
+  exact finite-state component.
+- **Exact finite positive certificate** — explicit matrix with exact
+  positive-definiteness or algebraic certificate.
+- **Lean source, uncompiled here** — source exists but no current successful
+  `lake build` record.
+- **Numerical exploration** — evidence only.
 
 ## A. Periodic/Bloch results
 
@@ -28,30 +28,41 @@ used to infer that Q6/Q7 are still open.
 | B2 | even quadratic envelope `1/(6s(s+2)) <= 8-R_s <= 4 sin^2(pi/(s+2))` | `QUADRATIC_GAP_THEOREM.md` | Analytic theorem |
 | B3 | odd `s`: exact alternating-flux optimizer and `s^2(8-M_s)->pi^2` | `ODD_JUMP_SHARP_GAP.md` | Analytic theorem |
 | B4 | even phase-zero endpoint has sharp constant `pi^2` | `ENDPOINT_PI2_ASYMPTOTIC.md` | Analytic theorem |
-| B5 | Q7 is false: exact interior phase beats zero phase at `s=10` | `PHASE_SLIP_COUNTEREXAMPLE.md` | Exact Sturm certificate |
+| B5 | Q7 false: exact interior phase beats zero phase at `s=10` | `PHASE_SLIP_COUNTEREXAMPLE.md` | Exact Sturm certificate |
 | B6 | even global edge satisfies `s^2(8-R_s)->pi^2` | `EVEN_GLOBAL_PI2_THEOREM.md` + `GLOBAL_PI2_LOCALIZATION_LEMMA.md` | Analytic theorem |
 | B7 | all jumps: parity-dependent explicit family has `s^2(8-Rhat_s)->pi^2` | `ALL_S_UNIFIED_THEOREM.md` | Analytic theorem assembly |
 | B8 | even phase slip: `r^2 phi_r->pi/(4sqrt2)` and `r^4(e_r-g_(2r))->pi^2/32` | `EVEN_SECOND_ORDER_PHASE_SLIP_THEOREM.md` + `SECOND_ORDER_LOCAL_IMPLICIT_LEMMA.md` | Analytic theorem |
-| B9 | first correction through `r^-3` in phase and `r^-5` in gain | `EVEN_THIRD_ORDER_PHASE_SLIP_REFINEMENT.md` | Analytic theorem |
+| B9 | proposed first correction through `r^-3` in phase / `r^-5` in gain | `EVEN_THIRD_ORDER_PHASE_SLIP_REFINEMENT.md` | Analytic refinement pending separate uniform-remainder hostile audit; not in final headline theorem |
 
 ## B. Finite-order results
 
 | ID | Result | Entry | Evidence |
 |---|---|---|---|
+| F0 | all admissible pairs: `m(N,s)=2 iff N=2s+2`; otherwise `m(N,s)>=sqrt5` | `../extension_20260905/FLAT_MINIMUM_AND_CHIRAL_CRITERION.md` | Analytic theorem |
 | F1 | `C_21(1,7)`: every signing has `rho^2>=1066/131>8` | `C21_S7_GLOBAL_OBSTRUCTION.md`, `verify_c21_s7_all_signings.py` | Exact finite computer-assisted theorem |
-| F2 | one-defect `C_(3s)(1,s)`, odd `s>=7`: `rho^2>=193/24` | `N3S_ONE_DEFECT_LOCAL_OBSTRUCTION.md`, `verify_n3s_one_defect_local_obstruction.py` | Analytic + four exact local witnesses |
+| F2 | one-defect `C_(3s)(1,s)`, odd `s>=7`: `rho^2>=193/24` | `N3S_ONE_DEFECT_LOCAL_OBSTRUCTION.md`, `verify_n3s_one_defect_local_obstruction.py` | Analytic + exact local witnesses |
 | F3 | nine-column signed-triangle rule: violation of middle alternation gives `rho^2>=8+1/70` | `verify_triangle_strip_local_rule.py` | Exact finite computer-assisted lemma |
-| F4 | `C_27(1,9)`: every signing has `rho^2>=8+1/70` | `verify_c27_s9_all_signings.py` | Exact prefix-pruned exhaustive theorem |
-| F5 | all odd `s>=7`: every signing of `C_(3s)(1,s)` has `rho^2>=8+1/70` | `N3S_GLOBAL_OBSTRUCTION.md` | Analytic + exact finite lemma, with exact base cases |
+| F4 | `C_27(1,9)`: every signing has `rho^2>=8+1/70` | `C27_S9_GLOBAL_OBSTRUCTION.md`, `verify_c27_s9_all_signings.py` | Exact prefix-pruned exhaustive theorem |
+| F5 | all odd `s>=7`: every signing of `C_(3s)(1,s)` has `rho^2>=8+1/70` | `N3S_GLOBAL_OBSTRUCTION.md` | Analytic + exact finite lemma/base cases |
 | F6 | odd `s`, even admissible `N`: period-two signing gives `rho^2<8` | Task60 + `ODD_JUMP_SHARP_GAP.md` | Analytic Fourier theorem |
 | F7 | even `s`, `N=4sL`: antipodal family gives `rho^2<8`; comparison threshold `O(s)` repetitions | `FINITE_COMPARISON_LINEAR_THRESHOLD.md` | Analytic theorem |
+| F8 | `C_9(1,3)` and `C_15(1,5)` admit explicit `rho^2<8` signings | `N3S_THRESHOLD_CLASSIFICATION.md`, `verify_n3s_short_threshold.py` | Exact finite positive Sylvester certificates |
+| F9 | complete resonance-line threshold: `m(3s,s)<sqrt8` iff `s` even or `s in {3,5}` | `N3S_THRESHOLD_CLASSIFICATION.md` | Analytic assembly of F3--F8 + exact short certificates |
 
-The local constant `1/70` is close to the true nine-column finite-state
-boundary: numerical branch-and-bound finds a violating word near
-`8.014397`, so the clean constant `1/69` is already too strong for F3.
-That sharpness observation is numerical; F3--F5 use exact `1/70` witnesses.
+## C. Exact rerun status on 2026-09-07
 
-## C. Formalization status
+Independently reproduced in the current analysis environment:
+
+- F3 survivor counts: `8,56,152,440,488,1016,656,1064,128`; all 128 final
+  survivors obey the forced middle alternation;
+- F4: all `17,024` final cyclic candidates certified after exact prefix
+  pruning;
+- F1: all `49,940` admissible necklaces / `199,760` Hamilton-gauge
+  representatives certified; weakest generated exact excess `36/262=18/131`;
+- F8: every leading principal minor in both short witnesses is a positive
+  exact integer.
+
+## D. Formalization status
 
 | File | Scope | Status |
 |---|---|---|
@@ -60,29 +71,24 @@ That sharpness observation is numerical; F3--F5 use exact `1/70` witnesses.
 | `../../../formal/QuadraticGap/PhaseSlipConstants.lean` | exact `sqrt2`/Robin/phase-slip constants | Lean source, uncompiled here |
 | `../../../formal/TargetA/` | frozen period-eight kernel | pre-existing; not modified |
 
-No new file in `formal/QuadraticGap/` should be called kernel-checked until a
-real `lake build` succeeds with the declared toolchain.
+No new file in `formal/QuadraticGap/` is called kernel-checked until a real
+`lake build` succeeds with the declared toolchain.
 
-## D. Exploratory only
-
-- `explore_even_phase_slip_second_order.py` — numerical discovery.
-- `verify_second_order_phase_slip.py` — numerical regression of proved
-  asymptotics; audit only.
-- `explore_odd_order_resonances.py` and `ODD_ORDER_RESONANCE_MAP.md` — map
-  other short chord-cycle lengths; not theorem evidence beyond separately
-  certified results.
-
-## E. Superseded conjecture status
+## E. Exploratory / superseded status
 
 - old Q5 / cubic gap target — superseded by B2;
-- old Q6 `s^2(8-R_s)->pi^2` — **proved** by B3/B6/B7;
-- old Q7 phase-zero global maximizer — **disproved** by B5;
-- second-order phase-slip constants — **proved** by B8 and refined by B9.
+- old Q6 `s^2(8-R_s)->pi^2` — proved by B3/B6/B7;
+- old Q7 phase-zero global maximizer — disproved by B5;
+- second-order phase-slip constants — proved by B8;
+- `ODD_ORDER_RESONANCE_MAP.md` remains exploratory for chord-cycle lengths
+  other than the now-classified `L=3` line;
+- B9 is deliberately excluded from the final theorem package pending a
+  separate uniform-remainder audit.
 
 ## F. Publication boundary
 
-The results do **not** give a closed formula for `m(N,s)` for arbitrary
-pairs, nor global optimality of the periodic parity-dependent family on every
-finite ring.  The current infinite all-signing finite classification is F5
-(`N=3s`, odd `s>=7`), together with exact base/isolated results such as F1 and
-F4.
+The project now has a final central theorem package, but it does **not** give
+a closed formula for `m(N,s)` for arbitrary pairs or global optimality of the
+periodic parity-dependent family on every finite ring.  The exact finite
+classification currently completed is the `sqrt(8)` threshold on `N=3s`,
+plus the universal flat `m=2` classification.
