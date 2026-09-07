@@ -1,144 +1,135 @@
-# All-`s` sharp quadratic-gap and finite-obstruction workstream
+# Final all-`s` quadratic-gap and finite-resonance workstream
 
 Branch: `research/quadratic-gap-upgrade`
-Date: 2026-09-06
+Current status date: 2026-09-07
 
-This workstream has two complementary main results:
+The current endpoint is `FINAL_THEOREM_PACKAGE_20260907.md`.
 
-1. a sharp periodic/Bloch theory for explicit signings for every jump
-   `s>=2`;
-2. a genuine finite-order all-signing obstruction family on `N=3s` for odd
-   `s>=7`.
+## Headline results
 
-The frozen period-eight manuscript and `formal/TargetA` remain unchanged.
+### 1. Sharp periodic/Bloch theory for every jump
 
-## Headline Bloch result
-
-For the parity-dependent explicit periodic family, with squared Bloch radius
+For an explicit parity-dependent periodic family, with squared Bloch radius
 `Rhat_s` and gap `ghat_s=8-Rhat_s`,
 
 \[
- \boxed{s^2\widehat g_s\to\pi^2}
+ \boxed{Rhat_s<8\quad(s\ge2),}
+\]
+
+and
+
+\[
+ \boxed{s^2\,ghat_s\to\pi^2}
 \]
 
 through all integer jumps.
 
-For even `s=2r`, the phase slip is resolved beyond leading order:
+Odd `s` uses the period-two alternating-flux family; even `s` uses the
+primitive period-`4s` antipodal defect family.
+
+For even `s=2r`, the first nonzero phase-slip scale is also proved:
 
 \[
- \phi_r=
- \frac\pi{4\sqrt2\,r^2}
- -\frac{3\pi}{16r^3}
- +o(r^{-3}),
+ \boxed{r^2\phi_r\to\frac\pi{4\sqrt2},}
+ \qquad
+ \boxed{r^4(e_r-g_{2r})\to\frac{\pi^2}{32}.}
 \]
+
+The exact `s=10` Sturm certificate shows that the phase slip is real; the
+second-order theorem shows it changes the gap only at order `r^-4`.
+
+### 2. Exact finite flat minimum
+
+For every admissible finite `C_N(1,s)`,
 
 \[
- e_r-g_{2r}
- =\frac{\pi^2}{32r^4}
- -\frac{3\pi^2}{32\sqrt2\,r^5}
- +o(r^{-5}).
+ \boxed{m(N,s)=2\iff N=2s+2,}
 \]
 
-The first soft pair obeys the avoided-crossing law
+and otherwise every signing has radius at least `sqrt(5)`.
 
-\[
- r^4\bigl(g_{2r}(z/r^2)-e_r\bigr)
- \to z^2-\frac\pi{2\sqrt2}z.
-\]
+### 3. Complete `sqrt(8)` threshold classification on `N=3s`
 
-## Headline finite-order result
-
-Let `m(N,s)` be the minimum spectral radius over all edge signings of
-`C_N(1,s)`.  The triangular-strip theorem now proves the sharpened bound
+For every integer `s>=2`,
 
 \[
  \boxed{
- m(3s,s)^2\ge 8+\frac1{70}>8
- \qquad(s\ge7\text{ odd}).}
+ m(3s,s)<\sqrt8
+ \iff s\text{ is even, or }s\in\{3,5\}.}
 \]
 
-Thus every odd resonance pair `(N,s)=(3s,s)`, `s>=7`, is an all-signing
-obstruction to the sub-`sqrt(8)` regime.
+More precisely:
 
-The proof splits into:
+- `s=2`: `m(6,2)=2`;
+- even `s>=4`: `sqrt(5)<=m(3s,s)<sqrt(8)` by an explicit antiperiodic
+  alternating signing;
+- `s=3,5`: exact Sylvester certificates give `sqrt(5)<=m(3s,s)<sqrt(8)`;
+- odd `s>=7`: every signing satisfies
+  \[
+  \boxed{m(3s,s)^2\ge8+1/70.}
+  \]
 
-- `s=7`: exhaustive exact switching-class certificate with stronger margin
-  `18/131`;
-- `s=9`: exact prefix-pruned exhaustive certificate covering all
-  `2*8^9=268,435,456` Hamilton-gauge representatives at margin `1/70`;
-- odd `s>=11`: exact nine-column signed-triangle finite-state lemma plus a
-  structural seam contradiction using `tr(B^3)`.
+Thus odd `s=7` is the genuine threshold where the resonance line becomes an
+all-signing super-`sqrt(8)` obstruction.
 
-The nine-column local rule says that either a window already has
-`rho^2>=8+1/70`, or its six middle triangle transitions are exactly
-`B_(j+1)=-B_j`.  The clean `1/70` constant is close to the actual local
-finite-state boundary; `1/69` is numerically too strong for that local lemma.
+## Main files
 
-## Current result map
+- `FINAL_THEOREM_PACKAGE_20260907.md` — current theorem package and scope.
+- `N3S_THRESHOLD_CLASSIFICATION.md` — exact iff classification on `N=3s`.
+- `verify_n3s_short_threshold.py` — exact Sylvester certificates for `s=3,5`.
+- `ALL_S_UNIFIED_THEOREM.md` — all-jump sharp periodic theorem.
+- `ODD_JUMP_SHARP_GAP.md` — odd exact optimizer and sharp `pi^2` gap.
+- `QUADRATIC_GAP_THEOREM.md` — even `Theta(s^-2)` envelope.
+- `EVEN_GLOBAL_PI2_THEOREM.md` — even global leading constant.
+- `EVEN_SECOND_ORDER_PHASE_SLIP_THEOREM.md` — proved phase scale and
+  `pi^2/32` gain.
+- `SECOND_ORDER_LOCAL_IMPLICIT_LEMMA.md` — `mu=O(r^-4)` bootstrap and local
+  inverse estimate.
+- `PHASE_SLIP_COUNTEREXAMPLE.md` — exact `s=10` Sturm counterexample to
+  phase-zero maximality.
+- `N3S_GLOBAL_OBSTRUCTION.md` — uniform all-signing obstruction for odd
+  `s>=7` on `N=3s`.
+- `C21_S7_GLOBAL_OBSTRUCTION.md` and `C27_S9_GLOBAL_OBSTRUCTION.md` — exact
+  short base cases.
+- `verify_triangle_strip_local_rule.py` — exact nine-column finite-state
+  lemma with margin `1/70`.
+- `RESULTS_INDEX.md` — evidence/status ledger.
 
-### Periodic/Bloch theory
+## Exact reproducibility rerun on 2026-09-07
 
-- `ALL_S_UNIFIED_THEOREM.md` — all jumps, common quadratic envelope and
-  parity-free sharp `pi^2` limit.
-- `ODD_JUMP_SHARP_GAP.md` — exact odd dispersion, unique optimizer and sharp
-  `pi^2` limit.
-- `QUADRATIC_GAP_THEOREM.md` — even `Theta(s^-2)` gap.
-- `ENDPOINT_PI2_ASYMPTOTIC.md` — even phase-zero `pi^2` endpoint.
-- `PHASE_SLIP_COUNTEREXAMPLE.md` — exact `s=10` Sturm certificate.
-- `EVEN_GLOBAL_PI2_THEOREM.md` — global even sharp leading constant.
-- `GLOBAL_PI2_LOCALIZATION_LEMMA.md` — explicit leading localization.
-- `EVEN_SECOND_ORDER_PHASE_SLIP_THEOREM.md` — phase scale and `pi^2/32`
-  gain.
-- `SECOND_ORDER_LOCAL_IMPLICIT_LEMMA.md` — `mu=O(r^-4)` bootstrap.
-- `EVEN_THIRD_ORDER_PHASE_SLIP_REFINEMENT.md` — first finite-`r` correction.
+The current analysis environment independently reproduced:
 
-### Finite-order arithmetic theory
+- the nine-column survivor counts
+  `8,56,152,440,488,1016,656,1064,128` and forced alternation for all 128
+  final survivors;
+- all `17,024` final cyclic `C_27(1,9)` checks at exact margin `1/70`;
+- all `199,760` Hamilton-gauge representatives of `C_21(1,7)`, with weakest
+  generated exact Rayleigh excess `18/131`;
+- all positive leading principal minors for the explicit `C_9(1,3)` and
+  `C_15(1,5)` sub-`sqrt(8)` witnesses.
 
-- `C21_S7_GLOBAL_OBSTRUCTION.md` — all-signing exact obstruction at `(21,7)`.
-- `verify_c21_s7_all_signings.py` — 49,940 `Q` necklaces / 199,760 gauge
-  representatives, exact integer witnesses.
-- `verify_c27_s9_all_signings.py` — quantitative prefix-pruned exact
-  certificate at margin `1/70` for all `C_27(1,9)` signings.
-- `verify_triangle_strip_local_rule.py` — exact nine-column eight-state rule,
-  margin `1/70`.
-- `N3S_GLOBAL_OBSTRUCTION.md` — infinite all-signing theorem
-  `m(3s,s)^2>=8+1/70` for every odd `s>=7`.
-- `N3S_ONE_DEFECT_LOCAL_OBSTRUCTION.md` — simpler 18-vertex local proof for
-  the one-defect subfamily, margin `1/24`.
-- `ODD_ORDER_RESONANCE_MAP.md` / `explore_odd_order_resonances.py` —
-  seam-safe exploratory map for other short chord-cycle lengths.
+Floating eigensolvers in the finite obstruction scripts are witness proposers
+only; theorem decisions are exact integer/rational inequalities.
 
-### Literature / formalization / reproducibility
+## Evidence boundary
 
-- `LITERATURE_UPDATE_20260906.md` — updated boundary versus Suvagiya's
-  `C_n(1,2)` paper and general block-Jacobi theory.
-- `RESULTS_INDEX.md` — current theorem/evidence status.
-- `../../../formal/QuadraticGap/` — separate Lean track including
-  `PhaseSlipConstants.lean`; not kernel-compiled in the current environment.
-- Finite exact scripts use floating eigensolvers only as witness proposers;
-  certification/pruning decisions are integer quadratic inequalities.
+- `EVEN_THIRD_ORDER_PHASE_SLIP_REFINEMENT.md` derives the next `r^-3/r^-5`
+  constants, but this refinement is intentionally kept outside the final
+  headline theorem until its uniform `o(r^-1)` remainder bookkeeping receives
+  a separate hostile audit.
+- New `formal/QuadraticGap/` Lean sources remain uncompiled in the current
+  environment; they are not kernel-checked claims.
+- The final theorem package does not give an exact formula for `m(N,s)` for
+  every admissible pair.
+- Publication priority remains subject to the current literature boundary,
+  especially Suvagiya's 2026 `C_n(1,2)` papers and general magnetic/block-
+  Jacobi frameworks.
 
-## Research picture
+## Remaining research beyond the final package
 
-The project now separates two effects that initially looked like period
-compatibility:
-
-- **periodic Bloch edge:** every jump admits a sub-`sqrt(8)` explicit periodic
-  signing with sharp gap `pi^2/s^2`;
-- **finite arithmetic topology:** the whole odd line `N=3s`, `s>=7`, admits no
-  sub-`sqrt(8)` signing at all and in fact stays uniformly above by `1/70` in
-  squared radius.
-
-## Next targets
-
-1. Determine exact values or large-`s` asymptotics of `m(3s,s)`.
-2. Classify other chord-cycle lengths `L=N/gcd(N,s)`, especially `L=5,7,9`.
-3. Seek a hand matrix proof replacing the nine-column finite-state
-   certificate.
-4. Remove the `4s | N` restriction for the even explicit construction where
-   possible.
-5. Continue Lean formalization of the signed-triangle obstruction and the
-   phase-slip bootstrap.
-6. Extend the magnetic/flux-phase literature audit before priority claims.
-
-No general closed formula for `m(N,s)` and no final priority claim are made.
+1. exact values/asymptotics of `m(3s,s)` within the classified regimes;
+2. other chord-cycle lengths `N/gcd(N,s)` such as `5,7,9`;
+3. a hand matrix inequality replacing the nine-column finite-state lemma;
+4. even-jump finite-order compatibility beyond `4s | N`;
+5. full Lean compilation/formalization;
+6. broader magnetic/flux-phase priority audit.
