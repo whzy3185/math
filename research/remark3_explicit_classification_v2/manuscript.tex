@@ -1,0 +1,472 @@
+\documentclass[UTF8,11pt,a4paper,fontset=fandol]{ctexart}
+\usepackage[margin=24mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,enumitem,microtype}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\setlength{\headheight}{15pt}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{Remark 3：整函数解的分类与刚性}
+\fancyhead[R]{修订研究稿 v2}\fancyfoot[C]{\thepage}
+\setlength{\parskip}{3pt}\setlist{nosep}\emergencystretch=2em
+\newtheorem{theorem}{定理}[section]
+\newtheorem{lemma}[theorem]{引理}
+\newtheorem{corollary}[theorem]{推论}
+\newtheorem{proposition}[theorem]{命题}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{定义}
+\newtheorem{example}[theorem]{例}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{注}
+\newcommand{\C}{\mathbb C}\newcommand{\N}{\mathbb N}
+\newcommand{\dd}{\mathrm d}\newcommand{\OO}{\mathcal O}
+\title{带多项式因子的乘积型偏微分方程\\整函数解的完整分类与不可约情形的精确计数}
+\author{\texttt{whzy3185/math} 研究稿\\\small 作者署名待确认}
+\date{2026 年 9 月 8 日\quad 修订版 v2}
+\begin{document}\maketitle
+\begin{abstract}
+研究可逆常系数方向下的整函数方程
+\[
+\prod_{i=1}^n\left(\sum_{j=1}^n a_{ij}u_{z_j}\right)^{\mu_i}=p(z)e^{g(z)},
+\qquad A\in GL_n(\C),\quad \mu_i\in\N_{>0}.
+\]
+对非零多项式 $p$ 和多项式 $g$，不预设任何增长阶条件。通过具有共同例外集的对数导数估计，证明全部解自动具有有限增长；其梯度在混合偏导图的各连通分量上具有共同多项式指数。由此得到全部解的必要充分规范形、有限代数判据及显式积分恢复公式。进一步证明：若标准坐标中的多项式因子不可约且依赖全部变量，则可解性迫使指数只依赖一个坐标，多项式对其他坐标呈特定的线性形式；可解时模去加法常数恰有 $\sum_i\mu_i$ 个解。还给出一类任意多项式相位下的无解方程，以及相位含非零常偏导时的有限求导积分公式。全部权重取 $1$，便覆盖 Lü 的 arXiv:2605.09585v1 第 6 页 Remark 3 的两类方程。本文提供解析证明与有限实例的精确符号检验，不将数值现象、优先权判断或独立同行审定混同于定理证明。
+\end{abstract}
+\noindent\textbf{关键词：}整函数；非线性偏微分方程；代数零因子；对数导数；不可约多项式；解的计数。
+
+\section{问题来源、范围与修订内容}
+Lü\cite{Lu2026}研究了 $u_{z_1}\cdots u_{z_n}=e^g$ 的整函数解，其中 $g$ 为多项式。其第 6 页 Remark 3 先提出可逆常系数方向下的 $e^g$ 方程 (1.8)，再提出带多项式因子的 $pe^g$ 方程 (1.9)。原文明确省略前者细节，并指出后者需要更精细的分析。本文以用户上传的 v1 全文为问题依据，保留其线性换元和混合偏导分块思想；一般 $p$ 的规范形不直接从无零点情形照搬。
+
+研究方程为
+\begin{equation}\label{eq:original}
+\prod_{i=1}^n(D_i u)^{\mu_i}=pe^g,
+\qquad D_i=\sum_{j=1}^n a_{ij}\partial_{z_j},\quad A\in GL_n(\C).
+\end{equation}
+除第\ref{sec:boundary}节外，假设 $p\not\equiv0$，$p,g$ 为多项式，$\mu_i$ 为正整数；允许 $n=1$。本修订稿在仓库已有规范形稿件基础上，重写完整依赖链，加入第\ref{sec:irreducible}节的不可约全变量分类、精确解数和无解族，以及第\ref{sec:elementary}节的有限求导积分公式。
+
+\paragraph{与已有工作的关系。}
+图分块和无零点情形来自\cite{Lu2026}。对数导数的外部解析输入是 Han--Liu\cite[Theorem 1.1]{HanLiu2025}，经典背景为 Vitter\cite{Vitter1977}。Chen--Han\cite{ChenHan2022} 已研究二维带多项式因子的方程；Xu 等\cite[Theorem D]{XuEtAl2023}明确转述了其不可约因子情形的 Theorem 1.4。因此本稿第\ref{sec:irreducible}节的相应二维特例不作首次发现声明。Xu--Ding\cite{XuDing2026} 的三维相关论文已核对书目信息，但本次未取得其全文，不据题名推断定理假设，也不宣称已排除内容重叠。本文不是已发表、独立审定或 Lean 形式化的论文。
+
+\subsection{标准坐标与混合偏导图}
+令
+\begin{equation}\label{eq:change}
+z=A^Tw,\quad v(w)=u(A^Tw),\quad P(w)=p(A^Tw),\quad G(w)=g(A^Tw).
+\end{equation}
+链式法则逐项给出 $v_{w_i}=\sum_j a_{ij}u_{z_j}=D_i u$。因此只需分类
+\begin{equation}\label{eq:standard}
+\prod_{i=1}^n F_i^{\mu_i}=Pe^G,\qquad F_i=\partial_{w_i}v.
+\end{equation}
+最后用 $u(z)=v(A^{-T}z)$ 返回原坐标，不是用 $A^{-1}$，也没有额外行列式乘子。
+
+\begin{definition}
+对整函数解 $v$，在 $I=\{1,\ldots,n\}$ 上定义图 $\Gamma(v)$：不同顶点 $i,j$ 连边，当且仅当 $\partial_{w_j}F_i=v_{w_iw_j}\not\equiv0$。记其连通分量分划为 $\Pi(v)$，包括单顶点块。对块 $B$ 记
+\[
+M_B=\sum_{i\in B}\mu_i,\qquad M=\sum_{i=1}^n\mu_i.
+\]
+$\iota_Bw_B$ 表示保留 $B$ 坐标、把其他坐标置零的向量。
+\end{definition}
+若 $i\in B,j\notin B$，则 $\partial_{w_j}F_i=0$，故 $F_i$ 只依赖 $w_B$。这一分块由解定义，并非事先假定解可分离。
+
+\section{一般分类主定理}\label{sec:main}
+\begin{theorem}[规范形与必要充分性]\label{thm:normal}
+设 $P\not\equiv0$、$G\in\C[w_1,\ldots,w_n]$。对任意分划 $\Pi$ 定义
+\begin{equation}\label{eq:phase}
+G_0=G(0),\qquad G_B(w_B)=G(\iota_Bw_B)-G_0,
+\qquad h_B=G_B/M_B.
+\end{equation}
+方程\eqref{eq:standard}的全部整函数解，恰由下列数据与公式生成：
+\begin{align}
+G&=G_0+\sum_{B\in\Pi}G_B,\label{eq:split}\\
+Q_i&\in\C[w_B]\setminus\{0\}\quad (i\in B),\qquad
+\prod_iQ_i^{\mu_i}=e^{G_0}P,\label{eq:qproduct}\\
+\partial_jQ_i+Q_i\partial_jh_B
+&=\partial_iQ_j+Q_j\partial_ih_B\quad(i,j\in B),\label{eq:closed}\\
+v(w)&=C+\sum_{B\in\Pi}\int_0^1 e^{h_B(tw_B)}
+\sum_{i\in B}w_iQ_i(tw_B)\dd t,\quad C\in\C.\label{eq:radial}
+\end{align}
+对给定解可以取实际分划 $\Pi(v)$，此时
+\begin{equation}\label{eq:Fi}
+F_i=Q_i e^{h_B}\quad(i\in B).
+\end{equation}
+反向生成时不要求分划最细，实际图可进一步分块。
+\end{theorem}
+
+\begin{theorem}[自动增长与精确阶]\label{thm:growth}
+不预设 $v$ 的有限阶。若 $G$ 非常数，则全部整函数解的阶恰为 $\deg G$。若 $G$ 为常数，则全部整函数解为多项式，且
+\begin{equation}\label{eq:deg}
+\deg v\le 1+\left\lfloor\frac{\deg P}{\min_i\mu_i}\right\rfloor.
+\end{equation}
+\end{theorem}
+这里的阶可用球面 Nevanlinna 特征定义，也可用最大模定义：
+\[
+\rho(f)=\limsup_{r\to\infty}\frac{\log\log\max\{e,\max_{\|w\|\le r}|f(w)|\}}{\log r}.
+\]
+对于整函数两种定义一致。第\ref{sec:finite}节将未知多项式 $Q_i$ 消去，只留下有限次因子分配、系数比较与常数参数，因此主定理不是把原 PDE 改写成另一个未解决的函数方程。
+
+\section{无增长假设下的解析闭合}\label{sec:analysis}
+使用标准球面特征 $T=m+N+O(1)$。其乘积、商、幂运算满足通常不等式，多项式与有理函数的特征为 $O(\log r)$；参见\cite{Stoll1974}。下文所有增长估计允许常数依赖于固定方程及所研究的解。
+
+\subsection{共同例外集与对数导数}
+对非常数亚纯函数 $f$，$f(0)\ne0,\infty$，Han--Liu\cite[Theorem 1.1]{HanLiu2025} 在 $n\ge2$ 时给出
+\begin{equation}\label{eq:HL}
+\begin{split}
+m\left(r,\frac{\partial_j f}{f}\right)
+&\le \log^+\!\left(\frac{T(R,f)^2R^{4n-2}}{(R-r)^{2n}r^{2n-1}}\right)\\
+&\quad+\log^+\log^+\frac1{|f(0)|}+C_n,\qquad 0<r<R.
+\end{split}
+\end{equation}
+该估计不要求有限阶。我们使用这一已证明的外部定理，不在本稿重复其证明；以下应用和增长闭合全部给出。
+
+\begin{lemma}\label{lem:radius}
+若 $S:[1,\infty)\to[1,\infty)$ 连续、单调不减，则存在有限 Lebesgue 测度集 $E$，使
+\[
+S(r+1/S(r))\le2S(r),\qquad r\notin E.
+\]
+\end{lemma}
+\begin{proof}
+设 $2^k\le S(r)<2^{k+1}$。若结论失败，则 $S$ 在 $(r,r+2^{-k}]$ 中首次达到 $2^{k+1}$；记该首次半径为 $r_{k+1}$。因此该类失败的 $r$ 属于 $[r_{k+1}-2^{-k},r_{k+1}]$。对所有实际达到的阈值求并，总长度至多 $\sum_{k\ge0}2^{-k}=2$。在定义域左端已超过的阈值不产生此类失败点。
+\end{proof}
+
+取 $a$ 满足 $P(a)\ne0$，则全部 $F_i(a)\ne0$。在本节的增长估计中将中心平移至 $a$；平移不影响最终增长阶。令
+\[
+S(r)=1+\sum_iT(r,F_i).
+\]
+由引理\ref{lem:radius}，在共同有限测度集 $E$ 外取 $R=r+1/S(r)$。此时 $T(R,F_i)\le2S(r)$，$R\le r+1$。对所有非零对数导数
+\[
+L_{ij}=\frac{\partial_jF_i}{F_i}
+\]
+应用\eqref{eq:HL}，得 $m(r,L_{ij})=O(\log S(r)+\log r)$。局部沿 $F_i$ 的零超曲面，$L_{ij}$ 的极点至多是一阶；而\eqref{eq:standard}使这些超曲面均包含在代数集 $\{P=0\}$ 中。因此极点计数也是 $O(\log r)$，于是
+\begin{equation}\label{eq:logestimate}
+T(r,L_{ij})=O(\log S(r)+\log r),\qquad r\notin E.
+\end{equation}
+常数 $F_i$ 的对数导数恒为零，无需套用非常数情形的定理。这里关键地把邻近估计补成了完整的特征估计，未忽略代数零点造成的极点。
+
+\subsection{图内比值与块乘积}
+若 $i,j$ 连边，则混合偏导相等给出
+\[
+L_{ij}F_i=L_{ji}F_j\not\equiv0,\qquad
+\frac{F_i}{F_j}=\frac{L_{ji}}{L_{ij}}.
+\]
+只在两个对数导数非零时作此除法。由\eqref{eq:logestimate}，沿块内路径传播得到
+\begin{equation}\label{eq:ratio}
+T(r,F_i/F_k)=O(\log S(r)+\log r),\quad i,k\in B,\ r\notin E.
+\end{equation}
+这避免预先假定 $F_i$ 与 $F_k$ 具有可比增长所造成的循环论证。
+
+设 $H_B=\prod_{i\in B}F_i^{\mu_i}$。因各块相互独立，把块外变量固定在上述 $a$，便有
+\begin{equation}\label{eq:slice}
+H_B(w_B)=\frac{P(w_B,a_{B^c})e^{G(w_B,a_{B^c})}}
+{\prod_{C\ne B}H_C(a_C)}.
+\end{equation}
+分母是非零常数，切片多项式在 $a_B$ 不为零。令 $d=\deg G$，对常数 $G$ 约定 $d=0$，则 $T(r,H_B)=O(r^d+\log r)$。对每个 $k\in B$ 有恒等式
+\begin{equation}\label{eq:keyidentity}
+F_k^{M_B}=H_B\prod_{i\in B}(F_k/F_i)^{\mu_i}.
+\end{equation}
+故由\eqref{eq:ratio}，对全部 $k$ 求和后得到
+\begin{equation}\label{eq:absorb}
+S(r)\le C_1(r^d+\log r)+C_2\log S(r)+C_3,\qquad r\notin E.
+\end{equation}
+单顶点块中比值乘积为 $1$，同样有效。利用 $C_2\log x\le x/2+C_4$ 吸收对数项，得 $S(r)=O(r^d+\log r)$。例外集充分远的尾部测度小于 $1$，所以每个充分大的 $[r,r+1]$ 都含有 $E$ 外的点；用单调性把界推广到所有充分大的 $r$。最终
+\begin{equation}\label{eq:Tbound}
+T(r,F_i)=O(r^d+\log r).
+\end{equation}
+若 $n=1$，由 $F_1^{\mu_1}=Pe^G$ 直接得到此界，完全不需要多变量对数导数定理。至此，有限增长首次成为结论。
+
+\subsection{除子分解与多项式指数}
+\begin{lemma}\label{lem:factor}
+若非零整函数 $F_i$ 满足\eqref{eq:standard}，则存在非零多项式 $R_i$ 和整函数 $q_i$ 使 $F_i=R_i e^{q_i}$。若再满足\eqref{eq:Tbound}，则 $q_i$ 为多项式；$d\ge1$ 时其次数至多 $d$，$d=0$ 时为常数。
+\end{lemma}
+\begin{proof}
+在 $\C[w]$ 中分解 $P=p_*\prod_{\nu=1}^s\varphi_\nu^{m_\nu}$，$p_*\ne0$，$\varphi_\nu$ 两两不相伴且不可约。在各不可约超曲面的光滑部分除去其他超曲面后，$F_i$ 的消失重数为固定非负整数 $e_{i\nu}$，且
+\begin{equation}\label{eq:allocation}
+\sum_i\mu_i e_{i\nu}=m_\nu.
+\end{equation}
+这里使用不可约复代数簇的非空光滑 Zariski 开集在解析拓扑下连通这一标准事实。局部重数的恒定性也可直接由乘积等式和局部唯一分解看出；不假定奇点处的解析芽不可约。
+
+令 $R_i=\prod_\nu\varphi_\nu^{e_{i\nu}}$。在超曲面的上述光滑部分，$F_i/R_i$ 及其倒数均全纯。剩余的奇异集与交集在环境空间中的复余维至少为 $2$，由 Hartogs 延拓，两者均延拓为整函数且乘积仍为 $1$。一维时这是通常的可去奇点定理。因此商为无零整函数；在单连通空间 $\C^n$ 上存在全局全纯对数 $q_i$。这些基础事实可参见\cite{GR1965}。
+
+由特征的商不等式，$T(r,e^{q_i})=O(r^d+\log r)$。对整函数的次调和球面均值估计给出
+\[
+\max_{\|w\|\le r}\Re q_i(w)\le C T(2r,e^{q_i})+C.
+\]
+在经过原点的复直线上应用 Borel--Carath\'eodory 估计，得到 $\max_{\|w\|\le r}|q_i(w)|=O(r^d+\log r)$。多变量 Cauchy 系数估计使所有总次数大于 $d$ 的系数为零；当 $d=0$ 时所有正次数系数均为零。这证明结论。平移后的增长结论同样约束原坐标中的多项式次数。
+\end{proof}
+
+\begin{lemma}[两个代数刚性事实]\label{lem:rigid}
+若多项式 $q$ 的指数 $e^q$ 为有理函数，则 $q$ 为常数。若 $R\ne0$ 与 $q$ 为多项式且 $\partial_j(Re^q)=0$，则 $\partial_jR=\partial_jq=0$。
+\end{lemma}
+\begin{proof}
+第一项：若 $q$ 非常数，取一般复仿射直线，使 $q$ 在其上非常数且有理表达的分母不恒为零。沿直线得到非常数多项式的指数等于有理函数；前者在无穷远有本性奇点，后者没有，矛盾。
+第二项等价于 $\partial_jR+R\partial_jq=0$。若 $\partial_jq\ne0$，在变量 $w_j$ 上，$R\partial_jq$ 的次数至少为 $\deg_{w_j}R$，而 $\partial_jR$ 的次数更小或为零，不能相消。故 $\partial_jq=0$，继而 $\partial_jR=0$。
+\end{proof}
+
+\section{规范形、积分恢复与增长定理的证明}
+\begin{proof}[定理\ref{thm:normal}的必要性]
+由引理\ref{lem:factor}写 $F_i=\widetilde Q_i e^{q_i}$，并把 $q_i(0)$ 吸收到多项式的非零常数因子，使 $q_i(0)=0$。若 $i,j$ 连边，混合偏导相等意味着
+\[
+(\partial_j\widetilde Q_i+\widetilde Q_i\partial_jq_i)e^{q_i}
+=(\partial_i\widetilde Q_j+\widetilde Q_j\partial_iq_j)e^{q_j}\not\equiv0.
+\]
+因此 $e^{q_i-q_j}$ 为有理函数。由引理\ref{lem:rigid}及原点归一化，$q_i=q_j$。沿路径传播，得到块内共同指数 $h_B$。块外偏导为零，再用引理\ref{lem:rigid}，得到 $h_B,Q_i$ 仅依赖本块变量。
+
+代入乘积等式，$e^{\sum_BM_Bh_B-G}$ 为有理函数，因此其指数为常数。指数在原点等于 $-G_0$，故
+\[
+\sum_BM_Bh_B=G-G_0,\qquad \prod_iQ_i^{\mu_i}=e^{G_0}P.
+\]
+此处取值的是已经证明为常数的多项式指数，不是在原点除以 $P$；允许 $P(0)=0$。令块外变量为零，得到\eqref{eq:phase}和\eqref{eq:split}。最后由混合偏导相等得到\eqref{eq:closed}。
+\end{proof}
+
+\begin{lemma}[全局径向原函数]\label{lem:radial}
+若整函数 $f_i$ 满足 $\partial_jf_i=\partial_if_j$，则
+\[
+V(w)=\int_0^1\sum_i w_i f_i(tw)\dd t
+\]
+为整函数，且 $\partial_jV=f_j$。
+\end{lemma}
+\begin{proof}
+在紧集与 $t\in[0,1]$ 的乘积上，被积函数及偏导一致有界，允许在积分号下求导。闭合性给出
+\[
+\partial_jV=\int_0^1\left[f_j(tw)+t\sum_iw_i\partial_if_j(tw)\right]\dd t
+=\int_0^1\frac{\dd}{\dd t}\bigl(tf_j(tw)\bigr)\dd t=f_j(w).
+\]
+积分局部一致收敛，故 $V$ 整。
+\end{proof}
+
+\begin{proof}[定理\ref{thm:normal}的充分性]
+对每块应用引理\ref{lem:radial}于 $f_i=Q_i e^{h_B}$。条件\eqref{eq:closed}恰是闭合性，故\eqref{eq:radial}的梯度为\eqref{eq:Fi}。再由\eqref{eq:split}和\eqref{eq:qproduct}，其加权乘积为 $Pe^G$。任何原解与构造的解梯度相同，故只相差常数。
+\end{proof}
+
+\begin{proof}[定理\ref{thm:growth}]
+若 $G$ 为常数，则 $h_B=0$，梯度和原函数均为多项式，并且
+\[
+\deg P=\sum_i\mu_i\deg F_i,\qquad \deg v=1+\max_i\deg F_i.
+\]
+后者成立是因为 $v$ 非常数，其最高次齐次部分至少有一个非零偏导。这给出\eqref{eq:deg}。
+
+若 $d=\deg G\ge1$，径向公式和 $\deg h_B\le d$ 给出 $\rho(v)\le d$。由于 $G-G_0=\sum_BM_Bh_B$，至少一个 $h_B$ 的次数为 $d$。该块任意非零 $Q_i e^{h_B}$ 的阶恰为 $d$：取一般复直线，使 $h_B$ 的最高次项不消失且 $Q_i$ 的限制非零，再选相位实部为正的射线，得到增长下界。由 Cauchy 估计
+\[
+\max_{\|w\|\le r}|F_i(w)|\le C r^{-1}\max_{\|w\|\le2r}|v(w)|,
+\]
+有 $d=\rho(F_i)\le\rho(v)$，故为等号。
+\end{proof}
+
+\section{有限代数判据与参数空间}\label{sec:finite}
+固定完整的复不可约分解 $P=p_*\prod_\nu\varphi_\nu^{m_\nu}$。枚举有限个分划 $\Pi$ 及满足\eqref{eq:allocation}的非负整数分配，令 $R_i=\prod_\nu\varphi_\nu^{e_{i\nu}}$。只保留满足相位分离\eqref{eq:split}，且 $R_i$ 只依赖其块变量的数据。对 $i,j\in B$ 计算多项式
+\[
+A_{ij}=\partial_jR_i+R_i\partial_jh_B.
+\]
+然后求非零常数 $\kappa_i$，使
+\begin{equation}\label{eq:kappa}
+\kappa_iA_{ij}=\kappa_jA_{ji}.
+\end{equation}
+若二者恰有一个为零则拒绝；若均非零，必须互为非零常数倍。这一条件用有限个系数比较即可判断。均为零的顶点对不施加条件。要求每个块的非零边图连通；在块中最小指标处令 $\kappa=1$，沿生成树传播，剩余边检验环路比例的乘积是否为 $1$。连通性保证通过时的 $\kappa_i$ 唯一。
+
+\begin{theorem}[有限分类与精确参数维数]\label{thm:finite}
+上述通过检验的有限数据，恰好参数化全部整函数解。对每组数据，令
+\[
+V_B(w_B)=\int_0^1e^{h_B(tw_B)}\sum_{i\in B}w_i\kappa_iR_i(tw_B)\dd t.
+\]
+该组解为
+\begin{equation}\label{eq:family}
+v=C+\sum_{B\in\Pi}\lambda_BV_B,\qquad
+\prod_{B\in\Pi}\lambda_B^{M_B}
+=K:=\frac{e^{G_0}p_*}{\prod_i\kappa_i^{\mu_i}},
+\end{equation}
+其中 $C\in\C,\lambda_B\in\C^*$。若有 $t$ 个块，则该规范族的复参数维数恰为 $t$，至多为 $n$。尺度参数空间有 $\gcd(M_B:B\in\Pi)$ 个连通分量，每个同构于 $(\C^*)^{t-1}$。连通图数据对应恰好 $M$ 个模常数解。
+\end{theorem}
+\begin{proof}
+分划有限，正权重使每个重数分配方程仅有有限多个非负整数解。通过数据取 $Q_i=\lambda_B\kappa_iR_i$，则\eqref{eq:kappa}给出闭合性，而\eqref{eq:family}给出\eqref{eq:qproduct}，从主定理得到解。
+
+反之，对任意解取实际图分划。唯一因式分解使 $Q_i=c_iR_i$，$c_i\ne0$；闭合性给出\eqref{eq:kappa}。每块内 $c_i$ 与规范 $\kappa_i$ 只相差同一个尺度 $\lambda_B$，常数乘积恰为\eqref{eq:family}。非零边图的连通性使尺度变化不改变实际分划，故没有遗漏。
+
+参数化是单射：$C=v(0)$，而每块任一非零梯度分量确定 $\lambda_B$。一个非退化单项式等式从 $t$ 个尺度中消去一个维数，加上 $C$ 得 $t$。用整数初等变换将向量 $(M_B)$ 化为 $(d,0,\ldots,0)$，$d=\gcd(M_B)$；相应的可逆 Laurent 单项式换元把约束化为 $\eta_1^d=K$，故有 $d$ 个上述连通分量。$t=1$ 时约束为 $\lambda^M=K\ne0$，恰有 $M$ 个不同根。
+\end{proof}
+
+这是有限的精确代数检验，不是关于任意黑箱复数输入的可计算性主张。程序必须获得完整的 $\C$ 上不可约分解；仅在 $\mathbb Q$ 上不可约并不够。系数采用可精确运算的表示时，可逐项执行。尺度常数中的 $e^{G_0}$ 仅出现在最后的非零乘法约束中。
+
+\section{不可约全变量因子的显式分类}\label{sec:irreducible}
+本节是相对于已有一般规范形的主要加强。变量依赖假设是关于标准坐标 $w=A^{-T}z$ 的 $P=p(A^Tw)$，不可直接用原坐标中的支撑替代。
+
+\begin{theorem}[不可约全变量分类与精确解数]\label{thm:irreducible}
+设 $n\ge2$，$P\in\C[w]$ 为非常数不可约多项式，且
+\begin{equation}\label{eq:fullsupport}
+\partial_{w_i}P\not\equiv0\qquad(1\le i\le n).
+\end{equation}
+记 $M=\sum_i\mu_i$。方程\eqref{eq:standard}存在整函数解，当且仅当存在指标 $k$、非常数一元多项式 $\gamma$、一元多项式 $b$ 及非零常数 $\lambda_j$（$j\ne k$），使
+\begin{equation}\label{eq:irredcriterion}
+\mu_k=1,\qquad G(w)=\gamma(w_k),\qquad
+P(w)=b(w_k)+\frac{\gamma'(w_k)}{M}\sum_{j\ne k}\lambda_jw_j.
+\end{equation}
+通过时，$k$ 及全部 $\lambda_j$ 由 $P,G$ 唯一确定，全部解为
+\begin{equation}\label{eq:irredsolution}
+\begin{split}
+v(w)&=c\left[e^{\gamma(w_k)/M}\sum_{j\ne k}\lambda_jw_j
++\int_0^{w_k}b(t)e^{\gamma(t)/M}\dd t\right]+C,\\
+c^M&\prod_{j\ne k}\lambda_j^{\mu_j}=1,\qquad C\in\C.
+\end{split}
+\end{equation}
+因此模去加法常数恰有 $M$ 个解，而不是仅有一个上界。无权重时恰有 $n$ 个解。
+\end{theorem}
+
+\begin{proof}
+由主定理，$\prod_iQ_i^{\mu_i}=e^{G_0}P$。由于 $P$ 不可约，其重数 $1$ 只能完整分配给一个指标 $k$，而且必有 $\mu_k=1$。因此 $Q_k$ 是 $P$ 的非零常数倍，其他 $Q_j$ 为非零常数。$Q_k$ 只依赖其图块变量，而 $P$ 依赖全部变量，故该块必为全体 $I$，即实际图连通。将相位常数重新吸收到系数，写成
+\begin{equation}\label{eq:specialgradient}
+F_k=aPe^h,\quad F_j=b_je^h\ (j\ne k),\quad
+h=G/M,\quad a\prod_{j\ne k}b_j^{\mu_j}=1,
+\end{equation}
+其中 $a,b_j\ne0$。
+
+令 $x=w_k$，$s=\sum_{j\ne k}b_jw_j$。对 $i,j\ne k$ 的闭合性给出 $b_i h_j=b_j h_i$，所以固定 $x$ 时所有位于线性形式 $s$ 的核中的方向均消去 $h$。故存在多项式 $H(x,s)$ 使 $h=H(x,s)$。$n=2$ 时这只是对另一变量作非零线性缩放，同样成立。$k,j$ 的闭合等式为
+\[
+a(P_j+P b_jH_s)=b_jH_x.
+\]
+这使 $P_j/b_j$ 对所有 $j\ne k$ 相同，因此 $P$ 也仅依赖 $x,s$：写为 $p_0(x,s)$。于是
+\begin{equation}\label{eq:reduced}
+H_x=a\bigl((p_0)_s+p_0H_s\bigr).
+\end{equation}
+由\eqref{eq:fullsupport}，$r=\deg_s p_0\ge1$。
+
+现证明 $H_s=0$。反设 $d=\deg_sH\ge1$。若 $r\ge2$，则 $p_0H_s$ 的 $s$ 次数为 $r+d-1$，严格大于 $H_x$ 的次数上界 $d$ 以及 $(p_0)_s$ 的次数 $r-1$，与\eqref{eq:reduced}矛盾。若 $r=1$，写
+\[
+p_0=A(x)s+B(x),\quad A\ne0,\qquad H=H_d(x)s^d+\cdots,\quad H_d\ne0.
+\]
+比较 $s^d$ 系数得 $H_d'=adAH_d$。右端非零，且其 $x$ 次数至少为 $\deg H_d$；左端若非零，次数为 $\deg H_d-1$。仍然矛盾。因此 $H_s=0$。
+
+于是 $G=\gamma(x)$，由\eqref{eq:reduced}得到 $\gamma'/M=a(p_0)_s$。故 $p_0$ 对 $s$ 为一次，并且 $\gamma'$ 非零。令 $\lambda_j=b_j/a$，回代得\eqref{eq:irredcriterion}。原常数约束变为 $a^M\prod_{j\ne k}\lambda_j^{\mu_j}=1$。积分\eqref{eq:specialgradient}即得\eqref{eq:irredsolution}，此时 $c=a$。
+
+反之，对\eqref{eq:irredsolution}直接求导：
+\[
+v_{w_k}=cPe^{\gamma/M},\qquad v_{w_j}=c\lambda_j e^{\gamma/M}\quad(j\ne k).
+\]
+其加权乘积恰为 $Pe^G$。因 $G$ 非常数且只依赖一个坐标，$k$ 唯一；随后 $\lambda_j=M P_j/\gamma'$ 唯一。关于 $c$ 的方程右端非零，恰有 $M$ 个不同根；不同根产生不同的非零梯度，不能仅相差常数。这完成必要性、充分性及精确计数。
+\end{proof}
+
+\begin{remark}[二维已有结果与假设边界]
+对 $n=2,\mu_k=1$ 的相应权重，上述形状与\cite{XuEtAl2023} 转述的 Chen--Han Theorem 1.4 一致。本稿给出任意维数、任意正整数权重下的自足推导与精确根数，不据此声称二维情形新颖。不可约和全变量依赖均不能删除：可约例 $P=xy,G=2xy$ 的相位依赖两个变量；若 $P=x$ 不依赖另一变量，则 $v=\Phi(y+x^2/2)$、$\Phi'=e^{t^2}$ 给出 $v_xv_y=x e^{2(y+x^2/2)^2}$，同样不属于\eqref{eq:irredcriterion}。
+\end{remark}
+
+\begin{corollary}[无解的不可约二次族]\label{cor:quadric}
+对任意 $n\ge2$、任意正整数权重及任意多项式 $G$，方程
+\[
+\prod_{i=1}^n(v_{w_i})^{\mu_i}
+=\left(1+\sum_{i=1}^n w_i^2\right)e^G
+\]
+没有整函数解。
+\end{corollary}
+\begin{proof}
+多项式 $1+\sum_iw_i^2$ 依赖全部变量且不可约。事实上，若它分解，因总次数为 $2$，必为两个仿射线性多项式的乘积。齐次化后的二次型将是两个线性形式的乘积，其对称矩阵秩至多为 $2$；但 $w_0^2+\sum_iw_i^2$ 的秩为 $n+1\ge3$，矛盾。对任意候选指标 $k$，该多项式在每个其他变量上均有平方项，不可能满足\eqref{eq:irredcriterion}。
+\end{proof}
+
+\section{何时积分可化为有限次求导}\label{sec:elementary}
+\begin{theorem}[非零常偏导相位的多项式原函数]\label{thm:elementary}
+设 $h,Q_1,\ldots,Q_m$ 为多项式，满足
+\[
+(\partial_j+h_j)Q_i=(\partial_i+h_i)Q_j.
+\]
+若某个指标 $a$ 满足 $h_a=\alpha\in\C^*$，则存在唯一多项式 $R$ 使
+\[
+Q_i=\partial_iR+Rh_i\quad(1\le i\le m).
+\]
+其显式公式为
+\begin{equation}\label{eq:finiteinverse}
+R=\sum_{\ell=0}^{\deg_{w_a}Q_a}
+\frac{(-1)^\ell}{\alpha^{\ell+1}}\partial_{w_a}^{\ell}Q_a.
+\end{equation}
+因此对应整函数原函数为 $Re^h+C$，无需保留路径积分。
+\end{theorem}
+\begin{proof}
+记 $\mathcal D_i=\partial_i+h_i$。因 $h_{ij}=h_{ji}$，这些算子两两交换。$\mathcal D_a=\partial_a+\alpha$ 在多项式环上可逆，其逆是局部有限的几何级数\eqref{eq:finiteinverse}；逐项相消直接验证 $\mathcal D_aR=Q_a$。闭合性于是给出
+\[
+\mathcal D_a(\mathcal D_iR-Q_i)
+=\mathcal D_iQ_a-\mathcal D_aQ_i=0.
+\]
+若多项式 $S$ 满足 $(\partial_a+\alpha)S=0$，比较 $w_a$ 最高次项可知 $S=0$，故 $\mathcal D_iR=Q_i$。同一核为零也证明唯一性。最后 $\partial_i(Re^h)=Q_i e^h$。
+\end{proof}
+
+\begin{corollary}[仿射相位的全部解均为指数多项式]
+若 $G$ 为仿射多项式，则每个解可写为
+\[
+v=R_0+\sum_B R_B e^{h_B},
+\]
+其中 $R_0,R_B$ 为多项式，$h_B$ 为分块的一次多项式，求 $R_B$ 只需有限次求导。$h_B=0$ 的块由普通多项式原函数吸收到 $R_0$ 中。
+\end{corollary}
+\begin{proof}
+每个非零 $h_B$ 均有某个非零常偏导，应用定理\ref{thm:elementary}。零相位块的闭多项式一形式由径向公式给出多项式原函数。
+\end{proof}
+
+\begin{remark}
+这只是一个充分的初等可积性判据，不是对所有多项式相位的初等积分分类。一般相位下必须允许一元特殊函数原函数，例如下一节中的 $\int e^{t^2/2}\dd t$；本稿不声称所有解都是有限个多项式乘指数之和。
+\end{remark}
+
+\section{原 Remark 3 的恢复与完整算例}\label{sec:examples}
+\subsection{式 (1.8)：无零点右端}
+令 $P=1$。由\eqref{eq:qproduct}所有 $Q_i=c_i\ne0$ 为常数。块内闭合条件为 $c_i h_{B,j}=c_j h_{B,i}$，故 $h_B$ 沿线性形式
+\[
+L_B(w_B)=\sum_{i\in B}c_iw_i
+\]
+的核方向不变。于是存在一元多项式 $r_B$，$r_B(0)=0$，使 $h_B=r_B\circ L_B$。全部解为
+\begin{equation}\label{eq:pone}
+\begin{gathered}
+v=C+\sum_{B\in\Pi}\Phi_B(L_B),\qquad
+\Phi_B(t)=\int_0^t e^{r_B(s)}\dd s,\\
+G=G_0+\sum_BM_Br_B(L_B),\qquad
+\prod_i c_i^{\mu_i}=e^{G_0}.
+\end{gathered}
+\end{equation}
+核方向不变蕴含这一表达可直接证明：取 $b_B$ 满足 $L_B(b_B)=1$，则 $w_B=b_BL_B(w_B)+\xi$，$L_B(\xi)=0$，从而 $h_B(w_B)=h_B(b_BL_B(w_B))$。反向对\eqref{eq:pone}求导即验。令全部权重为 $1$，再代入 $w=A^{-T}z$，即给出 Remark 3 式 (1.8) 省略的完整形式。常数乘积已明确保留，不需要省略对数分支的归一化。
+
+\subsection{式 (1.9)：真正的多变量相位}
+\begin{example}
+方程 $v_xv_y=xy e^{2xy}$ 的全部整函数解为 $v=\pm e^{xy}+C$。
+\end{example}
+\begin{proof}
+相位不能可加分离，故图必须连通，共同相位为 $xy$。$P=xy$ 的全部因子分配为 $(R_1,R_2)=(1,xy),(x,y),(y,x),(xy,1)$。相应 $(A_{12},A_{21})$ 分别为
+\[
+(x,y+xy^2),\quad(x^2,y^2),\quad(1+xy,1+xy),\quad(x+x^2y,y).
+\]
+仅第三对互为非零常数倍，闭合使两系数相同，乘积约束使其为 $\pm1$。这得到全部解，而非只展示一个可代入的例子。比值 $v_x/v_y=y/x$ 非常数，说明不能把一般 $P$ 的解强行写成一个线性形式的一元函数。
+\end{proof}
+
+\begin{example}[不可约情形的全部解]
+以下公式均列出全部整函数解，$C\in\C$：
+\begin{align*}
+v_xv_y=(x+y)e^{2x}
+&\iff v=\pm e^x(x+y-1)+C;\\
+v_xv_y=(xy+1)e^{x^2}
+&\iff v=\pm\left(ye^{x^2/2}+\int_0^x e^{t^2/2}\dd t\right)+C;\\
+v_xv_yv_z=(x+y+z)e^{3x}
+&\iff v=\omega e^x(x+y+z-1)+C,\quad\omega^3=1;\\
+v_x(v_y)^2(v_z)^3=(x+y+z)e^{6x}
+&\iff v=\omega e^x(x+y+z-1)+C,\quad\omega^6=1.
+\end{align*}
+\end{example}
+\begin{proof}
+$x+y$ 与 $x+y+z$ 为不可约线性多项式；$xy+1$ 是 $\C[x][y]$ 中本原的一次多项式，故由 Gauss 引理不可约。各例满足全变量依赖，且\eqref{eq:irredcriterion}中 $k$ 为 $x$ 的指标，全部 $\lambda_j=1$。代入定理\ref{thm:irreducible}即可得到精确根数及全部解；一元线性指数积分给出展示的简式。第二例不能写成 $Re^{x^2/2}+C$，其中 $R$ 为多项式：对 $y$ 求导迫使 $R=y+A(x)$，再对 $x$ 求导会要求 $A' +xA=1$，最高次项比较表明不存在这样的多项式 $A$。
+\end{proof}
+
+\begin{example}[无解与假设边界]
+$v_xv_y=(x+y)e^{x+y}$ 无整函数解，因为不可约全变量因子要求 $G$ 只依赖一个坐标。$v_x^2v_y^2=(x+y)e^{G}$ 对任意多项式 $G$ 无整函数解，因为没有权重为 $1$ 的指标。另一方面，可约例 $v_xv_y=xy$ 的全部解是
+\[
+v=\pm xy+C\quad\text{或}\quad
+v=\tfrac12(ax^2+a^{-1}y^2)+C,\quad a\in\C^*.
+\]
+最后一例由相位为零时的四种因子分配逐一检验得到，说明一般解空间可以是正维的。
+\end{example}
+
+\section{退化情形、证据等级与结论}\label{sec:boundary}
+若 $P\equiv0$，整函数环是整环，乘积恒零当且仅当至少一个 $F_i\equiv0$。因此全部解恰是不依赖至少一个标准坐标的任意整函数；$n=1$ 时只有常数，$n\ge2$ 时允许无限阶。不能把非零 $P$ 的增长结论扩展至此情形。
+
+矩阵可逆性也不可直接省去：两行均为 $(1,0)$ 时，$u_x^2=1$ 允许 $u=x+H(y)$，其中 $H$ 为任意整函数。指数多项式假设同样实质必要：$v=e^{y+e^x}$ 满足 $v_xv_y=e^{x+2y+2e^x}$，且为无限阶。无权重常数相位下的次数界是锐的，例为 $v=w_1^{D+1}/(D+1)+\sum_{i=2}^n w_i$，其梯度乘积为 $w_1^D$。
+
+本文的解析证明从共同对数导数估计出发，经图内比值、非零切片及增长吸收，才引入多项式指数；随后证明规范形的必要性和充分性。因此没有在移除有限阶假设时偷偷预设有限阶。不可约定理进一步通过一次二维线性归约及多项式次数比较，消去所有未知函数，给出显式可解性判据和精确解数。
+
+配套程序只使用精确符号运算。一般分类检验接受指定的完整复不可约分解；不可约专用判据在否定可解性时须由调用者保证不可约前提。测试中使用的线性因子、本原线性多项式和二次型均在正文中说明其不可约性。有限测试不代替一般解析证明，不构成 Lean 形式化；本轮也未声称独立同行审读已经完成。文献重叠核查中尚未取得的全文明确保留为出版准备事项，不据此否定本稿给出的数学推导，也不据此声称已经获得新颖性认证。
+
+\begin{thebibliography}{99}
+\bibitem{Lu2026} F. L\"u, \emph{On entire solutions for a class of product-type nonlinear PDEs in $\C^n$}, arXiv:2605.09585v1, 10 May 2026. 本文依据用户上传全文，尤其第 6 页 Remark 3。\url{https://arxiv.org/abs/2605.09585}.
+\bibitem{HanLiu2025} Q. Han and J. Liu, \emph{A Short Proof of the Lemma of the Logarithmic Derivative in Several Complex Variables}, Complex Analysis and Operator Theory \textbf{19} (2025), article 92. DOI: \href{https://doi.org/10.1007/s11785-025-01701-x}{10.1007/s11785-025-01701-x}. Theorem 1.1 已核对公开全文。
+\bibitem{Vitter1977} A. Vitter, \emph{The lemma of the logarithmic derivative in several complex variables}, Duke Math. J. \textbf{44} (1977), 89--104. DOI: \href{https://doi.org/10.1215/S0012-7094-77-04404-0}{10.1215/S0012-7094-77-04404-0}.
+\bibitem{Stoll1974} W. Stoll, \emph{Holomorphic Functions of Finite Order in Several Complex Variables}, CBMS Regional Conference Series in Mathematics 21, American Mathematical Society, 1974.
+\bibitem{GR1965} R. C. Gunning and H. Rossi, \emph{Analytic Functions of Several Complex Variables}, Prentice-Hall, 1965.
+\bibitem{ChenHan2022} W. Chen and Q. Han, \emph{On entire solutions to eikonal-type equations}, J. Math. Anal. Appl. \textbf{506} (2022), article 124704. DOI: \href{https://doi.org/10.1016/j.jmaa.2020.124704}{10.1016/j.jmaa.2020.124704}. 本次未取得全文；Theorem 1.4 的比较依据下一条文献的明确转述，不作为本稿证明输入。
+\bibitem{XuEtAl2023} Y. H. Xu, Y. F. Li, X. L. Liu and H. Y. Xu, \emph{Transcendental entire solutions of several complex product-type nonlinear partial differential equations in $\C^2$}, Open Mathematics \textbf{21} (2023), article 20230151. DOI: \href{https://doi.org/10.1515/math-2023-0151}{10.1515/math-2023-0151}. 已核对公开正文中 Theorem D 对 Chen--Han Theorem 1.4 的转述。
+\bibitem{XuDing2026} H. Y. Xu and X. Ding, \emph{Description of entire solutions of the product type nonlinear PDEs with a generalized exponential term in $\C^3$}, J. Math. Anal. Appl. \textbf{561} (2026), article 130680. DOI: \href{https://doi.org/10.1016/j.jmaa.2026.130680}{10.1016/j.jmaa.2026.130680}. 已核对书目信息，未取得全文，未认定定理重叠范围。
+\end{thebibliography}
+\end{document}
