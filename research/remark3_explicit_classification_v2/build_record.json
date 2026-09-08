@@ -1,0 +1,44 @@
+{
+  "date": "2026-09-08",
+  "repository": "whzy3185/math",
+  "branch": "research/remark3-explicit-classification-v2-20260908",
+  "base_commit": "d579b4f290881968c5b6011ae213b594645417f1",
+  "manuscript_commit": "2abf15ee09808a32adefb7d4d817311b34984e06",
+  "manuscript_remote_blob_verified": "e9e2535e67b6b4f2c8f30f2214b20ef9145dcf4f",
+  "test_command": "python verify.py --output verification_results.json",
+  "tests": {
+    "status": "passed",
+    "count": 93,
+    "python": "3.13.5",
+    "sympy": "1.14.0",
+    "report_format": "actual output reserialized as compact JSON; same parsed content"
+  },
+  "pdf": {
+    "command": "latexmk -xelatex -interaction=nonstopmode -halt-on-error manuscript.tex",
+    "pages": 12,
+    "compiler": "XeTeX 3.141592653-2.6-0.999996 (TeX Live 2025/dev/Debian)",
+    "visual_review": "All 12 pages rendered and montage inspected; main irreducible proof inspected at full resolution. No clipping or overlaps observed.",
+    "overfull_boxes": 0,
+    "undefined_references": 0
+  },
+  "scope": {
+    "analytic_proofs": "provided in manuscript",
+    "finite_symbolic_checks": "executed; do not replace proofs",
+    "independent_peer_review": false,
+    "lean_formalization": false,
+    "novelty_audit_complete": false,
+    "binary_pdf_committed": false
+  },
+  "sha256": {
+    "manuscript.tex": "b11fcbb1830ab1877f5b7682530975d5440a7d74882c6c8a1efb6a6d7190841c",
+    "manuscript.pdf": "f1774cafd93e41c9fe37c0f9cde5de89c9b1e9f3c54231d9caf781514ef14efb",
+    "verify.py": "922917ea8679536abca2aa95a2c0498b73342b4d9e436ceef916682f2b97b66a",
+    "verification_results.json": "9a64716399c6a0b851a21eb5b7168464672fe6f3ae0a844d934dc5cad945c8da",
+    "README.md": "f2493dc49b98c85fde5562499793f9cacb66039354c6ae91edca4233c2b9ad38",
+    "proof_audit.md": "a910dab2fa6197f7d25eee575262a640b87a0d69812839854e4366f9cc18e11b",
+    "literature_review.md": "c4171ec0b4996d649cb90d64311d9b28605b1a5ad162a7dac35421bb7fed6fe9",
+    "Makefile": "a4c414782ea9ae18c4822dbc97c7854e737e8c427a3bb5db6ef3cc873644317d",
+    "requirements.txt": "25f9f1fb1988b230147a1d3092d34e09c069eb7a6c6d6df46b3973b9f2d36efc",
+    ".gitignore": "6f9b4b057a5db85a427a5747c3acd2ef1b2ee3e1e79284c27e95e2226aff6ccf"
+  }
+}
