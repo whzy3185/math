@@ -1,0 +1,355 @@
+{
+  "status": "passed",
+  "scope": "finite exact symbolic regression tests, not a proof assistant",
+  "factorization_scope": "explicit linear factors, irreducible over C",
+  "python": "3.13.5",
+  "sympy": "1.14.0",
+  "test_groups": 14,
+  "results": [
+    {
+      "test": "xy_exp_2xy",
+      "passed": true,
+      "family_count": 1,
+      "families": [
+        {
+          "blocks_zero_based": [
+            [
+              0,
+              1
+            ]
+          ],
+          "R_i": [
+            "y",
+            "x"
+          ],
+          "h_B": [
+            "x*y"
+          ],
+          "kappa_i": [
+            "1",
+            "1"
+          ],
+          "M_B": [
+            2
+          ],
+          "scale_constraint_rhs": "1"
+        }
+      ]
+    },
+    {
+      "test": "xy_polynomial",
+      "passed": true,
+      "family_count": 2,
+      "families": [
+        {
+          "blocks_zero_based": [
+            [
+              0,
+              1
+            ]
+          ],
+          "R_i": [
+            "y",
+            "x"
+          ],
+          "h_B": [
+            "0"
+          ],
+          "kappa_i": [
+            "1",
+            "1"
+          ],
+          "M_B": [
+            2
+          ],
+          "scale_constraint_rhs": "1"
+        },
+        {
+          "blocks_zero_based": [
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "R_i": [
+            "x",
+            "y"
+          ],
+          "h_B": [
+            "0",
+            "0"
+          ],
+          "kappa_i": [
+            "1",
+            "1"
+          ],
+          "M_B": [
+            1,
+            1
+          ],
+          "scale_constraint_rhs": "1"
+        }
+      ]
+    },
+    {
+      "test": "no_solution_exp_xy",
+      "passed": true,
+      "family_count": 0,
+      "families": []
+    },
+    {
+      "test": "linear_phase_two_strata",
+      "passed": true,
+      "family_count": 2,
+      "families": [
+        {
+          "blocks_zero_based": [
+            [
+              0,
+              1
+            ]
+          ],
+          "R_i": [
+            "1",
+            "1"
+          ],
+          "h_B": [
+            "x/2 + y/2"
+          ],
+          "kappa_i": [
+            "1",
+            "1"
+          ],
+          "M_B": [
+            2
+          ],
+          "scale_constraint_rhs": "1"
+        },
+        {
+          "blocks_zero_based": [
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "R_i": [
+            "1",
+            "1"
+          ],
+          "h_B": [
+            "x",
+            "y"
+          ],
+          "kappa_i": [
+            "1",
+            "1"
+          ],
+          "M_B": [
+            1,
+            1
+          ],
+          "scale_constraint_rhs": "1"
+        }
+      ]
+    },
+    {
+      "test": "separated_quadratic_phase",
+      "passed": true,
+      "family_count": 1,
+      "families": [
+        {
+          "blocks_zero_based": [
+            [
+              0
+            ],
+            [
+              1
+            ]
+          ],
+          "R_i": [
+            "1",
+            "1"
+          ],
+          "h_B": [
+            "x**2",
+            "y**2"
+          ],
+          "kappa_i": [
+            "1",
+            "1"
+          ],
+          "M_B": [
+            1,
+            1
+          ],
+          "scale_constraint_rhs": "1"
+        }
+      ]
+    },
+    {
+      "test": "weighted_cube_roots",
+      "passed": true,
+      "family_count": 1,
+      "families": [
+        {
+          "blocks_zero_based": [
+            [
+              0,
+              1
+            ]
+          ],
+          "R_i": [
+            "y",
+            "x"
+          ],
+          "h_B": [
+            "x*y"
+          ],
+          "kappa_i": [
+            "1",
+            "1"
+          ],
+          "M_B": [
+            3
+          ],
+          "scale_constraint_rhs": "1"
+        }
+      ]
+    },
+    {
+      "test": "three_variable_blocks",
+      "passed": true,
+      "family_count": 1,
+      "families": [
+        {
+          "blocks_zero_based": [
+            [
+              0,
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          "R_i": [
+            "y",
+            "x",
+            "1"
+          ],
+          "h_B": [
+            "x*y",
+            "z**2"
+          ],
+          "kappa_i": [
+            "1",
+            "1",
+            "1"
+          ],
+          "M_B": [
+            2,
+            1
+          ],
+          "scale_constraint_rhs": "1"
+        }
+      ]
+    },
+    {
+      "test": "three_variable_affine",
+      "passed": true,
+      "family_count": 1,
+      "families": [
+        {
+          "blocks_zero_based": [
+            [
+              0
+            ],
+            [
+              1
+            ],
+            [
+              2
+            ]
+          ],
+          "R_i": [
+            "1",
+            "1",
+            "1"
+          ],
+          "h_B": [
+            "0",
+            "0",
+            "0"
+          ],
+          "kappa_i": [
+            "1",
+            "1",
+            "1"
+          ],
+          "M_B": [
+            1,
+            1,
+            1
+          ],
+          "scale_constraint_rhs": "1"
+        }
+      ]
+    },
+    {
+      "test": "one_variable_weighted",
+      "passed": true,
+      "family_count": 1,
+      "families": [
+        {
+          "blocks_zero_based": [
+            [
+              0
+            ]
+          ],
+          "R_i": [
+            "x"
+          ],
+          "h_B": [
+            "x"
+          ],
+          "kappa_i": [
+            "1"
+          ],
+          "M_B": [
+            2
+          ],
+          "scale_constraint_rhs": "1"
+        }
+      ]
+    },
+    {
+      "test": "non_ridge_and_weighted_direct_identities",
+      "passed": true
+    },
+    {
+      "test": "invertible_nonsymmetric_transpose",
+      "passed": true,
+      "A": "Matrix([[1, 2], [3, 5]])",
+      "A_inverse_transpose_z": [
+        "-5*x + 3*y",
+        "2*x - y"
+      ]
+    },
+    {
+      "test": "degree_sharpness_D_0_through_8",
+      "passed": true,
+      "instances": 9
+    },
+    {
+      "test": "singular_matrix_and_transcendental_phase_boundaries",
+      "passed": true
+    },
+    {
+      "test": "zero_polynomial_guard",
+      "passed": true
+    }
+  ]
+}

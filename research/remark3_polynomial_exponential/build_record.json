@@ -1,0 +1,59 @@
+{
+  "date": "2026-09-08",
+  "status": "compiled_and_rendered",
+  "pdf_pages": 13,
+  "compiler": "XeTeX 0.999996 (TeX Live 2025/dev/Debian), latexmk",
+  "command": "latexmk -xelatex -interaction=nonstopmode -halt-on-error manuscript.tex",
+  "pdf_qa": {
+    "all_pages_rendered_dpi": 110,
+    "contact_sheet_reviewed": true,
+    "full_size_pages_reviewed": [
+      3,
+      6
+    ],
+    "missing_glyphs": 0,
+    "overfull_boxes": 0,
+    "undefined_references_or_citations": 0,
+    "underfull_boxes": 1,
+    "remaining_warnings": [
+      "amsmath foreign command atopwithdelims",
+      "one underfull bibliography paragraph"
+    ],
+    "text_blocks_within_page": true
+  },
+  "symbolic_tests": {
+    "status": "passed",
+    "groups": 14,
+    "python": "3.13.5",
+    "sympy": "1.14.0",
+    "scope": "finite exact regression tests; not a proof assistant"
+  },
+  "files": {
+    "manuscript.tex": {
+      "bytes": 33399,
+      "sha256": "c3dc6fa0ec113c3671a880ae752d4637dded1ad6a323f421a1adf12272f5a099",
+      "git_blob_sha1": "fd4aa823a9329810581a49304c5df5b28d73860e"
+    },
+    "manuscript.pdf": {
+      "bytes": 436219,
+      "sha256": "202690b579f5bc7442264733959b8af4722e32e420b562866a347f9ccebc204b",
+      "git_blob_sha1": "764fed81a133bfd602a25f3d0e324b1746181422"
+    },
+    "verify.py": {
+      "bytes": 11831,
+      "sha256": "0264caa87fee015b1d802d4aa7ec2e50255e23e8706d97fca83ed78948d01dac",
+      "git_blob_sha1": "cb853fe6667a9f2200f2794c4af5a220f40dab49"
+    },
+    "verification_results.json": {
+      "bytes": 6318,
+      "sha256": "30f2cc573614f3e84ea06c050a15d2450d77b594128346bf1ba4961b5ed71f0b",
+      "git_blob_sha1": "0bae137a7282bab51fc055a5d80c5e2093c86324"
+    }
+  },
+  "limitations": [
+    "No independent peer review or Lean formalization",
+    "Xu-Ding 2026 full-text novelty comparison remains outstanding",
+    "PDF binary is supplied in conversation, not committed to GitHub",
+    "PDF hash identifies this build; byte-identical PDF rebuilds are not guaranteed"
+  ]
+}
