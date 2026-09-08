@@ -1,0 +1,85 @@
+% Remark 3 v3 addendum.
+% Insert after Theorem 6.1 (irreducible full-direction classification) in the v2 manuscript.
+
+\begin{corollary}[原坐标中的无枚举判据]\label{cor:originalcriterion}
+沿用定理\ref{thm:irreducible}的假设，并直接在原坐标中假设 $p\in\C[z]$ 为非常数不可约多项式，且
+\[
+D_i p\not\equiv0\qquad(1\le i\le n).
+\]
+令 $\ell_i(z)=(A^{-T}z)_i$，于是 $D_i\ell_j=\delta_{ij}$。方程\eqref{eq:original}存在整函数解，当且仅当存在指标 $k$ 使
+\begin{equation}\label{eq:directioncriterion}
+\mu_k=1,\qquad D_k g\not\equiv0,\qquad
+D_jg\equiv0,\quad D_jp=\theta_jD_kg\quad(j\ne k),
+\end{equation}
+其中每个 $\theta_j\in\C^*$ 为常数。
+
+通过时，存在唯一一元多项式 $\gamma$ 使 $g(z)=\gamma(\ell_k(z))$，且
+\[
+b(\ell_k(z)):=p(z)-D_kg(z)\sum_{j\ne k}\theta_j\ell_j(z)
+\]
+只依赖 $\ell_k$，从而定义一元多项式 $b$。令 $\lambda_j=M\theta_j$，则全部解恰为
+\begin{equation}\label{eq:originalsolution}
+\begin{split}
+u(z)=c\Bigg[&e^{\gamma(\ell_k(z))/M}\sum_{j\ne k}\lambda_j\ell_j(z)
++\int_0^{\ell_k(z)}b(t)e^{\gamma(t)/M}\dd t\Bigg]+C,\\
+&c^M\prod_{j\ne k}\lambda_j^{\mu_j}=1,
+\qquad C\in\C.
+\end{split}
+\end{equation}
+因此在不可约全方向情形中，除不可约性本身外，可解性只需检查有限个方向导数恒等式，不必枚举 $P$ 的因子分配。
+\end{corollary}
+\begin{proof}
+在标准坐标下有 $\partial_{w_i}P=(D_ip)\circ A^T$、$\partial_{w_i}G=(D_ig)\circ A^T$。定理\ref{thm:irreducible}立即推出\eqref{eq:directioncriterion}，其中 $\theta_j=\lambda_j/M$。反之，$D_jg=0$（$j\ne k$）与 $D_i\ell_j=\delta_{ij}$ 说明 $g=\gamma(\ell_k)$。再对
+\[
+p-D_kg\sum_{j\ne k}\theta_j\ell_j
+\]
+施加任意 $D_j$（$j\ne k$）；利用常系数方向导数可交换以及 $D_jD_kg=D_kD_jg=0$，所得导数恒为零，所以该多项式只依赖 $\ell_k$。于是定理\ref{thm:irreducible}的判据成立，\eqref{eq:originalsolution}由\eqref{eq:irredsolution}代回 $w=A^{-T}z$ 得到。
+\end{proof}
+
+\begin{corollary}[次数与最高齐次项障碍]\label{cor:leadingform}
+在定理\ref{thm:irreducible}的可解情形，设 $D=\deg P=\deg p$、$d=\deg G=\deg g$，并令 $P_D$、$p_D$ 为最高齐次项。则
+\begin{equation}\label{eq:degreeobstruction}
+1\le d\le D,
+\qquad \deg \partial_{w_j}P=d-1\quad(j\ne k),
+\end{equation}
+且对唯一的活动指标 $k$，存在一次齐次式 $L$ 使
+\begin{equation}\label{eq:leadingform}
+P_D(w)=w_k^{D-1}L(w),
+\qquad
+p_D(z)=\ell_k(z)^{D-1}\widetilde L(z).
+\end{equation}
+若 $D>d$，则更强地 $P_D$ 是 $w_k^D$ 的非零常数倍。
+
+因此：
+\begin{enumerate}[label=(\roman*)]
+\item 若 $\deg g>\deg p$，则无整函数解；
+\item 若 $D\ge3$ 且 $p_D$ 为平方自由齐次多项式，则无整函数解；
+\item 若 $D=2$ 且 $p_2$ 对应的齐次二次型秩至少为 $3$，则无整函数解。
+\end{enumerate}
+\end{corollary}
+\begin{proof}
+由\eqref{eq:irredcriterion}，对 $j\ne k$ 有
+\[
+\partial_{w_j}P=\frac{\lambda_j}{M}\gamma'(w_k),
+\]
+故其次数均为 $d-1$，并且 $d\le D$。写 $r=\deg b$。由于
+\[
+P=b(w_k)+\frac{\gamma'(w_k)}{M}\sum_{j\ne k}\lambda_jw_j,
+\]
+有 $D=\max\{r,d\}$。若 $r=D>d$，最高项仅来自 $b$，故 $P_D$ 为 $w_k^D$ 的常数倍；若 $D=d$，两部分的最高项合并为 $w_k^{D-1}$ 乘一个一次齐次式。这证明\eqref{eq:leadingform}。可逆线性换元把 $w_k$ 变为 $\ell_k$，保持乘法重数。
+
+当 $D\ge3$ 时，\eqref{eq:leadingform}迫使 $\ell_k$ 在 $p_D$ 中至少以二重因子出现，所以平方自由的 $p_D$ 不可能。$D=2$ 时，$p_2$ 是两个线性形式的乘积；其对称矩阵秩至多为 $2$，从而秩至少为 $3$ 的二次型被排除。
+\end{proof}
+
+\begin{corollary}[固定方向系下的泛型无解]\label{cor:generic}
+固定 $A\in GL_n(\C)$、正整数权重以及次数 $D\ge2$。记 $\mathcal H_D$ 为 $n$ 元 $D$ 次齐次多项式空间，$\mathcal L$ 为一次齐次式空间。若某个不可约、全方向依赖的次数 $D$ 多项式 $p$ 能对某个多项式 $g$ 使\eqref{eq:original}可解，则其最高齐次项必属于
+\begin{equation}\label{eq:exceptionalset}
+\mathcal E_D=
+\bigcup_{k=1}^n \ell_k^{D-1}\mathcal L\subsetneq\mathcal H_D.
+\end{equation}
+每个 $\ell_k^{D-1}\mathcal L$ 都是维数 $n$ 的真线性子空间，而
+$\dim\mathcal H_D=\binom{n+D-1}{D}>n$。故 $\mathcal E_D$ 是有限个真线性子空间之并；在最高次系数的 Zariski 意义下，避开该集合的多项式对任意多项式相位 $g$ 均无整函数解。
+\end{corollary}
+\begin{proof}
+包含关系就是推论\ref{cor:leadingform}。维数公式说明每个分支均为真子空间；有限并仍是真 Zariski 闭子集。这里的“泛型”只针对最高齐次项系数，并保留定理\ref{thm:irreducible}的不可约与全方向依赖假设。
+\end{proof}
