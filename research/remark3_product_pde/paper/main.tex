@@ -1,0 +1,827 @@
+\documentclass[11pt]{article}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[a4paper,margin=27mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{microtype,enumitem,booktabs}
+\usepackage[hidelinks]{hyperref}
+\usepackage{fancyhdr}
+\pagestyle{fancy}\fancyhf{}
+\fancyhead[L]{\small Product-gradient equations}
+\fancyhead[R]{\small Research manuscript, 8 September 2026}
+\fancyfoot[C]{\thepage}
+\setlength{\headheight}{14pt}
+\numberwithin{equation}{section}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}\newtheorem{definition}[theorem]{Definition}
+\newtheorem{example}[theorem]{Example}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\C}{\mathbb C}
+\newcommand{\N}{\mathbb N}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\NN}{\mathbb Z_{\geq0}}
+\newcommand{\dd}{\,\mathrm d}
+\newcommand{\Div}{\operatorname{div}}
+\newcommand{\supp}{\operatorname{supp}}
+\newcommand{\Mcal}{\mathcal M}
+\newcommand{\Ac}{\mathcal A}
+\newcommand{\Pc}{\mathcal P}
+\DeclareMathOperator{\ord}{ord}
+\DeclareMathOperator{\rank}{rank}
+\DeclareMathOperator{\diag}{diag}
+\title{Automatic finite order and algebraic normal forms\\
+for product-gradient equations with\\
+polynomial--exponential forcing}
+\author{Research manuscript for the \texttt{whzy3185/math} project}
+\date{8 September 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study entire solutions of products of independent constant-coefficient
+first-order directional derivatives with a polynomial--exponential right-hand
+side. The problem includes both equations in Remark~3 of F.~L\"u's
+arXiv:2605.09585v1. We allow arbitrary positive integral powers of the factors.
+For a nonzero polynomial prefactor, no growth assumption is necessary:
+every solution has order exactly the degree of the exponent when that exponent
+is nonconstant, and every solution is polynomial when it is constant.
+The connected components of the mixed-Hessian graph determine blocks with a
+common polynomial exponential phase. All solutions are then parametrized by
+polynomial factors satisfying explicit twisted closedness identities and are
+reconstructed by radial integrals. For fixed input data, existence reduces to
+finitely many factor allocations and homogeneous linear systems, followed by
+one scalar normalization. We recover the zero-free ridge-function
+classification with all constants specified, obtain an explicit bound on the
+number of connected solutions modulo additive constants, and prove a sharp
+arithmetic existence criterion for monomial prefactors. Analytic proofs, not
+computational experiments, establish the classification and nonexistence
+statements.
+\end{abstract}
+\noindent\textbf{Keywords.} Entire solution; nonlinear partial differential equation;
+polynomial prefactor; logarithmic derivative; algebraic normal form.\\
+\textbf{MSC 2020.} 32A15, 32A22, 35F20.
+
+\section{Introduction and relation to Remark 3}
+Let $\Ac=(a_{ij})\in\operatorname{GL}_n(\C)$ and define
+\[
+ D_i=\sum_{j=1}^n a_{ij}\frac{\partial}{\partial z_j}.
+\]
+The equations singled out in Remark~3 of L\"u~\cite{Lu2026}, on page~6 of
+the uploaded version, are
+\begin{equation}\label{eq:remark}
+ \prod_{i=1}^n D_i u=e^g,
+ \qquad
+ \prod_{i=1}^n D_i u=p e^g,
+\end{equation}
+where $p,g\in\C[z_1,\ldots,z_n]$. The first equation is already accessible
+from Theorem~2 of that paper by the stated invertible linear change of
+variables. It is not an independent novelty claim here. The second equation
+introduces zeros into the derivative factors. Those zeros cannot simply be
+ignored: even $u(x,y)=e^{xy}$ has $u_xu_y=xy e^{2xy}$ and is not a function
+of one linear form.
+
+We give a necessary-and-sufficient normal form for the polynomial-prefactor
+problem and, with essentially the same proof, for the weighted equation
+\begin{equation}\label{eq:weighted-original}
+ \prod_{i=1}^n (D_i u)^{\mu_i}=p e^g,
+ \qquad \mu_i\in\N,\quad \mu_i\geq1.
+\end{equation}
+The weights are an extension of the source problem; taking all $\mu_i=1$
+recovers exactly \eqref{eq:remark}. The normal form contains no unspecified
+entire functions: it uses polynomial factorizations, explicit linear
+identities, and definite integrals of known entire integrands.
+
+The relevant background includes Chen--Han~\cite{ChenHan2022},
+Xu--Liu--Xuan~\cite{XuLiuXuan2025}, and the finite-order result of
+L\"u--Ma~\cite{LuMa2026}. L\"u's preprint removes the finite-order
+assumption for the zero-free equation. Our proof below does not use its
+Theorem~2 as a black box. Instead, it applies the classical
+several-variable logarithmic-derivative estimate of Vitter~\cite{Vitter1977};
+a recent explicit two-radius version is given by
+Han--Liu~\cite{HanLiu2025}.
+
+\paragraph{Scope of the literature comparison.}
+A publisher-indexed 2026 paper by Xu--Ding~\cite{XuDing2026} concerns
+product-type equations with a generalized exponential term in $\C^3$.
+Its indexed description identifies a finite-order main result. Its full
+hypotheses and complete classification were not available for comparison
+when this manuscript was prepared. Accordingly, we make no claim of
+priority over that paper, or of an exhaustive novelty search. The theorem
+proofs below are supplied independently. This is a research manuscript,
+not a submitted or peer-reviewed article.
+
+\section{The complete normal form}
+Set $I=\{1,\ldots,n\}$ and $M=\sum_{i=1}^n\mu_i$. The exact coordinate
+change is
+\begin{equation}\label{eq:change}
+ z=\Ac^T w,\qquad v(w)=u(\Ac^T w),\qquad
+ P(w)=p(\Ac^T w),\qquad G(w)=g(\Ac^T w).
+\end{equation}
+The chain rule gives $v_{w_i}(w)=(D_i u)(\Ac^T w)$. Thus it suffices to solve
+\begin{equation}\label{eq:canonical}
+ \prod_{i=1}^n v_i^{\mu_i}=P e^G,
+ \qquad v_i=\partial_{w_i}v.
+\end{equation}
+Until Section~\ref{sec:degenerate}, assume $P\not\equiv0$.
+For $B\subseteq I$, write $w_B=(w_i)_{i\in B}$ and let $\iota_B w_B$
+be the vector obtained by putting zero in coordinates outside $B$.
+
+\begin{definition}\label{def:data}
+For a partition $\Pc$ of $I$ into nonempty blocks, put
+\begin{equation}\label{eq:phases}
+ \begin{gathered}
+ G_0=G(0),\qquad \lambda=e^{G_0/M},\qquad
+ m_B=\sum_{i\in B}\mu_i,\\
+ G_B(w_B)=G(\iota_Bw_B)-G_0,\qquad H_B=G_B/m_B.
+ \end{gathered}
+\end{equation}
+An admissible polynomial datum for $(P,G,\mu)$ consists of this partition
+and nonzero polynomials $q_1,\ldots,q_n$ such that
+\begin{align}
+ G(w)&=G_0+\sum_{B\in\Pc}G_B(w_B),\label{eq:add}\\
+ q_i&\in\C[w_B]\quad(i\in B),\qquad
+ \prod_{i=1}^n q_i^{\mu_i}=P,\label{eq:factor}\\
+ \partial_jq_i+q_i\partial_jH_B
+ &=\partial_iq_j+q_j\partial_iH_B
+ \quad(i,j\in B).\label{eq:closed}
+\end{align}
+All these are polynomial identities. In particular $H_B(0)=0$.
+\end{definition}
+
+\begin{theorem}[Complete normal form]\label{thm:normal}
+Let $P\not\equiv0$ and $G$ be polynomials, and let all $\mu_i$ be positive
+integers. The entire solutions of \eqref{eq:canonical} are exactly
+\begin{equation}\label{eq:integral}
+ v(w)=C+\lambda\sum_{B\in\Pc}\int_0^1
+ e^{H_B(tw_B)}\Bigl(\sum_{i\in B}w_iq_i(tw_B)\Bigr)\dd t,
+ \qquad C\in\C,
+\end{equation}
+where $(\Pc,q_1,\ldots,q_n)$ ranges over the admissible data of
+Definition~\ref{def:data}. Each integrand is entire in $w$, uniformly on
+compact sets for $0\leq t\leq1$, and the resulting gradient is
+\begin{equation}\label{eq:gradient}
+ v_i=\lambda q_i e^{H_B}\quad(i\in B).
+\end{equation}
+For every solution, one admissible partition is the partition into
+connected components of the graph with edge $ij$ whenever
+$v_{ij}\not\equiv0$, $i\ne j$.
+\end{theorem}
+
+The integral formula is an explicit quadrature, not an assertion that every
+primitive is elementary. Repeated representations are harmless: the
+mixed-Hessian components supply a canonical finest additive decomposition,
+whereas the parametrization permits redundant partitions.
+
+\begin{theorem}[Automatic growth and the constant-exponent case]\label{thm:growth}
+Every entire solution of \eqref{eq:canonical} has finite order, without
+any a priori growth restriction. More precisely:
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item If $d=\deg G\geq1$, then $\rho(v)=d$ and
+$T(r,v)=O(r^d)$.
+\item If $G$ is constant, then $v$ is polynomial and
+\begin{equation}\label{eq:degree}
+ \deg v\leq 1+\left\lfloor\frac{\deg P}{\min_i\mu_i}\right\rfloor.
+\end{equation}
+\end{enumerate}
+The same assertions hold for $u$ in \eqref{eq:weighted-original}.
+In particular, for Remark~3 with a nonzero polynomial $p$, the growth order
+is $\deg g$ when $g$ is nonconstant, and $\deg u\leq\deg p+1$ when $g$
+is constant.
+\end{theorem}
+
+The proofs occupy the next three sections. The key point is that finite
+order is derived before polynomial logarithms are asserted.
+
+\section{Analytic and algebraic preliminaries}
+Use the standard Nevanlinna characteristic $T(r,f)$ in $\C^n$, normalized
+so that for entire $f$, it equals the spherical mean of $\log^+|f|$ up
+to a bounded additive term. We use the first fundamental theorem and
+\[
+ T(r,fg),\ T(r,f+g)\leq T(r,f)+T(r,g)+O(1),\qquad
+ T(r,f^a)=aT(r,f)+O(1)\quad(a\in\N).
+\]
+For a nonzero polynomial $R$, $T(r,R)=O(\log r)$. The standard
+logarithmic-derivative estimate is
+\begin{equation}\label{eq:LD}
+ m\left(r,\frac{\partial_jf}{f}\right)
+ =O\bigl(\log(e+T(r,f))+\log r\bigr)
+\end{equation}
+outside a set of finite linear measure; see
+\cite{Vitter1977,HanLiu2025}. The estimate concerns proximity, not the full
+characteristic. The distinction is essential when $P$ has zeros.
+One may choose a common translated origin at which the finitely many
+functions being considered are nonzero. This meets the origin
+normalization in the two-radius formulation and does not change polynomial
+degrees or growth order. A finite union of exceptional sets still has
+finite measure.
+
+\begin{lemma}[Adding the pole term]\label{lem:LD}
+If $f$ is nonzero entire and $\Div(f)\leq\Div(R)$ for a nonzero
+polynomial $R$, then, whenever $L_j=(\partial_j f)/f$ is not identically
+zero,
+\[
+ T(r,L_j)=O\bigl(\log(e+T(r,f))+\log r\bigr)
+\]
+outside a set of finite linear measure.
+\end{lemma}
+\begin{proof}
+At a generic smooth point of a zero hypersurface of $f$, logarithmic
+differentiation produces at most a simple pole. Hence the pole divisor of
+$L_j$ is bounded by the zero divisor of $f$, and therefore by $\Div(R)$.
+Consequently $N(r,L_j)=O(\log r)$. Adding this estimate to
+\eqref{eq:LD} proves the assertion. Possible codimension-two singular sets
+do not contribute divisorial poles.
+\end{proof}
+
+\begin{lemma}[Polynomial divisors and exponential factors]\label{lem:factor}
+Suppose nonzero entire functions $f_1,\ldots,f_n$ satisfy
+$\prod_i f_i^{\mu_i}=P e^G$, with $P\not\equiv0$ polynomial. Then
+\[
+ f_i=R_i e^{h_i},\qquad R_i\in\C[w]\setminus\{0\},\quad
+ h_i\text{ entire},\qquad \prod_i R_i^{\mu_i}=P.
+\]
+If, in addition, $T(r,f_i)=O(r^d+\log r)$ for an integer $d\geq0$,
+then $h_i$ is a polynomial of degree at most $d$.
+\end{lemma}
+\begin{proof}
+Factor $P=c\prod_{\nu=1}^s\pi_\nu^{e_\nu}$ into distinct irreducible
+polynomials. The order of $f_i$ on the irreducible hypersurface
+$\{\pi_\nu=0\}$ is a nonnegative integer $a_{i\nu}$ and
+$\sum_i\mu_i a_{i\nu}=e_\nu$. Here one uses the elementary divisor fact
+that the regular locus of an irreducible complex algebraic hypersurface
+is connected; vanishing order is constant there. Local holomorphic
+factorization, followed by removable extension across its singular locus,
+then gives the global divisibility by $\pi_\nu^{a_{i\nu}}$.
+Choose nonzero constants $c_i$ with $\prod_i c_i^{\mu_i}=c$, and set
+$R_i=c_i\prod_\nu\pi_\nu^{a_{i\nu}}$. The quotient $f_i/R_i$ and its
+reciprocal extend holomorphically across the hypersurfaces. They extend
+across the remaining codimension-two set by Hartogs' theorem when
+$n\geq2$; in dimension one ordinary removable singularities suffice.
+Thus $f_i/R_i$ is zero-free entire. Since $\C^n$ is simply connected,
+it has an entire logarithm $h_i$.
+
+For the second assertion,
+\[
+ T(r,e^{h_i})\leq T(r,f_i)+T(r,1/R_i)+O(1)
+ =O(r^d+\log r).
+\]
+The submean/Poisson estimate for the nonnegative subharmonic function
+$\log^+|e^{h_i}|$ bounds its maximum on a ball of radius $r$ by a constant
+multiple of its spherical mean on the ball of radius $2r$. Therefore
+$\max_{\|w\|\leq r}\Re h_i(w)=O(r^d+\log r)$. Borel--Carath\'eodory
+on each complex line through the origin bounds $h_i-h_i(0)$ on the
+smaller ball by the same quantity, uniformly in the line direction.
+Multivariable Cauchy estimates now show that every Taylor coefficient of
+total degree greater than $d$ is zero. For $d=0$, the bound $O(\log r)$
+forces every positive-degree coefficient to vanish. This proves the claim.
+\end{proof}
+
+\begin{lemma}[Two elementary polynomial facts]\label{lem:elementary}
+Let $R\ne0$ and $Q$ be polynomials.
+\begin{enumerate}[label=(\roman*),leftmargin=*]
+\item If $e^Q$ is rational, then $Q$ is constant.
+\item If $\partial_jR+R\partial_jQ=0$, then
+$\partial_jR=\partial_jQ=0$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+For (i), restrict to a generic affine complex line on which a purported
+nonconstant $Q$ remains nonconstant and a rational representation has
+nonzero denominator. A rational function equal to $e^{Q}$ on that line
+has no finite poles, hence is polynomial; a zero-free polynomial on
+$\C$ is constant. Differentiation then contradicts nonconstant $Q$.
+For (ii), if $\partial_jQ\ne0$, the total degree of
+$R\partial_jQ$ is at least $\deg R$, whereas that of a nonzero
+$\partial_jR$ is at most $\deg R-1$. They cannot cancel. The case
+$\partial_jR=0$ yields the same conclusion immediately.
+\end{proof}
+
+\begin{lemma}[Radial primitive]\label{lem:radial}
+Let $F_i$ be entire functions of $w_B$, $i\in B$, with
+$\partial_jF_i=\partial_iF_j$. Then
+\[
+ V_B(w_B)=\int_0^1\sum_{i\in B}w_iF_i(tw_B)\dd t
+\]
+is entire and $\partial_j V_B=F_j$.
+\end{lemma}
+\begin{proof}
+Compact-uniform holomorphy justifies differentiating under the integral.
+Using closedness, the derivative of the integrand with respect to $w_j$ is
+\[
+ F_j(tw_B)+t\sum_{i\in B}w_i\partial_jF_i(tw_B)
+ =F_j(tw_B)+t\sum_{i\in B}w_i\partial_iF_j(tw_B)
+ =\frac{\dd}{\dd t}\bigl[tF_j(tw_B)\bigr].
+\]
+Integration from $0$ to $1$ gives $F_j(w_B)$. The lower endpoint vanishes.
+\end{proof}
+
+\section{The growth bootstrap without a finite-order assumption}
+\begin{proposition}\label{prop:bootstrap}
+For any entire solution of \eqref{eq:canonical}, set
+$d=\deg G$ when $G$ is nonconstant and $d=0$ otherwise. Then
+\begin{equation}\label{eq:bootbound}
+ T(r,v_i)=O(r^d+\log r)\qquad(1\leq i\leq n).
+\end{equation}
+\end{proposition}
+\begin{proof}
+Write $f_i=v_i$. No $f_i$ vanishes identically because $P\not\equiv0$.
+Let $\Gamma$ be the graph on $I$ with an edge $ij$ exactly when
+$v_{ij}\not\equiv0$. If $B$ is one of its connected components, then
+$\partial_k f_i=0$ for $i\in B$ and $k\notin B$. Thus $f_i$ depends
+only on $w_B$.
+
+Choose $a\in\C^n$ with $P(a)\ne0$. All $f_i(a)$ are nonzero. Freeze
+the coordinates outside $B$ at those of $a$ in \eqref{eq:canonical}.
+It follows that
+\begin{equation}\label{eq:blockprod}
+ F_B(w_B):=\prod_{i\in B}f_i(w_B)^{\mu_i}
+ =\frac{P(w_B,a_{I\setminus B})}
+ {\prod_{k\notin B}f_k(a)^{\mu_k}}
+ e^{G(w_B,a_{I\setminus B})}.
+\end{equation}
+The polynomial in the numerator is not identically zero, as its value at
+$a_B$ is $P(a)\ne0$. Consequently, viewed also as a function on $\C^n$,
+\begin{equation}\label{eq:blockgrowth}
+ T(r,F_B)=O(r^d+\log r).
+\end{equation}
+This step does not assume a global factorization of $P$ by blocks.
+
+Put $S(r)=1+\sum_iT(r,f_i)$, adding bounded normalization constants if
+necessary so that $S$ is positive and nondecreasing. For an edge $ij$,
+set $L_{ij}=(\partial_j f_i)/f_i$. Equality of mixed derivatives yields
+\begin{equation}\label{eq:ratio}
+ f_i L_{ij}=f_j L_{ji}\not\equiv0,
+ \qquad \frac{f_i}{f_j}=\frac{L_{ji}}{L_{ij}}.
+\end{equation}
+The divisor identity in \eqref{eq:canonical} implies
+$\Div(f_i)\leq\Div(P)$. Lemma~\ref{lem:LD} and the first fundamental
+theorem therefore give
+\begin{equation}\label{eq:edgebound}
+ T(r,f_i/f_j)=O(\log(e+S(r))+\log r)
+\end{equation}
+outside a common exceptional set of finite linear measure. Following any
+finite path gives the same bound for $i,j$ in a common component, with a
+possibly larger fixed constant.
+
+Fix $k\in B$ and write $m_B=\sum_{i\in B}\mu_i$. The identity
+\[
+ F_B=f_k^{m_B}\prod_{i\in B}(f_i/f_k)^{\mu_i}
+\]
+implies
+\[
+ m_BT(r,f_k)\leq T(r,F_B)+\sum_{i\in B}\mu_iT(r,f_i/f_k)+O(1).
+\]
+After summing over the finitely many vertices and using
+\eqref{eq:blockgrowth}--\eqref{eq:edgebound}, we obtain
+\begin{equation}\label{eq:absorb}
+ S(r)\leq C(r^d+\log r)+C\log(e+S(r))
+\end{equation}
+outside that exceptional set. There is no comparison of unrelated
+``small functions'' in this argument: every error is controlled by the
+single nonnegative quantity $S$.
+
+For $x\geq0$, $C\log(e+x)\leq x/2+C'$ with $C'$ depending only on $C$.
+Absorbing this term in \eqref{eq:absorb} proves
+$S(r)=O(r^d+\log r)$ off the exceptional set. Its tail has measure less
+than $1$ for all sufficiently large lower endpoints, so every sufficiently
+large interval $[r,r+1]$ contains a point outside it. Monotonicity of $S$
+then yields the same bound for every sufficiently large $r$.
+This proves \eqref{eq:bootbound}, including singleton components.
+\end{proof}
+
+\section{Proof of the normal form and the exact order}
+\begin{proof}[Proof of Theorem~\ref{thm:normal}: necessity]
+By Proposition~\ref{prop:bootstrap} and Lemma~\ref{lem:factor},
+\begin{equation}\label{eq:polylog}
+ f_i=R_i e^{Q_i},\qquad R_i\ne0,\quad Q_i\text{ polynomial}.
+\end{equation}
+For an edge $ij$ of $\Gamma$, define the nonzero polynomials
+\[
+ A_{ij}=\partial_jR_i+R_i\partial_jQ_i,\qquad
+ A_{ji}=\partial_iR_j+R_j\partial_iQ_j.
+\]
+Mixed-derivative symmetry gives
+\[
+ A_{ij}e^{Q_i}=A_{ji}e^{Q_j},\qquad
+ e^{Q_i-Q_j}=A_{ji}/A_{ij}.
+\]
+The exponential is rational, so Lemma~\ref{lem:elementary}(i) shows that $Q_i-Q_j$ is constant. Along paths, all $Q_i$ in a component
+$B$ have the same nonconstant part.
+
+For $i\in B$ and $k\notin B$, independence of $f_i$ from $w_k$ gives
+$\partial_kR_i+R_i\partial_kQ_i=0$. Part (ii) of that lemma gives
+$\partial_kR_i=\partial_kQ_i=0$. Normalize the common phase to vanish
+at the origin and absorb the resulting exponential constants into the
+polynomial factors. Thus
+\begin{equation}\label{eq:normalized-component}
+ f_i=r_i(w_B)e^{K_B(w_B)},\qquad K_B(0)=0,\quad r_i\ne0.
+\end{equation}
+Here $r_i$ denotes a polynomial, not a weight. Substituting into the
+product equation shows that
+\[
+ e^{G-\sum_Bm_BK_B}=\frac{\prod_i r_i^{\mu_i}}{P}
+\]
+is rational. Its polynomial exponent is constant, and evaluation of that
+exponent at $0$ shows that the constant is $G_0$. Hence
+\[
+ G-G_0=\sum_Bm_BK_B,\qquad
+ \prod_i r_i^{\mu_i}=e^{G_0}P.
+\]
+Restricting to the coordinate subspace of $B$ and using $K_{B'}(0)=0$
+for $B'\ne B$ yields $m_BK_B=G_B$. Therefore $K_B=H_B$ as defined in
+\eqref{eq:phases}. Set $q_i=\lambda^{-1}r_i$. Then
+$\prod_iq_i^{\mu_i}=P$, since $\lambda^M=e^{G_0}$. The remaining
+mixed-derivative identities are exactly \eqref{eq:closed}.
+
+We have obtained admissible data and \eqref{eq:gradient}.
+Lemma~\ref{lem:radial} supplies the potential in \eqref{eq:integral}.
+The difference between it and $v$ has every first derivative zero on
+connected $\C^n$ and is consequently an additive constant.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:normal}: sufficiency]
+Start with admissible data. For each block put $F_i=q_i e^{H_B}$.
+Equation~\eqref{eq:closed} says exactly that
+$\partial_jF_i=\partial_iF_j$ within the block. Lemma~\ref{lem:radial}
+gives \eqref{eq:gradient}; all cross-block mixed derivatives vanish.
+Finally,
+\[
+ \prod_i v_i^{\mu_i}
+ =\lambda^M\Bigl(\prod_iq_i^{\mu_i}\Bigr)
+     e^{\sum_Bm_BH_B}
+ =e^{G_0}P e^{G-G_0}=P e^G.
+\]
+The integral is globally entire, so no period or branch condition remains.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:growth}]
+The proof of Lemma~\ref{lem:factor} and Proposition~\ref{prop:bootstrap}
+give
+\[
+ \log^+\max_{\|w\|\leq r}|f_i(w)|=O(r^d+\log r).
+\]
+The radial identity
+\[
+ v(w)-v(0)=\int_0^1\sum_iw_if_i(tw)\dd t
+\]
+therefore gives $T(r,v)=O(r^d)$ when $d\geq1$.
+For the reverse inequality in the order, the highest homogeneous part
+$G_d$ is nonzero and
+\[
+ T(r,e^G)=r^d\int_{\|\zeta\|=1}(\Re G_d(\zeta))^+\dd\sigma(\zeta)
+          +O(r^{d-1}+1).
+\]
+The integral is positive: phase rotation of a nonzero value of $G_d$
+produces positive real part on a nonempty open portion of the sphere.
+The first fundamental theorem thus gives
+$T(r,Pe^G)=\Theta(r^d)$, since multiplication by $P$ changes this
+characteristic by at most $O(\log r)$. Cauchy estimates followed by the
+submean estimate give
+$T(r,f_i)\leq C_nT(4r,v)+O(\log r)$. Applying the product inequality to
+\eqref{eq:canonical} yields $\rho(v)\geq d$. Hence $\rho(v)=d$.
+
+When $G$ is constant, \eqref{eq:bootbound} and
+Lemma~\ref{lem:factor} show that all $Q_i$ are constant. Thus every
+$f_i$ is polynomial and radial integration makes $v$ polynomial.
+If $D=\deg v$, at least one derivative, say $f_j$, has degree $D-1$;
+none of the other derivatives is identically zero. Therefore
+\[
+ \deg P=\sum_i\mu_i\deg f_i\geq\mu_j(D-1)
+ \geq(\min_i\mu_i)(D-1),
+\]
+which is \eqref{eq:degree}. Invertible linear changes preserve total
+polynomial degree and entire-function order, proving the assertions for
+$u$. Sharpness in the unweighted case is witnessed by
+$v=w_1^{D}/D+\sum_{i=2}^n w_i$, whose derivative product is $w_1^{D-1}$.
+\end{proof}
+
+\section{Finite algebraic existence testing and a counting bound}
+Factor the specified input over $\C$:
+\begin{equation}\label{eq:inputfactor}
+ P=c_P\prod_{\nu=1}^s\pi_\nu^{e_\nu},\qquad c_P\ne0.
+\end{equation}
+For every admissible datum,
+\begin{equation}\label{eq:allocation}
+ q_i=c_iR_i,\qquad
+ R_i=\prod_\nu\pi_\nu^{a_{i\nu}},\qquad
+ a_{i\nu}\in\NN,\quad \sum_i\mu_i a_{i\nu}=e_\nu,\qquad
+ \prod_i c_i^{\mu_i}=c_P.
+\end{equation}
+There are only finitely many integer allocations. The constants remain
+unknown, but their equations are especially simple.
+
+\begin{theorem}[Finite linear-algebra reduction]\label{thm:algorithm}
+For fixed $P,G,\mu$, enumerate all partitions of $I$ and the allocations
+\eqref{eq:allocation}. Reject a partition if \eqref{eq:add} fails, and
+reject an allocation if $R_i$ depends on a variable outside its block.
+For each remaining pair form the coefficient matrix of the polynomial
+identities
+\begin{equation}\label{eq:linear}
+ c_i\bigl(\partial_jR_i+R_i\partial_jH_B\bigr)
+ -c_j\bigl(\partial_iR_j+R_j\partial_iH_B\bigr)=0
+ \quad(i<j,\ i,j\in B).
+\end{equation}
+Let $L\subseteq\C^n$ be its nullspace. This pair supplies an entire
+solution if and only if no coordinate functional is identically zero on
+$L$. If it does, choose $c\in L$ with all coordinates nonzero and multiply
+it by a scalar $t$ satisfying
+\begin{equation}\label{eq:scale}
+ t^M=\frac{c_P}{\prod_i c_i^{\mu_i}}.
+\end{equation}
+The scaled constants give all solutions through Theorem~\ref{thm:normal},
+when all such choices are permitted.
+\end{theorem}
+\begin{proof}
+Necessity of the integer allocation follows from unique factorization;
+\eqref{eq:linear} is \eqref{eq:closed} with $q_i=c_iR_i$.
+A nonzero-coordinate vector cannot exist if some coordinate functional
+vanishes on $L$. Conversely, if none vanishes identically, the intersections
+of $L$ with the coordinate hyperplanes are finitely many proper linear
+subspaces. Their union cannot cover the vector space $L$ over the infinite
+field $\C$. Thus $L$ contains $c$ with all coordinates nonzero. All
+closedness equations are homogeneous, so $tc\in L$. Equation~\eqref{eq:scale}
+has a nonzero complex solution and enforces \eqref{eq:allocation}.
+The normal form proves sufficiency and exhaustiveness.
+\end{proof}
+
+This is a finite symbolic decision procedure over an effective exact
+coefficient field after factorization over its algebraic closure. It is
+not a numerical decision algorithm for arbitrary uncomputable complex
+constants. No degree search for an unknown entire function is involved.
+
+\begin{corollary}[Connected solutions are finite in number]\label{cor:count}
+Define
+\[
+ N_\mu(e)=\#\{(a_1,\ldots,a_n)\in\NN^n:\ \sum_i\mu_i a_i=e\}.
+\]
+The number of solutions of \eqref{eq:canonical} with connected
+mixed-Hessian graph, modulo addition of constants, is at most
+\begin{equation}\label{eq:count}
+ M\prod_{\nu=1}^s N_\mu(e_\nu).
+\end{equation}
+In the unweighted case this bound is
+$n\prod_\nu\binom{e_\nu+n-1}{n-1}$.
+If $G$ cannot be additively separated over any nontrivial coordinate
+partition, or if one irreducible factor of $P$ depends on every coordinate,
+then every solution has connected mixed-Hessian graph, and the same
+bound applies to all solutions modulo constants.
+\end{corollary}
+\begin{proof}
+For a connected solution, the single phase is fixed:
+$H=(G-G_0)/M$. Fix one allocation and write
+$A_{ij}=\partial_jR_i+R_i\partial_jH$. In the presence of a vector
+$c$ with all entries nonzero, \eqref{eq:linear} forces $A_{ij}=0$ exactly
+when $A_{ji}=0$. Along each nonzero edge it determines a unique ratio
+$c_i/c_j$. Connectedness therefore determines all $c_i$ up to one common
+nonzero scalar. Its normalization has at most $M$ choices. Summing over
+allocations proves the bound.
+
+A disconnected graph would give \eqref{eq:add}, contradicting the first
+additional hypothesis. Under the second, the full-support irreducible
+factor must divide at least one $q_i$, but that $q_i$ depends only on its
+proper block. A factor of a polynomial independent of $w_j$ is itself
+independent of $w_j$ (compare degrees in $w_j$); this is a contradiction.
+\end{proof}
+
+\section{Explicit resolution of the zero-free equation}
+\begin{corollary}[Weighted ridge-block form]\label{cor:ridge}
+For $P\equiv1$, all entire solutions of \eqref{eq:canonical} are given by
+a partition $\Pc$, constants $b_i\in\C^*$, and one-variable polynomials
+$h_B$ satisfying
+\begin{equation}\label{eq:ridge-data}
+ \prod_i b_i^{\mu_i}=1,\qquad h_B(0)=0,\qquad
+ G=G_0+\sum_{B\in\Pc}m_B h_B(\ell_B),\qquad
+ \ell_B(w_B)=\sum_{i\in B}b_iw_i.
+\end{equation}
+The solutions themselves are
+\begin{equation}\label{eq:ridge-solution}
+ v(w)=C+e^{G_0/M}\sum_{B\in\Pc}
+          \int_0^{\ell_B(w_B)}e^{h_B(s)}\dd s.
+\end{equation}
+Conversely every such choice solves the equation.
+\end{corollary}
+\begin{proof}
+Unique factorization and $\prod q_i^{\mu_i}=1$ force $q_i=b_i$ to be
+nonzero constants. Equation~\eqref{eq:closed} becomes
+$b_i\partial_jH_B=b_j\partial_iH_B$. Thus every constant vector tangent
+to $\ker\ell_B$ annihilates $H_B$. Complete $\ell_B$ to an invertible
+linear coordinate system; derivatives in all the other directions vanish.
+It follows that $H_B=h_B(\ell_B)$ for a polynomial $h_B$ with $h_B(0)=0$.
+Its gradient primitive is exactly the integral in
+\eqref{eq:ridge-solution}. Conversely, differentiation gives
+$v_i=e^{G_0/M}b_i e^{h_B(\ell_B)}$, and \eqref{eq:ridge-data} gives the
+required product.
+\end{proof}
+
+\paragraph{Equation (1.8) of Remark 3.}
+Set every $\mu_i=1$, so that $M=n$ and $m_B=|B|$. In the preceding
+corollary take $G(w)=g(\Ac^Tw)$ and substitute $w=\Ac^{-T}z$ in
+\eqref{eq:ridge-solution}. This is the full pullback formula for $u$.
+Singleton blocks are the isolated set $J$ in the source paper; larger
+connected blocks are its equivalence classes under $\approx$. The factor
+$e^{g(0)/n}$ and the product condition $\prod b_i=1$ keep every constant
+normalization explicit. If $g$ is constant, all $h_B$ vanish and $u$ is
+affine, recovering the source's rigidity result.
+
+\paragraph{Equation (1.9) of Remark 3.}
+For $p\not\equiv0$, use Theorem~\ref{thm:normal} with all weights one,
+$P=p\circ\Ac^T$, $G=g\circ\Ac^T$, and then $u(z)=v(\Ac^{-T}z)$.
+This is a necessary-and-sufficient classification, not just a family of
+examples or a finite-order conditional result.
+
+\section{A sharp arithmetic obstruction for monomial prefactors}
+The next result gives closed formulas and exact nonexistence conditions
+for an infinite class of genuinely coupled inputs.
+
+\begin{theorem}[Monomial rigidity]\label{thm:monomial}
+Let $n\geq2$, $s(w)=w_1\cdots w_n$, let $h\in\C[t]$ be nonconstant,
+and let $k_1,\ldots,k_n\in\NN$. The equation
+\begin{equation}\label{eq:monomial}
+ \prod_{i=1}^n v_i^{\mu_i}
+ =\Bigl(\prod_{j=1}^n w_j^{k_j}\Bigr)e^{M h(s(w))}
+\end{equation}
+has an entire solution if and only if there is an integer $b\geq1$ such
+that
+\begin{equation}\label{eq:arith}
+ k_j=Mb-\mu_j\qquad(1\leq j\leq n).
+\end{equation}
+When this condition holds, all solutions are
+\begin{equation}\label{eq:monomialsolutions}
+ v(w)=C+\zeta\int_0^{s(w)}t^{b-1}e^{h(t)}\dd t,
+ \qquad \zeta^M=1,\quad C\in\C.
+\end{equation}
+For the original unweighted product and $k_1=\cdots=k_n=k$, existence
+is equivalent to $k\equiv n-1\pmod n$ (with $k\geq0$). In particular,
+for $n=2$ exactly the odd $k$ are admissible.
+\end{theorem}
+\begin{proof}
+Every nonconstant monomial of $h(s)$ involves every coordinate, so
+\eqref{eq:add} admits only the one-block partition. Theorem~\ref{thm:normal}
+therefore gives $H=h(s)-h(0)$ and $\lambda=e^{h(0)}$. The only irreducible
+factors of $P$ are coordinates, hence
+\[
+ q_i=c_i w^{a_i},\quad a_i=(a_{i1},\ldots,a_{in})\in\NN^n,
+ \quad\sum_i\mu_i a_{ij}=k_j,
+ \quad\prod_i c_i^{\mu_i}=1.
+\]
+Let $W(s)=s h'(s)$, a nonconstant polynomial with $W(0)=0$.
+On the algebraic torus $(\C^*)^n$, closedness is
+\begin{equation}\label{eq:mono-closed}
+ c_i w^{a_i-e_j}(a_{ij}+W(s))
+ =c_j w^{a_j-e_i}(a_{ji}+W(s))\qquad(i\ne j).
+\end{equation}
+Neither parenthesized polynomial vanishes identically.
+The quotient of the two monomials is a rational function of $s$.
+Keeping $s$ fixed and replacing $w_r,w_t$ by $\tau w_r,\tau^{-1}w_t$
+shows that all entries of $a_i+e_i-a_j-e_j$ are equal. Thus this vector
+is $d_{ij}(1,\ldots,1)$ for an integer $d_{ij}$. Equation
+\eqref{eq:mono-closed} becomes
+\[
+ \frac{c_i}{c_j}s^{d_{ij}}
+ =\frac{a_{ji}+W(s)}{a_{ij}+W(s)}.
+\]
+As $s$ tends to infinity away from finitely many poles, the right-hand
+side tends to $1$. It follows that $d_{ij}=0$ and $c_i=c_j$.
+The same identity now implies $a_{ij}=a_{ji}$.
+
+Consequently all vectors $a_i+e_i$ coincide, say with $\beta$.
+For $i\ne j$, $a_{ij}=\beta_j$ and $a_{ji}=\beta_i$, so all entries
+of $\beta$ equal an integer $b$. Since $a_{ii}=b-1\geq0$, we have
+$b\geq1$. Therefore $a_i=b(1,\ldots,1)-e_i$, all $c_i=\zeta$, and
+$\zeta^M=1$. The weighted column sums give exactly
+$k_j=Mb-\mu_j$. Moreover,
+\[
+ v_i=\zeta s^{b-1}\frac{\partial s}{\partial w_i}e^{h(s)},
+\]
+so radial integration, or differentiation of a one-variable primitive,
+gives \eqref{eq:monomialsolutions} up to a constant.
+Conversely those entire functions have derivative product
+$\zeta^M e^{Mh(s)}\prod_jw_j^{Mb-\mu_j}$, proving sufficiency.
+\end{proof}
+
+\section{Examples and the two-variable specialization}
+\begin{example}[A non-ridge exponential]
+Take $n=2$, all weights one, $P=xy$, $G=2xy$. Theorem~\ref{thm:monomial}
+gives exactly $v=C\pm e^{xy}$. For $e^{xy}$,
+\[
+ \det\nabla^2v=-(1+2xy)e^{2xy}\not\equiv0.
+\]
+A function of one linear form has Hessian rank at most one. Thus the
+zero-free ridge conclusion cannot be copied unchanged to $P\not\equiv1$.
+The inputs $P=(xy)^2$, $G=2xy$ admit no entire solution, by the same
+theorem; this is an analytic nonexistence statement.
+\end{example}
+
+\begin{example}[Polynomial amplitude]
+For $v=(x+y)e^x$,
+\[
+ v_x=(x+y+1)e^x,\qquad v_y=e^x,\qquad
+ v_xv_y=(x+y+1)e^{2x}.
+\]
+Here $q_1=x+y+1$, $q_2=1$, $H=x$, and the closedness identity is
+$\partial_yq_1=1=q_2\partial_xH$. The prefactor is irreducible and
+depends on both coordinates, so all solutions for these inputs are
+connected. The alternative factor allocation $q_1=c$, $q_2=c^{-1}(x+y+1)$
+fails closedness, while the displayed allocation forces the two constants
+to agree. Hence the complete family is $C\pm(x+y)e^x$.
+\end{example}
+
+\begin{example}[A genuinely non-elementary quadrature]
+Let $F'(t)=e^{t^2}$ and $F(0)=0$. Then $v=F(xy)$ satisfies
+$v_xv_y=xy e^{2x^2y^2}$. Theorem~\ref{thm:monomial} gives precisely
+$C\pm F(xy)$. There is no one-variable polynomial $R$ with
+$F=Re^{t^2}+C$, because this would require $R'+2tR=1$, impossible by
+comparison of degrees. The general normal form must therefore allow
+quadratures rather than only polynomial multiples of exponentials.
+\end{example}
+
+\begin{example}[Different phases on different blocks]
+In three variables let
+\[
+ v=e^{xy}+z^2/2,
+ \quad P=xyz,\quad G=2xy.
+\]
+Use the blocks $\{1,2\}$ and $\{3\}$ with
+$(q_1,q_2,q_3)=(y,x,z)$ and $(H_{\{1,2\}},H_{\{3\}})=(xy,0)$.
+This illustrates why a single common phase for all coordinates would be
+too restrictive. The derivative product is $xyz e^{2xy}$.
+\end{example}
+
+\begin{example}[Unequal powers]
+Take $(\mu_1,\mu_2)=(1,2)$, $M=3$, $h(t)=t$.
+For $P=x^2y$ condition \eqref{eq:arith} holds with $b=1$, and the
+complete family is $v=C+\zeta e^{xy}$, $\zeta^3=1$.
+For $P=xy$ the two requirements in \eqref{eq:arith} are incompatible,
+so no entire solution exists.
+\end{example}
+
+\paragraph{All two-variable inputs.}
+For the unweighted equation $v_xv_y=P e^G$ there are just two partition
+types. For $\{\{1\},\{2\}\}$ one must have
+\[
+ G=G_0+G_1(x)+G_2(y),\quad P=q_1(x)q_2(y),
+\]
+and
+\[
+ v=C+e^{G_0/2}\left(\int_0^xq_1(t)e^{G_1(t)}\dd t+
+                        \int_0^yq_2(t)e^{G_2(t)}\dd t\right).
+\]
+For the one-block partition put $H=(G-G_0)/2$. Enumerate $q_1q_2=P$
+and impose the single polynomial identity
+\[
+ \partial_yq_1+q_1H_y=\partial_xq_2+q_2H_x.
+\]
+The complete solutions are then \eqref{eq:integral}. These two cases
+exhaust all entire solutions, including polynomial ones, and overlap
+only through redundant representations.
+
+\section{Degenerate inputs and the limits of the hypotheses}\label{sec:degenerate}
+\begin{proposition}[The zero prefactor]\label{prop:zero}
+If $p\equiv0$, the entire solutions of \eqref{eq:weighted-original} are
+exactly those for which at least one $D_i u$ vanishes identically.
+Equivalently, after \eqref{eq:change}, $v$ is independent of at least one
+coordinate. The other $n-1$ variables may enter through an arbitrary
+entire function.
+\end{proposition}
+\begin{proof}
+The ring of entire functions on connected $\C^n$ is an integral domain.
+A finite product of positive powers is identically zero only if one of
+its factors is identically zero. In canonical coordinates $v_i=0$
+is equivalent to independence of $w_i$. The converse is immediate.
+\end{proof}
+
+For $n\geq2$, Proposition~\ref{prop:zero} allows infinite-order functions,
+so the nonzero-prefactor hypothesis is essential to the growth theorem.
+The invertibility of $\Ac$ is also essential: with two identical rows
+$(1,0)$ the unweighted equation is $u_x^2=1$, and
+$u=x+F(y)$ works for any entire $F$. Finally, polynomiality of $G$ is
+not a cosmetic assumption. L\"u's Remark~2 and Example~1 already exhibit
+failure of the zero-free ridge classification for a transcendental entire
+exponent. No such extension is asserted here.
+
+\section{Verification, provenance, and conclusions}
+The accompanying exact symbolic code constructs the matrices in
+Theorem~\ref{thm:algorithm}, validates the polynomial identities in a
+proposed datum, and checks examples and low-dimensional monomial inputs.
+These computations verify finite algebraic instances only. They do not
+prove Proposition~\ref{prop:bootstrap}, do not certify the general
+normal form, and do not establish novelty. Those roles belong respectively
+to the analytic proofs and to a separate literature review. No Lean or
+other proof-assistant verification is claimed.
+
+For the two questions actually contained in Remark~3, the outcome is as
+follows. Equation (1.8) has the explicit pullback ridge-block form of
+Corollary~\ref{cor:ridge}. Equation (1.9), for $p\not\equiv0$, has the
+finite polynomial-data classification of Theorem~\ref{thm:normal} and
+Theorem~\ref{thm:algorithm}, with automatic finite order and a sharp
+constant-exponent degree bound. The case $p\equiv0$ is exactly
+Proposition~\ref{prop:zero}. Weighted products, the connected-solution
+bound, and the monomial arithmetic criterion are additional extensions.
+A full-text comparison with \cite{XuDing2026} and an independent expert
+proof audit are required before any submission-level novelty or
+publication-readiness claim.
+
+\input{bibliography.tex}
+\end{document}
