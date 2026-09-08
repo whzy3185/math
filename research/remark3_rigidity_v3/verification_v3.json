@@ -1,0 +1,27 @@
+{
+  "status": "passed",
+  "count": 18,
+  "python": "3.13.5",
+  "sympy": "1.14.0",
+  "evidence": "exact symbolic checks for v3 corollaries; not a formal proof",
+  "checks": [
+    {"name": "direct_xy_plus_1", "passed": true, "detail": "{1: 1/2}"},
+    {"name": "solution_xy_plus_1", "passed": true, "detail": ""},
+    {"name": "direct_linear_2d", "passed": true, "detail": "{1: 1/2}"},
+    {"name": "solution_linear_2d", "passed": true, "detail": ""},
+    {"name": "direct_linear_3d", "passed": true, "detail": "{1: 1/3, 2: 1/3}"},
+    {"name": "solution_linear_3d", "passed": true, "detail": ""},
+    {"name": "weighted_direct", "passed": true, "detail": "{1: 1/6, 2: 1/6}"},
+    {"name": "weighted_solution", "passed": true, "detail": ""},
+    {"name": "degree_obstruction_candidate_fails", "passed": true, "detail": ""},
+    {"name": "degree_obstruction_numeric", "passed": true, "detail": ""},
+    {"name": "leading_D_eq_d", "passed": true, "detail": "x**2 + x*y"},
+    {"name": "leading_D_eq_d_solution", "passed": true, "detail": ""},
+    {"name": "leading_D_gt_d", "passed": true, "detail": "x**3"},
+    {"name": "leading_D_gt_d_solution", "passed": true, "detail": ""},
+    {"name": "squarefree_cubic_obstruction", "passed": true, "detail": "x*y*z"},
+    {"name": "quadratic_rank_obstruction", "passed": true, "detail": "rank=3"},
+    {"name": "original_direction_criterion", "passed": true, "detail": ""},
+    {"name": "original_direction_solution", "passed": true, "detail": ""}
+  ]
+}
