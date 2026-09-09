@@ -12,27 +12,15 @@ for signed adjacency matrices of `C_N(1,s)`.
 
 ## Scope boundary
 
-This paper is completely independent of the separate periodic/Bloch project.  It concerns finite graphs, minimization over **all** signings, exact equality, threshold classification, and switching/flux rigidity.  No continuous Bloch optimum, phase-slip asymptotic, or theorem from the other paper is used.
+This paper is completely independent of the separate periodic/Bloch project. It concerns finite graphs, minimization over **all** signings, exact equality, threshold classification, and switching/flux rigidity.
 
 # Main proved theorem package
 
 ## 1. Complete classification through `sqrt(6)`
 
-Let `beta` be the largest root of
-
-\[
-x^3-7x+7=0.
-\]
-
-The first spectral threshold is now completely classified.
+Let `beta` be the largest root of `x^3-7x+7=0`.
 
 ### Strictly below six
-
-\[
-m(N,s)^2<6
-\]
-
-if and only if one of the following holds:
 
 ```text
 N=2s+2:                         m^2=4;
@@ -40,6 +28,8 @@ N=2s+2:                         m^2=4;
 N=4s:                           m^2=4+2 cos(pi/(2s));
 N=14, s=3,4,5:                  m^2=4+beta.
 ```
+
+These are exactly the pairs with `m(N,s)^2<6`.
 
 ### Exactly six
 
@@ -51,23 +41,19 @@ N=14, s=3,4,5:                  m^2=4+beta.
 }
 \]
 
-The labelled minimizing switching-class counts at the four equality pairs are now also complete:
+The labelled minimizing switching-class counts are
 
 \[
-\boxed{
-\begin{array}{c|cccc}
-(N,s)&(12,4)&(16,3)&(16,5)&(20,8)\\ \hline
-\#\text{ minimizer classes}&2&32&32&2.
-\end{array}}
+\boxed{2,32,32,2}
 \]
 
-At order 16 the 32 classes all have the same characteristic polynomial
+and the switching-isomorphism orbit counts are
 
 \[
-x^2(x-2)(x+2)(x^2-6)^4(x^2-2)^2,
+\boxed{1,2,2,1}.
 \]
 
-and every minimizing defect has exactly two repeated-root pairs (`|B_ij|=2` above the diagonal).  Thus the order-16 equality mechanism is much less rigid than the duplicate-free order-12 and order-20 cases.
+At order 16 the 32 classes split into two size-16 Hamilton-holonomy sectors; every minimizing defect has exactly two repeated-root pairs.
 
 ### Strictly above six
 
@@ -77,49 +63,22 @@ Every other admissible pair satisfies
 \boxed{m(N,s)>\sqrt6.}
 \]
 
-In particular the previous odd-order floor strengthens to
+In particular every odd order `N>=7` is strictly above `sqrt(6)` outside the explicitly listed sub-six exceptions, and there is no odd equality case.
+
+## 2. How the six-boundary theorem is proved
+
+Put `B=A^2-4I` and `K=6I-A^2=2I-B`. If `rho(A)^2<=6`, then `K` is an integral PSD Gram matrix with diagonal `2`; entries of magnitude `2` correspond to repeated/antipodal roots. Combining root quotienting, parity-defect support, and the cubic equality identity localizes every generic candidate to
 
 \[
-\boxed{
-N\ge7\text{ odd}\Longrightarrow m(N,s)>\sqrt6
-}
+t=2,\qquad q=2t+1,\qquad q=2t+2,\qquad q=3t,
 \]
 
-for every admissible `s`.
+where `q=N/gcd(N,2)` and `t=min(s,q-s)`. All four loci are closed:
 
-## 2. How the equality theorem is proved
-
-Put
-
-\[
-B=A^2-4I,
-\qquad
-K=6I-A^2=2I-B,
-\]
-
-and, in the generic case,
-
-\[
-d=\gcd(N,2),\qquad q=N/d,\qquad t=\min(s,q-s).
-\]
-
-If `rho(A)^2<=6`, then `K` is an integral positive-semidefinite Gram matrix with diagonal `2`.  A defect entry of magnitude `2` therefore corresponds to repeated/antipodal roots.  This forces twin vertices in the parity-defect graph.  Combining this root argument with the exact parity support and the cubic boundary identity localizes every non-strict six candidate to only
-
-\[
-t=2,
-\qquad q=2t+1,
-\qquad q=2t+2,
-\qquad q=3t.
-\]
-
-All four loci are now closed:
-
-- `t=2`: equality only at `(12,4),(20,8)`;
+- `t=2`: equality only `(12,4),(20,8)`;
 - `q=2t+1`: no equality;
-- `q=2t+2`: equality only at `(12,4),(16,3),(16,5)`;
-- `q=3t`: no signed reduced component has index at most `2` for `t>=3`; `t=2` returns `(12,4)`.
-
-The final `q=3t` exclusion is local: positive chord triangles are impossible; after switching all chord triangles negative, three adjacent columns form a 9-vertex signed strip.  For `t>=4` its 64 signings reduce to five exact switching/permutation types, every one having index `>2`.  The remaining `C_9(1,3)` case is excluded analytically by a singular Gram-kernel argument.
+- `q=2t+2`: equality only `(12,4),(16,3),(16,5)`;
+- `q=3t`: no component at index at most `2` for `t>=3`; `t=2` returns `(12,4)`.
 
 ## 3. Exact low-end and rigidity results
 
@@ -131,15 +90,10 @@ The final `q=3t` exclusion is local: positive chord triangles are impossible; af
   m(4s,s)^2=4+2\cos\frac{\pi}{2s},
   \]
   with exactly two labelled minimizing switching classes.
-- On the flat line `N=2s+2`, `s!=3`, there are exactly two labelled equality switching classes.  At `(8,3)=K_(4,4)` there are six labelled switching classes and one orbit after graph automorphisms.
-- A separately audited small value is
-  \[
-  m(12,2)^2=5+\sqrt3,
-  \]
-  with exactly two labelled minimizing switching classes.
-- At the `sqrt(6)` boundary the exact minimizer counts are `2,32,32,2` on `(12,4),(16,3),(16,5),(20,8)` respectively.
+- On the flat line `N=2s+2`, `s!=3`, there are exactly two labelled equality switching classes. At `(8,3)=K_(4,4)` there are six labelled classes and one switching-isomorphism orbit.
+- `m(12,2)^2=5+sqrt(3)`, with exactly two labelled minimizing switching classes.
 
-## 4. `sqrt(8)` results
+## 4. `sqrt(8)` results: horizontal and vertical resonances
 
 For every even `N`,
 
@@ -147,7 +101,9 @@ For every even `N`,
 m(N,s)^2\le6+2\cos\frac{2\pi}{N}<8.
 \]
 
-On the triangle resonance `N=3s`,
+### Horizontal triangle resonance
+
+On `N=3s`,
 
 \[
 \boxed{m(3s,s)<\sqrt8\iff s\text{ is even or }s\in\{3,5\}.}
@@ -159,9 +115,31 @@ For odd `s>=7`,
 \boxed{m(3s,s)^2\ge8+\frac{2}{139}.}
 \]
 
-The negative half uses exact `s=7,9` base certificates, an exact nine-column local rule, and analytic propagation.
+### New vertical resonance theorems
+
+The positive side now contains complete fixed-step families:
+
+\[
+\boxed{m(3k,3)<\sqrt8\qquad(k\ge3),}
+\]
+
+\[
+\boxed{m(5k,5)<\sqrt8\qquad(k\ge3),}
+\]
+
+and the exact step-seven threshold
+
+\[
+\boxed{m(7k,7)<\sqrt8\iff k\ge4\qquad(k\ge3).}
+\]
+
+Thus `(21,7)` is the unique non-sub-threshold member of the step-seven vertical family. The odd-order positive constructions use Hamilton seam `-1`, alternating chord signs, and a decomposition of `8I-A^2` into a signed Laplacian plus finitely many seam defects. For step three one exceptional `-2` edge is absorbed analytically by three negative two-edge paths; for steps five and seven the defects are absorbed by fixed exact local positive-definite blocks, with a finite set of exact Sylvester base cases.
+
+These results show that the `N=3s` obstruction depends on relative resonance geometry, not merely odd order or odd chord-cycle length.
 
 # Proof files added in the current strengthening pass
+
+Six-boundary files:
 
 - `SIX_BOUNDARY_ROOT_QUOTIENT.md`
 - `SIX_BOUNDARY_ARITHMETIC_LOCALIZATION.md`
@@ -170,6 +148,13 @@ The negative half uses exact `s=7,9` base certificates, an exact nine-column loc
 - `SIX_BOUNDARY_TRIANGLE_2TPLUS1.md`
 - `SIX_BOUNDARY_TRIANGLE_3T.md`
 - `SIX_BOUNDARY_MINIMIZER_RIGIDITY.md`
+- `SIX_BOUNDARY_SWITCHING_ISOMORPHISM.md`
+
+New `sqrt(8)` vertical files:
+
+- `ODD_RESONANCE_STEP3_SUBSQRT8.md`
+- `ODD_RESONANCE_STEP5_SUBSQRT8.md`
+- `ODD_RESONANCE_STEP7_THRESHOLD.md`
 
 Exact reproducibility scripts include:
 
@@ -181,13 +166,18 @@ Exact reproducibility scripts include:
 - `verify_t2_component_local.py`
 - `verify_3t_local_strip.py`
 - `verify_six_boundary_minimizer_rigidity.py`
-
-All theorem labels in `THEOREM_LEDGER.md` distinguish **Proved**, **Verified**, **Observed**, and **Published/Established**.
+- `verify_six_boundary_orbits.py`
+- `verify_step3_subsqrt8_decomposition.py`
+- `verify_step5_subsqrt8_local.py`
+- `verify_step7_subsqrt8_local.py`
 
 # Current frontier
 
-The `sqrt(6)` parameter classification **and** minimizer switching-class rigidity are no longer open.  The highest-value remaining finite-global directions are now:
+The `sqrt(6)` parameter classification and minimizer rigidity are complete. At `sqrt(8)`, both the horizontal `k=3` transition and the first three vertical fixed-step families are now controlled. The highest-value next direction is to determine the general odd-resonance phase boundary in
 
-1. extend the exact `sqrt(8)` classification beyond `N=3s`, especially odd resonances `N=ks`, `k>=5`;
-2. seek quantitative lower gaps above `sqrt(6)` on arithmetic families outside the complete exceptional list;
-3. determine whether the odd-resonance `sqrt(8)` behavior admits a finite-state classification analogous to the completed `k=3` triangle-strip theorem.
+\[
+N=ks,
+\qquad k,s\text{ odd},
+\]
+
+using the same signed-Laplacian seam-defect framework; the next test cases are fixed steps `s=9,11,...` and the regime where `s` becomes comparable to `k`.
