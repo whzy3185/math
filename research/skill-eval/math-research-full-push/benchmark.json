@@ -1,0 +1,100 @@
+{
+  "kind": "plugin-eval-benchmark",
+  "schemaVersion": 2,
+  "version": 2,
+  "targetKind": "skill",
+  "targetName": "math-research-full-push",
+  "runner": {
+    "type": "codex-cli",
+    "model": "gpt-5.4-mini",
+    "sandbox": "workspace-write",
+    "approvalPolicy": "never",
+    "extraArgs": []
+  },
+  "workspace": {
+    "sourcePath": ".",
+    "setupMode": "copy",
+    "preserve": "on-failure"
+  },
+  "targetProvisioning": {
+    "mode": "isolated-skill-home"
+  },
+  "verifiers": {
+    "commands": []
+  },
+  "setupQuestions": [
+    "Does the skill resume repository state without unnecessary clarification?",
+    "Does it convert literature/referee findings into theorem-level actions?",
+    "Does it distinguish Observed, Verified, Proved, and Published/Established correctly?",
+    "Does it avoid launching a full research campaign for routine textbook questions?",
+    "Does it leave durable research state on disk when a campaign task is requested?"
+  ],
+  "scenarios": [
+    {
+      "id": "paper-remark-mining",
+      "title": "Paper or Remark mining",
+      "purpose": "Test Seed-0 routing, literature positioning, proof obligations and concrete repository progress.",
+      "userInput": "Use the local skill math-research-full-push. Treat an existing paper/remark research target in this workspace as Seed 0, recover the current state, identify the most important unresolved mathematical obligation, and make a concrete research update on disk. Do not merely describe a plan.",
+      "successChecklist": [
+        "Uses the paper/remark as Seed 0 rather than broad topic search.",
+        "Produces a concrete research delta on disk.",
+        "Separates literature evidence from proof evidence."
+      ]
+    },
+    {
+      "id": "continue-existing-campaign",
+      "title": "Autonomous continuation",
+      "purpose": "Check that a short continuation command resumes the real frontier instead of asking what to continue.",
+      "userInput": "Use the local skill math-research-full-push. 继续推进当前数学研究。读取仓库状态，选择最高优先级未解决问题并实际推进，保存结果。",
+      "successChecklist": [
+        "Does not ask what to continue when repository state is sufficient.",
+        "Selects a high-leverage unresolved obligation.",
+        "Persists a concrete mathematical delta."
+      ]
+    },
+    {
+      "id": "strengthen-theorem",
+      "title": "Theorem strengthening",
+      "purpose": "Test falsification-first strengthening plus targeted prior-art recheck.",
+      "userInput": "Use the local skill math-research-full-push. 继续增强当前最强定理：先快速反证更强版本，再尝试去假设、分类等号或得到 iff/更一般结构；对真正升级后的命题重新检查 prior art，并把结论写入仓库。",
+      "successChecklist": [
+        "Falsifies stronger variants before committing to them.",
+        "Attempts a meaningful theorem-strength axis.",
+        "Rechecks prior art after material strengthening."
+      ]
+    },
+    {
+      "id": "journal-escalation",
+      "title": "JCTA-style escalation",
+      "purpose": "Test whether referee pressure creates mathematical upgrades rather than defensive prose.",
+      "userInput": "Use the local skill math-research-full-push. 按 JCTA/高水平期刊标准推进当前论文：做一次严厉模拟审稿，把最严重的数学问题转成明确 proof/literature/verification obligations，并至少关闭其中一个高优先级问题。",
+      "successChecklist": [
+        "Clearly labels review as simulated.",
+        "Turns objections into explicit mathematical obligations.",
+        "Closes or materially advances at least one obligation."
+      ]
+    },
+    {
+      "id": "literature-background",
+      "title": "Literature and background",
+      "purpose": "Test targeted seed/citation/prior-art workflow rather than bibliography accumulation.",
+      "userInput": "Use the local skill math-research-full-push. 补充当前研究的参考文献和背景：从当前定理/Seed 0 出发，补齐最危险 prior art、open-status 和背景研究链，并让文献结果影响下一步定理或证明策略。",
+      "successChecklist": [
+        "Uses targeted seed and theorem-to-theorem comparison.",
+        "Avoids claiming open status from an old source alone.",
+        "Connects literature findings to theorem/proof strategy."
+      ]
+    },
+    {
+      "id": "boundary-textbook",
+      "title": "Routine-math boundary",
+      "purpose": "Check that the skill does not overreach on a routine textbook exercise.",
+      "userInput": "This is only a boundary test for math-research-full-push: solve the elementary exercise 'prove that the sum of two even integers is even'. Do not create a research campaign, literature audit, branch, or publication workflow unless genuinely necessary.",
+      "successChecklist": [
+        "Does not launch the long-horizon research workflow.",
+        "Keeps the response proportional to the elementary task.",
+        "Does not create unnecessary repository artifacts."
+      ]
+    }
+  ]
+}
