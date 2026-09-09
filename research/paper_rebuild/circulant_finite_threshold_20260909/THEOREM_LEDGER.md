@@ -30,9 +30,15 @@ Status vocabulary is strict:
 | S6R14 | For `s=3,4,5`, the `N=14` minimizers are exactly two labelled switching classes | **Proved** | Alternating diagonal sign `epsilon=+-1`, unique holonomy; exhaustive gauge audit agrees. |
 | S6FULL | Complete strict sub-`sqrt(6)` classification | **Proved** | `m^2<6` iff `N=2s+2`, or `(5,2),(10,3)`, or `N=4s`, or `N=14,s=3,4,5`; exact values `4`, `5`, `4+2cos(pi/(2s))`, `4+beta`. |
 | ODD6 | Every odd `N>=7` satisfies `m(N,s)>=sqrt(6)` for all admissible `s` | **Proved** | Immediate from S6FULL. Thus all odd resonance pairs `N=ks` with odd `k,s>=3` have the same universal floor. |
-| EQ6Q | Root-quotient lemma at the non-strict six boundary | **Proved (new)** | If `rho(A)^2<=6`, then `K=6I-A^2` is an integral PSD Gram matrix with diagonal 2. Entries `+-2` are exactly repeated/antipodal roots. After switching and quotienting those classes, `K_0-2I` is an ordinary signed adjacency matrix with smallest eigenvalue `>=-2`. Strict sub-six means no repetitions. |
-| EQ6EX | `m(12,4)^2=m(16,3)^2=m(16,5)^2=m(20,8)^2=6` | **Proved (new)** | S6FULL supplies the lower bound. `(12,4),(20,8)` have finite anti-periodic Fourier constructions with defect maximum exactly 2; `(16,3)` has explicit signing with `chi_A=x^2(x-2)(x+2)(x^2-6)^4(x^2-2)^2`; `(16,5)` follows from the multiplier isomorphism `x->5x` on `Z_16`. |
-| EQ6ALL | Complete classification of all pairs with `m(N,s)^2=6` | **Open** | Equality may contain `+-2` defect entries, so direct signed-graph classification fails before root quotient. Rowlinson--Stanić `lambda_min>=-2` theory is the natural quotient-level input. |
+| EQ6Q | Root-quotient lemma at the non-strict six boundary | **Proved** | If `rho(A)^2<=6`, then `K=6I-A^2` is an integral PSD Gram matrix with diagonal 2. Entries `+-2` are exactly repeated/antipodal roots; quotienting yields a signed graph with smallest eigenvalue `>=-2`. |
+| EQ6LOC | Four-locus arithmetic localization for `rho(A)^2<=6` | **Proved (new)** | With `q=N/gcd(N,2)`, `t=min(s,q-s)`, away from `N=2s+2,4s`, one must have `t=2`, `q=2t+1`, `q=2t+2`, or `q=3t`. A size-2 defect entry forces twins; `C_q(1,t)` has twins iff `q=2t+2`; triangle-free duplicate-free equality collapses to the flat theorem. |
+| EQ6ODDLOC | For odd `N`, `m(N,s)<=sqrt(6)` implies `s=2`, `N=2s+1`, or `N=3s` | **Proved (new)** | Odd-order specialization of EQ6LOC. Every other odd pair satisfies the strict bound `m(N,s)>sqrt(6)`. |
+| EQ6EX | `m(12,4)^2=m(16,3)^2=m(16,5)^2=m(20,8)^2=6` | **Proved** | Exact finite constructions; `(16,3)` has repeated-root defect and `(16,5)` follows by multiplier isomorphism. |
+| EQ6TWIN | On the twin locus `N=4r, s=r+-1`, equality `m^2=6` occurs iff `(N,s)` is `(12,4),(16,3),(16,5)` | **Proved (new)** | For `r>=5`, duplicate roots are excluded by displacement; flat defect rigidity then contradicts induced flux for odd `r` and an antipodal `-4` two-walk entry for even `r`. |
+| N12S2 | `m(12,2)^2=5+sqrt(3)` and there are exactly two labelled minimizing switching classes | **Proved, exact finite certificate (new)** | All `2^13=8192` Hamilton-gauge switching classes are tested by exact PSD arithmetic in `Q(sqrt(3))`; exactly two survive and have `chi_A=(x^2-2)^2(x^4-10x^2+22)^2`. |
+| T2COMP | For `q>=7`, a signing of `C_q(1,2)` has index `<=2` iff `q in {7,8,9,10,12}`; for each such `q` exactly one labelled switching class exists | **Proved (new)** | A `5x5` Gram determinant table forces every consecutive triangle negative. Then `C=T+T^-1-T^2-T^-2`; finite Fourier gives the exact order/holonomy list. |
+| EQ6T2 | Complete generic `t=2` locus at and below six | **Proved (new)** | Away from `N=2s+2,4s`, `m^2<=6` iff `(N,s)` is `(5,2),(10,3),(12,4),(14,5),(20,8)`; equality occurs only at `(12,4),(20,8)`. Uses T2COMP plus exact lift equations. |
+| EQ6ALL | Complete classification of all pairs with `m(N,s)^2=6` | **Open, sharply reduced** | EQ6LOC + EQ6TWIN + EQ6T2 reduce every unclassified equality pair to only `q=2t+1` or `q=3t`. |
 | E1 | If `N` is even, `m(N,s)^2<=6+2 cos(2pi/N)<8` | **Proved** | Finite anti-periodic signed shift and alternating chord signs; finite Fourier only. |
 | R1 | `m(9,3)<sqrt(8)` | **Proved** | Exact Sylvester certificate; leading minors `4,16,60,209,722,2508,5746,15993,47304`. |
 | R2 | `m(15,5)<sqrt(8)` | **Proved** | Exact Sylvester certificate; final determinant `8636544`. |
@@ -48,7 +54,7 @@ Status vocabulary is strict:
 | Lit3 | Degree-at-most-4 signed graphs with two adjacency eigenvalues are classified | **Published/Established** | Hou--Tang--Wang, *Discrete Math.* 342 (2019). |
 | Lit4 | 4-regular `A^2=4I` toral/two-eigenvalue phenomena are established | **Published/Established** | McKee--Smyth; Stanić (2026). |
 | Lit5 | Connected edge-signed graphs with smallest eigenvalue `>-2` are structurally classified | **Published/Established** | Greaves et al., *JCTB* 110 (2015), 90--111. |
-| Lit6 | Connected signed graphs with smallest eigenvalue `>=-2` have a signed-line-graph/star-complement classification | **Published/Established** | Rowlinson--Stanić, *Appl. Math. Comput.* 423 (2022), 126991. Relevant to EQ6Q/EQ6ALL after quotienting repeated roots. |
+| Lit6 | Connected signed graphs with smallest eigenvalue `>=-2` have a signed-line-graph/star-complement classification | **Published/Established** | Rowlinson--Stanić, *Appl. Math. Comput.* 423 (2022), 126991. Relevant only after EQ6Q root quotient. |
 
 ## Consolidated finite-global package
 
@@ -65,17 +71,33 @@ N=4s:                           m^2=4+2 cos(pi/(2s));
 N=14, s=3,4,5:                  m^2=4+beta.
 ```
 
-Every other pair has `m(N,s)^2>=6`; in particular every odd order `N>=7` has `m>=sqrt(6)`.
+Every other pair has `m(N,s)^2>=6`.
 
-At equality, at least
+### II. Non-strict boundary progress
+
+Away from the already separated flat and `N=4s` families,
 
 ```text
-(12,4), (16,3), (16,5), (20,8)
+m(N,s)^2 <= 6
+=> reduced (q,t) lies on
+   t=2, q=2t+1, q=2t+2, or q=3t.
 ```
 
-have `m^2=6`. The root-quotient lemma explains why equality requires separate treatment.
+The twin line `q=2t+2` is completely closed, and the full `t=2` locus is completely closed. Therefore any still-unclassified equality pair `m^2=6` must satisfy
 
-### II. `sqrt(8)` threshold
+```text
+q=2t+1 or q=3t.
+```
+
+Known equality pairs remain
+
+```text
+(12,4), (16,3), (16,5), (20,8).
+```
+
+No claim is yet made that this list is complete.
+
+### III. `sqrt(8)` threshold
 
 ```text
 N even  =>  m(N,s)^2 <= 6+2 cos(2pi/N)<8.
@@ -91,4 +113,5 @@ odd s>=7  =>  m(3s,s)^2>=8+2/139.
 2. `(8,3)` has six labelled switching classes, not one.
 3. Fixed period-8 dispersion is excluded from the finite-global theorem package.
 4. The corrected doubled-edge line-graph count in the Greaves reduction is `d(a)+d(b)=7`.
-5. Strict sub-six and equality at six must not be conflated: at equality, defect entries `+-2` genuinely occur (already at `(16,3)`), so quotienting repeated roots is mandatory before using `lambda_min>=-2` signed-graph classifications.
+5. Strict sub-six and equality at six are distinct: at equality, defect entries `+-2` genuinely occur (already at `(16,3)`), so quotienting repeated roots is mandatory.
+6. Equality at six is now localized arithmetically; the twin and `t=2` loci are no longer open.
