@@ -1,0 +1,234 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+\newcommand{\vTwo}{v_2}
+
+\title{Arithmetic Periodic Phases in Signed Step Circulants:\\
+$2$-Adic Compression and Sharp Spectral Gaps}
+\author{Working research draft --- author metadata to be confirmed}
+\date{9 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+We study explicit periodic signings of the step-$(1,s)$ operator on the
+integer line and their Bloch spectral edges.  The first nontrivial periodic
+sector already exhibits an exact parity bifurcation: among all sign words of
+period dividing two, the alternating phase is the unique minimizer up to
+translation, and it crosses below squared spectral edge $8$ precisely for odd
+$s$.  Its gap $g_s$ satisfies $s^2g_s\uparrow\pi^2$, and we obtain explicit
+expansions through order $s^{-8}$.
+
+For even jumps a different arithmetic structure appears.  If
+$\vTwo(s)=1$, one fixed period-eight word has the exact squared Bloch edge
+\[
+ 4+\sqrt{10+2\sqrt5}<8.
+\]
+If $\vTwo(s)=2$, a second fixed period-eight word stays strictly below the
+same constant for the entire congruence class.  If $\vTwo(s)=3$, a fixed
+period-sixteen two-defect phase has a uniformly positive sub-eight gap.  The
+last proof is based on an exact two-phase threshold determinant, a Bernstein
+positivity certificate, and an inertia argument.
+
+These examples are unified by a signed-reflection chiral symmetry for the
+two-defect word of arbitrary even period $2L$ and every odd multiple
+$s=L(2q+1)$.  Thus the natural organizing parameter for short periodic
+phases is the $2$-adic valuation of the jump rather than parity alone.  For
+all remaining jumps we retain an explicit universal construction; for its
+original parity-dependent family the gap has leading asymptotic
+$\pi^2/s^2$, with a nontrivial even phase-slip correction.
+\end{abstract}
+
+\noindent\textbf{Keywords:} signed graph; circulant graph; periodic operator;
+Floquet theory; chiral symmetry; spectral radius; $2$-adic valuation
+
+\medskip
+\noindent\textbf{MSC 2020:} 05C50 (primary); 05C22, 47B39, 15A18 (secondary)
+
+\section{Introduction}
+
+For a periodic sign word $\tau$ and a jump $s\ge2$, consider
+\[
+ (A_{s,\tau}x)_j
+ =x_{j-1}+x_{j+1}
+ +\tau_{j-s}x_{j-s}+\tau_jx_{j+s}.
+\]
+If $\tau$ has period $p$, let $H_{s,\tau}(z)$ be the $p\times p$ Bloch fiber
+under $x_{j+p}=zx_j$, $|z|=1$, and define the continuous squared Bloch edge
+\[
+ R_s(\tau)=\max_{|z|=1}\rho(H_{s,\tau}(z))^2.
+\]
+The problem in this paper is not global minimization over all finite
+signings.  We ask instead how efficiently explicit periodic flux phases can
+push $R_s(\tau)$ below the reference edge $8$, and how the answer depends on
+the arithmetic of $s$.
+
+The main message is a hierarchy:
+\[
+\begin{array}{c|c|c}
+\text{jump class}&\text{explicit period}&\text{proved information}\\ \hline
+s\text{ odd}&2&\text{exact period-two optimum and sharp expansion}\\
+\vTwo(s)=1&8&\text{exact uniform edge}\\
+\vTwo(s)=2&8&\text{uniform strict improvement}\\
+\vTwo(s)=3&16&\text{uniform positive gap}.
+\end{array}
+\]
+A general signed-reflection theorem explains why the same two-defect geometry
+persists in higher $2$-adic layers.
+
+\begin{theorem}[Complete period-two phase diagram]
+For every $s\ge2$, the alternating words $\tau_j=\pm(-1)^j$ are, up to
+translation, the unique minimizers of $R_s(\tau)$ among all words whose
+period divides two.  If $s$ is odd, then
+\[
+ \min_{\operatorname{per}(\tau)\mid2}R_s(\tau)=8-g_s<8,
+ \qquad
+ g_s=4\min_\theta\bigl(\sin^2\theta+\cos^2(s\theta)\bigr).
+\]
+If $s$ is even, the corresponding minimum equals $8$.
+\end{theorem}
+
+\begin{theorem}[Odd variational asymptotics]
+For odd $s\ge3$, the minimizing phase $\theta_s\in(0,\pi/(2s))$ is unique and
+satisfies
+\[
+ \sin(2\theta_s)=s\sin(2s\theta_s).
+\]
+Moreover $g_s$ decreases strictly, $s^2g_s$ increases strictly to $\pi^2$,
+and
+\[
+\begin{aligned}
+ g_s={}&\frac{\pi^2}{s^2}
+ -\frac{\pi^2(\pi^2+12)}{12s^4}
+ +\frac{\pi^2(\pi^4+120\pi^2+360)}{360s^6}\\
+ &-\frac{\pi^2(\pi^6+896\pi^4+18480\pi^2+20160)}{20160s^8}
+ +O(s^{-10}).
+\end{aligned}
+\]
+\end{theorem}
+
+\begin{theorem}[First arithmetic layer]
+If $s\equiv2\pmod4$, one fixed period-eight word has
+\[
+ R_s(\tau)=4+\sqrt{10+2\sqrt5}<8.
+\]
+The value is independent of $s$ throughout this congruence class.
+\end{theorem}
+
+\begin{theorem}[Second arithmetic layer]
+If $s\equiv4\pmod8$, a second fixed period-eight word satisfies
+\[
+ R_s(\tau)<4+\sqrt{10+2\sqrt5}<8.
+\]
+\end{theorem}
+
+\begin{theorem}[Third arithmetic layer]
+If $s\equiv8\pmod{16}$, the fixed period-sixteen word
+\[
+(1,1,-1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1)
+\]
+satisfies
+\[
+ R_s(\tau)<8,
+ \qquad
+ 8-R_s(\tau)\ge\frac{28}{8^7}.
+\]
+\end{theorem}
+
+\begin{theorem}[Signed-reflection chirality]
+Let $L\ge4$ be even.  For the period-$2L$ two-defect flux word
+\[
+ Q_0=Q_2=1,
+ \qquad Q_j=-1\quad(j\ne0,2),
+\]
+and any jump $s=L(2q+1)$, every Bloch fiber has an antiunitary chiral
+symmetry.  Consequently
+\[
+ \operatorname{spec}H_s(z)=-\operatorname{spec}H_s(z)
+\]
+with multiplicity and the fiber characteristic polynomial is a polynomial in
+$\lambda^2$.
+\end{theorem}
+
+\section{Switching, flux coordinates, and Bloch fibers}
+
+Develop only the self-contained tools required by this paper: Hamilton gauge,
+local flux words, periodic cells, Bloch decomposition, and the relation
+between real-space symmetries and fiber symmetries.  No finite-global
+extremal notation is introduced.
+
+\section{The complete period-two variational problem}
+
+Classify the four period-dividing-two words, derive the alternating squared
+dispersion, prove uniqueness of the odd critical phase, prove strict
+monotonicity of $g_s$ and $s^2g_s$, and derive the analytic implicit-function
+expansion.
+
+\section{Two-defect geometry and signed reflection}
+
+Introduce the period-$2L$ two-defect family.  Prove
+\[
+ \tau_{3-j}=-\tau_j
+\]
+and derive the unitary infinite-volume and antiunitary fiberwise chiral
+symmetries.  This section is conceptual and precedes the individual
+arithmetic layers.
+
+\section{Fixed period eight on the first two even layers}
+
+\subsection{$s\equiv2\pmod4$}
+Derive the $4\times4$ chiral squared block and prove the exact constant
+$4+\sqrt{10+2\sqrt5}$ via the square-sum inequality.
+
+\subsection{$s\equiv4\pmod8$}
+Use the second period-eight word.  Derive the centered quartic and the closed
+top branch
+\[
+4+\sqrt{8+2\cos(2nt)+\sqrt{10-8\cos(nt)+2\cos t}},
+\]
+then prove the uniform strict bound.
+
+\section{The period-sixteen threshold certificate}
+
+Present the generic two-phase determinant identity at $\lambda=2\sqrt2$,
+the polynomial $F$, its positive Bernstein certificate on $[-2,2]$, the
+$z=1$ inertia anchor, and the uniform gap estimate.
+
+\section{A universal fallback and sharp family-specific asymptotics}
+
+For completeness, give the previously proved all-jump explicit construction.
+For the original even antipodal family, state and prove the leading
+$\pi^2/s^2$ law and the audited phase-slip correction.  Make explicit that
+these are sharp statements for that family, not optimality claims over all
+periodic phases.
+
+\section{Higher $2$-adic layers and open problems}
+
+The principal open problem is to prove a full hierarchy when
+\[
+2^k\Vert s.
+\]
+The natural two-defect candidate has period $2^{k+1}$ for $k\ge2$.  This is
+already structurally chiral by the general theorem, and exact experiments
+support further layers, but no unproved layer is stated as a theorem.
+
+\section*{Independence statement for the research build}
+
+This manuscript is mathematically self-contained and does not invoke results
+from the separate finite-global extremal project.  In particular it does not
+use or define a minimum over all finite signings.
+
+\end{document}
