@@ -1,111 +1,106 @@
-# RESEARCH_STATE — AML production–consumption stabilization
+# RESEARCH_STATE — AML boundedness-to-stabilization project
 
 Date: 2026-09-09
 Target journal: Applied Mathematics Letters
 Branch: `research/aml-production-consumption-stabilization`
 
-## Seed problem
+## Seed
 
-Study the Neumann problem
-
+Qin–Zheng, *Applied Mathematics Letters* 180 (2026), 109995, studies
 \[
 \begin{cases}
  u_t=\Delta(\varphi(v)u),\\
  v_t=\Delta v+u-\alpha uv,
 \end{cases}
-\qquad x\in\Omega,\ t>0,
 \]
+with Neumann/no-flux boundary conditions and proves global classical boundedness under an explicit motility condition for positive decreasing \(\varphi\).
 
-on a smooth bounded connected domain \(\Omega\subset\mathbb R^n\), with \(\alpha>0\), nonnegative initial data, and \(u_0\not\equiv0\).
+## Current strongest theorem
 
-Seed 0 is Qin–Zheng, *Applied Mathematics Letters* 180 (2026), 109995, which proves global classical boundedness under an explicit motility smallness condition for positive decreasing \(\varphi\).
-
-## Target theorem (not yet promoted to Proved)
-
-Conditional stabilization target:
-
-> Assume \(\varphi\in C^2([0,\infty))\) and \(\varphi>0\). Let \((u,v)\) be a nonnegative global classical solution with
-> \[
-> \sup_{t>0}\|u(\cdot,t)\|_{L^\infty(\Omega)}<\infty.
-> \]
-> Then, with
-> \[
-> \bar u_0=|\Omega|^{-1}\int_\Omega u_0>0,
-> \]
-> there exist \(C,\lambda>0\) such that
-> \[
-> \|u(\cdot,t)-\bar u_0\|_{L^\infty}
-> +\left\|v(\cdot,t)-\frac1\alpha\right\|_{W^{1,\infty}}
-> \le Ce^{-\lambda t}
-> \]
-> for all sufficiently large \(t\).
-
-The important strengthening axis is that the stabilization step appears not to require \(\varphi'<0\); positivity of \(\varphi\) on the bounded range of \(v\) is the structural condition.
-
-## Current strongest proved core
-
-Let
+Consider the more general system
 \[
-w=v-\frac1\alpha,
-\qquad m=\int_\Omega u_0>0,
-\qquad U=\sup_{t>0}\|u(\cdot,t)\|_\infty<\infty.
+ u_t=\Delta(\varphi(v)u),
+ \qquad
+ v_t=\Delta v+uF(v)
 \]
+on a smooth bounded connected domain. Assume:
 
-Mass conservation gives \(\int_\Omega u(\cdot,t)=m\). The maximum principle gives
+- \(m=\int_\Omega u_0>0\);
+- the global nonnegative classical solution satisfies \(\sup_t\|u(t)\|_\infty<\infty\);
+- the signal remains in a compact interval \(I\);
+- \(\varphi\in C^1(I)\) and \(\min_I\varphi>0\);
+- for some \(v_*\in I\), \(\beta>0\),
+  \[
+  F(v_*)=0,
+  \qquad
+  (s-v_*)F(s)\le-\beta(s-v_*)^2
+  \quad(s\in I).
+  \]
+
+Then there exist \(C,\lambda>0\) such that
 \[
-0\le v(x,t)\le M:=\max\{\|v_0\|_\infty,\alpha^{-1}\}.
+\boxed{
+\|u(t)-\bar u_0\|_{L^\infty}
++\|v(t)-v_*\|_{W^{1,\infty}}
+\le Ce^{-\lambda t}
+}
+\qquad (t\ge2),
 \]
-Moreover
+where \(\bar u_0=m/|\Omega|\).
+
+Evidence status: **Proved** in the repository campaign sense. Novelty status remains **Observed**, not certified.
+
+## Proof architecture
+
+1. Mass conservation + a mass-weighted Poincare/coercivity inequality.
+2. Dissipative signal kinetics give exponential \(L^2\)-decay of \(v-v_*\).
+3. Neumann heat-semigroup smoothing upgrades the signal to \(W^{1,\infty}\)-exponential decay.
+4. Energy + Poincare give \(L^2\)-exponential decay of \(u-\bar u_0\).
+5. Direct uniform upgrade: write
+   \[
+   q_t-\nabla\cdot(\varphi(v)\nabla q)=\nabla\cdot\big(u\varphi'(v)\nabla v\big).
+   \]
+   The forcing flux decays exponentially in \(L^\infty\). Choi 2016, Theorem 1.1, gives a local \(L^2\to L^\infty\) estimate up to the Neumann boundary for exactly this inhomogeneous divergence-form structure. A finite covering closes the global \(L^\infty\)-rate.
+
+Reference for Step 5:
+J. Choi, *Note on local estimates for weak solution of boundary value problem for second order parabolic equation*, Bull. Korean Math. Soc. 53 (2016), 1123–1148, DOI 10.4134/BKMS.b150567.
+
+## Qin–Zheng corollary
+
+For
 \[
-w_t=\Delta w-\alpha u w
+F(s)=1-\alpha s,
+\qquad v_*=1/\alpha,
 \]
-and therefore
+we have
 \[
-\frac12\frac d{dt}\|w\|_2^2+\|\nabla w\|_2^2+\alpha\int_\Omega u w^2=0.
+(s-v_*)F(s)=-\alpha(s-v_*)^2.
 \]
-
-The previous proposed bottleneck “eventual uniform positivity of \(u\)” is unnecessary. An elementary coercivity lemma closes the \(w\)-energy directly:
-
-If \(\rho\ge0\), \(\int_\Omega\rho=m>0\), and \(\|\rho\|_\infty\le U\), then for every \(f\in H^1(\Omega)\),
+Therefore every uniformly bounded solution of the exact Qin–Zheng model satisfies
 \[
-\|f\|_2^2\le C_{\Omega,m,U}
-\left(\|\nabla f\|_2^2+\int_\Omega\rho f^2\right).
+\|u(t)-\bar u_0\|_\infty
++\left\|v(t)-\frac1\alpha\right\|_{W^{1,\infty}}
+\le Ce^{-\lambda t}.
 \]
+The stabilization implication itself does **not** use \(\varphi'<0\).
 
-Indeed, writing \(f_\Omega=|\Omega|^{-1}\int_\Omega f\) and using Poincaré,
-\[
-m|f_\Omega|
-\le \sqrt m\left(\int\rho f^2\right)^{1/2}
-+\sqrt{Um}\,C_P\|\nabla f\|_2,
-\]
-which yields the claim after \(\|f\|_2^2\le2\|f-f_\Omega\|_2^2+2|\Omega||f_\Omega|^2\).
+## Novelty posture
 
-Applying this with \(\rho=u(t)\) gives a time-uniform \(c_0>0\) such that
-\[
-\|\nabla w\|_2^2+\alpha\int u w^2\ge c_0\|w\|_2^2,
-\]
-so
-\[
-\|v(\cdot,t)-\alpha^{-1}\|_2\le C e^{-c_0t}.
-\]
+Deep audit dated 2026-09-09 found material predecessors:
 
-## Next proof frontier
+- Li–Zhao 2021: direct pure-consumption signal-dependent motility with exponential large-time behavior;
+- Tao–Winkler 2025: simultaneous production–consumption with classical chemotactic sensitivity;
+- 2026 indirect-signal/global-dynamics papers.
 
-1. Close the standard Neumann-semigroup upgrade \(w:L^2\to W^{1,\infty}\) using interpolation to \(L^p\), \(p>n\), and Duhamel for \(w_t=\Delta w-\alpha uw\).
-2. Use the resulting exponential decay of \(\nabla v\) in the energy estimate for \(q=u-\bar u_0\):
-\[
-\frac12\frac d{dt}\|q\|_2^2
-=-\int\varphi(v)|\nabla u|^2
--\int u\varphi'(v)\nabla u\cdot\nabla v.
-\]
-Positivity of \(\varphi\) on \([0,M]\), boundedness of \(u\), and Young + Poincaré should give exponential \(L^2\)-decay of \(q\).
-3. Close \(L^2\to L^\infty\) for \(q\) by a sourceable uniform parabolic smoothing/Hölder interpolation lemma.
-4. Re-run exact-model novelty search before promoting the target theorem.
+No exact-model exponential-stabilization collision or identical abstract dissipativity theorem was located, but this is not an open-status certificate.
 
-## Journal fit
+Safe contribution architecture:
 
-The intended AML contribution is a short structural principle rather than a second boundedness proof:
+1. general boundedness-to-uniform-stabilization principle;
+2. mass-weighted coercivity mechanism;
+3. no monotonicity requirement on motility in the stabilization stage;
+4. timely Qin–Zheng 2026 corollary.
 
-**boundedness implies exponential stabilization** for the 2026 Qin–Zheng production–consumption model, with a stabilization argument that drops monotonicity of the motility function.
+## Current priority
 
-No claim of novelty/open status is certified yet.
+The proof DAG is closed. Next priority is **adversarial novelty/referee audit and manuscript compression to AML's six-page format**, unless a further theorem strengthening is attempted first.
