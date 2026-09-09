@@ -38,20 +38,23 @@ Status vocabulary is strict:
 | N12S2 | `m(12,2)^2=5+sqrt(3)` and there are exactly two labelled minimizing switching classes | **Proved, exact finite certificate** | All `2^13=8192` Hamilton-gauge switching classes are tested by exact PSD arithmetic in `Q(sqrt(3))`; exactly two survive and have `chi_A=(x^2-2)^2(x^4-10x^2+22)^2`. |
 | T2COMP | For `q>=7`, a signing of `C_q(1,2)` has index `<=2` iff `q in {7,8,9,10,12}`; for each such `q` exactly one labelled switching class exists | **Proved** | A `5x5` Gram determinant table forces every consecutive triangle negative. Then `C=T+T^-1-T^2-T^-2`; finite Fourier gives the exact order/holonomy list. |
 | EQ6T2 | Complete generic `t=2` locus at and below six | **Proved** | Away from `N=2s+2,4s`, `m^2<=6` iff `(N,s)` is `(5,2),(10,3),(12,4),(14,5),(20,8)`; equality occurs only at `(12,4),(20,8)`. |
-| EQ62T1 | Complete `q=2t+1` locus | **Proved (new)** | `C_(2t+1)(1,t) ~= C_(2t+1)(1,2)` reduces the component problem to T2COMP. Only `q=5,7,9` remain; exact prior cases handle `q=5,7`, while `(18,4),(18,5)` fail the unique `q=9` step-`t` holonomy. No equality occurs on this locus. |
-| EQ63TCOMP | For every `t>=3`, every signing of `C_(3t)(1,t)` has largest eigenvalue strictly greater than `2` | **Proved (new)** | Positive chord triangles are impossible at index `<=2`. For `t>=4`, a 9-vertex three-column principal strip has five switching/permutation types and every exact characteristic polynomial has a root `>2`. For `t=3`, a two-column Gram-kernel argument contradicts the signed 3-cycle matching to the third column. |
-| EQ6ALL | `m(N,s)^2=6 iff (N,s) in {(12,4),(16,3),(16,5),(20,8)}` | **Proved (new; complete)** | S6FULL + EQ6LOC + EQ6T2 + EQ6TWIN + EQ62T1 + EQ63TCOMP; exact constructions establish attainment at all four pairs. |
-| SIXTRI | Complete trichotomy through six | **Proved (new; complete)** | Strictly below six: exactly the S6FULL families. Exactly six: the four EQ6ALL pairs. Every other admissible pair satisfies `m(N,s)>sqrt(6)`. |
+| EQ62T1 | Complete `q=2t+1` locus | **Proved** | `C_(2t+1)(1,t) ~= C_(2t+1)(1,2)` reduces the component problem to T2COMP. Only `q=5,7,9` remain; exact prior cases handle `q=5,7`, while `(18,4),(18,5)` fail the unique `q=9` step-`t` holonomy. No equality occurs on this locus. |
+| EQ63TCOMP | For every `t>=3`, every signing of `C_(3t)(1,t)` has largest eigenvalue strictly greater than `2` | **Proved** | Positive chord triangles are impossible at index `<=2`. For `t>=4`, a 9-vertex three-column principal strip has five switching/permutation types and every exact characteristic polynomial has a root `>2`. For `t=3`, a two-column Gram-kernel argument contradicts the signed 3-cycle matching to the third column. |
+| EQ6ALL | `m(N,s)^2=6 iff (N,s) in {(12,4),(16,3),(16,5),(20,8)}` | **Proved (complete)** | S6FULL + EQ6LOC + EQ6T2 + EQ6TWIN + EQ62T1 + EQ63TCOMP; exact constructions establish attainment at all four pairs. |
+| SIXTRI | Complete trichotomy through six | **Proved (complete)** | Strictly below six: exactly the S6FULL families. Exactly six: the four EQ6ALL pairs. Every other admissible pair satisfies `m(N,s)>sqrt(6)`. |
+| EQ6RIG | Complete labelled minimizer rigidity at the four `m^2=6` pairs | **Proved** | Minimizer switching-class counts on `(12,4),(16,3),(16,5),(20,8)` are respectively `2,32,32,2`. Order-16 classes split `16+16` by Hamilton holonomy and every minimizer has exactly two repeated-root pairs. Exact integer-witness rejection plus exact survivor characteristic polynomials. |
+| EQ6ISO | Complete switching-isomorphism orbit structure at `m^2=6` | **Proved** | Orbit counts are `1,2,2,1` for `(12,4),(16,3),(16,5),(20,8)`. Short-cycle counts force the full automorphism groups to be dihedral; the two order-16 orbits are the two Hamilton-holonomy sectors. |
 | E1 | If `N` is even, `m(N,s)^2<=6+2 cos(2pi/N)<8` | **Proved** | Finite anti-periodic signed shift and alternating chord signs; finite Fourier only. |
+| STEP3K8 | For every integer `k>=3`, `m(3k,3)<sqrt(8)` | **Proved** | Even `k` follows from E1. For odd `k`, the Hamilton-seam/chord-alternating signing has `8I-A^2=L_Sigma+E`, where `L_Sigma` is a signed Laplacian and `E` is one `-2` edge. Three edge-disjoint negative two-edge paths absorb `E` by Cauchy and give strict positivity. |
 | R1 | `m(9,3)<sqrt(8)` | **Proved** | Exact Sylvester certificate; leading minors `4,16,60,209,722,2508,5746,15993,47304`. |
 | R2 | `m(15,5)<sqrt(8)` | **Proved** | Exact Sylvester certificate; final determinant `8636544`. |
 | L9 | Nine-column signed-triangle local rule at excess `2/139` | **Proved, exact finite lemma** | Exact integer pruning counts `8,56,152,440,488,1016,656,1064,128`; all final survivors alternate in the six middle transitions. |
 | B7 | Every signing of `C_21(1,7)` has squared radius at least `8+18/131` | **Proved, exhaustive exact certificate** | `49,940` Q-necklaces and `199,760` representatives. |
 | B9 | Every signing of `C_27(1,9)` has squared radius at least `8+2/139` | **Proved, exhaustive exact certificate** | `17,024` final cyclic candidates after exact prefix pruning. |
 | R3 | For odd `s>=7`, `m(3s,s)^2>=8+2/139` | **Proved, computer-assisted local lemma + analytic propagation** | Exact bases `s=7,9`; nine-column alternation plus seam contradiction for `s>=11`. |
-| R4 | `m(3s,s)<sqrt8 iff s` is even or `s in {3,5}` | **Proved** | E1 + R1/R2 + R3. |
+| R4 | `m(3s,s)<sqrt8 iff s` is even or s in `{3,5}` | **Proved** | E1 + R1/R2 + R3. |
 | P8 | A fixed period-8 phase determines the global finite minimum for all `C_{8L}(1,2)` | **Rejected historical overclaim** | Historical correction branch withdraws the global conclusion; fixed-phase dispersion is excluded. |
-| Kodd8 | Exact sub-`sqrt8` classification for odd `k>=5` | **Open** | SIXTRI gives a strict `sqrt6` floor outside the complete exceptional list; general `sqrt8` behavior remains unresolved outside `k=3`. |
+| Kodd8 | Exact sub-`sqrt8` classification for odd `k>=5` | **Open** | General odd-resonance behavior remains unresolved, but STEP3K8 now settles the entire vertical family `C_(3k)(1,3)` positively for every odd `k`. |
 | Lit1 | Fixed-underlying-graph signature minimizing spectral radius is an established general problem | **Published/Established** | Belardo--Cioabă--Koolen--Wang (2018), Problem 3.18. |
 | Lit2 | Signed graphs with all eigenvalues in `[-2,2]` are classified | **Published/Established** | McKee--Smyth, *J. Algebra* 317 (2007). |
 | Lit3 | Degree-at-most-4 signed graphs with two adjacency eigenvalues are classified | **Published/Established** | Hou--Tang--Wang, *Discrete Math.* 342 (2019). |
@@ -83,6 +86,18 @@ m(N,s)^2 = 6 iff
 (N,s)=(12,4),(16,3),(16,5),(20,8).
 ```
 
+The corresponding labelled minimizer switching-class counts are
+
+```text
+2, 32, 32, 2,
+```
+
+and the switching-isomorphism orbit counts are
+
+```text
+1, 2, 2, 1.
+```
+
 #### Above six
 
 Every other admissible pair satisfies
@@ -91,7 +106,7 @@ Every other admissible pair satisfies
 m(N,s) > sqrt(6).
 ```
 
-This classification is now complete; `EQ6ALL` is no longer open.
+This classification and its equality rigidity are complete.
 
 ### II. Structural route to equality
 
@@ -113,10 +128,14 @@ All four loci are closed:
 ```text
 N even  =>  m(N,s)^2 <= 6+2 cos(2pi/N)<8.
 
+m(3k,3)<sqrt8 for every k>=3.
+
 m(3s,s)<sqrt8  iff  s is even or s in {3,5}.
 
 odd s>=7  =>  m(3s,s)^2>=8+2/139.
 ```
+
+The new `m(3k,3)<sqrt8` theorem gives an infinite odd-order positive family and shows that odd chord-cycle length alone is not the obstruction driving the horizontal `N=3s` transition.
 
 ## Hostile-audit corrections and upgrades
 
@@ -126,3 +145,5 @@ odd s>=7  =>  m(3s,s)^2>=8+2/139.
 4. The corrected doubled-edge line-graph count in the Greaves reduction is `d(a)+d(b)=7`.
 5. Strict sub-six and equality at six are distinct: entries `+-2` genuinely occur at equality, so root quotienting is mandatory.
 6. The formerly open equality boundary is now completely classified: exactly four parameter pairs attain `m^2=6`.
+7. Equality rigidity is nonuniform: the order-16 repeated-root cases have 32 labelled minimizer classes and two switching-isomorphism orbits, versus two classes and one orbit at orders 12 and 20.
+8. The `sqrt(8)` positive side now includes the entire family `C_(3k)(1,3)`, including all odd `k`.
