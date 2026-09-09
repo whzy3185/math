@@ -1,32 +1,38 @@
-# Complete sub-`sqrt(6)` classification
+# Complete strict sub-`sqrt(6)` classification
 
-This note is self-contained modulo one explicitly cited published classification theorem of Greaves--Koolen--Munemasa--Sano--Taniguchi (JCTB 110 (2015), 90--111). It belongs entirely to the finite-global paper and uses no continuous Bloch/Floquet result.
+This note belongs entirely to the finite-global paper.  It uses no result from the periodic/Bloch project.  The only external structural input is the published classification of connected edge-signed graphs with smallest eigenvalue strictly greater than `-2` by Greaves--Koolen--Munemasa--Sano--Taniguchi, *J. Combin. Theory Ser. B* 110 (2015), 90--111.
 
-Throughout, `2 <= s < N/2`, `A=A_sigma` is an arbitrary signed adjacency matrix of `C_N(1,s)`, and
+Throughout,
+
+\[
+2\le s<N/2,\qquad G=C_N(1,s),\qquad A=A_\sigma,
+\]
+
+and
 
 \[
 B:=A^2-4I,\qquad M:=\lambda_{\max}(B).
 \]
 
-Since `A^2` is positive semidefinite,
+Since `A` is real symmetric,
 
 \[
-\rho(A)^2=4+M.
+\rho(A)^2=\lambda_{\max}(A^2)=4+M. \tag{1}
 \]
 
-Let `beta` denote the largest real root of
+Let `beta` be the largest real root of
 
 \[
 x^3-7x+7=0.
 \]
 
-Numerically,
+Thus
 
 \[
-\beta=1.692021471630095\ldots .
+\beta=1.692021471630095\ldots<2. \tag{2}
 \]
 
-## Main theorem
+## Theorem A: complete strict sub-six classification
 
 For every admissible pair `(N,s)`,
 
@@ -34,320 +40,409 @@ For every admissible pair `(N,s)`,
 \boxed{m(N,s)^2<6}
 \]
 
-if and only if one of the following mutually disjoint alternatives holds:
+if and only if exactly one of the following holds.
 
-1. `N=2s+2`, in which case
+1. `N=2s+2`; then
    \[
-   m(N,s)^2=4;
+   m(N,s)^2=4.
    \]
-2. `(N,s)=(5,2)` or `(10,3)`, in which case
+2. `(N,s)=(5,2)` or `(10,3)`; then
    \[
-   m(N,s)^2=5;
+   m(N,s)^2=5.
    \]
-3. `N=4s`, in which case
+3. `N=4s`; then
    \[
-   m(4s,s)^2=4+2\cos\frac{\pi}{2s};
+   m(4s,s)^2=4+2\cos\frac{\pi}{2s}.
    \]
-4. `N=14` and `s in {3,4,5}`, in which case
+4. `N=14` and `s\in\{3,4,5\}`; then
    \[
    m(14,s)^2=4+\beta.
    \]
 
-Equivalently, outside these four families,
+Consequently, every parameter pair outside these four families satisfies
 
 \[
-\boxed{m(N,s)^2\ge 6.}
+\boxed{m(N,s)^2\ge6.} \tag{3}
 \]
 
-The first three alternatives were already proved in the rebuild. The new content is the global exclusion below `6` and the exact `N=14` exceptional family.
+The first three alternatives are established independently in the low-end and `N=4s` sections.  The proof below supplies the global exclusion and the order-14 exceptional family.
 
 ---
 
-## 1. Reduction below `6` to a signed parity-defect graph
+## 1. Strictly below six, the defect support is forced
 
-The parity-defect trichotomy gives
+The parity-defect identity is
 
 \[
 \operatorname{supp}(B\bmod2)=
 \begin{cases}
-\varnothing, & N=2s+2,\\
-\operatorname{Cay}(\mathbb Z_N,\{\pm2\}), & N=4s,\\
-\operatorname{Cay}(\mathbb Z_N,\{\pm2,\pm2s\}), & \text{otherwise}.
-\end{cases}
+\varnothing,&N=2s+2,\\[1mm]
+\operatorname{Cay}(\mathbb Z_N,\{\pm2\}),&N=4s,\\[1mm]
+\operatorname{Cay}(\mathbb Z_N,\{\pm2,\pm2s\}),&\text{otherwise}.
+\end{cases} \tag{4}
 \]
 
-Assume from now on that neither `N=2s+2` nor `N=4s`, and suppose
+Indeed, over `F_2[Z_N]`,
+
+\[
+(x+x^{-1}+x^s+x^{-s})^2
+=x^2+x^{-2}+x^{2s}+x^{-2s}.
+\]
+
+Assume now that `N` is neither `2s+2` nor `4s`, and suppose
 
 \[
 \rho(A)^2<6.
 \]
 
-Then `M<2`. For every off-diagonal entry `b_ij`, the principal `2x2` submatrix
+By (1), `M<2`.  Every off-diagonal entry `b_ij` occurs in the principal block
 
 \[
-\begin{pmatrix}0&b_{ij}\\b_{ij}&0\end{pmatrix}
+\begin{pmatrix}0&b_{ij}\\b_{ij}&0\end{pmatrix},
 \]
 
-has largest eigenvalue `|b_ij|`, so interlacing gives `|b_ij|<2`. Since `B` is integral,
+so interlacing gives `|b_ij|\le M<2`.  Since `B` is integral,
 
 \[
-b_{ij}\in\{0,\pm1\}.
+b_{ij}\in\{0,\pm1\}. \tag{5}
 \]
 
-On the parity support the entries are odd, hence `+-1`; off the parity support the entries are even, hence `0`. Therefore under the strict sub-`6` hypothesis, `B` is exactly a signed adjacency matrix of
+Equation (4) and (5) therefore imply that every parity-support entry is `+-1` and every off-support entry is zero.  Hence `B` is exactly a signed adjacency matrix of
 
 \[
-P_{N,s}:=\operatorname{Cay}(\mathbb Z_N,\{\pm2,\pm2s\}). \tag{1}
+P_{N,s}:=\operatorname{Cay}(\mathbb Z_N,\{\pm2,\pm2s\}). \tag{6}
 \]
 
-Let
+Put
 
 \[
-d:=\gcd(N,2),\qquad n:=N/d.
+d:=\gcd(N,2),\qquad q:=N/d.
 \]
 
-The graph `P_{N,s}` has exactly `d` connected components, each of order `n`; after dividing coordinates by `2` inside a component, each component is a connected 4-regular circulant. Thus every component `C` of `B` satisfies
+The graph `P_{N,s}` has `d` connected components, each of order `q`; after choosing a generator of the parity coset, each component is a connected 4-regular circulant.  If `C` is one signed component of `B`, then
 
 \[
 \lambda_{\max}(C)<2,
 \]
 
-or equivalently the signed graph `-C` has smallest eigenvalue greater than `-2`.
+so the edge-signed graph with adjacency matrix `-C` has smallest eigenvalue strictly greater than `-2`.  This is exactly the range classified by Greaves et al.
 
 ---
 
-## 2. Large 4-regular components cannot occur
-
-We use the classification of connected edge-signed graphs with smallest eigenvalue greater than `-2` due to Greaves, Koolen, Munemasa, Sano and Taniguchi, *J. Combin. Theory Ser. B* 110 (2015), 90--111. Their Theorems 6 and 19 imply:
-
-- every exceptional such signed graph has at most eight vertices;
-- every non-exceptional one is of one of three signed-line-graph types coming from a tree or a unicyclic representation graph (with one doubled-edge variant).
-
-We need only the following elementary corollary.
+## 2. A 4-regular consequence of the Greaves classification
 
 ### Lemma 2.1
 
-Let `Gamma` be a connected 4-regular edge-signed graph with smallest eigenvalue greater than `-2`. If `|V(Gamma)|>=9`, then no such `Gamma` exists.
+Let `Gamma` be a connected 4-regular edge-signed graph with smallest eigenvalue greater than `-2`.  If `|V(Gamma)|\ge9`, then no such graph exists.
 
-More precisely, among the integrally represented cases of the Greaves--Koolen--Munemasa--Sano--Taniguchi classification, the only connected 4-regular underlying graph that occurs is `K_5`.
+More precisely: among the integrally represented cases in the Greaves--Koolen--Munemasa--Sano--Taniguchi classification, the only 4-regular underlying graph is `K_5`.
 
 ### Proof
 
-Exceptional graphs have at most eight vertices, so assume an integral representation.
+Greaves et al., Theorem 19, shows that every exceptional edge-signed graph with smallest eigenvalue greater than `-2` has order `6`, `7`, or `8`.  Thus a graph of order at least `9` is integrally represented.  Their Theorem 6 describes its representation graph `H`: `H` is a simple tree, a unicyclic graph, or a tree with one doubled edge.  The underlying graph of `Gamma` is the line graph of `H` (with the standard doubled-edge interpretation in the third case).
 
-For the line-graph cases, if `Gamma` has underlying graph `L(H)`, every edge `uv` of `H` must satisfy
+First suppose `H` is simple.  For every edge `uv` of `H`, 4-regularity of `L(H)` gives
 
 \[
 d_H(u)+d_H(v)-2=4,
 \]
 
-hence `d_H(u)+d_H(v)=6`. If `H` is a tree, choose a leaf `u`. Its neighbour has degree `5`; every other neighbour of that degree-5 vertex must then have degree `1`. Hence `H=K_{1,5}` and `L(H)=K_5`.
-
-If `H` is unicyclic, any leaf would give the same degree-5-star argument and contradict unicyclicity. Hence `H` has no leaves, so it is a cycle, whose line graph is 2-regular, not 4-regular.
-
-It remains to rule out the doubled-edge tree case. In the standard description, take the underlying simple tree `T` and the distinguished edge `ab` corresponding to the two orthogonal doubled-edge roots. The two corresponding vertices of the signed graph are nonadjacent twins. 4-regularity forces
+hence
 
 \[
-d_T(a)+d_T(b)=6.
+d_H(u)+d_H(v)=6. \tag{7}
 \]
 
-For an edge `av` or `bv` adjacent to the distinguished edge, the extra twin neighbour gives
+If `H` is a tree, choose a leaf.  Its neighbour has degree `5`, and (7) forces every other neighbour of that degree-5 vertex to have degree `1`.  Thus `H=K_{1,5}` and `L(H)=K_5`.
+
+If `H` is unicyclic and has a leaf, the same argument produces an isolated `K_{1,5}` component, contradicting unicyclic connectedness.  Hence a connected unicyclic `H` has no leaf, so `H` is a cycle; its line graph is 2-regular, not 4-regular.
+
+It remains to consider a representation graph having exactly two parallel edges between vertices `a,b`, with the simple reduction a tree.  Degrees below are multigraph degrees.  For either parallel edge, the other parallel edge is counted from both endpoints and must be counted only once in the line graph.  Therefore
 
 \[
-d_T(a)+d_T(v)=5\quad\text{or}\quad d_T(b)+d_T(v)=5,
+4=d_H(a)+d_H(b)-3,
 \]
 
-while every edge `xy` away from `a,b` must satisfy
+so
 
 \[
-d_T(x)+d_T(y)=6.
+d_H(a)+d_H(b)=7. \tag{8}
 \]
 
-A finite tree has a leaf. If a leaf lies away from `a,b`, its neighbour has degree `5`, and all its other neighbours are forced to be leaves, disconnecting the distinguished edge. Thus every leaf is adjacent to `a` or `b`. If, say, `a` has a leaf, then `d_T(a)=4` and hence `d_T(b)=2`. The other neighbour of `b` has degree `3`; thereafter every edge away from `a,b` joins degree-3 vertices, producing further branches and eventually a leaf away from `a,b`, a contradiction. The case of a leaf at `b` is symmetric, while no leaves at either endpoint is impossible for a finite tree. Thus the doubled-edge case cannot be 4-regular.
-
-So the only integral 4-regular case is `K_5`, of order five. In particular there is no connected 4-regular example of order at least nine. `square`
-
-Consequently, if (1) has a component of order `n>=9`, then `M<2` is impossible. Therefore every generic sub-`6` pair must satisfy
+For every ordinary edge `uv`, there is no such double counting and again
 
 \[
-n=N/\gcd(N,2)\le8. \tag{2}
+d_H(u)+d_H(v)=6. \tag{9}
 \]
+
+The simple reduction of `H` is a finite tree, hence has a leaf `u`.  Since `a,b` each have multigraph degree at least `2`, this leaf is different from `a,b`; let `v` be its neighbour.  Equation (9) gives `d_H(v)=5`.  If `v` were different from `a,b`, then every other neighbour of `v` would have degree `1` by (9), making the entire connected graph a star and leaving no place for the doubled edge.  Hence `v` is one of `a,b`, say `v=a`.  Then (8) gives `d_H(b)=2`, so the two parallel `ab` edges exhaust the degree of `b`.  Vertex `a` has the two parallel edges plus three ordinary edges, and (9) forces the three other endpoints to be leaves.  Thus `H` consists of the doubled pair `ab` and three leaf edges at `a`.  All five edges are pairwise incident at `a`, and therefore
+
+\[
+L(H)=K_5.
+\]
+
+So the only integrally represented connected 4-regular case is `K_5`, which has order five.  Together with the exceptional-order bound, no connected 4-regular example of order at least nine can have smallest eigenvalue greater than `-2`. `square`
+
+Applying Lemma 2.1 to `-C` gives a decisive finite reduction:
+
+\[
+q=N/\gcd(N,2)\le8 \tag{10}
+\]
+
+for every generic strict sub-six signing.
 
 ---
 
-## 3. The small 4-regular parity components
+## 3. Exact small component analysis
 
-Only orders `5,6,7,8` can occur in (2). The necessary one-sided signed spectral facts can be proved by tiny switching calculations.
+Since a simple 4-regular graph has at least five vertices, (10) leaves `q=5,6,7,8`.
 
-### Order 5: `K_5`
+### 3.1 Order five
 
-If a signing of `K_5` has largest eigenvalue below `2`, then every triangle must be negative: a positive signed triangle is switching-equivalent to the all-positive `K_3`, whose largest eigenvalue is `2`. Having every triangle negative forces the signing to be switching-equivalent to the all-negative `K_5`, whose largest eigenvalue is `1`.
+The unique 4-regular underlying graph is `K_5`.  If a signing has largest eigenvalue below `2`, every triangle must be negative: a positive signed triangle has largest eigenvalue `2` and interlaces.  If all triangles are negative, switching at a fixed vertex shows that the signing is switching-equivalent to the all-negative `K_5`, whose largest eigenvalue is `1`.
 
-Thus the unique sub-`2` switching class on the order-5 component has largest eigenvalue `1`.
+Thus the unique sub-2 switching class on `K_5` has index `1`.
 
-### Order 6: `C_6(1,2)`
+### 3.2 Order six
 
-Again, largest eigenvalue below `2` forces every triangle to be negative. Switch the path edges
+The forced connected 4-regular circulant is `C_6(1,2)`.  A sub-2 signing again has all eight triangles negative.  Switch the path edges
 
 `01,12,23,34,45`
 
-to `+1`. The eight triangle equations then determine the seven remaining edge signs uniquely. The resulting characteristic polynomial is
+to `+1`.  The eight triangle equations determine the remaining signs uniquely, and the characteristic polynomial is
 
 \[
-x^3(x-2)^2(x+4).
+x^3(x-2)^2(x+4). \tag{11}
 \]
 
-Hence its largest eigenvalue is exactly `2`, contradiction. Therefore every signing of this component has largest eigenvalue at least `2`.
+Its largest eigenvalue is `2`.  Hence no signing of this component has largest eigenvalue strictly below `2`.
 
-### Order 7: `C_7(1,2) \cong C_7(1,3) \cong \overline{C_7}`
+### 3.3 Order seven
 
-There are seven triangles. If the largest eigenvalue is below `2`, all seven must be negative. Switch the path edges
-
-`01,12,23,34,45,56`
-
-to `+1`. Solving the seven triangle equations leaves exactly two switching classes. Their characteristic polynomials are
+The two connected 4-regular circulants are isomorphic:
 
 \[
-(x+4)(x^3-2x^2-x+1)^2
+C_7(1,2)\cong C_7(1,3)\cong\overline{C_7}.
 \]
 
-and
+A sub-2 signing has all seven triangles negative.  In the path gauge
+
+`01,12,23,34,45,56>0`,
+
+the triangle equations have exactly two labelled switching solutions.  Their characteristic polynomials are
 
 \[
-x(x^3-7x+7)^2.
-\]
-
-The first class has largest eigenvalue
-
-\[
-2.2469796037\ldots>2,
-\]
-
-whereas the second has largest eigenvalue exactly `beta`, the largest root of `x^3-7x+7`. Hence:
-
-> A signing of `\overline{C_7}` has largest eigenvalue below `2` if and only if it belongs to one unique labelled switching class, and then its largest eigenvalue is `beta`.
-
-This is the rigidity that creates the new `N=14` family.
-
-### Order 8
-
-For `C_8(1,2)`, the all-negative-triangle equations leave two switching classes; their characteristic polynomials are
-
-\[
-(x^4-8x^2+8x-2)^2
+(x+4)(x^3-2x^2-x+1)^2 \tag{12}
 \]
 
 and
 
 \[
-x(x-2)^2(x+4)(x^2-2)^2.
+x(x^3-7x+7)^2. \tag{13}
 \]
 
-Their largest eigenvalues are respectively `2.17958...` and `2`. Thus no signing has largest eigenvalue below `2`.
-
-The other 4-regular circulant on eight vertices relevant here is
+The first class has largest eigenvalue `2.2469796...>2`; the second has largest eigenvalue exactly `beta`.  Therefore:
 
 \[
-C_8(1,3)=K_{4,4}.
+\boxed{\min_{\eta}\lambda_{\max}(A_{\overline C_7,\eta})=\beta,} \tag{14}
 \]
 
-Any signing has block form
+and the minimizer below `2` is one labelled switching class.
+
+### 3.4 Order eight
+
+There are two relevant connected 4-regular circulants.
+
+For `C_8(1,2)`, all-negative-triangle path-gauge solutions give exactly two classes, with characteristic polynomials
 
 \[
-\begin{pmatrix}0&W\\W^T&0\end{pmatrix}
+(x^4-8x^2+8x-2)^2 \tag{15}
 \]
 
-with `W` a `4x4` matrix of `+-1` entries. Its largest eigenvalue equals the largest singular value of `W`. Since
+and
 
 \[
-\|W\|_F^2=16,
+x(x-2)^2(x+4)(x^2-2)^2. \tag{16}
 \]
 
-the largest squared singular value is at least `16/4=4`; hence the largest eigenvalue is at least `2`.
+Their largest eigenvalues are respectively `2.17958...` and `2`.
 
-Therefore orders `6` and `8` cannot support a strict sub-`2` defect component, while order `7` has exactly the single class described above.
+For `C_8(1,3)=K_{4,4}`, every signing has block form
+
+\[
+\begin{pmatrix}0&W\\W^T&0\end{pmatrix},
+\]
+
+where `W` is a `4x4` matrix with entries `+-1`.  Since `||W||_F^2=16`, its largest singular value is at least `2`.  Thus neither order-eight component permits strict sub-2 index.
+
+Consequently, only component orders `5` and `7` can occur in a generic strict sub-six signing.
 
 ---
 
-## 4. Parameter reduction
+## 4. Lifting the order-five component
 
-The only generic component orders that can yield `M<2` are now `n=5` and `n=7`.
-
-### `n=5`
-
-This means `N=5` or `N=10`.
-
-- `(5,2)` attains `m^2=5` by the conference-core signing.
-- At `N=10`, the flat pair is `(10,4)`. Of the generic pairs `(10,2)` and `(10,3)`, the defect `K_5` class is liftable only for `(10,3)`, where the `K_{5,5}`-minus-matching block construction gives `m^2=5`.
-- `(10,2)` is impossible at `M=1`: the alternating triangle-flux cancellation forced by the two-walk equations gives positive defect triangles, whereas an all-negative `K_5` defect has every triangle negative. This is the previously proved exact exclusion.
-
-Thus `n=5` contributes exactly `(5,2)` and `(10,3)`.
-
-### `n=7`: first exclude `N=7`
-
-For `N=7`, the two admissible steps are `s=2,3`. In each case at least one mixed two-walk displacement `s+1` or `s-1` lies off the parity support. Under `M<2` that mixed channel must vanish. Writing `h_i` for the step-one edge signs and `tau_i` for the step-`s` edge signs gives a recurrence of the form
+Here `q=5`, so `N=5` or `N=10`.  The already proved first-gap classification gives exactly
 
 \[
-h_i\tau_{i+1}+\tau_i h_{i+s}=0
+(N,s)=(5,2),(10,3),
 \]
 
-(or its shifted `s-1` version). Multiplying over all `i` yields
+with
 
 \[
-1=(-1)^N,
+m(N,s)^2=5. \tag{17}
 \]
 
-which is impossible for odd `N=7`. Hence no `N=7` pair has `m^2<6`.
-
-### `n=7`: the order `N=14` lifts
-
-The generic steps are `s=2,3,4,5`; `s=6` is flat. For each `s=2,3,4,5`, at least one mixed displacement is outside the parity support, so under `M<2` its vanishing forces the chord diagonal `D` to anticommute with the signed step-one shift `T`:
-
-\[
-DT=-TD,\qquad T^{14}=\alpha I,\qquad \alpha\in\{\pm1\}.
-\]
-
-Therefore every hypothetical sub-`6` lift must satisfy
-
-\[
-B=T^2+T^{-2}+(-1)^s(T^{2s}+T^{-2s}). \tag{3}
-\]
-
-This is a finite identity. Diagonalizing the finite signed shift, with `z^{14}=alpha`, gives
-
-\[
-\mu(z)=z^2+z^{-2}+(-1)^s(z^{2s}+z^{-2s}). \tag{4}
-\]
-
-A direct evaluation of the fourteen roots in (4) gives:
-
-- `s=2`: for `alpha=-1`, `M=3.0489173395...`; for `alpha=+1`, `M=4`. Hence no sub-`6` signing.
-- `s=3`: `alpha=-1` gives characteristic polynomial
-  \[
-  \chi_B(x)=x^2(x^3-7x+7)^4,
-  \]
-  hence `M=beta`; `alpha=+1` gives `M=3.0489173395...`.
-- `s=4`: `alpha=-1` again gives `chi_B(x)=x^2(x^3-7x+7)^4`, hence `M=beta`; `alpha=+1` gives `M=4`.
-- `s=5`: `alpha=+1` gives `chi_B(x)=x^2(x^3-7x+7)^4`, hence `M=beta`; `alpha=-1` gives `M=3.0489173395...`.
-
-The anticommuting signings in the three good cases are genuine finite signings of `C_14(1,s)`, so the lower bound from the unique sub-`2` switching class on `\overline{C_7}` is attained. Thus
-
-\[
-\boxed{m(14,s)^2=4+\beta\qquad(s=3,4,5).}
-\]
-
-This completes the sub-`sqrt(6)` classification. `square`
+For completeness, `(10,2)` cannot lift the all-negative `K_5` defect: vanishing of the even two-walk channels forces alternating triangle flux, while a defect triangle then has positive sign, contradicting the negative-triangle condition in the `K_5` defect class.  The pair `(10,4)` is on the flat line and was separated before the generic reduction.
 
 ---
 
-## 5. Consequences for the paper narrative
+## 5. Lifting the order-seven component
 
-The low-end theory is now naturally stated as a threshold hierarchy, not merely as isolated gaps:
+### 5.1 Odd order `N=7` is impossible
 
-- the exact trace floor `m=2` occurs precisely on `N=2s+2`;
-- the exact first off-flat value is `sqrt(5)`, only at `(5,2)` and `(10,3)`;
-- the exact `N=4s` resonance lies strictly between `sqrt(4+sqrt(2))` and `sqrt(6)`;
-- the sporadic 7-vertex parity-defect root-system phenomenon gives the exact order-14 family `m^2=4+beta`;
-- every remaining parameter pair lies at or above `sqrt(6)`.
+The admissible steps are `s=2,3`.  In each case one of the mixed two-walk displacements `s-1,s+1` lies outside the parity support.  Under `M<2`, every off-support entry of `B` is zero.  Writing `h_i` for the signed step-one edge and `tau_i` for the signed step-`s` edge, the vanishing mixed channel has the form
 
-The new order-14 family should be presented as a defect-component exception, not as an isolated computer discovery: it is forced by the unique sub-`2` switching class on the 4-regular graph `\overline{C_7}`.
+\[
+h_i\tau_{i+1}+\tau_i h_{i+s}=0 \tag{18}
+\]
+
+(up to the harmless index reversal for the other mixed displacement).  Multiplying (18) over all `i\in\mathbb Z_7` cancels every edge sign twice and gives
+
+\[
+1=(-1)^7,
+\]
+
+an impossibility.  Hence no `N=7` signing is strictly sub-six.
+
+### 5.2 Order `N=14`
+
+The generic steps are `s=2,3,4,5`; `s=6` is flat.  Normalize the step-one Hamilton path and let `T` be the signed cyclic shift with
+
+\[
+T^{14}=\alpha I,\qquad \alpha\in\{\pm1\}.
+\]
+
+Write the step-`s` signing as
+
+\[
+Q=DT^s+T^{-s}D,
+\]
+
+with `D` diagonal and `D^2=I`.  As above, a mixed channel lies outside the forced parity support.  Its vanishing is exactly
+
+\[
+DT=-TD. \tag{19}
+\]
+
+Thus
+
+\[
+D=\varepsilon\,\operatorname{diag}(1,-1,1,-1,\ldots),
+\qquad \varepsilon\in\{\pm1\}. \tag{20}
+\]
+
+With `A=T+T^{-1}+Q`, (19) gives cancellation of all mixed terms and
+
+\[
+B=T^2+T^{-2}+(-1)^s(T^{2s}+T^{-2s}). \tag{21}
+\]
+
+This is a finite identity.  On an eigenvector of `T` with `T`-eigenvalue `z`, where
+
+\[
+z^{14}=\alpha,
+\]
+
+the defect eigenvalue is
+
+\[
+\mu(z)=z^2+z^{-2}+(-1)^s(z^{2s}+z^{-2s}). \tag{22}
+\]
+
+Exact characteristic-polynomial factorization gives
+
+\[
+\begin{array}{c|c|c}
+s&\alpha&\chi_B(x)\\ \hline
+2&-1&x^2(x^3-7x-7)^4\\
+2&+1&(x-4)^2(x^3+2x^2-x-1)^4\\
+3&-1&x^2(x^3-7x+7)^4\\
+3&+1&x^2(x^3-7x-7)^4\\
+4&-1&x^2(x^3-7x+7)^4\\
+4&+1&(x-4)^2(x^3+2x^2-x-1)^4\\
+5&-1&x^2(x^3-7x-7)^4\\
+5&+1&x^2(x^3-7x+7)^4.
+\end{array} \tag{23}
+\]
+
+The only rows in (23) with largest defect eigenvalue below `2` are
+
+\[
+(s,\alpha)=(3,-1),(4,-1),(5,+1),
+\]
+
+and in each case that eigenvalue is `beta`.  Hence
+
+\[
+\boxed{m(14,s)^2=4+\beta\quad(s=3,4,5),} \tag{24}
+\]
+
+while
+
+\[
+m(14,2)^2\ge6. \tag{25}
+\]
+
+Together with Sections 1--4, this proves Theorem A. `square`
+
+---
+
+## Theorem B: rigidity of the order-14 exception
+
+For each `s\in\{3,4,5\}`, the minimizers of `C_{14}(1,s)` form exactly two labelled switching classes.  In Hamilton gauge they are the two signs `\varepsilon=\pm1` in (20), with uniquely forced holonomy
+
+\[
+\alpha=-1\quad(s=3,4),\qquad
+\alpha=+1\quad(s=5). \tag{26}
+\]
+
+A one-step rotation exchanges the two labelled classes.
+
+### Proof
+
+Any minimizer has squared radius `4+beta<6`, so the strict-support reduction applies.  By (14), both parity components of its defect must lie in the unique sub-2 switching class of `\overline C_7`.  The off-support mixed channel then vanishes and forces (19), hence (20).  The exact finite spectrum (23) fixes `alpha` uniquely.  Thus only `epsilon=+-1` remains.  A one-step rotation changes the sign of the alternating diagonal and exchanges those two Hamilton-gauge representatives. `square`
+
+A full enumeration of all `2^15` Hamilton-gauge representatives was also run as an independent hostile audit: it returns exactly two minimizers for each of `s=3,4,5`.  This enumeration is not used in the proof.
+
+---
+
+## Corollary 1: a universal odd-order floor
+
+For every odd `N\ge7` and every admissible `s`,
+
+\[
+\boxed{m(N,s)\ge\sqrt6.} \tag{27}
+\]
+
+Indeed, every strict sub-six family in Theorem A has even order except `(5,2)`.
+
+This is considerably stronger than a resonance-only statement: it applies to every two-step circulant of odd order.
+
+## Corollary 2: all odd resonance ratios
+
+If `k\ge3` and `s\ge3` are both odd, then
+
+\[
+\boxed{m(ks,s)\ge\sqrt6.} \tag{28}
+\]
+
+Thus the general resonance problem has a uniform finite-global obstruction at the `sqrt(6)` scale throughout the entire odd--odd region.  The line `k=3` is special not because it is the first place where a lower obstruction exists, but because its signed triangles amplify that universal odd-order floor past the larger threshold `sqrt(8)` for odd `s\ge7`.
+
+---
+
+## Reproducibility boundary
+
+The small component statements (11)--(16) and the order-14 factorization (23) are checked by `verify_sub_sqrt6_exact.py` using exact symbolic characteristic polynomials.  Floating eigenvalues are printed only for readability and are not accepted as certificates.
+
+The external Greaves classification is used only in Lemma 2.1 to reduce arbitrarily large 4-regular defect components to orders at most eight.  Everything after that reduction is explicit finite algebra in this paper.
