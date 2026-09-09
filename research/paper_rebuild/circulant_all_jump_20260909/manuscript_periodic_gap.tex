@@ -10,13 +10,16 @@
 \newtheorem{corollary}[theorem]{Corollary}
 \theoremstyle{remark}
 \newtheorem{remark}[theorem]{Remark}
+\newtheorem{problem}[theorem]{Problem}
 
 \newcommand{\Z}{\mathbb Z}
 \newcommand{\R}{\mathbb R}
 \newcommand{\vTwo}{v_2}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\per}{\operatorname{per}}
 
 \title{Arithmetic Periodic Phases in Signed Step Circulants:\\
-$2$-Adic Compression and Sharp Spectral Gaps}
+$2$-Adic Period Compression and Sharp Spectral Gaps}
 \author{Working research draft --- author metadata to be confirmed}
 \date{9 September 2026}
 
@@ -24,91 +27,106 @@ $2$-Adic Compression and Sharp Spectral Gaps}
 \maketitle
 
 \begin{abstract}
-We study explicit periodic signings of the step-$(1,s)$ operator on the
-integer line and their Bloch spectral edges.  The first nontrivial periodic
-sector already exhibits an exact parity bifurcation: among all sign words of
-period dividing two, the alternating phase is the unique minimizer up to
-translation, and it crosses below squared spectral edge $8$ precisely for odd
-$s$.  Its gap $g_s$ satisfies $s^2g_s\uparrow\pi^2$, and we obtain explicit
-expansions through order $s^{-8}$.
+We study explicit periodic signings of the step-$(1,s)$ operator and the
+continuous Bloch spectral edge of the resulting signed circulants.  The
+smallest nontrivial periodic sector already has an exact variational
+bifurcation: among all sign words of period dividing two, the alternating
+phase is the unique minimizer up to translation; it lies below squared edge
+$8$ exactly when $s$ is odd.  Its gap admits a complete one-dimensional
+variational description and a high-order expansion beginning with
+$\pi^2/s^2$.
 
-For even jumps a different arithmetic structure appears.  If
-$\vTwo(s)=1$, one fixed period-eight word has the exact squared Bloch edge
+For even jumps we uncover a different arithmetic mechanism.  For every even
+$L\ge4$ and every odd multiplier $2q+1$, a period-$2L$ two-defect flux phase
+for the jump $s=L(2q+1)$ has squared Bloch edge strictly below $8$.  The
+$2L$-dimensional fiber folds to an $L$-site two-component chain and then to a
+fixed $4\times4$ transfer monodromy.  This gives a complete period-compression
+theorem: if $\vTwo(s)=k\ge2$, period $2^{k+1}$ suffices, independently of the
+odd part of $s$; the case $\vTwo(s)=1$ is covered by a fixed period-eight
+phase with exact edge $4+\sqrt{10+2\sqrt5}$.
+
+The compressed family has a uniform quadratic gap
 \[
- 4+\sqrt{10+2\sqrt5}<8.
+ 8-R_{L,q}\ge \frac1{10L^2},
 \]
-If $\vTwo(s)=2$, a second fixed period-eight word stays strictly below the
-same constant for the entire congruence class.  If $\vTwo(s)=3$, a fixed
-period-sixteen two-defect phase has a uniformly positive sub-eight gap.  The
-last proof is based on an exact two-phase threshold determinant, a Bernstein
-positivity certificate, and an inertia argument.
-
-These examples are unified by a signed-reflection chiral symmetry for the
-two-defect word of arbitrary even period $2L$ and every odd multiple
-$s=L(2q+1)$.  Thus the natural organizing parameter for short periodic
-phases is the $2$-adic valuation of the jump rather than parity alone.  For
-all remaining jumps we retain an explicit universal construction; for its
-original parity-dependent family the gap has leading asymptotic
-$\pi^2/s^2$, with a nontrivial even phase-slip correction.
+and this scale is sharp.  Uniformly over the odd multiplier,
+\[
+ L^2(8-R_{L,q})\longrightarrow
+ 4\arccos^2\frac13.
+\]
+The constant arises from the Robin quantization law $3\cos a=1$, rather than
+the $\pi/2$ quantization producing the independent $\pi^2$ constant in the
+older long-period family.  We also prove first-order phase rigidity and that,
+for all sufficiently large even $L$, the unique global maximizing Bloch phase
+is exactly $z=1$.  Consequently the compressed gap has a complete algebraic
+large-$L$ expansion obtained from a scalar Robin equation.
 \end{abstract}
 
 \noindent\textbf{Keywords:} signed graph; circulant graph; periodic operator;
-Floquet theory; chiral symmetry; spectral radius; $2$-adic valuation
+Floquet theory; chiral symmetry; transfer matrix; spectral radius; $2$-adic
+valuation
 
 \medskip
 \noindent\textbf{MSC 2020:} 05C50 (primary); 05C22, 47B39, 15A18 (secondary)
 
-\section{Introduction}
+\section{Introduction and main results}
 
-For a periodic sign word $\tau$ and a jump $s\ge2$, consider
-\[
+For a periodic sign word $\tau$ and an integer jump $s\ge2$, consider the
+real self-adjoint operator
+\begin{equation}
  (A_{s,\tau}x)_j
  =x_{j-1}+x_{j+1}
  +\tau_{j-s}x_{j-s}+\tau_jx_{j+s}.
-\]
-If $\tau$ has period $p$, let $H_{s,\tau}(z)$ be the $p\times p$ Bloch fiber
-under $x_{j+p}=zx_j$, $|z|=1$, and define the continuous squared Bloch edge
+ \label{eq:operator}
+\end{equation}
+If $\tau$ has period $p$, let $H_{s,\tau}(z)$ be its $p\times p$ Bloch
+fiber under
 \[
+ x_{j+p}=zx_j,\qquad |z|=1,
+\]
+and define the continuous squared Bloch edge
+\begin{equation}
  R_s(\tau)=\max_{|z|=1}\rho(H_{s,\tau}(z))^2.
-\]
-The problem in this paper is not global minimization over all finite
-signings.  We ask instead how efficiently explicit periodic flux phases can
-push $R_s(\tau)$ below the reference edge $8$, and how the answer depends on
-the arithmetic of $s$.
+ \label{eq:bloch-edge}
+\end{equation}
+The reference value $8$ is the natural Ramanujan-type squared threshold for
+the four-regular support considered here.  Our problem is deliberately
+periodic: we ask how efficiently explicit flux phases can force
+$R_s(\tau)<8$, how short the period may be, and what asymptotic boundary
+conditions govern the resulting gaps.
 
-The main message is a hierarchy:
-\[
-\begin{array}{c|c|c}
-\text{jump class}&\text{explicit period}&\text{proved information}\\ \hline
-s\text{ odd}&2&\text{exact period-two optimum and sharp expansion}\\
-\vTwo(s)=1&8&\text{exact uniform edge}\\
-\vTwo(s)=2&8&\text{uniform strict improvement}\\
-\vTwo(s)=3&16&\text{uniform positive gap}.
-\end{array}
-\]
-A general signed-reflection theorem explains why the same two-defect geometry
-persists in higher $2$-adic layers.
+The answer has two different mechanisms.  Odd jumps are already resolved in
+the period-two sector.  Even jumps require defects, but their necessary
+period is controlled not by the size of $s$ itself, rather by its $2$-adic
+scale.
 
-\begin{theorem}[Complete period-two phase diagram]
-For every $s\ge2$, the alternating words $\tau_j=\pm(-1)^j$ are, up to
-translation, the unique minimizers of $R_s(\tau)$ among all words whose
-period divides two.  If $s$ is odd, then
+\subsection{The period-two variational problem}
+
+\begin{theorem}[Exact period-two phase diagram]
+\label{thm:period-two}
+Among all Hamilton-gauge words whose period divides two, the alternating
+words $\tau_j=\pm(-1)^j$ are, up to translation, the unique minimizers of
+$R_s(\tau)$.  If $s$ is odd, then
 \[
- \min_{\operatorname{per}(\tau)\mid2}R_s(\tau)=8-g_s<8,
+ \min_{\per(\tau)\mid2}R_s(\tau)=8-g_s<8,
  \qquad
- g_s=4\min_\theta\bigl(\sin^2\theta+\cos^2(s\theta)\bigr).
+ g_s=4\min_{\theta\in\R}
+ \bigl(\sin^2\theta+\cos^2(s\theta)\bigr).
 \]
-If $s$ is even, the corresponding minimum equals $8$.
-\end{theorem}
-
-\begin{theorem}[Odd variational asymptotics]
-For odd $s\ge3$, the minimizing phase $\theta_s\in(0,\pi/(2s))$ is unique and
-satisfies
+If $s$ is even, then
+\[
+ \min_{\per(\tau)\mid2}R_s(\tau)=8.
+\]
+For odd $s\ge3$, the minimizing phase $\theta_s\in(0,\pi/(2s))$ is unique
+and satisfies
 \[
  \sin(2\theta_s)=s\sin(2s\theta_s).
 \]
-Moreover $g_s$ decreases strictly, $s^2g_s$ increases strictly to $\pi^2$,
-and
+\end{theorem}
+
+\begin{theorem}[Odd-jump expansion]
+\label{thm:odd-expansion}
+As odd $s\to\infty$,
 \[
 \begin{aligned}
  g_s={}&\frac{\pi^2}{s^2}
@@ -118,117 +136,608 @@ and
  +O(s^{-10}).
 \end{aligned}
 \]
+Moreover $g_s$ decreases strictly and $s^2g_s$ increases strictly to
+$\pi^2$ along odd integers.
 \end{theorem}
 
-\begin{theorem}[First arithmetic layer]
-If $s\equiv2\pmod4$, one fixed period-eight word has
-\[
- R_s(\tau)=4+\sqrt{10+2\sqrt5}<8.
-\]
-The value is independent of $s$ throughout this congruence class.
-\end{theorem}
+Thus the first parity obstruction is variational, not merely a feature of a
+chosen example.
 
-\begin{theorem}[Second arithmetic layer]
-If $s\equiv4\pmod8$, a second fixed period-eight word satisfies
-\[
- R_s(\tau)<4+\sqrt{10+2\sqrt5}<8.
-\]
-\end{theorem}
+\subsection{A universal two-defect compression theorem}
 
-\begin{theorem}[Third arithmetic layer]
-If $s\equiv8\pmod{16}$, the fixed period-sixteen word
-\[
-(1,1,-1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1)
-\]
-satisfies
-\[
- R_s(\tau)<8,
- \qquad
- 8-R_s(\tau)\ge\frac{28}{8^7}.
-\]
-\end{theorem}
-
-\begin{theorem}[Signed-reflection chirality]
-Let $L\ge4$ be even.  For the period-$2L$ two-defect flux word
-\[
+Let $L\ge4$ be even.  On residues modulo $2L$, define the local flux word
+\begin{equation}
  Q_0=Q_2=1,
  \qquad Q_j=-1\quad(j\ne0,2),
-\]
-and any jump $s=L(2q+1)$, every Bloch fiber has an antiunitary chiral
-symmetry.  Consequently
+ \label{eq:two-defect-Q}
+\end{equation}
+and choose the Hamilton-gauge lift with $\tau_0=1$.  Explicitly,
+\begin{equation}
+ \tau_0=\tau_1=1,
+ \qquad \tau_2=\tau_3=-1,
+ \qquad \tau_j=(-1)^j\quad(4\le j<2L).
+ \label{eq:two-defect-tau}
+\end{equation}
+For a jump
 \[
- \operatorname{spec}H_s(z)=-\operatorname{spec}H_s(z)
+ s=L(2q+1),\qquad q\ge0,
 \]
-with multiplicity and the fiber characteristic polynomial is a polynomial in
-$\lambda^2$.
+write $R_{L,q}$ for the squared Bloch edge of this period-$2L$ phase and
+$g_{L,q}=8-R_{L,q}$.
+
+\begin{theorem}[General two-defect compression]
+\label{thm:compression}
+For every even $L\ge4$ and every $q\ge0$,
+\[
+ \boxed{R_{L,q}<8.}
+\]
+For every even $L\ge6$,
+\[
+ \boxed{g_{L,q}\ge\frac1{10L^2}}
+\]
+uniformly in $q$.
 \end{theorem}
 
+The period-$2L$ fiber admits two successive reductions: first to an
+$L$-site block Jacobi chain, and then to a fixed $4\times4$ transfer
+monodromy.  The proof is therefore uniform in $L$ despite the growing cell.
+
+\begin{corollary}[$2$-adic period compression]
+\label{cor:2adic}
+Let $s$ be even.  If $\vTwo(s)=1$, a fixed period-eight phase has the exact
+edge
+\[
+ \boxed{4+\sqrt{10+2\sqrt5}<8.}
+\]
+If $\vTwo(s)=k\ge2$, then an explicit phase of period
+\[
+ \boxed{2^{k+1}}
+\]
+has squared Bloch edge below $8$.  Thus the required period depends only on
+$\vTwo(s)$ and is independent of the odd part of $s$.
+\end{corollary}
+
+This is the main arithmetic compression statement.  For example, a jump
+$s=2^k m$ with $m$ large and odd is treated using a cell depending on $2^k$
+only, rather than a cell growing linearly with $s$.
+
+\subsection{Sharp compressed gap and phase selection}
+
+Set
+\[
+ a=\arccos\frac13.
+\]
+
+\begin{theorem}[Sharp global compressed constant]
+\label{thm:sharp-compressed}
+For every sequence of even $L\to\infty$ and every sequence $q=q(L)\ge0$,
+\[
+ \boxed{
+ L^2g_{L,q}\longrightarrow4a^2
+ =4\arccos^2\frac13.
+ }
+\]
+Equivalently, the convergence is uniform in the odd multiplier $2q+1$.
+If $z_L=e^{it_L}$ is any maximizing Bloch phase and
+\[
+ d_L=2\cos((2q+1)t_L),
+ \qquad e_L=2\cos t_L,
+\]
+then
+\[
+ L^2(2-d_L)\to0,
+ \qquad e_L\to2.
+\]
+\end{theorem}
+
+\begin{theorem}[First correction and phase rigidity]
+\label{thm:first-correction}
+Uniformly in $q$,
+\[
+ \boxed{
+ L^2g_{L,q}
+ =4a^2+\frac{16a^2}{3L}+o(L^{-1}).
+ }
+\]
+For every maximizing phase,
+\[
+ L^3(2-d_L)\to0,
+ \qquad
+ L(2-e_L)\to0.
+\]
+\end{theorem}
+
+\begin{theorem}[Eventual exact periodic phase]
+\label{thm:eventual-z1}
+There exists an even integer $L_0$ such that for every even $L\ge L_0$ and
+every $q\ge0$, the unique global maximizing Bloch phase is
+\[
+ \boxed{z=1.}
+\]
+Consequently
+\[
+ R_{L,q}=\rho(H_{L,q}(1))^2
+\]
+for all such $L$ and $q$.
+\end{theorem}
+
+At $z=1$, the fiber is independent of $q$.  If $L=2r$, its top squared
+eigenvalue is $6+2\cos\theta_r$, where the unique soft angle satisfies the
+scalar Robin equation
+\begin{equation}
+ 3\cos(r\theta_r)
+ +2\tan(\theta_r/2)\sin(r\theta_r)=1.
+ \label{eq:robin}
+\end{equation}
+Theorem~\ref{thm:eventual-z1} therefore converts the large-$L$ global Bloch
+problem into a one-dimensional analytic equation.
+
+\begin{corollary}[All-order compressed expansion]
+\label{cor:all-order}
+For every fixed $M\ge0$, there are explicit constants
+$\Gamma_0,\ldots,\Gamma_M$ such that, uniformly in $q$,
+\[
+ L^2g_{L,q}
+ =\sum_{j=0}^{M}\Gamma_jL^{-j}+O_M(L^{-M-1})
+\]
+for all sufficiently large even $L$.  The first four are
+\[
+ \Gamma_0=4a^2,
+ \qquad
+ \Gamma_1=\frac{16a^2}{3},
+\]
+\[
+ \Gamma_2
+ =\frac{16a^2}{3}
+ +\frac{4\sqrt2\,a^3}{9}
+ -\frac{4a^4}{3},
+\]
+and
+\[
+ \Gamma_3
+ =\frac{16a^2}{81}
+ \left(24+6\sqrt2\,a-13a^2\right).
+\]
+\end{corollary}
+
+\subsection{A second spectral constant}
+
+The compressed family is not the only explicit family of interest.  The
+older period-$4s$ construction for even $s$ has a different soft boundary
+condition and satisfies
+\[
+ s^2\widehat g_s\to\pi^2.
+\]
+For $s=2r$, its global maximizing phase has a genuine boundary-layer slip,
+\[
+ r^2\phi_r\to\frac{\pi}{4\sqrt2},
+ \qquad
+ r^4(e_r-\widehat g_{2r})\to\frac{\pi^2}{32}.
+\]
+Thus the constants
+\[
+ \pi^2
+ \qquad\text{and}\qquad
+ 4\arccos^2\frac13
+\]
+come from two genuinely different periodic mechanisms.
+
 \section{Switching, flux coordinates, and Bloch fibers}
+\label{sec:prelim}
 
-Develop only the self-contained tools required by this paper: Hamilton gauge,
-local flux words, periodic cells, Bloch decomposition, and the relation
-between real-space symmetries and fiber symmetries.  No finite-global
-extremal notation is introduced.
+We work in Hamilton gauge, with all nearest-neighbor edges positive and the
+remaining chord signs encoded by the word $\tau$.  The local cycle flux is
+$Q_j=\tau_j\tau_{j+1}$.  Switching changes vertex signs but leaves the cycle
+flux data invariant.  Periodicity of $\tau$ produces the usual Bloch
+fibers $H_{s,\tau}(z)$.
 
-\section{The complete period-two variational problem}
-
-Classify the four period-dividing-two words, derive the alternating squared
-dispersion, prove uniqueness of the odd critical phase, prove strict
-monotonicity of $g_s$ and $s^2g_s$, and derive the analytic implicit-function
-expansion.
-
-\section{Two-defect geometry and signed reflection}
-
-Introduce the period-$2L$ two-defect family.  Prove
+The two-defect word \eqref{eq:two-defect-tau} satisfies the reversal identity
+\begin{equation}
+ \boxed{\tau_{3-j}=-\tau_j}
+ \label{eq:reversal}
+\end{equation}
+modulo $2L$.  Let
 \[
- \tau_{3-j}=-\tau_j
+ (Dx)_j=(-1)^jx_j,
+ \qquad
+ (Rx)_j=x_{L+3-j}.
 \]
-and derive the unitary infinite-volume and antiunitary fiberwise chiral
-symmetries.  This section is conceptual and precedes the individual
-arithmetic layers.
-
-\section{Fixed period eight on the first two even layers}
-
-\subsection{$s\equiv2\pmod4$}
-Derive the $4\times4$ chiral squared block and prove the exact constant
-$4+\sqrt{10+2\sqrt5}$ via the square-sum inequality.
-
-\subsection{$s\equiv4\pmod8$}
-Use the second period-eight word.  Derive the centered quartic and the closed
-top branch
+Because $s=L(2q+1)$ and $L$ is even, reflection negates every chord sign,
+while $D$ negates every nearest-neighbor term.  Hence
 \[
-4+\sqrt{8+2\cos(2nt)+\sqrt{10-8\cos(nt)+2\cos t}},
+ (DR)A_{s,\tau}(DR)^{-1}=-A_{s,\tau}.
 \]
-then prove the uniform strict bound.
+On a single Bloch fiber, reflection reverses the Bloch multiplier; combining
+it with complex conjugation gives an antiunitary chiral symmetry.  Therefore
+\begin{equation}
+ \spec H_{s,\tau}(z)=-\spec H_{s,\tau}(z),
+ \label{eq:chiral-spectrum}
+\end{equation}
+and the characteristic polynomial is a monic polynomial in $\lambda^2$.
 
-\section{The period-sixteen threshold certificate}
+\section{The period-two variational problem}
+\label{sec:period-two}
 
-Present the generic two-phase determinant identity at $\lambda=2\sqrt2$,
-the polynomial $F$, its positive Bernstein certificate on $[-2,2]$, the
-$z=1$ inertia anchor, and the uniform gap estimate.
-
-\section{A universal fallback and sharp family-specific asymptotics}
-
-For completeness, give the previously proved all-jump explicit construction.
-For the original even antipodal family, state and prove the leading
-$\pi^2/s^2$ law and the audited phase-slip correction.  Make explicit that
-these are sharp statements for that family, not optimality claims over all
-periodic phases.
-
-\section{Higher $2$-adic layers and open problems}
-
-The principal open problem is to prove a full hierarchy when
+For the alternating word and odd $s$, direct squaring cancels the mixed
+channels:
 \[
-2^k\Vert s.
+ A_s^2=4I+T^2+T^{-2}-T^{2s}-T^{-2s}.
 \]
-The natural two-defect candidate has period $2^{k+1}$ for $k\ge2$.  This is
-already structurally chiral by the general theorem, and exact experiments
-support further layers, but no unproved layer is stated as a theorem.
+On a Fourier mode $T=e^{i\theta}$,
+\[
+ F_s(\theta)=4+2\cos(2\theta)-2\cos(2s\theta),
+\]
+so
+\[
+ 8-\max_\theta F_s(\theta)
+ =4\min_\theta
+ \bigl(\sin^2\theta+\cos^2(s\theta)\bigr).
+\]
+The derivative equation gives Theorem~\ref{thm:period-two}.  The strict
+uniqueness follows from monotonicity of
+$\sin(sx)/\sin x$ on $(0,\pi/s)$.  Analytic inversion of the critical
+equation yields Theorem~\ref{thm:odd-expansion}.
 
-\section*{Independence statement for the research build}
+The other period-dividing-two words are classified directly.  For even $s$
+the alternating word cannot cross below $8$, proving the exact parity
+bifurcation in the smallest nontrivial sector.
 
-This manuscript is mathematically self-contained and does not invoke results
-from the separate finite-global extremal project.  In particular it does not
-use or define a minimum over all finite signings.
+\section{Folding the two-defect family}
+\label{sec:folding}
+
+Choose $\eta$ with $\eta^2=z$ and set
+\[
+ \omega=z^q\eta=e^{i\beta},
+ \qquad c=\cos\beta,
+ \qquad r=\sin\beta.
+\]
+Pair residues $j$ and $j+L$.  After multiplying the second coordinate in
+each pair by $\eta^{-1}$ and applying a staggered Pauli gauge, the fiber
+becomes an $L$-site block Jacobi matrix.  The interior hopping block is
+$\sigma_z$ and the onsite blocks are
+\begin{equation}
+ V_j=\begin{cases}
+ 2r\,\sigma_y,&j=1,2,\\
+ 2c\,\sigma_x,&j\ne1,2.
+ \end{cases}
+ \label{eq:onsite-blocks}
+\end{equation}
+The closing block is $i\eta\sigma_y$.
+
+For an eigenvector $\psi_j\in\mathbb C^2$, set
+\[
+ T(A)=\begin{pmatrix}A&-I_2\\I_2&0\end{pmatrix},
+\]
+\[
+ A_g=\lambda\sigma_z-2ic\sigma_y,
+ \qquad
+ A_d=\lambda\sigma_z+2ir\sigma_x.
+\]
+The key scalar-square identities are
+\[
+ A_g^2=(\lambda^2-4c^2)I_2,
+ \qquad
+ A_d^2=(\lambda^2-4r^2)I_2.
+\]
+Hence the full growing-dimensional problem reduces to
+\begin{equation}
+ M(\lambda)=T(A_g)^{L-3}T(A_d)^2T(A_g),
+ \label{eq:monodromy}
+\end{equation}
+a fixed $4\times4$ monodromy.
+
+\section{Threshold positivity and general period compression}
+\label{sec:compression-proof}
+
+Put $y=\lambda^2$.  At $y=8$, define
+\[
+ d=\omega^2+\omega^{-2}\in[-2,2],
+ \qquad
+ e=z+z^{-1}\in[-2,2],
+\]
+\[
+ m=\frac{L-4}{2},
+ \qquad
+ t=\frac{4-d}{2},
+ \qquad
+ u=U_m(t),
+ \qquad
+ w=U_{m-1}(t).
+\]
+The scalar-square relation gives the Chebyshev identity
+\[
+ u^2+w^2-(4-d)uw=1.
+\]
+Substitution into \eqref{eq:monodromy} yields
+\begin{equation}
+ P_{L,q,z}(8)=F_L(d)+d-e,
+ \label{eq:threshold-discriminant}
+\end{equation}
+where
+\[
+ F_L(x)=u_x^2A(x)+u_xw_xB(x)+C(x),
+\]
+\[
+ A(x)=x^4-21x^2-8x+84,
+\]
+\[
+ B(x)=x^3+4x^2-4x-16,
+ \qquad
+ C(x)=x^2+11x+6.
+\]
+The crucial estimate is
+\begin{equation}
+ \boxed{F_L(x)\ge20\qquad(-2\le x\le2).}
+ \label{eq:F-lower}
+\end{equation}
+It follows from an exact factorization of $F_{m+1}-F_m$ and the base case
+$L=4$.  Hence
+\[
+ P_{L,q,z}(8)\ge16.
+\]
+At $z=1$ the determinant factors as
+\[
+ \det(\lambda I-H_{L,q}(1))
+ =p_r(y)(p_r(y)+4),
+ \qquad r=L/2,
+\]
+with
+\[
+\begin{aligned}
+ p_r(y)={}&
+ U_{r-2}\!\left(\frac{y-6}{2}\right)(y^2-8y+6)\\
+ &-U_{r-3}\!\left(\frac{y-6}{2}\right)(y-2)-2.
+\end{aligned}
+\]
+For $y\ge8$,
+\[
+ p_r(y)+2
+ =6(u-w)+(y-8)(yu-w)>0,
+\]
+which fixes the inertia.  Continuity in $z$ and
+\eqref{eq:threshold-discriminant} prove Theorem~\ref{thm:compression}.
+
+To upgrade strict positivity to the scale $L^{-2}$, differentiate the full
+characteristic polynomial at $y=8$.  The logarithmic derivative of
+$U_m(t)$ is controlled by its zeros in $(-1,1)$, giving
+\[
+ \frac{U_m'(t)}{U_m(t)}
+ \le \frac{m(m+2)}3,
+ \qquad t\ge1.
+\]
+After accounting for $dt/dy=1/2$ and using
+\[
+ \frac{P_y(8)}{P(8)}
+ =\sum_j\frac1{8-y_j},
+\]
+one obtains
+\[
+ 8-\rho(H_{L,q}(z))^2
+ \ge\frac1{10L^2}
+\]
+uniformly in $z$ and $q$.
+
+\section{Exact Floquet discriminant and the sharp compressed constant}
+\label{sec:sharp-compressed}
+
+For general $y$, retain
+\[
+ d=z^{2q+1}+z^{-(2q+1)},
+ \qquad e=z+z^{-1},
+\]
+\[
+ t=\frac{y-d-4}{2},
+ \qquad u=U_m(t),
+ \qquad w=U_{m-1}(t).
+\]
+Using the Chebyshev identity to remove $u^2$, the full characteristic
+equation takes the exact scalar form
+\begin{equation}
+ \boxed{\det(\lambda I-H_{L,q}(z))=G_L(y,d)-e.}
+ \label{eq:full-discriminant}
+\end{equation}
+One convenient representation is
+\[
+ G_L(y,d)=A_*(y,d)uw+B_*(y,d)w^2+C_*(y,d),
+\]
+where
+\[
+\begin{aligned}
+A_*={}&(-d^2+y^2-8y+10)\\
+&\times(d^3-d^2y+4d^2-dy^2+8dy-12d
++y^3-12y^2+40y-32),
+\end{aligned}
+\]
+\[
+ B_*=-(-d^2-d+y^2-9y+14)
+ (-d^2+d+y^2-7y+6),
+\]
+and
+\[
+\begin{aligned}
+ C_*={}&d^4-2d^2y^2+16d^2y-20d^2+4d\\
+ &+y^4-16y^3+84y^2-160y+90.
+\end{aligned}
+\]
+
+Let a maximizing root have
+\[
+ y=8-\frac\gamma{L^2},
+ \qquad
+ d=2-\frac D{L^2}.
+\]
+The periodic phase provides $\gamma=O(1)$.  The exact discriminant first
+forces $D=O(1)$.  After subsequence extraction, Chebyshev scaling gives
+\[
+ \frac{u}{L},\frac{w}{L}\to
+ \Phi(\gamma-D),
+\]
+where
+\[
+ \Phi(\xi)=
+ \begin{cases}
+ \dfrac{\sin(\sqrt\xi/2)}{\sqrt\xi},&\xi>0,\\[1ex]
+ \dfrac12,&\xi=0,\\[1ex]
+ \dfrac{\sinh(\sqrt{-\xi}/2)}{\sqrt{-\xi}},&\xi<0.
+ \end{cases}
+\]
+The limiting discriminant is
+\begin{equation}
+ 0=34-e_*-36(\gamma-D)\Phi(\gamma-D)^2.
+ \label{eq:continuum-discriminant}
+\end{equation}
+The hyperbolic case is impossible.  In the oscillatory case,
+\[
+ 36\sin^2\left(\frac{\sqrt{\gamma-D}}2\right)=34-e_*
+ \ge32.
+\]
+Together with the periodic-phase upper bound this forces
+\[
+ D=0,
+ \qquad e_*=2,
+ \qquad \gamma=4\arccos^2\frac13,
+\]
+proving Theorem~\ref{thm:sharp-compressed}.
+
+\section{Robin quantization, rigidity, and exact phase selection}
+\label{sec:robin}
+
+At $z=1$, the top root of $p_r(y)=0$ can be written
+\[
+ y=6+2\cos\theta_r,
+\]
+where \eqref{eq:robin} has a unique solution in $(0,\pi/(2r))$.  Setting
+$a_r=r\theta_r$, one obtains
+\[
+ a_r\to a=\arccos(1/3).
+\]
+More precisely,
+\[
+\begin{aligned}
+ a_r={}&a+\frac{a}{3r}
+ +\frac{a(\sqrt2 a+8)}{72r^2}\\
+ &+\frac{a(10a^2+9\sqrt2 a+24)}{648r^3}
+ +O(r^{-4}).
+\end{aligned}
+\]
+This yields Corollary~\ref{cor:all-order} after
+\[
+ g_{L,q}=4\sin^2\left(\frac{a_r}{2r}\right)
+\]
+once exact phase selection is known.
+
+For the phase-selection argument, introduce
+\[
+ h=L^{-1},
+ \qquad
+ D=L^2(2-d),
+ \qquad
+ E=2-e,
+\]
+and write a near-edge root as $y=8-\gamma h^2$.  The exact characteristic
+equation extends analytically to $h=0$ with limiting function
+\[
+ \mathcal F(0,\gamma,D,E)
+ =32+E-36\sin^2\left(\frac{\sqrt{\gamma-D}}2\right).
+\]
+At the base point $\Gamma_0=4a^2$,
+\[
+ \partial_\gamma\mathcal F=-\frac{2\sqrt2}{a}\ne0.
+\]
+The implicit-function theorem therefore gives a unique local branch
+$\gamma=\Gamma(h,D,E)$, with
+\[
+ \partial_D\Gamma(0,0,0)=1,
+ \qquad
+ \partial_E\Gamma(0,0,0)=\frac{a}{2\sqrt2}>0.
+\]
+Hence nonzero phase displacement strictly increases the gap in a fixed local
+neighborhood.  The sharp global theorem puts every maximizing phase in this
+neighborhood for sufficiently large $L$.  Comparing with the admissible
+periodic phase forces $D=E=0$, proving Theorem~\ref{thm:eventual-z1}.
+
+\section{Exact low layers}
+\label{sec:low-layers}
+
+The general compression theorem has especially explicit low-dimensional
+models.
+
+\subsection{$\vTwo(s)=1$}
+For $s\equiv2\pmod4$, the fixed period-eight word
+\[
+ (1,1,-1,1,-1,-1,1,-1)
+\]
+has exact squared Bloch edge
+\[
+ 4+\sqrt{10+2\sqrt5}.
+\]
+The proof reduces to a $4\times4$ chiral squared block and a square-sum
+inequality.
+
+\subsection{$\vTwo(s)=2$}
+For $s\equiv4\pmod8$, another fixed period-eight word has top squared branch
+\[
+ 4+\sqrt{
+ 8+2\cos(2nt)+\sqrt{10-8\cos(nt)+2\cos t}},
+ \qquad n=s/4,
+\]
+and remains strictly below $4+\sqrt{10+2\sqrt5}$.
+
+\subsection{$\vTwo(s)=3$}
+For $s\equiv8\pmod{16}$, the period-sixteen specialization has an exact
+threshold determinant $F(d)+d-e$ with a positive Bernstein-basis certificate
+for $F$ on $[-2,2]$.  It provides a concrete finite-dimensional model of the
+general transfer proof.
+
+\section{The second family: the $\pi^2$ law and phase slip}
+\label{sec:old-family}
+
+For comparison, retain the older all-jump construction.  Odd $s$ uses the
+period-two alternating phase.  Even $s$ uses the primitive period-$4s$
+antipodal family.  For this particular parity-dependent family,
+\[
+ s^2\widehat g_s\to\pi^2.
+\]
+When $s=2r$, the phase-zero endpoint is not always globally optimal.  The
+global phase satisfies
+\[
+ r^2\phi_r\to\frac{\pi}{4\sqrt2},
+\]
+and the gain over phase zero is
+\[
+ r^4(e_r-\widehat g_{2r})\to\frac{\pi^2}{32}.
+\]
+The compressed family has the opposite phase-selection behavior:
+Theorem~\ref{thm:eventual-z1} eventually pins the optimizer exactly at
+$z=1$.
+
+\section{Open problems}
+\label{sec:open}
+
+The existence hierarchy and the sharp compressed leading asymptotic are now
+closed.  The remaining problems concern optimality and finite-size rigidity.
+
+\begin{problem}[Exact finite phase selection]
+Prove that $z=1$ is the unique global maximizing Bloch phase of the compressed
+two-defect family for every even $L\ge6$, removing the unspecified threshold
+$L_0$ from Theorem~\ref{thm:eventual-z1}.
+\end{problem}
+
+\begin{problem}[Minimal compressed period]
+For $\vTwo(s)=k\ge2$, determine whether period $2^{k+1}$ is minimal inside a
+natural two-defect or signed-reflection chiral class.
+\end{problem}
+
+\begin{problem}[Fixed-defect variational optimality]
+At fixed even $L$, compare the two-defect word with all bounded-defect flux
+patterns of period $2L$.  Is the two-defect phase variationally optimal in a
+natural defect class?
+\end{problem}
+
+\begin{problem}[Sharp finite quadratic constant]
+Replace the convenient bound $1/(10L^2)$ by the best finite-$L$ uniform lower
+bound and determine its relation to the asymptotic constant
+$4\arccos^2(1/3)$.
+\end{problem}
 
 \end{document}
