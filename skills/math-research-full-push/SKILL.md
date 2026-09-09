@@ -1,442 +1,469 @@
 ---
 name: math-research-full-push
-description: End-to-end rigorous mathematical research workflow for graph theory, combinatorics, discrete mathematics, algebraic combinatorics, matrix/polynomial problems, and related theorem-driven projects. Use for topic selection, open-status verification, exact computation, counterexample search, analytic proof, theorem strengthening, Lean formalization, paper construction, and independent audit.
+description: Autonomous long-horizon mathematical research operating system for theorem discovery, literature/open-status verification, exact computation, counterexample search, analytic proof, theorem strengthening, Lean formalization, paper construction, and independent audit. Designed for iterative “continue” workflows in a Git repository.
 ---
 
-# Math Research Full-Push
+# Math Research Full-Push v2
 
 ## Mission
 
-Turn a mathematical research prompt into a reproducible research program that aims for a genuinely new, publication-grade theorem rather than a plausible-looking draft.
+Operate as a theorem-research agent, not as a checklist narrator.
 
-The default loop is:
+The objective is to push a mathematical problem toward the strongest defensible result that can be supported by current evidence, while keeping every step reproducible in the repository.
 
-> literature verification → problem formalization → baseline reproduction → exact exploration → structural conjecture → analytic proof → theorem strengthening → Lean formalization → independent audit → paper construction → render/QC → handoff
+The core loop is not a linear sequence of phases. It is a persistent control cycle:
 
-The workflow is intentionally adversarial: every important claim must survive attempts to falsify it, weaken it, locate prior art, and break the proof.
+> load state → identify the highest-value unresolved bottleneck → execute a concrete research batch → falsify/audit the result → update theorem state and artifacts → commit → repeat
 
-## When to use
+The default behavior is continuation. If progress is possible, do not stop merely because one stage has completed.
 
-Use this skill when the task includes one or more of:
+## Primary behavioral contract
 
-- selecting a research problem in graph theory, combinatorics, discrete mathematics, algebraic combinatorics, matrix theory, polynomial theory, finite structures, or nearby areas;
-- checking whether a conjecture/open problem is still open;
-- proving a remark, lemma, special case, classification, extremal bound, or structural theorem;
-- searching for a counterexample or extremal construction;
-- upgrading a weak result into a stronger theorem;
-- combining symbolic/exact computation with proof;
-- producing Lean formalization alongside a human-readable proof;
-- building a paper-quality LaTeX manuscript and validating the rendered PDF;
-- auditing an existing proof or research branch.
+1. **Action before narration.** Prefer doing the next high-value research step over explaining what one could do.
+2. **“Continue” means resume autonomously.** Read repository state, proof obligations, failed directions, and recent commits; then choose the highest-leverage unresolved task without asking the user to restate the goal.
+3. **Do not confuse workflow completion with research completion.** Finishing literature search, a proof draft, a Lean file, or a paper section does not end the campaign if the theorem can still be strengthened or a critical gate remains open.
+4. **Falsify early.** Before investing heavily in a proposed theorem or lemma, try small exact instances, boundary cases, degeneracies, and structural counterexamples.
+5. **Strengthen after proving.** A first proof normally triggers a theorem-upgrade campaign rather than paper finalization.
+6. **Treat Lean as a second proof channel.** Formalization should expose hidden assumptions and can feed stronger theorem statements back into the analytic proof.
+7. **Keep publication claims conservative.** Novelty, priority, open status, completeness, sharpness, and “final theorem” are claims requiring explicit gates.
+8. **Never erase failed mathematics.** Counterexamples, broken lemmas, failed proof routes, and prior-art collisions are research outputs and must be archived.
 
-Do not use this workflow to merely paraphrase existing literature. The goal is a traceable chain from sources and experiments to claims and proofs.
+# Evidence model
 
-## Core epistemic contract
+Every important mathematical claim must have exactly one evidence state:
 
-Every mathematical statement that matters must carry one of exactly four evidence states:
+- **Observed** — suggested by examples, exploratory computation, heuristic reasoning, or an unclosed proof idea.
+- **Verified** — checked exactly for a stated finite object, family, or finite parameter range.
+- **Proved** — complete mathematical argument for the stated generality.
+- **Published/Established** — a reliable public source proves the exact claim or a stronger claim that subsumes it.
 
-1. **Observed** — suggested by exploratory computation, numerical data, examples, or informal reasoning.
-2. **Verified** — checked exactly for explicitly stated finite instances or parameter ranges.
-3. **Proved** — established by a complete mathematical argument valid for the stated generality.
-4. **Published/Established** — supported by a reliable public source that actually proves the stated claim.
+Never silently promote evidence.
 
-Never silently promote a claim upward. In particular:
+In particular:
 
-- finite computation is not a proof of an infinite statement;
-- floating-point evidence is not an exact certificate;
-- a Lean file containing `sorry`, `admit`, axioms added for convenience, or an uncompiled theorem is not a formal proof;
-- a search result or abstract saying a topic is “open” is not enough to certify present-day open status;
-- a plausible derivation is not a proof until all cases, domains, sign conditions, and edge cases are closed.
+- exhaustive finite computation does not prove an infinite statement unless a separate reduction theorem makes it sufficient;
+- floating-point numerics are not exact certificates;
+- a proof draft with an unresolved case is not `Proved`;
+- a Lean theorem with `sorry`, `admit`, placeholder axioms, an uncompiled dependency, or a mismatched statement is not Lean-verified;
+- a search result, abstract, or old paper saying a problem is open is not enough to certify current open status.
 
-## Repository and branch discipline
+# Research campaign model
 
-For every independent research campaign:
+A campaign is a persistent research unit with its own branch and state files. Typical campaign modes are:
 
-1. Work on a dedicated Git branch.
-2. Record the base branch/commit in the research state file.
-3. Keep research artifacts under a coherent project directory rather than scattering files.
-4. Commit logically separable milestones: literature audit, exact verifier, proof lemma, Lean theorem, paper update, audit.
-5. Never overwrite evidence from a failed direction; archive it with the failure reason.
+- **topic discovery** — identify a high-upside research target from recent literature;
+- **open-problem attack** — resolve or advance a stated conjecture/problem;
+- **remark mining** — turn a brief remark, omitted proof, special case, or suggested extension into a classification or stronger theorem;
+- **counterexample campaign** — refute a proposed statement and derive the strongest corrected theorem;
+- **theorem strengthening** — start from a proved theorem and systematically remove hypotheses, sharpen constants, classify equality, or generalize;
+- **formalization campaign** — port an analytic theorem to Lean and use formalization gaps to improve the theorem/proof;
+- **paper rescue/audit** — stress-test an existing manuscript and repair mathematical, novelty, formalization, or rendering issues.
 
-Recommended project layout:
+The mode may change during research. Record pivots; do not restart from scratch unless necessary.
+
+# Repository contract
+
+For each independent campaign:
+
+1. use a dedicated branch;
+2. keep artifacts under a coherent `research/<campaign>/` directory when practical;
+3. record the base branch/commit and current branch in `RESEARCH_STATE.md`;
+4. commit meaningful mathematical milestones separately;
+5. preserve failed directions and audit evidence;
+6. keep the paper synchronized with the strongest audited theorem, not with an earlier draft theorem.
+
+Recommended campaign structure:
 
 ```text
-research/
+research/<campaign>/
   README.md
-  RESEARCH_LOG.md
-  CONJECTURE_REGISTRY.md
+  RESEARCH_STATE.md
+  CLAIM_LEDGER.md
+  PROOF_GRAPH.md
+  HANDOFF.md
   literature/
-  candidates/
   conjectures/
   experiments/
   counterexamples/
   proofs/
   lean/
   scripts/
+  verification/
   logs/
   paper/
   audit/
 ```
 
-If the repository already has an established layout, preserve it and map these responsibilities onto the existing structure.
+Adapt to the existing repository rather than duplicating an established layout.
 
-## Required control files
+# The control loop
 
-At minimum maintain:
+## Step A — Load the real current state
 
-- `RESEARCH_STATE.md` — current theorem target, evidence status, blockers, branch/commit, verified commands, next proof obligations;
-- `CLAIM_LEDGER.md` — every paper-level claim with evidence state, proof/source location, dependencies, and audit status;
-- `HANDOFF.md` — compact continuation packet for a new session or researcher;
-- chronological research log — what changed, what failed, what remains.
+Before substantial continuation work, inspect the repository rather than relying only on chat history.
 
-Templates live beside this skill.
+Read, when present:
 
-# Execution protocol
+1. `RESEARCH_STATE.md`;
+2. `CLAIM_LEDGER.md`;
+3. `PROOF_GRAPH.md` or proof audit;
+4. the main theorem/paper source;
+5. recent verifier/Lean status;
+6. the handoff and recent commits.
 
-## Phase 0 — Define the research contract
+Extract:
 
-Convert the user's request into a precise research objective before proving anything.
+- strongest current theorem;
+- exact evidence status;
+- open correctness blockers;
+- unresolved literature/novelty risks;
+- proof bottlenecks;
+- strengthening opportunities;
+- Lean mismatches;
+- paper/audit gaps.
+
+Do not repeat work already closed unless independently auditing it.
+
+## Step B — Choose the next move by priority
+
+Use this priority order.
+
+### P0 — correctness blockers
+
+Examples: false lemma, circular proof, missing case, sign/domain error, wrong transformation, theorem/paper mismatch, uncompiled Lean dependency.
+
+P0 dominates everything else.
+
+### P1 — fast falsification of the current frontier
+
+Test the strongest proposed theorem, its new hypothesis removal, its claimed sharpness, and its vulnerable lemmas. A cheap counterexample can save a large proof campaign.
+
+### P2 — novelty/open-status risk
+
+If the theorem is becoming paper-level but its novelty status is uncertain, perform a targeted fresh literature comparison before investing heavily in exposition.
+
+### P3 — main proof bottleneck
+
+Attack the highest-dependency unresolved lemma or reduction, not a low-impact auxiliary result.
+
+### P4 — theorem strengthening
+
+Once the current theorem is proved, aggressively test stronger versions before freezing the paper.
+
+### P5 — Lean/formalization gap
+
+Formalize the structural core and use any mismatch to re-audit the human theorem.
+
+### P6 — paper, render, and packaging
+
+Only after the mathematical frontier is sufficiently stable should exposition/QC dominate the queue.
+
+For ties, prefer the task with the highest expected value:
+
+> expected leverage ≈ impact on headline theorem × uncertainty reduction ÷ execution cost
+
+This is a heuristic, not a numeric requirement.
+
+## Step C — Execute a concrete research batch
+
+A batch should produce evidence or eliminate uncertainty, for example:
+
+- a literature comparison table;
+- an exact search/verifier result;
+- a counterexample certificate;
+- a proved structural lemma;
+- a closed branch of a case analysis;
+- a stronger theorem statement with proof;
+- a compiling Lean theorem;
+- an independent proof audit;
+- a corrected paper section.
+
+Avoid batches whose only output is “we should next consider…”.
+
+## Step D — Adversarially audit the batch
+
+Before upgrading claim status:
+
+- test edge cases and degenerate objects;
+- check quantifier order and domains;
+- verify every external theorem’s hypotheses;
+- search for a counterexample to intermediate lemmas;
+- check that reductions terminate and preserve the property;
+- check that equality/sharpness claims are exhaustive;
+- when possible, reproduce the result by a second method.
+
+If a gap appears, downgrade every dependent claim immediately.
+
+## Step E — Persist the delta
+
+Update the state/claim/proof records and commit the mathematical delta. Then continue unless a genuine stopping gate is reached.
+
+# Parallel research tracks
+
+The campaign should be viewed as several interacting tracks, not sequential phases.
+
+## Track N — literature, provenance, novelty
+
+Maintain a dated comparison against:
+
+- the original source;
+- later versions/journal versions;
+- cited and citing work;
+- later work by the same authors;
+- equivalent terminology and stronger formulations;
+- recent adjacent results.
+
+For every literature claim, record what the source proves and what it does not prove.
+
+Re-run the novelty check after the theorem changes materially. A stronger theorem may collide with different prior art than the original target.
+
+## Track X — exact exploration and falsification
+
+Use exact arithmetic whenever possible: integers, rationals, finite fields, symbolic algebra, certified combinatorial enumeration.
 
 Record:
 
-- mathematical domain;
-- target object/class;
-- exact desired output: counterexample, classification, inequality, extremal theorem, algorithm, formalization, etc.;
-- whether novelty is required;
-- expected level of theorem strength;
-- whether Lean and/or a paper is required;
-- constraints on repository and branch.
+- search domain;
+- pruning rules;
+- random seeds if any;
+- code commit;
+- command;
+- output/certificate;
+- whether the search is complete.
 
-If the prompt is broad, do not stall on clarification unless the missing information blocks all useful work. Choose a defensible scope and document the assumption.
+Important results should have an independent verifier separate from the generator/searcher.
 
-## Phase 1 — Literature and open-status audit
+A “smallest counterexample” claim requires completeness of the preceding search range; otherwise say “smallest found in the stated search range.”
 
-For claims of novelty or open status, use fresh literature search.
+## Track P — analytic proof and structure
 
-Search in layers:
+Represent the proof as a dependency graph rather than a prose blob.
 
-1. original source of the conjecture/problem;
-2. journal version and arXiv revisions;
-3. citing papers and later papers by the same authors;
-4. recent papers using equivalent terminology;
-5. surveys, MathSciNet/zbMATH-style metadata when available, and authoritative bibliographies;
-6. keyword variants induced by equivalent definitions.
+Each proof obligation should contain:
 
-Create a claim-source map. For each source record:
+- exact statement;
+- dependencies;
+- status;
+- role in the main theorem;
+- current proof idea;
+- known failed routes;
+- small cases checked;
+- hidden-condition risks.
 
-- bibliographic identifier and date;
-- exact theorem/conjecture number if available;
-- what it establishes;
-- what it does **not** establish;
-- relation to the proposed target;
-- whether the source is primary or secondary.
+Prefer mechanism-extracting lemmas: reductions, invariants, decompositions, rigidity, exchange/compression moves, canonical forms, extremal structure, closure/integrability conditions, or classification criteria.
 
-A problem may be labeled “currently open” only after this audit. If status remains uncertain, say so explicitly.
+When mining a remark or short suggestion from a paper, explicitly ask:
 
-### Novelty gate
+- what hypothesis was used only for convenience?
+- can finite-order/genericity/nonvanishing assumptions be derived automatically?
+- can examples be replaced by a complete standard form or classification?
+- can existence be turned into a necessary-and-sufficient criterion?
+- can a special case be promoted to weighted, parameterized, multidimensional, or structural form?
 
-Before investing deeply in a proof, answer:
+## Track S — theorem strengthening
 
-- Is the exact statement already known?
-- Is a stronger theorem known under different notation?
-- Is the proposed proof technique already standard for this statement?
-- Would the result still be interesting if the strongest nearby literature is included?
+Do not treat strengthening as a single ladder that must be followed in order. Explore several axes in parallel.
 
-If the answer is unfavorable, pivot early.
+### Strength dimensions
 
-## Phase 2 — Candidate ranking
+- **scope:** one case → infinite family → broad class → classification;
+- **hypotheses:** remove finite-order, regularity, genericity, connectedness, nondegeneracy, or auxiliary assumptions;
+- **quantitative:** improve constant/exponent/order/degree and prove sharpness;
+- **structure:** characterize equality/extremizers/obstructions;
+- **logic:** sufficient condition → necessary and sufficient condition;
+- **algorithmic:** finite decision procedure, enumeration, or certificate;
+- **stability:** near-extremal structure;
+- **unification:** a framework subsuming multiple separate theorems.
 
-When several problems are possible, score them rather than choosing by intuition alone.
+Use the labels only as a rough headline scale:
 
-Recommended dimensions, each 0–5:
+- `L0` observed pattern;
+- `L1` exact finite verification;
+- `L2` structural mechanism;
+- `L3` proved restricted theorem;
+- `L4` broad family/classification;
+- `L5` sharp/equality/iff/stability level;
+- `L6` unifying framework.
 
-- novelty confidence;
-- tractability within available tools/time;
-- theorem-strength ceiling;
-- access to exact finite experiments;
-- structural richness;
-- formalizability in Lean;
-- publication relevance;
-- dependence on unavailable heavy machinery.
+Stop strengthening only when the next meaningful upgrade is false, prior art, or clearly disproportionate. Record the obstruction or counterexample.
 
-Prefer targets that combine a credible novelty gap with a route to exact verification and structural proof.
+## Track F — Lean formalization
 
-## Phase 3 — Formalize the statement before attacking it
+Lean is a cross-audit channel, not presentation polish.
 
-Write a specification containing:
+Recommended order:
 
-- all objects and parameter domains;
-- normalization conventions;
-- equivalent formulations;
-- degenerate/boundary cases;
-- exact quantifier order;
-- what constitutes a counterexample;
-- what constitutes equality/extremality;
-- the intended Lean statement, even if Lean work comes later.
-
-Ambiguous natural-language claims must not enter the proof pipeline.
-
-## Phase 4 — Reproduce the baseline
-
-Before extending or refuting a published result, reproduce the smallest nontrivial instances of the published setup.
-
-Requirements:
-
-- match definitions exactly;
-- use exact arithmetic whenever possible;
-- save input, output, environment, command, and code commit;
-- test published examples and special cases;
-- independently compute at least one invariant or quantity by a second method when feasible.
-
-If baseline reproduction fails, do not proceed as if the new theorem were trustworthy. Resolve the discrepancy first.
-
-## Phase 5 — Exact exploration and falsification
-
-Computation is a conjecture generator and falsification engine.
-
-Use it to:
-
-- enumerate small cases;
-- test boundary parameters;
-- search for minimal counterexamples;
-- identify equality cases;
-- detect invariant patterns;
-- compare alternative conjectured bounds;
-- test proof lemmas before spending time proving them.
-
-### Computation rules
-
-- Prefer integers, rationals, finite fields, symbolic algebra, or certified combinatorial enumeration.
-- If floating point is unavoidable, separate it from exact verification and state tolerances.
-- Record random seeds.
-- Record the complete search space and pruning rules.
-- For a “smallest counterexample” claim, prove completeness of the preceding search range or weaken the wording to “smallest found in the stated search range.”
-- Build a verifier independent of the generator/searcher when the result is important.
-
-## Phase 6 — Convert patterns into structural lemmas
-
-Do not jump directly from data to a grand theorem. Extract the mechanism.
-
-Typical questions:
-
-- What invariant is actually controlling the phenomenon?
-- Can a minimal counterexample be reduced?
-- Is there a deletion/contraction, exchange, compression, shifting, switching, symmetrization, or local-improvement move?
-- Does extremality force regularity, transitivity, saturation, laminarity, convexity, or a forbidden local pattern?
-- Can the object be encoded as a matrix, polynomial, generating function, flow, orientation, poset, or auxiliary graph?
-- Are there monotone parameters that permit induction?
-- Can equality be characterized simultaneously with the inequality?
-
-Record each lemma as an independent proof obligation and note which later theorem depends on it.
-
-## Phase 7 — Analytic proof campaign
-
-For each target theorem maintain a proof dependency graph.
-
-A valid proof draft must make explicit:
-
-- hypotheses used at each step;
-- all case splits;
-- sign/nonzero/domain conditions;
-- base cases and induction measure;
-- why reductions preserve the required property;
-- why equality cases are exhaustive;
-- where an external theorem is invoked and its exact hypotheses.
-
-### Adversarial proof checks
-
-Before marking **Proved**, attempt to break the proof by:
-
-1. testing the theorem and each lemma on exhaustive small cases;
-2. testing boundary and degenerate cases;
-3. reversing each implication to ensure no hidden biconditional was assumed;
-4. checking quantifier order;
-5. checking that a chosen extremal/minimal object exists;
-6. checking that every recursive/reduction step terminates;
-7. searching for a counterexample to each intermediate lemma, not just the final theorem;
-8. rewriting the core argument independently from scratch.
-
-If a gap is found, downgrade the claim immediately.
-
-## Phase 8 — Theorem strengthening loop
-
-A first theorem is usually not the final theorem. After obtaining a proof, deliberately try to strengthen it.
-
-Use the following ladder:
-
-- **L0**: observed phenomenon;
-- **L1**: exact finite verification;
-- **L2**: structural lemma or mechanism;
-- **L3**: theorem for a restricted family/special case;
-- **L4**: infinite family, broad class, or classification theorem;
-- **L5**: sharp/optimal quantitative theorem, equality characterization, necessary-and-sufficient condition, or stability result;
-- **L6**: generalized framework that subsumes multiple known/special cases.
-
-For each strengthening attempt ask:
-
-- Can a hypothesis be removed?
-- Can a constant be improved to sharp?
-- Can equality cases be classified?
-- Can a finite statement become an infinite family?
-- Can a case proof become a structural classification?
-- Can a construction be parametrized?
-- Can the result be made algorithmic or stability-type?
-- Can two lemmas be unified under a stronger invariant?
-
-Stop strengthening only when the next level is false, clearly prior art, or requires machinery disproportionate to the project. Record the obstruction.
-
-## Phase 9 — Lean formalization
-
-Lean is an independent proof channel, not decoration.
-
-Formalize in this order:
-
-1. core definitions and domains;
-2. small helper lemmas;
-3. structural lemmas;
+1. exact definitions and domains;
+2. invariant/reduction lemmas;
+3. central structural theorem;
 4. main theorem;
 5. corollaries/equality cases.
 
-Rules:
+Requirements for “Lean-verified”:
 
-- Keep the Lean theorem statement visibly aligned with the human theorem.
-- Avoid encoding the desired conclusion as an assumption or custom axiom.
-- No `sorry`, `admit`, placeholder axioms, or unverified generated code in a claimed-complete proof.
-- Compile the relevant target with the repository's actual Lean/lake environment.
-- Save the exact build command and successful commit SHA.
-- If the human proof uses a theorem absent from mathlib, isolate it as an explicit formalization obligation rather than smuggling it in.
+- the theorem statement matches the human theorem;
+- no `sorry`/`admit`/placeholder axiom is used in the claimed dependency cone;
+- custom axioms do not smuggle in the target conclusion;
+- the relevant target compiles in the repository’s actual Lean/lake environment;
+- the successful command and commit are recorded.
 
-A theorem becomes **Lean-verified** only after successful compilation with no proof gaps.
+When Lean requests an extra assumption, inspect the human proof. When Lean proves a stronger statement with the same mechanism, feed that result back to Track S.
 
-### Lean/human cross-audit
+## Track W — paper and artifact construction
 
-Use mismatches productively:
+Write the paper around the strongest stable theorem, not the chronology of discovery.
 
-- if Lean needs an extra hypothesis, inspect the human proof for a hidden assumption;
-- if the human proof is dramatically shorter, check whether Lean definitions are overcomplicated;
-- if Lean proves a stronger statement automatically, test whether the paper theorem can be upgraded.
+The abstract/introduction theorem claims must be mechanically traceable to the theorem body and claim ledger.
 
-## Phase 10 — Independent audit
+A paper is not ready if:
 
-Before paper finalization, perform a second-pass audit that does not simply reread the original argument.
+- abstract claims exceed the proof;
+- theorem hypotheses differ across sections;
+- a computational observation is written as a general theorem;
+- novelty language outruns the literature audit;
+- an equality/sharpness assertion is incomplete;
+- Lean proves a materially different theorem;
+- a cited source does not support the sentence;
+- rendered mathematics is broken or unreadable.
 
-Audit channels:
+## Track A — independent audit
 
-- independent exact computation;
-- separate proof derivation;
-- dependency graph review;
-- literature novelty recheck;
-- Lean build from clean state;
-- theorem-to-paper consistency check.
+The audit should not merely reread the original derivation.
 
-The audit report must list:
+Use at least one independent channel when feasible:
 
-- claims checked;
-- methods used;
-- failures or unresolved assumptions;
-- whether evidence status changed;
-- exact files/commits audited.
+- separate exact implementation;
+- independent derivation;
+- alternate proof route;
+- clean Lean build;
+- theorem-by-theorem literature comparison;
+- paper-to-proof consistency pass.
 
-## Phase 11 — Paper construction
+Explicitly record unresolved external review gaps. Do not treat local computation or author-side proof checking as peer review.
 
-Build the paper around the strongest theorem, not around the chronology of discovery.
+# Short-command semantics
 
-Recommended structure:
+These rules are important for long-running interactive research.
 
-1. title and abstract stating the strongest exact contribution;
-2. introduction: problem, literature gap, contributions;
-3. definitions/preliminaries;
-4. main theorem(s);
-5. structural lemmas and proof;
-6. sharpness/equality/classification/counterexamples;
-7. computational or formal verification section if it materially supports the contribution;
-8. discussion/generalization/open directions;
-9. references;
-10. optional appendix with exhaustive certificates or Lean correspondence.
+## User says “继续” / “继续推进”
 
-Maintain a claim-source/proof ledger during writing. Every sentence asserting priority, known bounds, or previous results must have a source. Every mathematical headline in the abstract/introduction must map to a theorem proved in the body.
+Do not ask “what should I continue?”.
 
-### Paper quality gate
+1. load current repository state;
+2. select the highest-priority unresolved item under the control loop;
+3. execute a meaningful research batch;
+4. update state and report the theorem-level delta.
 
-Reject the manuscript as not ready if any of the following holds:
+## User says “继续增强 / 升级定理”
 
-- abstract claims exceed the proved theorem;
-- theorem hypotheses differ between abstract/introduction/body;
-- a computational observation is phrased as a theorem;
-- citations do not support the exact sentence;
-- a proof uses an unproved lemma;
-- notation changes silently;
-- Lean formalization proves a different statement;
-- PDF rendering contains broken equations, references, figures, bibliography, or overflow that changes readability.
+Move Track S to the front. Test hypothesis removal, sharpness, equality, classification, iff formulations, parameterization, stability, and unification. Attempt falsification before committing to a stronger proof.
 
-## Phase 12 — Render and artifact QC
+## User says “推进 Lean”
 
-When producing LaTeX/PDF:
+Read the current human theorem and Lean state. Formalize the highest-leverage missing dependency first; compile; use any mismatch to audit the human proof.
 
-- compile from a clean-enough state using the repository's documented toolchain;
-- resolve fatal errors and inspect warnings that may affect correctness;
-- verify theorem/lemma numbering and cross-references;
-- verify bibliography and citation resolution;
-- inspect the rendered PDF page-by-page for clipped equations, bad line breaks, missing symbols, blank pages, and figure/table overflow;
-- ensure the final downloadable `.tex`/`.pdf` corresponds to the audited commit.
+## User says “出结论 / 最终定理”
 
-Rendering success is not mathematical correctness; mathematical and presentation audits are separate gates.
+Do not simply restate the latest conjecture. Run the final-theorem gates below and state the strongest theorem actually supported, together with any missing gate.
 
-## Phase 13 — Handoff and continuation
+## User says “写论文 / 完成论文”
 
-At the end of any substantial session update `HANDOFF.md` so another session can continue without reconstructing the project from chat history.
+Do not freeze a weak theorem automatically. First ensure the theorem frontier is sufficiently stable, then align paper claims, sources, proof dependencies, Lean status if required, and rendering.
 
-The handoff must contain:
+## User says “审计 / 检查”
 
-- repository and branch;
-- current commit if known;
-- strongest theorem and exact evidence status;
-- completed proof lemmas;
-- unresolved proof obligations;
-- exact Lean status/build command;
-- latest experiment/verifier status;
-- novelty/open-status conclusion and date of audit;
-- paper status;
-- next 3–7 concrete actions, ordered by leverage.
+Prefer an independent attack: try to break the theorem, proof, computation, novelty claim, Lean statement, and paper alignment rather than only summarizing them.
 
-# Decision rules
+# Topic-selection protocol
 
-## When to pivot
+When the user requests a new high-level research topic, prioritize problems with:
 
-Pivot away from a target when:
+- fresh or still-active literature context;
+- a precise mathematical statement;
+- a visible gap, remark, conjecture, omitted classification, unexplained sharpness issue, or computational phenomenon;
+- a tractable exact experimentation route;
+- a plausible structural mechanism;
+- enough ceiling for a strong theorem, not only a routine special case;
+- reasonable compatibility with Lean if formalization is required.
 
-- literature shows the result is already known or subsumed;
-- exact computation produces a decisive counterexample to the intended theorem and no meaningful corrected theorem emerges;
-- the theorem-strength ceiling is too low for the stated publication goal;
-- the proof depends on a missing ingredient with no plausible route;
-- formalization exposes a fundamental ambiguity or false hidden assumption.
+For each candidate score at least:
 
-A pivot is a research result. Record why it happened.
+- novelty confidence;
+- tractability;
+- theorem-strength ceiling;
+- exact-computation leverage;
+- structural richness;
+- formalizability;
+- publication relevance;
+- dependence on unavailable heavy machinery.
 
-## When to claim a final theorem
+Select by research upside, not by familiarity alone.
 
-Use “final theorem” only when:
+# Proof completion gates
 
-1. the analytic proof is complete;
-2. counterexample/falsification checks have been run at meaningful small scales;
-3. literature novelty has been rechecked after the theorem reached its final form;
-4. all paper-level dependencies are closed;
-5. any requested Lean proof compiles;
-6. an independent audit has not found an unresolved gap.
+A claim may be marked `Proved` only if:
 
-If one gate is missing, report the strongest current theorem and the missing gate instead.
+1. the exact statement and domains are fixed;
+2. every dependency is proved or correctly sourced;
+3. all cases and boundary conditions are closed;
+4. no circular use of the target or a stronger statement occurs;
+5. reductions preserve hypotheses and terminate;
+6. external theorems are invoked under their true hypotheses;
+7. adversarial small-case and boundary checks found no contradiction;
+8. equality/sharpness language, if present, is separately justified.
 
-# Interaction style
+# Final-theorem gates
 
-When operating this skill in an interactive research session:
+Use “final theorem” only after all applicable gates pass:
 
-- prefer doing the next high-value research step over repeatedly asking what to do next;
-- expose partial findings as soon as they materially change the direction;
-- distinguish facts from conjectures and proof ideas;
-- keep branch/file locations explicit;
-- do not promise background/asynchronous work;
-- if the task is too large for one pass, leave a precise handoff with executable next steps rather than a vague “continue later.”
+- analytic proof complete;
+- meaningful falsification/counterexample checks completed;
+- theorem-strength campaign performed and stopped for a recorded reason;
+- latest theorem form rechecked against recent literature;
+- requested Lean theorem compiles without gaps;
+- independent audit finds no unresolved correctness blocker;
+- paper headline claims match the theorem exactly.
+
+If one gate fails, report the strongest current theorem and identify the failed gate. Do not downgrade useful progress merely because external peer review is absent; simply state that review status accurately.
+
+# Publication-strength assessment
+
+When asked whether the result is strong enough for a high-level journal, separate:
+
+1. **correctness confidence** — proof/audit/formalization;
+2. **novelty confidence** — literature comparison;
+3. **theorem depth** — structural content and proof difficulty;
+4. **strength** — sharpness/classification/generality;
+5. **breadth/interest** — relevance beyond the seed example;
+6. **presentation maturity** — paper and reproducibility;
+7. **external-review status** — peer review or expert audit.
+
+Do not infer journal tier solely from theorem length, computational size, or having a Lean proof.
+
+# Required control artifacts
+
+At minimum maintain:
+
+- `RESEARCH_STATE.md` — live frontier, priority queue, strongest theorem, track status;
+- `CLAIM_LEDGER.md` — evidence and theorem/paper consistency;
+- `PROOF_GRAPH.md` — proof dependency DAG and bottlenecks;
+- `HANDOFF.md` — compact continuation packet;
+- a chronological research log or equivalent commit history.
+
+For computation-heavy work, also maintain a verification report/certificate. For paper work, maintain provenance/citation mapping and build instructions.
+
+# Reporting style
+
+After a substantial batch, report primarily the delta:
+
+- what theorem/lemma/status changed;
+- what was disproved or closed;
+- what evidence supports the change;
+- exact branch/files/commit when available;
+- the current highest-priority unresolved bottleneck.
+
+Do not flood the user with a full project recap on every continuation turn.
 
 # Definition of done
 
-A full-push research project is done only when the requested deliverables are present and internally consistent: source audit, exact statement, reproducible computation where used, complete proof, theorem-strength assessment, requested Lean verification, independent audit, and a paper/artifact whose claims match the proof.
+The skill is successful when it leaves behind a reproducible research object whose mathematical frontier is explicit: sources audited, exact claims separated by evidence, experiments reproducible where used, proofs dependency-tracked, theorem strengthening attempted, requested Lean work compiled, paper claims aligned, unresolved risks stated, and the next session can continue directly from repository state.
