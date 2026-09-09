@@ -4,7 +4,7 @@ Date: 2026-09-09
 
 Status: **Proved**. This note belongs only to Paper I. It concerns the explicit compressed two-defect family and is independent of the finite-global minimization problem over all signings.
 
-This theorem strengthens `GENERAL_TWO_DEFECT_COMPRESSION_THEOREM.md` and `COMPRESSED_ENDPOINT_ROBIN_ASYMPTOTIC.md`. The former proves strict sub-eight spectrum for every even half-period `L>=4`; the latter identifies the sharp periodic-fiber endpoint constant. Here we prove that the same constant governs the **full continuous Bloch maximum**, uniformly in the odd jump multiplier.
+This theorem strengthens `GENERAL_TWO_DEFECT_COMPRESSION_THEOREM.md` and `COMPRESSED_ENDPOINT_ROBIN_ASYMPTOTIC.md`. The former proves a sub-eight Bloch edge for every even half-period `L>=4`; the latter identifies the sharp periodic-fiber endpoint constant. Here we prove that the same constant governs the **full continuous Bloch maximum**, uniformly in the odd jump multiplier.
 
 ---
 
@@ -48,8 +48,7 @@ L_j^2 g_{L_j,q_j}
 Thus the compressed two-defect family has the sharp global gap law
 
 \[
-\boxed{
-g_{L,q}\sim \frac{4\arccos^2(1/3)}{L^2}}
+\boxed{g_{L,q}\sim \frac{4\arccos^2(1/3)}{L^2}}
 \tag{1.2}
 \]
 
@@ -72,8 +71,6 @@ L^2(2-d_L)\longrightarrow0,
 }
 \tag{1.3}
 \]
-
-Thus the global optimizer asymptotically approaches both the internal periodic phase and the ordinary periodic Bloch boundary, even though exact finite-`L` equality `z_L=1` is not needed for the theorem.
 
 ---
 
@@ -194,17 +191,30 @@ from the general compression theorem. The generic transfer power is
 \[
 T(A_g)^{L-3}
 =
-\begin{pmatrix}
-u A_g&-(u+w)I_2\\(u+w)I_2&-wA_g\end{pmatrix},
+\begin{pmatrix}u A_g&-(u+w)I_2\\(u+w)I_2&-wA_g\end{pmatrix}.
 \]
 
-where in this display `\nu` denotes the scalar `u` from (2.2), not a new parameter. Substituting this into the fixed `4 x 4` monodromy determinant and imposing (2.3), all powers of the boundary square root cancel except the reciprocal pair `eta^2,eta^{-2}`. Their total contribution is
+Substituting this into the fixed `4 x 4` monodromy determinant and imposing (2.3), all powers of the boundary square root cancel except the reciprocal pair `eta^2,eta^{-2}`. Their total contribution is
 
 \[
 -(\eta^2+\eta^{-2})=-e.
 \]
 
 The remaining real expression is exactly (2.5)--(2.8). This is a fixed-size symbolic determinant identity; no limiting argument is involved.
+
+For cross-audit, the alternative form
+
+\[
+G_L=u^2\mathcal A+uw\mathcal B+\mathcal C_0
+\]
+
+from `QUADRATIC_COMPRESSED_GAP_THEOREM.md` is algebraically identical: substitute
+
+\[
+u^2=(y-d-4)uw-w^2+1
+\]
+
+from (2.3). The three resulting coefficients are exactly (2.6)--(2.8).
 
 ---
 
@@ -325,60 +335,50 @@ contradicting `G_L(y,d)=e in[-2,2]`. This proves (3.3).
 Suppose now that
 
 \[
-L^2\delta\to a,
+L^2\delta\to a_*,
 \qquad
-L^2h\to b
+L^2h\to b_*
 \tag{4.1}
 \]
 
-along a subsequence. By Lemma B, `a,b` are finite whenever `\delta=O(L^{-2})` is a Bloch root near eight.
+along a subsequence. By Lemma B, `a_*,b_*` are finite whenever `\delta=O(L^{-2})` is a Bloch root near eight.
 
 From (3.2),
 
 \[
-t=1+\frac{b-a}{2L^2}+o(L^{-2}).
+t=1+\frac{b_*-a_*}{2L^2}+o(L^{-2}).
 \]
 
 The standard trigonometric/hyperbolic representation of `U_m`, with `m=(L-4)/2`, yields
 
 \[
-\frac uL,\frac wL\longrightarrow S(a,b),
+\frac uL,\frac wL\longrightarrow S(a_*,b_*),
 \tag{4.2}
 \]
 
 where
 
 \[
-S(a,b)=
+S(a_*,b_*)=
 \begin{cases}
 \displaystyle
-\frac{\sin(\frac12\sqrt{a-b})}{\sqrt{a-b}},&a>b,\\[3mm]
-\displaystyle\frac12,&a=b,\\[3mm]
+\frac{\sin(\frac12\sqrt{a_*-b_*})}{\sqrt{a_*-b_*}},&a_*>b_*,\\[3mm]
+\displaystyle\frac12,&a_*=b_*,\\[3mm]
 \displaystyle
-\frac{\sinh(\frac12\sqrt{b-a})}{\sqrt{b-a}},&b>a.
+\frac{\sinh(\frac12\sqrt{b_*-a_*})}{\sqrt{b_*-a_*}},&b_*>a_*.
 \end{cases}
 \tag{4.3}
 \]
 
-For example, if `b>a`, write `t=\cosh\kappa_L`; then
-
-\[
-L\kappa_L\to\sqrt{b-a},
-\qquad
-U_m(t)=\frac{\sinh((m+1)\kappa_L)}{\sinh\kappa_L},
-\]
-
-which gives the third line. The trigonometric case is identical with `\kappa_L=i\theta_L`.
-
 Expanding the exact coefficients (2.6)--(2.8) under (4.1) gives
 
 \[
-A(y,d)=\frac{-120a+96b}{L^2}+O(L^{-4}),
+A(y,d)=\frac{-120a_*+96b_*}{L^2}+O(L^{-4}),
 \tag{4.4}
 \]
 
 \[
-B(y,d)=\frac{84a-60b}{L^2}+O(L^{-4}),
+B(y,d)=\frac{84a_*-60b_*}{L^2}+O(L^{-4}),
 \tag{4.5}
 \]
 
@@ -391,7 +391,7 @@ Therefore (2.5) and (4.2) imply the limiting discriminant
 
 \[
 G_L(y,d)\longrightarrow
-34+36(b-a)S(a,b)^2.
+34+36(b_*-a_*)S(a_*,b_*)^2.
 \tag{4.7}
 \]
 
@@ -399,16 +399,14 @@ Equivalently,
 
 \[
 \boxed{
-G_\infty(a,b)=
+G_\infty(a_*,b_*)=
 \begin{cases}
-16+18\cos\sqrt{a-b},&a>b,\\
-34,&a=b,\\
-16+18\cosh\sqrt{b-a},&b>a.
+16+18\cos\sqrt{a_*-b_*},&a_*>b_*,\\
+34,&a_*=b_*,\\
+16+18\cosh\sqrt{b_*-a_*},&b_*>a_*.
 \end{cases}}
 \tag{4.8}
 \]
-
-This limiting scalar discriminant is the continuum mechanism behind the sharp constant.
 
 ---
 
@@ -472,31 +470,25 @@ b_L:=L^2h_L
 is bounded. Pass to an arbitrary convergent subsequence
 
 \[
-a_L\to a,
-\qquad b_L\to b,
+a_L\to a_*,
+\qquad b_L\to b_*,
 \qquad e_L\to e_*\in[-2,2].
 \]
 
-If `b>=a`, then (4.8) gives
+If `b_*>=a_*`, then (4.8) gives
 
 \[
 e_*\ge34,
 \]
 
-a contradiction. Hence `a>b`, and (4.8) gives
+a contradiction. Hence `a_*>b_*`, and (4.8) gives
 
 \[
-e_*=16+18\cos\sqrt{a-b}\le2.
+e_*=16+18\cos\sqrt{a_*-b_*}\le2.
 \tag{5.4}
 \]
 
 Now
-
-\[
-\alpha=\arccos\frac13
-\]
-
-satisfies
 
 \[
 \cos(2\alpha)=2\cos^2\alpha-1=-\frac79.
@@ -506,27 +498,27 @@ satisfies
 By (5.2),
 
 \[
-0\le\sqrt{a-b}\le\sqrt a\le2\alpha<\pi.
+0\le\sqrt{a_*-b_*}\le\sqrt{a_*}\le2\alpha<\pi.
 \]
 
 On `[0,2\alpha]` cosine is strictly decreasing. Inequality (5.4) is equivalent to
 
 \[
-\cos\sqrt{a-b}\le-\frac79=\cos(2\alpha),
+\cos\sqrt{a_*-b_*}\le-\frac79=\cos(2\alpha),
 \]
 
 so
 
 \[
-\sqrt{a-b}\ge2\alpha.
+\sqrt{a_*-b_*}\ge2\alpha.
 \]
 
 Together with the preceding upper bounds, every inequality must be an equality:
 
 \[
 \boxed{
-a=4\alpha^2,
-\qquad b=0,
+a_*=4\alpha^2,
+\qquad b_*=0,
 \qquad e_*=2.}
 \tag{5.6}
 \]
@@ -547,7 +539,7 @@ This proves Theorem A.
 
 ## 6. Interpretation
 
-The compressed family now has a complete leading-order global Bloch theory:
+The compressed family has a complete leading-order global Bloch theory:
 
 \[
 \boxed{
@@ -566,5 +558,3 @@ The constant comes from the limiting Robin equation
 \]
 
 not from the `\pi/2` quantization that produced the `\pi^2` constant in the older period-`4s` family. The arithmetic period compression therefore does more than shorten the cell: it produces a genuinely different spectral boundary condition and a different sharp constant.
-
-For the `2`-adic specialization `L=2^{v_2(s)}`, this gives a sharp asymptotic in the compressed period scale. Since `L` depends only on the `2`-adic part of the jump, the resulting gap can be dramatically larger than the old `Theta(s^{-2})` gap when the odd part of `s` is large.
