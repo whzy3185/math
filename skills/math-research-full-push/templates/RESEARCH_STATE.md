@@ -1,130 +1,189 @@
 # RESEARCH_STATE
 
+This file is the live control surface for a research campaign. Keep it short enough to read at the start of every continuation turn.
+
 ## Project identity
 
 - Project/topic:
 - Repository:
 - Research branch:
-- Base branch / base commit:
+- Base branch / commit:
 - Current commit:
 - Started:
 - Last updated:
-- Primary mathematical domain:
-- Target publication level / deliverable:
+- Mathematical domain:
+- Target deliverable / publication ambition:
+- Campaign mode: `topic discovery | open problem | remark mining | counterexample | strengthening | formalization | paper audit`
 
-## Research objective
+## Exact research objective
 
-State the exact current objective in 2–5 sentences. Include the mathematical object, quantifiers, and what would count as success.
+State the current mathematical objective in 2–5 precise sentences. Include objects, parameter domains, quantifiers, and what would constitute success.
 
-## Strongest current result
+## Strongest current theorem
 
-- Statement:
+> Exact current theorem statement.
+
 - Evidence state: `Observed | Verified | Proved | Published/Established`
-- Theorem-strength level: `L0 | L1 | L2 | L3 | L4 | L5 | L6`
-- Human proof location:
+- Strength level: `L0 | L1 | L2 | L3 | L4 | L5 | L6`
+- Human proof:
 - Lean theorem/file:
-- Independent audit location:
+- Independent audit:
+- Main unresolved caveat:
 
-## Evidence snapshot
+## Current research frontier
 
-| Item | Status | Exact scope | Evidence location | Last checked |
+Summarize only what changed recently and what currently blocks the next theorem upgrade.
+
+- Latest mathematical delta:
+- Current bottleneck:
+- Best strengthening opportunity:
+- Main falsification risk:
+- Main novelty risk:
+
+## Priority queue
+
+Always keep this ordered. `P0` dominates lower priorities.
+
+| Priority | Task | Why it matters | Expected output | Status |
 |---|---|---|---|---|
-| Open-status / novelty |  |  |  |  |
-| Baseline reproduction |  |  |  |  |
-| Exact finite checks |  |  |  |  |
-| Main analytic proof |  |  |  |  |
-| Equality/sharpness |  |  |  |  |
-| Lean build |  |  |  |  |
-| Independent audit |  |  |  |  |
-| Paper consistency |  |  |  |  |
-| PDF/render QC |  |  |  |  |
+| P0 |  | correctness blocker |  | open |
+| P1 |  | falsification |  | open |
+| P2 |  | novelty/open-status risk |  | open |
+| P3 |  | main proof bottleneck |  | open |
+| P4 |  | theorem strengthening |  | open |
+| P5 |  | Lean/formalization |  | open |
+| P6 |  | paper/render/package |  | open |
 
-## Main theorem dependency graph
+Delete empty rows when not relevant. A continuation turn should normally execute the highest meaningful open row.
+
+## Track dashboard
+
+| Track | Current state | Evidence/files | Next meaningful move |
+|---|---|---|---|
+| N — literature/novelty |  |  |  |
+| X — exact exploration/falsification |  |  |  |
+| P — analytic proof |  |  |  |
+| S — theorem strengthening |  |  |  |
+| F — Lean formalization |  |  |  |
+| W — paper/artifacts |  |  |  |
+| A — independent audit |  |  |  |
+
+## Proof dependency snapshot
+
+Keep the full DAG in `PROOF_GRAPH.md`; record only the headline chain here.
 
 ```text
 Main theorem
-├── Lemma A — [status]
-│   ├── Lemma A1 — [status]
-│   └── Lemma A2 — [status]
-├── Lemma B — [status]
-└── External theorem C — [source + hypothesis check]
+├── O1 — [status]
+├── O2 — [status]
+│   ├── O2.1 — [status]
+│   └── O2.2 — [status]
+└── External E1 — [source/hypothesis status]
 ```
 
 ## Open proof obligations
 
-Rank by leverage.
+### O1 —
 
-1. `[P0]` 
-2. `[P1]` 
-3. `[P2]` 
+- Exact statement:
+- Needed for:
+- Dependencies:
+- Current idea:
+- Failed routes:
+- Boundary/small cases checked:
+- Hidden-condition risk:
+- Next attack:
 
-For each obligation, record:
+## Falsification status
 
-- exact statement;
-- why it is needed;
-- current proof idea;
-- failed approaches;
-- smallest examples already checked;
-- likely next attack.
+- Strongest theorem tested on:
+- Most vulnerable lemma tested on:
+- Boundary/degenerate cases:
+- Counterexamples found:
+- Independent verifier:
+- Exact search completeness statement:
 
 ## Computation status
 
 - Generator/searcher:
 - Independent verifier:
-- Arithmetic type: exact / symbolic / floating-point auxiliary only
+- Arithmetic: `exact | symbolic | floating auxiliary only`
 - Search space:
-- Pruning rules:
-- Random seed(s), if any:
+- Pruning:
+- Seed(s):
 - Last successful command:
-- Output/log:
-- Checksums/certificates:
-
-## Lean status
-
-- Lean version/toolchain:
-- Main file:
-- Main theorem name:
-- Remaining `sorry`/`admit`: 
-- Custom axioms introduced:
-- Last successful build command:
-- Last successful commit:
-- Human/Lean statement mismatch notes:
+- Output/log/certificate:
+- Code commit:
 
 ## Literature / novelty status
 
 - Original source:
-- Strongest nearby result:
-- Latest status audit date:
+- Strongest nearby published result:
+- Latest audit date:
 - Equivalent terminology searched:
-- Current conclusion: `open / known / partially known / uncertain`
-- Novelty risk:
+- Current conclusion: `open | known | partially known | uncertain`
+- What is plausibly new:
+- Main prior-art collision risk:
+- Next source/comparison required:
 
-## Theorem strengthening queue
+## Strengthening matrix
 
-- Remove hypothesis:
-- Sharpen constant:
-- Characterize equality:
-- Infinite family/classification:
-- Necessary-and-sufficient formulation:
-- Stability/algorithmic version:
-- Generalized framework:
+| Axis | Current theorem | Proposed upgrade | Status/evidence |
+|---|---|---|---|
+| Scope/classification |  |  |  |
+| Remove hypotheses |  |  |  |
+| Sharp constant/order/degree |  |  |  |
+| Equality/extremizers |  |  |  |
+| Necessary-and-sufficient |  |  |  |
+| Algorithmic/finite criterion |  |  |  |
+| Stability |  |  |  |
+| Unified framework |  |  |  |
 
-For each failed strengthening attempt, record the counterexample or obstruction.
+Record failed upgrades with the explicit obstruction/counterexample rather than deleting them.
 
-## Paper status
+## Lean status
+
+- Lean/toolchain version:
+- Main file:
+- Main theorem:
+- Statement aligned with human theorem: yes/no
+- Remaining `sorry`/`admit` in dependency cone:
+- Custom axioms:
+- Last successful build command:
+- Last successful commit:
+- Current formalization bottleneck:
+- Human-proof assumption exposed by Lean, if any:
+
+## Paper / artifact status
 
 - Main `.tex`:
 - Abstract aligned with theorem: yes/no
-- Claim-source ledger current: yes/no
+- Claim ledger current: yes/no
+- Literature claims sourced: yes/no
 - References resolved: yes/no
-- Latest compiled PDF:
-- Render inspected page-by-page: yes/no
-- Known presentation issues:
+- Latest PDF/build command:
+- Page-by-page render inspected: yes/no
+- Known mathematical/expository mismatches:
 
-## Next actions
+## Independent audit status
 
-List 3–7 concrete next actions, ordered by expected theorem leverage.
+- Audit method(s):
+- Last audited commit:
+- Claims independently checked:
+- Open audit findings:
+- External expert/peer-review status:
 
-1. 
-2. 
-3. 
+## Stop / pivot logic
+
+- Why the campaign should continue:
+- What would trigger a pivot:
+- What would justify freezing the theorem for paper finalization:
+
+## Next executable batch
+
+State one concrete batch that can be started immediately without asking the user to restate context.
+
+- Target:
+- Action:
+- Expected evidence/output:
+- Files likely to change:
