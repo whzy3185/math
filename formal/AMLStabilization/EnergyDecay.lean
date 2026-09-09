@@ -4,10 +4,10 @@ namespace AMLStabilization
 
 /-- Exponentially weighted energy used in the Gronwall argument. -/
 noncomputable def weightedEnergy (c : ℝ) (E : ℝ → ℝ) (t : ℝ) : ℝ :=
-  Real.exp (c * t) * E t
+  E t * Real.exp (c * t)
 
 /--
-If `E' + c E ≤ 0` pointwise, then the weighted energy `exp(c t) E(t)`
+If `E' + c E ≤ 0` pointwise, then the weighted energy `E(t) exp(c t)`
 is antitone.  This is the exact calculus step behind the PDE energy-decay argument.
 -/
 theorem weightedEnergy_antitone
@@ -16,7 +16,7 @@ theorem weightedEnergy_antitone
     (hdiss : ∀ t, dE t + c * E t ≤ 0) :
     Antitone (weightedEnergy c E) := by
   refine antitone_of_hasDerivAt_nonpos
-    (f' := fun t => Real.exp (c * t) * (dE t + c * E t)) ?_ ?_
+    (f' := fun t => (dE t + c * E t) * Real.exp (c * t)) ?_ ?_
   · intro t
     unfold weightedEnergy
     have hlin : HasDerivAt (fun x : ℝ => c * x) c t :=
@@ -25,10 +25,11 @@ theorem weightedEnergy_antitone
         HasDerivAt (fun x : ℝ => Real.exp (c * x))
           (c * Real.exp (c * t)) t := by
       simpa [mul_comm] using hlin.exp
-    simpa [mul_add, mul_assoc, mul_left_comm, mul_comm, add_comm, add_left_comm, add_assoc] using
-      hexp.mul (hE t)
+    have hprod := (hE t).mul hexp
+    apply hprod.congr_deriv
+    ring
   · intro t
-    exact mul_nonpos_of_nonneg_of_nonpos (Real.exp_nonneg _) (hdiss t)
+    exact mul_nonpos_of_nonpos_of_nonneg (hdiss t) (Real.exp_nonneg _)
 
 /--
 Differential energy inequality implies the two-time exponential comparison
@@ -61,15 +62,15 @@ theorem energy_le_exp_of_differential_inequality
             rw [Real.exp_add]
       _ = Real.exp (-c * (t - s)) := by congr 1 <;> ring
   calc
-    E t = (Real.exp (c * t) * E t) * Real.exp (-c * t) := by
+    E t = (E t * Real.exp (c * t)) * Real.exp (-c * t) := by
       calc
         E t = E t * 1 := by ring
         _ = E t * (Real.exp (c * t) * Real.exp (-c * t)) := by rw [hcancel]
-        _ = (Real.exp (c * t) * E t) * Real.exp (-c * t) := by ring
-    _ ≤ (Real.exp (c * s) * E s) * Real.exp (-c * t) := hscaled
+        _ = (E t * Real.exp (c * t)) * Real.exp (-c * t) := by ring
+    _ ≤ (E s * Real.exp (c * s)) * Real.exp (-c * t) := hscaled
     _ = E s * Real.exp (-c * (t - s)) := by
       calc
-        (Real.exp (c * s) * E s) * Real.exp (-c * t) =
+        (E s * Real.exp (c * s)) * Real.exp (-c * t) =
             E s * (Real.exp (c * s) * Real.exp (-c * t)) := by ring
         _ = E s * Real.exp (-c * (t - s)) := by rw [hratio]
 
