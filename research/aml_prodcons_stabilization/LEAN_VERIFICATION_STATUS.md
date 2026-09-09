@@ -2,179 +2,196 @@
 
 Date: 2026-09-09
 Branch: `research/aml-production-consumption-stabilization`
-Latest verified Lean tree commit: `77df13f804b5334602984e249bc8f0a718d5e39d`
-Latest successful GitHub Actions run: `34351354275`
+Latest verified formal-tree commit: `29fae452f7de74d8876bcdd14fc4328435131c64`
+Latest verification-gate commit: `a6e526bc09924be03f53a680b48399fc2a0b1509`
+Latest successful GitHub Actions run: `34354367834`
 Toolchain: Lean `v4.33.1`, mathlib `v4.33.1`
 Build command: `lake build` from `formal/`
-Result: **SUCCESS** (`Build completed successfully (8713 jobs)`).
+Result: **SUCCESS** (`Build completed successfully (8717 jobs)`).
+Proof-hygiene gate: **SUCCESS** — CI rejects occurrences of `sorry`, `admit`, and explicit `axiom` declarations in the AML formal library before compilation.
 
-All statements listed below compile without `sorry`, `admit`, placeholders, or extra axioms.
+All statements listed below compile without `sorry`, `admit`, placeholders, or explicit user axioms.
 
 ## 1. Algebraic / structural core
 
 File: `formal/AMLStabilization/AlgebraicCore.lean`
 
 1. `squareOfLinearBound`
-   - squares a nonnegative linear mean bound and proves the quadratic estimate used later.
-
 2. `massWeightedCoercivityReduction`
-   - verifies the algebraic closure from a mean estimate plus Poincare/mean decomposition to the coercive bound.
-
 3. `scaledDissipationCoercivity`
-   - converts coercivity by `gradSq + weighted` into coercivity by the actual dissipation `gradSq + alpha * weighted` when `delta <= 1, alpha`.
-
 4. `productionConsumptionIdentityOfEquilibrium`
-   - verifies `(s-vstar)(1-alpha*s) = -alpha (s-vstar)^2` under `alpha*vstar=1`.
-
 5. `productionConsumptionIdentity`
-   - specializes to `vstar=1/alpha` for nonzero `alpha`.
-
 6. `pureConsumptionIdentity`
-   - verifies `s(-s)=-s^2`.
-
 7. `endpointDissipativityDoesNotForceRoot`
-   - verifies the P0 counterexample showing one-sided dissipativity alone need not force `F(v_*)=0` at an endpoint.
+
+These verify the algebraic coercivity closure, dissipation rescaling, the exact production-consumption cancellation, the pure-consumption specialization, and the P0 counterexample showing that one-sided dissipativity alone need not imply `F(v_*)=0` at an endpoint.
 
 ## 2. Differential energy decay / Gronwall core
 
 File: `formal/AMLStabilization/EnergyDecay.lean`
 
 8. `weightedEnergy_antitone`
-   - from `dE(t)+c E(t)<=0`, proves `E(t) exp(c t)` is antitone.
-
 9. `energy_le_exp_of_differential_inequality`
-   - proves `E(t) <= E(s) exp(-c(t-s))` for `s<=t`.
-
 10. `energy_le_exp_from_zero`
-    - proves `E(t) <= E(0) exp(-ct)` for `t>=0`.
+
+These verify
+
+`dE(t) + c E(t) <= 0  ==>  E(t) <= E(s) exp(-c(t-s))`.
 
 ## 3. PDE-style energy to scalar decay bridge
 
 File: `formal/AMLStabilization/SignalEnergyBridge.lean`
 
 11. `pdeEnergy_to_scalarDissipation`
-    - from nonnegative gradient/weighted dissipations, coercivity `E <= C(gradSq+weighted)`, and
-      `dE + 2(gradSq+alpha*weighted) <= 0`, proves
-      `dE + (2*delta/C) E <= 0` when `0<=delta<=1` and `delta<=alpha`.
-
 12. `pdeEnergy_to_exponentialDecay`
-    - combines theorem 11 with the verified Gronwall core.
-
 13. `pdeEnergy_to_exponentialDecay_from_zero`
-    - gives the initial-time exponential estimate.
 
-## 4. Integral mass-weighted coercivity layer
+These verify the abstract implication
+
+`coercivity + PDE-style energy inequality => scalar dissipation => exponential decay`.
+
+## 4. Integral mass-weighted coercivity
 
 File: `formal/AMLStabilization/IntegralCoercivity.lean`
 
 14. `weightedDeviationIntegralIdentity`
-    - using actual Bochner integrals and integrability hypotheses, verifies
-      `int rho (f-fbar) = int rho f - fbar * int rho`.
-
 15. `integralMassWeightedMeanEstimate`
-    - assumes positive mass `int rho = m > 0`;
-    - takes two Cauchy-Schwarz-type estimates and a Poincare estimate as inputs;
-    - verifies the triangle estimate, mass substitution, Poincare substitution, and division by `m`.
-
 16. `integralMassWeightedCoercivity`
-    - combines theorem 15 with `massWeightedCoercivityReduction`;
-    - verifies nonnegativity of `int f^2` and `int rho f^2` from pointwise squares and `rho>=0`;
-    - proves the full integral coercivity inequality with explicit constants.
+
+The weighted-mean integral rearrangement and the subsequent coercivity algebra use actual Bochner integrals.
 
 ## 5. Holder / Cauchy-Schwarz closure
 
 File: `formal/AMLStabilization/HolderCore.lean`
 
 17. `integral_mul_cauchySchwarz`
-    - derives the real-valued `L2` Cauchy-Schwarz inequality from mathlib's
-      `integral_mul_le_Lp_mul_Lq_of_nonneg` with Holder exponents `(2,2)` and `MemLp` hypotheses;
-    - proves
-      `|int f*g| <= sqrt(int f^2) * sqrt(int g^2)`.
-
 18. `weightedFirstMoment_cauchySchwarz`
-    - applies theorem 17 to `sqrt(rho)` and `sqrt(rho)*f`;
-    - under `rho>=0`, proves
-      `|int rho*f| <= sqrt(int rho) * sqrt(int rho*f^2)`;
-    - Lean verifies the square-root identities using `Real.sq_sqrt`.
-
 19. `weightedDeviation_cauchySchwarz`
-    - from `MemLp rho 2` and `MemLp (f-fbar) 2`, proves
-      `|int rho*(f-fbar)| <= sqrt(int rho^2) * sqrt(int (f-fbar)^2)`.
-
 20. `weightedDeviation_cauchySchwarz_of_bound`
-    - if additionally `sqrt(int rho^2) <= K`, proves the exact bound needed by the coercivity lemma.
-
 21. `integralMassWeightedMeanEstimate_of_MemLp`
-    - discharges both Cauchy-Schwarz inputs of theorem 15 internally from `MemLp` hypotheses;
-    - only the Poincare estimate remains an external analytic inequality input.
+
+Mathlib's Holder theorem with exponents `(2,2)` is used to derive, rather than assume,
+
+`|int f g| <= sqrt(int f^2) sqrt(int g^2)`,
+
+including the two weighted estimates required in the paper.
 
 ## 6. Holder-to-coercivity bridge
 
 File: `formal/AMLStabilization/HolderCoercivityBridge.lean`
 
 22. `integralMassWeightedCoercivity_of_MemLp`
-    - combines the Holder closure with `integralMassWeightedCoercivity`;
-    - the two former hand-supplied Cauchy-Schwarz hypotheses are no longer assumptions;
-    - under the `MemLp` assumptions, positive mass, `rho>=0`, an `L2` bound for `rho`, the Poincare input, and the base mean-decomposition estimate, Lean proves the full mass-weighted coercivity inequality.
 
-Run `34351354275` at commit `77df13f804b5334602984e249bc8f0a718d5e39d` explicitly logs:
-- `Built AMLStabilization.EnergyDecay`;
-- `Built AMLStabilization.AlgebraicCore`;
-- `Built AMLStabilization.SignalEnergyBridge`;
-- `Built AMLStabilization.IntegralCoercivity`;
-- `Built AMLStabilization.HolderCore`;
-- `Built AMLStabilization.HolderCoercivityBridge`;
-- `Built AMLStabilization`;
-- `Build completed successfully (8713 jobs)`.
+The former hand-supplied Cauchy-Schwarz inputs are fully discharged by `MemLp` hypotheses.
 
-The currently compiled abstract signal-decay chain is therefore:
+## 7. Mean decomposition and Poincare interface
+
+File: `formal/AMLStabilization/PoincareMeanCore.lean`
+
+23. `meanSquareDecomposition`
+    - from actual integral identities `int 1 = V` and `int f = V*fbar`, proves exactly
+      `int f^2 = int (f-fbar)^2 + V*fbar^2`.
+
+24. `meanSquareBase_of_Poincare`
+    - from the named geometric Poincare interface
+      `sqrt(int (f-fbar)^2) <= Cp*grad`, proves the base square estimate used by coercivity.
+
+25. `integralMassWeightedCoercivity_of_MemLp_and_Poincare`
+    - combines the exact integral mean decomposition, Holder closure, and mass-weighted coercivity;
+    - the only remaining domain-geometric input at this stage is the Poincare inequality itself.
+
+## 8. Concrete signal-energy identity interface
+
+File: `formal/AMLStabilization/SignalEnergyIdentityCore.lean`
+
+26. `dissipativeReactionIntegral`
+    - from `u>=0` and pointwise `w R <= -beta w^2`, proves
+      `int u w R <= -beta int u w^2`.
+
+27. `signalEnergyInequality_from_integralPDE`
+    - takes the differentiated-energy identity, PDE testing identity, and Neumann Green identity as explicitly named analytic interfaces;
+    - Lean verifies all subsequent integral reaction estimates and algebra and proves
+      `dE + 2(gradSq + beta*int u w^2) <= 0`.
+
+28. `productionConsumption_signalEnergyInequality`
+    - specializes to `R=-alpha*w`, i.e. `w=v-1/alpha`, and proves the exact production-consumption energy inequality.
+
+## 9. Final signal-decay assembly
+
+File: `formal/AMLStabilization/FinalSignalAssembly.lean`
+
+29. `anisotropicCoercivity_to_exponentialDecay`
+30. `anisotropicCoercivity_to_exponentialDecay_from_zero`
+31. `massWeightedA`
+32. `massWeightedB`
+33. `massWeighted_coefficients_nonneg`
+34. `massWeightedSignal_exponentialDecay`
+
+The two different coercivity coefficients are normalized automatically and Lean proves an explicit rate.  With
+
+`A = 2 Cp^2 + 4 V (K Cp / m)^2`,
+`B = 4 V (sqrt(m)/m)^2`,
+
+one obtains
+
+`E(t) <= E(s) * exp(-(2*delta/(1+A+B))*(t-s))`.
+
+## 10. End-to-end production-consumption signal theorem
+
+File: `formal/AMLStabilization/ProductionConsumptionSignalFinal.lean`
+
+35. `productionConsumptionSignal_exponentialDecay_from_interfaces`
+
+This is the final compiled entry point for the signal L2-decay mechanism.  For the time-dependent fields `u` and `w=v-1/alpha`, it internally assembles:
 
 `MemLp / Holder`
-`=> weighted Cauchy-Schwarz estimates`
-`=> mass/integral identity`
+`=> weighted Cauchy-Schwarz`
+`=> exact integral mean decomposition`
+`=> Poincare interface`
 `=> mass-weighted coercivity`
-`=> PDE-style scalar dissipation bridge`
+`=> production-consumption reaction dissipation`
+`=> signal energy inequality`
+`=> coefficient normalization`
 `=> Gronwall`
-`=> exponential energy decay`.
+`=> explicit exponential L2 signal decay`.
 
-## What is NOT yet Lean-verified
+For `alpha>0`, Lean chooses `delta = min 1 alpha` and verifies
 
-The full PDE theorem is **not** currently Lean-verified. The remaining analytic layer includes:
+`E(t) <= E(s) * exp(-(2*min(1,alpha)/(1+A+B))*(t-s))`.
 
-- mass conservation obtained directly by integrating the Neumann PDE in time;
-- maximum-principle invariant range for `v`;
-- the geometric Poincare inequality on the actual smooth bounded domain and its exact function-space setup;
-- the base mean-decomposition estimate in the exact Sobolev/domain formulation;
-- differentiation of the actual `L2` norm-square energy along the classical PDE solution;
-- derivation of the concrete signal-energy identity from integration by parts and the Neumann boundary condition;
-- Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
-- the cell-density `L2` PDE energy inequality;
-- Choi's boundary local `L2 -> Linfinity` parabolic estimate and its application;
-- assembly of all analytic nodes into the final uniform exponential stabilization theorem.
+## Final CI evidence
 
-The correct provenance statement is now:
+Run `34354367834` at verification-gate commit `a6e526bc09924be03f53a680b48399fc2a0b1509` records:
 
-> **Lean-verified Holder/Cauchy-Schwarz layer, integral/coercive core, scalar Gronwall core, and PDE-style energy-to-decay bridge; Poincare, PDE integration-by-parts, maximum principle, semigroup smoothing, and parabolic regularity remain human-proved or sourced rather than Lean-verified.**
+- `Reject placeholders and explicit axioms`: **SUCCESS**;
+- `Built AMLStabilization.SignalEnergyIdentityCore`;
+- `Built AMLStabilization.HolderCore`;
+- `Built AMLStabilization.HolderCoercivityBridge`;
+- `Built AMLStabilization.PoincareMeanCore`;
+- `Built AMLStabilization.FinalSignalAssembly`;
+- `Built AMLStabilization.ProductionConsumptionSignalFinal`;
+- `Built AMLStabilization`;
+- `Build completed successfully (8717 jobs)`.
 
-Do not describe the final PDE stabilization theorem itself as Lean-verified until those analytic dependencies are formalized and compiled.
+## Verification boundary — what is not formalized in current mathlib
 
-## CI history
+The **full uniform PDE stabilization theorem is not claimed to be fully Lean-verified**.  The final signal theorem above is Lean-verified *from explicitly named standard analytic interfaces*.  The following remain human-proved/sourced because the current mathlib library does not provide a ready general framework for the paper's arbitrary smooth bounded Neumann domain and parabolic regularity theory:
 
-- `34342038855`: first algebraic-core build; failed at an automatic factorization proof.
-- `34342310962`: algebraic/structural core succeeded (`8708 jobs`).
-- `34344308882`: EnergyDecay + AlgebraicCore + root succeeded (`8709 jobs`).
-- `34347242173`: SignalEnergyBridge explicitly compiled and succeeded (`8710 jobs`).
-- `34349011208`: IntegralCoercivity explicitly compiled and succeeded (`8711 jobs`).
-- `34350299203`, `34350619099`: HolderCore iterations exposing only Lean representation/API issues (`MemLp` exponent representation and pointwise absolute-value representation), not mathematical failures.
-- `34350978932`: HolderCore compiled successfully (`8712 jobs`).
-- `34351354275`: **SUCCESS**, explicitly compiling HolderCore, HolderCoercivityBridge, and the full root (`8713 jobs`).
+1. the geometric Poincare inequality on an arbitrary smooth bounded connected domain in exactly the manuscript's Sobolev setup;
+2. derivation of the Neumann Green identity `int w Delta w = -int |grad w|^2` on that general domain;
+3. differentiation under the spatial integral for the concrete classical PDE solution (mathlib has generic parametric-integral differentiation machinery, but it has not been specialized here to the full PDE solution object);
+4. mass conservation derived directly from the cell PDE and Neumann boundary condition;
+5. the maximum-principle invariant interval for `v`;
+6. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
+7. the cell-density `L2` PDE energy estimate in the full spatial function-space representation;
+8. Choi's boundary local `L2 -> Linfinity` parabolic estimate and its use in the final `u` upgrade;
+9. assembly of those external analytic facts into the manuscript's final
+   `Linfinity x W^{1,infinity}` stabilization theorem.
 
-## Next formalization frontier
+Mathlib searches performed on 2026-09-09 found no general smooth-bounded-domain Poincare theorem or general Neumann Green/parabolic-semigroup infrastructure matching these requirements.  Therefore replacing the interfaces above by fully internal proofs would require building substantial new PDE/domain infrastructure rather than merely completing missing tactics.
 
-Highest-value next targets are:
+## Correct provenance statement
 
-1. **Domain Poincare layer:** replace the remaining abstract Poincare input by a theorem tied to the actual bounded-domain function-space setting.
-2. **Concrete signal-energy identity:** formalize differentiation of the `L2` signal energy and the Neumann integration-by-parts step that produces the `henergy` hypothesis consumed by `SignalEnergyBridge.lean`.
-3. **Mass conservation:** formalize the Neumann mass-conservation identity for the cell equation.
+> **Final Lean verification (CAP4-style): the complete algebraic, Holder, integral, mass-weighted coercivity, reaction-dissipation, energy-to-Gronwall, coefficient-tracking, and end-to-end production-consumption signal L2-decay chain is kernel-checked under explicitly named geometric/PDE analytic interfaces.  CI rejects `sorry`, `admit`, and explicit user axioms.  The arbitrary-smooth-domain Poincare/Green and parabolic regularity infrastructure needed for the full `Linfinity x W^{1,infinity}` PDE theorem is not currently formalized and must not be described as Lean-verified.**
 
-This follows the repository rule that Lean is a second proof channel rather than decoration and that only compiled, statement-aligned results count as formal verification.
+This is the strongest verification claim supported by the current compiled artifact and existing mathlib infrastructure.
