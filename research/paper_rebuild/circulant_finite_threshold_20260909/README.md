@@ -51,6 +51,24 @@ N=14, s=3,4,5:                  m^2=4+beta.
 }
 \]
 
+The labelled minimizing switching-class counts at the four equality pairs are now also complete:
+
+\[
+\boxed{
+\begin{array}{c|cccc}
+(N,s)&(12,4)&(16,3)&(16,5)&(20,8)\\ \hline
+\#\text{ minimizer classes}&2&32&32&2.
+\end{array}}
+\]
+
+At order 16 the 32 classes all have the same characteristic polynomial
+
+\[
+x^2(x-2)(x+2)(x^2-6)^4(x^2-2)^2,
+\]
+
+and every minimizing defect has exactly two repeated-root pairs (`|B_ij|=2` above the diagonal).  Thus the order-16 equality mechanism is much less rigid than the duplicate-free order-12 and order-20 cases.
+
 ### Strictly above six
 
 Every other admissible pair satisfies
@@ -119,6 +137,7 @@ The final `q=3t` exclusion is local: positive chord triangles are impossible; af
   m(12,2)^2=5+\sqrt3,
   \]
   with exactly two labelled minimizing switching classes.
+- At the `sqrt(6)` boundary the exact minimizer counts are `2,32,32,2` on `(12,4),(16,3),(16,5),(20,8)` respectively.
 
 ## 4. `sqrt(8)` results
 
@@ -150,6 +169,7 @@ The negative half uses exact `s=7,9` base certificates, an exact nine-column loc
 - `SIX_BOUNDARY_TRIANGLE_T2.md`
 - `SIX_BOUNDARY_TRIANGLE_2TPLUS1.md`
 - `SIX_BOUNDARY_TRIANGLE_3T.md`
+- `SIX_BOUNDARY_MINIMIZER_RIGIDITY.md`
 
 Exact reproducibility scripts include:
 
@@ -160,13 +180,14 @@ Exact reproducibility scripts include:
 - `verify_twin_line_base_exact.py`
 - `verify_t2_component_local.py`
 - `verify_3t_local_strip.py`
+- `verify_six_boundary_minimizer_rigidity.py`
 
 All theorem labels in `THEOREM_LEDGER.md` distinguish **Proved**, **Verified**, **Observed**, and **Published/Established**.
 
 # Current frontier
 
-The `sqrt(6)` parameter classification is no longer open.  The highest-value remaining finite-global directions are now:
+The `sqrt(6)` parameter classification **and** minimizer switching-class rigidity are no longer open.  The highest-value remaining finite-global directions are now:
 
-1. classify the minimizing switching classes at the four equality pairs `(12,4),(16,3),(16,5),(20,8)`;
-2. extend the exact `sqrt(8)` classification beyond `N=3s`, especially odd resonances `N=ks`, `k>=5`;
-3. seek quantitative lower gaps above `sqrt(6)` on arithmetic families outside the complete exceptional list.
+1. extend the exact `sqrt(8)` classification beyond `N=3s`, especially odd resonances `N=ks`, `k>=5`;
+2. seek quantitative lower gaps above `sqrt(6)` on arithmetic families outside the complete exceptional list;
+3. determine whether the odd-resonance `sqrt(8)` behavior admits a finite-state classification analogous to the completed `k=3` triangle-strip theorem.
