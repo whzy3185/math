@@ -26,13 +26,18 @@ Let
 \[
 \varphi\in C^1(I),\qquad \min_I\varphi>0,
 \]
-and suppose that \(F\in C^1(I)\) possesses \(v_*\in I\) and \(\beta>0\) such that
+and suppose that \(F\in C^1(I)\) possesses an equilibrium \(v_*\in I\) and a constant \(\beta>0\) such that
+\[
+F(v_*)=0
+\tag{E}
+\]
+and
 \[
 (s-v_*)F(s)\le-\beta(s-v_*)^2
 \qquad\text{for all }s\in I.
 \tag{D}
 \]
-Condition (D) implies \(F(v_*)=0\) and gives a uniform one-sided dissipativity toward \(v_*\).
+Condition (D) is a uniform one-sided dissipativity condition toward the equilibrium \(v_*\). The root condition (E) is stated explicitly because (D) alone does not force \(F(v_*)=0\) when \(v_*\) is an endpoint of \(I\).
 
 ## Theorem B — general boundedness-to-stabilization principle
 
@@ -47,7 +52,7 @@ where
 \[
 \bar u_0=\frac{m}{|\Omega|}.
 \]
-No monotonicity assumption on \(\varphi\) is required.
+No monotonicity assumption on \(\varphi\) is required for this stabilization implication.
 
 Moreover, the first signal-decay step needs only a uniform \(L^2\)-bound for \(u\): if
 \[
@@ -106,7 +111,7 @@ Now assume \(u\) is uniformly bounded in \(L^\infty\). Since \(v\in I\), \(w\) i
 \[
 \|w(t)\|_r\le C_r e^{-2\lambda_0t/r}.
 \]
-Because \(F(v_*)=0\) and \(F\in C^1(I)\),
+By (E) and \(F\in C^1(I)\),
 \[
 |F(v)|\le L_F|w|
 \]
@@ -168,9 +173,11 @@ F(s)=1-\alpha s,
 \]
 Then
 \[
+F(v_*)=0,
+\qquad
 (s-v_*)F(s)=-\alpha(s-v_*)^2,
 \]
-so (D) holds with \(\beta=\alpha\). This recovers the exact Qin–Zheng 2026 model.
+so (E)–(D) hold with \(\beta=\alpha\). This recovers the exact Qin–Zheng 2026 model at the stabilization stage.
 
 ### Pure signal consumption
 
@@ -180,6 +187,8 @@ F(s)=-s,
 \]
 so
 \[
+F(v_*)=0,
+\qquad
 sF(s)=-s^2.
 \]
 This contains the direct signal-consumption model studied by Li–Zhao (ZAMP 2021) at the level of the stabilization mechanism.
@@ -193,7 +202,7 @@ The intended contribution is no longer merely an asymptotic add-on to one 2026 p
 \Longrightarrow \text{exponential stabilization}}
 \]
 
-for signal-dependent motility, independently of the sign of \(\varphi'\).
+for signal-dependent motility, independently of the sign of \(\varphi'\) in the stabilization implication.
 
 The exact production–consumption model is then a timely application/corollary rather than the whole theorem.
 
