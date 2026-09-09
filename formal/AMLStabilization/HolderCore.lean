@@ -18,30 +18,30 @@ theorem integral_mul_cauchySchwarz
   have hpq : (2 : ℝ).HolderConjugate 2 := by
     rw [Real.holderConjugate_iff]
     norm_num
-  have hfabs : MemLp (fun x => |f x|) (ENNReal.ofReal (2 : ℝ)) μ := by
-    simpa using hf.abs
-  have hgabs : MemLp (fun x => |g x|) (ENNReal.ofReal (2 : ℝ)) μ := by
-    simpa using hg.abs
+  have hfnorm : MemLp (fun x => ‖f x‖) (ENNReal.ofReal (2 : ℝ)) μ := by
+    simpa using hf.norm
+  have hgnorm : MemLp (fun x => ‖g x‖) (ENNReal.ofReal (2 : ℝ)) μ := by
+    simpa using hg.norm
   have hholder :=
     integral_mul_le_Lp_mul_Lq_of_nonneg
       (μ := μ) (p := (2 : ℝ)) (q := (2 : ℝ)) hpq
-      (f := fun x => |f x|) (g := fun x => |g x|)
-      (ae_of_all μ fun x => abs_nonneg (f x))
-      (ae_of_all μ fun x => abs_nonneg (g x))
-      hfabs hgabs
+      (f := fun x => ‖f x‖) (g := fun x => ‖g x‖)
+      (ae_of_all μ fun x => norm_nonneg (f x))
+      (ae_of_all μ fun x => norm_nonneg (g x))
+      hfnorm hgnorm
   calc
     |∫ x, f x * g x ∂μ| = ‖∫ x, f x * g x ∂μ‖ := by
       simp [Real.norm_eq_abs]
     _ ≤ ∫ x, ‖f x * g x‖ ∂μ := norm_integral_le_integral_norm _
-    _ = ∫ x, |f x| * |g x| ∂μ := by
+    _ = ∫ x, ‖f x‖ * ‖g x‖ ∂μ := by
       apply integral_congr_ae
       filter_upwards with x
-      simp [Real.norm_eq_abs]
+      rw [norm_mul]
     _ ≤
-        (∫ x, |f x| ^ (2 : ℝ) ∂μ) ^ (1 / (2 : ℝ)) *
-          (∫ x, |g x| ^ (2 : ℝ) ∂μ) ^ (1 / (2 : ℝ)) := hholder
+        (∫ x, ‖f x‖ ^ (2 : ℝ) ∂μ) ^ (1 / (2 : ℝ)) *
+          (∫ x, ‖g x‖ ^ (2 : ℝ) ∂μ) ^ (1 / (2 : ℝ)) := hholder
     _ = Real.sqrt (∫ x, f x ^ 2 ∂μ) * Real.sqrt (∫ x, g x ^ 2 ∂μ) := by
-      simp [Real.sqrt_eq_rpow, sq_abs]
+      simp [Real.sqrt_eq_rpow, Real.norm_eq_abs, sq_abs]
 
 /--
 Weighted first-moment Cauchy-Schwarz estimate used in the mass-weighted mean
