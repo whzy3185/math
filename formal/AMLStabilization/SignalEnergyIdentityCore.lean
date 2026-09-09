@@ -80,6 +80,7 @@ theorem productionConsumption_signalEnergyInequality
     hu
   · intro x
     ring_nf
+    exact le_rfl
   · exact hreaction
   · exact hweighted
   · exact hEnergyDerivative
