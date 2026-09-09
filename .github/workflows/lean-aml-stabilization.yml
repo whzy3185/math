@@ -16,6 +16,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Reject placeholders and explicit axioms
+        run: |
+          if grep -R -n -E '\b(sorry|admit)\b|^[[:space:]]*axiom[[:space:]]' \
+              formal/AMLStabilization formal/AMLStabilization.lean; then
+            echo "Forbidden Lean placeholder or explicit axiom found."
+            exit 1
+          fi
+
       - name: Install elan
         run: |
           curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
