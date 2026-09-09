@@ -2,11 +2,13 @@
 
 Date: 2026-09-09
 Branch: `research/aml-production-consumption-stabilization`
-Latest verified Lean commit: `51215689ace63e5478c5bf67c60a012836b85407`
-Latest successful GitHub Actions run: `34344308882`
+Latest verified Lean tree commit: `8eba9ab96e0a9e42078f3e53fb035033c51151be`
+Latest successful GitHub Actions run: `34347242173`
 Toolchain: Lean `v4.33.1`, mathlib `v4.33.1`
 Build command: `lake build` from `formal/`
-Result: **SUCCESS** (`Build completed successfully (8709 jobs)`).
+Result: **SUCCESS** (`Build completed successfully (8710 jobs)`).
+
+The later bridge-file change `c0cdd0a951a3770e4ab00db4cf450788f809ad0b` changes only documentation text, not theorem statements or proof terms. The exact compiled proof tree is recorded above.
 
 ## What is Lean-verified
 
@@ -45,61 +47,95 @@ The following statements compile without `sorry`, `admit`, placeholders, or extr
 
 File: `formal/AMLStabilization/EnergyDecay.lean`
 
-The following additional statements are now Lean-verified:
-
 8. `weightedEnergy_antitone`
    - assumes an everywhere differentiable scalar energy `E` with derivative `dE` and the pointwise inequality
      `dE(t) + c * E(t) <= 0`;
    - proves that `E(t) * exp(c*t)` is antitone.
-   - This formally verifies the integrating-factor calculus step used in the PDE argument.
 
 9. `energy_le_exp_of_differential_inequality`
-   - from the same differential inequality and `s <= t`, proves the exact two-time estimate
+   - from the same differential inequality and `s <= t`, proves
      `E(t) <= E(s) * exp(-c * (t-s))`.
 
 10. `energy_le_exp_from_zero`
-    - specializes the preceding theorem to `s=0`, yielding
+    - gives
       `E(t) <= E(0) * exp(-c*t)` for `t >= 0`.
 
-These theorems formalize the abstract implication
+### 3. PDE-style energy to scalar decay bridge
 
-`dE/dt + c E <= 0  ==>  exponential decay of E`.
+File: `formal/AMLStabilization/SignalEnergyBridge.lean`
 
-They can be reused for both the signal energy and the cell-density energy once the corresponding PDE energy identities/inequalities are supplied as analytic inputs.
+11. `pdeEnergy_to_scalarDissipation`
+    - assumes pointwise nonnegativity of the gradient and weighted dissipations;
+    - assumes the coercivity estimate
+      `E <= C * (gradSq + weighted)` with `C > 0`;
+    - assumes `0 <= delta <= 1` and `delta <= alpha`;
+    - assumes the PDE-style energy inequality
+      `dE + 2 * (gradSq + alpha * weighted) <= 0`;
+    - proves the scalar differential inequality
+      `dE + (2*delta/C) * E <= 0`.
+
+12. `pdeEnergy_to_exponentialDecay`
+    - combines theorem 11 with the verified Gronwall core;
+    - proves the two-time estimate
+      `E(t) <= E(s) * exp(-(2*delta/C)*(t-s))` for `s <= t`.
+
+13. `pdeEnergy_to_exponentialDecay_from_zero`
+    - proves the initial-time specialization
+      `E(t) <= E(0) * exp(-(2*delta/C)*t)` for `t >= 0`.
+
+Run `34347242173` explicitly logs:
+- `Built AMLStabilization.EnergyDecay`;
+- `Built AMLStabilization.AlgebraicCore`;
+- `Built AMLStabilization.SignalEnergyBridge`;
+- `Built AMLStabilization`;
+- `Build completed successfully (8710 jobs)`.
+
+Thus the following abstract chain is now genuinely compiled in Lean:
+
+`coercivity + PDE-style energy inequality`
+`=> scalar differential dissipation`
+`=> exponential energy decay`.
+
+For the signal equation in the paper, the intended substitution is
+`E(t)=||v(t)-v_*||_2^2`,
+`gradSq(t)=||grad(v(t)-v_*)||_2^2`,
+and `weighted(t)=int u(t)(v(t)-v_*)^2`.
 
 ## What is NOT yet Lean-verified
 
-The full PDE theorem is **not** currently Lean-verified. In particular, the following remain outside the formal build:
+The full PDE theorem is **not** currently Lean-verified. The remaining analytic layer includes:
 
 - mass conservation obtained by integrating the Neumann PDE;
 - maximum-principle invariant range for `v`;
-- Sobolev/Poincare inequality on a smooth bounded domain in the exact function-space setup;
-- differentiation of the `L^2` energy along the classical PDE solution and identification of its derivative;
-- conversion of the PDE signal-energy identity plus mass-weighted coercivity into the scalar hypothesis required by `EnergyDecay.lean`;
+- the integral/Poincare derivation of the mass-weighted coercivity hypothesis in the exact function-space setting;
+- differentiation of the actual `L^2` norm-square energy along the classical PDE solution and identification of its derivative;
+- derivation of the concrete PDE energy identity from integration by parts and the Neumann boundary condition;
 - Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
 - the cell-density `L^2` PDE energy inequality;
 - Choi's boundary local `L^2 -> L^infinity` parabolic estimate and its application;
-- assembly of all analytic nodes into the final uniform exponential stabilization theorem.
+- assembly of these analytic nodes into the final uniform exponential stabilization theorem.
 
 Therefore the correct provenance statement is now:
 
-> **Lean-verified algebraic/structural and scalar energy-decay core; full PDE stabilization theorem proved by the analytic manuscript argument but not formally verified in Lean.**
+> **Lean-verified algebraic/coercive, scalar Gronwall, and PDE-style energy-to-decay bridge; the analytic PDE identities and regularity theory remain human-proved/sourced rather than Lean-verified.**
 
-Do not describe the final PDE theorem itself as Lean-verified until the analytic dependencies are formalized and compiled.
+Do not describe the final PDE stabilization theorem itself as Lean-verified until those analytic dependencies are formalized and compiled.
 
 ## CI history
 
 - Run `34342038855`: first algebraic-core build; failed only at an automatic factorization proof.
-- Run `34342310962`: algebraic/structural core succeeded completely (`8708 jobs`).
-- Runs `34343443424`, `34343769676`, `34344001280`: iterative API/alignment failures while introducing the calculus module; these exposed no mathematical counterexample or missing hypothesis.
-- Run `34344308882` at commit `51215689ace63e5478c5bf67c60a012836b85407`: **SUCCESS**, including `AMLStabilization.EnergyDecay`, `AMLStabilization.AlgebraicCore`, and the library root (`8709 jobs`).
+- Run `34342310962`: algebraic/structural core succeeded (`8708 jobs`).
+- Runs `34343443424`, `34343769676`, `34344001280`: iterative API/alignment failures while introducing the calculus module; no mathematical counterexample or missing hypothesis was exposed.
+- Run `34344308882`: EnergyDecay + AlgebraicCore + library root succeeded (`8709 jobs`).
+- Run `34347158080`: succeeded but did not yet import the new bridge into the library root, so it was not used as bridge verification evidence.
+- Run `34347242173` at commit `8eba9ab96e0a9e42078f3e53fb035033c51151be`: **SUCCESS**, explicitly compiling `SignalEnergyBridge` and the library root (`8710 jobs`).
 
 ## Next formalization frontier
 
 Highest-value next targets are:
 
-1. **PDE-to-scalar bridge:** formalize a theorem whose inputs are the signal energy identity and the mass-weighted coercivity bound and whose output is the scalar differential inequality needed by `energy_le_exp_of_differential_inequality`.
-2. **Integral coercivity layer:** formalize the mass/mean estimate itself with mathlib integration and Poincare assumptions, reducing the gap between the paper lemma and `massWeightedCoercivityReduction`.
-3. Only after these are stable, attempt deeper parabolic PDE infrastructure.
+1. **Integral coercivity layer:** formalize the mass/mean estimate with mathlib integration and a Poincare hypothesis, reducing the gap between the PDE lemma and `massWeightedCoercivityReduction`.
+2. **Concrete signal-energy identity interface:** formalize an abstract inner-product/integration-by-parts statement that produces the exact `henergy` input consumed by `SignalEnergyBridge.lean`.
+3. Only after these are stable, attempt deeper parabolic PDE infrastructure such as maximum principles and semigroup smoothing.
 
 This follows the repository rule that Lean is a second proof channel rather than decoration and that only compiled, statement-aligned results count as formal verification.
