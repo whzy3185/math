@@ -7,3 +7,4 @@ import AMLStabilization.HolderCoercivityBridge
 import AMLStabilization.PoincareMeanCore
 import AMLStabilization.SignalEnergyIdentityCore
 import AMLStabilization.FinalSignalAssembly
+import AMLStabilization.ProductionConsumptionSignalFinal
