@@ -70,7 +70,8 @@ theorem productionConsumptionIdentityOfEquilibrium
     (s - vstar) * productionConsumption α s =
       -α * (s - vstar) ^ 2 := by
   unfold productionConsumption
-  nlinarith
+  rw [← hstar]
+  ring
 
 /-- Exact paper specialization `v_* = 1/α` for nonzero `α`. -/
 theorem productionConsumptionIdentity
