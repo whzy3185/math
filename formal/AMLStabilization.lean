@@ -2,3 +2,4 @@ import AMLStabilization.AlgebraicCore
 import AMLStabilization.EnergyDecay
 import AMLStabilization.SignalEnergyBridge
 import AMLStabilization.IntegralCoercivity
+import AMLStabilization.HolderCore
