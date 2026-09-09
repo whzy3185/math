@@ -1,0 +1,232 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=30mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage[hidelinks]{hyperref}
+\usepackage{microtype}
+
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\rhoA}{\rho}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\R}{\mathbb R}
+
+\title{Periodic Flux Phases in Signed Circulants:\\Sharp Spectral Gaps and a Finite Threshold Transition}
+\author{Working reconstruction draft --- author metadata to be confirmed}
+\date{9 September 2026}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+For $2\le s<N/2$, let
+\[
+ m(N,s)=\min_{\sigma}\rho(A_\sigma)
+\]
+be the minimum adjacency spectral radius over all edge signings of the
+four-regular circulant $C_N(1,s)$.  A recent conjecture for $C_n(1,2)$
+proposed a natural twisted signing as the global minimizer.  We first show
+that this fails on an infinite family: a primitive period-eight flux phase
+beats the twisted value whenever $8\mid n$ and $n\ge32$.
+
+The counterexample is the first member of a general parity-dependent
+mechanism.  For every jump $s\ge2$ we construct an explicit periodic signing
+whose continuous squared Bloch spectral radius $\widehat R_s$ satisfies
+$\widehat R_s<8$.  Writing $\widehat g_s=8-\widehat R_s$, we prove the
+uniform estimates
+\[
+ \frac{1}{6s(s+2)}\le \widehat g_s
+ \le 4\sin^2\!\frac{\pi}{s+2}
+\]
+and the sharp leading asymptotic law
+\[
+ s^2\widehat g_s\longrightarrow\pi^2.
+\]
+For even jumps the maximizing Bloch phase undergoes a boundary-layer phase
+slip; its first rigorously audited correction occurs below the leading
+$s^{-2}$ scale.
+
+We also obtain two finite-graph classification results.  First,
+$m(N,s)=2$ if and only if $N=2s+2$, while $m(N,s)\ge\sqrt5$ off this flat
+line.  Second, on the resonance line $N=3s$,
+\[
+ m(3s,s)<\sqrt8
+ \quad\Longleftrightarrow\quad
+ s\ \text{is even or }s\in\{3,5\},
+\]
+and every odd $s\ge7$ obeys the uniform obstruction
+$m(3s,s)^2\ge8+1/70$.  The exactly solvable case $s=2$ is used to explain
+the half-cell chiral mechanism, the first sub-$\sqrt8$ primitive period, and
+its rigidity.
+\end{abstract}
+
+\noindent\textbf{Keywords:} signed graph; circulant graph; spectral radius;
+switching; Floquet decomposition; chiral symmetry; spectral gap
+
+\medskip
+\noindent\textbf{MSC 2020:} 05C50 (primary); 05C22, 15A18 (secondary)
+
+\section{Introduction and main results}
+
+Let $C_N(1,s)$ be the graph on $\Z/N\Z$ with edges at cyclic distances $1$
+and $s$.  A signing $\sigma\in\{\pm1\}^{E}$ determines a real symmetric
+signed adjacency matrix $A_\sigma$.  The fixed-support extremal problem is to
+understand $m(N,s)$.
+
+The introduction of the full manuscript should make the following logical
+chain explicit:
+\[
+ \text{twisted-optimizer conjecture at }s=2
+ \;\Longrightarrow\;
+ \text{period-eight counterexample}
+ \;\Longrightarrow\;
+ \text{periodic flux mechanism for all }s
+ \;\Longrightarrow\;
+ \text{sharp }\pi^2/s^2\text{ gap}
+ \;\Longrightarrow\;
+ \text{finite threshold classification}.
+\]
+
+\begin{theorem}[Infinite counterexample family at jump two]
+For every integer $L\ge4$, the graph $C_{8L}(1,2)$ has an explicit
+period-eight signing $\sigma_L^*$ whose spectral radius is strictly smaller
+than that of the natural twisted signing proposed as the global optimizer.
+Consequently the twisted-optimizer conjecture fails for infinitely many even
+orders.
+\end{theorem}
+
+\begin{theorem}[Periodic sub-threshold phases for every jump]
+For every integer $s\ge2$ there is an explicit periodic signing of the
+step-$(1,s)$ operator whose continuous squared Bloch spectral radius
+$\widehat R_s$ is strictly smaller than $8$.  One may take a period-two
+alternating-flux phase when $s$ is odd and a primitive period-$4s$
+antipodal-defect phase when $s$ is even.
+\end{theorem}
+
+\begin{theorem}[Sharp periodic gap]
+Let $\widehat g_s=8-\widehat R_s$ for the preceding explicit family.  Then
+\[
+ \frac{1}{6s(s+2)}\le \widehat g_s
+ \le4\sin^2\frac{\pi}{s+2},
+ \qquad
+ s^2\widehat g_s\to\pi^2.
+\]
+For even $s=2r$, the global maximizing Bloch phase has the audited
+boundary-layer asymptotics recorded in the quadratic-gap theorem package.
+\end{theorem}
+
+\begin{theorem}[Exact flat minimum]
+For every admissible pair $(N,s)$,
+\[
+ m(N,s)=2\quad\Longleftrightarrow\quad N=2s+2.
+\]
+If $N\ne2s+2$, then $m(N,s)\ge\sqrt5$.
+\end{theorem}
+
+\begin{theorem}[Resonance-line threshold transition]
+For every integer $s\ge2$,
+\[
+ m(3s,s)<\sqrt8
+ \quad\Longleftrightarrow\quad
+ s\text{ is even or }s\in\{3,5\}.
+\]
+Moreover, every odd $s\ge7$ satisfies
+\[
+ m(3s,s)^2\ge8+\frac1{70}.
+\]
+\end{theorem}
+
+\section{Switching coordinates and periodic fibers}
+
+This section is to be rebuilt from the reusable Hamilton-gauge and Bloch
+material.  It should contain only notation and results needed later:
+
+\begin{itemize}
+  \item switching equivalence and cycle-flux coordinates;
+  \item local flux versus global Hamilton holonomy;
+  \item periodic cells and finite Bloch fibers;
+  \item the general parity-dependent half-cell anticommutation criterion.
+\end{itemize}
+
+The period-eight-specific notation should not be introduced here unless it is
+a specialization of the general $s$-jump setup.
+
+\section{Periodic phases for arbitrary jump}
+
+\subsection{Odd jumps}
+Present the alternating-flux phase, diagonalize the Bloch symbol, and derive
+the exact one-variable maximization problem.
+
+\subsection{Even jumps}
+Present the primitive period-$4s$ antipodal-defect phase.  Give the
+Chebyshev/transfer reduction and prove that its squared Bloch edge is below
+$8$ for every even $s$.
+
+\subsection{A common spectral scale}
+Explain why the parity-dependent constructions nevertheless share the same
+leading gap scale.
+
+\section{Sharp gap asymptotics and the even phase slip}
+
+The proof order should be:
+
+\begin{enumerate}
+  \item coarse two-sided gap estimates;
+  \item localization of the maximizing Bloch phase;
+  \item the limit $s^2\widehat g_s\to\pi^2$;
+  \item the even-jump local implicit equation;
+  \item the rigorously audited second-order phase-slip correction.
+\end{enumerate}
+
+Exploratory critical-ratio calculations are excluded from theorem statements.
+
+\section{Finite circulants: flat minima and resonance}
+
+\subsection{The flat line}
+Give the exact proof of $m(N,s)=2$ if and only if $N=2s+2$, followed by the
+universal $\sqrt5$ lower bound off the flat line.
+
+\subsection{The line $N=3s$}
+Treat even $s$ by an explicit finite Fourier signing, $s=3,5$ by exact
+positive-definiteness certificates, and odd $s\ge7$ by the global obstruction.
+The finite scripts must appear only after the mathematical reduction proves
+that the checked domain is complete.
+
+\section{The exactly solvable base case $s=2$}
+
+Retain the following period-eight results because they explain the general
+construction:
+
+\begin{itemize}
+  \item half-cell flux/chiral equivalence;
+  \item the exact $8\to4\to2$ fiber reduction and four squared bands;
+  \item period eight is the smallest primitive period with edge below $8$;
+  \item the first sub-eight period has a unique orbit under the natural
+        dihedral/switching symmetries.
+\end{itemize}
+
+Long historical certificate tables and unrelated all-even computations should
+move to supplementary material.
+
+\section{Concluding problems}
+
+The principal unsolved problem is
+\[
+ \boxed{\text{determine }m(N,s)\text{ exactly for every admissible }(N,s).}
+\]
+A second problem may ask for the minimal primitive sub-eight period and the
+corresponding equality classes for general $s$.
+
+\paragraph{Proof-source note for the reconstruction.}
+The analytic and exact finite ingredients are presently distributed across
+`research/paper_strengthening/`,
+`research/generalization/circulant_1s/extension_20260905/`, and
+`research/generalization/circulant_1s/quadratic_gap_20260906/`.
+This skeleton is an article reconstruction, not a claim that those proofs have
+already been merged and independently re-audited in this file.
+
+\end{document}
