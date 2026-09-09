@@ -4,3 +4,5 @@ import AMLStabilization.SignalEnergyBridge
 import AMLStabilization.IntegralCoercivity
 import AMLStabilization.HolderCore
 import AMLStabilization.HolderCoercivityBridge
+import AMLStabilization.PoincareMeanCore
+import AMLStabilization.SignalEnergyIdentityCore
