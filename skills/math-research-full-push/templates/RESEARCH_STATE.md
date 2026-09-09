@@ -13,7 +13,8 @@ This file is the live control surface for a research campaign. Keep it short eno
 - Last updated:
 - Mathematical domain:
 - Target deliverable / publication ambition:
-- Campaign mode: `topic discovery | open problem | remark mining | counterexample | strengthening | formalization | paper audit`
+- Campaign mode: `topic discovery | open problem | remark mining | counterexample | strengthening | formalization | publication escalation | paper audit`
+- Target journal / level, if any:
 
 ## Exact research objective
 
@@ -30,31 +31,56 @@ State the current mathematical objective in 2–5 precise sentences. Include obj
 - Independent audit:
 - Main unresolved caveat:
 
+## Contribution hierarchy
+
+When publication is intended, rank the contribution conceptually rather than chronologically.
+
+- **C1 structural / inverse theorem:**
+- **C2 classification / global consequence:**
+- **C3 exact endpoint / spectrum / sharp bound / corollary:**
+
+The abstract, introduction, and cover-letter framing should not reduce C1 to C3 when C1 is the real conceptual advance.
+
+## Publication maturity
+
+- Manuscript version:
+- Manuscript maturity: `M0 | M1 | M2 | M3 | M4 | M5 | M6 | M7`
+- Computer-assisted proof maturity: `CAP0 | CAP1 | CAP2 | CAP3 | CAP4 | CAP5 | n/a`
+- Latest simulated-referee verdict: `not assessed | reject-range | major revision | minor revision | accept-after-revision range`
+- Mathematical freeze: `open frontier | provisional freeze | frozen`
+- Journal progression file:
+- Latest serious referee/audit date:
+
+Do not present a simulated-referee verdict as actual peer review or editorial status.
+
 ## Current research frontier
 
-Summarize only what changed recently and what currently blocks the next theorem upgrade.
+Summarize only what changed recently and what currently blocks the next theorem or maturity upgrade.
 
 - Latest mathematical delta:
+- Latest referee-triggered delta:
 - Current bottleneck:
 - Best strengthening opportunity:
 - Main falsification risk:
 - Main novelty risk:
+- Main proof-package/completeness risk:
 
 ## Priority queue
 
-Always keep this ordered. `P0` dominates lower priorities.
+Always keep this ordered. Higher priority dominates lower priority.
 
 | Priority | Task | Why it matters | Expected output | Status |
 |---|---|---|---|---|
-| P0 |  | correctness blocker |  | open |
-| P1 |  | falsification |  | open |
-| P2 |  | novelty/open-status risk |  | open |
-| P3 |  | main proof bottleneck |  | open |
-| P4 |  | theorem strengthening |  | open |
-| P5 |  | Lean/formalization |  | open |
-| P6 |  | paper/render/package |  | open |
+| P0 |  | correctness blocker | corrected theorem/proof | open |
+| P1 |  | falsification | counterexample or strengthened confidence | open |
+| P2 |  | novelty/open-status risk | source comparison | open |
+| P3 |  | main proof bottleneck | lemma/reduction | open |
+| P4 |  | theorem strengthening | stronger theorem or obstruction | open |
+| P5 |  | Lean/proof-package completeness | compile/certificate/coverage | open |
+| P6 |  | publication/referee escalation | closed referee issues / new version | open |
+| P7 |  | render/submission/package | final artifacts | open |
 
-Delete empty rows when not relevant. A continuation turn should normally execute the highest meaningful open row.
+Delete irrelevant empty rows. A continuation turn should normally execute the highest meaningful open row.
 
 ## Track dashboard
 
@@ -65,8 +91,9 @@ Delete empty rows when not relevant. A continuation turn should normally execute
 | P — analytic proof |  |  |  |
 | S — theorem strengthening |  |  |  |
 | F — Lean formalization |  |  |  |
-| W — paper/artifacts |  |  |  |
+| W — manuscript/artifacts |  |  |  |
 | A — independent audit |  |  |  |
+| R — simulated-referee/version escalation |  |  |  |
 
 ## Proof dependency snapshot
 
@@ -92,6 +119,7 @@ Main theorem
 - Failed routes:
 - Boundary/small cases checked:
 - Hidden-condition risk:
+- Referee issue ID, if applicable:
 - Next attack:
 
 ## Falsification status
@@ -99,30 +127,41 @@ Main theorem
 - Strongest theorem tested on:
 - Most vulnerable lemma tested on:
 - Boundary/degenerate cases:
+- Claimed equivalences checked:
 - Counterexamples found:
 - Independent verifier:
 - Exact search completeness statement:
 
-## Computation status
+## Computation / proof-package status
 
 - Generator/searcher:
 - Independent verifier:
 - Arithmetic: `exact | symbolic | floating auxiliary only`
 - Search space:
+- Mathematical finite-reduction theorem:
+- Endpoint/decision principle:
+- Canonical representation:
+- Coverage equality / completeness check:
+- Missing / extra count, if applicable:
 - Pruning:
 - Seed(s):
 - Last successful command:
 - Output/log/certificate:
 - Code commit:
+- Checksums/archive metadata:
 
 ## Literature / novelty status
 
 - Original source:
-- Strongest nearby published result:
+- Strongest direct predecessor:
+- Closest already-known family:
+- Strongest bounded/computational predecessor:
 - Latest audit date:
 - Equivalent terminology searched:
 - Current conclusion: `open | known | partially known | uncertain`
-- What is plausibly new:
+- What is plausibly new in C1:
+- What is plausibly new in C2:
+- What is plausibly new in C3:
 - Main prior-art collision risk:
 - Next source/comparison required:
 
@@ -139,7 +178,7 @@ Main theorem
 | Stability |  |  |  |
 | Unified framework |  |  |  |
 
-Record failed upgrades with the explicit obstruction/counterexample rather than deleting them.
+Record failed upgrades with explicit obstruction/counterexample instead of deleting them.
 
 ## Lean status
 
@@ -154,15 +193,29 @@ Record failed upgrades with the explicit obstruction/counterexample rather than 
 - Current formalization bottleneck:
 - Human-proof assumption exposed by Lean, if any:
 
-## Paper / artifact status
+## Manuscript / simulated-referee status
 
-- Main `.tex`:
-- Abstract aligned with theorem: yes/no
+- Clean manuscript source:
+- Submission source, if separate:
+- Abstract aligned with C1/C2/C3: yes/no
+- Main Results closed: yes/no
+- Engineering/work-log headings removed where unnecessary: yes/no
+- Mathematical transitions drive section flow: yes/no
+- Latest simulated-referee verdict:
+- Open major referee issues:
+- Open minor referee issues:
+- Latest version delta:
+- Next proposed version:
+
+## Paper / artifact QC
+
 - Claim ledger current: yes/no
 - Literature claims sourced: yes/no
 - References resolved: yes/no
 - Latest PDF/build command:
 - Page-by-page render inspected: yes/no
+- Cross-reference semantics checked: yes/no
+- Main/supplement responsibility split checked: yes/no
 - Known mathematical/expository mismatches:
 
 ## Independent audit status
@@ -173,17 +226,20 @@ Record failed upgrades with the explicit obstruction/counterexample rather than 
 - Open audit findings:
 - External expert/peer-review status:
 
-## Stop / pivot logic
+## Stop / pivot / freeze logic
 
 - Why the campaign should continue:
 - What would trigger a pivot:
-- What would justify freezing the theorem for paper finalization:
+- What would justify provisional mathematical freeze:
+- What would reopen a frozen proof:
+- Submission-only tasks remaining after freeze:
 
 ## Next executable batch
 
-State one concrete batch that can be started immediately without asking the user to restate context.
+State one concrete batch that can begin immediately without asking the user to restate context.
 
 - Target:
 - Action:
-- Expected evidence/output:
+- Expected mathematical/referee evidence:
+- Expected maturity delta: `L?→L?`, `M?→M?`, `CAP?→CAP?`
 - Files likely to change:
