@@ -3,3 +3,4 @@ import AMLStabilization.EnergyDecay
 import AMLStabilization.SignalEnergyBridge
 import AMLStabilization.IntegralCoercivity
 import AMLStabilization.HolderCore
+import AMLStabilization.HolderCoercivityBridge
