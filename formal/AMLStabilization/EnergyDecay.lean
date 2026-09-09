@@ -25,8 +25,8 @@ theorem weightedEnergy_antitone
         HasDerivAt (fun x : ℝ => Real.exp (c * x))
           (c * Real.exp (c * t)) t := by
       simpa [mul_comm] using hlin.exp
-    convert hexp.mul (hE t) using 1
-    ring
+    simpa [mul_add, mul_assoc, mul_left_comm, mul_comm, add_comm, add_left_comm, add_assoc] using
+      hexp.mul (hE t)
   · intro t
     exact mul_nonpos_of_nonneg_of_nonpos (Real.exp_nonneg _) (hdiss t)
 
