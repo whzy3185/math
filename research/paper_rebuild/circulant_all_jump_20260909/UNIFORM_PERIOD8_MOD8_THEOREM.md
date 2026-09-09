@@ -171,19 +171,21 @@ P_n(X+4,t)
 
 #### Proof
 
-Expand the determinant of `lambda I-H_s(z)` using (2.1). Before imposing the relation `z^m` between the long-jump phase and the basic Bloch phase, write `r=z^m`. Clearing the harmless denominator `r^8z^4`, the determinant numerator is
+Expand the determinant of `lambda I-H_s(z)` using (2.1). Before imposing the relation `r=z^m`, regard `r` and `z` as independent nonzero variables. Clearing the monomial denominator `r^8z^4`, the determinant numerator is
 
 \[
 \begin{aligned}
 &r^8z^4\lambda^8-16r^8z^4\lambda^6\\
-&\quad+\lambda^4\bigl(80r^8z^4-2r^{12}z^6-2r^4z^2\bigr)\\
-&\quad+\lambda^2\bigl(-128r^8z^4+16r^{12}z^6+16r^4z^2\bigr)\\
-&\quad+r^{16}z^8+r^{-0} -16r^{12}z^6-16r^4z^2
-   +4r^{10}z^5+4r^6z^3-r^8z^5-r^8z^3+56r^8z^4,
+&\quad+\lambda^4\bigl(-2r^{12}z^6+80r^8z^4-2r^4z^2\bigr)\\
+&\quad+\lambda^2\bigl(16r^{12}z^6-128r^8z^4+16r^4z^2\bigr)\\
+&\quad+r^{16}z^8-16r^{12}z^6+4r^{10}z^5-r^8z^5
+   +56r^8z^4-r^8z^3\\
+&\qquad+4r^6z^3-16r^4z^2+1.
 \end{aligned}
+\tag{3.3}
 \]
 
-where the isolated `r^{-0}` notation means the constant `1` arising from the reciprocal extreme monomial. Dividing by `r^8z^4` and using
+Now set `r=z^m`. Dividing (3.3) by `r^8z^4` and using
 
 \[
 r^4z^2=z^{4m+2}=z^{2n},
