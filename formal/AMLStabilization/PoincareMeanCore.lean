@@ -26,18 +26,24 @@ theorem meanSquareDecomposition
     hone.const_mul (fbar ^ 2)
   have hpoint :
       (fun x => (f x - fbar) ^ 2) =
-        (fun x => f x ^ 2 - (2 * fbar) * f x + (fbar ^ 2) * (1 : ℝ)) := by
+        (fun x => (f x ^ 2 - (2 * fbar) * f x) + (fbar ^ 2) * (1 : ℝ)) := by
     funext x
     ring
   have hdev :
       (∫ x, (f x - fbar) ^ 2 ∂μ) =
         (∫ x, f x ^ 2 ∂μ) - V * fbar ^ 2 := by
     rw [hpoint]
-    rw [integral_add (hf2.sub hcross) hconst]
-    rw [integral_sub hf2 hcross]
-    rw [integral_const_mul, integral_const_mul]
-    rw [hvol, hmean]
-    ring
+    calc
+      (∫ x, (f x ^ 2 - (2 * fbar) * f x) + (fbar ^ 2) * (1 : ℝ) ∂μ) =
+          (∫ x, f x ^ 2 - (2 * fbar) * f x ∂μ) +
+            (∫ x, (fbar ^ 2) * (1 : ℝ) ∂μ) := by
+              exact integral_add (hf2.sub hcross) hconst
+      _ = ((∫ x, f x ^ 2 ∂μ) - (∫ x, (2 * fbar) * f x ∂μ)) +
+            (∫ x, (fbar ^ 2) * (1 : ℝ) ∂μ) := by
+              rw [integral_sub hf2 hcross]
+      _ = (∫ x, f x ^ 2 ∂μ) - V * fbar ^ 2 := by
+              rw [integral_const_mul, integral_const_mul, hvol, hmean]
+              ring
   linarith
 
 /--
