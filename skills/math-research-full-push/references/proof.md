@@ -6,7 +6,9 @@ Before long proof work, falsify cheaply: small cases, boundary/degenerate cases,
 
 Maintain a proof DAG. Each obligation records statement, dependencies, status, role, proof idea, failed routes, boundary checks and Lean mapping if relevant.
 
-Prefer structural lemmas: inverse/rigidity, invariant, canonical form, decomposition, compression/switching, arithmetic obstruction, finite-reduction and equality characterization.
+Prefer structural lemmas: inverse/rigidity, invariant, canonical form, decomposition, compression/switching, arithmetic obstruction, finite reduction and equality characterization.
+
+After a proof, test strengthening axes: broader scope, fewer hypotheses, sharper constants, equality/extremizers, iff, classification, stability and unification. Stop a direction only when false, known prior art or clearly disproportionate; preserve the obstruction.
 
 A claim is Proved only if every dependency is proved/sourced, all cases close, reductions preserve hypotheses and terminate, external theorem hypotheses match, and adversarial checks reveal no contradiction.
 
