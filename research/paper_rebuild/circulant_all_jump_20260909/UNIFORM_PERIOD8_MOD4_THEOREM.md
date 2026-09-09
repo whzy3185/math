@@ -121,7 +121,7 @@ U_q(w)=
 
 For `q=0`, this is exactly the period-eight squared block of the original jump-two calculation. The point is that the same scalar-block structure survives for every odd `n=s/2`.
 
-The identity can be checked directly from the two-step channels. The displacement `2s=8q+4` reduces to the half-cell scalar `w^(2q+1)=w^n`; the mixed channels reduce to the two entries of magnitude two shown above. No finite-ring extremal statement is involved.
+The identity follows directly from the two-step channels. The displacement `2s=8q+4` reduces to the half-cell scalar `w^(2q+1)=w^n`; the mixed channels reduce to the two entries of magnitude two shown above. No finite-ring extremal statement is involved.
 
 ---
 
