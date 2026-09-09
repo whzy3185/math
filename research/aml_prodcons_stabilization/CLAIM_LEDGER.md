@@ -5,17 +5,20 @@ Evidence labels follow Math Research Full-Push v5.
 | ID | Claim | Evidence | Notes |
 |---|---|---|---|
 | C1 | \(\int_\Omega u(t)=\int_\Omega u_0=:m>0\) for all \(t\) | Proved | Integrate \(u_t=\Delta(\varphi(v)u)\) and use Neumann boundary data. |
-| C2 | \(0\le v(x,t)\le \max\{\|v_0\|_\infty,1/\alpha\}\) | Proved | Maximum principle applied to \(v_t=\Delta v+u(1-\alpha v)\), with \(u\ge0\). |
-| C3 | Uniform weighted coercivity: if \(0\le\rho\le U\), \(\int\rho=m>0\), then \(\|f\|_2^2\le C(\|\nabla f\|_2^2+\int\rho f^2)\) | Proved | Elementary Poincaré + control of the spatial mean by the weighted term. |
-| C4 | If \(\sup_t\|u(t)\|_\infty<\infty\), then \(\|v(t)-1/\alpha\|_2\le Ce^{-\lambda t}\) | Proved | Exact energy identity for \(w=v-1/\alpha\) + C3. |
-| C5 | Under the same hypothesis, \(\|v(t)-1/\alpha\|_{W^{1,\infty}}\le Ce^{-\lambda t}\) | Proved | Interpolate C4 to \(L^p\), choose \(p>n\), then use Duhamel and the standard Neumann heat-semigroup gradient estimate. |
-| C6 | \(\|u(t)-\bar u_0\|_2\le Ce^{-\lambda t}\) | Proved | Energy estimate for \(q=u-\bar u_0\), positivity of \(\varphi\) on the bounded \(v\)-range, C5, Young and Poincaré. |
-| C7 | \(\|u(t)-\bar u_0\|_\infty\le Ce^{-\lambda t}\) | Observed | Needs a fully pinned uniform parabolic smoothing/Hölder interpolation step after C6. |
-| C8 | Conditional stabilization needs no sign condition on \(\varphi'\) | Observed | C1–C6 use bounded \(\varphi'\), not \(\varphi'<0\); full promotion waits for C7. |
-| C9 | Qin–Zheng 2026 bounded solution converges exponentially to \((\bar u_0,1/\alpha)\) in at least \(L^2\times W^{1,\infty}\) | Proved | Combine their boundedness theorem with C4–C6. The stronger \(L^\infty\) convergence rate for \(u\) remains tied to C7. |
-| C10 | The conditional stabilization theorem is new for the exact production–consumption signal-dependent-motility model | Observed | Search dated 2026-09-09 is promising but not sufficient for novelty certification. |
+| C2 | For the Qin–Zheng kinetics, \(0\le v(x,t)\le \max\{\|v_0\|_\infty,1/\alpha\}\) | Proved | Maximum principle applied to \(v_t=\Delta v+u(1-\alpha v)\), with \(u\ge0\). |
+| C3 | Uniform mass-weighted coercivity: if \(\rho\ge0\), \(\int\rho=m>0\), \(\|\rho\|_2\le K\), then \(\|f\|_2^2\le C(\|\nabla f\|_2^2+\int\rho f^2)\) | Proved | Elementary Poincaré + control of the spatial mean by the weighted term. Do not advertise the inequality itself as novel without separate evidence. |
+| C4 | For \(F(v)=1-\alpha v\), a uniform \(L^2\)-bound on \(u\) implies \(\|v(t)-1/\alpha\|_2\le Ce^{-\lambda t}\) | Proved | Exact energy identity + C3. |
+| C5 | If \(u\) is uniformly bounded, then \(\|v(t)-1/\alpha\|_{W^{1,\infty}}\le Ce^{-\lambda t}\) | Proved | Interpolation + Duhamel + standard Neumann heat-semigroup gradient estimate. |
+| C6 | Under the same boundedness hypothesis, \(\|u(t)-\bar u_0\|_2\le Ce^{-\lambda t}\) | Proved | Energy estimate, positivity of \(\varphi\), C5, Young and Poincaré. |
+| C7 | Under the same hypothesis, \(\|u(t)-\bar u_0\|_{L^p}\le C_pe^{-\lambda_p t}\) for all finite \(p\ge1\) | Proved | Uniform \(L^\infty\)-boundedness plus C6 and interpolation. |
+| C8 | Finite-\(p\) conditional stabilization requires no sign condition on \(\varphi'\) | Proved | C3–C7 use only \(\min_I\varphi>0\) and bounded \(|\varphi'|\) on the signal range. |
+| C9 | Qin–Zheng 2026 bounded solutions converge exponentially to \((\bar u_0,1/\alpha)\) in \(L^p\times W^{1,\infty}\) for every finite \(p\) | Proved | Their theorem supplies the bounded classical solution; C4–C8 supply stabilization. |
+| C10 | General principle for \(u_t=\Delta(\varphi(v)u),\ v_t=\Delta v+uF(v)\) under \(F(v_*)=0\) and \((s-v_*)F(s)\le-\beta(s-v_*)^2\) | Proved | See `GENERAL_DISSIPATIVE_KINETICS.md`. Root condition is explicit after P0 audit. |
+| C11 | No same-model published exponential-stabilization result for the exact Qin–Zheng 2026 system was located in the 2026-09-09 deep audit | Observed | Searches included exact equations/title, stabilization/large-time/global-dynamics variants, author follow-ups, and nearby 2025–2026 literature. This is not an open-status certificate. |
+| C12 | The abstract dissipativity-to-stabilization theorem is new | Observed | No theorem with the same abstract hypothesis/conclusion was located, but pure-consumption and indirect-signal predecessors make novelty risk nontrivial. Do not certify novelty yet. |
+| C13 | \(\|u(t)-\bar u_0\|_\infty\le Ce^{-\lambda t}\) | Observed | Likely follows from uniform parabolic Hölder regularity plus C6 and Hölder/L2 interpolation; not yet promoted until the regularity step is fully sourced/proved. |
 
-## Explicit coercivity constant
+## Explicit coercivity constant under \(0\le \rho\le U\)
 
 Let \(C_P\) satisfy \(\|f-f_\Omega\|_2\le C_P\|\nabla f\|_2\). From
 \[
@@ -48,29 +51,21 @@ The standard Neumann semigroup estimate
 \]
 has an integrable singularity because \(p>n\). Hence \(\|\nabla w(t)\|_\infty\le Ce^{-\mu t}\). The spatial mean of \(w\) is bounded by \(|\Omega|^{-1/2}\|w\|_2\), and the \(W^{1,\infty}\)-Poincaré inequality then yields \(\|w\|_\infty\le Ce^{-\mu t}\).
 
-A convenient published source for the semigroup estimate is Lemma 1.1(ii) in the Springer chapter *Chemotaxis–Fluid System* (2022), which cites Winkler (2010), Lemma 1.3, and Cao (2015), Lemma 2.1.
+## C6–C8 closure
 
-## C6 closure
-
-Let \(q=u-\bar u_0\), so \(\int_\Omega q=0\). Since \(v\in[0,M]\), define
+Let \(q=u-\bar u_0\), so \(\int_\Omega q=0\). On the bounded signal range define
 \[
-\varphi_*:=\min_{[0,M]}\varphi>0,
-\qquad L_\varphi:=\max_{[0,M]}|\varphi'|<\infty.
+\varphi_*:=\min\varphi>0,
+\qquad L_\varphi:=\max|\varphi'|<\infty.
 \]
 Then
 \[
 \frac12\frac d{dt}\|q\|_2^2
 =-\int\varphi(v)|\nabla q|^2
--\int u\varphi'(v)\nabla q\cdot\nabla v
+-\int u\varphi'(v)\nabla q\cdot\nabla v.
 \]
-and Young's inequality gives
-\[
-\frac12\frac d{dt}\|q\|_2^2
-\le -\frac{\varphi_*}{2}\|\nabla q\|_2^2
-+\frac{U^2L_\varphi^2}{2\varphi_*}\|\nabla v\|_2^2.
-\]
-Using C5 and Poincaré,
+Young and C5 give
 \[
 \frac d{dt}\|q\|_2^2+c\|q\|_2^2\le Ce^{-2\mu t},
 \]
-which yields exponential \(L^2\)-decay by Gronwall/ODE comparison.
+so C6 follows. Since \(q\) is uniformly bounded in \(L^\infty\), interpolation gives C7 for every finite \(p\). No sign of \(\varphi'\) enters this argument, proving C8.
