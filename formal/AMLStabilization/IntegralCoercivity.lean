@@ -100,7 +100,6 @@ theorem integralMassWeightedMeanEstimate
         (Real.sqrt m / m) * Real.sqrt (∫ x, ρ x * f x ^ 2 ∂μ) +
           (K * Cp / m) * grad := by
       field_simp [ne_of_gt hm]
-      ring
 
 /--
 Full integral coercivity reduction.  Poincare/mean decomposition and the two
