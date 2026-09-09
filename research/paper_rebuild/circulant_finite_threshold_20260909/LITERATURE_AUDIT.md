@@ -1,160 +1,267 @@
-# Literature audit (2026-09-09)
+# Literature audit (updated 2026-09-09)
 
-This note records external public literature relevant to the finite-global extremal problem. It is intentionally conservative about novelty and distinguishes a fixed underlying graph with arbitrary signatures from the more restrictive notion of a translation-invariant signed Cayley graph.
+This audit is deliberately conservative about novelty.  The paper studies a fixed underlying graph
 
-## 1. The natural general problem: minimize over signatures of a fixed graph
+\[
+C_N(1,s)
+\]
 
-Francesco Belardo, Sebastian M. Cioabă, Jack H. Koolen and Jianfeng Wang, **Open problems in the spectral theory of signed graphs**, *The Art of Discrete and Applied Mathematics* 1 (2018), #P2.10, DOI 10.26493/2590-9770.1286.d7b.
+and minimizes spectral radius over **all** edge signatures.  This is not the same problem as studying translation-invariant signed Cayley graphs, nor is it the same as analyzing one prescribed periodic signing.
 
-Problem 3.18 asks, for a fixed simple connected graph `G`, to determine the signature(s) minimizing the signed spectral radius. This is the cleanest broad framing for the present quantity
+## 1. The correct broad problem
 
-`m(N,s)=min_sigma rho(C_N(1,s),sigma)`.
+Francesco Belardo, Sebastian M. Cioabă, Jack H. Koolen and Jianfeng Wang, **Open problems in the spectral theory of signed graphs**, *The Art of Discrete and Applied Mathematics* 1 (2018), #P2.10, DOI `10.26493/2590-9770.1286.d7b`.
 
-The introduction should therefore present this paper as an exact/family-specific study of that fixed-underlying-graph optimization problem, not primarily as a response to one recent preprint.
+Problem 3.18 asks, for a fixed connected graph `G`, for signatures minimizing signed spectral radius.  This is the cleanest general framing for
 
-The same survey makes two writing distinctions that should be copied carefully:
+\[
+m(N,s)=\min_\sigma\rho(A_\sigma).
+\]
 
-- **switching equivalence** means changing signs by a diagonal `+-1` switching matrix;
-- **switching isomorphism** additionally allows a vertex permutation / graph isomorphism.
+Recommended introduction language:
 
-This matters for our flat equality classification: at `(8,3)` there are six labelled switching classes but one orbit after graph automorphisms.
+> We study the fixed-underlying-graph signing problem for the two-step circulants `C_N(1,s)`, seeking exact extrema and switching rigidity rather than optimizing within a prescribed structured family of signatures.
 
-The survey also stresses that for signed graphs the spectral radius need not equal the largest eigenvalue; Perron--Frobenius does not apply to the signed adjacency matrix. In the manuscript, `rho(A)=max |lambda_i(A)|` must be defined explicitly before any use of `lambda_max`.
+Do **not** write that spectral minimization over signatures is introduced here.
 
-## 2. Average-degree lower bound and weighing-matrix equality
+The same literature distinguishes carefully between switching and graph isomorphism.  Our paper should use:
 
-The Belardo--Cioabă--Koolen--Wang survey records Gregory's theorem: if a signed graph has average degree `k`, then every signature has spectral radius at least `sqrt(k)`, with equality exactly when the underlying graph is `k`-regular and the signed adjacency matrix is a symmetric weighing matrix of weight `k`.
+- **labelled switching class**: diagonal `+-1` switching on the fixed labelled graph;
+- **switching-isomorphism orbit**: switching followed by a graph automorphism/isomorphism.
 
-For our 4-regular circulants this immediately gives `rho(A_sigma)>=2`, and equality means `A_sigma^2=4I`. We may still give the one-line trace proof because it is elementary and because our contribution is the exact parameter/signature classification within `C_N(1,s)`, not the general lower bound itself.
+This distinction is essential at `(8,3)`, where the flat minimum has six labelled switching classes but one orbit after automorphisms.
 
-This also means that the phrases "flat signing", "orthogonal signing", or "weighing-matrix equality" should be connected explicitly to established weighing-matrix language.
+Also define explicitly
 
-## 3. Spectral radius two, cyclotomic signed graphs, and toral tessellations
+\[
+\rho(A)=\max_i|\lambda_i(A)|,
+\]
 
-James McKee and Chris Smyth, **Integer symmetric matrices having all their eigenvalues in the interval [-2,2]**, *Journal of Algebra* 317 (2007), 260--290, DOI 10.1016/j.jalgebra.2007.05.019; arXiv:0705.3599.
+because a signed adjacency matrix has no Perron--Frobenius reason for its spectral radius to equal its largest eigenvalue.
 
-They classify integer symmetric matrices, including signed graphs, whose spectra lie in `[-2,2]`. Their maximal cyclotomic signed graphs include the infinite 4-regular toral tessellation family `T_{2k}` with spectrum `{+-2}`. Therefore our theorem
+## 2. The trace floor and weighing matrices
 
-`m(N,s)=2 iff N=2s+2`
+The signed-graph literature records the average-degree lower bound: for average degree `k`, every signature has spectral radius at least `sqrt(k)`, with weighing-matrix equality in the regular case.  For our 4-regular graphs this gives `rho(A)>=2`, and equality is
 
-must be advertised only as an exact classification *inside the two-step circulant family*, together with its direct arithmetic proof and its labelled switching rigidity. We do not claim the general spectral-radius-two theory or the existence of 4-regular `A^2=4I` signings.
+\[
+A^2=4I.
+\]
 
-Yaoping Hou, Zikai Tang and Dijian Wang, **On signed graphs with just two distinct adjacency eigenvalues**, *Discrete Mathematics* 342 (2019), 111615, DOI 10.1016/j.disc.2019.111615, completely characterize connected signed graphs of maximum degree at most 4 having two adjacency eigenvalues. This is direct ambient overlap with our equality equation `A^2=4I` and must be cited in the flat section.
+We should still give the one-line trace proof
 
-Zoran Stanić, **Signed Toral Tessellations Whose Spectrum Consists of Exactly Two Symmetric Eigenvalues**, *Discrete Mathematics Letters* 17 (2026), 70--74, DOI 10.47443/dml.2025.225, revisits the known 4-regular toral tessellations and generalizes their repeating-pattern construction. The paper explicitly notes `A(T_{2k})^2=4I` and develops block conditions for larger repeating patterns.
+\[
+\operatorname{tr}A^2=4N,
+\]
 
-**Outstanding identification check.** Before submission, do not state without proof that every flat `C_{2s+2}(1,s)` signing is literally one of the standard drawn `T_{2k}` toral tessellations. The external literature establishes that our equality signings live inside the known degree-4/two-eigenvalue classification, but the exact graph-isomorphism identification with the conventional `T_{2k}` notation should be verified from the published drawing/definition. The safe statement is that the ambient `A^2=4I` phenomenon is established, while our contribution is the exact step-circulant parameter criterion and switching-class accounting.
+because it is shorter and makes the equality condition immediate.  But the paper must describe the ambient equality phenomenon as established weighing-matrix/two-eigenvalue theory.
 
-## 4. Signings, 2-lifts, and Ramanujan background
+## 3. Spectral radius two and two-eigenvalue signed graphs
 
-Noga Bilu and Nathan Linial, **Lifts, discrepancy and nearly optimal spectral gap**, *Combinatorica* 26 (2006), 495--519, DOI 10.1007/s00493-006-0029-7.
+James McKee and Chris Smyth, **Integer symmetric matrices having all their eigenvalues in the interval `[-2,2]`**, *Journal of Algebra* 317 (2007), 260--290, DOI `10.1016/j.jalgebra.2007.05.019`.
 
-Adam Marcus, Daniel Spielman and Nikhil Srivastava, **Interlacing families I: Bipartite Ramanujan graphs of all degrees**, *Annals of Mathematics* 182 (2015), 307--325, DOI 10.4007/annals.2015.182.1.7.
+They classify the ambient cyclotomic integer-symmetric/signed-graph phenomenon.  Therefore
 
-These works motivate spectral control by signatures and 2-lifts. The manuscript must be precise about the quantifier and about one-sided versus two-sided control: the MSS signing theorem controls the largest new eigenvalue in general, while the bipartite setting supplies spectral symmetry and hence the Ramanujan two-sided conclusion. It does not determine `min_sigma rho(A_sigma)` for a fixed nonbipartite step circulant.
+\[
+m(N,s)=2\iff N=2s+2
+\]
 
-Thus write these references as conceptual background, not as a black box for any theorem here.
+is to be advertised as an exact classification **inside the two-step circulant family**, not a general classification of signed graphs with spectral radius two.
 
-## 5. Standard switching reference
+Yaoping Hou, Zikai Tang and Dijian Wang, **On signed graphs with just two distinct adjacency eigenvalues**, *Discrete Mathematics* 342 (2019), 111615, DOI `10.1016/j.disc.2019.111615`, gives further direct ambient overlap with `A^2=4I` in maximum degree four.
 
-Thomas Zaslavsky, **Signed graphs**, *Discrete Applied Mathematics* 4 (1982), 47--74, DOI 10.1016/0166-218X(82)90033-6.
+Zoran Stanić, **Signed Toral Tessellations Whose Spectrum Consists of Exactly Two Symmetric Eigenvalues**, *Discrete Mathematics Letters* 17 (2026), 70--74, revisits the known 4-regular toral-tessellation examples.  We should not identify every flat `C_{2s+2}(1,s)` with a standard named toral tessellation unless the graph-isomorphism identification is checked explicitly.
 
-Use this as a primary signed-graph reference for balance/switching. The spanning-tree normalization used in our Hamilton gauge is standard: on a connected graph, switching can prescribe the signs on a fixed spanning tree. We nevertheless prove the particular Hamilton-path normalization in one sentence so that all finite enumeration counts are visibly complete.
+## 4. The key literature input for the new `sqrt(6)` theorem
 
-## 6. Recent extremal signed-graph writing models
+Gary Greaves, Jack Koolen, Akihiro Munemasa, Yoshio Sano and Tetsuji Taniguchi, **Edge-signed graphs with smallest eigenvalue greater than `-2`**, *Journal of Combinatorial Theory, Series B* 110 (2015), 90--111, DOI `10.1016/j.jctb.2014.07.006`; arXiv:1309.5178.
 
-Several papers are useful less for theorem overlap than for presentation style.
+This is now the most important external theorem used in the paper.
 
-- Dijian Wang, Wenkuan Dong, Yaoping Hou and Deqiong Li, **On signed graphs whose spectral radius does not exceed `sqrt(2+sqrt(5))`**, *Discrete Mathematics* 346 (2023), 113358, DOI 10.1016/j.disc.2023.113358. It treats spectral radius (not merely index) and cleanly isolates hereditary/interlacing reductions.
-- Wang, Hou and Li, **Extremal results for `C_3^-`-free signed graphs**, *Linear Algebra and its Applications* 681 (2024), 47--65. Its theorem statements put the extremal inequality and equality/switching condition together.
-- Brunetti and Stanić, **Unbalanced signed graphs with extremal spectral radius or index**, *Computational and Applied Mathematics* 41 (2022), 118. It defines the extremal family/quantity early and separates spectral radius from index.
-- Ghorbani and Majidi, **Complete signed graphs with largest maximum or smallest minimum eigenvalue**, *Discrete Mathematics* 347 (2024), 113860. Its introduction explicitly warns that signed spectral radius and index need not coincide.
+Their paper classifies connected edge-signed graphs with smallest eigenvalue strictly greater than `-2`.  In particular:
 
-For our manuscript the preferred style is therefore: define `m(N,s)` on page 1, state the exact theorems immediately, and postpone gauge/flux machinery to the proof sections.
+- Theorem 6 classifies the integrally represented cases through tree, unicyclic and one doubled-edge representation graphs;
+- Theorem 19 shows that every exceptional class has order `6`, `7`, or `8` (respectively 32, 233 and 1242 switching classes).
 
-## 7. Signed Cayley/circulant literature: scope distinction
+Our use is sharply delimited.  Under the hypothesis
 
-There is a growing literature on signed Cayley graphs, including work on arithmetic spectra and strongly regular signed Cayley graphs. Those papers typically impose group structure on the **signature itself** (translation-invariant or generated from a Cayley datum).
+\[
+\rho(A_\sigma)^2<6,
+\]
 
-Our optimization is different: the *underlying graph* is the Cayley/circulant graph `C_N(1,s)`, but the minimum ranges over **all** signatures. Any literature comparison must say this explicitly; otherwise a reader can mistakenly think the all-signing extremum has already been reduced to translation-invariant signatures.
+we first prove internally that the integral defect
 
-Finite Fourier analysis appears in our all-even-order construction only after we explicitly choose one finite signing. It is a proof of an upper bound for the all-signing minimum, not a restriction of the optimization domain.
+\[
+B=A_\sigma^2-4I
+\]
 
-## 8. Signed circulants in 2026
+is exactly a `+-1` signing of a forced 4-regular parity graph.  Therefore `-B` has smallest eigenvalue greater than `-2`.  Greaves et al. are invoked only to rule out large connected 4-regular defect components.  An elementary degree audit of their representation-graph cases then leaves only `K_5`; the exceptional cases are automatically of order at most eight.
 
-Vaibhav Suvagiya, **Signed circulants at the Ramanujan bound**, arXiv:2607.18334 (submitted 19 July 2026).
+Everything after this reduction--orders 5,6,7,8, the cubic `x^3-7x+7`, and the order-14 lifting--is proved explicitly in our paper.
 
-The current v1 abstract studies `C_n(1,2)` for even `n`, an `F_2` quadrilateral/triangle-flux system, four switching classes inside that system, explicit spectra, and exhaustive switching-class computations for `n in {8,10,12,14,16,18}`. It conjectures the computed twisted value to be the global minimum for all even `n`; for odd `n` the quadrilateral system is inconsistent.
+This is the correct way to write the dependency.  Avoid phrases such as “by the classification, our theorem follows”: the circulant-specific defect reduction and liftability are the actual new mathematical work.
 
-Relevance to this paper:
+### Audit note on the doubled-edge case
 
-- useful very recent motivation for fixed-circulant spectral minimization and flux coordinates;
-- its finite `s=2` computations overlap a motivating corner of our parameter space;
-- our paper must not be framed as a counterexample note to it;
-- our all-even-order theorem concerns every admissible step `s` but gives a threshold upper bound, not the claimed exact `s=2` global formula;
-- our main exact results are instead the flat/equality hierarchy and the complete all-signing threshold transition on `N=3s`.
+The line-graph degree of either parallel edge is
 
-Any statement that a theorem here settles, improves, or contradicts Suvagiya's conjecture must be checked against the full primary text and exact quantifiers, not inferred from an abstract or from numerical values.
+\[
+d_H(a)+d_H(b)-3,
+\]
 
-## 9. A useful new narrative after the rebuild
+not `d_H(a)+d_H(b)-2`, because the other parallel edge would otherwise be counted twice.  Thus 4-regularity gives `d_H(a)+d_H(b)=7`.  This correction has been incorporated into the proof source.
 
-The flat/off-flat part now has a stronger structure than the original draft. The paper can state a **finite spectral hierarchy**:
+## 5. Current signed-graph reference for terminology
 
-1. `m(N,s)=2` exactly on the flat line `N=2s+2`;
-2. the first off-flat value `sqrt(5)` occurs exactly at `(5,2)` and `(10,3)`;
-3. every remaining parameter pair satisfies `m(N,s)>=sqrt(4+sqrt(2))`, and `(8,2)` attains this second gap.
+Zoran Stanić, **Spectra of Signed Graphs**, London Mathematical Society Lecture Note Series 504, Cambridge University Press, 2026, DOI `10.1017/9781009853316`.
 
-The matrix engine is the integral defect
+The book was published online 15 May 2026 and in print in June 2026.  It is a useful current secondary source for:
 
-`B=A_sigma^2-4I`.
+- balance and switching terminology;
+- adjacency spectral conventions;
+- signed line graphs and the `-2` boundary;
+- signed graphs with few eigenvalues.
 
-This is a much stronger introductory story than presenting `sqrt(5)` merely as a universal bound. It also interfaces naturally with the weighing-matrix/two-eigenvalue literature without duplicating its general classification.
+Use primary papers for theorem dependence (especially Greaves et al.); use the monograph for modern terminology and context.
 
-A second independent axis is the `sqrt(8)` threshold:
+## 6. Signatures, 2-lifts and Ramanujan motivation
 
-- every even order admits a finite signing below `sqrt(8)`;
-- on `N=3s`, the exact iff classification is `s` even or `s in {3,5}`;
-- odd `s>=7` satisfy the quantitative all-signing obstruction `m(3s,s)^2>=8+2/139`.
+Noga Bilu and Nathan Linial, **Lifts, discrepancy and nearly optimal spectral gap**, *Combinatorica* 26 (2006), 495--519.
 
-The introduction should present these as two finite-global phenomena: a **low-end spectral hierarchy** and a **Ramanujan-scale threshold transition**.
+Adam Marcus, Daniel Spielman and Nikhil Srivastava, **Interlacing families I: Bipartite Ramanujan graphs of all degrees**, *Annals of Mathematics* 182 (2015), 307--325.
 
-## 10. Suggested theorem-first wording
+These papers motivate controlling spectra by signs and lifts.  They do **not** determine
+
+\[
+\min_\sigma\rho(A_\sigma)
+\]
+
+for a prescribed nonbipartite circulant.  In particular, do not write that MSS supplies a two-sided spectral-radius bound for every fixed graph/signature problem; the quantifiers are different.
+
+## 7. Standard switching reference
+
+Thomas Zaslavsky, **Signed graphs**, *Discrete Applied Mathematics* 4 (1982), 47--74.
+
+The Hamilton-path gauge is standard spanning-tree switching.  We should nevertheless prove its completeness in one sentence because every exact enumeration count depends on it.
+
+## 8. Recent extremal-paper writing models
+
+Useful presentation models include:
+
+- Wang--Dong--Hou--Li, **On signed graphs whose spectral radius does not exceed `sqrt(2+sqrt(5))`**, *Discrete Mathematics* 346 (2023), 113358;
+- Wang--Hou--Li, **Extremal results for `C_3^-`-free signed graphs**, *Linear Algebra and its Applications* 681 (2024), 47--65;
+- Brunetti--Stanić, **Unbalanced signed graphs with extremal spectral radius or index**, *Computational and Applied Mathematics* 41 (2022), 118;
+- Ghorbani--Majidi, **Complete signed graphs with largest maximum or smallest minimum eigenvalue**, *Discrete Mathematics* 347 (2024), 113860.
+
+The stylistic lesson is consistent:
+
+1. define the extremal quantity immediately;
+2. state exact inequality and equality/rigidity together;
+3. isolate interlacing/reduction lemmas before classifications;
+4. distinguish spectral radius from index;
+5. keep computational classification in a self-contained lemma/certificate section.
+
+Our manuscript should imitate that theorem-first architecture.
+
+## 9. Signed Cayley/circulant scope
+
+A signed Cayley graph in the literature often requires the **signature itself** to come from group/Cayley data.  Our problem does not: only the underlying graph is circulant, while `sigma` ranges over all edge signatures.
+
+Thus finite Fourier diagonalization is used only after selecting an explicit signing for an upper bound or a finitely reduced equality case.  It is never a reduction of the global minimization domain.
+
+This sentence should appear explicitly in the introduction or preliminaries, because otherwise a reader may incorrectly interpret `m(N,s)` as a translation-invariant optimization.
+
+## 10. Suvagiya 2026
+
+Vaibhav Suvagiya, **Signed circulants at the Ramanujan bound**, arXiv:2607.18334v1 (19 July 2026).
+
+The preprint studies `C_n(1,2)` for even `n`, a quadrilateral/alternating-triangle-flux system, four switching classes inside that system, explicit spectra, and exhaustive enumeration for `n in {8,10,12,14,16,18}`.  It conjectures the twisted value to be the global minimum for all even `n`; the abstract states that the quadrilateral system is inconsistent for odd `n`.
+
+Correct relation to our paper:
+
+- it is recent motivation for fixed-circulant signing questions and flux coordinates;
+- it concerns the special step `s=2` and a particular constrained flux system;
+- our paper minimizes over all signatures for all admissible `s`;
+- our exact results include the complete strict sub-`sqrt(6)` classification, the exact `N=4s` resonance, the universal odd-order `sqrt(6)` floor, and the complete `N=3s` `sqrt(8)` transition.
+
+Do not frame the paper as a counterexample note, and do not claim to settle Suvagiya's all-even `s=2` exact conjecture unless a theorem explicitly does so.
+
+## 11. Revised theorem-first narrative
+
+The previous “flat minimum + gap + resonance” narrative is now too weak.  The introduction should present two threshold scales.
+
+### Threshold I: complete finite spectrum below `sqrt(6)`
+
+Let `beta` be the largest root of `x^3-7x+7`.  The paper proves
+
+```text
+m(N,s)^2 < 6 iff
+
+N=2s+2,                         with m^2=4; or
+(N,s)=(5,2),(10,3),             with m^2=5; or
+N=4s,                           with m^2=4+2 cos(pi/(2s)); or
+N=14 and s=3,4,5,               with m^2=4+beta.
+```
+
+Every other parameter pair lies at or above `sqrt(6)`.  In particular,
+
+\[
+N\ge7\text{ odd}\quad\Longrightarrow\quad m(N,s)\ge\sqrt6
+\]
+
+for every admissible step.
+
+This is the strongest opening theorem and should precede the `N=3s` material.
+
+### Threshold II: transition at `sqrt(8)`
+
+- every even order has an explicit finite signing below `sqrt(8)`;
+- on `N=3s`,
+  \[
+  m(3s,s)<\sqrt8\iff s\text{ is even or }s\in\{3,5\};
+  \]
+- odd `s>=7` obey
+  \[
+  m(3s,s)^2\ge8+2/139.
+  \]
+
+This makes the role of the triangle resonance conceptually cleaner: odd order already forces a `sqrt(6)` floor globally, while the chord triangles on `N=3s` drive an additional phase transition through `sqrt(8)`.
+
+## 12. Suggested abstract/introduction wording
 
 Safe wording:
 
-> For a fixed two-step circulant `C_N(1,s)` we minimize the spectral radius over all edge signatures. We first determine the bottom of this finite extremal problem: the trace bound is attained exactly on `N=2s+2`; the first off-flat value `sqrt(5)` occurs only for two parameter pairs; and all remaining pairs are separated by a further universal gap. We then turn to the threshold `sqrt(8)`, proving a finite construction for every even order and an exact transition on the resonance line `N=3s`.
+> For the two-step circulant `C_N(1,s)` we minimize the spectral radius over all edge signatures.  Using the integral two-walk defect `A_sigma^2-4I`, we completely classify the parameter pairs whose minimum lies below `sqrt(6)`, including an exact resonance family and a sporadic order-14 defect class.  As a consequence every odd order at least seven has minimum at least `sqrt(6)`.  At the larger threshold `sqrt(8)`, every even order admits a finite sub-threshold signing, whereas the resonance family `N=3s` exhibits an exact parity transition, with a uniform quantitative obstruction for all odd `s>=7`.
 
-Avoid:
+Avoid before final priority checking:
 
-- "we introduce spectral minimization of signed graphs";
-- "we discover all 4-regular two-eigenvalue signed graphs";
-- "MSS gives a spectral-radius signing for every graph";
-- "signed Cayley results cover arbitrary signatures";
-- "first", "sharpest known", or "previously unknown" before final priority checks.
+- “first complete classification”;
+- “sharpest known”;
+- “new signed-line-graph classification”;
+- “MSS implies our construction”;
+- “all signed Cayley graphs”.
 
-For equality statements, write `if and only if` in the theorem statement and separately specify whether classification is by labelled switching equivalence or switching isomorphism.
+## 13. Novelty boundary after the new theorem
 
-For the computer-assisted odd obstruction, the global theorem should remain an ordinary mathematical theorem; the finite computation belongs in an isolated exact lemma with a complete state space, exact integer acceptance inequality, certificate format, and reproducibility script.
+Subject to final primary-source searching, the manuscript can safely describe the following content without a priority adjective:
 
-## 11. Novelty claims presently safe to make
+1. exact trace-floor parameter and switching classification within `C_N(1,s)`;
+2. complete classification of every parameter pair with `m(N,s)<sqrt(6)`;
+3. exact `N=4s` finite-global extremum and rigidity;
+4. the order-14 root `x^3-7x+7` exception and its two minimizing labelled switching classes;
+5. universal odd-order `sqrt(6)` lower bound;
+6. all-even-order finite sub-`sqrt(8)` construction;
+7. exact `N=3s` threshold transition and the uniform odd obstruction;
+8. finite-state local-to-global propagation for the odd triangle resonance.
 
-Subject to a final primary-source search, the manuscript can safely describe its *mathematical content* without claiming priority:
+## 14. Journal assessment
 
-1. an exact parameter and switching classification of trace-bound equality within signed two-step circulants;
-2. a sharp low-end hierarchy `2`, `sqrt(5)`, then `sqrt(4+sqrt(2))` for the finite minimization problem;
-3. a finite all-even-order sub-`sqrt(8)` theorem;
-4. a complete threshold classification on `N=3s`, including exact exceptional cases and a uniform all-signing odd obstruction;
-5. a local signed-triangle finite-state mechanism that propagates a finite exact certificate to infinitely many finite graphs.
+The complete sub-`sqrt(6)` theorem materially strengthens the paper because it is no longer organized around a single resonance line.  The package now contains a global finite classification plus a second, sharper threshold transition.
 
-Do **not** write “first”, “new”, “sharpest known”, or “previously unknown” until the final literature sweep is complete.
-
-## 12. Journal-level assessment
-
-With the strengthened package (exact flat theorem + complete `sqrt(5)` equality + universal sharp second gap + universal even-order theorem + complete `N=3s` threshold theorem + local rigidity mechanism), realistic targets are:
+Reasonable targets remain:
 
 - *Journal of Graph Theory*;
 - *European Journal of Combinatorics*;
 - *Linear Algebra and its Applications*;
 - *Electronic Journal of Combinatorics*.
 
-The new low-end hierarchy materially improves the structural content and should help JGT/EJC positioning. The hard negative `sqrt(8)` classification is still concentrated on chord-cycle length 3, so a JCTB-level claim remains premature unless a genuinely broader odd-`k` theorem or a substantially more conceptual replacement of the nine-column certificate is obtained.
+The case for JGT/EJC is now substantially stronger than before.  A JCTB submission would still be ambitious because the `sqrt(8)` negative theorem remains computer-assisted and special to triangle resonance; a conceptual classification at the equality boundary `m^2=6` or a broader odd-`k` `sqrt(8)` theorem would strengthen that case further.
