@@ -1,72 +1,57 @@
 ---
 name: math-research-full-push
-description: Use when conducting long-horizon theorem-driven mathematical research in a repository: mining papers or remarks, attacking open problems, strengthening theorems, auditing literature/novelty, formalizing in Lean, or escalating manuscripts. Do not use for routine textbook exercises or short factual math questions.
+description: Use when doing long-horizon theorem research in a repository: mining papers/remarks, attacking or strengthening problems, auditing novelty, formalizing proofs, or escalating a manuscript. Do not use for routine textbook exercises or short factual math questions.
 ---
 
 # Math Research Full-Push v5
 
-Operate as a theorem-research agent. Act before narrating. Use the repository as ground truth and preserve failed mathematics.
+Act as a theorem-research agent. Execute before narrating; use repository state as ground truth.
 
-## Core contract
+## Non-negotiable rules
 
-1. Evidence states are strict: **Observed**, **Verified** finite, **Proved**, **Published/Established**. Never silently promote them.
-2. Finite computation proves an infinite claim only after a proved finite reduction. Prefer exact arithmetic.
-3. “Continue” means load current repo state and execute the highest-value unresolved task without asking what to continue.
-4. Falsify vulnerable or stronger statements before long proof investment.
-5. A first correct theorem normally triggers strengthening and a fresh prior-art check.
-6. Lean counts only after aligned statements compile without `sorry`, `admit`, placeholder/smuggled axioms.
-7. Simulated referee feedback is not real peer review. Mathematical objections should become mathematical obligations before defensive prose.
-8. Novelty, open status, sharpness, completeness, “final theorem”, and submission readiness require explicit gates.
+- Evidence is exactly **Observed / Verified finite / Proved / Published-Established**; never silently promote it.
+- Finite computation proves an infinite claim only after a proved finite reduction; prefer exact arithmetic.
+- `继续` means load repo state and execute the highest-value unresolved task without asking what to continue.
+- Falsify vulnerable/stronger claims before long proof investment; after a real theorem upgrade, re-check prior art.
+- Lean counts only when the aligned statement compiles without `sorry`, `admit`, placeholder or smuggled axioms.
+- Preserve counterexamples, failed routes and prior-art collisions.
+- Simulated review is not peer review. Convert mathematical objections into mathematical obligations before defensive prose.
+- Novelty, open status, sharpness, “final theorem” and submission readiness require explicit evidence.
 
-## Entry routing
+## Route
 
-- **PDF / theorem / Remark / conjecture supplied:** use it as Seed 0; extract exact statement, definitions, hypotheses, local references and limitations; then read [literature mode](references/literature.md).
-- **Continue/strengthen an existing repo theorem:** load the strongest current theorem, proof graph, failed directions, literature status and recent commits; then choose P0–P7 below.
-- **New topic requested:** select recent theorem-driven seeds with a precise gap, falsification route and theorem ceiling; run literature mode before committing to a target.
+- **Paper/PDF/Remark supplied:** make it Seed 0; extract exact statement, hypotheses, local references and limitations; read [literature](references/literature.md).
+- **Existing campaign:** load strongest theorem, proof/state files, failed directions, literature status and recent commits; choose the priority below.
+- **New topic:** prefer a recent precise gap with falsification route and theorem ceiling; run literature mode before committing.
 
-## Priority queue
+## Priority
 
-- **P0 correctness:** false lemma, wrong equivalence, hidden assumption, missing case, invalid reduction, theorem/paper mismatch.
-- **P1 falsification:** boundary cases, stronger variants, equality/sharpness, hypothesis removal.
-- **P2 novelty/provenance:** dangerous prior art, open-status uncertainty, terminology collision.
-- **P3 proof bottleneck:** obligation with greatest impact on the headline theorem.
-- **P4 strengthening:** broader scope, fewer hypotheses, sharper bounds, equality, iff, classification, stability, unification.
-- **P5 verification:** Lean or exact proof-package gap.
-- **P6 publication:** manuscript/referee escalation; mathematical issues jump back to P0–P5.
-- **P7 packaging:** render/submission work only after provisional mathematical freeze.
+`P0 correctness` > `P1 cheap falsification` > `P2 novelty/provenance` > `P3 main proof bottleneck` > `P4 strengthening` > `P5 Lean/exact verification` > `P6 manuscript/referee` > `P7 packaging after freeze`.
 
-For ties prefer: headline impact × uncertainty reduction ÷ execution cost.
+For ties prefer headline impact × uncertainty reduction ÷ execution cost.
 
-## Mode references
+## Load only what is needed
 
-Read only the relevant module:
+- background / open status / prior art → [literature](references/literature.md)
+- proof DAG / falsification / strengthening → [proof](references/proof.md)
+- Lean / computer-assisted proof → [verification](references/verification.md)
+- JCTA-style writing / referee / freeze → [publication](references/publication.md)
 
-- literature/background/open status → [literature](references/literature.md)
-- proof DAG/falsification/finite reduction → [proof](references/proof.md)
-- theorem upgrades → [strengthening](references/strengthening.md)
-- Lean/computer-assisted proof → [verification](references/verification.md)
-- JCTA-style writing/referee/freeze → [publication](references/publication.md)
+## Research loop
 
-## Repository state
+Load state → choose priority → execute one concrete mathematical batch → adversarially audit → update evidence/theorem → persist files/commit → continue.
 
-Maintain only artifacts that the campaign needs, typically `RESEARCH_STATE.md`, `CLAIM_LEDGER.md`, `PROOF_GRAPH.md`, `HANDOFF.md`; add literature audit files, `JOURNAL_PROGRESSION.md`, verification logs and supplement data when relevant. Commit meaningful mathematical deltas separately. Preserve counterexamples, failed proof routes and prior-art collisions.
+A batch must create evidence or remove uncertainty: literature comparison, counterexample, structural lemma, stronger theorem, closed proof branch, exact reduction/certificate, compiling formal result, or a referee issue closed by stronger mathematics. Do not stop at a plan.
 
-## Control loop
-
-Load state → select P0–P7 → execute one concrete mathematical batch → adversarially audit it → update evidence/theorem → persist files/commit → continue.
-
-A batch must produce evidence or remove uncertainty: a literature comparison, counterexample, structural lemma, theorem upgrade, closed proof branch, exact finite reduction/certificate, compiling Lean result, or referee issue closed by stronger mathematics. Avoid batches whose only output is a plan.
+Maintain only needed control artifacts, typically `RESEARCH_STATE.md`, `CLAIM_LEDGER.md`, `PROOF_GRAPH.md`, `HANDOFF.md`; add literature/referee/verification files when relevant.
 
 ## Short commands
 
-- **继续 / 继续推进:** resume the highest-priority open obligation.
-- **补背景 / 继续查文献:** resume the literature frontier, not a fresh broad search.
-- **继续增强 / 升级定理:** falsify stronger forms, strengthen, then re-check prior art.
-- **推进 Lean:** formalize the highest-leverage dependency and compile.
-- **按 JCTA/期刊标准推进:** use publication mode; do not merely polish prose.
-- **模拟审稿:** attack correctness, novelty, boundaries, black boxes and completeness; create explicit obligations.
-- **最终定理:** state only the strongest theorem whose proof, falsification, literature and requested verification gates pass.
+- `补背景/查文献`: resume the literature frontier, not broad search.
+- `继续增强/升级定理`: falsify stronger forms, strengthen, re-check prior art.
+- `推进 Lean`: formalize the highest-leverage dependency and compile.
+- `按 JCTA/期刊标准推进`: run publication mode; do not merely polish prose.
+- `模拟审稿`: attack correctness, novelty, boundaries, black boxes and completeness; create obligations.
+- `最终定理`: state only the strongest result whose proof, falsification, literature and requested verification gates pass.
 
-## Done
-
-A campaign is done only when the mathematical frontier is reproducible: provenance is current, evidence labels are honest, proof dependencies close, strengthening has been attempted, proof-critical computation is mathematically justified, requested Lean work compiles, manuscript claims match the proof, unresolved risks are explicit, and the repository can be continued without reconstructing hidden state.
+Done means the frontier is reproducible: current provenance, honest evidence labels, closed dependencies, attempted strengthening, justified proof-critical computation, requested formal build, aligned manuscript claims, explicit residual risks, and enough repository state for immediate continuation.
