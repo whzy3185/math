@@ -1,188 +1,238 @@
 # Proof dependency map
 
-This map deliberately contains no dependency on `paper/circulant-periodic-gap-20260909`.
+This paper is self-contained and has no dependency on `paper/circulant-periodic-gap-20260909`.
 
-## A. Structural preliminaries
+## A. Finite signed-graph preliminaries
 
-`Switching invariance`
-→ switch a connected signing to Hamilton gauge: first `N-1` step-one edges positive, seam holonomy `alpha=+-1`.
-
-`Hamilton-gauge completeness`
-→ remaining data consist of `alpha` and `N` chord signs, i.e. `2^(N+1)` representatives; in the `N=3s` strip representation these are `alpha` plus `s` arbitrary signed-triangle states.
-
-`Rayleigh/interlacing`
-→ any principal window whose squared norm exceeds a threshold forces the full graph above that threshold.
-
-## B. Low-end finite spectral hierarchy
+`switching invariance`
+→ Hamilton-path gauge for `C_N(1,s)`
+→ completeness of finite enumeration (`alpha` plus the remaining chord signs).
 
 `tr(A^2)=4N`
 → `rho(A)>=2`
 → equality iff `A^2=4I`.
 
-`two-step displacement 2`
-→ outside `N=2s+2`, vertices `0,2` have an odd number of common neighbors
-→ `(A^2)_{0,2}` is a nonzero integer
-→ `A^2 != 4I`.
+Throughout the structural sections put
 
-`B=A^2-4I` integral symmetric, diagonal zero
-+ `B!=0`
-→ a nonzero off-diagonal entry has absolute value at least 1
+`B=A^2-4I`, so `rho(A)^2=4+lambda_max(B)`.
+
+## B. The parity-defect engine
+
+Over `F_2[Z_N]`, with
+
+`p=x+x^-1+x^s+x^-s`,
+
+Frobenius gives
+
+`p^2=x^2+x^-2+x^(2s)+x^(-2s)`.
+
+The parameter range permits exactly two collision patterns, hence
+
+```text
+supp(B mod 2) = empty                         if N=2s+2,
+                 Cay(Z_N,{+-2})               if N=4s,
+                 Cay(Z_N,{+-2,+-2s})          otherwise.
+```
+
+This one lemma feeds four branches of the paper.
+
+### B1. Flat line
+
+`B=0`
+→ parity defect must be empty
+→ `N=2s+2`.
+
+`explicit alternating Hamilton-gauge signing`
+→ `B=0`
+→ `m(N,s)=2`.
+
+`mixed two-walk channel`
+→ two labelled equality switching classes except `(8,3)`.
+
+`(8,3)=K4,4`
+→ Hadamard block condition
+→ six labelled switching classes, one switching-isomorphism orbit.
+
+### B2. First two discrete spectral gaps
+
+Outside the flat line `B!=0` and is integral, symmetric, zero diagonal.
+
+`nonzero 2x2 principal block`
 → `lambda_max(B)>=1`
 → `rho(A)^2>=5`.
 
-`alternating finite construction on N=2s+2`
-→ `A^2=4I`
-→ `m(N,s)=2`.
+If `lambda_max(B)=1`:
 
-`mixed channel s-1` (except `s=3`)
-→ equality forces `tau_i=-tau_{i-1}`
-→ exactly two labelled Hamilton-gauge switching classes.
+`I-B>=0 + integrality`
+→ every nontrivial support component is a negative clique up to switching
+→ parity defect forces `N=5` or `10`
+→ exact exclusions/constructions
+→ `m=sqrt(5)` exactly at `(5,2),(10,3)`.
 
-`(8,3)=K4,4`
-→ bipartite block `H`
-→ equality iff `HH^T=4I`
-→ six normalized labelled switching classes; one orbit after row/column permutations.
+If `0<lambda_max(B)<sqrt(2)`:
 
-### B.1 Defect-energy refinement
-
-Put `B=A^2-4I`, `M=lambda_max(B)`.
-
-`A^2 >= 0`
-→ every eigenvalue `mu(B)` lies in `[-4,M]`
-→ `(M-mu)(mu+4)>=0`
-→ `mu^2 <= (M-4)mu+4M`.
-
-Sum over the spectrum and use `tr B=0`:
-`tr B^2 <= 4MN`
-→
-`rho(A)^2 = 4+M >= 4 + tr(B^2)/(4N)`.
-
-This packages the size of all two-step cancellation defects into a quantitative spectral lower bound.
-
-### B.2 Classification of equality in the sqrt(5) bound
-
-Assume `rho(A)^2=5`, hence `lambda_max(B)=1`.
-
-`2x2 interlacing + integrality`
-→ every off-diagonal entry of `B` belongs to `{0,+-1}`.
-
-`I-B >= 0`
-→ Gram representation by unit vectors.
-If `B_ij=+-1`, the corresponding unit vectors are parallel or antiparallel.
-Along each nontrivial connected component all vectors are parallel up to sign; two vertices in that component therefore cannot have `B_ij=0`.
-→ every nontrivial component of the support graph of `B` is complete.
-Moreover its edge signs switch to all negative.
-
-The parity of `(A^2)_{ij}` depends only on the underlying graph. In the group algebra `F_2[Z_N]`, with
-`p=x+x^-1+x^s+x^-s`,
-we have
-`p^2=x^2+x^-2+x^(2s)+x^(-2s)`.
-Therefore the forced support graph of `B` is:
-
-- empty if `N=2s+2`;
-- `Cay(Z_N,{+-2})` if `N=4s`;
-- `Cay(Z_N,{+-2,+-2s})` otherwise.
-
-On `N=4s`, its components are cycles of length `2s>=4`, hence cannot be clique components.
-Otherwise it is 4-regular; because `2s` is a multiple of `2`, its connected components are exactly the cosets of `<2>`. Thus it is connected for odd `N` and has two components for even `N`. Clique components must be `K_5`, forcing `N=5` or `10`.
-
-- `N=5`: necessarily `s=2`; an explicit 5-by-5 conference core `W` with `W^2=5I-J` gives `rho(W)=sqrt(5)`.
-- `N=10`: `s=4` is the flat case; `s=2` and `s=3` remain.
-- `(10,2)` exclusion: equality forces all even two-walk channels to cancel. If `t_i` is the signed flux of the triangle `(i,i+1,i+2)`, the cancellation equations give `t_{i+1}=-t_i`. But a mandatory defect triangle on vertices `(i,i+2,i+4)` has sign `t_i t_{i+2}=+1`, contradicting the fact that every defect `K_5` must switch to an all-negative clique, whose triangles are negative.
-- `(10,3)` attainment: after ordering the two parity classes, `C_10(1,3)=K_{5,5}` minus a perfect matching. The block signing `A=[[0,W],[W,0]]` has `A^2=diag(5I-J,5I-J)` and spectral radius `sqrt(5)`.
-
-Therefore `m(N,s)=sqrt(5)` iff `(N,s)=(5,2)` or `(10,3)`.
-
-### B.3 Integral second gap
-
-Let `B` be any nonzero integral symmetric zero-diagonal matrix with `lambda_max(B)<sqrt(2)`.
-
-`2x2 interlacing`
-→ every nonzero off-diagonal entry is `+-1`.
-
-If a connected component of the support is not complete, choose a shortest path whose first and third vertices are nonadjacent. Its `3x3` principal matrix is a signed `P_3`, whose largest eigenvalue is `sqrt(2)`, contradiction.
-→ every support component is complete.
-
-If a support triangle has positive sign product, switching makes it all-positive and its largest eigenvalue is 2, contradiction.
-→ every triangle has negative sign product.
-→ each clique component is switching-equivalent to an all-negative clique.
-→ every nonzero block has largest eigenvalue exactly 1.
+`induced P3 interlacing`
+→ every support component is a clique
+→ triangle signs force negative clique blocks
 → `lambda_max(B)=1`.
 
-Consequently, for integral zero-diagonal defects arising here,
-`lambda_max(B)` has the hierarchy `0`, `1`, or at least `sqrt(2)`.
-Combining the `lambda_max(B)=0` flat classification and the `lambda_max(B)=1` classification gives
+Hence, away from the flat and `sqrt(5)` parameters,
 
-`m(N,s)^2 >= 4+sqrt(2)`
+`m(N,s)^2>=4+sqrt(2)`.
 
-for every parameter pair outside `N=2s+2` and `{(5,2),(10,3)}`.
+Equality analysis plus the parity support
+→ unique parameter `(8,2)`
+→ exact characteristic polynomial `(x^4-8x^2+14)^2`.
 
-Sharpness at `(8,2)`: in Hamilton gauge take seam holonomy `alpha=-1` and chord word
-`tau=(-1,1,-1,1,-1,1,1,-1)`.
-The exact characteristic polynomial is
-`(x^4-8x^2+14)^2`,
-so the squared spectral radius is `4+sqrt(2)`. Together with the universal lower bound this yields
-`m(8,2)^2=4+sqrt(2)`.
+### B3. Exact `N=4s` resonance
 
-## C. New all-even-order theorem
+On `N=4s`, below defect index 2, integrality plus parity forces `B` to be exactly two signed cycles of length `2s`.
 
-`N even`, signed shift `T^N=-I`, `D=diag((-1)^i)`
-→ `DT=-TD`
-→ for the alternating chord signing,
+`signed-cycle spectrum`
+→ each component has largest eigenvalue at least `2 cos(pi/(2s))`
+→ global lower bound.
+
+`finite anti-periodic signed shift T^(4s)=-I`
++ `alternating D`, `DT=-TD`
+→ `A^2=4I+T^2+T^-2`
+→ finite roots `z^(4s)=-1`
+→ exact upper bound
+
+`m(4s,s)^2=4+2 cos(pi/(2s))`.
+
+Mixed displacement `s+1`
+→ `D` must alternate.
+
+Vanishing displacement `2s`
+→ Hamilton holonomy `alpha=-1`
+→ exactly two labelled minimizing switching classes.
+
+### B4. Sub-six arithmetic obstruction
+
+Assume hypothetically `rho(A)^2<6`, so `M=lambda_max(B)<2`.
+
+`2x2 interlacing + integrality`
+→ every off-diagonal entry is `0,+-1`
+→ `supp B = supp(B mod 2)`.
+
+Thus in the generic case `B` is a signing of the fixed 4-regular parity graph
+
+`Gamma_Ns=Cay(Z_N,{+-2,+-2s})`.
+
+Cubic-moment lemma:
+
+`tr X=tr X^3=0`
+→ from `(M-mu)(mu+M)^2/M>=0`
+→ `lambda_max(X)^2>=tr(X^2)/n`.
+
+If `Gamma_Ns` is triangle-free:
+
+`tr B^2=4N`, `tr B^3=0`
+→ `lambda_max(B)>=2`
+→ contradiction
+→ `m(N,s)>=sqrt(6)`.
+
+Reduce each parity component to `C_q(1,t)`, where
+
+`d=gcd(N,2)`, `q=N/d`, and `t` is the reduced step.
+
+Three-increment classification:
+
+`C_q(1,t)` has a triangle iff
+
+`t=2` or `q=2t+1` or `q=3t`.
+
+Consequences:
+
+```text
+N odd, s!=2, N!=2s+1, N!=3s  =>  m(N,s)>=sqrt(6).
+
+k odd >=5, s>=3               =>  m(ks,s)>=sqrt(6).
+```
+
+This is the general odd-resonance lower theorem.
+
+## C. All-even-order sub-`sqrt(8)` theorem
+
+For `N` even choose anti-periodic signed shift `T^N=-I` and alternating diagonal `D`.
+
+`DT=-TD`
+→
 `A^2=4I+T^2+T^-2+(-1)^s(T^(2s)+T^(-2s))`.
 
-`finite Fourier: z^N=-1`
-→ squared eigenvalues
-`4+2 cos(2 theta)+2(-1)^s cos(2s theta)`, `theta=(2k+1)pi/N`
-→ `cos(2 theta)<=cos(2pi/N)`
-→ `rho(A)^2<=6+2cos(2pi/N)<8`.
+Finite Fourier on `z^N=-1`
+→
+`rho(A)^2<=6+2 cos(2pi/N)<8`.
 
-This theorem supplies the even-`s` direction of the `N=3s` classification and simultaneously treats every admissible even order.
+Therefore every even-order two-step circulant has a finite signing below `sqrt(8)`.
 
-## D. Resonance line N=3s
+For `N=ks`, the unresolved `sqrt(8)` obstruction can occur only when both `k` and `s` are odd.
 
-### Positive side
+## D. Exact `N=3s` threshold transition
 
-`E1 all-even-order theorem`
-→ every even `s` has `m(3s,s)<sqrt8`.
+### D1. Positive side
 
-`explicit C9 and C15 signings`
-+ exact Sylvester criterion for `8I-A^2`
-→ `s=3,5` are sub-threshold.
+`N=3s` and `s` even
+→ `N` even
+→ Section C gives `m(3s,s)<sqrt8`.
 
-### Odd obstruction
+For `s=3,5`:
 
-`Hamilton gauge + column reorder i=j+as`
-→ width-three cyclic strip with arbitrary signed triangle `B_j` in each column and identity intercolumn matchings except one signed-permutation seam.
+`explicit finite signing`
++ exact positivity of all leading principal minors of `8I-A^2`
+→ `m(9,3),m(15,5)<sqrt8`.
 
-`exact nine-column lemma at 2/139`
-→ every 9-column open strip either has squared norm at least `8+2/139`, or its six middle transitions alternate `B_{j+1}=-B_j`.
+### D2. Odd obstruction
 
-For odd `s>=11`:
-`all nine-column windows below threshold`
-→ sliding local rule forces all ordinary transitions to alternate
-→ because `s` is odd, `B_{s-1}=B_0`
-→ straighten a seam-crossing middle window
-→ local rule forces `S_alpha B_0 S_alpha^T=-B_0`
-→ impossible since `tr B_0^3=+-6` changes sign under negation but not orthogonal similarity.
+Hamilton gauge and reorder `i=j+as`
+→ width-three cyclic strip whose column states are signed triangles.
+
+Exact nine-column finite lemma at excess `2/139`:
+
+- complete finite state space;
+- exact integer Rayleigh acceptance;
+- survivor counts `8,56,152,440,488,1016,656,1064,128`;
+- all 128 final survivors satisfy the six middle alternations.
 
 Base cases:
-- `s=7`: complete Q-necklace / anchor / holonomy exact certificate, stronger excess `18/131`.
-- `s=9`: exact prefix-pruned strip certificate at excess `2/139`.
 
-Therefore odd `s>=7` obey `m(3s,s)^2>=8+2/139`.
+- `s=7`: exact exhaustive Q-necklace certificate gives excess `18/131`;
+- `s=9`: exact cyclic prefix certificate gives excess `2/139`.
 
-## E. Computational trust boundary
+For odd `s>=11`:
 
-The finite verifiers use floating eigensolvers only to propose an integer vector `w`. A branch is accepted/pruned only after an integer inequality is checked exactly. Thus floating error can cause a failed run (failure to find a witness) but cannot create a false positive certificate.
+`every nine-column window below threshold`
+→ local alternation propagates around the cycle
+→ seam straightening would force `S B_0 S^T=-B_0`
+→ impossible because `tr(B_0^3)=+-6` is preserved by similarity and changes sign under negation.
 
-The analytic propagation from the nine-column lemma to all odd `s>=11` is independent of floating arithmetic.
+Hence
 
-## F. General N=ks frontier
+`m(3s,s)^2>=8+2/139` for all odd `s>=7`.
 
-`all-even-order theorem`
-→ all pairs with `ks` even are sub-threshold.
+Combine D1/D2:
 
-Hence any new obstruction on `N=ks` must have both `k` and `s` odd.
+`m(3s,s)<sqrt8 iff s is even or s in {3,5}`.
 
-Observed finite data include a sub-threshold example at `(k,s)=(5,3)`, while `(k,s)=(3,s)` is obstructed for odd `s>=7`. This points to the chord-cycle length `k=N/gcd(N,s)` as a structural parameter. No general odd-`k>=5` classification is currently proved.
+## E. Exact-computation trust boundary
+
+The computer-assisted statements are only the finite `N=3s` certificate lemmas/base cases. Floating eigensolvers may be used to propose integer Rayleigh witnesses, but no branch is accepted from floating output. Acceptance uses exact integer inequalities, e.g.
+
+`139 w^T(M^2-8I)w >= 2 w^T w`.
+
+Thus floating error can cause failure to find a certificate but cannot create a false positive proof.
+
+The parity-defect results, low-end hierarchy, exact `N=4s` theorem, arithmetic `sqrt(6)` theorem, all-even construction, and analytic propagation are independent of floating arithmetic.
+
+## F. Remaining resonance frontier
+
+The current `N=ks` picture is now:
+
+```text
+k=3: exact sub-sqrt(8) classification; odd s>=7 obstructed above 8+2/139.
+k=4: exact global formula m(4s,s)^2=4+2 cos(pi/(2s)).
+ks even: explicit all-signing minimum upper bound <8.
+k odd >=5, s>=3: global lower bound m(ks,s)>=sqrt(6).
+```
+
+The main unresolved finite-global question is the `sqrt(8)` behavior for **odd `k>=5` and odd `s`**. Small exact/numerical data include sub-threshold examples, but no general classification is claimed.
