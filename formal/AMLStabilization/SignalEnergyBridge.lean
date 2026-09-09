@@ -4,6 +4,8 @@ import AMLStabilization.EnergyDecay
 namespace AMLStabilization
 
 /--
+PDE-to-scalar bridge used by the stabilization proof.
+
 Bridge from the PDE-style energy identity plus mass-weighted coercivity to the
 scalar differential inequality required by `EnergyDecay.lean`.
 
