@@ -89,17 +89,17 @@ n=2m+1=s/8,
 z=e^{it}.
 \]
 
-Because `s=16m+8`, the long jump changes a residue modulo sixteen by eight. In the sixteen-dimensional Bloch fiber, each antipodal pair receives two long-jump contributions carrying the phases `z^m` and `z^{-(m+1)}`. A direct fixed-size determinant expansion has an especially simple form at the squared threshold `8`.
+Because `s=16m+8`, the long jump changes a residue modulo sixteen by eight. In the sixteen-dimensional Bloch fiber, each antipodal pair receives two long-jump contributions carrying the phases `z^m` and `z^{-(m+1)}`.
 
 Define
 
 \[
-d= z^n+z^{-n}=2\cos(nt),
+d=z^n+z^{-n}=2\cos(nt),
 \qquad
 e=z+z^{-1}=2\cos t,
 \]
 
-and the degree-eight polynomial
+and
 
 \[
 \boxed{
@@ -110,7 +110,7 @@ F(x)={}&x^8-16x^7+72x^6+96x^5-1532x^4\\
 \tag{2.1}
 \]
 
-### Lemma B — exact threshold determinant
+### Lemma B — exact generic threshold determinant
 
 For every `m>=0` and every unit Bloch phase `z`, the characteristic polynomial of `H_s(z)` is even in `lambda`. If
 
@@ -121,42 +121,92 @@ For every `m>=0` and every unit Bloch phase `z`, the characteristic polynomial o
 then
 
 \[
-\boxed{
-P_{m,z}(8)=F(d)+d-e.}
+\boxed{P_{m,z}(8)=F(d)+d-e.}
 \tag{2.2}
 \]
 
 #### Proof
 
-The proof is a fixed `16 x 16` determinant identity. For `m=0`, collect reciprocal Laurent monomials in `z`. At `y=lambda^2=8` the result is exactly `F(z+z^{-1})`.
-
-For general `m`, set
+Introduce an auxiliary variable
 
 \[
-w=z^n=z^{2m+1}.
+r=z^m,
+\qquad
+w=r^2z=z^{2m+1}=z^n.
 \]
 
-Expanding the same determinant before imposing the relation between the basic seam phase and the long-jump phase shows that every coefficient of a positive power of `lambda^2` is obtained from the `m=0` coefficient by the substitution `z -> w`. The constant coefficient has one additional seam correction,
+Before imposing `r=z^m`, regard `r` and `z` as independent nonzero variables. For `0<=j<8`, the upper antipodal entry of the generic sixteen-dimensional fiber is
 
 \[
-(w+w^{-1})-(z+z^{-1}).
+ c_j=\tau_j^{\ddagger}r
+     +\tau_{j+8}^{\ddagger}(rz)^{-1},
 \]
 
-Therefore at `y=8`,
+and the reverse entry is
 
 \[
-P_{m,z}(8)=F(w+w^{-1})+(w+w^{-1})-(z+z^{-1}),
+ \bar c_j^{\rm alg}
+ =\tau_j^{\ddagger}r^{-1}
+  +\tau_{j+8}^{\ddagger}rz.
 \]
 
-which is (2.2). The same determinant expansion contains only even powers of `lambda`, proving the first assertion.
+Together with the nearest-neighbor sixteen-cycle and its seam entries `z^{-1},z`, these formulas specify the generic matrix algebraically.
 
-This identity is exact; it does not arise from sampling or asymptotic approximation.
+At `lambda=2sqrt(2)`, direct elimination of this fixed `16 x 16` determinant gives
+
+\[
+\begin{aligned}
+&\det(2\sqrt2 I-H(r,z))\\
+={}&w^8+w^{-8}
+-16(w^7+w^{-7})
++80(w^6+w^{-6})
+-16(w^5+w^{-5})\\
+&-1072(w^4+w^{-4})
++2928(w^3+w^{-3})
++336(w^2+w^{-2})\\
+&-12684(w+w^{-1})+20920
+-(z+z^{-1}).
+\end{aligned}
+\tag{2.3}
+\]
+
+This is a Laurent-polynomial identity in the independent variables `r,z`; in particular it is one calculation valid simultaneously for every `m`.
+
+Now put
+
+\[
+x=w+w^{-1}.
+\]
+
+The recurrence
+
+\[
+S_0(x)=2,
+\qquad S_1(x)=x,
+\qquad S_{k+1}(x)=xS_k(x)-S_{k-1}(x)
+\]
+
+gives
+
+\[
+S_k(x)=w^k+w^{-k}.
+\]
+
+Substitution into (2.3) and elementary collection yield
+
+\[
+\det(2\sqrt2 I-H(r,z))
+=F(x)+x-(z+z^{-1}).
+\tag{2.4}
+\]
+
+Finally impose `r=z^m`, so `x=d`. This proves (2.2).
+
+For completeness, applying the same generic determinant expansion before setting `lambda=2sqrt(2)` shows that only even powers of `lambda` occur. Equivalently, this evenness also follows from the signed-reflection chiral symmetry recorded in Section 6 below. Hence the notation `P_{m,z}(lambda^2)` is legitimate.
 
 ---
 
 ## 3. A Bernstein certificate for the threshold polynomial
-
-The key point is that `F` is uniformly large on the full phase interval.
 
 ### Lemma C
 
@@ -190,15 +240,15 @@ In the degree-eight Bernstein basis
 B_{k,8}(u)=\binom8k u^k(1-u)^{8-k},
 \]
 
-the polynomial `F(2-4u)-32` has the exact expansion
+the exact expansion is
 
 \[
 F(2-4u)-32
-=\sum_{k=0}^8 b_k B_{k,8}(u),
+=\sum_{k=0}^8 b_kB_{k,8}(u),
 \tag{3.2}
 \]
 
-where
+with
 
 \[
 \begin{aligned}
@@ -209,7 +259,7 @@ where
 \tag{3.3}
 \]
 
-Every Bernstein basis function is nonnegative on `[0,1]`, and every coefficient except `b_0` is strictly positive. Thus (3.1) follows. If `u>0`, at least one positive-coefficient Bernstein term is nonzero, so equality is impossible. Hence equality occurs only at `u=0`, i.e. `x=2`.
+Every Bernstein basis function is nonnegative on `[0,1]`, and every coefficient except `b_0` is strictly positive. Thus (3.1) follows. If `u>0`, at least one positive-coefficient term is nonzero, so equality is impossible. Hence equality occurs only at `u=0`, i.e. `x=2`.
 
 ---
 
@@ -218,9 +268,7 @@ Every Bernstein basis function is nonnegative on `[0,1]`, and every coefficient 
 Since `d,e in [-2,2]`, Lemma C and (2.2) give
 
 \[
-\boxed{
-P_{m,z}(8)
-\ge32-4=28>0.}
+\boxed{P_{m,z}(8)\ge32-4=28>0.}
 \tag{4.1}
 \]
 
@@ -265,13 +313,13 @@ p_a''(y)=12y^2-120y+272,
 p_a'''(y)=24y-120.
 \]
 
-For `y>=8`, `p_a'''(y)>0`, `p_a''(8)=80>0`, and `p_a'(8)=40>0`. Hence `p_a` is strictly increasing on `[8,infinity)` and has no root there. Because `H_s(1)` is Hermitian, all its squared eigenvalues are real and nonnegative, so (4.2) implies
+For `y>=8`, `p_a'''(y)>0`, `p_a''(8)=80>0`, and `p_a'(8)=40>0`. Hence `p_a` is strictly increasing on `[8,infinity)` and has no root there. Since `H_s(1)` is Hermitian, all squared eigenvalues are nonnegative, and (4.2) gives
 
 \[
 \rho(H_s(1))^2<8.
 \]
 
-The Hermitian fibers depend continuously on `z` along the connected unit circle. By (4.1), no eigenvalue of `8I-H_s(z)^2` can pass through zero. Therefore the inertia of `8I-H_s(z)^2` is constant, and positivity at `z=1` propagates to every Bloch phase:
+The Hermitian fibers depend continuously on `z` along the connected unit circle. By (4.1), no eigenvalue of `8I-H_s(z)^2` can pass through zero. Therefore its inertia is constant, and positivity at `z=1` propagates to every Bloch phase:
 
 \[
 8I-H_s(z)^2>0.
@@ -289,25 +337,25 @@ Because the characteristic polynomial is even, write its eight nonnegative squar
 y_1(z),\ldots,y_8(z).
 \]
 
-The preceding section shows `0<=y_j(z)<8`. Equation (2.2) gives
+Then
 
 \[
 P_{m,z}(8)=\prod_{j=1}^8(8-y_j(z))\ge28.
 \]
 
-Each factor is at most `8`, so if
+Every factor is at most `8`. Hence, with
 
 \[
-\delta(z)=8-\max_j y_j(z),
+\delta(z)=8-\max_jy_j(z),
 \]
 
-then
+we have
 
 \[
 28\le \delta(z)8^7.
 \]
 
-Hence
+Thus
 
 \[
 \delta(z)\ge\frac{28}{8^7}
@@ -317,7 +365,26 @@ for every phase. Taking the worst Bloch phase proves (1.2).
 
 ---
 
-## 6. Emerging `2`-adic hierarchy
+## 6. Signed-reflection chiral symmetry
+
+The two-defect lift (1.1) obeys the exact reversal identity
+
+\[
+\boxed{\tau^{\ddagger}_{3-j}=-\tau^{\ddagger}_j}
+\tag{6.1}
+\]
+
+with indices taken modulo sixteen. More generally, the analogous two-defect word of any even period `2L>=8`, obtained from `Q_0=Q_2=1` and all other `Q_j=-1`, obeys the same identity.
+
+If the jump is `s=L(2q+1)`, then `s=L mod 2L`. Reflection of the infinite lattice about the index `L+3` sends a chord beginning at `j` to the chord beginning at `3-j`. Multiplication by the alternating diagonal `D_j=(-1)^j` reverses the sign of every nearest-neighbor edge and leaves an even-length chord unchanged. Equation (6.1) therefore supplies the missing minus sign on the chord terms. Thus alternating sign times reflection is a chiral symmetry of the infinite periodic operator.
+
+On a fixed complex Bloch fiber, reflection reverses the Bloch phase; composing with complex conjugation gives the corresponding antiunitary chiral symmetry on the same fiber. Hence the spectrum is symmetric under `lambda -> -lambda`, conceptually explaining the even characteristic polynomial used above.
+
+This symmetry is not special to period sixteen. It is the structural reason the same two-defect construction remains a viable candidate for all higher `2`-adic layers.
+
+---
+
+## 7. Emerging `2`-adic hierarchy
 
 The three proved short-period layers are now:
 
@@ -330,4 +397,4 @@ The three proved short-period layers are now:
 
 Thus every even jump not divisible by sixteen is now covered by a periodic word of period at most sixteen with a spectral gap bounded away from zero on its entire `2`-adic congruence class.
 
-The remaining structural problem for Paper I is no longer merely to improve the old period-`4s` estimate. It is to determine whether this hierarchy continues for arbitrary `v_2(s)`, and whether one can give a uniform construction whose period depends only on the `2`-adic valuation rather than linearly on `s`.
+The remaining structural problem for Paper I is to determine whether the hierarchy continues for arbitrary `v_2(s)`, and whether one can give a construction whose period depends only on the `2`-adic valuation rather than linearly on `s`.
