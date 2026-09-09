@@ -12,7 +12,7 @@ Consider
 \end{cases}
 \qquad x\in\Omega,\ t>0,
 \]
-with homogeneous Neumann boundary conditions on a smooth bounded connected domain \(\Omega\subset\mathbb R^n\).
+with homogeneous no-flux/Neumann boundary conditions on a smooth bounded connected domain \(\Omega\subset\mathbb R^n\).
 
 Assume that a global nonnegative classical solution satisfies
 \[
@@ -37,22 +37,25 @@ and
 \qquad\text{for all }s\in I.
 \tag{D}
 \]
-Condition (D) is a uniform one-sided dissipativity condition toward the equilibrium \(v_*\). The root condition (E) is stated explicitly because (D) alone does not force \(F(v_*)=0\) when \(v_*\) is an endpoint of \(I\).
+Condition (D) is a uniform one-sided dissipativity condition toward \(v_*\). The root condition (E) is explicit because (D) alone does not force \(F(v_*)=0\) when \(v_*\) is an endpoint of \(I\).
 
-## Theorem B — general boundedness-to-stabilization principle
+## Theorem B — boundedness-to-uniform-stabilization principle
 
-Under the above assumptions, for every \(p\in[1,\infty)\) there exist \(C_p,\lambda_p>0\) such that
+Under the above assumptions, there exist \(C,\lambda>0\) such that
 \[
-\|u(t)-\bar u_0\|_{L^p(\Omega)}
+\boxed{
+\|u(t)-\bar u_0\|_{L^\infty(\Omega)}
 +\|v(t)-v_*\|_{W^{1,\infty}(\Omega)}
-\le C_p e^{-\lambda_p t},
-\qquad t\ge1,
+\le C e^{-\lambda t}
+}
+\qquad t\ge2,
+\tag{T}
 \]
 where
 \[
 \bar u_0=\frac{m}{|\Omega|}.
 \]
-No monotonicity assumption on \(\varphi\) is required for this stabilization implication.
+In particular, exponential convergence holds in every finite \(L^p\)-norm as well. No monotonicity assumption on \(\varphi\) is required for this stabilization implication.
 
 Moreover, the first signal-decay step needs only a uniform \(L^2\)-bound for \(u\): if
 \[
@@ -65,9 +68,9 @@ then
 
 ## Proof
 
-### 1. Coercivity with only an \(L^2\)-bound on \(u\)
+### 1. Mass-weighted coercivity
 
-Mass conservation gives \(\int u(t)=m\). If \(\|u(t)\|_2\le K\), then for \(f\in H^1(\Omega)\),
+Mass conservation gives \(\int_\Omega u(t)=m\). If \(\|u(t)\|_2\le K\), then for \(f\in H^1(\Omega)\),
 \[
 \begin{aligned}
 m|f_\Omega|
@@ -76,14 +79,13 @@ m|f_\Omega|
 &\le \sqrt m\left(\int uf^2\right)^{1/2}+KC_P\|\nabla f\|_2.
 \end{aligned}
 \]
-Thus
+Hence
 \[
 \|f\|_2^2\le C_{\Omega,m,K}\left(\|\nabla f\|_2^2+\int uf^2\right).
 \tag{P}
 \]
-This is the only place where spatial concentration of \(u\) enters the signal-energy argument.
 
-### 2. Signal \(L^2\)-decay from dissipativity
+### 2. Signal \(L^2\)-decay
 
 Set \(w=v-v_*\). Testing
 \[
@@ -99,36 +101,33 @@ By (P),
 \[
 \|\nabla w\|_2^2+\beta\int uw^2\ge c\|w\|_2^2,
 \]
-and hence
+and thus
 \[
 \|w(t)\|_2\le Ce^{-\lambda_0t}.
 \tag{S2}
 \]
 
-### 3. Signal \(W^{1,\infty}\)-decay under boundedness
+### 3. Signal \(W^{1,\infty}\)-decay
 
-Now assume \(u\) is uniformly bounded in \(L^\infty\). Since \(v\in I\), \(w\) is uniformly bounded. By interpolation, for every \(r\ge2\),
+Assume now the uniform \(L^\infty\)-bound on \(u\). Since \(v\in I\), \(w\) is uniformly bounded. Interpolation gives, for every \(r\ge2\),
 \[
 \|w(t)\|_r\le C_r e^{-2\lambda_0t/r}.
 \]
 By (E) and \(F\in C^1(I)\),
 \[
-|F(v)|\le L_F|w|
+|F(v)|\le L_F|w|,
+\qquad L_F=\max_I|F'|,
 \]
-with \(L_F=\max_I|F'|\). Therefore
-\[
-\|uF(v)\|_r\le UL_F\|w\|_r\le C_re^{-\mu_rt}.
-\]
-Choose \(r>n\). Duhamel's formula on a fixed half-unit interval and the standard Neumann heat-semigroup estimate
+so \(\|uF(v)\|_r\le C_r e^{-\mu_rt}\). Choose \(r>n\). Duhamel on a fixed half-unit interval and the standard Neumann heat-semigroup gradient estimate
 \[
 \|\nabla e^{\tau\Delta}f\|_\infty
 \le C\left(1+\tau^{-\frac12-\frac n{2r}}\right)e^{-\lambda_1\tau}\|f\|_r
 \]
-yield
+then yield
 \[
 \|\nabla w(t)\|_\infty\le Ce^{-\lambda_vt}.
 \]
-The spatial mean of \(w\) decays by (S2), so the \(W^{1,\infty}\)-Poincaré inequality yields
+Together with the decay of the spatial mean from (S2),
 \[
 \|w(t)\|_{W^{1,\infty}}\le Ce^{-\lambda_vt}.
 \tag{Sinf}
@@ -136,7 +135,7 @@ The spatial mean of \(w\) decays by (S2), so the \(W^{1,\infty}\)-Poincaré ineq
 
 ### 4. Cell-density \(L^2\)-decay
 
-Let \(q=u-\bar u_0\), so \(\int q=0\). Set
+Let \(q=u-\bar u_0\), so \(\int_\Omega q=0\), and set
 \[
 \varphi_*:=\min_I\varphi>0,
 \qquad L_\varphi:=\max_I|\varphi'|.
@@ -147,21 +146,72 @@ Then
 =-\int\varphi(v)|\nabla q|^2
 -\int u\varphi'(v)\nabla q\cdot\nabla v.
 \]
-Young's inequality and (Sinf) imply
+Young, (Sinf), and Poincare imply
 \[
 \frac d{dt}\|q\|_2^2+c\|q\|_2^2\le Ce^{-2\lambda_vt},
 \]
-where Poincaré was used for \(q\). Hence
+so
 \[
 \|q(t)\|_2\le Ce^{-\lambda_ut}.
 \tag{U2}
 \]
 
-### 5. Every finite \(L^p\)
+### 5. Uniform \(L^\infty\)-decay of the cell density
 
-Since \(q\) is uniformly bounded in \(L^\infty\), interpolation between (U2) and \(L^\infty\) yields exponential decay in every finite \(L^p\), \(p\ge2\); bounded-domain Hölder gives the result for \(1\le p<2\).
+Rewrite the first equation as
+\[
+q_t-\nabla\cdot(a(x,t)\nabla q)=\nabla\cdot B(x,t),
+\tag{Q}
+\]
+where
+\[
+a(x,t)=\varphi(v(x,t)),
+\qquad
+B(x,t)=u(x,t)\varphi'(v(x,t))\nabla v(x,t).
+\]
+The no-flux boundary condition is precisely
+\[
+(a\nabla q+B)\cdot\nu=0.
+\]
+Because the signal remains in \(I\),
+\[
+0<\varphi_*\le a(x,t)\le \varphi^*:=\max_I\varphi,
+\]
+so (Q) is uniformly parabolic with time-uniform ellipticity constants. By (Sinf),
+\[
+\|B(t)\|_\infty\le U L_\varphi\|\nabla v(t)\|_\infty
+\le Ce^{-\lambda_vt}.
+\tag{Binf}
+\]
 
-This proves Theorem B.
+Apply the boundary local boundedness estimate of J. Choi, *Bull. Korean Math. Soc.* 53 (2016), Theorem 1.1, to (Q) on backward cylinders ending at time \(t\). Choose finite exponents \(p_1>n\), \(q_1>2\) with
+\[
+\frac n{p_1}+\frac2{q_1}<1.
+\]
+Since the lower-order coefficients vanish, the admissible radius in that theorem is uniform in time. For a fixed sufficiently small radius \(r_0>0\), the theorem gives, locally up to the Neumann boundary,
+\[
+\|q\|_{L^\infty(Q_{r_0/2})}
+\le C\|q\|_{L^2(Q_{r_0})}
++C\|B\|_{L^{p_1,q_1}(Q_{r_0})},
+\tag{LB}
+\]
+where powers of the fixed radius are absorbed into \(C\).
+
+By (U2), for cylinders contained in \(\Omega\times(t-r_0^2,t)\),
+\[
+\|q\|_{L^2(Q_{r_0})}\le Ce^{-\lambda_u(t-r_0^2)},
+\]
+while (Binf) gives
+\[
+\|B\|_{L^{p_1,q_1}(Q_{r_0})}\le Ce^{-\lambda_v(t-r_0^2)}.
+\]
+A finite covering of the bounded domain by such spatial neighborhoods therefore yields
+\[
+\|q(t)\|_\infty\le Ce^{-\lambda_\infty t}
+\qquad (t\ge2)
+\tag{Uinf}
+\]
+for some \(\lambda_\infty>0\). Combining (Uinf) with (Sinf) proves (T).
 
 ## Two important special cases
 
@@ -177,7 +227,11 @@ F(v_*)=0,
 \qquad
 (s-v_*)F(s)=-\alpha(s-v_*)^2,
 \]
-so (E)–(D) hold with \(\beta=\alpha\). This recovers the exact Qin–Zheng 2026 model at the stabilization stage.
+so (E)–(D) hold with \(\beta=\alpha\). Hence every uniformly bounded classical solution of the exact Qin–Zheng 2026 model converges exponentially in
+\[
+L^\infty(\Omega)\times W^{1,\infty}(\Omega)
+\]
+to \((\bar u_0,1/\alpha)\).
 
 ### Pure signal consumption
 
@@ -188,28 +242,16 @@ F(s)=-s,
 so
 \[
 F(v_*)=0,
-\qquad
-sF(s)=-s^2.
+\qquad sF(s)=-s^2.
 \]
-This contains the direct signal-consumption model studied by Li–Zhao (ZAMP 2021) at the level of the stabilization mechanism.
+This contains the direct signal-consumption law studied by Li–Zhao (ZAMP 2021) at the level of the stabilization mechanism.
 
-## Why this strengthening matters for AML
+## Citation used in the uniform upgrade
 
-The intended contribution is no longer merely an asymptotic add-on to one 2026 paper. The theorem isolates a general mechanism:
-
-\[
-\boxed{\text{mass + boundedness + dissipative signal kinetics}
-\Longrightarrow \text{exponential stabilization}}
-\]
-
-for signal-dependent motility, independently of the sign of \(\varphi'\) in the stabilization implication.
-
-The exact production–consumption model is then a timely application/corollary rather than the whole theorem.
+J. Choi, *Note on local estimates for weak solution of boundary value problem for second order parabolic equation*, Bull. Korean Math. Soc. 53 (2016), 1123–1148, Theorem 1.1, DOI 10.4134/BKMS.b150567.
 
 ## Novelty status
 
-Observed/promising only. A fresh prior-art search is required specifically for abstract systems of the form
-\[
-u_t=\Delta(\varphi(v)u),\qquad v_t=\Delta v+uF(v)
-\]
-with boundedness-to-stabilization conclusions before this theorem can be described as new.
+Mathematical status of Theorem B: **Proved**, subject to ordinary manuscript-level line checking and source verification.
+
+Novelty status: **Observed/promising, not certified**. The deep audit has not located the same abstract theorem or an exact-model exponential-stabilization result, but pure-consumption and indirect-signal predecessors remain material prior art and must be compared explicitly before submission freeze.
