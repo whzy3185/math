@@ -13,7 +13,7 @@ This map deliberately contains no dependency on `paper/circulant-periodic-gap-20
 `Rayleigh/interlacing`
 → any principal window whose squared norm exceeds a threshold forces the full graph above that threshold.
 
-## B. Flat theorem and the sharp off-flat gap
+## B. Low-end finite spectral hierarchy
 
 `tr(A^2)=4N`
 → `rho(A)>=2`
@@ -84,7 +84,7 @@ Therefore the forced support graph of `B` is:
 - `Cay(Z_N,{+-2,+-2s})` otherwise.
 
 On `N=4s`, its components are cycles of length `2s>=4`, hence cannot be clique components.
-Otherwise it is 4-regular; because `2s` is a multiple of `2`, its connected components are exactly the cosets of `<2>`. Thus it is connected for odd `N` and has two components for even `N`. Clique components must be `K_5`, forcing `N=5` or `N=10`.
+Otherwise it is 4-regular; because `2s` is a multiple of `2`, its connected components are exactly the cosets of `<2>`. Thus it is connected for odd `N` and has two components for even `N`. Clique components must be `K_5`, forcing `N=5` or `10`.
 
 - `N=5`: necessarily `s=2`; an explicit 5-by-5 conference core `W` with `W^2=5I-J` gives `rho(W)=sqrt(5)`.
 - `N=10`: `s=4` is the flat case; `s=2` and `s=3` remain.
@@ -92,6 +92,37 @@ Otherwise it is 4-regular; because `2s` is a multiple of `2`, its connected comp
 - `(10,3)` attainment: after ordering the two parity classes, `C_10(1,3)=K_{5,5}` minus a perfect matching. The block signing `A=[[0,W],[W,0]]` has `A^2=diag(5I-J,5I-J)` and spectral radius `sqrt(5)`.
 
 Therefore `m(N,s)=sqrt(5)` iff `(N,s)=(5,2)` or `(10,3)`.
+
+### B.3 Integral second gap
+
+Let `B` be any nonzero integral symmetric zero-diagonal matrix with `lambda_max(B)<sqrt(2)`.
+
+`2x2 interlacing`
+→ every nonzero off-diagonal entry is `+-1`.
+
+If a connected component of the support is not complete, choose a shortest path whose first and third vertices are nonadjacent. Its `3x3` principal matrix is a signed `P_3`, whose largest eigenvalue is `sqrt(2)`, contradiction.
+→ every support component is complete.
+
+If a support triangle has positive sign product, switching makes it all-positive and its largest eigenvalue is 2, contradiction.
+→ every triangle has negative sign product.
+→ each clique component is switching-equivalent to an all-negative clique.
+→ every nonzero block has largest eigenvalue exactly 1.
+→ `lambda_max(B)=1`.
+
+Consequently, for integral zero-diagonal defects arising here,
+`lambda_max(B)` has the hierarchy `0`, `1`, or at least `sqrt(2)`.
+Combining the `lambda_max(B)=0` flat classification and the `lambda_max(B)=1` classification gives
+
+`m(N,s)^2 >= 4+sqrt(2)`
+
+for every parameter pair outside `N=2s+2` and `{(5,2),(10,3)}`.
+
+Sharpness at `(8,2)`: in Hamilton gauge take seam holonomy `alpha=-1` and chord word
+`tau=(-1,1,-1,1,-1,1,1,-1)`.
+The exact characteristic polynomial is
+`(x^4-8x^2+14)^2`,
+so the squared spectral radius is `4+sqrt(2)`. Together with the universal lower bound this yields
+`m(8,2)^2=4+sqrt(2)`.
 
 ## C. New all-even-order theorem
 
