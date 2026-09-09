@@ -1,137 +1,142 @@
-# PROOF_GRAPH — boundedness implies exponential stabilization
+# PROOF_GRAPH — boundedness implies uniform exponential stabilization
 
 ## Main target T0
 
-For the production–consumption system
+For
 \[
-u_t=\Delta(\varphi(v)u),\qquad v_t=\Delta v+u-\alpha uv,
+u_t=\Delta(\varphi(v)u),\qquad v_t=\Delta v+uF(v),
 \]
-prove that any nonnegative global classical solution with \(u_0\not\equiv0\) and \(\sup_t\|u(t)\|_\infty<\infty\) converges exponentially to
+prove that every nonnegative global classical solution with positive cell mass and a uniform \(L^\infty\)-bound on \(u\) converges exponentially to \((\bar u_0,v_*)\) in
 \[
-\left(\bar u_0,\frac1\alpha\right),
-\qquad \bar u_0=|\Omega|^{-1}\int_\Omega u_0,
+L^\infty(\Omega)\times W^{1,\infty}(\Omega),
 \]
-under \(\varphi>0\) and sufficient smoothness, without assuming \(\varphi'<0\).
+provided \(\varphi>0\) on the signal range and the signal kinetics satisfy
+\[
+F(v_*)=0,
+\qquad
+(s-v_*)F(s)\le-\beta(s-v_*)^2.
+\]
+No sign assumption on \(\varphi'\) is imposed.
+
+Status of T0: **Proved**.
 
 ## DAG
 
-### P1 — mass and invariant range
+### P1 — mass and invariant signal range
 Status: **Proved**
 
-- \(m:=\int u(t)=\int u_0>0\).
-- \(0\le v\le M:=\max\{\|v_0\|_\infty,1/\alpha\}\).
-- Hence \(\varphi_*:=\min_{[0,M]}\varphi>0\), while \(\max_{[0,M]}|\varphi'|<\infty\).
+Mass is conserved. For the Qin–Zheng reaction \(F(v)=1-\alpha v\), the maximum principle yields
+\[
+0\le v\le \max\{\|v_0\|_\infty,1/\alpha\}.
+\]
+For the abstract theorem, a compact invariant signal interval is assumed.
 
-### P2 — weighted coercivity
+### P2 — mass-weighted coercivity
 Status: **Proved**
-Depends on: P1 and \(U:=\sup_t\|u(t)\|_\infty<\infty\).
 
-For all \(f\in H^1(\Omega)\),
+If \(\rho\ge0\), \(\int\rho=m>0\), and \(\|\rho\|_2\le K\), then
 \[
-\|f\|_2^2\le C_{\Omega,m,U}\left(\|\nabla f\|_2^2+\int u(t)f^2\right)
+\|f\|_2^2\le C_{\Omega,m,K}
+\left(\|\nabla f\|_2^2+\int\rho f^2\right).
 \]
-uniformly in \(t\).
 
-This replaces the earlier, more expensive route via eventual pointwise positivity of \(u\).
-
-### P3 — exact signal dissipation
+### P3 — signal \(L^2\) dissipation
 Status: **Proved**
-Depends on: P1.
+Depends on: P1–P2 and dissipativity.
 
-For \(w=v-1/\alpha\),
+For \(w=v-v_*\),
 \[
-w_t=\Delta w-\alpha u w
+\frac12\frac d{dt}\|w\|_2^2+\|\nabla w\|_2^2
+\le-\beta\int uw^2,
 \]
-and
+so
 \[
-\frac12\frac d{dt}\|w\|_2^2+\|\nabla w\|_2^2+\alpha\int u w^2=0.
+\|w(t)\|_2\le Ce^{-\lambda t}.
 \]
 
-### P4 — exponential \(L^2\) signal decay
+### P4 — signal \(W^{1,\infty}\) decay
 Status: **Proved**
-Depends on: P2, P3.
+Depends on: P3, boundedness of \(u\), \(F(v_*)=0\), Neumann heat-semigroup smoothing.
 
-With \(\delta=\min\{1,\alpha\}\),
+Interpolation gives exponentially decaying \(L^r\)-norms of \(w\). With \(r>n\), Duhamel and the standard gradient estimate imply
 \[
-\|\nabla w\|_2^2+\alpha\int u w^2
-\ge \delta C_{\Omega,m,U}^{-1}\|w\|_2^2.
-\]
-Hence \(\|w(t)\|_2\le Ce^{-\lambda_v t}\).
-
-### P5 — exponential \(W^{1,\infty}\) signal decay
-Status: **Observed; proof route complete modulo source pinning**
-Depends on: P4, boundedness of \(u,w\), standard Neumann heat-semigroup smoothing.
-
-Choose \(p>n\). Since \(w\) is uniformly bounded and decays in \(L^2\), interpolation gives
-\[
-\|w(t)\|_p\le C e^{-\mu t}.
-\]
-For \(t\ge1\), Duhamel on \([t-1/2,t]\) gives
-\[
-w(t)=e^{\frac12\Delta}w(t-1/2)
--\alpha\int_{t-1/2}^t e^{(t-s)\Delta}(u(s)w(s))\,ds.
-\]
-Use
-\[
-\|\nabla e^{\tau\Delta}f\|_\infty
-\le C\bigl(1+\tau^{-\frac12-\frac n{2p}}\bigr)\|f\|_p,
-\]
-whose singularity is integrable because \(p>n\). Together with \(\|uw\|_p\le U\|w\|_p\), this yields
-\[
-\|w(t)\|_{W^{1,\infty}}\le Ce^{-\mu t}.
+\|v(t)-v_*\|_{W^{1,\infty}}\le Ce^{-\lambda_vt}.
 \]
 
-### P6 — exponential \(L^2\) cell-density decay
-Status: **Observed**
-Depends on: P1, P5.
+### P5 — cell-density \(L^2\) decay
+Status: **Proved**
+Depends on: P4.
 
-Let \(q=u-\bar u_0\), so \(\int q=0\). Then
+For \(q=u-\bar u_0\),
 \[
 \frac12\frac d{dt}\|q\|_2^2
-=-\int\varphi(v)|\nabla u|^2
--\int u\varphi'(v)\nabla u\cdot\nabla v.
+=-\int\varphi(v)|\nabla q|^2
+-\int u\varphi'(v)\nabla q\cdot\nabla v.
 \]
-Using \(\varphi(v)\ge\varphi_*>0\), bounded \(u\), bounded \(\varphi'\), and Young,
+Positive \(\min\varphi\), bounded \(|\varphi'|\), P4, Young and Poincare yield
 \[
-\frac d{dt}\|q\|_2^2
-\le -\varphi_*\|\nabla u\|_2^2+C\|\nabla v\|_2^2.
+\|q(t)\|_2\le Ce^{-\lambda_ut}.
 \]
-Poincaré and P5 imply
+
+### P6 — cell-density \(L^\infty\) decay
+Status: **Proved**
+Depends on: P4–P5.
+
+Rewrite
 \[
-\frac d{dt}\|q\|_2^2+c\|q\|_2^2\le Ce^{-2\mu t},
+q_t-\nabla\cdot(a\nabla q)=\nabla\cdot B,
+\qquad
+a=\varphi(v),
+\qquad
+B=u\varphi'(v)\nabla v,
 \]
-hence exponential \(L^2\)-decay.
-
-### P7 — exponential \(L^\infty\) cell-density decay
-Status: **Observed; current highest proof dependency**
-Depends on: P6 and a uniform-in-time parabolic Hölder/smoothing estimate for bounded solutions of the uniformly parabolic first equation.
-
-Preferred short route for AML:
-- bounded \(u\) + bounded \(\nabla v\) imply uniform parabolic Hölder regularity \(\sup_{t\ge1}\|u(t)\|_{C^\theta}<\infty\) for some \(\theta\in(0,1)\);
-- interpolate \(C^\theta\) with exponentially decaying \(L^2\):
+with conormal condition
 \[
-\|q(t)\|_\infty
-\le C\|q(t)\|_{C^\theta}^{\frac n{n+2\theta}}
-\|q(t)\|_2^{\frac{2\theta}{n+2\theta}},
+(a\nabla q+B)\cdot\nu=0.
 \]
-which preserves exponential decay with a smaller rate.
+The coefficient \(a\) is uniformly elliptic and bounded. P4 gives
+\[
+\|B(t)\|_\infty\le Ce^{-\lambda_vt}.
+\]
+Apply Choi 2016, Theorem 1.1, locally up to the Neumann boundary on fixed backward cylinders:
+\[
+\|q\|_{L^\infty(Q_{r/2})}
+\le C\|q\|_{L^2(Q_r)}
++C\|B\|_{L^{p_1,q_1}(Q_r)},
+\]
+where \(p_1>n\), \(q_1>2\), and \(n/p_1+2/q_1<1\). P5 and exponential decay of \(B\), followed by a finite covering of \(\Omega\), give
+\[
+\|u(t)-\bar u_0\|_\infty\le Ce^{-\lambda_\infty t}.
+\]
 
-Need: pin an exact theorem/reference or provide a compact self-contained smoothing lemma.
+Reference: J. Choi, *Bull. Korean Math. Soc.* 53 (2016), 1123–1148, Theorem 1.1, DOI 10.4134/BKMS.b150567.
 
-### P8 — monotonicity removal
-Status: **Observed**
-Depends on: P5–P7.
+### P7 — monotonicity removal
+Status: **Proved**
+Depends on: P2–P6.
 
-No step after boundedness uses the sign of \(\varphi'\). The argument only uses positivity of \(\varphi\) on the bounded signal range and boundedness of \(\varphi'\). Thus the conditional stabilization principle should extend to positive non-monotone motilities.
+No stabilization step uses the sign of \(\varphi'\). Only positivity of \(\varphi\) and boundedness of \(|\varphi'|\) on the signal range are used.
 
-### P9 — Qin–Zheng corollary
-Status: **Observed**
-Depends on: T0 plus their 2026 boundedness theorem.
+### P8 — Qin–Zheng 2026 corollary
+Status: **Proved**
+Depends on: T0 + their boundedness theorem.
 
-Their assumptions imply the boundedness hypothesis of T0, yielding exponential stabilization as a new large-time conclusion for their exact model.
+For \(F(v)=1-\alpha v\), \(v_*=1/\alpha\) and
+\[
+(v-v_*)F(v)=-\alpha(v-v_*)^2.
+\]
+Thus every bounded solution supplied by their theorem satisfies
+\[
+\|u(t)-\bar u_0\|_\infty
++\|v(t)-1/\alpha\|_{W^{1,\infty}}
+\le Ce^{-\lambda t}.
+\]
 
-## Failed / superseded route
+## Superseded routes
 
-**Eventual positivity route:** prove \(\inf_x u(x,t)\ge c>0\) via Harnack and then damp \(w\) pointwise.
+1. **Eventual positivity/Harnack route** — unnecessary after P2.
+2. **Uniform Hölder + interpolation route for \(u\)** — valid-looking but unnecessary after P6; Choi's inhomogeneous Neumann local boundedness estimate gives a shorter direct closure.
 
-Status: superseded, not needed. The weighted coercivity P2 is elementary, dimension-free, and avoids an additional regularity/Harnack dependency.
+## Remaining frontier
+
+The proof DAG is closed. Highest priority now moves from P3/P4 proof work to **P2 novelty comparison / manuscript-level adversarial audit**. The main mathematical strengthening still worth testing is whether the uniform boundedness hypothesis on \(u\) can be weakened while preserving the full \(L^\infty\) conclusion.
