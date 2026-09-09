@@ -2,7 +2,7 @@
 
 Working branch: `paper/circulant-finite-threshold-20260909`.
 
-This directory rebuilds and strengthens the finite-global extremal problem
+This directory develops the finite-global extremal problem
 
 \[
 m(N,s)=\min_\sigma\rho(A_\sigma),\qquad 2\le s<N/2,
@@ -14,24 +14,9 @@ for signed adjacency matrices of `C_N(1,s)`.
 
 This paper is completely independent of the separate periodic/Bloch project.  It concerns finite graphs, minimization over **all** signings, exact equality, threshold classification, and switching/flux rigidity.  No continuous Bloch optimum, phase-slip asymptotic, or theorem from the other paper is used.
 
-## Current proved theorem package
+# Main proved theorem package
 
-### 1. Exact low end
-
-- `m(N,s)=2` iff `N=2s+2`.
-- Off the flat line, `m(N,s)>=sqrt(5)`.
-- `m(N,s)=sqrt(5)` iff `(N,s)=(5,2)` or `(10,3)`.
-- Outside those cases, `m(N,s)^2>=4+sqrt(2)`.
-- Equality `m^2=4+sqrt(2)` occurs exactly at `(8,2)`.
-- On `N=4s`,
-  \[
-  m(4s,s)^2=4+2\cos\frac{\pi}{2s},
-  \]
-  with exactly two labelled minimizing switching classes.
-
-Flat rigidity is also classified: on `N=2s+2`, `s!=3`, there are exactly two labelled equality switching classes; at `(8,3)=K_(4,4)` there are six labelled switching classes, one orbit after graph automorphisms.
-
-### 2. Complete strict sub-`sqrt(6)` classification
+## 1. Complete classification through `sqrt(6)`
 
 Let `beta` be the largest root of
 
@@ -39,95 +24,103 @@ Let `beta` be the largest root of
 x^3-7x+7=0.
 \]
 
-Then
+The first spectral threshold is now completely classified.
+
+### Strictly below six
+
+\[
+m(N,s)^2<6
+\]
+
+if and only if one of the following holds:
 
 ```text
-m(N,s)^2 < 6 iff
-
 N=2s+2:                         m^2=4;
 (N,s)=(5,2),(10,3):             m^2=5;
 N=4s:                           m^2=4+2 cos(pi/(2s));
 N=14, s=3,4,5:                  m^2=4+beta.
 ```
 
-Every other pair has `m(N,s)^2>=6`.  In particular every odd `N>=7` satisfies `m(N,s)>=sqrt(6)`.
-
-### 3. New arithmetic localization at the non-strict six boundary
-
-Put
-
-\[
-d=\gcd(N,2),\qquad q=N/d,\qquad t=\min(s,q-s),
-\]
-
-and exclude the already separated lines `N=2s+2` and `N=4s`.
-
-If **any** signing satisfies
-
-\[
-\rho(A)^2\le6,
-\]
-
-then the reduced parity component must lie on one of only four arithmetic loci:
-
-\[
-\boxed{
- t=2,
- \qquad q=2t+1,
- \qquad q=2t+2,
- \qquad q=3t.
-}
-\]
-
-The proof is analytic.  For `K=6I-A^2>=0`, a defect entry of magnitude `2` forces repeated/antipodal Gram roots and hence twin vertices in the parity graph.  A connected `C_q(1,t)` has twins iff `q=2t+2`.  Away from that twin line the defect is an honest signing of the parity graph.  If that graph is triangle-free, the boundary cubic-moment identity forces the defect component to satisfy `C^2=4I`, and the already proved flat theorem again forces `q=2t+2`.  The remaining alternative is precisely the elementary triangle list `t=2`, `q=2t+1`, `q=3t`.
-
-Consequently, for odd order,
-
-\[
-m(N,s)\le\sqrt6
-\Longrightarrow
-s=2\text{ or }N=2s+1\text{ or }N=3s.
-\]
-
-Every odd pair outside these three loci therefore satisfies the **strict** bound `m(N,s)>sqrt(6)`.
-
-### 4. Complete twin-resonance analysis
-
-The twin locus `q=2t+2` translates to
-
-\[
-N=4r,\qquad s=r\pm1.
-\]
-
-It is now completely classified:
+### Exactly six
 
 \[
 \boxed{
  m(N,s)^2=6
  \iff
- (N,s)\in\{(12,4),(16,3),(16,5)\}
+ (N,s)\in\{(12,4),(16,3),(16,5),(20,8)\}.
 }
 \]
 
-within this locus.  Moreover
+### Strictly above six
+
+Every other admissible pair satisfies
 
 \[
-\boxed{m(12,2)^2=5+\sqrt3,}
+\boxed{m(N,s)>\sqrt6.}
 \]
 
-with exactly two labelled minimizing switching classes, certified by an exhaustive **exact** `Q(sqrt(3))` PSD computation over all `2^13=8192` Hamilton-gauge switching classes.
-
-For every `r>=5`,
+In particular the previous odd-order floor strengthens to
 
 \[
- m(4r,r-1)^2>6,
- \qquad
- m(4r,r+1)^2>6.
+\boxed{
+N\ge7\text{ odd}\Longrightarrow m(N,s)>\sqrt6
+}
 \]
 
-The exclusion is analytic: repeated roots cannot occur at the available mixed two-walk displacements; the defect must therefore be flat on `C_(2r)(1,r-1)`.  For odd `r`, induced chord-cycle fluxes are equal whereas flat rigidity forces them to be opposite.  For even `r`, flat holonomy plus mixed cancellation forces a defect whose antipodal two-walk entry equals `-4`, contradicting `C^2=4I`.
+for every admissible `s`.
 
-### 5. `sqrt(8)` results
+## 2. How the equality theorem is proved
+
+Put
+
+\[
+B=A^2-4I,
+\qquad
+K=6I-A^2=2I-B,
+\]
+
+and, in the generic case,
+
+\[
+d=\gcd(N,2),\qquad q=N/d,\qquad t=\min(s,q-s).
+\]
+
+If `rho(A)^2<=6`, then `K` is an integral positive-semidefinite Gram matrix with diagonal `2`.  A defect entry of magnitude `2` therefore corresponds to repeated/antipodal roots.  This forces twin vertices in the parity-defect graph.  Combining this root argument with the exact parity support and the cubic boundary identity localizes every non-strict six candidate to only
+
+\[
+t=2,
+\qquad q=2t+1,
+\qquad q=2t+2,
+\qquad q=3t.
+\]
+
+All four loci are now closed:
+
+- `t=2`: equality only at `(12,4),(20,8)`;
+- `q=2t+1`: no equality;
+- `q=2t+2`: equality only at `(12,4),(16,3),(16,5)`;
+- `q=3t`: no signed reduced component has index at most `2` for `t>=3`; `t=2` returns `(12,4)`.
+
+The final `q=3t` exclusion is local: positive chord triangles are impossible; after switching all chord triangles negative, three adjacent columns form a 9-vertex signed strip.  For `t>=4` its 64 signings reduce to five exact switching/permutation types, every one having index `>2`.  The remaining `C_9(1,3)` case is excluded analytically by a singular Gram-kernel argument.
+
+## 3. Exact low-end and rigidity results
+
+- `m(N,s)=2` iff `N=2s+2`.
+- `m(N,s)=sqrt(5)` iff `(N,s)=(5,2)` or `(10,3)`.
+- Outside those cases, `m(N,s)^2>=4+sqrt(2)`; equality occurs exactly at `(8,2)`.
+- On `N=4s`,
+  \[
+  m(4s,s)^2=4+2\cos\frac{\pi}{2s},
+  \]
+  with exactly two labelled minimizing switching classes.
+- On the flat line `N=2s+2`, `s!=3`, there are exactly two labelled equality switching classes.  At `(8,3)=K_(4,4)` there are six labelled switching classes and one orbit after graph automorphisms.
+- A separately audited small value is
+  \[
+  m(12,2)^2=5+\sqrt3,
+  \]
+  with exactly two labelled minimizing switching classes.
+
+## 4. `sqrt(8)` results
 
 For every even `N`,
 
@@ -141,32 +134,39 @@ On the triangle resonance `N=3s`,
 \boxed{m(3s,s)<\sqrt8\iff s\text{ is even or }s\in\{3,5\}.}
 \]
 
-For odd `s>=7`, the audited all-signing obstruction has been strengthened to
+For odd `s>=7`,
 
 \[
 \boxed{m(3s,s)^2\ge8+\frac{2}{139}.}
 \]
 
-The proof uses exact `s=7,9` base certificates and the exact nine-column local rule followed by analytic propagation.
+The negative half uses exact `s=7,9` base certificates, an exact nine-column local rule, and analytic propagation.
 
-## Exact verification scripts
+# Proof files added in the current strengthening pass
+
+- `SIX_BOUNDARY_ROOT_QUOTIENT.md`
+- `SIX_BOUNDARY_ARITHMETIC_LOCALIZATION.md`
+- `SIX_BOUNDARY_TWIN_LINE.md`
+- `SIX_BOUNDARY_TRIANGLE_T2.md`
+- `SIX_BOUNDARY_TRIANGLE_2TPLUS1.md`
+- `SIX_BOUNDARY_TRIANGLE_3T.md`
+
+Exact reproducibility scripts include:
 
 - `verify_low_end_exact.py`
 - `verify_sub_sqrt6_exact.py`
 - `verify_six_boundary_exact.py`
 - `verify_six_boundary_arithmetic.py`
 - `verify_twin_line_base_exact.py`
+- `verify_t2_component_local.py`
+- `verify_3t_local_strip.py`
 
-All theorem labels in `THEOREM_LEDGER.md` distinguish **Proved**, **Verified**, **Observed**, and **Published/Established**.  Finite computations are explicitly delimited and never promoted beyond their quantified range.
+All theorem labels in `THEOREM_LEDGER.md` distinguish **Proved**, **Verified**, **Observed**, and **Published/Established**.
 
-## Current frontier
+# Current frontier
 
-The equality problem `m(N,s)^2=6` is no longer unconstrained.  The twin locus is closed completely; the only remaining possible equality mechanisms lie on the three **triangle loci**
+The `sqrt(6)` parameter classification is no longer open.  The highest-value remaining finite-global directions are now:
 
-\[
-t=2,
-\qquad q=2t+1,
-\qquad q=3t.
-\]
-
-This is now the highest-value finite-global target.  Beyond six, the other major open direction is the `sqrt(8)` classification for odd resonances `N=ks`, `k>=5`.
+1. classify the minimizing switching classes at the four equality pairs `(12,4),(16,3),(16,5),(20,8)`;
+2. extend the exact `sqrt(8)` classification beyond `N=3s`, especially odd resonances `N=ks`, `k>=5`;
+3. seek quantitative lower gaps above `sqrt(6)` on arithmetic families outside the complete exceptional list.
