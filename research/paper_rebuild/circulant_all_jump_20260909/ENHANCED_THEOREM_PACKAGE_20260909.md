@@ -4,11 +4,13 @@ Date: 2026-09-09
 
 Branch: `paper/circulant-periodic-gap-20260909`
 
-This note supersedes the old editorial hierarchy for Paper I. It does not delete any proved result, but it changes which results should be treated as headline theorems.
+Status: current headline theorem package. This file supersedes the earlier three-layer conjectural hierarchy. The general compression theorem and its sharp global asymptotics are now proved.
 
-The paper is independent of the finite-global extremal paper. No statement below involves the minimum over all finite signings.
+The paper remains completely independent of the finite-global extremal paper. No statement below uses the minimum over all finite signings.
 
-## 1. Central object
+---
+
+# 1. Central object
 
 For a fixed periodic Hamilton-gauge word `tau` and jump `s`, let
 
@@ -16,14 +18,13 @@ For a fixed periodic Hamilton-gauge word `tau` and jump `s`, let
 R_s(\tau)=\max_{|z|=1}\rho(H_{s,\tau}(z))^2
 \]
 
-be the continuous squared Bloch edge of that explicit periodic phase.
+be the continuous squared Bloch edge.
 
-The paper now studies two related questions:
+The paper now answers three questions:
 
-1. how much structure can be proved inside natural low-period classes;
-2. how short a period is sufficient to force `R_s(tau)<8` as a function of the arithmetic of `s`.
-
-This is stronger and more precise than treating one parity-dependent family as canonical.
+1. what is optimal in the smallest periodic sector;
+2. how short a periodic word suffices to force `R_s(tau)<8`;
+3. what is the sharp gap law for the compressed arithmetic family.
 
 ---
 
@@ -51,8 +52,6 @@ For even `s`,
 \min_{\operatorname{per}(\tau)\mid2}R_s(\tau)=8.
 \]
 
-Thus the parity obstruction is not an artifact of a chosen construction: it is an exact variational statement in the smallest nontrivial periodic sector.
-
 For odd `s>=3`, the minimizing phase is unique and satisfies
 
 \[
@@ -67,7 +66,7 @@ g_s\downarrow0,
 s^2g_s\uparrow\pi^2.
 \]
 
-The detailed proof is in `PERIOD_TWO_VARIATIONAL_THEORY.md`.
+Proof: `PERIOD_TWO_VARIATIONAL_THEORY.md`.
 
 ---
 
@@ -95,8 +94,6 @@ g_s={}&\frac{\pi^2}{s^2}
 \end{aligned}
 \]
 
-This turns the former leading-order statement into a genuine asymptotic expansion.
-
 ---
 
 # Theorem C — exact fixed period eight on `v_2(s)=1`
@@ -107,7 +104,7 @@ For every
 s\equiv2\pmod4,
 \]
 
-the same period-eight word
+the fixed period-eight word
 
 \[
 (1,1,-1,1,-1,-1,1,-1)
@@ -116,11 +113,10 @@ the same period-eight word
 has the exact Bloch edge
 
 \[
-\boxed{
-4+\sqrt{10+2\sqrt5}<8.}
+\boxed{4+\sqrt{10+2\sqrt5}<8.}
 \]
 
-Hence this entire congruence class has one fixed period-eight phase with the uniform squared gap
+Thus the whole congruence class has the uniform squared gap
 
 \[
 4-\sqrt{10+2\sqrt5}.
@@ -130,130 +126,304 @@ Proof: `UNIFORM_PERIOD8_MOD4_THEOREM.md`.
 
 ---
 
-# Theorem D — a second period-eight phase on `v_2(s)=2`
+# Theorem D — general two-defect compression
+
+Let `L>=4` be even. On period `2L`, take the two-defect flux word
+
+\[
+Q_0=Q_2=1,
+\qquad Q_j=-1\quad(j\ne0,2).
+\]
 
 For every
 
 \[
-s\equiv4\pmod8,
+s=L(2q+1),
+\qquad q\ge0,
 \]
 
-the fixed period-eight word
+the resulting periodic phase satisfies
 
 \[
-(-1,1,1,-1,-1,1,-1,1)
+\boxed{R_{L,q}<8.}
 \]
 
-satisfies
-
-\[
-\boxed{
-R_s(\tau)<4+\sqrt{10+2\sqrt5}<8.}
-\]
-
-Thus
-
-\[
-8-R_s(\tau)
->4-\sqrt{10+2\sqrt5}
-\]
-
-uniformly on the whole congruence class.
-
-The exact dispersion is
-
-\[
-4+\sqrt{
-8+2\cos(2nt)
-+\sqrt{10-8\cos(nt)+2\cos t}},
-\qquad n=s/4\text{ odd},
-\]
-
-for the top squared branch.
-
-Proof: `UNIFORM_PERIOD8_MOD8_THEOREM.md`.
-
----
-
-# Theorem E — fixed period sixteen on `v_2(s)=3`
-
-For every
-
-\[
-s\equiv8\pmod{16},
-\]
-
-the period-sixteen two-defect word
-
-\[
-(1,1,-1,-1,1,-1,1,-1,1,-1,1,-1,1,-1,1,-1)
-\]
-
-satisfies
-
-\[
-\boxed{R_s(\tau)<8.}
-\]
-
-A completely explicit uniform estimate is
+A completely explicit bound is
 
 \[
 \boxed{
-8-R_s(\tau)\ge\frac{28}{8^7}.}
+8-R_{L,q}\ge\frac{16}{8^{L-1}}.}
 \]
 
-The proof uses:
+The proof folds the `2L`-dimensional Bloch problem to an `L`-site two-component chain and then to a fixed `4 x 4` transfer monodromy. The threshold determinant becomes
 
-- a generic two-phase `16 x 16` threshold determinant identity;
-- a positive Bernstein-basis certificate `F(x)>=32` on `[-2,2]`;
-- a fixed-fiber inertia calculation;
-- a signed-reflection chiral symmetry explaining the even characteristic polynomial.
+\[
+P_{L,q,z}(8)=F_L(d)+d-e,
+\]
 
-Proof: `UNIFORM_PERIOD16_MOD16_THEOREM.md`.
+and a Chebyshev monotonicity argument proves
+
+\[
+F_L(d)\ge20
+\qquad(-2\le d\le2).
+\]
+
+Proof: `GENERAL_TWO_DEFECT_COMPRESSION_THEOREM.md`.
+
+### 2-adic corollary
+
+If
+
+\[
+2^k\Vert s,
+\qquad k\ge2,
+\]
+
+choose
+
+\[
+L=2^k.
+\]
+
+Then a period
+
+\[
+\boxed{2^{k+1}}
+\]
+
+phase has Bloch edge below `8`, independently of the odd part of `s`.
+
+Thus the period depends only on the `2`-adic scale, not on the full jump.
 
 ---
 
-# Corollary F — short-period theorem through the first three 2-adic layers
+# Theorem E — signed-reflection chirality
 
-If `s` is even and
-
-\[
-16\nmid s,
-\]
-
-then there is an explicit periodic signing with
+The general two-defect lift satisfies
 
 \[
-R_s(\tau)<8
+\tau_{3-j}=-\tau_j.
 \]
 
-whose period is at most sixteen.
-
-More precisely:
+For every jump `s=L(2q+1)`, alternating sign times reflection gives a chiral symmetry. Fiberwise, after combining reflection with complex conjugation,
 
 \[
-\begin{array}{c|c|c}
- v_2(s)&\text{period used}&\text{gap information}\\ \hline
- 1&8&\text{exact uniform constant}\\
- 2&8&\text{strictly better than the same constant}\\
- 3&16&\text{explicit uniform positive bound}
-\end{array}
+\operatorname{spec}H_{L,q}(z)
+=-\operatorname{spec}H_{L,q}(z).
 \]
 
-This arithmetic short-period statement is stronger on these subsequences than the old period-`4s` construction.
+Hence
+
+\[
+\det(\lambda I-H_{L,q}(z))
+=P_{L,q,z}(\lambda^2).
+\]
+
+Proof: `TWO_DEFECT_REFLECTION_CHIRAL_THEOREM.md`.
 
 ---
 
-# Theorem G — all-jump fallback construction
+# Theorem F — exact two-phase characteristic equation
 
-The previously proved all-jump result remains useful for the part of the parameter space not yet compressed by Theorems C--E.
+Put
 
-For every `s>=2` there is an explicit periodic phase with squared edge below `8`:
+\[
+d=z^{2q+1}+z^{-(2q+1)},
+\qquad
+e=z+z^{-1},
+\]
+
+\[
+m=\frac{L-4}{2},
+\qquad
+t=\frac{y-d-4}{2},
+\]
+
+\[
+u=U_m(t),
+\qquad
+w=U_{m-1}(t).
+\]
+
+Then the full degree-`L` squared characteristic polynomial is
+
+\[
+\boxed{
+P_{L,q,z}(y)
+=u^2A(y,d)+uwB(y,d)+C(y,d)-e,}
+\]
+
+where
+
+\[
+A(y,d)=
+(y^2-9y+14-d^2-d)
+(y^2-7y+6-d^2+d),
+\]
+
+\[
+B(y,d)=
+-(d+y-4)(y^2-8y+4-d^2),
+\]
+
+and
+
+\[
+C(y,d)=d^2+2dy-4d+y^2-8y+6.
+\]
+
+Thus the growing Bloch matrix is reduced exactly to a two-phase Chebyshev equation.
+
+Proof: `GENERAL_TWO_PHASE_CHARACTERISTIC_EQUATION.md`.
+
+---
+
+# Theorem G — exact endpoint Robin law
+
+At `z=1`, put `r=L/2`. The top squared eigenvalue is
+
+\[
+\rho(H_{L,q}(1))^2
+=6+2\cos\frac{x_r}{r},
+\]
+
+where `x_r in (0,pi/2)` is the unique solution of
+
+\[
+\boxed{
+3\cos x_r+2\tan\frac{x_r}{2r}\sin x_r=1.}
+\]
+
+If
+
+\[
+x_0=\arccos(1/3),
+\]
+
+then
+
+\[
+\boxed{
+L^2\bigl(8-\rho(H_{L,q}(1))^2\bigr)
+\to4x_0^2.}
+\]
+
+The endpoint gap has the expansion
+
+\[
+\begin{aligned}
+e_L={}&\frac{4x_0^2}{L^2}
++\frac{16x_0^2}{3L^3}\\
+&+\frac{4x_0^2}{9L^4}
+(-3x_0^2+\sqrt2\,x_0+12)
++O(L^{-5}).
+\end{aligned}
+\]
+
+Proof: `COMPRESSED_ENDPOINT_SHARP_GAP.md`.
+
+---
+
+# Theorem H — uniform global sharp compressed gap
+
+Let
+
+\[
+\Gamma_{L,q}=8-R_{L,q}.
+\]
+
+For **every** sequence of even `L->infinity` and **every** sequence `q=q(L)>=0`,
+
+\[
+\boxed{
+L^2\Gamma_{L,q}
+\longrightarrow
+4\arccos(1/3)^2.}
+\]
+
+Thus the sharp compressed gap is uniform in the odd multiplier.
+
+If `z_{L,q}` is any maximizing phase and
+
+\[
+d_{L,q}=z_{L,q}^{2q+1}+z_{L,q}^{-(2q+1)},
+\qquad
+e_{L,q}=z_{L,q}+z_{L,q}^{-1},
+\]
+
+then
+
+\[
+\boxed{e_{L,q}\to2,}
+\]
+
+and
+
+\[
+\boxed{L^2(2-d_{L,q})\to0.}
+\]
+
+The proof excludes hyperbolic near-edge roots and shows that every elliptic near-edge root satisfies the universal limiting Robin equation
+
+\[
+36\sin^2x=34-e.
+\]
+
+The endpoint upper bound then forces
+
+\[
+x=\arccos(1/3),\qquad e=2.
+\]
+
+Proof: `GLOBAL_COMPRESSED_SHARP_GAP.md`.
+
+### 2-adic sharp-gap corollary
+
+For `2^k || s`, `k>=2`, choose `L=2^k`. Then, as `k->infinity`, uniformly in the odd part of `s`,
+
+\[
+\boxed{
+8-R_s
+\sim
+\frac{4\arccos(1/3)^2}{4^k}.}
+\]
+
+This is the sharp arithmetic compression law.
+
+---
+
+# Theorem I — eventual endpoint locking for a fixed odd multiplier
+
+Fix `q`, equivalently fix the odd multiplier `n=2q+1`. Then there exists `L_0(q)` such that for every even `L>=L_0(q)`,
+
+\[
+\boxed{
+R_{L,q}=\rho(H_{L,q}(1))^2.}
+\]
+
+Thus the global gap eventually equals the endpoint gap exactly and inherits the full expansion in Theorem G.
+
+The proof combines global phase rigidity with a rescaled local `C^2` law
+
+\[
+r^2(8-y(\psi/r))
+=x_0^2+n^2\psi^2+O(r^{-1}),
+\]
+
+which gives strict endpoint convexity for large `L`.
+
+Proof: `FIXED_ODD_MULTIPLIER_ENDPOINT_DOMINANCE.md`.
+
+---
+
+# Theorem J — old all-jump family remains as an asymptotic comparison family
+
+The previously proved parity-dependent family remains mathematically useful:
 
 - period two for odd `s`;
-- the previously constructed period-`4s` antipodal phase for even `s`.
+- period `4s` antipodal phase for even `s`.
 
-For that original parity-dependent family, the gap has leading scale
+For that family,
 
 \[
 s^2\widehat g_s\to\pi^2,
@@ -261,61 +431,36 @@ s^2\widehat g_s\to\pi^2,
 
 and the audited even phase-slip theorem remains valid.
 
-Important editorial correction: this `pi^2/s^2` theorem is now a sharp asymptotic theorem **for that explicit family**, not a claim that `Theta(s^-2)` is the best gap achievable by arbitrary periodic signings. Theorems C--E show that it is not the strongest construction on several infinite even subsequences.
+However, it is no longer the strongest existence theorem for even jumps. The compressed family is strictly shorter and has the sharper arithmetic gap scale controlled by `v_2(s)`.
+
+The old family should therefore be presented as a comparison/asymptotic model rather than the headline even-jump construction.
 
 ---
 
-# Structural symmetry — two-defect signed reflection
+# Current paper-level thesis
 
-The period-sixteen result reveals a general mechanism. For the two-defect word of even period `2L>=8` defined by
+The strongest current thesis is:
 
-\[
-Q_0=Q_2=1,
-\qquad Q_j=-1\ (j\ne0,2),
-\]
+> periodic spectral improvement in signed step circulants is governed by an arithmetic compression mechanism. Period two exhibits an exact parity bifurcation; a two-defect signed-reflection phase compresses every even jump to a period controlled only by its 2-adic scale; the compressed Bloch problem has an exact two-phase transfer equation and a sharp universal Robin gap constant; and the older long-period family exhibits a different phase-slip asymptotic mechanism.
 
-the Hamilton-gauge lift satisfies
+The manuscript now contains four distinct kinds of mathematics:
 
-\[
-\tau_{3-j}=-\tau_j.
-\]
-
-For a jump
-
-\[
-s=L(2q+1),
-\]
-
-alternating sign times reflection gives a chiral symmetry. This explains why the natural next parameter is the `2`-adic valuation of `s` and supplies a conceptual route toward higher layers.
-
-This symmetry is proved as part of `UNIFORM_PERIOD16_MOD16_THEOREM.md` and should become a standalone proposition in the final manuscript.
+1. exact variational classification;
+2. structural chirality and transfer compression;
+3. arithmetic/2-adic period reduction;
+4. sharp global asymptotics and endpoint locking.
 
 ---
 
-# Main open strengthening target
+# Main remaining strengthening target
 
-The leading conjectural theorem suggested by exact computation is:
+The strongest numerically supported finite statement still open is:
 
-> Let `2^k || s`, with `k>=2`. There should exist a two-defect periodic phase of period `2^{k+1}` (or another period bounded solely in terms of `k`) whose continuous squared Bloch edge is strictly below `8` for every odd multiple of `2^k`.
+\[
+\boxed{
+L\ge6
+\quad\Longrightarrow\quad
+z=1\text{ is globally maximizing for every odd multiplier}.}
+\]
 
-Exact numerical experiments currently support the two-defect period `2^{k+1}` pattern for the next layers as well, including `k=4,5`, but these cases remain **Observed**, not Proved, until a uniform continuant/transfer proof is completed.
-
-The paper should not state the general hierarchy as a theorem yet.
-
----
-
-# Revised paper-level thesis
-
-The paper should no longer be sold primarily as
-
-> one parity-dependent family with a common `pi^2/s^2` gap.
-
-The stronger current thesis is:
-
-> periodic spectral improvement in signed step circulants has a genuine arithmetic hierarchy. The smallest periodic sector exhibits an exact parity bifurcation; successive even `2`-adic layers admit unexpectedly short periodic phases with uniform sub-eight gaps; and the original all-jump family supplies a universal fallback together with sharp variational and phase-slip asymptotics.
-
-This gives the manuscript three kinds of mathematical content:
-
-1. **variational classification** rather than construction alone;
-2. **arithmetic/2-adic structure** rather than parity alone;
-3. **sharp asymptotic analysis** rather than threshold existence alone.
+The exact two-phase characteristic equation reduces this to a one-variable positivity problem at the endpoint root. This is now the main finite-strengthening target.
