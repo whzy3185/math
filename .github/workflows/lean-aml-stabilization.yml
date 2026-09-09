@@ -1,0 +1,32 @@
+name: Lean AML stabilization verification
+
+on:
+  push:
+    branches:
+      - research/aml-production-consumption-stabilization
+    paths:
+      - "formal/**"
+      - ".github/workflows/lean-aml-stabilization.yml"
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install elan
+        run: |
+          curl -sSfL https://raw.githubusercontent.com/leanprover/elan/master/elan-init.sh | sh -s -- -y
+          echo "$HOME/.elan/bin" >> "$GITHUB_PATH"
+
+      - name: Resolve mathlib
+        working-directory: formal
+        run: |
+          lake update
+          lake exe cache get
+
+      - name: Build Lean library
+        working-directory: formal
+        run: lake build
