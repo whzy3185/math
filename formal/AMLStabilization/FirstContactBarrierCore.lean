@@ -27,7 +27,8 @@ theorem derivative_nonneg_at_past_upper_contact
   have hdir := neg_one_mem_posTangentCone_Iic t0
   have h := hcontact.hasFDerivWithinAt_nonpos
     hy.hasFDerivAt.hasFDerivWithinAt hdir
-  simpa only [ContinuousLinearMap.smulRight_apply, one_apply_eq_self] at h
+  have hmul : (-1 : ℝ) * dy ≤ 0 := by
+    simpa [ContinuousLinearMap.toSpanSingleton_apply] using h
   linarith
 
 /-- At a first lower contact from the past, the time derivative is nonpositive. -/
@@ -39,7 +40,8 @@ theorem derivative_nonpos_at_past_lower_contact
   have hdir := neg_one_mem_posTangentCone_Iic t0
   have h := hcontact.hasFDerivWithinAt_nonneg
     hy.hasFDerivAt.hasFDerivWithinAt hdir
-  simpa only [ContinuousLinearMap.smulRight_apply, one_apply_eq_self] at h
+  have hmul : 0 ≤ (-1 : ℝ) * dy := by
+    simpa [ContinuousLinearMap.toSpanSingleton_apply] using h
   linarith
 
 /-- For the tilted upper barrier `y(t)-εt`, first contact forces `y'(t₀) ≥ ε`. -/
