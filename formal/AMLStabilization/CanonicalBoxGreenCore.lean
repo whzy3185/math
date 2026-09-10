@@ -70,7 +70,9 @@ theorem boxGreenIdentity_from_frechet_data
   have hfluxcont : ContinuousOn (fun x i => w x * grad x i) (Icc a b) := by
     rw [continuousOn_pi]
     intro i
-    exact hwcont.mul (by simpa [grad] using hgradcont i)
+    have hgi : ContinuousOn (fun x => grad x i) (Icc a b) := by
+      simpa [grad] using hgradcont i
+    exact hwcont.mul hgi
   have hdivIdentity : ∀ x,
       (∑ i : Fin (n + 1), flux' x (Pi.single i 1) i) =
         (∑ i : Fin (n + 1), (grad x i) ^ 2) + w x * lap x := by
@@ -81,10 +83,14 @@ theorem boxGreenIdentity_from_frechet_data
         (w := w) (lap := lap) (grad := grad) (x := x)
         (dw := dw x) (dgrad := dgrad x)
         (fun i => rfl) rfl)
+  have hGradInt' : IntegrableOn
+      (fun x => ∑ i : Fin (n + 1), (grad x i) ^ 2) (Icc a b) := by
+    simpa [grad] using hGradInt
+  have hWLapInt' : IntegrableOn (fun x => w x * lap x) (Icc a b) := by
+    simpa [lap] using hWLapInt
   have hRhsInt : IntegrableOn
       (fun x => (∑ i : Fin (n + 1), (grad x i) ^ 2) + w x * lap x)
-      (Icc a b) := by
-    exact (by simpa [grad] using hGradInt).add (by simpa [lap] using hWLapInt)
+      (Icc a b) := hGradInt'.add hWLapInt'
   have hDivInt : IntegrableOn
       (fun x => ∑ i : Fin (n + 1), flux' x (Pi.single i 1) i)
       (Icc a b) := by
@@ -92,19 +98,20 @@ theorem boxGreenIdentity_from_frechet_data
     · intro x hx
       exact (hdivIdentity x).symm
     · exact measurableSet_Icc
+  have hgradDiff' : ∀ x,
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
+      ∀ i, HasFDerivAt (fun y => grad y i) (dgrad x i) x := by
+    intro x hx i
+    simpa [grad] using hgradDiff x hx i
   have hgreen := boxGreenIdentity_from_local_derivatives
     hle w lap grad dw dgrad bad hbad hfluxcont
-    hwdiff
-    (by
-      intro x hx i
-      simpa [grad] using hgradDiff x hx i)
+    hwdiff hgradDiff'
     (by intro x i; rfl)
     (by intro x; rfl)
     (by simpa [flux'] using hDivInt)
     (by simpa [grad] using hfront)
     (by simpa [grad] using hback)
-    (by simpa [grad] using hGradInt)
-    (by simpa [lap] using hWLapInt)
+    hGradInt' hWLapInt'
   simpa [grad, lap] using hgreen
 
 end AMLStabilization
