@@ -1,6 +1,8 @@
 import Mathlib
 import AMLStabilization.SharpnessCore
 
+open SignType
+
 namespace AMLStabilization
 
 /-- Signed homogeneous profile for arbitrary nonzero initial deviation. -/
