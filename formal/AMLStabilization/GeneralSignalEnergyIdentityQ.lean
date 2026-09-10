@@ -79,8 +79,9 @@ theorem cubicDegenerate_signalEnergyInequality
     hu
   · intro x
     have habs4 : |w x| ^ (4 : ℝ) = w x ^ 4 := by
-      rw [Real.rpow_natCast]
-      norm_num [abs_pow]
+      change |w x| ^ (4 : ℕ) = w x ^ 4
+      rw [← abs_pow, abs_of_nonneg]
+      positivity
     rw [habs4]
     ring_nf
     exact le_rfl
