@@ -37,11 +37,13 @@ theorem cellEnergy_exponentialEnvelope_from_gradientRate
         B * Real.exp (-(2 * lambda) * (t - T)) := by
     simpa [B, damp] using hmain
   have hx : 0 ≤ t - T := sub_nonneg.mpr hTt
+  have hdle : 2 * lambda ≤ damp := by linarith [hden]
+  have hmul : (2 * lambda) * (t - T) ≤ damp * (t - T) :=
+    mul_le_mul_of_nonneg_right hdle hx
   have hexpCmp :
       Real.exp (-damp * (t - T)) ≤ Real.exp (-(2 * lambda) * (t - T)) := by
     apply Real.exp_le_exp.mpr
-    have hdle : 2 * lambda ≤ damp := hden.le_sub_iff_add_le.mp (by linarith)
-    nlinarith
+    linarith
   have hdrop :
       (Q T - B) * Real.exp (-damp * (t - T)) ≤
         Q T * Real.exp (-damp * (t - T)) := by
