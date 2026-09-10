@@ -1,5 +1,6 @@
 -- Verification root for the strengthened AML stabilization library (final rate-assembly tree).
 import AMLStabilization.AlgebraicCore
+import AMLStabilization.AttractorDissipativityCore
 import AMLStabilization.EnergyDecay
 import AMLStabilization.SignalEnergyBridge
 import AMLStabilization.IntegralCoercivity
