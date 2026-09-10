@@ -14,3 +14,4 @@ import AMLStabilization.GeneralPolynomialEnergyDecay
 import AMLStabilization.NonlinearCoercivityAlgebra
 import AMLStabilization.WeightedHolderQ
 import AMLStabilization.NonlinearIntegralCoercivity
+import AMLStabilization.GeneralRateAssembly
