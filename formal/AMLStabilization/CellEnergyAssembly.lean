@@ -60,19 +60,27 @@ theorem cellEnergy_exponentialDecay_from_gradientRate
     unfold exponentialBarrier
     ring
   rw [hbar] at hmain
-  have hshiftS :
-      Real.exp (2 * (lambda * T)) * Real.exp (-(2 * (lambda * s))) =
-        Real.exp (-(2 * lambda) * (s - T)) := by
+  have hshiftSFull :
+      exponentialBarrier (a / Cp ^ 2) (2 * lambda) Cbase *
+          Real.exp ((2 * lambda) * T) * Real.exp (-(2 * lambda) * s) =
+        exponentialBarrier (a / Cp ^ 2) (2 * lambda) Cbase *
+          Real.exp (-(2 * lambda) * (s - T)) := by
+    rw [mul_assoc]
+    congr 1
     rw [← Real.exp_add]
     congr 1
     ring
-  have hshiftT :
-      Real.exp (2 * (lambda * T)) * Real.exp (-(2 * (lambda * t))) =
-        Real.exp (-(2 * lambda) * (t - T)) := by
+  have hshiftTFull :
+      exponentialBarrier (a / Cp ^ 2) (2 * lambda) Cbase *
+          Real.exp ((2 * lambda) * T) * Real.exp (-(2 * lambda) * t) =
+        exponentialBarrier (a / Cp ^ 2) (2 * lambda) Cbase *
+          Real.exp (-(2 * lambda) * (t - T)) := by
+    rw [mul_assoc]
+    congr 1
     rw [← Real.exp_add]
     congr 1
     ring
-  rw [hshiftS, hshiftT] at hmain
+  rw [hshiftSFull, hshiftTFull] at hmain
   simpa [Cbase] using hmain
 
 /-- Squaring a polynomial coefficient rate doubles its exponent. -/
