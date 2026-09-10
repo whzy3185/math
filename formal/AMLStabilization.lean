@@ -24,3 +24,4 @@ import AMLStabilization.ZeroEnergyBranch
 import AMLStabilization.GeneralQuadraticWeightedDampingFinal
 import AMLStabilization.ForcedEnergyDecay
 import AMLStabilization.BoundedInterpolationCore
+import AMLStabilization.CellEnergyCore
