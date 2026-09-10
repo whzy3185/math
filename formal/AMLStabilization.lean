@@ -30,3 +30,4 @@ import AMLStabilization.LpProductCore
 import AMLStabilization.PolynomialForcedEnergyDecay
 import AMLStabilization.CellEnergyAssembly
 import AMLStabilization.LocalPolynomialEnergyDecay
+import AMLStabilization.GeneralWeightedDampingNonnegativeFinal
