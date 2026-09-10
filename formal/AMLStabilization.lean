@@ -26,3 +26,4 @@ import AMLStabilization.ForcedEnergyDecay
 import AMLStabilization.BoundedInterpolationCore
 import AMLStabilization.CellEnergyCore
 import AMLStabilization.LpProductCore
+import AMLStabilization.PolynomialForcedEnergyDecay
