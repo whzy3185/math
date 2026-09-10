@@ -4,10 +4,7 @@ open MeasureTheory
 
 namespace AMLStabilization
 
-/--
-Arbitrary-order pointwise dissipativity, after multiplication by a nonnegative
-weight, implies the corresponding weighted integral reaction estimate.
--/
+/-- Arbitrary-order pointwise dissipativity, multiplied by a nonnegative weight. -/
 theorem dissipativeReactionIntegral_q
     {Omega : Type*} [MeasurableSpace Omega]
     {mu : Measure Omega} {u w R : Omega → ℝ} {beta q : ℝ}
@@ -29,12 +26,7 @@ theorem dissipativeReactionIntegral_q
     _ = -beta * (∫ x, u x * |w x| ^ q ∂mu) := by
       rw [integral_const_mul]
 
-/--
-Arbitrary-`q` signal energy inequality from the same three analytic interfaces
-used in the quadratic proof: differentiation of `∫w²`, PDE pairing against
-`w`, and the Neumann Green identity.  All reaction and coefficient algebra is
-internal to Lean.
--/
+/-- Arbitrary-`q` signal energy inequality from named PDE/Green interfaces. -/
 theorem signalEnergyInequality_q_from_integralPDE
     {Omega : Type*} [MeasurableSpace Omega]
     {mu : Measure Omega} {u w wt lap R : Omega → ℝ}
@@ -56,7 +48,7 @@ theorem signalEnergyInequality_q_from_integralPDE
   rw [hPDEPairing, hGreen] at hEnergyDerivative
   linarith
 
-/-- Cubically degenerate reaction specializes the arbitrary-order energy identity to `q=4`. -/
+/-- Cubically degenerate reaction specializes the arbitrary-order identity to `q=4`. -/
 theorem cubicDegenerate_signalEnergyInequality
     {Omega : Type*} [MeasurableSpace Omega]
     {mu : Measure Omega} {u w wt lap : Omega → ℝ}
@@ -78,12 +70,17 @@ theorem cubicDegenerate_signalEnergyInequality
     (dE := dE) (gradSq := gradSq) (beta := kappa) (q := (4 : ℝ))
     hu
   · intro x
-    have habs4 : |w x| ^ 4 = w x ^ 4 := by
+    have habs4Nat : |w x| ^ (4 : ℕ) = w x ^ 4 := by
       calc
         |w x| ^ 4 = (|w x| ^ 2) ^ 2 := by ring
         _ = (w x ^ 2) ^ 2 := by rw [sq_abs]
         _ = w x ^ 4 := by ring
-    rw [habs4]
+    have habs4Real : |w x| ^ (4 : ℝ) = w x ^ 4 := by
+      calc
+        |w x| ^ (4 : ℝ) = |w x| ^ (4 : ℕ) := by
+          simpa using (Real.rpow_natCast |w x| (n := 4))
+        _ = w x ^ 4 := habs4Nat
+    rw [habs4Real]
     ring_nf
     exact le_rfl
   · exact hreaction
