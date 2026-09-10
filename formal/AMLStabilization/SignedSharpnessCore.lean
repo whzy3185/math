@@ -40,11 +40,17 @@ theorem abs_signedHomogeneousSharpProfile
       (|w0| ^ (-theta) + theta * k * t) ^ (-1 / theta) := by
   have hprof : 0 < homogeneousSharpProfile theta k |w0| t :=
     homogeneousSharpProfile_pos htheta (abs_pos.mpr hw0) hk ht
-  rcases lt_or_gt_of_ne hw0 with hwneg | hwpos
-  · simp [signedHomogeneousSharpProfile, hwneg, abs_of_pos hprof,
-      homogeneousSharpProfile]
-  · simp [signedHomogeneousSharpProfile, hwpos, abs_of_pos hprof,
-      homogeneousSharpProfile]
+  have hsignAbs : |(sign w0 : ℝ)| = 1 := by
+    rcases lt_or_gt_of_ne hw0 with hwneg | hwpos
+    · simp [hwneg]
+    · simp [hwpos]
+  calc
+    |signedHomogeneousSharpProfile theta k w0 t| =
+        |(sign w0 : ℝ)| * |homogeneousSharpProfile theta k |w0| t| := by
+      rw [signedHomogeneousSharpProfile, abs_mul]
+    _ = homogeneousSharpProfile theta k |w0| t := by
+      rw [hsignAbs, abs_of_pos hprof, one_mul]
+    _ = (|w0| ^ (-theta) + theta * k * t) ^ (-1 / theta) := rfl
 
 /-- Manuscript form with the damping coefficient split as `kappa * ubar`. -/
 theorem sharpness_absolute_formula
