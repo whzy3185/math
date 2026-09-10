@@ -7,11 +7,12 @@ theorem young_gradient_forcing
     {a H g : ℝ}
     (ha : 0 < a) (hH : 0 ≤ H) (hg : 0 ≤ g) :
     2 * H * g ≤ a * g ^ 2 + H ^ 2 / a := by
-  have hsquare : 0 ≤ (Real.sqrt a * g - H / Real.sqrt a) ^ 2 := sq_nonneg _
-  have hsqrt : 0 < Real.sqrt a := Real.sqrt_pos.2 ha
-  have hsqrtSq : (Real.sqrt a) ^ 2 = a := Real.sq_sqrt (le_of_lt ha)
-  field_simp [ne_of_gt hsqrt, ne_of_gt ha] at hsquare ⊢
-  nlinarith
+  have hsquare : 0 ≤ (a * g - H) ^ 2 := sq_nonneg _
+  have hmul :
+      (2 * H * g) * a ≤ (a * g ^ 2 + H ^ 2 / a) * a := by
+    field_simp [ne_of_gt ha]
+    nlinarith
+  exact (mul_le_mul_right ha).mp hmul
 
 /--
 A cell-energy balance with a linear gradient forcing closes to a forced scalar
@@ -48,7 +49,7 @@ theorem square_exponential_forcing
   calc
     H ^ 2 ≤ (C * Real.exp (-lambda * (t - T))) ^ 2 := hsq
     _ = C ^ 2 * Real.exp (-(2 * lambda) * (t - T)) := by
-      rw [mul_pow, ← Real.exp_nat_mul]
+      rw [mul_pow, pow_two, ← Real.exp_add]
       congr 1
       ring
 
