@@ -39,7 +39,8 @@ theorem memLp_mul_of_reciprocal_identity
     ennrealHolderTriple_of_real hp hs hr hrel
   have h : MemLp (f * g) (ENNReal.ofReal r) mu :=
     hg.mul (r := ENNReal.ofReal r) hf
-  simpa [Pi.mul_apply] using h
+  change MemLp (f * g) (ENNReal.ofReal r) mu
+  exact h
 
 /-- The canonical exponents therefore give the product membership needed before smoothing. -/
 theorem lpChoice_product_memLp
