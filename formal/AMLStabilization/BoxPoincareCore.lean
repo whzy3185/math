@@ -69,7 +69,6 @@ private lemma intervalPointwiseMeanBound
         (1 / h) * ∫ y in (0 : ℝ)..h, (f x - f y) := by
     rw [h_int_diff]
     field_simp [hh_ne]
-    ring
   rw [h_rewrite, abs_mul, abs_of_nonneg (by positivity : 0 ≤ (1 / h : ℝ))]
   have h_norm_bound :
       |∫ y in (0 : ℝ)..h, (f x - f y)| ≤ h * M := by
@@ -196,13 +195,7 @@ theorem intervalPoincareL2_sqrt
   intro fbar
   have hmain := intervalPoincareL2 hh hf hf_cont hf'_cont
   dsimp only at hmain
-  have hleft0 : 0 ≤ ∫ x in (0 : ℝ)..h, |f x - fbar| ^ 2 :=
-    integral_nonneg hh.le (fun x _ => sq_nonneg _)
-  have hright0 : 0 ≤ ∫ x in (0 : ℝ)..h, |f' x| ^ 2 :=
-    integral_nonneg hh.le (fun x _ => sq_nonneg _)
   have hsqrt := Real.sqrt_le_sqrt hmain
-  rw [Real.sqrt_mul (sq_nonneg h), Real.sqrt_sq_eq_abs, abs_of_pos hh,
-    Real.sqrt_sq_eq_abs] at hsqrt
-  simpa [abs_of_nonneg hright0] using hsqrt
+  simpa [fbar, Real.sqrt_mul (sq_nonneg h), Real.sqrt_sq_eq_abs, abs_of_pos hh] using hsqrt
 
 end AMLStabilization
