@@ -16,6 +16,7 @@ import AMLStabilization.FirstContactBarrierCore
 import AMLStabilization.SignalEnergyIdentityCore
 import AMLStabilization.SignalPDEPairingCore
 import AMLStabilization.BoxSignalEnergyCore
+import AMLStabilization.TimeDependentBoxSignalEnergyCore
 import AMLStabilization.FinalSignalAssembly
 import AMLStabilization.ProductionConsumptionSignalFinal
 import AMLStabilization.PolynomialEnergyDecay
