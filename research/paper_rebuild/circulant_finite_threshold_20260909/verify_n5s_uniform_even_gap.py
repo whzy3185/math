@@ -40,7 +40,7 @@ def canonical(ds):
 def pentagon(mask):
     B=np.zeros((5,5),dtype=np.int64)
     for i in range(5):
-        sig=-1 if ((mask>>i)&1 else 1
+        sig=-1 if ((mask>>i)&1) else 1
         j=(i+1)%5
         B[i,j]=B[j,i]=sig
     return B
