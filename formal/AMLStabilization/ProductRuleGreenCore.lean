@@ -24,7 +24,7 @@ theorem productGradientFlux_hasFDerivAt
       (ContinuousLinearMap.pi fun i => w x • dgrad i + grad x i • dw) x := by
   apply hasFDerivAt_pi.2
   intro i
-  simpa only [Pi.mul_apply] using hw.mul (hgrad i)
+  convert! hw.mul (hgrad i)
 
 /--
 Coordinate expansion of `div (w * grad w)` once `dw(e_i)=grad_i` and the
@@ -53,7 +53,6 @@ theorem productGradientFlux_divergence_identity
     _ = w x * (∑ i : Fin (n + 1), dgrad i (Pi.single i 1)) +
         ∑ i : Fin (n + 1), (grad x i) ^ 2 := by
       rw [Finset.sum_add_distrib, Finset.mul_sum]
-      ring
     _ = (∑ i : Fin (n + 1), (grad x i) ^ 2) + w x * lap x := by
       rw [← hlap]
       ring
