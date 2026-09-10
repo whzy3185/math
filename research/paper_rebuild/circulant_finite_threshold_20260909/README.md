@@ -3,16 +3,14 @@
 Working branch: `paper/circulant-finite-threshold-20260909`.
 
 This directory develops the finite-global extremal problem
-
 \[
 m(N,s)=\min_\sigma\rho(A_\sigma),\qquad 2\le s<N/2,
 \]
-
 for signed adjacency matrices of `C_N(1,s)`.
 
 ## Scope boundary
 
-This paper is completely independent of the separate periodic/Bloch project. It concerns finite graphs, minimization over **all** signings, exact equality, threshold classification, and switching/flux rigidity.
+This paper is completely independent of the separate periodic/Bloch project. It concerns finite graphs, minimization over **all** signings, exact equality, threshold classification, and switching/flux rigidity. No theorem from the periodic-family paper is used.
 
 # Main proved theorem package
 
@@ -34,11 +32,7 @@ These are exactly the pairs with `m(N,s)^2<6`.
 ### Exactly six
 
 \[
-\boxed{
- m(N,s)^2=6
- \iff
- (N,s)\in\{(12,4),(16,3),(16,5),(20,8)\}.
-}
+\boxed{m(N,s)^2=6\iff (N,s)\in\{(12,4),(16,3),(16,5),(20,8)\}.}
 \]
 
 The labelled minimizing switching-class counts are `2,32,32,2`, and the switching-isomorphism orbit counts are `1,2,2,1`. At order 16 the 32 classes split into two size-16 Hamilton-holonomy sectors; every minimizing defect has exactly two repeated-root pairs.
@@ -46,127 +40,124 @@ The labelled minimizing switching-class counts are `2,32,32,2`, and the switchin
 ### Strictly above six
 
 Every other admissible pair satisfies
-
 \[
 \boxed{m(N,s)>\sqrt6.}
 \]
 
-## 2. Six-boundary mechanism
+The equality proof uses the integral Gram matrix `6I-A^2`, root quotienting, parity-defect support, and a four-locus arithmetic localization. All four loci are closed.
 
-With `B=A^2-4I` and `K=6I-A^2=2I-B`, root quotienting plus parity-defect support localizes every generic `rho(A)^2<=6` candidate to
-
-\[
-t=2,\qquad q=2t+1,\qquad q=2t+2,\qquad q=3t,
-\]
-
-where `q=N/gcd(N,2)` and `t=min(s,q-s)`. All four loci are closed, yielding the complete equality theorem above.
-
-## 3. Exact low-end and rigidity results
+## 2. Exact low-end results
 
 - `m(N,s)=2` iff `N=2s+2`.
 - `m(N,s)=sqrt(5)` iff `(N,s)=(5,2)` or `(10,3)`.
 - Outside those cases, `m(N,s)^2>=4+sqrt(2)`; equality occurs exactly at `(8,2)`.
-- On `N=4s`, `m(4s,s)^2=4+2 cos(pi/(2s))`, with exactly two labelled minimizing switching classes.
-- On the flat line `N=2s+2`, `s!=3`, there are exactly two labelled equality switching classes; `(8,3)=K_(4,4)` has six labelled classes and one switching-isomorphism orbit.
-- `m(12,2)^2=5+sqrt(3)`, with exactly two labelled minimizing switching classes.
+- On `N=4s`,
+  \[
+  m(4s,s)^2=4+2\cos\frac{\pi}{2s},
+  \]
+  with exactly two labelled minimizing switching classes.
+- `m(12,2)^2=5+sqrt(3)`, with exactly two labelled minimizers.
 
-## 4. `sqrt(8)` results: horizontal and vertical resonances
+## 3. `sqrt(8)`: horizontal triangle resonance
 
-For every even `N`,
-
+Every even order has a finite sub-threshold signing:
 \[
 m(N,s)^2\le6+2\cos\frac{2\pi}{N}<8.
 \]
 
-### Horizontal triangle resonance
-
 On `N=3s`,
-
 \[
 \boxed{m(3s,s)<\sqrt8\iff s\text{ is even or }s\in\{3,5\}.}
 \]
 
-For odd `s>=7`,
-
+The quantitative odd obstruction has been strengthened twice during the audit. The current proved form is
 \[
-\boxed{m(3s,s)^2\ge8+\frac{2}{139}.}
+\boxed{m(3s,s)^2\ge8+\frac{24}{1667}\qquad(s\ge7\text{ odd}).}
 \]
 
-### Vertical fixed-step theorems
+The `s=7` exhaustive certificate is stronger (`18/131`). At `s=9`, exact prefix pruning leaves 1,064 length-eight prefixes and checks 17,024 final cyclic candidates. The strengthened nine-column local rule at `24/1667` has survivor counts
 
+```text
+8, 56, 152, 440, 488, 1016, 656, 1064, 128,
+```
+
+and all 128 final survivors satisfy the same forced middle alternation used in the analytic odd-seam contradiction. The floating eigensolver only proposes integer vectors; every accepted certificate is an exact integer cross-multiplication.
+
+## 4. `sqrt(8)`: vertical odd-step theorems
+
+The fully classified fixed steps are
 \[
-\boxed{m(3k,3)<\sqrt8\qquad(k\ge3),}
+\boxed{m(3k,3)<\sqrt8\quad(k\ge3),}
+\]
+\[
+\boxed{m(5k,5)<\sqrt8\quad(k\ge3),}
+\]
+and
+\[
+\boxed{m(sk,s)<\sqrt8\iff k\ge4\quad\text{for }s\in\{7,9,11,13\}.}
 \]
 
+The next two steps are classified except for a single `k=5` base each:
+
+```text
+s=15: k=3 is above sqrt(8); every k=4 or k>=6 is below sqrt(8);
+      (N,s)=(75,15) remains open.
+
+s=17: k=3 is above sqrt(8); every k=4 or k>=6 is below sqrt(8);
+      (N,s)=(85,17) remains open.
+```
+
+Search failures at these two open points are recorded only as **Observed** and are not lower bounds.
+
+## 5. General odd seam-defect and response framework
+
+For odd
 \[
-\boxed{m(5k,5)<\sqrt8\qquad(k\ge3),}
+N=ks,\qquad k\ge3,\qquad s\ge5,
+\]
+with both `k,s` odd, take Hamilton seam `-1` and alternating chord signs. After multiplication-by-two reindexing,
+\[
+\boxed{8I-A^2=L_{\Sigma}+E_-+E_+,}
+\]
+where `L_Sigma` is a signed Laplacian on `C_N(1,s)` and `E_-,E_+` are exactly two rank-two seam defects.
+
+The positivity problem has an exact two-port reduction. After moving two favorable rank-one terms into a positive matrix `H`, one has
+\[
+8I-A^2=H-UU^T,
+\]
+with two-column `U`, and hence
+\[
+\boxed{8I-A^2\succ0\iff I_2-U^TH^{-1}U\succ0.}
 \]
 
-and, for every
+A complementary finite-absorber theorem shows that, for any fixed odd step, two fixed positive-definite local absorber matrices certify every sufficiently large odd chord-cycle length; only finitely many small odd `k` then remain. This is the common finite mechanism behind the fixed-step results above.
 
-\[
-s\in\{7,9,11,13\},
-\]
+# Current proof/certificate additions
 
-\[
-\boxed{m(sk,s)<\sqrt8\iff k\ge4\qquad(k\ge3).}
-\]
-
-Thus for the four consecutive odd steps `7,9,11,13`, the unique non-sub-threshold member of the vertical family is exactly the chord-triangle point `k=3`.  The step-eleven and step-thirteen `k=5` cases require small local modifications of the alternating chord word; they are certified by exact rational LDL.
-
-## 5. General odd seam-defect framework
-
-For every odd resonance
-
-\[
-N=ks,\qquad k\ge3\text{ odd},\qquad s\ge5\text{ odd},
-\]
-
-use Hamilton seam `-1` and alternating chord signs. After multiplication-by-two reindexing there is an exact identity
-
-\[
-\boxed{
-8I-A^2=L_{\Sigma_{N,s}}+E_-+E_+,
-}
-\]
-
-where `L_Sigma` is a signed Laplacian on `C_N(1,s)` and the only two non-Laplacian entries are
-
-\[
-E_-:\ \left\{0,N-\frac{s+1}{2}\right\}\text{ with coefficient }-2,
-\]
-
-\[
-E_+:\ \left\{\frac{N-s}{2},\frac{N-1}{2}\right\}\text{ with coefficient }+2.
-\]
-
-So the remaining odd positive-side problem has been reduced from an unconstrained signing search to a two-defect energy-absorption problem.  Steps `5,7,9,11,13` are obtained by fixed local positive-definite absorbers after finitely many small bases; step `3` is the special collision case where only one genuine non-Laplacian defect remains.
-
-# Proof files added in the current strengthening pass
-
-Six-boundary files:
+Important strengthening files include:
 
 - `SIX_BOUNDARY_ROOT_QUOTIENT.md`
 - `SIX_BOUNDARY_ARITHMETIC_LOCALIZATION.md`
-- `SIX_BOUNDARY_TWIN_LINE.md`
-- `SIX_BOUNDARY_TRIANGLE_T2.md`
-- `SIX_BOUNDARY_TRIANGLE_2TPLUS1.md`
 - `SIX_BOUNDARY_TRIANGLE_3T.md`
 - `SIX_BOUNDARY_MINIMIZER_RIGIDITY.md`
 - `SIX_BOUNDARY_SWITCHING_ISOMORPHISM.md`
-
-New `sqrt(8)` files:
-
+- `ODD_RESONANCE_SEAM_DEFECT_FRAMEWORK.md`
+- `ODD_RESONANCE_SEAM_RESPONSE.md`
+- `ODD_RESONANCE_FINITE_ABSORBER_PRINCIPLE.md`
 - `ODD_RESONANCE_STEP3_SUBSQRT8.md`
 - `ODD_RESONANCE_STEP5_SUBSQRT8.md`
 - `ODD_RESONANCE_STEP7_THRESHOLD.md`
 - `ODD_RESONANCE_STEP9_THRESHOLD.md`
 - `ODD_RESONANCE_STEP11_THRESHOLD.md`
 - `ODD_RESONANCE_STEP13_THRESHOLD.md`
-- `ODD_RESONANCE_SEAM_DEFECT_FRAMEWORK.md`
+- `ODD_RESONANCE_STEP15_NEAR_CLASSIFICATION.md`
+- `ODD_RESONANCE_STEP17_NEAR_CLASSIFICATION.md`
+- `N3S_MARGIN_UPGRADE_24_1667.md`
 
-Exact reproducibility scripts include the corresponding `verify_step3_*`, `verify_step5_*`, `verify_step7_*`, `verify_step9_*`, `verify_step11_*`, `verify_step13_*`, and `verify_odd_resonance_seam_defect.py` audits, in addition to the six-boundary scripts.
+The corresponding `verify_*.py` files use exact symbolic, integer, or rational acceptance checks. `THEOREM_LEDGER.md` is the authoritative status table.
 
 # Current frontier
 
-The `sqrt(6)` parameter classification and minimizer rigidity are complete. At `sqrt(8)`, the horizontal `k=3` line and vertical fixed steps `3,5,7,9,11,13` are now classified. The main open problem is the general odd `(k,s)` phase boundary. The seam-defect identity gives a concrete route: quantify how much signed-Laplacian energy is available to absorb the two explicit seam bilinear terms as `s/k` varies. Step `15` is the next boundary test: the unmodified alternating signing is sub-threshold from odd `k=9` onward, a two-flip modification handles `k=7`, while the global status of `(75,15)` remains under active audit.
+The `sqrt(6)` classification and its minimizer rigidity are complete. At `sqrt(8)`, the horizontal `N=3s` line is complete and the quantitative odd gap is now `24/1667`. The odd positive side is governed by a universal two-seam response problem rather than an unconstrained signing search.
+
+The most important unresolved finite-global problem visible from current data is the next horizontal resonance `N=5s`: the cases `s=3,5,7,9,11,13` have sub-`sqrt(8)` signings, while `(75,15)` and `(85,17)` are the first unresolved odd points. Current width-five local-strip reconnaissance suggests strong central complement structure, but no all-signing obstruction has yet been proved and no such statement is promoted above **Observed** status.
