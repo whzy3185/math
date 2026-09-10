@@ -38,10 +38,7 @@ theorem homogeneousSharpProfile_power
   field_simp [htheta0]
   ring
 
-/--
-The explicit homogeneous profile solves `w' = -k w^(theta+1)` on `t >= 0`.
-This is the scalar ODE behind sharpness of the manuscript's signal decay rate.
--/
+/-- The explicit homogeneous profile solves `w' = -k w^(theta+1)` on `t >= 0`. -/
 theorem homogeneousSharpProfile_hasDerivAt
     {theta k w0 t : ℝ}
     (htheta : 0 < theta) (hw0 : 0 < w0)
@@ -62,7 +59,6 @@ theorem homogeneousSharpProfile_hasDerivAt
   have htheta0 : theta ≠ 0 := ne_of_gt htheta
   have hcoef : theta * k * (-1 / theta) = -k := by
     field_simp [htheta0]
-    ring
   have hpow := homogeneousSharpProfile_power htheta hw0 hk ht
   have hpow' :
       ((w0 ^ (-theta) + theta * k * t) ^ (-1 / theta)) ^ (theta + 1) =
