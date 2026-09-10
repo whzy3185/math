@@ -92,9 +92,10 @@ theorem energy_le_rpow_of_superquadratic_dissipation
   have hA : 0 < A := by
     dsimp [A]
     linarith
-  have htwo : (0 : ℝ) ≤ 2 := by norm_num
-  have hz : -2 / theta ≤ 0 :=
-    neg_nonpos.mpr (div_nonneg htwo (le_of_lt htheta))
+  have hposdiv : 0 ≤ (2 : ℝ) / theta := div_nonneg (by norm_num) (le_of_lt htheta)
+  have hz : -2 / theta ≤ 0 := by
+    rw [neg_div]
+    exact neg_nonpos.mpr hposdiv
   have hrpow := Real.rpow_le_rpow_of_nonpos hA hlow hz
   have htheta0 : theta ≠ 0 := ne_of_gt htheta
   have hexp : (-theta / 2) * (-2 / theta) = 1 := by
