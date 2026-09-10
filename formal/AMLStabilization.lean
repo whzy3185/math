@@ -20,3 +20,4 @@ import AMLStabilization.LpFiniteMeasureCore
 import AMLStabilization.SharpnessCore
 import AMLStabilization.SuperlinearConsumptionCore
 import AMLStabilization.GeneralWeightedDampingFinal
+import AMLStabilization.ZeroEnergyBranch
