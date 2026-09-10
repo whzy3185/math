@@ -64,8 +64,9 @@ No result from the separate periodic/Bloch project is used.
 | B9 | Every signing of `C_27(1,9)` has squared radius at least `8+24/1667` | **Proved, exhaustive exact certificate** | 1,064 surviving length-8 prefixes; all `17,024` final cyclic candidates have exact integer witnesses at the stronger margin. |
 | R3 | For every odd `s>=7`, `m(3s,s)^2>=8+24/1667` | **Proved, computer-assisted local lemma + analytic propagation** | B7 + upgraded B9 + upgraded L9; seam contradiction for odd `s>=11`. |
 | R4 | `m(3s,s)<sqrt8 iff s` is even or `s in {3,5}` | **Proved** | E1 + R1/R2 + R3. |
+| N5LOCAL13 | Any 13-column open width-five strip with `rho^2<8` has at least one complement among its two central transitions | **Proved, exact finite lemma** | 320-action switching/dihedral/complement quotient. Prefix survivors `1,7,33,130,548,1867,3870,10080`; 7,392 central-double-bad length-9 candidates reduce to 71, then extensions `204 -> 135 -> 1 -> 0`. Every rejection uses an exact integer Rayleigh witness. |
 | L9CRIT | Nine-column finite-state transition is numerically near excess `0.014397239...` | **Observed** | Reconnaissance only; not used in any theorem. |
-| Kodd8 | Exact sub-`sqrt8` classification for all odd resonances | **Open** | Horizontal `k=3` is complete; vertical `s=3,5,7,9,11,13` are complete; steps 15 and 17 each have only the `k=5` base unresolved. RESP8/ABSORB8 give the structural positive-side framework. |
+| Kodd8 | Exact sub-`sqrt8` classification for all odd resonances | **Open** | Horizontal `k=3` is complete; vertical `s=3,5,7,9,11,13` are complete; steps 15 and 17 each have only the `k=5` base unresolved. N5LOCAL13 is the first all-signing rigidity lemma for the next horizontal line `N=5s`; isolated non-complement transitions remain to be classified. |
 | P8 | A fixed period-8 phase determines the global finite minimum for all `C_{8L}(1,2)` | **Rejected historical overclaim** | Historical correction branch withdraws the global conclusion; excluded from this paper. |
 | Lit1 | Fixed-underlying-graph signature minimization is an established general problem | **Published/Established** | Belardo--Cioabă--Koolen--Wang (2018), Problem 3.18. |
 | Lit2 | Signed/integer symmetric matrices with spectrum in `[-2,2]` are classified | **Published/Established** | McKee--Smyth, J. Algebra 317 (2007). |
@@ -107,6 +108,9 @@ Vertical fixed odd steps:
   s=3,5: sub-sqrt8 for every k>=3;
   s=7,9,11,13: sub-sqrt8 iff k>=4;
   s=15,17: k=3 is obstructed and every k>=4 except k=5 is proved sub-sqrt8; k=5 remains open.
+
+N=5s local rigidity:
+  in every sub-sqrt8 13-column open width-five strip, the two central transitions cannot both be non-complement.
 ```
 
 For odd `k,s`, the positive construction is reduced to a signed-Laplacian plus two seam defects, equivalently to a `2x2` response matrix; fixed local absorbers reduce any fixed step to finitely many small chord-cycle lengths.
