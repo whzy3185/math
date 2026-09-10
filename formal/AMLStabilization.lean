@@ -22,3 +22,4 @@ import AMLStabilization.SuperlinearConsumptionCore
 import AMLStabilization.GeneralWeightedDampingFinal
 import AMLStabilization.ZeroEnergyBranch
 import AMLStabilization.GeneralQuadraticWeightedDampingFinal
+import AMLStabilization.ForcedEnergyDecay
