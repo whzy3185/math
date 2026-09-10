@@ -15,10 +15,14 @@ noncomputable def nonlinearMassWeightedB (V m q : ℝ) : ℝ :=
 theorem rpow_neg_inv_sq
     {m q : ℝ} (hm : 0 < m) (hq : 0 < q) :
     (m ^ (-1 / q)) ^ 2 = m ^ (-2 / q) := by
-  rw [← Real.rpow_natCast]
-  rw [← Real.rpow_mul (le_of_lt hm)]
-  congr 1
-  field_simp [ne_of_gt hq]
+  have hexp : (-1 / q) * (2 : ℝ) = -2 / q := by
+    field_simp [ne_of_gt hq]
+  calc
+    (m ^ (-1 / q)) ^ 2 = (m ^ (-1 / q)) ^ (2 : ℝ) := by
+      rw [Real.rpow_natCast]
+    _ = m ^ ((-1 / q) * (2 : ℝ)) := by
+      rw [← Real.rpow_mul (le_of_lt hm)]
+    _ = m ^ (-2 / q) := by rw [hexp]
 
 /--
 Pure algebraic closure behind the arbitrary-`q` nonlinear mass-weighted coercivity lemma.
@@ -40,9 +44,21 @@ theorem nonlinearMassWeightedCoercivityReduction
   have ha2 := squareOfLinearBound ha hz hy hmq hB hlin
   have hscaled := mul_le_mul_of_nonneg_left ha2 hV
   have hrpow := rpow_neg_inv_sq hm hq
-  unfold nonlinearMassWeightedA nonlinearMassWeightedB
   rw [hrpow] at hscaled
-  nlinarith [hbase]
+  have hstep :
+      Cp ^ 2 * y ^ 2 + V * a ^ 2 ≤
+        Cp ^ 2 * y ^ 2 +
+          V * (2 * m ^ (-2 / q) * z ^ 2 + 2 * (K * Cp / m) ^ 2 * y ^ 2) :=
+    add_le_add_left hscaled _
+  calc
+    x ^ 2 ≤ Cp ^ 2 * y ^ 2 + V * a ^ 2 := hbase
+    _ ≤ Cp ^ 2 * y ^ 2 +
+          V * (2 * m ^ (-2 / q) * z ^ 2 + 2 * (K * Cp / m) ^ 2 * y ^ 2) := hstep
+    _ = nonlinearMassWeightedA Cp V K m * y ^ 2 +
+          nonlinearMassWeightedB V m q * z ^ 2 := by
+      unfold nonlinearMassWeightedA nonlinearMassWeightedB
+      field_simp [ne_of_gt hm]
+      ring
 
 /-- The explicit coefficients are nonnegative under the natural sign assumptions. -/
 theorem nonlinearMassWeighted_coefficients_nonneg
