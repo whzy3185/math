@@ -12,6 +12,7 @@ import AMLStabilization.BoxPoincareTensorCore
 import AMLStabilization.InvariantRangeCore
 import AMLStabilization.MaximumPrincipleContactCore
 import AMLStabilization.SpatialExtremumSecondDerivativeCore
+import AMLStabilization.FirstContactBarrierCore
 import AMLStabilization.SignalEnergyIdentityCore
 import AMLStabilization.SignalPDEPairingCore
 import AMLStabilization.BoxSignalEnergyCore
