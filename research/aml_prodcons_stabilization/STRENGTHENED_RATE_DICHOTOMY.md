@@ -145,15 +145,15 @@ Evidence state: **Observed/promising novelty, not certified exhaustive novelty.*
 ## 8. Lean verification status
 
 The current formal tree is verified at commit
-`b73db253fad60f65c31cff0f1f438096b10e6ec0`, GitHub Actions run
-`34446453613` (run 147).  The proof-hygiene gate passed and the complete root
+`16fce36272273430fa31fe3fdb18f66b3e29941b`, GitHub Actions run
+`34448754427` (run 150).  The proof-hygiene gate passed and the complete root
 build finished with
 
 ```text
-Build completed successfully (8751 jobs).
+Build completed successfully (8752 jobs).
 ```
 
-The root `formal/AMLStabilization.lean` imports **44 AMLStabilization modules**.
+The root `formal/AMLStabilization.lean` imports **45 AMLStabilization modules**.
 The current kernel-checked strengthening includes substantially more than the
 older representative `q=4` branch:
 
@@ -163,38 +163,23 @@ older representative `q=4` branch:
 - a manuscript-facing `q=theta+2` degenerate endpoint with energy exponent `2/theta` and signal exponent `1/theta`;
 - compact-positive-factor derivation of quantitative degenerate dissipativity for arbitrary real `theta>0`;
 - finite-measure `L^p -> L^2`, Holder-product, and bounded-interpolation machinery;
-- exact construction of an admissible spatial exponent for every
-  `0 < mu < (1/theta) min{1,2(p-n)/(pn)}`;
-- an explicit mixed time exponent `Q=4p/(p-n)` satisfying `Q>2` and `n/p+2/Q<1`, including the one-dimensional cylinder-lift specialization;
+- exact construction of an admissible spatial exponent for every `0 < mu < (1/theta) min{1,2(p-n)/(pn)}`;
+- explicit mixed time exponent `Q=4p/(p-n)` satisfying `Q>2` and `n/p+2/Q<1`, including the one-dimensional cylinder-lift specialization;
 - forced cell-energy exponential/polynomial decay, energy-to-norm conversion, and final full-rate assembly conditional on the named deep parabolic interfaces;
 - direct superlinear-consumption specialization `F(s)=-s|s|^(m-1)` into the arbitrary-order signal theorem;
-- signed sharpness with the exact absolute-value profile
-  `|w(t)|=(|w0|^(-theta)+theta*k*t)^(-1/theta)`;
-- scalar mass-conservation propagation from a zero mass derivative;
-- dominated differentiation of the squared `L^2` energy using mathlib's parametric-integral calculus.
+- signed sharpness with the exact absolute-value profile `|w(t)|=(|w0|^(-theta)+theta*k*t)^(-1/theta)`;
+- scalar mass-conservation propagation and dominated differentiation of spatial integrals;
+- **box-level Neumann geometry from mathlib's divergence theorem**: zero face flux gives zero total divergence, conservation laws give exact mass conservation, and zero normal derivative plus the local product rule gives Green's first identity.
 
-Therefore the arbitrary-real-`q` weighted-damping theorem package and the
-novel rate bookkeeping are no longer only paper-level proofs.  The correct
-formal claim is that the full rate assembly is kernel-checked **conditional on
-explicitly named geometric/parabolic PDE inputs**.
+This last item moves a genuine part of the PDE boundary below the abstract-interface level.  On rectangular boxes, the global flux and Green identities are now derived rather than assumed.
 
-A literal first-principles Lean formalization of the chemotaxis PDE theorem on
-an arbitrary smooth bounded Neumann domain is still not claimed.  The remaining
-deep analytic infrastructure is concentrated in:
+A literal first-principles Lean formalization of the manuscript theorem on an arbitrary smooth bounded Neumann domain is still not claimed.  The remaining deep infrastructure is concentrated in:
 
-1. the geometric Poincare inequality in the manuscript's exact Sobolev setting;
-2. the Neumann Green/integration-by-parts and flux identities on the required domains;
+1. geometric Poincare theory in the manuscript's exact Sobolev setting;
+2. extension of the now-verified box divergence/Green theory to arbitrary smooth Neumann domains and traces;
 3. the invariant signal interval / maximum-principle argument;
 4. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
 5. Choi's mixed-norm conormal/local boundedness theorem in the required arbitrary-domain setting;
 6. the concrete function-space derivation of the cell-density PDE energy identity.
 
-The calculus step for differentiating `int w^2` and the scalar propagation step
-for mass conservation are already formalized; only their PDE-specific analytic
-hypotheses remain to be connected.
-
-Accordingly, the repository must not describe the complete arbitrary-smooth-domain
-PDE theorem as fully Lean-verified from first principles.  It is accurate to say
-that the novel arbitrary-order weighted-damping/coercivity/rate machinery and the
-final stabilization-rate assembly conditional on named standard analytic inputs
-are kernel-checked in Lean 4/mathlib.
+The correct formal claim is therefore stronger than before but still precise: the novel arbitrary-order weighted-damping/coercivity/rate machinery and the final stabilization-rate assembly are kernel-checked conditional on named deep analytic inputs; in addition, the conservative mass and Green identities are fully derived on rectangular boxes from mathlib's Bochner divergence theorem.  The arbitrary-smooth-domain geometric/parabolic infrastructure remains the genuine boundary.
