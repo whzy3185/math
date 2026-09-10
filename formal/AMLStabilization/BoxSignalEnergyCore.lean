@@ -69,13 +69,18 @@ theorem boxSignalEnergyInequality_q_from_pointwisePDE
         -(∫ x,
           ∑ i : Fin (n + 1), (derivativeCoordinateGradient dw x i) ^ 2 ∂mu) := by
     simpa [mu, lap] using hgreenSet
+  have hLapIntegrable : Integrable (fun x => w x * lap x) mu := by
+    simpa [mu, lap] using hWLapInt.integrable
+  have hReactionIntegrable : Integrable (fun x => u x * (w x * R x)) mu := by
+    simpa [mu] using hreaction.integrable
+  have hWeightedIntegrable : Integrable (fun x => u x * |w x| ^ q) mu := by
+    simpa [mu] using hweighted.integrable
   have hpair := signalPDEPairing_from_pointwise
     (mu := mu) (u := u) (w := w) (wt := wt) (lap := lap) (R := R)
     (by
       intro x
       simpa [lap] using hPDE x)
-    (by simpa [mu, lap] using hWLapInt)
-    (by simpa [mu] using hreaction)
+    hLapIntegrable hReactionIntegrable
   have hmain := signalEnergyInequality_q_from_integralPDE
     (mu := mu) (u := u) (w := w) (wt := wt) (lap := lap) (R := R)
     (dE := dE)
@@ -83,8 +88,8 @@ theorem boxSignalEnergyInequality_q_from_pointwisePDE
       ∑ i : Fin (n + 1), (derivativeCoordinateGradient dw x i) ^ 2 ∂mu)
     (beta := beta) (q := q)
     hu hpoint
-    (by simpa [mu] using hreaction)
-    (by simpa [mu] using hweighted)
+    hReactionIntegrable
+    hWeightedIntegrable
     (by simpa [mu] using hEnergyDerivative)
     hpair hgreen
   simpa [mu] using hmain
