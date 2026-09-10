@@ -9,6 +9,10 @@ on:
       - ".github/workflows/lean-aml-stabilization.yml"
   workflow_dispatch:
 
+concurrency:
+  group: lean-aml-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
