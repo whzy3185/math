@@ -10,7 +10,8 @@ theorem dissipativity_inward_above
     F s < 0 := by
   have hdist : 0 < |s - zstar| := abs_pos.mpr (sub_ne_zero.mpr hs.ne')
   have hpow : 0 < |s - zstar| ^ q := Real.rpow_pos_of_pos hdist q
-  have hrhs : -beta * |s - zstar| ^ q < 0 := by positivity
+  have hbetapow : 0 < beta * |s - zstar| ^ q := mul_pos hbeta hpow
+  have hrhs : -beta * |s - zstar| ^ q < 0 := by linarith
   have hprod : (s - zstar) * F s < 0 := lt_of_le_of_lt hdiss hrhs
   have hgap : 0 < s - zstar := sub_pos.mpr hs
   nlinarith
@@ -23,7 +24,8 @@ theorem dissipativity_inward_below
     0 < F s := by
   have hdist : 0 < |s - zstar| := abs_pos.mpr (sub_ne_zero.mpr hs.ne)
   have hpow : 0 < |s - zstar| ^ q := Real.rpow_pos_of_pos hdist q
-  have hrhs : -beta * |s - zstar| ^ q < 0 := by positivity
+  have hbetapow : 0 < beta * |s - zstar| ^ q := mul_pos hbeta hpow
+  have hrhs : -beta * |s - zstar| ^ q < 0 := by linarith
   have hprod : (s - zstar) * F s < 0 := lt_of_le_of_lt hdiss hrhs
   have hgap : s - zstar < 0 := sub_neg.mpr hs
   nlinarith
@@ -107,8 +109,7 @@ theorem lower_envelope_preserved
 /-- Scalar two-sided invariant interval once upper/lower envelope derivative
 signs have been supplied by a maximum-principle argument. -/
 theorem invariant_interval_from_envelope_derivatives
-    {lo hi upper lower dUpper dLower s t : ℝ}
-    {U L : ℝ → ℝ}
+    {lo hi s t : ℝ} {U L dUpper dLower : ℝ → ℝ}
     (hUpperDeriv : ∀ tau, HasDerivAt U (dUpper tau) tau)
     (hLowerDeriv : ∀ tau, HasDerivAt L (dLower tau) tau)
     (hUpperSign : ∀ tau, dUpper tau ≤ 0)
