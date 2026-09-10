@@ -13,6 +13,7 @@ import AMLStabilization.ProductionConsumptionSignalFinal
 import AMLStabilization.PolynomialEnergyDecay
 import AMLStabilization.LpExponentCore
 import AMLStabilization.MixedNormExponentCore
+import AMLStabilization.LpRateOptimization
 import AMLStabilization.GeneralPolynomialEnergyDecay
 import AMLStabilization.NonlinearCoercivityAlgebra
 import AMLStabilization.WeightedHolderQ
