@@ -14,7 +14,7 @@ theorem memLp_two_of_memLp_ofReal
     (hp : 2 ≤ p)
     (hfp : MemLp f (ENNReal.ofReal p) mu) :
     MemLp f 2 mu := by
-  have hpq : (2 : ℝ≥0∞) ≤ ENNReal.ofReal p := by
+  have hpq : (2 : ENNReal) ≤ ENNReal.ofReal p := by
     simpa using ENNReal.ofReal_le_ofReal hp
   exact hfp.mono_exponent hpq
 
@@ -30,7 +30,7 @@ theorem eLpNorm_two_le_eLpNorm_ofReal_mul_volume
       eLpNorm f (ENNReal.ofReal p) mu *
         mu Set.univ ^ (1 / (2 : ℝ) - 1 / p) := by
   have hp0 : 0 ≤ p := le_trans (by norm_num) hp
-  have hpq : (2 : ℝ≥0∞) ≤ ENNReal.ofReal p := by
+  have hpq : (2 : ENNReal) ≤ ENNReal.ofReal p := by
     simpa using ENNReal.ofReal_le_ofReal hp
   have h := eLpNorm_le_eLpNorm_mul_rpow_measure_univ hpq hf
   simpa [ENNReal.toReal_ofReal hp0] using h
@@ -41,7 +41,7 @@ theorem eLpNorm_two_le_of_eventual_p_bound
     {Omega E : Type*} [MeasurableSpace Omega]
     [NormedAddCommGroup E]
     {mu : Measure Omega}
-    {f : Omega → E} {p : ℝ} {U : ℝ≥0∞}
+    {f : Omega → E} {p : ℝ} {U : ENNReal}
     (hp : 2 ≤ p)
     (hf : AEStronglyMeasurable f mu)
     (hU : eLpNorm f (ENNReal.ofReal p) mu ≤ U) :
