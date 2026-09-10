@@ -17,6 +17,7 @@ theorem q_holderConjugate_qConjugate
   have hq0 : q ≠ 0 := ne_of_gt (lt_trans (by norm_num) hq)
   have hqm1 : q - 1 ≠ 0 := ne_of_gt (sub_pos.mpr hq)
   field_simp [hq0, hqm1]
+  ring
 
 /-- The reciprocal of the conjugate exponent is `1 - 1/q`. -/
 theorem inv_qConjugate
@@ -32,7 +33,6 @@ theorem weightedHolder_product_identity
     {rho f q : ℝ} (hrho : 0 ≤ rho) (hq : 0 < q) :
     rho * |f| =
       (rho ^ (1 / q) * |f|) * rho ^ (1 - 1 / q) := by
-  have hq0 : q ≠ 0 := ne_of_gt hq
   have hexp : 1 / q + (1 - 1 / q) = 1 := by ring
   have hrpow :
       rho ^ (1 / q) * rho ^ (1 - 1 / q) = rho := by
@@ -101,19 +101,19 @@ theorem weightedFirstMoment_holder
   have haLp : MemLp a (ENNReal.ofReal q) mu := by
     apply (integrable_norm_rpow_iff ha_meas
       (ENNReal.ofReal_ne_zero_iff.mpr hq0) (by simp)).mp
-    have heq : (fun x => ‖a x‖ ^ q) = fun x => rho x * |f x| ^ q := by
+    have heq : (fun x => |a x| ^ q) = fun x => rho x * |f x| ^ q := by
       funext x
-      rw [Real.norm_of_nonneg (ha_nonneg x)]
+      rw [abs_of_nonneg (ha_nonneg x)]
       exact weightedHolder_firstFactor_rpow (hrho_nonneg x) hq0
-    simpa [ENNReal.toReal_ofReal hq0.le, heq] using hweighted_int
+    simpa [ENNReal.toReal_ofReal hq0.le, Real.norm_eq_abs, heq] using hweighted_int
   have hbLp : MemLp b (ENNReal.ofReal (qConjugate q)) mu := by
     apply (integrable_norm_rpow_iff hb_meas
       (ENNReal.ofReal_ne_zero_iff.mpr hqc0) (by simp)).mp
-    have heq : (fun x => ‖b x‖ ^ qConjugate q) = rho := by
+    have heq : (fun x => |b x| ^ qConjugate q) = rho := by
       funext x
-      rw [Real.norm_of_nonneg (hb_nonneg x)]
+      rw [abs_of_nonneg (hb_nonneg x)]
       exact weightedHolder_secondFactor_rpow (hrho_nonneg x) hq
-    simpa [ENNReal.toReal_ofReal hqc0.le, heq] using hrho_int
+    simpa [ENNReal.toReal_ofReal hqc0.le, Real.norm_eq_abs, heq] using hrho_int
   have hholder := integral_mul_le_Lp_mul_Lq_of_nonneg
     (μ := mu) (p := q) (q := qConjugate q)
     (q_holderConjugate_qConjugate hq)
