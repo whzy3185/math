@@ -25,10 +25,7 @@ theorem ennrealHolderTriple_of_real
   simpa [ENNReal.toReal_ofReal hp.le, ENNReal.toReal_ofReal hs.le,
     ENNReal.toReal_ofReal hr.le] using hreal
 
-/--
-Actual `L^p × L^s -> L^r` membership transfer for real exponents satisfying
-`1/r = 1/p + 1/s`.
--/
+/-- Actual `L^p × L^s -> L^r` membership transfer for real exponents. -/
 theorem memLp_mul_of_reciprocal_identity
     {Omega : Type*} [MeasurableSpace Omega]
     {mu : Measure Omega} {f g : Omega → ℝ}
@@ -40,13 +37,11 @@ theorem memLp_mul_of_reciprocal_identity
     MemLp (fun x => f x * g x) (ENNReal.ofReal r) mu := by
   letI : ENNReal.HolderTriple (ENNReal.ofReal p) (ENNReal.ofReal s) (ENNReal.ofReal r) :=
     ennrealHolderTriple_of_real hp hs hr hrel
-  have h := hg.mul hf
+  have h : MemLp (f * g) (ENNReal.ofReal r) mu :=
+    hg.mul (r := ENNReal.ofReal r) hf
   simpa [Pi.mul_apply] using h
 
-/--
-The canonical exponents selected in `LpExponentCore` therefore give the exact
-product membership needed before Neumann smoothing.
--/
+/-- The canonical exponents therefore give the product membership needed before smoothing. -/
 theorem lpChoice_product_memLp
     {Omega : Type*} [MeasurableSpace Omega]
     {mu : Measure Omega} {f g : Omega → ℝ}
