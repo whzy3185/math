@@ -56,7 +56,7 @@ Then
 \Big(\|z(T)-z_*\|_2^{-(q-2)}+(q-2)c_q(t-T)\Big)^{-1/(q-2)}
 \]
 
-on the nonzero branch.
+on the nonzero branch. If the energy reaches zero, it remains zero thereafter because the energy is nonincreasing.
 
 The theorem uses no evolution equation for the weight `rho`.
 
@@ -142,6 +142,13 @@ Targeted searches on 2026-09-10 located nearby work on linear consumption, produ
 
 Evidence state: **Observed/promising novelty, not certified exhaustive novelty.**
 
-## 8. Verification boundary
+## 8. Lean verification status
 
-The previous Lean library kernel-checks the quadratic weighted-coercivity/exponential-decay chain. A new `PolynomialEnergyDecay.lean` module is being added for the representative `q=4` algebraic branch. The arbitrary-real-`q` Holder/coercivity layer and the full parabolic `Lp` PDE regularity assembly remain paper-level proofs unless and until separately compiled in Lean.
+The strengthened Lean tree is verified at commit `499e78401b3667636242385f5aa0d51b836cd2a6`, GitHub Actions run `34428439465`, with the proof-hygiene gate passing and `Build completed successfully (8719 jobs)`.
+
+Two new modules are compiled:
+
+- `PolynomialEnergyDecay.lean`: representative `q=4` / `theta=2` algebraic branch, including reciprocal-energy monotonicity, explicit inverse-linear energy decay, quartic coercivity-to-dissipation, and the cubic-degenerate identity.
+- `LpExponentCore.lean`: concrete `r` and Holder-partner `s` selection from `p>max{n,2}`, exact identity `1/r=1/p+1/s`, `s>2`, and positivity of the transfer-rate exponent.
+
+The arbitrary-real-`q` Holder/coercivity theorem and the full parabolic `Lp` PDE regularity assembly remain paper-level proofs. The full strengthened `L-infinity x W^{1,infinity}` theorem is therefore **not** claimed to be fully Lean-verified.
