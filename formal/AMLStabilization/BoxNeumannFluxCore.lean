@@ -89,7 +89,8 @@ theorem boxMass_conserved_from_fluxPDE
       ut t x = ∑ i : Fin (n + 1), flux' t x (Pi.single i 1) i)
     (hbad : ∀ t, (bad t).Countable)
     (hcont : ∀ t, ContinuousOn (flux t) (Icc a b))
-    (hdiff : ∀ t x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad t,
+    (hdiff : ∀ t x,
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad t →
       HasFDerivAt (flux t) (flux' t x) x)
     (hint : ∀ t, IntegrableOn
       (fun x => ∑ i : Fin (n + 1), flux' t x (Pi.single i 1) i) (Icc a b))
