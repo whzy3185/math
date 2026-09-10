@@ -84,7 +84,7 @@ theorem exists_lpExponent_for_target_rate
       n * D = 2 * n + mu * (theta * p * n) := by
         dsimp [D]
         ring
-      _ < 2 * n + 2 * (p - n) := add_lt_add_left hmuDen (2 * n)
+      _ < 2 * n + 2 * (p - n) := by nlinarith [hmuDen]
       _ = 2 * p := by ring
   have hCriticalP : rateCriticalExponent theta p mu < p := by
     unfold rateCriticalExponent
