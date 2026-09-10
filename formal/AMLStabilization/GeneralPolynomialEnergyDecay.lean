@@ -34,22 +34,24 @@ theorem powerEnergyShift_monotone
       mul_pos (by linarith) hpowpos
     have hnegd : 2 * c * E t ^ (1 + theta / 2) ≤ -dE t := by
       linarith [hdiss t]
+    have hexp : (1 + theta / 2) + (-theta / 2 - 1) = 0 := by ring
     have hprod :
         E t ^ (1 + theta / 2) * E t ^ (-theta / 2 - 1) = 1 := by
-      rw [← Real.rpow_add hEt]
-      convert Real.rpow_zero (E t) using 1 <;> ring
+      rw [← Real.rpow_add hEt, hexp, Real.rpow_zero]
     have hmul := mul_le_mul_of_nonneg_right hnegd (le_of_lt hfac)
-    have hmain : theta * c ≤ (-dE t) * (theta / 2) * E t ^ (-theta / 2 - 1) := by
+    have hleft :
+        (2 * c * E t ^ (1 + theta / 2)) *
+            ((theta / 2) * E t ^ (-theta / 2 - 1)) = theta * c := by
       calc
-        theta * c = (2 * c * E t ^ (1 + theta / 2)) *
-            ((theta / 2) * E t ^ (-theta / 2 - 1)) := by
-              rw [mul_assoc, ← mul_assoc (E t ^ (1 + theta / 2)), hprod]
-              ring
-        _ ≤ (-dE t) * ((theta / 2) * E t ^ (-theta / 2 - 1)) := hmul
-        _ = (-dE t) * (theta / 2) * E t ^ (-theta / 2 - 1) := by ring
-    have : theta * c ≤ dE t * (-theta / 2) * E t ^ (-theta / 2 - 1) := by
-      convert hmain using 1 <;> ring
-    linarith
+        _ = theta * c *
+            (E t ^ (1 + theta / 2) * E t ^ (-theta / 2 - 1)) := by ring
+        _ = theta * c := by rw [hprod, mul_one]
+    rw [hleft] at hmul
+    have hright :
+        (-dE t) * ((theta / 2) * E t ^ (-theta / 2 - 1)) =
+          dE t * (-theta / 2) * E t ^ (-theta / 2 - 1) := by ring
+    rw [hright] at hmul
+    exact sub_nonneg.mpr hmul
 
 /-- Lower bound for the transformed energy under arbitrary-order damping. -/
 theorem powerEnergy_lower_of_superquadratic_dissipation
@@ -90,15 +92,14 @@ theorem energy_le_rpow_of_superquadratic_dissipation
   have hA : 0 < A := by
     dsimp [A]
     linarith
-  have hz : -2 / theta ≤ 0 := by
-    have : 0 < 2 / theta := div_pos (by norm_num) htheta
-    linarith
+  have hz : -2 / theta ≤ 0 :=
+    neg_nonpos.mpr (div_nonneg (by norm_num) (le_of_lt htheta))
   have hrpow := Real.rpow_le_rpow_of_nonpos hA hlow hz
-  have hsimp : (E t ^ (-theta / 2)) ^ (-2 / theta) = E t := by
-    rw [← Real.rpow_mul (le_of_lt (hpos t))]
-    have htheta0 : theta ≠ 0 := ne_of_gt htheta
-    convert Real.rpow_one (E t) using 1
+  have htheta0 : theta ≠ 0 := ne_of_gt htheta
+  have hexp : (-theta / 2) * (-2 / theta) = 1 := by
     field_simp [htheta0]
+  have hsimp : (E t ^ (-theta / 2)) ^ (-2 / theta) = E t := by
+    rw [← Real.rpow_mul (le_of_lt (hpos t)), hexp, Real.rpow_one]
   rw [hsimp] at hrpow
   simpa [A] using hrpow
 
@@ -114,11 +115,12 @@ theorem energy_le_rpow_of_q_dissipation
     E t ≤
       (E s ^ (-(q - 2) / 2) + (q - 2) * c * (t - s)) ^ (-2 / (q - 2)) := by
   have htheta : 0 < q - 2 := by linarith
+  have hexp : 1 + (q - 2) / 2 = q / 2 := by ring
   have hdiss' : ∀ tau, dE tau + 2 * c * E tau ^ (1 + (q - 2) / 2) ≤ 0 := by
     intro tau
-    convert hdiss tau using 1 <;> ring
-  simpa only [sub_eq_add_neg] using
-    energy_le_rpow_of_superquadratic_dissipation
-      (theta := q - 2) htheta hc hE hpos hdiss' hst
+    rw [hexp]
+    exact hdiss tau
+  exact energy_le_rpow_of_superquadratic_dissipation
+    (theta := q - 2) htheta hc hE hpos hdiss' hst
 
 end AMLStabilization
