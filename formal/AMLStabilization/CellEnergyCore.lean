@@ -12,13 +12,9 @@ theorem young_gradient_forcing
       (2 * H * g) * a ≤ (a * g ^ 2 + H ^ 2 / a) * a := by
     field_simp [ne_of_gt ha]
     nlinarith
-  exact (mul_le_mul_right ha).mp hmul
+  exact le_of_mul_le_mul_right hmul ha
 
-/--
-A cell-energy balance with a linear gradient forcing closes to a forced scalar
-ODE by Young and Poincare.  `g` is the gradient `L²` norm and `H` is the size
-of the decaying coefficient multiplying it.
--/
+/-- A cell-energy balance closes to a forced scalar ODE by Young and Poincare. -/
 theorem cellEnergy_to_forcedLinearODE
     {dQ Q g H a Cp : ℝ}
     (ha : 0 < a) (hCp : 0 < Cp)
@@ -46,11 +42,15 @@ theorem square_exponential_forcing
   have hexp0 : 0 ≤ Real.exp (-lambda * (t - T)) := Real.exp_nonneg _
   have hrhs0 : 0 ≤ C * Real.exp (-lambda * (t - T)) := mul_nonneg hC hexp0
   have hsq := (sq_le_sq₀ hH0 hrhs0).2 hH
+  have hexpsq :
+      Real.exp (-lambda * (t - T)) ^ 2 =
+        Real.exp (-(2 * lambda) * (t - T)) := by
+    rw [pow_two, ← Real.exp_add]
+    congr 1
+    ring
   calc
     H ^ 2 ≤ (C * Real.exp (-lambda * (t - T))) ^ 2 := hsq
-    _ = C ^ 2 * Real.exp (-(2 * lambda) * (t - T)) := by
-      rw [mul_pow, pow_two, ← Real.exp_add]
-      congr 1
-      ring
+    _ = C ^ 2 * Real.exp (-lambda * (t - T)) ^ 2 := by rw [mul_pow]
+    _ = C ^ 2 * Real.exp (-(2 * lambda) * (t - T)) := by rw [hexpsq]
 
 end AMLStabilization
