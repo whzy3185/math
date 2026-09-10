@@ -74,8 +74,8 @@ theorem holderPartner_identity
   field_simp [ne_of_gt hr0, ne_of_gt hp0, ne_of_gt hpr]
   ring
 
-/-- The threshold `r > 2p/(p+2)` is equivalent to the Hölder partner being
-strictly larger than two, under `0 < r < p`. -/
+/-- The threshold `r > 2p/(p+2)` forces the Hölder partner to be strictly
+larger than two, under `r < p`. -/
 theorem two_lt_holderPartner_of_threshold
     {p r : ℝ}
     (hp : 2 < p)
@@ -107,7 +107,10 @@ theorem lpChoice_exponent_package
   have h2 : 2 < p := lt_of_le_of_lt (le_max_right n 2) hp
   have hthreshold := two_mul_p_div_p_add_two_lt_lpChoice hp
   have hp0 : 0 < p := lt_trans (by norm_num) h2
-  have hr0 : 0 < lpChoice n p := lt_trans (by linarith) hrn
+  have hden : 0 < p + 2 := by linarith
+  have hfrac0 : 0 < 2 * p / (p + 2) :=
+    div_pos (mul_pos (by norm_num) hp0) hden
+  have hr0 : 0 < lpChoice n p := lt_trans hfrac0 hthreshold
   refine ⟨hrn, hrp, ?_, ?_⟩
   · exact two_lt_holderPartner_of_threshold h2 hrp hthreshold
   · exact holderPartner_identity hr0 hrp
