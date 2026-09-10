@@ -10,12 +10,13 @@ namespace AMLStabilization
 at the endpoint `t₀`. -/
 theorem neg_one_mem_posTangentCone_Iic (t0 : ℝ) :
     (-1 : ℝ) ∈ posTangentConeAt (Iic t0) t0 := by
-  have hseg : segment ℝ (t0 - 1) t0 ⊆ Iic t0 := by
-    rw [segment_eq_Icc (by linarith : t0 - 1 ≤ t0)]
+  have hseg : segment ℝ t0 (t0 - 1) ⊆ Iic t0 := by
+    rw [segment_symm, segment_eq_Icc (by linarith : t0 - 1 ≤ t0)]
     intro y hy
     exact hy.2
   have h := sub_mem_posTangentConeAt_of_segment_subset hseg
-  simpa using h
+  have heq : (t0 - 1) - t0 = (-1 : ℝ) := by ring
+  simpa [heq] using h
 
 /-- At a first upper contact from the past, the time derivative is nonnegative. -/
 theorem derivative_nonneg_at_past_upper_contact
