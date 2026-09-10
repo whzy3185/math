@@ -32,7 +32,6 @@ theorem meanSquareBase_of_Poincare_exact
 theorem mass_rpow_div_mass
     {m q : ℝ} (hm : 0 < m) (hq : 0 < q) :
     m ^ (1 - 1 / q) / m = m ^ (-1 / q) := by
-  have hq0 : q ≠ 0 := ne_of_gt hq
   have hsplit : m ^ (1 - 1 / q) = m * m ^ (-1 / q) := by
     calc
       m ^ (1 - 1 / q) = m ^ (1 + (-1 / q)) := by congr 1 <;> ring
@@ -72,10 +71,10 @@ theorem integralMassWeightedMeanEstimate_q
     (mu := mu) (rho := rho) (f := f) (m := m) (q := q)
     hq1 hrho_nonneg hrho_meas hf_meas hrho_int hweighted_int hmass
   have hdev := weightedDeviation_cauchySchwarz_of_bound
-    (mu := mu) (rho := rho) (f := f) (fbar := fbar) (K := K)
+    (μ := mu) (ρ := rho) (f := f) (fbar := fbar) (K := K)
     hrhoL2 hdevL2 hrhoL2bound
   have hid := weightedDeviationIntegralIdentity
-    (mu := mu) (rho := rho) (f := f) (fbar := fbar) hrho_int hrhof_int
+    (μ := mu) (ρ := rho) (f := f) (fbar := fbar) hrho_int hrhof_int
   rw [hmass] at hid
   have hrearr :
       m * fbar =
@@ -99,13 +98,10 @@ theorem integralMassWeightedMeanEstimate_q
       _ ≤ K * (Cp * grad) := mul_le_mul_of_nonneg_left hPoincare hK
       _ = K * Cp * grad := by ring
   let W : ℝ := ∫ x, rho x * |f x| ^ q ∂mu
-  have hW0 : 0 ≤ W := by
-    dsimp [W]
-    exact integral_nonneg (fun x => mul_nonneg (hrho_nonneg x) (Real.rpow_nonneg (abs_nonneg _) _))
   have hmul :
       m * |fbar| ≤ W ^ (1 / q) * m ^ (1 - 1 / q) + K * Cp * grad := by
     dsimp [W]
-    linarith [habs, hholder, hdevP]
+    exact habs.trans (add_le_add hholder hdevP)
   have hdiv :
       |fbar| ≤ (W ^ (1 / q) * m ^ (1 - 1 / q) + K * Cp * grad) / m := by
     exact (le_div_iff₀ hm).2 (by simpa [mul_comm] using hmul)
@@ -159,7 +155,7 @@ theorem integralNonlinearMassWeightedCoercivity
   have hW0 : 0 ≤ (∫ x, rho x * |f x| ^ q ∂mu) :=
     integral_nonneg (fun x => mul_nonneg (hrho_nonneg x) (Real.rpow_nonneg (abs_nonneg _) _))
   have hdecomp := meanSquareDecomposition
-    (mu := mu) (f := f) (fbar := fbar) (V := V)
+    (μ := mu) (f := f) (fbar := fbar) (V := V)
     hf_int hf2_int hone_int hvol hmean
   have hbase := meanSquareBase_of_Poincare_exact
     (mu := mu) (f := f) (fbar := fbar) (V := V) (Cp := Cp) (grad := grad)
@@ -183,10 +179,10 @@ theorem integralNonlinearMassWeightedCoercivity
     (Real.sqrt_nonneg _) hgrad hroot0 (abs_nonneg _)
     hCp hV hK hm hq0 hlin hbaseSq
   have hrootSq : (W ^ (1 / q)) ^ 2 = W ^ (2 / q) := by
-    rw [← Real.rpow_natCast]
-    rw [← Real.rpow_mul hW0]
+    rw [pow_two, ← Real.rpow_add hW0]
     congr 1
     field_simp [ne_of_gt hq0]
+    ring
   rw [Real.sq_sqrt htotal0, hrootSq] at hred
   exact hred
 
