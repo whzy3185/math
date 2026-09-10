@@ -17,3 +17,4 @@ import AMLStabilization.NonlinearIntegralCoercivity
 import AMLStabilization.GeneralRateAssembly
 import AMLStabilization.GeneralSignalEnergyIdentityQ
 import AMLStabilization.LpFiniteMeasureCore
+import AMLStabilization.SharpnessCore
