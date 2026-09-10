@@ -27,6 +27,7 @@ import AMLStabilization.SharpnessCore
 import AMLStabilization.SuperlinearConsumptionCore
 import AMLStabilization.SuperlinearConsumptionSignalFinal
 import AMLStabilization.GeneralWeightedDampingFinal
+import AMLStabilization.DegenerateWeightedDampingFinal
 import AMLStabilization.ZeroEnergyBranch
 import AMLStabilization.GeneralQuadraticWeightedDampingFinal
 import AMLStabilization.ForcedEnergyDecay
