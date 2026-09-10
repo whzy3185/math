@@ -31,7 +31,10 @@ theorem productDifferenceSquareIntegral_eq_two_variance
     hcross.const_mul 2
   have hleft : Integrable
       (fun z : Ω × Ω => f z.1 ^ 2 - 2 * (f z.1 * f z.2)) (μ.prod μ) := by
-    simpa only [Pi.sub_apply] using hfst2.sub htwocross
+    change Integrable
+      ((fun z : Ω × Ω => f z.1 ^ 2) -
+        (fun z : Ω × Ω => 2 * (f z.1 * f z.2))) (μ.prod μ)
+    exact hfst2.sub htwocross
   have hexpand :
       (fun z : Ω × Ω => (f z.1 - f z.2) ^ 2) =
         (fun z => f z.1 ^ 2 - 2 * (f z.1 * f z.2) + f z.2 ^ 2) := by
@@ -64,6 +67,7 @@ theorem productDifferenceSquareIntegral_eq_two_variance
   rw [hexpand, hadd, hsub, integral_const_mul]
   rw [hfstIntegral, hsndIntegral, hcrossIntegral]
   rw [ProbabilityTheory.variance_eq_sub hf]
+  simp only [Pi.pow_apply]
   ring
 
 end AMLStabilization
