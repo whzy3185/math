@@ -9,9 +9,11 @@ theorem energy_antitone_of_nonnegative_dissipation
     (hD : ∀ t, 0 ≤ D t)
     (henergy : ∀ t, dE t + 2 * D t ≤ 0) :
     Antitone E := by
-  refine antitone_of_hasDerivAt_nonpos hE ?_
-  intro t
-  linarith [henergy t, hD t]
+  have hdE : dE ≤ (0 : ℝ → ℝ) := by
+    intro t
+    change dE t ≤ 0
+    linarith [henergy t, hD t]
+  exact antitone_of_hasDerivAt_nonpos hE hdE
 
 /-- If a nonnegative antitone energy reaches zero, it remains exactly zero. -/
 theorem energy_eq_zero_after_hit
