@@ -51,11 +51,7 @@ theorem hasDerivAt_integral_square_of_dominated
       (F' := fun t x => 2 * w t x * wt t x)
       (bound := bound)
       hs hSquareMeas hSquareInt hDerivMeas hDerivBound hBoundInt hSquareDeriv
-  convert hmain using 1
-  rw [← integral_const_mul]
-  apply integral_congr_ae
-  filter_upwards with x
-  ring
+  simpa [mul_assoc] using hmain
 
 /-- Pointwise version: if the dominated-differentiation hypotheses hold at
 every time, the energy derivative identity is available at every time. -/
