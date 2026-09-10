@@ -27,21 +27,24 @@ N=4s:                           m^2=4+2 cos(pi/(2s));
 N=14, s=3,4,5:                  m^2=4+beta.
 ```
 
-The equality boundary is also complete:
+The equality boundary is complete:
 \[
 \boxed{m(N,s)^2=6\iff (N,s)\in\{(12,4),(16,3),(16,5),(20,8)\}.}
 \]
-Every other admissible pair satisfies `m(N,s)>sqrt(6)`.
+Every other admissible pair satisfies
+\[
+\boxed{m(N,s)>\sqrt6.}
+\]
 
-At the four equality pairs, the labelled minimizing switching-class counts are respectively
+At the four equality pairs, labelled minimizing switching-class counts are
 \[
 2,32,32,2,
 \]
-and the switching-isomorphism orbit counts are
+and switching-isomorphism orbit counts are
 \[
 1,2,2,1.
 \]
-The order-16 boundary is the repeated-root case; the order-12 and order-20 cases are duplicate-free.
+The order-16 cases are the repeated-root boundary mechanism; orders 12 and 20 are duplicate-free.
 
 Other exact low-end results include
 \[
@@ -50,120 +53,194 @@ m(N,s)=2\iff N=2s+2,
 \[
 m(N,s)=\sqrt5\iff (N,s)=(5,2),(10,3),
 \]
-and
 \[
-m(12,2)^2=5+\sqrt3.
+m(12,2)^2=5+\sqrt3,
+\]
+and the exact global family
+\[
+m(4s,s)^2=4+2\cos\frac{\pi}{2s}.
 \]
 
-## 2. `sqrt(8)`: complete horizontal triangle resonance
+## 2. Universal even-order theorem at `sqrt(8)`
 
-Every even order has a finite sub-threshold signing:
+Every even order admits an all-finite explicit signing with
 \[
+\boxed{
 m(N,s)^2\le6+2\cos\frac{2\pi}{N}<8.
+}
 \]
+The proof uses an anti-periodic signed shift and finite Fourier diagonalization only after the explicit signing is chosen; it does not reduce the global signing domain to translation-invariant signings.
 
-On `N=3s`,
+## 3. First horizontal threshold: `N=3s`
+
+The triangle resonance is completely classified:
 \[
-\boxed{m(3s,s)<\sqrt8\iff s\text{ is even or }s\in\{3,5\}.}
+\boxed{
+m(3s,s)<\sqrt8
+\iff
+s\text{ is even or }s\in\{3,5\}.
+}
 \]
-For every odd `s>=7`, the current quantitative obstruction is
+For every odd `s>=7`,
 \[
-\boxed{m(3s,s)^2\ge8+\frac{24}{1667}.}
+\boxed{
+m(3s,s)^2\ge8+\frac{24}{1667}.
+}
 \]
-The `s=7` exact base is stronger (`18/131`).  The `s=9` base and the nine-column local rule are certified at the common margin `24/1667`; the local survivor counts are
+The negative proof consists of exact `s=7,9` bases, a nine-column exact local rule with survivor counts
 
 ```text
-8, 56, 152, 440, 488, 1016, 656, 1064, 128.
+8, 56, 152, 440, 488, 1016, 656, 1064, 128,
 ```
 
-## 3. Odd positive-side seam-response framework
+and an analytic seam contradiction after local alternation propagates globally.
 
-For odd `N=ks`, odd `k>=3`, odd `s>=5`, the Hamilton-seam / alternating-chord signing satisfies, after multiplication-by-two reindexing,
+## 4. Second horizontal threshold: `N=5s`
+
+This line is now also completely classified:
+\[
+\boxed{
+m(5s,s)<\sqrt8
+\iff
+s\text{ is even or }s\in\{3,5,7,9,11,13\}.
+}
+\]
+Equivalently,
+\[
+\boxed{
+s\ge15\text{ odd}\Longrightarrow m(5s,s)\ge\sqrt8.
+}
+\]
+
+This is an **all-signing** theorem.  Its negative side does not come from the explicit seam construction.
+
+### Width-five proof mechanism
+
+Reorder `C_(5s)(1,s)` into `s` chord-pentagon columns.  The five elementary square fluxes across each adjacent-column boundary form an intrinsic transition mask.  Mask `31` is a **complement transition**; every other mask is a **defect**.
+
+The proof now has the following exact local ingredients.
+
+1. **Adjacent-defect exclusion.** A 13-column sub-threshold strip cannot have two central defect transitions.
+
+2. **Single-defect exclusion.** A 14-column strip with one defect and complement context `5/7` has squared radius at least eight.
+
+3. **Small even gaps.** Gaps `2,4` are exactly excluded with the stated three outside transitions; gaps `6,8,10,12,14,16,18` are excluded with one arbitrary transition on each side.
+
+4. **Half-line rigidity.** Among the 128 `D_5` orbits of
+   \[
+   (*,d,31^{19}),
+   \]
+   exact pruning leaves only
+   \[
+   (31,15,31^{19}).
+   \]
+
+5. **Uniform long-even-gap witness.** Applying the half-line rule from both ends reduces every even gap `g>=20` to three relative defect types.  For all three there is an explicit parameterized integer vector with
+   \[
+   w^T(M^2-8I)w=4,
+   \qquad
+   w^Tw=485g+2177.
+   \]
+   Hence all long even gaps are ruled out analytically.
+
+6. **Fixed residual-cluster rules.** The three open patterns
+   \[
+   31^9d31e31^9,
+   \qquad
+   31^7d31^3e31^7,
+   \qquad
+   31^6d31e31f31^6
+   \]
+   have exact `D_5` survivor counts `121->0`, `121->0`, and `3151->0`.
+
+For odd `s`, cyclic gap parity forces some even complement gap.  The uniform even-gap theorem reduces the only possible wrap-around patterns to
+\[
+(s-3,1),\qquad(s-5,3),\qquad(s-5,1,1).
+\]
+For every odd `s>=23` these contain one of the fixed forbidden clusters in a proper principal strip.  The four small bases
+\[
+s=15,17,19,21
+\]
+are closed by exact full-helical-seam cyclic certificates.  In particular
+\[
+\boxed{
+m(75,15),m(85,17),m(95,19),m(105,21)\ge\sqrt8.
+}
+\]
+
+The complete proof is `N5S_COMPLETE_THRESHOLD_CLASSIFICATION.md`.
+
+## 5. Odd positive-side seam-response framework
+
+For odd
+\[
+N=ks,\qquad k,s\text{ odd},\quad k\ge3,\ s\ge5,
+\]
+the Hamilton-seam / alternating-chord signing satisfies, after multiplication-by-two reindexing,
 \[
 \boxed{8I-A^2=L_\Sigma+E_-+E_+,}
 \]
-where `L_Sigma` is a signed Laplacian on `C_N(1,s)` and the only remaining non-Laplacian terms are two rank-two seam defects.
+where `L_Sigma` is a signed Laplacian on `C_N(1,s)` and only two seam defects remain.
 
-After moving the favorable rank-one pieces into a positive matrix `H`,
+After a rank-one rearrangement,
 \[
 8I-A^2=H-UU^T,
 \]
-with two-column `U`, hence
+with `H>0` and two-column `U`, so
 \[
 \boxed{8I-A^2\succ0\iff I_2-U^TH^{-1}U\succ0.}
 \]
-A finite-absorber theorem further reduces every fixed odd step to two fixed local positive-definiteness certificates plus finitely many small odd chord-cycle lengths.
+A finite-absorber principle reduces any fixed odd step to two finite local positive-definiteness certificates and finitely many small odd chord-cycle lengths.
 
-## 4. Complete and near-complete vertical thresholds
-
-The fully classified vertical families now are
+This framework proves the vertical classifications
 \[
-\boxed{m(3k,3)<\sqrt8\quad(k\ge3),}
+m(3k,3)<\sqrt8\quad(k\ge3),
 \]
 \[
-\boxed{m(5k,5)<\sqrt8\quad(k\ge3),}
+m(5k,5)<\sqrt8\quad(k\ge3),
 \]
 \[
-\boxed{m(sk,s)<\sqrt8\iff k\ge4\quad(s=7,9,11,13),}
+m(sk,s)<\sqrt8\iff k\ge4\quad(s=7,9,11,13),
 \]
-and, after the new all-signing width-five obstruction,
+and
 \[
-\boxed{m(15k,15)<\sqrt8\iff k=4\text{ or }k\ge6,}
+m(sk,s)<\sqrt8\iff k=4\text{ or }k\ge6\quad(s=15,17).
 \]
-\[
-\boxed{m(17k,17)<\sqrt8\iff k=4\text{ or }k\ge6.}
-\]
-In particular the previously open points are now proved non-sub-threshold:
-\[
-\boxed{m(75,15)\ge\sqrt8,\qquad m(85,17)\ge\sqrt8.}
-\]
-
-## 5. All-signing width-five theory on `N=5s`
-
-Reorder `C_(5s)(1,s)` into `s` chord-pentagon columns.  The five elementary square fluxes between adjacent columns form an intrinsic transition mask.  A transition is **complement** when all five square fluxes are negative; otherwise it is a defect.
-
-The current exact local rules are:
-
-1. **13-column complement rule.** Two adjacent defect transitions cannot occur in the middle of a sub-`sqrt(8)` strip.  The 320-action quotient has prefix survivor counts
-   ```text
-   1, 7, 33, 130, 548, 1867, 3870, 10080,
-   ```
-   and the central double-defect branch closes as `204 -> 135 -> 1 -> 0` after exact integer pruning.
-
-2. **14-column single-defect rule.** A unique defect with five complement transitions on one side and seven on the other has squared radius at least eight.  The seven `D_5` defect-mask representatives have exact integer Rayleigh excesses
-   ```text
-   660, 312, 310, 120, 98, 11, 8.
-   ```
-
-3. **Embedded gap 2/4 rule.** Two defects separated by two or four complement transitions are impossible once two arbitrary context transitions are supplied on one side and one on the other.  Exact survivor chains are
-   ```text
-   g=2: 12 -> 61 -> 8 -> 0,
-   g=4: 12 -> 57 -> 1 -> 0.
-   ```
-
-4. **Even gaps 6--14.** With one arbitrary context transition on each side, every even gap `g in {6,8,10,12,14}` is impossible.  After the common 12 central survivors, the left-context survivor counts are `53,40,35,19,14`, and every right extension is exactly rejected.
-
-These rules reduce the odd cycles `s=15,17` to only six wrap-around gap patterns.  The full helical seam, both Hamilton holonomies, and every initial pentagon state are then retained in a cyclic exact audit:
-
-```text
-s=15 residual gaps: (12,1), (10,3), (10,1,1);
-s=17 residual gaps: (14,1), (12,3), (12,1,1).
-```
-
-Each two-defect residual has exactly 1,920 full cyclic candidates after seam compatibility.  The three-defect residuals reduce to 100 candidates at `s=15` and 40 at `s=17`.  Every candidate has an exact integer Rayleigh witness for `A^2-8I`.
-
-The proof is `N5S_BASE_15_17_GLOBAL_OBSTRUCTION.md`; the verifier is `verify_n5s_15_17_global_obstruction.py`.
+The former open `k=5` cases at steps 15 and 17 are now excluded by the complete horizontal `N=5s` theorem.
 
 ## 6. Exact-computation trust boundary
 
-Finite computations are used only in explicitly delimited certificates.  Floating eigensolvers may propose an integer direction, but a branch is rejected only after an exact integer inequality such as
+Finite computation is used only in explicitly delimited certificates.  A floating eigensolver may propose an integer direction, but a branch is rejected only after an exact integer inequality such as
 \[
 w^T(M^2-8I)w\ge0
 \]
-is checked.  Floating error can therefore retain extra branches but cannot create a false exclusion.  Exact PSD/PD assertions elsewhere use symbolic characteristic polynomials, Sylvester minors, or rational `LDL^T` pivots.
+is checked.  Floating error can therefore retain extra candidates but cannot create a false exclusion.  Positive-definiteness certificates elsewhere use exact characteristic polynomials, Sylvester minors, or rational `LDL^T` pivots.
+
+Important current files include:
+
+- `THEOREM_LEDGER.md`
+- `PROOF_DEPENDENCY_MAP.md`
+- `N5S_COMPLETE_THRESHOLD_CLASSIFICATION.md`
+- `N5S_BASE_15_17_GLOBAL_OBSTRUCTION.md`
+- `N5S_BASE_19_21_GLOBAL_OBSTRUCTION.md`
+- `N5S_WIDTH5_LOCAL_COMPLEMENT_RULE.md`
+- `N5S_WIDTH5_EVEN_GAP_24_RULE.md`
+- `N5S_WIDTH5_EVEN_GAP_6_14_RULE.md`
+- `N5S_WIDTH5_EVEN_GAP_16_30_RULE.md`
+- `N5S_WIDTH5_DEFECT_CLUSTER_RULES.md`
+- `ODD_RESONANCE_SEAM_DEFECT_FRAMEWORK.md`
+- `ODD_RESONANCE_SEAM_RESPONSE.md`
+- `ODD_RESONANCE_FINITE_ABSORBER_PRINCIPLE.md`
+- `N3S_MARGIN_UPGRADE_24_1667.md`
+
+and their corresponding `verify_*.py` files.
 
 # Current frontier
 
-The `sqrt(6)` theory is complete.  At `sqrt(8)`, `N=3s` is complete; the first six odd vertical steps through 13 are complete; steps 15 and 17 are now also complete after the new all-signing `N=5s` base obstruction.
+The `sqrt(6)` classification and equality rigidity are complete.  At `sqrt(8)`, the first two odd horizontal resonance lines
+\[
+N=3s,\qquad N=5s
+\]
+are now completely classified, and every even order is sub-threshold.
 
-The highest-value next target is a uniform width-five **even-gap theorem**: current exact finite-state data show that the local exclusion continues for every tested even complement-gap beyond 14 and stabilizes to a small boundary-state family.  Proving that transfer statement would reduce the full odd `N=5s` problem to three parametric helical-seam residual families and is the most direct route to a general second horizontal threshold theorem.
+The highest-value next mathematical target is therefore the next horizontal resonance `N=7s`: determine whether its all-signing transition admits a finite-state/local-to-global description analogous to the triangle and pentagon lines, and combine it with the existing seam-response construction on the positive side.  A second priority is to compress the complete `N=5s` proof into manuscript-quality theorem/lemma form and update the paper architecture around the two horizontal threshold transitions.
