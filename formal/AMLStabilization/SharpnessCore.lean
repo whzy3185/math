@@ -52,10 +52,11 @@ theorem homogeneousSharpProfile_hasDerivAt
   have hterm0 : 0 ≤ theta * k * t :=
     mul_nonneg (mul_nonneg (le_of_lt htheta) hk) ht
   have hden : 0 < w0 ^ (-theta) + theta * k * t := by linarith
+  have hmul : HasDerivAt (fun x : ℝ => theta * k * x) (theta * k) t := by
+    convert (hasDerivAt_id t).const_mul (theta * k) using 1 <;> ring
   have hinner :
       HasDerivAt (fun x : ℝ => w0 ^ (-theta) + theta * k * x) (theta * k) t := by
-    convert (hasDerivAt_const t (w0 ^ (-theta))).add
-      (hasDerivAt_id t).const_mul (theta * k) using 1 <;> ring
+    simpa using (hasDerivAt_const t (w0 ^ (-theta))).add hmul
   have hrpow := hinner.rpow_const
     (Or.inl (ne_of_gt hden)) (p := -1 / theta)
   have htheta0 : theta ≠ 0 := ne_of_gt htheta
@@ -63,9 +64,7 @@ theorem homogeneousSharpProfile_hasDerivAt
     field_simp [htheta0]
     ring
   have hpow := homogeneousSharpProfile_power htheta hw0 hk ht
-  convert hrpow using 1
-  · rfl
-  · rw [hcoef, hpow]
+  simpa [homogeneousSharpProfile, hcoef, hpow] using hrpow
 
 /-- Exact ODE statement in derivative notation on the nonnegative time axis. -/
 theorem homogeneousSharpProfile_deriv
