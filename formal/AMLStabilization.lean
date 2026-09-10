@@ -10,6 +10,7 @@ import AMLStabilization.PoincareMeanCore
 import AMLStabilization.BoxPoincareCore
 import AMLStabilization.BoxPoincareTensorCore
 import AMLStabilization.InvariantRangeCore
+import AMLStabilization.MaximumPrincipleContactCore
 import AMLStabilization.SignalEnergyIdentityCore
 import AMLStabilization.FinalSignalAssembly
 import AMLStabilization.ProductionConsumptionSignalFinal
