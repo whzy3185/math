@@ -15,6 +15,7 @@ import AMLStabilization.BoxPoincareCoercivityBridge
 import AMLStabilization.ProductVarianceCore
 import AMLStabilization.CoordinateTelescopingCore
 import AMLStabilization.IntegratedCoordinateTelescopingCore
+import AMLStabilization.HybridFiberCore
 import AMLStabilization.BoxProductMeasureCore
 import AMLStabilization.PairedProductMeasureCore
 import AMLStabilization.PiCoordinateFubiniCore
