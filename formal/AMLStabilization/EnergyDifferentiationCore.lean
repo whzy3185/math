@@ -1,6 +1,7 @@
 import Mathlib
 
 open MeasureTheory Filter
+open scoped Topology
 
 namespace AMLStabilization
 
