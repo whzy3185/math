@@ -1,3 +1,4 @@
+-- Verification root for the strengthened AML stabilization library.
 import AMLStabilization.AlgebraicCore
 import AMLStabilization.EnergyDecay
 import AMLStabilization.SignalEnergyBridge
