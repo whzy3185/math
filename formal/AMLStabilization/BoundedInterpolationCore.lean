@@ -73,4 +73,72 @@ theorem boundedInterpolation_exponential_moment
       mul_le_mul_of_nonneg_left hdecay hRpow
     _ = R ^ (s - 2) * C * Real.exp (-lambda * (t - T)) := by ring
 
+/-- Polynomial `L²` energy decay transfers to the same polynomial rate for higher moments. -/
+theorem boundedInterpolation_polynomial_moment
+    {Omega : Type*} [MeasurableSpace Omega]
+    {mu : Measure Omega}
+    {f : ℝ → Omega → ℝ} {E : ℝ → ℝ}
+    {R s C a T t : ℝ}
+    (hs : 2 ≤ s) (hR : 0 ≤ R) (hC : 0 ≤ C) (ha : 0 ≤ a)
+    (hTt : T ≤ t)
+    (hbound : ∀ tau x, |f tau x| ≤ R)
+    (hsInt : ∀ tau, Integrable (fun x => |f tau x| ^ s) mu)
+    (h2Int : ∀ tau, Integrable (fun x => f tau x ^ 2) mu)
+    (hE : ∀ tau, E tau = (∫ x, f tau x ^ 2 ∂mu))
+    (hdecay : E t ≤ C * (1 + (t - T)) ^ (-a)) :
+    (∫ x, |f t x| ^ s ∂mu) ≤
+      R ^ (s - 2) * C * (1 + (t - T)) ^ (-a) := by
+  have hinterp := integral_abs_rpow_le_bound_mul_square
+    (mu := mu) (f := f t) hs hR (hbound t) (hsInt t) (h2Int t)
+  rw [← hE t] at hinterp
+  have hRpow : 0 ≤ R ^ (s - 2) := Real.rpow_nonneg hR _
+  calc
+    (∫ x, |f t x| ^ s ∂mu) ≤ R ^ (s - 2) * E t := hinterp
+    _ ≤ R ^ (s - 2) * (C * (1 + (t - T)) ^ (-a)) :=
+      mul_le_mul_of_nonneg_left hdecay hRpow
+    _ = R ^ (s - 2) * C * (1 + (t - T)) ^ (-a) := by ring
+
+/-- Taking the `s`-th root gives the corresponding `L^s`-scale polynomial rate. -/
+theorem boundedInterpolation_polynomial_root
+    {Omega : Type*} [MeasurableSpace Omega]
+    {mu : Measure Omega}
+    {f : ℝ → Omega → ℝ} {E : ℝ → ℝ}
+    {R s C a T t : ℝ}
+    (hs : 2 ≤ s) (hR : 0 ≤ R) (hC : 0 ≤ C) (ha : 0 ≤ a)
+    (hTt : T ≤ t)
+    (hbound : ∀ tau x, |f tau x| ≤ R)
+    (hsInt : ∀ tau, Integrable (fun x => |f tau x| ^ s) mu)
+    (h2Int : ∀ tau, Integrable (fun x => f tau x ^ 2) mu)
+    (hE : ∀ tau, E tau = (∫ x, f tau x ^ 2 ∂mu))
+    (hdecay : E t ≤ C * (1 + (t - T)) ^ (-a)) :
+    (∫ x, |f t x| ^ s ∂mu) ^ (1 / s) ≤
+      (R ^ (s - 2) * C) ^ (1 / s) *
+        (1 + (t - T)) ^ (-a / s) := by
+  have hs0 : 0 < s := lt_of_lt_of_le (by norm_num) hs
+  have hmoment := boundedInterpolation_polynomial_moment
+    hs hR hC ha hTt hbound hsInt h2Int hE hdecay
+  have hleft0 : 0 ≤ (∫ x, |f t x| ^ s ∂mu) :=
+    integral_nonneg (fun x => Real.rpow_nonneg (abs_nonneg _) _)
+  have hbase : 0 < 1 + (t - T) := by linarith
+  have hcoef0 : 0 ≤ R ^ (s - 2) * C :=
+    mul_nonneg (Real.rpow_nonneg hR _) hC
+  have hright0 : 0 ≤
+      (R ^ (s - 2) * C) * (1 + (t - T)) ^ (-a) :=
+    mul_nonneg hcoef0 (Real.rpow_nonneg (le_of_lt hbase) _)
+  have hroot := Real.rpow_le_rpow hleft0 hmoment (by positivity : 0 ≤ (1 / s : ℝ))
+  have hmul :
+      ((R ^ (s - 2) * C) * (1 + (t - T)) ^ (-a)) ^ (1 / s) =
+        (R ^ (s - 2) * C) ^ (1 / s) *
+          ((1 + (t - T)) ^ (-a)) ^ (1 / s) := by
+    rw [Real.mul_rpow hcoef0 (Real.rpow_nonneg (le_of_lt hbase) _)]
+  have hpow :
+      ((1 + (t - T)) ^ (-a)) ^ (1 / s) =
+        (1 + (t - T)) ^ (-a / s) := by
+    rw [← Real.rpow_mul (le_of_lt hbase)]
+    congr 1
+    field_simp [ne_of_gt hs0]
+    ring
+  rw [hmul, hpow] at hroot
+  exact hroot
+
 end AMLStabilization
