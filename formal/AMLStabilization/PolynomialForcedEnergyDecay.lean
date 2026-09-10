@@ -17,7 +17,8 @@ theorem local_forcedHomogeneous_exp_bound
     have hexp := hlin.exp
     have hmul := (hY τ hτ).mul hexp
     dsimp [Z, dZ]
-    convert hmul using 1 <;> ring
+    apply hmul.congr_deriv
+    ring
   have hZcont : ContinuousOn Z (Set.Icc s t) := by
     intro τ hτ
     exact (hZderiv τ hτ).continuousAt.continuousWithinAt
@@ -33,8 +34,9 @@ theorem local_forcedHomogeneous_exp_bound
     exact mul_nonpos_of_nonneg_of_nonpos (Real.exp_nonneg _) (hdiss τ hτI)
   have hanti : AntitoneOn Z (Set.Icc s t) :=
     antitoneOn_of_deriv_nonpos (convex_Icc s t) hZcont hZdiff hZderivNonpos
-  have hzt : Z t ≤ Z s :=
-    hanti (by exact ⟨hst, le_rfl⟩) (by exact ⟨le_rfl, hst⟩) hst
+  have hzs : s ∈ Set.Icc s t := ⟨le_rfl, hst⟩
+  have hztMem : t ∈ Set.Icc s t := ⟨hst, le_rfl⟩
+  have hzt : Z t ≤ Z s := hanti hzs hztMem hst
   dsimp [Z] at hzt
   have het : 0 < Real.exp (a * t) := Real.exp_pos _
   have hdiv : Y t ≤ Y s * Real.exp (a * s) / Real.exp (a * t) :=
@@ -58,10 +60,11 @@ theorem polynomialBarrier_hasDerivAt
       (-b * polynomialBarrier a b C * (1 + (t - T)) ^ (-b - 1)) t := by
   have hbase : 0 < 1 + (t - T) := by linarith
   have hinner : HasDerivAt (fun τ : ℝ => 1 + (τ - T)) 1 t := by
-    convert (hasDerivAt_id t).sub_const T |>.const_add 1 using 1 <;> ring
+    simpa using ((hasDerivAt_id t).sub_const T).const_add 1
   have hr := hinner.rpow_const (Or.inl (ne_of_gt hbase)) (p := -b)
   have hc := hr.const_mul (polynomialBarrier a b C)
-  convert hc using 1 <;> ring
+  apply hc.congr_deriv
+  ring
 
 /-- On `t >= T`, the polynomial barrier is a supersolution of the scalar forcing. -/
 theorem polynomialBarrier_supersolution
@@ -75,14 +78,13 @@ theorem polynomialBarrier_supersolution
   have hbase : 1 ≤ 1 + (t - T) := by linarith
   have hbase0 : 0 < 1 + (t - T) := lt_of_lt_of_le zero_lt_one hbase
   have hinv : (1 + (t - T))⁻¹ ≤ 1 := by
-    exact inv_le_one₀ (by linarith) hbase
+    exact (inv_le_one₀ hbase0).2 hbase
   have hbar0 : 0 ≤ polynomialBarrier a b C := by
     unfold polynomialBarrier
     exact div_nonneg hC hab.le
-  have hfactor :
-      b / (1 + (t - T)) ≤ b := by
-    have := mul_le_mul_of_nonneg_left hinv (le_of_lt hb)
-    simpa [div_eq_mul_inv] using this
+  have hfactor : b / (1 + (t - T)) ≤ b := by
+    have hmul := mul_le_mul_of_nonneg_left hinv (le_of_lt hb)
+    simpa [div_eq_mul_inv] using hmul
   have hpowrel :
       (1 + (t - T)) ^ (-b - 1) =
         (1 + (t - T)) ^ (-b) / (1 + (t - T)) := by
@@ -94,14 +96,20 @@ theorem polynomialBarrier_supersolution
     field_simp [ne_of_gt hab]
   rw [hpowrel]
   have hpownonneg : 0 ≤ (1 + (t - T)) ^ (-b) := Real.rpow_nonneg hbase0.le _
+  have hmultnonneg :
+      0 ≤ polynomialBarrier a b C * (1 + (t - T)) ^ (-b) :=
+    mul_nonneg hbar0 hpownonneg
+  have hdiff : a - b ≤ a - b / (1 + (t - T)) :=
+    sub_le_sub_left hfactor a
   calc
     (-b * polynomialBarrier a b C * ((1 + (t - T)) ^ (-b) / (1 + (t - T)))) +
         a * (polynomialBarrier a b C * (1 + (t - T)) ^ (-b)) =
       polynomialBarrier a b C * (1 + (t - T)) ^ (-b) *
         (a - b / (1 + (t - T))) := by ring
     _ ≥ polynomialBarrier a b C * (1 + (t - T)) ^ (-b) * (a - b) := by
-      gcongr
-    _ = C * (1 + (t - T)) ^ (-b) := by rw [← hcoef]; ring
+      exact mul_le_mul_of_nonneg_left hdiff hmultnonneg
+    _ = ((a - b) * polynomialBarrier a b C) * (1 + (t - T)) ^ (-b) := by ring
+    _ = C * (1 + (t - T)) ^ (-b) := by rw [hcoef]
 
 /--
 Polynomial forcing is inherited by a linearly damped energy.  The exponential
@@ -123,15 +131,19 @@ theorem forcedEnergy_polynomial_bound
   let dY : ℝ → ℝ := fun τ => dQ τ - dP τ
   have hYderiv : ∀ τ ∈ Set.Icc T t, HasDerivAt Y (dY τ) τ := by
     intro τ hτ
-    have hp := polynomialBarrier_hasDerivAt ha hb hba hτ.1
+    have hp := polynomialBarrier_hasDerivAt
+      (a := a) (b := b) (C := C) (T := T) (t := τ) ha hb hba hτ.1
     dsimp [Y, dY, P, dP]
     exact (hQ τ hτ).sub hp
   have hYdiss : ∀ τ ∈ Set.Icc T t, dY τ + a * Y τ ≤ 0 := by
     intro τ hτ
-    have hsup := polynomialBarrier_supersolution ha hb hba hC hτ.1
+    have hsup := polynomialBarrier_supersolution
+      (a := a) (b := b) (C := C) (T := T) (t := τ) ha hb hba hC hτ.1
     dsimp [Y, dY, P, dP]
     linarith [hforce τ hτ]
-  have hdec := local_forcedHomogeneous_exp_bound ha hTt hYderiv hYdiss
+  have hdec := local_forcedHomogeneous_exp_bound
+    (Y := Y) (dY := dY) (a := a) (s := T) (t := t)
+    ha hTt hYderiv hYdiss
   dsimp [Y, P] at hdec
   simpa using hdec
 
