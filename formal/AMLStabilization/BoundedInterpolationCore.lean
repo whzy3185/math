@@ -122,9 +122,6 @@ theorem boundedInterpolation_polynomial_root
   have hbase : 0 < 1 + (t - T) := by linarith
   have hcoef0 : 0 ≤ R ^ (s - 2) * C :=
     mul_nonneg (Real.rpow_nonneg hR _) hC
-  have hright0 : 0 ≤
-      (R ^ (s - 2) * C) * (1 + (t - T)) ^ (-a) :=
-    mul_nonneg hcoef0 (Real.rpow_nonneg (le_of_lt hbase) _)
   have hroot := Real.rpow_le_rpow hleft0 hmoment (by positivity : 0 ≤ (1 / s : ℝ))
   have hmul :
       ((R ^ (s - 2) * C) * (1 + (t - T)) ^ (-a)) ^ (1 / s) =
@@ -137,7 +134,6 @@ theorem boundedInterpolation_polynomial_root
     rw [← Real.rpow_mul (le_of_lt hbase)]
     congr 1
     field_simp [ne_of_gt hs0]
-    ring
   rw [hmul, hpow] at hroot
   exact hroot
 
