@@ -9,6 +9,7 @@ import AMLStabilization.HolderCoercivityBridge
 import AMLStabilization.PoincareMeanCore
 import AMLStabilization.BoxPoincareCore
 import AMLStabilization.IntervalPoincareShiftCore
+import AMLStabilization.IntervalPairPoincareCore
 import AMLStabilization.BoxPoincareTensorCore
 import AMLStabilization.BoxPoincareCoercivityBridge
 import AMLStabilization.ProductVarianceCore
