@@ -1,4 +1,4 @@
--- Verification root for the strengthened AML stabilization library.
+-- Verification root for the strengthened AML stabilization library (final rate-assembly tree).
 import AMLStabilization.AlgebraicCore
 import AMLStabilization.EnergyDecay
 import AMLStabilization.SignalEnergyBridge
