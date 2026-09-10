@@ -70,10 +70,11 @@ theorem coordinateSlice_isLocalMax
     IsLocalMax (coordinateSlice z x i) 0 := by
   let g : ℝ → (Fin (n + 1) → ℝ) := fun t => x + t • Pi.single i 1
   have hg : ContinuousAt g 0 := by fun_prop
-  have hg0 : g 0 = x := by
-    simp [g]
-  have hcomp := hmax.comp_continuous hg
-  simpa [coordinateSlice, g, Function.comp_def, hg0] using hcomp
+  have hg0 : g 0 = x := by simp [g]
+  have hmax' : IsLocalMax z (g 0) := by simpa [hg0] using hmax
+  have hcomp : IsLocalMax (z ∘ g) 0 := hmax'.comp_continuous hg
+  change IsLocalMax (fun t => z (x + t • Pi.single i 1)) 0
+  simpa [g, Function.comp_def] using hcomp
 
 /-- A spatial local minimum restricts to a local minimum on every coordinate
 line through the point. -/
@@ -84,10 +85,11 @@ theorem coordinateSlice_isLocalMin
     IsLocalMin (coordinateSlice z x i) 0 := by
   let g : ℝ → (Fin (n + 1) → ℝ) := fun t => x + t • Pi.single i 1
   have hg : ContinuousAt g 0 := by fun_prop
-  have hg0 : g 0 = x := by
-    simp [g]
-  have hcomp := hmin.comp_continuous hg
-  simpa [coordinateSlice, g, Function.comp_def, hg0] using hcomp
+  have hg0 : g 0 = x := by simp [g]
+  have hmin' : IsLocalMin z (g 0) := by simpa [hg0] using hmin
+  have hcomp : IsLocalMin (z ∘ g) 0 := hmin'.comp_continuous hg
+  change IsLocalMin (fun t => z (x + t • Pi.single i 1)) 0
+  simpa [g, Function.comp_def] using hcomp
 
 /-- Continuity of the spatial field at `x` gives continuity of every coordinate
 slice at the origin. -/
@@ -99,8 +101,9 @@ theorem coordinateSlice_continuousAt
   let g : ℝ → (Fin (n + 1) → ℝ) := fun t => x + t • Pi.single i 1
   have hg : ContinuousAt g 0 := by fun_prop
   have hg0 : g 0 = x := by simp [g]
-  have hcomp := hz.comp_of_eq hg hg0
-  simpa [coordinateSlice, g, Function.comp_def] using hcomp
+  have hcomp : ContinuousAt (z ∘ g) 0 := hz.comp_of_eq hg hg0
+  change ContinuousAt (fun t => z (x + t • Pi.single i 1)) 0
+  simpa [g, Function.comp_def] using hcomp
 
 /-- The coordinate-trace Laplacian is nonpositive at a spatial local maximum. -/
 theorem laplacianTrace_nonpos_of_isLocalMax
