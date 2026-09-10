@@ -11,3 +11,4 @@ import AMLStabilization.ProductionConsumptionSignalFinal
 import AMLStabilization.PolynomialEnergyDecay
 import AMLStabilization.LpExponentCore
 import AMLStabilization.GeneralPolynomialEnergyDecay
+import AMLStabilization.NonlinearCoercivityAlgebra
