@@ -47,9 +47,11 @@ Status vocabulary is strict:
 | E1 | If `N` is even, `m(N,s)^2<=6+2 cos(2pi/N)<8` | **Proved** | Finite anti-periodic signed shift and alternating chord signs; finite Fourier only. |
 | ODDSEAM8 | General two-seam-defect decomposition for odd resonances `N=ks`, odd `k>=3`, odd `s>=5` | **Proved** | For the Hamilton-seam/chord-alternating signing, after multiplication-by-2 reindexing, `8I-A^2=L_Sigma+E_-+E_+`; `E_-` is the single `-2` pair `{0,N-(s+1)/2}` and `E_+` the single `+2` pair `{(N-s)/2,(N-1)/2}`. All remaining entries form a signed Laplacian on `C_N(1,s)`. |
 | STEP3K8 | For every integer `k>=3`, `m(3k,3)<sqrt(8)` | **Proved** | Even `k` follows from E1. For odd `k`, the collided seam defect leaves one `-2` edge; three edge-disjoint negative two-edge paths absorb it by Cauchy and give `8I-A^2>0`. |
-| STEP5K8 | For every integer `k>=3`, `m(5k,5)<sqrt(8)` | **Proved** | Even `k`: E1. Odd `k>=7`: two fixed 10/19-vertex local positive-definite absorbers for the ODDSEAM8 defects; `k=5` exact 25x25 Sylvester certificate; `k=3` is the prior exact `(15,5)` certificate. |
-| STEP7K8 | On the vertical step-seven family, `m(7k,7)<sqrt(8) iff k>=4` for admissible `k>=3` | **Proved** | `(21,7)` is above `8+18/131`. Even `k`: E1. Odd `k>=9`: fixed 23/24-vertex radius-two absorbers; odd `k=5,7`: exact full Sylvester certificates. |
-| STEP9K8 | On the vertical step-nine family, `m(9k,9)<sqrt(8) iff k>=4` for admissible `k>=3` | **Proved** | `(27,9)` is above `8+2/139`. Even `k`: E1. Odd `k>=13`: fixed 44/43-vertex radius-three absorbers; odd `k=5,7,9,11`: exact rational LDL certificates. |
+| STEP5K8 | For every integer `k>=3`, `m(5k,5)<sqrt(8)` | **Proved** | Even `k`: E1. Odd `k>=7`: two fixed 10/19-vertex local positive-definite absorbers for ODDSEAM8; `k=5` exact 25x25 Sylvester certificate; `k=3` is the prior exact `(15,5)` certificate. |
+| STEP7K8 | `m(7k,7)<sqrt(8) iff k>=4` | **Proved** | `(21,7)` is above `8+18/131`; even `k`: E1; odd `k>=9`: fixed radius-two absorbers; odd `k=5,7`: exact full Sylvester certificates. |
+| STEP9K8 | `m(9k,9)<sqrt(8) iff k>=4` | **Proved** | `(27,9)` is above `8+2/139`; even `k`: E1; odd `k>=13`: fixed radius-three absorbers; odd `k=5,7,9,11`: exact rational LDL certificates. |
+| STEP11K8 | `m(11k,11)<sqrt(8) iff k>=4` | **Proved** | `k=3` follows from R3; even `k`: E1; odd `k>=19`: fixed radius-four positive-definite absorbers; odd `k=7,9,11,13,15,17`: exact full LDL certificates; `k=5` uses an explicit two-chord-flip signing with exact positive LDL. |
+| STEP13K8 | `m(13k,13)<sqrt(8) iff k>=4` | **Proved** | `k=3` follows from R3; even `k`: E1; odd `k>=19`: fixed radius-four positive-definite absorbers; odd `k=7,9,11,13,15,17`: exact full LDL certificates; `k=5` uses an explicit two-chord-flip signing with exact positive LDL. |
 | R1 | `m(9,3)<sqrt(8)` | **Proved** | Exact Sylvester certificate; leading minors `4,16,60,209,722,2508,5746,15993,47304`. |
 | R2 | `m(15,5)<sqrt(8)` | **Proved** | Exact Sylvester certificate; final determinant `8636544`. |
 | L9 | Nine-column signed-triangle local rule at excess `2/139` | **Proved, exact finite lemma** | Exact integer pruning counts `8,56,152,440,488,1016,656,1064,128`; all final survivors alternate in the six middle transitions. |
@@ -58,7 +60,7 @@ Status vocabulary is strict:
 | R3 | For odd `s>=7`, `m(3s,s)^2>=8+2/139` | **Proved, computer-assisted local lemma + analytic propagation** | Exact bases `s=7,9`; nine-column alternation plus seam contradiction for `s>=11`. |
 | R4 | `m(3s,s)<sqrt8 iff s` is even or s in `{3,5}` | **Proved** | E1 + R1/R2 + R3. |
 | P8 | A fixed period-8 phase determines the global finite minimum for all `C_{8L}(1,2)` | **Rejected historical overclaim** | Historical correction branch withdraws the global conclusion; fixed-phase dispersion is excluded. |
-| Kodd8 | Exact sub-`sqrt8` classification for all odd resonances | **Open** | The horizontal `k=3` line and vertical steps `s=3,5,7,9` are now classified. ODDSEAM8 reduces the remaining positive-side problem to absorption of two rank-two seam defects. |
+| Kodd8 | Exact sub-`sqrt8` classification for all odd resonances | **Open** | Horizontal `k=3` is complete; vertical steps `s=3,5,7,9,11,13` are complete. ODDSEAM8 reduces the remaining positive-side problem to absorption of two rank-two seam defects. |
 | Lit1 | Fixed-underlying-graph signature minimizing spectral radius is an established general problem | **Published/Established** | Belardo--Cioabă--Koolen--Wang (2018), Problem 3.18. |
 | Lit2 | Signed graphs with all eigenvalues in `[-2,2]` are classified | **Published/Established** | McKee--Smyth, *J. Algebra* 317 (2007). |
 | Lit3 | Degree-at-most-4 signed graphs with two adjacency eigenvalues are classified | **Published/Established** | Hou--Tang--Wang, *Discrete Math.* 342 (2019). |
@@ -118,11 +120,10 @@ odd s>=7 => m(3s,s)^2>=8+2/139.
 Vertical fixed steps:
 m(3k,3)<sqrt8 for every k>=3;
 m(5k,5)<sqrt8 for every k>=3;
-m(7k,7)<sqrt8 iff k>=4;
-m(9k,9)<sqrt8 iff k>=4.
+m(sk,s)<sqrt8 iff k>=4 for s in {7,9,11,13}.
 ```
 
-For odd `k,s`, `s>=5`, the explicit positive construction always has the universal form
+For odd `k,s`, `s>=5`, the explicit positive construction has the universal form
 
 ```text
 8I-A^2 = signed Laplacian + one -2 seam edge + one +2 seam edge.
@@ -138,6 +139,3 @@ The remaining classification problem is therefore a two-defect energy-absorption
 4. The corrected doubled-edge line-graph count in the Greaves reduction is `d(a)+d(b)=7`.
 5. Strict sub-six and equality at six are distinct: entries `+-2` genuinely occur at equality, so root quotienting is mandatory.
 6. The formerly open equality boundary is now completely classified: exactly four parameter pairs attain `m^2=6`.
-7. Equality rigidity is nonuniform: the order-16 repeated-root cases have 32 labelled minimizer classes and two switching-isomorphism orbits, versus two classes and one orbit at orders 12 and 20.
-8. The `sqrt(8)` positive side now contains complete vertical steps `3,5` and exact vertical thresholds for steps `7,9`.
-9. The general odd positive construction is reduced to two explicit seam defects by ODDSEAM8.
