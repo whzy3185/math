@@ -78,8 +78,8 @@ theorem cubicDegenerate_signalEnergyInequality
     (dE := dE) (gradSq := gradSq) (beta := kappa) (q := (4 : ℝ))
     hu
   · intro x
-    have habs4 : |w x| ^ (4 : ℝ) = w x ^ 4 := by
-      change |w x| ^ (4 : ℕ) = w x ^ 4
+    rw [Real.rpow_natCast]
+    have habs4 : |w x| ^ 4 = w x ^ 4 := by
       rw [← abs_pow, abs_of_nonneg]
       positivity
     rw [habs4]
