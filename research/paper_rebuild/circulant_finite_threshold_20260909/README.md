@@ -10,15 +10,15 @@ for signed adjacency matrices of `C_N(1,s)`.
 
 ## Scope boundary
 
-This paper is completely independent of the separate periodic/Bloch project. It concerns finite graphs, minimization over **all** signings, exact equality, threshold classification, and switching/flux rigidity. No theorem from the periodic-family paper is used.
+This paper is completely independent of the separate periodic/Bloch project.  It concerns finite graphs, minimization over **all** signings, exact equality, threshold classification, and switching/flux rigidity.  No theorem from the periodic-family paper is used.
 
-# Main proved theorem package
+# Current main theorem package
 
 ## 1. Complete classification through `sqrt(6)`
 
 Let `beta` be the largest root of `x^3-7x+7=0`.
 
-### Strictly below six
+Exactly the following pairs satisfy `m(N,s)^2<6`:
 
 ```text
 N=2s+2:                         m^2=4;
@@ -27,38 +27,35 @@ N=4s:                           m^2=4+2 cos(pi/(2s));
 N=14, s=3,4,5:                  m^2=4+beta.
 ```
 
-These are exactly the pairs with `m(N,s)^2<6`.
-
-### Exactly six
-
+The equality boundary is also complete:
 \[
 \boxed{m(N,s)^2=6\iff (N,s)\in\{(12,4),(16,3),(16,5),(20,8)\}.}
 \]
+Every other admissible pair satisfies `m(N,s)>sqrt(6)`.
 
-The labelled minimizing switching-class counts are `2,32,32,2`, and the switching-isomorphism orbit counts are `1,2,2,1`. At order 16 the 32 classes split into two size-16 Hamilton-holonomy sectors; every minimizing defect has exactly two repeated-root pairs.
-
-### Strictly above six
-
-Every other admissible pair satisfies
+At the four equality pairs, the labelled minimizing switching-class counts are respectively
 \[
-\boxed{m(N,s)>\sqrt6.}
+2,32,32,2,
+\]
+and the switching-isomorphism orbit counts are
+\[
+1,2,2,1.
+\]
+The order-16 boundary is the repeated-root case; the order-12 and order-20 cases are duplicate-free.
+
+Other exact low-end results include
+\[
+m(N,s)=2\iff N=2s+2,
+\]
+\[
+m(N,s)=\sqrt5\iff (N,s)=(5,2),(10,3),
+\]
+and
+\[
+m(12,2)^2=5+\sqrt3.
 \]
 
-The equality proof uses the integral Gram matrix `6I-A^2`, root quotienting, parity-defect support, and a four-locus arithmetic localization. All four loci are closed.
-
-## 2. Exact low-end results
-
-- `m(N,s)=2` iff `N=2s+2`.
-- `m(N,s)=sqrt(5)` iff `(N,s)=(5,2)` or `(10,3)`.
-- Outside those cases, `m(N,s)^2>=4+sqrt(2)`; equality occurs exactly at `(8,2)`.
-- On `N=4s`,
-  \[
-  m(4s,s)^2=4+2\cos\frac{\pi}{2s},
-  \]
-  with exactly two labelled minimizing switching classes.
-- `m(12,2)^2=5+sqrt(3)`, with exactly two labelled minimizers.
-
-## 3. `sqrt(8)`: horizontal triangle resonance
+## 2. `sqrt(8)`: complete horizontal triangle resonance
 
 Every even order has a finite sub-threshold signing:
 \[
@@ -69,127 +66,104 @@ On `N=3s`,
 \[
 \boxed{m(3s,s)<\sqrt8\iff s\text{ is even or }s\in\{3,5\}.}
 \]
-
-The quantitative odd obstruction has been strengthened twice during the audit. The current proved form is
+For every odd `s>=7`, the current quantitative obstruction is
 \[
-\boxed{m(3s,s)^2\ge8+\frac{24}{1667}\qquad(s\ge7\text{ odd}).}
+\boxed{m(3s,s)^2\ge8+\frac{24}{1667}.}
 \]
-
-The `s=7` exhaustive certificate is stronger (`18/131`). At `s=9`, exact prefix pruning leaves 1,064 length-eight prefixes and checks 17,024 final cyclic candidates. The strengthened nine-column local rule at `24/1667` has survivor counts
+The `s=7` exact base is stronger (`18/131`).  The `s=9` base and the nine-column local rule are certified at the common margin `24/1667`; the local survivor counts are
 
 ```text
-8, 56, 152, 440, 488, 1016, 656, 1064, 128,
+8, 56, 152, 440, 488, 1016, 656, 1064, 128.
 ```
 
-and all 128 final survivors satisfy the same forced middle alternation used in the analytic odd-seam contradiction. The floating eigensolver only proposes integer vectors; every accepted certificate is an exact integer cross-multiplication.
+## 3. Odd positive-side seam-response framework
 
-## 4. `sqrt(8)`: vertical odd-step theorems
+For odd `N=ks`, odd `k>=3`, odd `s>=5`, the Hamilton-seam / alternating-chord signing satisfies, after multiplication-by-two reindexing,
+\[
+\boxed{8I-A^2=L_\Sigma+E_-+E_+,}
+\]
+where `L_Sigma` is a signed Laplacian on `C_N(1,s)` and the only remaining non-Laplacian terms are two rank-two seam defects.
 
-The fully classified fixed steps are
+After moving the favorable rank-one pieces into a positive matrix `H`,
+\[
+8I-A^2=H-UU^T,
+\]
+with two-column `U`, hence
+\[
+\boxed{8I-A^2\succ0\iff I_2-U^TH^{-1}U\succ0.}
+\]
+A finite-absorber theorem further reduces every fixed odd step to two fixed local positive-definiteness certificates plus finitely many small odd chord-cycle lengths.
+
+## 4. Complete and near-complete vertical thresholds
+
+The fully classified vertical families now are
 \[
 \boxed{m(3k,3)<\sqrt8\quad(k\ge3),}
 \]
 \[
 \boxed{m(5k,5)<\sqrt8\quad(k\ge3),}
 \]
-and
 \[
-\boxed{m(sk,s)<\sqrt8\iff k\ge4\quad\text{for }s\in\{7,9,11,13\}.}
+\boxed{m(sk,s)<\sqrt8\iff k\ge4\quad(s=7,9,11,13),}
+\]
+and, after the new all-signing width-five obstruction,
+\[
+\boxed{m(15k,15)<\sqrt8\iff k=4\text{ or }k\ge6,}
+\]
+\[
+\boxed{m(17k,17)<\sqrt8\iff k=4\text{ or }k\ge6.}
+\]
+In particular the previously open points are now proved non-sub-threshold:
+\[
+\boxed{m(75,15)\ge\sqrt8,\qquad m(85,17)\ge\sqrt8.}
 \]
 
-The next two steps are classified except for a single `k=5` base each:
+## 5. All-signing width-five theory on `N=5s`
+
+Reorder `C_(5s)(1,s)` into `s` chord-pentagon columns.  The five elementary square fluxes between adjacent columns form an intrinsic transition mask.  A transition is **complement** when all five square fluxes are negative; otherwise it is a defect.
+
+The current exact local rules are:
+
+1. **13-column complement rule.** Two adjacent defect transitions cannot occur in the middle of a sub-`sqrt(8)` strip.  The 320-action quotient has prefix survivor counts
+   ```text
+   1, 7, 33, 130, 548, 1867, 3870, 10080,
+   ```
+   and the central double-defect branch closes as `204 -> 135 -> 1 -> 0` after exact integer pruning.
+
+2. **14-column single-defect rule.** A unique defect with five complement transitions on one side and seven on the other has squared radius at least eight.  The seven `D_5` defect-mask representatives have exact integer Rayleigh excesses
+   ```text
+   660, 312, 310, 120, 98, 11, 8.
+   ```
+
+3. **Embedded gap 2/4 rule.** Two defects separated by two or four complement transitions are impossible once two arbitrary context transitions are supplied on one side and one on the other.  Exact survivor chains are
+   ```text
+   g=2: 12 -> 61 -> 8 -> 0,
+   g=4: 12 -> 57 -> 1 -> 0.
+   ```
+
+4. **Even gaps 6--14.** With one arbitrary context transition on each side, every even gap `g in {6,8,10,12,14}` is impossible.  After the common 12 central survivors, the left-context survivor counts are `53,40,35,19,14`, and every right extension is exactly rejected.
+
+These rules reduce the odd cycles `s=15,17` to only six wrap-around gap patterns.  The full helical seam, both Hamilton holonomies, and every initial pentagon state are then retained in a cyclic exact audit:
 
 ```text
-s=15: k=3 is above sqrt(8); every k=4 or k>=6 is below sqrt(8);
-      (N,s)=(75,15) remains open.
-
-s=17: k=3 is above sqrt(8); every k=4 or k>=6 is below sqrt(8);
-      (N,s)=(85,17) remains open.
+s=15 residual gaps: (12,1), (10,3), (10,1,1);
+s=17 residual gaps: (14,1), (12,3), (12,1,1).
 ```
 
-Search failures at these two open points are recorded only as **Observed** and are not lower bounds.
+Each two-defect residual has exactly 1,920 full cyclic candidates after seam compatibility.  The three-defect residuals reduce to 100 candidates at `s=15` and 40 at `s=17`.  Every candidate has an exact integer Rayleigh witness for `A^2-8I`.
 
-## 5. General odd seam-defect and response framework
+The proof is `N5S_BASE_15_17_GLOBAL_OBSTRUCTION.md`; the verifier is `verify_n5s_15_17_global_obstruction.py`.
 
-For odd
+## 6. Exact-computation trust boundary
+
+Finite computations are used only in explicitly delimited certificates.  Floating eigensolvers may propose an integer direction, but a branch is rejected only after an exact integer inequality such as
 \[
-N=ks,\qquad k\ge3,\qquad s\ge5,
+w^T(M^2-8I)w\ge0
 \]
-with both `k,s` odd, take Hamilton seam `-1` and alternating chord signs. After multiplication-by-two reindexing,
-\[
-\boxed{8I-A^2=L_{\Sigma}+E_-+E_+,}
-\]
-where `L_Sigma` is a signed Laplacian on `C_N(1,s)` and `E_-,E_+` are exactly two rank-two seam defects.
-
-The positivity problem has an exact two-port reduction. After moving two favorable rank-one terms into a positive matrix `H`, one has
-\[
-8I-A^2=H-UU^T,
-\]
-with two-column `U`, and hence
-\[
-\boxed{8I-A^2\succ0\iff I_2-U^TH^{-1}U\succ0.}
-\]
-
-A complementary finite-absorber theorem shows that, for any fixed odd step, two fixed positive-definite local absorber matrices certify every sufficiently large odd chord-cycle length; only finitely many small odd `k` then remain. This is the common finite mechanism behind the fixed-step results above.
-
-## 6. First all-signing rigidity on the next horizontal resonance `N=5s`
-
-Write a consecutive open portion of `C_(5s)(1,s)` as a width-five strip of signed pentagon columns, after switching the inter-column matchings to the identity. A transition is called **complement** when the next pentagon state is the edgewise negative of the previous one; equivalently all five elementary square fluxes across that transition are negative.
-
-An exact finite-state theorem now gives:
-\[
-\boxed{
-\rho(M)^2<8\text{ on a 13-column open strip}
-\Longrightarrow
-\eta_6=-\eta_5\text{ or }\eta_7=-\eta_6.
-}
-\]
-
-Thus two adjacent non-complement transitions cannot occur in the middle of a sub-`sqrt(8)` width-five strip once five columns of context are present on each side.
-
-The proof quotients by 320 spectral-radius-preserving switching/dihedral/global-complement actions. Exact prefix survivor counts through length eight are
-
-```text
-1, 7, 33, 130, 548, 1867, 3870, 10080.
-```
-
-Among length-nine words with both central transitions non-complement, 7,392 orbit candidates reduce by exact integer Rayleigh certificates to 71; extending context gives survivor counts
-
-```text
-204 -> 135 -> 1 -> 0.
-```
-
-Every branch rejection is justified by an exact integer inequality `w^T(M^2-8I)w >= 0`. This is an all-signing local rigidity lemma, not a statement about the explicit seam construction.
-
-It is not yet a global `N=5s` obstruction: isolated non-complement transitions remain possible, so their type and seam compatibility must still be classified.
-
-# Current proof/certificate additions
-
-Important strengthening files include:
-
-- `SIX_BOUNDARY_ROOT_QUOTIENT.md`
-- `SIX_BOUNDARY_ARITHMETIC_LOCALIZATION.md`
-- `SIX_BOUNDARY_TRIANGLE_3T.md`
-- `SIX_BOUNDARY_MINIMIZER_RIGIDITY.md`
-- `SIX_BOUNDARY_SWITCHING_ISOMORPHISM.md`
-- `ODD_RESONANCE_SEAM_DEFECT_FRAMEWORK.md`
-- `ODD_RESONANCE_SEAM_RESPONSE.md`
-- `ODD_RESONANCE_FINITE_ABSORBER_PRINCIPLE.md`
-- `ODD_RESONANCE_STEP3_SUBSQRT8.md`
-- `ODD_RESONANCE_STEP5_SUBSQRT8.md`
-- `ODD_RESONANCE_STEP7_THRESHOLD.md`
-- `ODD_RESONANCE_STEP9_THRESHOLD.md`
-- `ODD_RESONANCE_STEP11_THRESHOLD.md`
-- `ODD_RESONANCE_STEP13_THRESHOLD.md`
-- `ODD_RESONANCE_STEP15_NEAR_CLASSIFICATION.md`
-- `ODD_RESONANCE_STEP17_NEAR_CLASSIFICATION.md`
-- `N3S_MARGIN_UPGRADE_24_1667.md`
-- `N5S_WIDTH5_LOCAL_COMPLEMENT_RULE.md`
-
-The corresponding `verify_*.py` files use exact symbolic, integer, or rational acceptance checks. In particular `verify_n5s_width5_local_complement.py` reproduces the 13-column local theorem. `THEOREM_LEDGER.md` is the authoritative status table.
+is checked.  Floating error can therefore retain extra branches but cannot create a false exclusion.  Exact PSD/PD assertions elsewhere use symbolic characteristic polynomials, Sylvester minors, or rational `LDL^T` pivots.
 
 # Current frontier
 
-The `sqrt(6)` classification and minimizer rigidity are complete. At `sqrt(8)`, the horizontal `N=3s` line is complete and the quantitative odd gap is `24/1667`. The odd positive side is governed by a universal two-seam response problem rather than an unconstrained signing search.
+The `sqrt(6)` theory is complete.  At `sqrt(8)`, `N=3s` is complete; the first six odd vertical steps through 13 are complete; steps 15 and 17 are now also complete after the new all-signing `N=5s` base obstruction.
 
-For `N=5s`, the first exact all-signing local rigidity theorem is now proved: adjacent non-complement transitions are forbidden in the interior of a sufficiently contextualized sub-threshold strip. The next mathematical target is to classify the surviving isolated non-complement transition types and derive a second propagation rule. The global statuses of `(75,15)` and `(85,17)` remain open until either a finite signing with exact `8I-A^2>0` or an all-signing obstruction is proved.
+The highest-value next target is a uniform width-five **even-gap theorem**: current exact finite-state data show that the local exclusion continues for every tested even complement-gap beyond 14 and stabilizes to a small boundary-state family.  Proving that transfer statement would reduce the full odd `N=5s` problem to three parametric helical-seam residual families and is the most direct route to a general second horizontal threshold theorem.
