@@ -53,4 +53,14 @@ theorem mixedTimeExponent_package
   exact ⟨two_lt_mixedTimeExponent hn hp,
     mixedTimeExponent_subcritical hn hp⟩
 
+/-- In spatial dimension one, the standard cylinder lift to `Omega × (0,1)`
+has effective dimension two.  Thus the manuscript assumption `p > 2` is
+exactly enough to choose a finite mixed time exponent after the lift. -/
+theorem oneDimensionalLift_mixedTimeExponent_package
+    {p : ℝ} (hp : 2 < p) :
+    2 < mixedTimeExponent 2 p ∧
+    2 / p + 2 / mixedTimeExponent 2 p < 1 := by
+  have hpmax : max (2 : ℝ) 2 < p := by simpa using hp
+  exact mixedTimeExponent_package (n := 2) (p := p) (by norm_num) hpmax
+
 end AMLStabilization
