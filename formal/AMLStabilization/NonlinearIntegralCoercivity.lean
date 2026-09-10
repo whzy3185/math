@@ -106,12 +106,15 @@ theorem integralMassWeightedMeanEstimate_q
       |fbar| ≤ (W ^ (1 / q) * m ^ (1 - 1 / q) + K * Cp * grad) / m := by
     exact (le_div_iff₀ hm).2 (by simpa [mul_comm] using hmul)
   have hmexp := mass_rpow_div_mass hm hq0
+  have hfirst :
+      W ^ (1 / q) * m ^ (1 - 1 / q) / m =
+        m ^ (-1 / q) * W ^ (1 / q) := by
+    rw [mul_div_assoc, hmexp]
+    ring
   calc
     |fbar| ≤ (W ^ (1 / q) * m ^ (1 - 1 / q) + K * Cp * grad) / m := hdiv
     _ = m ^ (-1 / q) * W ^ (1 / q) + (K * Cp / m) * grad := by
-      rw [add_div]
-      rw [mul_div_assoc]
-      rw [mul_comm (W ^ (1 / q)), ← mul_div_assoc, hmexp]
+      rw [add_div, hfirst]
       ring
     _ = m ^ (-1 / q) * (∫ x, rho x * |f x| ^ q ∂mu) ^ (1 / q) +
         (K * Cp / m) * grad := by rfl
@@ -179,10 +182,13 @@ theorem integralNonlinearMassWeightedCoercivity
     (Real.sqrt_nonneg _) hgrad hroot0 (abs_nonneg _)
     hCp hV hK hm hq0 hlin hbaseSq
   have hrootSq : (W ^ (1 / q)) ^ 2 = W ^ (2 / q) := by
-    rw [pow_two, ← Real.rpow_add hW0]
-    congr 1
-    field_simp [ne_of_gt hq0]
-    ring
+    by_cases hW : W = 0
+    · simp [hW]
+    · have hWpos : 0 < W := lt_of_le_of_ne hW0 (Ne.symm hW)
+      rw [pow_two, ← Real.rpow_add hWpos]
+      congr 1
+      field_simp [ne_of_gt hq0]
+      ring
   rw [Real.sq_sqrt htotal0, hrootSq] at hred
   exact hred
 
