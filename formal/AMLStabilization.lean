@@ -16,6 +16,7 @@ import AMLStabilization.MixedNormExponentCore
 import AMLStabilization.LpRateOptimization
 import AMLStabilization.MassConservationCore
 import AMLStabilization.EnergyDifferentiationCore
+import AMLStabilization.BoxNeumannFluxCore
 import AMLStabilization.GeneralPolynomialEnergyDecay
 import AMLStabilization.NonlinearCoercivityAlgebra
 import AMLStabilization.WeightedHolderQ
