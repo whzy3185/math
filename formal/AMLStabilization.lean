@@ -9,3 +9,4 @@ import AMLStabilization.SignalEnergyIdentityCore
 import AMLStabilization.FinalSignalAssembly
 import AMLStabilization.ProductionConsumptionSignalFinal
 import AMLStabilization.PolynomialEnergyDecay
+import AMLStabilization.LpExponentCore
