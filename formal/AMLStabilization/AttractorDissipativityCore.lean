@@ -41,16 +41,20 @@ theorem degenerateDissipativity_of_positive_factor
   intro s hs
   rw [hfactor s hs]
   by_cases hx : s - vstar = 0
-  · have htheta2 : theta + 2 ≠ 0 := ne_of_gt (by linarith)
+  · have htheta0 : theta ≠ 0 := ne_of_gt htheta
+    have htheta2 : theta + 2 ≠ 0 := ne_of_gt (by linarith)
     rw [hx]
-    simp [Real.zero_rpow htheta2]
+    simp [Real.zero_rpow htheta0, Real.zero_rpow htheta2]
   · have habs : 0 < |s - vstar| := abs_pos.mpr hx
     have hsquare :
         (s - vstar) * (s - vstar) = |s - vstar| ^ (2 : ℝ) := by
       rw [Real.rpow_two, sq_abs, pow_two]
     have hpow0 : 0 ≤ |s - vstar| ^ (theta + 2) :=
       Real.rpow_nonneg (abs_nonneg _) _
-    have hmul := mul_le_mul_of_nonneg_right (hlower s hs) hpow0
+    have hmul :
+        beta * |s - vstar| ^ (theta + 2) ≤
+          h s * |s - vstar| ^ (theta + 2) :=
+      mul_le_mul_of_nonneg_right (hlower s hs) hpow0
     calc
       (s - vstar) * (-h s * (s - vstar) * |s - vstar| ^ theta) =
           -h s * ((s - vstar) * (s - vstar)) * |s - vstar| ^ theta := by ring
@@ -59,9 +63,10 @@ theorem degenerateDissipativity_of_positive_factor
       _ = -h s * |s - vstar| ^ ((2 : ℝ) + theta) := by
         rw [Real.rpow_add habs]
       _ = -h s * |s - vstar| ^ (theta + 2) := by
-        congr 2 <;> ring
-      _ ≤ -beta * |s - vstar| ^ (theta + 2) := by
-        nlinarith
+        rw [add_comm (2 : ℝ) theta]
+      _ = -(h s * |s - vstar| ^ (theta + 2)) := by ring
+      _ ≤ -(beta * |s - vstar| ^ (theta + 2)) := neg_le_neg hmul
+      _ = -beta * |s - vstar| ^ (theta + 2) := by ring
 
 /-- Compact positive factorization automatically supplies the manuscript's quantitative `beta`. -/
 theorem exists_quadraticDissipativity_of_compact_positive_factor
