@@ -11,6 +11,7 @@ import AMLStabilization.BoxPoincareCore
 import AMLStabilization.BoxPoincareTensorCore
 import AMLStabilization.BoxPoincareCoercivityBridge
 import AMLStabilization.ProductVarianceCore
+import AMLStabilization.CoordinateTelescopingCore
 import AMLStabilization.InvariantRangeCore
 import AMLStabilization.MaximumPrincipleContactCore
 import AMLStabilization.SpatialExtremumSecondDerivativeCore
