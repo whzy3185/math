@@ -14,6 +14,7 @@ import AMLStabilization.PolynomialEnergyDecay
 import AMLStabilization.LpExponentCore
 import AMLStabilization.MixedNormExponentCore
 import AMLStabilization.LpRateOptimization
+import AMLStabilization.MassConservationCore
 import AMLStabilization.GeneralPolynomialEnergyDecay
 import AMLStabilization.NonlinearCoercivityAlgebra
 import AMLStabilization.WeightedHolderQ
