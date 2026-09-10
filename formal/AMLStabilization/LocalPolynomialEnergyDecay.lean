@@ -163,7 +163,6 @@ theorem energy_le_rpow_of_q_dissipation_nonnegative
       (E s ^ (-(q - 2) / 2) + (q - 2) * c * (t - s)) ^ (-2 / (q - 2)) := by
   by_cases hzero : ∃ r ∈ Set.Icc s t, E r = 0
   · rcases hzero with ⟨r, hrI, hr0⟩
-    have hqhalf : 0 ≤ q / 2 := by linarith
     let D : ℝ → ℝ := fun tau => c * E tau ^ (q / 2)
     have hD0 : ∀ tau, 0 ≤ D tau := by
       intro tau
@@ -171,7 +170,8 @@ theorem energy_le_rpow_of_q_dissipation_nonnegative
       exact mul_nonneg hc (Real.rpow_nonneg (hEnonneg tau) _)
     have henergyD : ∀ tau, dE tau + 2 * D tau ≤ 0 := by
       intro tau
-      simpa [D] using hdiss tau
+      dsimp [D]
+      convert hdiss tau using 1 <;> ring
     have hEt0 := energy_eq_zero_after_hit hE hEnonneg hD0 henergyD hr0 hrI.2
     rw [hEt0]
     have hbase0 : 0 ≤
