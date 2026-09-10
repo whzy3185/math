@@ -1,34 +1,24 @@
 # Proof dependency map
 
-This paper is self-contained with respect to the separate branch `paper/circulant-periodic-gap-20260909`: no theorem, notation, construction, or asymptotic statement from that project is used.
+This paper is self-contained with respect to `paper/circulant-periodic-gap-20260909`: no theorem, notation, construction, or asymptotic statement from that project is used.
 
-The only substantial external classification theorem used below is Greaves--Koolen--Munemasa--Sano--Taniguchi (JCTB 110 (2015)) in the strict sub-`sqrt(6)` section.
+The main external structural input is Greaves--Koolen--Munemasa--Sano--Taniguchi (JCTB 110 (2015)) in the strict sub-`sqrt(6)` theorem.  Rowlinson--Stanić is contextual for the non-strict `-2` boundary; the actual root-quotient reduction used here is proved internally.
 
-## A. Finite signed-graph preliminaries
+## A. Basic finite reduction
 
 `switching invariance`
-→ Hamilton-path gauge for `C_N(1,s)`
-→ every labelled switching class has one normalized representative described by Hamilton holonomy `alpha` and the remaining chord signs.
+→ Hamilton-path gauge on `C_N(1,s)`
+→ one normalized representative per labelled switching class.
 
 `tr(A^2)=4N`
 → `rho(A)>=2`
 → equality iff `A^2=4I`.
 
-Define throughout
+Define
 
-`B=A^2-4I`,
+`B=A^2-4I`, so `rho(A)^2=4+lambda_max(B)`.
 
-so
-
-`rho(A)^2=4+lambda_max(B)`.
-
-## B. Parity-defect engine
-
-Over `F_2[Z_N]`,
-
-`(x+x^-1+x^s+x^-s)^2=x^2+x^-2+x^(2s)+x^(-2s)`.
-
-Hence
+Over `F_2[Z_N]`, Frobenius squaring gives
 
 ```text
 supp(B mod 2) = empty                         if N=2s+2,
@@ -36,273 +26,263 @@ supp(B mod 2) = empty                         if N=2s+2,
                  Cay(Z_N,{+-2,+-2s})          otherwise.
 ```
 
-This single identity drives the complete low-end classification.
+This parity-defect identity drives both the low spectrum and the `sqrt(6)` classification.
 
-### B1. Flat line
+## B. Flat line and first gaps
 
 `B=0`
 → parity support empty
 → `N=2s+2`.
 
 Explicit alternating signing
-→ `B=0`
-→ `m(N,s)=2`.
+→ attainment
+→ `m(N,s)=2 iff N=2s+2`.
 
-Mixed channel
-→ two labelled equality switching classes except `(8,3)`.
+Mixed-channel rigidity
+→ two labelled equality classes except `(8,3)`.
 
-`(8,3)=K4,4`
+`(8,3)=K_(4,4)`
 → Hadamard block condition
 → six labelled switching classes, one switching-isomorphism orbit.
 
-### B2. First gaps
-
-Outside flat line, `B` is a nonzero integral symmetric zero-diagonal matrix.
-
-nonzero `2x2` block
+Off the flat line, nonzero integral zero-diagonal `B`
+→ a nonzero `2x2` principal block
 → `lambda_max(B)>=1`
-→ `rho(A)^2>=5`.
+→ `m>=sqrt(5)`.
 
-Equality `lambda_max(B)=1`
-→ `I-B>=0`
-→ support components are negative cliques up to switching
-→ parity support forces `N=5,10`
-→ exact liftability
+Index-one equality
+→ negative-clique defect components
+→ liftability
 → `m=sqrt(5)` exactly at `(5,2),(10,3)`.
 
-Integral defect below `sqrt(2)`
-→ induced `P3` obstruction
-→ negative-clique support
-→ no value strictly between `1` and `sqrt(2)`.
+Next integral defect threshold
+→ `m^2>=4+sqrt(2)` outside prior cases
+→ equality exactly `(8,2)`.
 
-Equality at `sqrt(2)` plus parity support
-→ unique pair `(8,2)`.
+## C. Exact `N=4s` family
 
-### B3. Exact `N=4s` family
+Parity support on `N=4s`
+→ two signed cycles of length `2s` below defect index two.
 
-On `N=4s`, if defect index is below `2`, parity forces `B` to be exactly two signed cycles of length `2s`.
-
-signed-cycle spectrum
-→ lower bound `2 cos(pi/(2s))` for defect index.
-
-anti-periodic signed shift `T^(4s)=-I`
-+ alternating diagonal `D`, `DT=-TD`
-→ `A^2=4I+T^2+T^-2`
-→ finite roots `z^(4s)=-1`
-→ exact attainment.
-
-Therefore
+Signed-cycle extremum
++ anti-periodic finite shift construction
+→
 
 `m(4s,s)^2=4+2 cos(pi/(2s))`.
 
-Vanishing mixed and `2s` channels
+Mixed-channel equations
 → exactly two labelled minimizing switching classes.
 
-## C. Complete strict sub-`sqrt(6)` classification
+## D. Complete classification through `sqrt(6)`
 
-Assume a generic pair (`N!=2s+2,4s`) has `rho(A)^2<6`.
+Assume a generic pair has `rho(A)^2<6`.
 
 `lambda_max(B)<2`
-+ `2x2` interlacing
 + integrality
-→ every entry of `B` is `0,+-1`
-→ parity fixes the support exactly:
++ `2x2` interlacing
+→ `B` is exactly a `+-1` signing of the forced 4-regular parity graph.
 
-`B` is a signing of `P_Ns=Cay(Z_N,{+-2,+-2s})`.
+Each connected parity component `C` has `lambda_max(C)<2`
+→ `-C` has least eigenvalue `>-2`.
 
-Let `d=gcd(N,2)` and `q=N/d`.
+Greaves et al. classification
++ internal 4-regular representation-graph degree audit
+→ component order at most eight, apart from the order-five `K_5` case.
 
-`P_Ns`
-→ `d` connected 4-regular circulant components, each of order `q`.
+Exact orders `5,6,7,8`
+→ only `K_5` and the unique sub-2 class on `overline(C_7)` survive.
 
-For a signed component `C`:
-
-`lambda_max(C)<2`
-→ signed graph `-C` has smallest eigenvalue `>-2`.
-
-### C1. External structural reduction
-
-Greaves--Koolen--Munemasa--Sano--Taniguchi:
-
-- Theorem 19: exceptional signed graphs with smallest eigenvalue `>-2` have orders only `6,7,8`;
-- Theorem 6: every integral case has a tree, unicyclic, or one-double-edge representation graph.
-
-Internal 4-regular degree audit:
-
-- simple tree line graph: degree sums `6` → only `K_1,5` → `K5`;
-- unicyclic representation: no 4-regular case;
-- doubled edge `ab`: parallel-edge line-graph degree is `d(a)+d(b)-3`; 4-regularity gives `d(a)+d(b)=7`; leaf propagation again forces the five-edge multistar whose line graph is `K5`.
-
-Therefore a strict sub-2 4-regular signed component has order at most `8`, except the already order-5 `K5` case. Hence
-
-`q<=8`.
-
-### C2. Exact small components
-
-`q=5`: `K5`
-→ unique sub-2 class, all-negative up to switching, index `1`.
-
-`q=6`: `C6(1,2)`
-→ sub-2 would force all eight triangles negative
-→ unique tree-gauge solution has charpoly `x^3(x-2)^2(x+4)`
-→ index exactly `2`
-→ impossible strictly below 2.
-
-`q=7`: `C7(1,2)cong overline(C7)`
-→ all seven triangles negative
-→ exactly two tree-gauge classes:
-
-`(x+4)(x^3-2x^2-x+1)^2`,
-
-`x(x^3-7x+7)^2`.
-
-Only second class is sub-2. Put `beta=maxroot(x^3-7x+7)`.
-→ exact component minimum `beta` and unique labelled sub-2 switching class.
-
-`q=8`:
-- `C8(1,2)`: two all-negative-triangle classes have index `>2` and `=2`;
-- `C8(1,3)=K4,4`: Frobenius/singular-value bound gives index `>=2`.
-
-Therefore only component orders `5` and `7` lift.
-
-### C3. Parameter lifting
-
-`q=5`
-→ `N=5,10`
-→ prior first-gap lift analysis
-→ only `(5,2),(10,3)`, both with `m^2=5`.
-
-`q=7`, `N=7`
-→ one mixed off-support two-walk channel must vanish
-→ multiply the resulting sign recurrence around the odd cycle
-→ `1=(-1)^7`
-→ impossible.
-
-`q=7`, `N=14`
-→ sub-six mixed-channel vanishing forces `DT=-TD`
-→ `D=epsilon diag((-1)^i)`
-→ finite identity
-
-`B=T^2+T^-2+(-1)^s(T^(2s)+T^(-2s))`, `T^14=alpha I`.
-
-Exact finite shift factorization
-→ defect polynomial `x^2(x^3-7x+7)^4` exactly for
-
-`(s,alpha)=(3,-1),(4,-1),(5,+1)`.
-
-Thus
-
-`m(14,s)^2=4+beta`, `s=3,4,5`,
-
-with exactly two labelled minimizers (`epsilon=+-1`), and `m(14,2)^2>=6`.
-
-### C4. Complete theorem and odd-order corollary
-
-Combining B1--B3 and C1--C3:
+Liftability
+→ complete strict theorem:
 
 ```text
-m(N,s)^2<6 iff
+m^2<6 iff
   N=2s+2; or
   (N,s)=(5,2),(10,3); or
   N=4s; or
   N=14 and s in {3,4,5}.
 ```
 
-Exact values are `4`, `5`, `4+2cos(pi/(2s))`, `4+beta` respectively.
+For equality, `K=6I-A^2` is an integral PSD Gram matrix with diagonal two.
+
+`|K_ij|=2`
+↔ repeated/antipodal roots
+→ root quotient.
+
+Parity support + twin analysis + cubic boundary identity
+→ every generic `rho^2<=6` candidate lies on
+
+```text
+t=2,
+q=2t+1,
+q=2t+2,
+q=3t,
+```
+
+where `q=N/gcd(N,2)`, `t=min(s,q-s)`.
+
+The four loci are closed by:
+
+- `t=2`: five-vertex Gram rule + finite Fourier on signed `C_q(1,2)`;
+- `q=2t+1`: multiplier reduction to the same component problem + lift obstruction;
+- `q=2t+2`: flat-defect rigidity + flux/antipodal contradiction;
+- `q=3t`: exact 9-vertex local strip for `t>=4`, Gram-kernel argument for `t=3`.
 
 Hence
 
-`N odd, N>=7 => m(N,s)>=sqrt(6)` for every admissible `s`.
+```text
+m^2=6 iff (N,s)=(12,4),(16,3),(16,5),(20,8).
+```
 
-In particular
+Exact finite minimizer audit
+→ labelled class counts `2,32,32,2`.
 
-`k,s odd, k>=3, s>=3 => m(ks,s)>=sqrt(6)`.
+Underlying short-cycle counts
+→ full automorphism groups are dihedral in the relevant cases
+→ switching-isomorphism orbit counts `1,2,2,1`.
 
-### C5. Independent elementary route retained
+Therefore every other admissible pair is strictly above `sqrt(6)`.
 
-There is also a self-contained weaker route avoiding Greaves:
+## E. Universal even-order positive theorem at `sqrt(8)`
 
-`tr X=tr X^3=0`
-→ cubic-moment inequality
-→ a triangle-free forced parity support cannot occur below defect index `2`.
+For even `N`:
 
-Classifying triangles in the reduced component yields, among other consequences,
-
-`k odd>=5, s>=3 => m(ks,s)>=sqrt(6)`.
-
-This proof is retained because it explains the arithmetic triangle mechanism even though C4 is globally stronger.
-
-## D. All-even-order sub-`sqrt(8)` theorem
-
-For `N` even choose anti-periodic signed shift `T^N=-I` and alternating diagonal `D`.
-
-`DT=-TD`
+anti-periodic signed shift `T^N=-I`
++ alternating diagonal `D`, `DT=-TD`
 → finite square identity
-→ finite Fourier on `z^N=-1`
+→ finite Fourier grid
 →
 
-`rho(A)^2<=6+2 cos(2pi/N)<8`.
+`m(N,s)^2<=6+2 cos(2pi/N)<8`.
 
-Thus every even-order two-step circulant has a finite signing below `sqrt(8)`.
+This is a finite construction only; it does not reduce the global signing domain to periodic signings.
 
-## E. Exact `N=3s` transition at `sqrt(8)`
-
-### E1. Positive side
+## F. Horizontal triangle resonance `N=3s`
 
 `s even`
-→ `N=3s` even
-→ Section D.
+→ Section E.
 
 `s=3,5`
 → explicit finite signings
 → exact Sylvester positivity of `8I-A^2`.
 
-### E2. Odd obstruction
+For odd `s>=7`:
 
-Hamilton gauge + reorder `i=j+as`
-→ width-three cyclic strip of signed triangle states.
+Hamilton gauge + width-three reordering
+→ cyclic strip of signed triangle states.
 
-Exact nine-column finite lemma at excess `2/139`
-→ complete integer certificate and local alternation rule.
+Strengthened exact nine-column lemma at excess `24/1667`
+→ survivor counts
 
-Base cases:
-- `s=7`: exact exhaustive certificate, stronger excess `18/131`;
-- `s=9`: exact cyclic prefix certificate at `2/139`.
+`8,56,152,440,488,1016,656,1064,128`
 
-Odd `s>=11`:
-local rule on all windows
-→ global alternation
-→ seam would force `S B_0 S^T=-B_0`
-→ contradiction because `tr(B_0^3)=+-6`.
+→ every survivor has forced middle alternation.
 
-Therefore
+Base `s=7`
+→ exhaustive stronger certificate `18/131`.
 
-`m(3s,s)^2>=8+2/139` for odd `s>=7`.
+Base `s=9`
+→ exact prefix pruning + `17,024` cyclic final certificates at `24/1667`.
 
-Combine E1/E2:
+Odd `s>=11`
+→ sliding local alternation
+→ global alternating triangle blocks
+→ seam relation `S B_0 S^T=-B_0`
+→ cubic trace contradiction `tr(B_0^3)=+-6`.
+
+Thus
+
+`m(3s,s)^2>=8+24/1667` for odd `s>=7`,
+
+and
 
 `m(3s,s)<sqrt8 iff s is even or s in {3,5}`.
 
-## F. Computational trust boundary
+## G. Odd positive-side seam framework
 
-Exact finite computations are used for:
+For odd `N=ks`, odd `k>=3`, odd `s>=5`, choose Hamilton seam `-1` and alternating chord signs.
 
-- small characteristic-polynomial checks in the strict sub-six theorem;
-- `s=3,5` Sylvester certificates;
-- nine-column and `s=7,9` obstruction certificates.
+Exact two-walk channel expansion + multiplication-by-two reindexing
+→
 
-Small sub-six computations use exact symbolic algebra. The `N=3s` Rayleigh programs may use floating eigensolvers only to propose integer witnesses; branch acceptance is always an exact integer inequality. Floating error can therefore cause a failed search but not a false proof.
+`8I-A^2=L_Sigma+E_-+E_+`,
 
-## G. Remaining frontier
+where `L_Sigma` is a signed Laplacian on `C_N(1,s)` and only two rank-two seam defects remain.
 
-Current resonance picture:
+Rank-one identities
+→ `8I-A^2=H-UU^T`, with `H>0` and `U` having two columns
+→ exact response criterion
+
+`8I-A^2>0 iff I_2-U^T H^-1 U>0`.
+
+Graph-metric seam separation
+→ finite absorber principle:
+if two fixed local absorber matrices are positive definite, every sufficiently large odd `k` for that fixed `s` is sub-`sqrt(8)`; only finitely many small odd `k` remain.
+
+Applications:
 
 ```text
-all odd orders N>=7:   global floor m>=sqrt(6).
-k=3:                   complete sqrt(8) transition; odd s>=7 above 8+2/139.
-k=4:                   exact global formula for every s.
-all even orders:       explicit finite construction below sqrt(8).
-odd k>=5, odd s:       sqrt(6) floor known; general sqrt(8) classification open.
+s=3,5:       sub-sqrt8 for every k>=3;
+s=7,9,11,13: sub-sqrt8 iff k>=4;
+s=15,17:     k=3 obstructed; all k=4 or k>=6 proved sub-sqrt8;
+             k=5 remains open in each family.
 ```
 
-The highest-value unresolved structural problem is now the equality boundary `m(N,s)^2=6` and, beyond it, the `sqrt(8)` behavior for odd `k>=5`.
+The modified small-base constructions are accepted only by exact rational LDL certificates.
+
+## H. First all-signing width-five rigidity for `N=5s`
+
+Reorder `C_(5s)(1,s)` into `s` chord-pentagon columns and switch an open interval so inter-column matchings are identity.
+
+Each column is one of 32 signed `C_5` states.
+
+Common row switching (`16` edge-mask actions)
+× dihedral row symmetry (`10`)
+× global column-state complement (`2`)
+→ a 320-action spectral-radius-preserving quotient.
+
+Exact prefix search, rejecting only when an integer vector proves
+
+`w^T(M^2-8I)w>=0`,
+
+→ prefix survivor counts through length eight
+
+`1,7,33,130,548,1867,3870,10080`.
+
+Restrict length nine to two central non-complement transitions
+→ `7392` orbit candidates
+→ `71` exact survivors.
+
+Add context alternately on the two sides
+→ survivor counts
+
+`204 -> 135 -> 1 -> 0`.
+
+Therefore a thirteen-column sub-`sqrt(8)` strip must have at least one complement transition among its two central transitions.
+
+`N5LOCAL13`
+→ in a long cyclic width-five strip, non-complement transitions are locally isolated away from the helical seam.
+
+This is not yet a global obstruction: the current frontier is to classify the allowed isolated non-complement transition types and their seam compatibility.
+
+## I. Computational trust boundary
+
+Exact symbolic/rational computations are used for finite characteristic polynomials, Sylvester/LDL certificates, equality minimizer enumeration, and local finite-state lemmas.
+
+In Rayleigh-pruning scripts a floating eigensolver may propose an integer vector.  A branch is rejected only after an exact integer inequality certifies the claimed threshold.  Floating error can therefore retain extra branches but cannot create a false proof.
+
+Search failure for `(75,15)` or `(85,17)` is only **Observed** and is not used as a lower bound.
+
+## J. Current frontier
+
+```text
+sqrt(6):                complete global classification and minimizer rigidity.
+N=3s at sqrt(8):        complete, with odd excess 24/1667.
+all even N:             explicit finite sub-sqrt8 signing.
+odd vertical steps:     structural seam-response/absorber framework;
+                        s<=13 classified, s=15,17 each leave only k=5.
+N=5s all-signing side:  exact thirteen-column complement-isolation rule proved;
+                        isolated defect classification remains open.
+```
+
+The highest-value next theorem is a second width-five local rule strong enough to propagate isolated non-complement defects around the cyclic seam, potentially resolving the first open points `(75,15)` and `(85,17)`.
