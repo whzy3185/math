@@ -1,4 +1,5 @@
 import Mathlib
+import AMLStabilization.SuperlinearConsumptionCore
 
 namespace AMLStabilization
 
@@ -39,34 +40,25 @@ theorem degenerateDissipativity_of_positive_factor
     ∀ s ∈ S,
       (s - vstar) * F s ≤ -beta * |s - vstar| ^ (theta + 2) := by
   intro s hs
+  let x : ℝ := s - vstar
+  have hm : 1 < theta + 1 := by linarith
+  have hsuper := superlinearConsumptionIdentity (m := theta + 1) (s := x) hm
+  have hcore : x * (-x * |x| ^ theta) = -|x| ^ (theta + 2) := by
+    unfold superlinearConsumption at hsuper
+    convert hsuper using 1 <;> ring
+  have hpow0 : 0 ≤ |x| ^ (theta + 2) :=
+    Real.rpow_nonneg (abs_nonneg _) _
+  have hmul :
+      beta * |x| ^ (theta + 2) ≤ h s * |x| ^ (theta + 2) :=
+    mul_le_mul_of_nonneg_right (hlower s hs) hpow0
   rw [hfactor s hs]
-  by_cases hx : s - vstar = 0
-  · have htheta0 : theta ≠ 0 := ne_of_gt htheta
-    have htheta2 : theta + 2 ≠ 0 := ne_of_gt (by linarith)
-    rw [hx]
-    simp [Real.zero_rpow htheta0, Real.zero_rpow htheta2]
-  · have habs : 0 < |s - vstar| := abs_pos.mpr hx
-    have hsquare :
-        (s - vstar) * (s - vstar) = |s - vstar| ^ (2 : ℝ) := by
-      rw [Real.rpow_two, sq_abs, pow_two]
-    have hpow0 : 0 ≤ |s - vstar| ^ (theta + 2) :=
-      Real.rpow_nonneg (abs_nonneg _) _
-    have hmul :
-        beta * |s - vstar| ^ (theta + 2) ≤
-          h s * |s - vstar| ^ (theta + 2) :=
-      mul_le_mul_of_nonneg_right (hlower s hs) hpow0
-    calc
-      (s - vstar) * (-h s * (s - vstar) * |s - vstar| ^ theta) =
-          -h s * ((s - vstar) * (s - vstar)) * |s - vstar| ^ theta := by ring
-      _ = -h s * (|s - vstar| ^ (2 : ℝ) * |s - vstar| ^ theta) := by
-        rw [hsquare]
-      _ = -h s * |s - vstar| ^ ((2 : ℝ) + theta) := by
-        rw [Real.rpow_add habs]
-      _ = -h s * |s - vstar| ^ (theta + 2) := by
-        rw [add_comm (2 : ℝ) theta]
-      _ = -(h s * |s - vstar| ^ (theta + 2)) := by ring
-      _ ≤ -(beta * |s - vstar| ^ (theta + 2)) := neg_le_neg hmul
-      _ = -beta * |s - vstar| ^ (theta + 2) := by ring
+  change x * (-h s * x * |x| ^ theta) ≤ -beta * |x| ^ (theta + 2)
+  calc
+    x * (-h s * x * |x| ^ theta) = h s * (x * (-x * |x| ^ theta)) := by ring
+    _ = h s * (-|x| ^ (theta + 2)) := by rw [hcore]
+    _ = -(h s * |x| ^ (theta + 2)) := by ring
+    _ ≤ -(beta * |x| ^ (theta + 2)) := neg_le_neg hmul
+    _ = -beta * |x| ^ (theta + 2) := by ring
 
 /-- Compact positive factorization automatically supplies the manuscript's quantitative `beta`. -/
 theorem exists_quadraticDissipativity_of_compact_positive_factor
