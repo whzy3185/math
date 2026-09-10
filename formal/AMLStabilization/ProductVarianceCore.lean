@@ -29,6 +29,9 @@ theorem productDifferenceSquareIntegral_eq_two_variance
     hf1.mul_prod hf1
   have htwocross : Integrable (fun z : Ω × Ω => 2 * (f z.1 * f z.2)) (μ.prod μ) :=
     hcross.const_mul 2
+  have hleft : Integrable
+      (fun z : Ω × Ω => f z.1 ^ 2 - 2 * (f z.1 * f z.2)) (μ.prod μ) := by
+    simpa only [Pi.sub_apply] using hfst2.sub htwocross
   have hexpand :
       (fun z : Ω × Ω => (f z.1 - f z.2) ^ 2) =
         (fun z => f z.1 ^ 2 - 2 * (f z.1 * f z.2) + f z.2 ^ 2) := by
@@ -47,10 +50,18 @@ theorem productDifferenceSquareIntegral_eq_two_variance
         (∫ x, f x ∂μ) ^ 2 := by
     rw [integral_prod_mul]
     ring
-  rw [hexpand]
-  rw [integral_add (hfst2.sub htwocross) hsnd2]
-  rw [integral_sub hfst2 htwocross]
-  rw [integral_const_mul]
+  have hadd :
+      (∫ z : Ω × Ω,
+        (f z.1 ^ 2 - 2 * (f z.1 * f z.2)) + f z.2 ^ 2 ∂(μ.prod μ)) =
+      (∫ z : Ω × Ω, f z.1 ^ 2 - 2 * (f z.1 * f z.2) ∂(μ.prod μ)) +
+        ∫ z : Ω × Ω, f z.2 ^ 2 ∂(μ.prod μ) := by
+    simpa only using integral_add hleft hsnd2
+  have hsub :
+      (∫ z : Ω × Ω, f z.1 ^ 2 - 2 * (f z.1 * f z.2) ∂(μ.prod μ)) =
+      (∫ z : Ω × Ω, f z.1 ^ 2 ∂(μ.prod μ)) -
+        ∫ z : Ω × Ω, 2 * (f z.1 * f z.2) ∂(μ.prod μ) := by
+    simpa only using integral_sub hfst2 htwocross
+  rw [hexpand, hadd, hsub, integral_const_mul]
   rw [hfstIntegral, hsndIntegral, hcrossIntegral]
   rw [ProbabilityTheory.variance_eq_sub hf]
   ring
