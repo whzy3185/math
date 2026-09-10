@@ -34,3 +34,4 @@ import AMLStabilization.GeneralWeightedDampingNonnegativeFinal
 import AMLStabilization.RateRootCore
 import AMLStabilization.RateComparisonCore
 import AMLStabilization.CellEnergyEnvelope
+import AMLStabilization.FullStabilizationAssembly
