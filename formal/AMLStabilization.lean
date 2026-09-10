@@ -23,6 +23,7 @@ import AMLStabilization.GeneralSignalEnergyIdentityQ
 import AMLStabilization.LpFiniteMeasureCore
 import AMLStabilization.SharpnessCore
 import AMLStabilization.SuperlinearConsumptionCore
+import AMLStabilization.SuperlinearConsumptionSignalFinal
 import AMLStabilization.GeneralWeightedDampingFinal
 import AMLStabilization.ZeroEnergyBranch
 import AMLStabilization.GeneralQuadraticWeightedDampingFinal
