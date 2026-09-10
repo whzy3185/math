@@ -24,6 +24,7 @@ import AMLStabilization.GeneralRateAssembly
 import AMLStabilization.GeneralSignalEnergyIdentityQ
 import AMLStabilization.LpFiniteMeasureCore
 import AMLStabilization.SharpnessCore
+import AMLStabilization.SignedSharpnessCore
 import AMLStabilization.SuperlinearConsumptionCore
 import AMLStabilization.SuperlinearConsumptionSignalFinal
 import AMLStabilization.GeneralWeightedDampingFinal
