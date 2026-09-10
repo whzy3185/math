@@ -51,7 +51,19 @@ theorem hasDerivAt_integral_square_of_dominated
       (F' := fun t x => 2 * w t x * wt t x)
       (bound := bound)
       hs hSquareMeas hSquareInt hDerivMeas hDerivBound hBoundInt hSquareDeriv
-  simpa [mul_assoc] using hmain
+  have hcoeff :
+      (∫ x, 2 * w t0 x * wt t0 x ∂mu) =
+        2 * ∫ x, w t0 x * wt t0 x ∂mu := by
+    calc
+      (∫ x, 2 * w t0 x * wt t0 x ∂mu) =
+          ∫ x, 2 * (w t0 x * wt t0 x) ∂mu := by
+        apply integral_congr_ae
+        filter_upwards with x
+        ring
+      _ = 2 * ∫ x, w t0 x * wt t0 x ∂mu := by
+        rw [integral_const_mul]
+  rw [hcoeff] at hmain
+  exact hmain
 
 /-- Pointwise version: if the dominated-differentiation hypotheses hold at
 every time, the energy derivative identity is available at every time. -/
