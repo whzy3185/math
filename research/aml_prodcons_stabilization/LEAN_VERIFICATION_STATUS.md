@@ -1,16 +1,15 @@
-# Lean verification status — AML production-consumption stabilization
+# Lean verification status — AML mass-weighted stabilization rates
 
-Date: 2026-09-09
+Date: 2026-09-10
 Branch: `research/aml-production-consumption-stabilization`
-Latest verified formal-tree commit: `29fae452f7de74d8876bcdd14fc4328435131c64`
-Latest verification-gate commit: `a6e526bc09924be03f53a680b48399fc2a0b1509`
-Latest successful GitHub Actions run: `34354367834`
+Latest verified formal-tree commit: `499e78401b3667636242385f5aa0d51b836cd2a6`
+Latest successful GitHub Actions run: `34428439465`
 Toolchain: Lean `v4.33.1`, mathlib `v4.33.1`
 Build command: `lake build` from `formal/`
-Result: **SUCCESS** (`Build completed successfully (8717 jobs)`).
-Proof-hygiene gate: **SUCCESS** — CI rejects occurrences of `sorry`, `admit`, and explicit `axiom` declarations in the AML formal library before compilation.
+Result: **SUCCESS** (`Build completed successfully (8719 jobs)`).
+Proof-hygiene gate: **SUCCESS** — CI rejects `sorry`, `admit`, and explicit user `axiom` declarations before compilation.
 
-All statements listed below compile without `sorry`, `admit`, placeholders, or explicit user axioms.
+The current library contains **50 compiled theorem nodes** across the original quadratic/exponential chain and the new polynomial-decay / `L^p` exponent modules.  All statements compile without `sorry`, `admit`, placeholders, or explicit user axioms.
 
 ## 1. Algebraic / structural core
 
@@ -24,9 +23,9 @@ File: `formal/AMLStabilization/AlgebraicCore.lean`
 6. `pureConsumptionIdentity`
 7. `endpointDissipativityDoesNotForceRoot`
 
-These verify the algebraic coercivity closure, dissipation rescaling, the exact production-consumption cancellation, the pure-consumption specialization, and the P0 counterexample showing that one-sided dissipativity alone need not imply `F(v_*)=0` at an endpoint.
+The last theorem formally records the endpoint counterexample showing why the equilibrium condition `F(v_*)=0` must be stated explicitly in the strengthened degenerate theorem.
 
-## 2. Differential energy decay / Gronwall core
+## 2. Exponential scalar energy decay
 
 File: `formal/AMLStabilization/EnergyDecay.lean`
 
@@ -34,21 +33,15 @@ File: `formal/AMLStabilization/EnergyDecay.lean`
 9. `energy_le_exp_of_differential_inequality`
 10. `energy_le_exp_from_zero`
 
-These verify
+These verify the scalar Gronwall implication `E' + cE <= 0 => exponential decay`.
 
-`dE(t) + c E(t) <= 0  ==>  E(t) <= E(s) exp(-c(t-s))`.
-
-## 3. PDE-style energy to scalar decay bridge
+## 3. PDE-style energy-to-decay bridge
 
 File: `formal/AMLStabilization/SignalEnergyBridge.lean`
 
 11. `pdeEnergy_to_scalarDissipation`
 12. `pdeEnergy_to_exponentialDecay`
 13. `pdeEnergy_to_exponentialDecay_from_zero`
-
-These verify the abstract implication
-
-`coercivity + PDE-style energy inequality => scalar dissipation => exponential decay`.
 
 ## 4. Integral mass-weighted coercivity
 
@@ -57,8 +50,6 @@ File: `formal/AMLStabilization/IntegralCoercivity.lean`
 14. `weightedDeviationIntegralIdentity`
 15. `integralMassWeightedMeanEstimate`
 16. `integralMassWeightedCoercivity`
-
-The weighted-mean integral rearrangement and the subsequent coercivity algebra use actual Bochner integrals.
 
 ## 5. Holder / Cauchy-Schwarz closure
 
@@ -70,53 +61,31 @@ File: `formal/AMLStabilization/HolderCore.lean`
 20. `weightedDeviation_cauchySchwarz_of_bound`
 21. `integralMassWeightedMeanEstimate_of_MemLp`
 
-Mathlib's Holder theorem with exponents `(2,2)` is used to derive, rather than assume,
-
-`|int f g| <= sqrt(int f^2) sqrt(int g^2)`,
-
-including the two weighted estimates required in the paper.
-
 ## 6. Holder-to-coercivity bridge
 
 File: `formal/AMLStabilization/HolderCoercivityBridge.lean`
 
 22. `integralMassWeightedCoercivity_of_MemLp`
 
-The former hand-supplied Cauchy-Schwarz inputs are fully discharged by `MemLp` hypotheses.
-
-## 7. Mean decomposition and Poincare interface
+## 7. Mean decomposition / Poincare interface
 
 File: `formal/AMLStabilization/PoincareMeanCore.lean`
 
 23. `meanSquareDecomposition`
-    - from actual integral identities `int 1 = V` and `int f = V*fbar`, proves exactly
-      `int f^2 = int (f-fbar)^2 + V*fbar^2`.
-
 24. `meanSquareBase_of_Poincare`
-    - from the named geometric Poincare interface
-      `sqrt(int (f-fbar)^2) <= Cp*grad`, proves the base square estimate used by coercivity.
-
 25. `integralMassWeightedCoercivity_of_MemLp_and_Poincare`
-    - combines the exact integral mean decomposition, Holder closure, and mass-weighted coercivity;
-    - the only remaining domain-geometric input at this stage is the Poincare inequality itself.
 
-## 8. Concrete signal-energy identity interface
+The exact integral mean decomposition is internal.  The geometric Poincare theorem on the manuscript's arbitrary smooth bounded domain remains an explicitly named analytic interface.
+
+## 8. Concrete signal-energy interface
 
 File: `formal/AMLStabilization/SignalEnergyIdentityCore.lean`
 
 26. `dissipativeReactionIntegral`
-    - from `u>=0` and pointwise `w R <= -beta w^2`, proves
-      `int u w R <= -beta int u w^2`.
-
 27. `signalEnergyInequality_from_integralPDE`
-    - takes the differentiated-energy identity, PDE testing identity, and Neumann Green identity as explicitly named analytic interfaces;
-    - Lean verifies all subsequent integral reaction estimates and algebra and proves
-      `dE + 2(gradSq + beta*int u w^2) <= 0`.
-
 28. `productionConsumption_signalEnergyInequality`
-    - specializes to `R=-alpha*w`, i.e. `w=v-1/alpha`, and proves the exact production-consumption energy inequality.
 
-## 9. Final signal-decay assembly
+## 9. Final quadratic signal-decay assembly
 
 File: `formal/AMLStabilization/FinalSignalAssembly.lean`
 
@@ -127,71 +96,120 @@ File: `formal/AMLStabilization/FinalSignalAssembly.lean`
 33. `massWeighted_coefficients_nonneg`
 34. `massWeightedSignal_exponentialDecay`
 
-The two different coercivity coefficients are normalized automatically and Lean proves an explicit rate.  With
-
-`A = 2 Cp^2 + 4 V (K Cp / m)^2`,
-`B = 4 V (sqrt(m)/m)^2`,
-
-one obtains
-
-`E(t) <= E(s) * exp(-(2*delta/(1+A+B))*(t-s))`.
-
 ## 10. End-to-end production-consumption signal theorem
 
 File: `formal/AMLStabilization/ProductionConsumptionSignalFinal.lean`
 
 35. `productionConsumptionSignal_exponentialDecay_from_interfaces`
 
-This is the final compiled entry point for the signal L2-decay mechanism.  For the time-dependent fields `u` and `w=v-1/alpha`, it internally assembles:
+This kernel-checks the quadratic production-consumption signal `L^2` decay chain from the named Poincare / PDE Green-energy interfaces through Holder, mass-weighted coercivity, reaction dissipation, coefficient tracking and Gronwall.
 
-`MemLp / Holder`
-`=> weighted Cauchy-Schwarz`
-`=> exact integral mean decomposition`
-`=> Poincare interface`
-`=> mass-weighted coercivity`
-`=> production-consumption reaction dissipation`
-`=> signal energy inequality`
-`=> coefficient normalization`
-`=> Gronwall`
-`=> explicit exponential L2 signal decay`.
+## 11. New polynomial-energy decay core
 
-For `alpha>0`, Lean chooses `delta = min 1 alpha` and verifies
+File: `formal/AMLStabilization/PolynomialEnergyDecay.lean`
 
-`E(t) <= E(s) * exp(-(2*min(1,alpha)/(1+A+B))*(t-s))`.
+36. `reciprocalEnergyShift_monotone`
+37. `reciprocalEnergy_lower_of_quadratic_dissipation`
+38. `energy_le_inverse_linear_of_quadratic_dissipation`
+39. `quarticCoercivity_to_quadraticDissipation`
+40. `quarticDamping_to_inverseLinearEnergyDecay`
+41. `cubicDegenerateIdentity`
+
+This is the representative **`q=4` / `theta=2` algebraic branch** of the strengthened manuscript.  In particular Lean verifies
+
+`E' + c E^2 <= 0  =>  E(t) <= E(s)/(1+c E(s)(t-s))`,
+
+and also verifies the quartic coercivity-to-quadratic-dissipation reduction and the exact cubic-degenerate reaction identity
+
+`(s-v_*)*(-kappa*(s-v_*)^3) = -kappa*(s-v_*)^4`.
+
+Run `34427848707` first established this module together with the previous library (`8718 jobs`).
+
+## 12. New `L^p` exponent arithmetic core
+
+File: `formal/AMLStabilization/LpExponentCore.lean`
+
+42. `two_mul_p_div_p_add_two_lt_p`
+43. `lpLowerThreshold_lt_p`
+44. `lpChoice_between`
+45. `lpChoice_gt_n_and_lt_p`
+46. `two_mul_p_div_p_add_two_lt_lpChoice`
+47. `holderPartner_identity`
+48. `two_lt_holderPartner_of_threshold`
+49. `lpChoice_exponent_package`
+50. `transferRate_pos`
+
+The module defines
+
+`holderPartner p r = p*r/(p-r)`,
+
+`lpLowerThreshold n p = max n (2p/(p+2))`,
+
+and the midpoint choice `lpChoice`.  From `p > max n 2`, Lean verifies a concrete `r` satisfying
+
+`n < r < p`,
+
+`2 < s := holderPartner p r`,
+
+and the exact Holder relation
+
+`1/r = 1/p + 1/s`.
+
+It also verifies positivity of the transfer exponent
+
+`2(p-r)/(theta*p*r)`
+
+under the natural sign assumptions.  These are the exponent constraints used in the strengthened eventual-finite-`L^p` PDE theorem.
 
 ## Final CI evidence
 
-Run `34354367834` at verification-gate commit `a6e526bc09924be03f53a680b48399fc2a0b1509` records:
+Run `34428439465` at commit `499e78401b3667636242385f5aa0d51b836cd2a6` records:
 
 - `Reject placeholders and explicit axioms`: **SUCCESS**;
-- `Built AMLStabilization.SignalEnergyIdentityCore`;
-- `Built AMLStabilization.HolderCore`;
-- `Built AMLStabilization.HolderCoercivityBridge`;
-- `Built AMLStabilization.PoincareMeanCore`;
-- `Built AMLStabilization.FinalSignalAssembly`;
-- `Built AMLStabilization.ProductionConsumptionSignalFinal`;
+- `Built AMLStabilization.LpExponentCore`;
+- `Built AMLStabilization.PolynomialEnergyDecay`;
+- all previously verified AMLStabilization modules built successfully;
 - `Built AMLStabilization`;
-- `Build completed successfully (8717 jobs)`.
+- `Build completed successfully (8719 jobs)`.
 
-## Verification boundary — what is not formalized in current mathlib
+The immediately preceding failed exponent run `34428180153` is preserved as evidence: it exposed only a missing abstract positivity derivation for the chosen `r`; the proof was corrected by deriving `r>0` from `r>2p/(p+2)>0`.  No mathematical theorem was weakened.
 
-The **full uniform PDE stabilization theorem is not claimed to be fully Lean-verified**.  The final signal theorem above is Lean-verified *from explicitly named standard analytic interfaces*.  The following remain human-proved/sourced because the current mathlib library does not provide a ready general framework for the paper's arbitrary smooth bounded Neumann domain and parabolic regularity theory:
+## Strengthened paper theorem status
 
-1. the geometric Poincare inequality on an arbitrary smooth bounded connected domain in exactly the manuscript's Sobolev setup;
-2. derivation of the Neumann Green identity `int w Delta w = -int |grad w|^2` on that general domain;
-3. differentiation under the spatial integral for the concrete classical PDE solution (mathlib has generic parametric-integral differentiation machinery, but it has not been specialized here to the full PDE solution object);
-4. mass conservation derived directly from the cell PDE and Neumann boundary condition;
-5. the maximum-principle invariant interval for `v`;
-6. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
-7. the cell-density `L2` PDE energy estimate in the full spatial function-space representation;
-8. Choi's boundary local `L2 -> Linfinity` parabolic estimate and its use in the final `u` upgrade;
-9. assembly of those external analytic facts into the manuscript's final
-   `Linfinity x W^{1,infinity}` stabilization theorem.
+### Paper-level proved
 
-Mathlib searches performed on 2026-09-09 found no general smooth-bounded-domain Poincare theorem or general Neumann Green/parabolic-semigroup infrastructure matching these requirements.  Therefore replacing the interfaces above by fully internal proofs would require building substantial new PDE/domain infrastructure rather than merely completing missing tactics.
+The strengthened manuscript proves, at the human/PDE level:
+
+1. nonlinear mass-weighted coercivity for arbitrary real `q >= 2`;
+2. an abstract fixed-mass weighted-damping **exponential/algebraic rate dichotomy**;
+3. full exponential stabilization from an eventual finite `L^p` bound with `p > max{n,2}`;
+4. algebraic full stabilization for degenerate kinetics of order `2+theta`;
+5. sharpness of the signal exponent `1/theta` by spatially homogeneous solutions;
+6. applications to Qin--Zheng production-consumption and superlinear signal consumption.
+
+### Lean-verified strengthening
+
+Lean now independently verifies:
+
+- the previous complete quadratic mass-weighted / exponential signal-decay core;
+- the representative `q=4` algebraic scalar-energy branch;
+- the exact cubic-degenerate reaction identity;
+- the exponent-selection arithmetic needed by the eventual finite-`L^p` upgrade.
+
+### Not yet Lean-verified
+
+The following strengthened components remain paper-level rather than kernel-checked:
+
+- the arbitrary-real-`q` weighted Holder inequality and nonlinear mass-weighted coercivity with the exact manuscript constants `A,B_q`;
+- arbitrary-real-`q>2` Bihari integration (only the representative `q=4` branch is formalized);
+- interpolation and Neumann heat-semigroup estimates for the concrete PDE;
+- the cell-density PDE `L^2` energy identity in a full spatial function-space representation;
+- Choi's conormal local boundedness theorem/application;
+- the one-dimensional lifting argument as a concrete PDE object;
+- the full `L^infinity x W^{1,infinity}` exponential/algebraic stabilization theorem.
+
+The same underlying mathlib infrastructure limitations remain: general smooth-domain Poincare/Green identities and the needed parabolic regularity theory are not available as ready theorem interfaces.
 
 ## Correct provenance statement
 
-> **Final Lean verification (CAP4-style): the complete algebraic, Holder, integral, mass-weighted coercivity, reaction-dissipation, energy-to-Gronwall, coefficient-tracking, and end-to-end production-consumption signal L2-decay chain is kernel-checked under explicitly named geometric/PDE analytic interfaces.  CI rejects `sorry`, `admit`, and explicit user axioms.  The arbitrary-smooth-domain Poincare/Green and parabolic regularity infrastructure needed for the full `Linfinity x W^{1,infinity}` PDE theorem is not currently formalized and must not be described as Lean-verified.**
-
-This is the strongest verification claim supported by the current compiled artifact and existing mathlib infrastructure.
+> **Strengthened Lean verification:** the quadratic mass-weighted signal-decay chain, a representative quartic-damping/inverse-linear algebraic-decay core, the cubic-degenerate identity, and the eventual-`L^p` exponent-selection arithmetic are kernel-checked in Lean 4/mathlib.  CI rejects `sorry`, `admit`, and explicit user axioms.  The arbitrary-`q` nonlinear Holder/coercivity layer and the full smooth-domain parabolic PDE regularity assembly remain human-proved or sourced and must not be described as fully Lean-verified.
