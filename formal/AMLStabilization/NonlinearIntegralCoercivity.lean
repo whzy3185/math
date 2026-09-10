@@ -40,11 +40,7 @@ theorem mass_rpow_div_mass
   rw [hsplit]
   field_simp [ne_of_gt hm]
 
-/--
-Arbitrary-`q` mass-weighted mean estimate. The first weighted moment is proved
-by the genuine real-exponent Holder theorem in `WeightedHolderQ`; only the
-standard `L^2` fluctuation estimate and Poincare inequality remain as inputs.
--/
+/-- Arbitrary-`q` mass-weighted mean estimate. -/
 theorem integralMassWeightedMeanEstimate_q
     {Omega : Type*} [MeasurableSpace Omega]
     {mu : Measure Omega} {rho f : Omega → ℝ}
@@ -119,11 +115,7 @@ theorem integralMassWeightedMeanEstimate_q
     _ = m ^ (-1 / q) * (∫ x, rho x * |f x| ^ q ∂mu) ^ (1 / q) +
         (K * Cp / m) * grad := by rfl
 
-/--
-Full arbitrary-real-`q >= 2` nonlinear mass-weighted coercivity with the exact
-coefficients used in the strengthened manuscript.  The only external geometric
-input is the Poincare estimate on the actual domain.
--/
+/-- Full arbitrary-real-`q >= 2` nonlinear mass-weighted coercivity. -/
 theorem integralNonlinearMassWeightedCoercivity
     {Omega : Type*} [MeasurableSpace Omega]
     {mu : Measure Omega} {rho f : Omega → ℝ}
@@ -183,7 +175,10 @@ theorem integralNonlinearMassWeightedCoercivity
     hCp hV hK hm hq0 hlin hbaseSq
   have hrootSq : (W ^ (1 / q)) ^ 2 = W ^ (2 / q) := by
     by_cases hW : W = 0
-    · simp [hW]
+    · have h1q : 1 / q ≠ 0 := by positivity
+      have h2q : 2 / q ≠ 0 := by positivity
+      rw [hW, Real.zero_rpow h1q, Real.zero_rpow h2q]
+      norm_num
     · have hWpos : 0 < W := lt_of_le_of_ne hW0 (Ne.symm hW)
       rw [pow_two, ← Real.rpow_add hWpos]
       congr 1
