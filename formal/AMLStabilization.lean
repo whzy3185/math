@@ -32,3 +32,5 @@ import AMLStabilization.CellEnergyAssembly
 import AMLStabilization.LocalPolynomialEnergyDecay
 import AMLStabilization.GeneralWeightedDampingNonnegativeFinal
 import AMLStabilization.RateRootCore
+import AMLStabilization.RateComparisonCore
+import AMLStabilization.CellEnergyEnvelope
