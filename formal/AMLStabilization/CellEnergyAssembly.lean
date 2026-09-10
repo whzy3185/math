@@ -19,42 +19,55 @@ theorem cellEnergy_exponentialDecay_from_gradientRate
     (hst : s ≤ t) :
     Q t ≤
       (Q s - exponentialBarrier (a / Cp ^ 2) (2 * lambda) (CH ^ 2 / a) *
-          Real.exp (-(2 * lambda) * s)) *
+          Real.exp (-(2 * lambda) * (s - T))) *
         Real.exp (-(a / Cp ^ 2) * (t - s)) +
       exponentialBarrier (a / Cp ^ 2) (2 * lambda) (CH ^ 2 / a) *
-        Real.exp (-(2 * lambda) * t) := by
+        Real.exp (-(2 * lambda) * (t - T)) := by
   have hdamp : 0 < a / Cp ^ 2 := div_pos ha (pow_pos hCp 2)
   have hb : 0 < 2 * lambda := mul_pos (by norm_num) hlambda
-  have hforced : ∀ τ,
-      dQ τ + (a / Cp ^ 2) * Q τ ≤
-        (CH ^ 2 / a) * Real.exp (-(2 * lambda) * τ) := by
+  let Cbase : ℝ := CH ^ 2 / a
+  let C0 : ℝ := Cbase * Real.exp ((2 * lambda) * T)
+  have hforced0 : ∀ τ,
+      dQ τ + (a / Cp ^ 2) * Q τ ≤ C0 * Real.exp (-(2 * lambda) * τ) := by
     intro τ
     have hcell := cellEnergy_to_forcedLinearODE ha hCp (hQ0 τ) (hg0 τ) (hH0 τ)
       (hPoincare τ) (henergy τ)
     have hsq := square_exponential_forcing (hH0 τ) hCH (hHrate τ)
     have hscale : H τ ^ 2 / a ≤
-        (CH ^ 2 / a) * Real.exp (-(2 * lambda) * (τ - T)) := by
+        Cbase * Real.exp (-(2 * lambda) * (τ - T)) := by
       have hdiv := div_le_div_of_nonneg_right hsq (le_of_lt ha)
-      simpa [div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm] using hdiv
+      simpa [Cbase, div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm] using hdiv
     have hshift :
-        (CH ^ 2 / a) * Real.exp (-(2 * lambda) * (τ - T)) =
-          ((CH ^ 2 / a) * Real.exp ((2 * lambda) * T)) *
-            Real.exp (-(2 * lambda) * τ) := by
+        Cbase * Real.exp (-(2 * lambda) * (τ - T)) =
+          C0 * Real.exp (-(2 * lambda) * τ) := by
+      dsimp [C0]
       rw [← Real.exp_add]
       congr 1
       ring
-    -- The comparison theorem below is applied with the shifted coefficient.
-    rw [hshift] at hscale
-    exact hcell.trans hscale
-  -- Use the equivalent shifted forcing coefficient explicitly.
-  let C0 : ℝ := (CH ^ 2 / a) * Real.exp ((2 * lambda) * T)
-  have hforced0 : ∀ τ,
-      dQ τ + (a / Cp ^ 2) * Q τ ≤ C0 * Real.exp (-(2 * lambda) * τ) := by
-    intro τ
-    simpa [C0] using hforced τ
-  have hmain := forcedEnergy_exponential_bound hdamp hb hrate hQderiv hforced0 hst
-  -- Rewrite the barrier coefficient back in terms of the shifted start time.
-  simpa [C0, exponentialBarrier, Real.exp_add, Real.exp_sub] using hmain
+    exact hcell.trans (by simpa [hshift] using hscale)
+  have hmain := forcedEnergy_exponential_bound
+    hdamp hb hrate hQderiv hforced0 hst
+  have hbar :
+      exponentialBarrier (a / Cp ^ 2) (2 * lambda) C0 =
+        exponentialBarrier (a / Cp ^ 2) (2 * lambda) Cbase *
+          Real.exp ((2 * lambda) * T) := by
+    dsimp [C0]
+    unfold exponentialBarrier
+    ring
+  have hshiftS :
+      Real.exp ((2 * lambda) * T) * Real.exp (-(2 * lambda) * s) =
+        Real.exp (-(2 * lambda) * (s - T)) := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  have hshiftT :
+      Real.exp ((2 * lambda) * T) * Real.exp (-(2 * lambda) * t) =
+        Real.exp (-(2 * lambda) * (t - T)) := by
+    rw [← Real.exp_add]
+    congr 1
+    ring
+  rw [hbar] at hmain
+  simpa [Cbase, mul_assoc, hshiftS, hshiftT] using hmain
 
 /-- Squaring a polynomial coefficient rate doubles its exponent. -/
 theorem square_polynomial_forcing
