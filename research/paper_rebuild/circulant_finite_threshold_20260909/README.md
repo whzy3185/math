@@ -102,15 +102,17 @@ For odd `s>=7`,
 \boxed{m(5k,5)<\sqrt8\qquad(k\ge3),}
 \]
 
+and, for every
+
 \[
-\boxed{m(7k,7)<\sqrt8\iff k\ge4\qquad(k\ge3),}
+s\in\{7,9,11,13\},
 \]
 
 \[
-\boxed{m(9k,9)<\sqrt8\iff k\ge4\qquad(k\ge3).}
+\boxed{m(sk,s)<\sqrt8\iff k\ge4\qquad(k\ge3).}
 \]
 
-Thus `(21,7)` and `(27,9)` are the unique non-sub-threshold points in the step-seven and step-nine vertical families respectively.
+Thus for the four consecutive odd steps `7,9,11,13`, the unique non-sub-threshold member of the vertical family is exactly the chord-triangle point `k=3`.  The step-eleven and step-thirteen `k=5` cases require small local modifications of the alternating chord word; they are certified by exact rational LDL.
 
 ## 5. General odd seam-defect framework
 
@@ -138,7 +140,7 @@ E_-:\ \left\{0,N-\frac{s+1}{2}\right\}\text{ with coefficient }-2,
 E_+:\ \left\{\frac{N-s}{2},\frac{N-1}{2}\right\}\text{ with coefficient }+2.
 \]
 
-So the remaining odd positive-side problem has been reduced from an unconstrained signing search to a two-defect energy-absorption problem. Steps `5,7,9` are obtained by constructing local positive-definite absorbers for these two defects; step `3` is the special collision case where only one genuine non-Laplacian defect remains.
+So the remaining odd positive-side problem has been reduced from an unconstrained signing search to a two-defect energy-absorption problem.  Steps `5,7,9,11,13` are obtained by fixed local positive-definite absorbers after finitely many small bases; step `3` is the special collision case where only one genuine non-Laplacian defect remains.
 
 # Proof files added in the current strengthening pass
 
@@ -159,10 +161,12 @@ New `sqrt(8)` files:
 - `ODD_RESONANCE_STEP5_SUBSQRT8.md`
 - `ODD_RESONANCE_STEP7_THRESHOLD.md`
 - `ODD_RESONANCE_STEP9_THRESHOLD.md`
+- `ODD_RESONANCE_STEP11_THRESHOLD.md`
+- `ODD_RESONANCE_STEP13_THRESHOLD.md`
 - `ODD_RESONANCE_SEAM_DEFECT_FRAMEWORK.md`
 
-Exact reproducibility scripts include the corresponding `verify_step3_*`, `verify_step5_*`, `verify_step7_*`, `verify_step9_*`, and `verify_odd_resonance_seam_defect.py` audits, in addition to the six-boundary scripts.
+Exact reproducibility scripts include the corresponding `verify_step3_*`, `verify_step5_*`, `verify_step7_*`, `verify_step9_*`, `verify_step11_*`, `verify_step13_*`, and `verify_odd_resonance_seam_defect.py` audits, in addition to the six-boundary scripts.
 
 # Current frontier
 
-The `sqrt(6)` parameter classification and minimizer rigidity are complete. At `sqrt(8)`, the horizontal `k=3` line and vertical fixed steps `3,5,7,9` are now classified. The main open problem is the general odd `(k,s)` phase boundary. The new seam-defect identity gives a concrete route: quantify how much signed-Laplacian energy is available to absorb the two explicit seam bilinear terms as `s/k` varies.
+The `sqrt(6)` parameter classification and minimizer rigidity are complete. At `sqrt(8)`, the horizontal `k=3` line and vertical fixed steps `3,5,7,9,11,13` are now classified. The main open problem is the general odd `(k,s)` phase boundary. The seam-defect identity gives a concrete route: quantify how much signed-Laplacian energy is available to absorb the two explicit seam bilinear terms as `s/k` varies. Step `15` is the next boundary test: the unmodified alternating signing is sub-threshold from odd `k=9` onward, a two-flip modification handles `k=7`, while the global status of `(75,15)` remains under active audit.
