@@ -15,30 +15,39 @@ theorem forcedEnergy_shift_dissipation
     (ha : 0 < a) (hb : 0 < b) (hba : b < a)
     (hQ : ∀ t, HasDerivAt Q (dQ t) t)
     (hforce : ∀ t, dQ t + a * Q t ≤ C * Real.exp (-b * t)) :
-    let Y : ℝ → ℝ := fun t => Q t - exponentialBarrier a b C * Real.exp (-b * t)
-    let dY : ℝ → ℝ := fun t => dQ t + b * exponentialBarrier a b C * Real.exp (-b * t)
-    (∀ t, HasDerivAt Y (dY t) t) ∧
-      (∀ t, dY t + a * Y t ≤ 0) := by
-  dsimp
+    (∀ t, HasDerivAt
+      (fun x => Q x - exponentialBarrier a b C * Real.exp (-b * x))
+      (dQ t + b * exponentialBarrier a b C * Real.exp (-b * t)) t) ∧
+    (∀ t,
+      (dQ t + b * exponentialBarrier a b C * Real.exp (-b * t)) +
+        a * (Q t - exponentialBarrier a b C * Real.exp (-b * t)) ≤ 0) := by
   constructor
   · intro t
     have hlin : HasDerivAt (fun x : ℝ => -b * x) (-b) t :=
       hasDerivAt_const_mul (-b)
-    have hexp : HasDerivAt (fun x : ℝ => Real.exp (-b * x))
-        ((-b) * Real.exp (-b * t)) t := hlin.exp
+    have hexp := hlin.exp
     have hbar := hexp.const_mul (exponentialBarrier a b C)
-    have hsub := (hQ t).sub hbar
-    convert hsub using 1 <;> ring
+    have hsub : HasDerivAt
+        (fun x => Q x - exponentialBarrier a b C * Real.exp (-b * x))
+        (dQ t - exponentialBarrier a b C * (Real.exp (-b * t) * (-b))) t :=
+      (hQ t).sub hbar
+    convert hsub using 1
+    ring
   · intro t
     have hab : 0 < a - b := sub_pos.mpr hba
     have hidentity :
         (a - b) * exponentialBarrier a b C = C := by
       unfold exponentialBarrier
       field_simp [ne_of_gt hab]
-    have hf := hforce t
-    dsimp
-    rw [← hidentity] at hf
-    nlinarith [Real.exp_pos (-b * t)]
+    calc
+      (dQ t + b * exponentialBarrier a b C * Real.exp (-b * t)) +
+          a * (Q t - exponentialBarrier a b C * Real.exp (-b * t)) =
+        (dQ t + a * Q t) -
+          (a - b) * exponentialBarrier a b C * Real.exp (-b * t) := by ring
+      _ ≤ C * Real.exp (-b * t) -
+          (a - b) * exponentialBarrier a b C * Real.exp (-b * t) := by
+        linarith [hforce t]
+      _ = 0 := by rw [hidentity]; ring
 
 /--
 Explicit two-rate estimate for a linearly damped energy with exponential forcing.
@@ -67,7 +76,6 @@ theorem forcedEnergy_exponential_bound_of_nonnegative
     {Q dQ : ℝ → ℝ} {a b C s t : ℝ}
     (ha : 0 < a) (hb : 0 < b) (hba : b < a)
     (hC : 0 ≤ C)
-    (hQnonneg : ∀ tau, 0 ≤ Q tau)
     (hQ : ∀ tau, HasDerivAt Q (dQ tau) tau)
     (hforce : ∀ tau, dQ tau + a * Q tau ≤ C * Real.exp (-b * tau))
     (hst : s ≤ t) :
@@ -84,7 +92,7 @@ theorem forcedEnergy_exponential_bound_of_nonnegative
           Real.exp (-a * (t - s)) ≤
         Q s * Real.exp (-a * (t - s)) := by
     apply mul_le_mul_of_nonneg_right _ hexp0
-    nlinarith [Real.exp_nonneg (-b * s)]
+    nlinarith [Real.exp_nonneg (-b * s), hbar0]
   linarith
 
 end AMLStabilization
