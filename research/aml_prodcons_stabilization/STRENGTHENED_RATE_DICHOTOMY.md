@@ -144,11 +144,57 @@ Evidence state: **Observed/promising novelty, not certified exhaustive novelty.*
 
 ## 8. Lean verification status
 
-The strengthened Lean tree is verified at commit `499e78401b3667636242385f5aa0d51b836cd2a6`, GitHub Actions run `34428439465`, with the proof-hygiene gate passing and `Build completed successfully (8719 jobs)`.
+The current formal tree is verified at commit
+`b73db253fad60f65c31cff0f1f438096b10e6ec0`, GitHub Actions run
+`34446453613` (run 147).  The proof-hygiene gate passed and the complete root
+build finished with
 
-Two new modules are compiled:
+```text
+Build completed successfully (8751 jobs).
+```
 
-- `PolynomialEnergyDecay.lean`: representative `q=4` / `theta=2` algebraic branch, including reciprocal-energy monotonicity, explicit inverse-linear energy decay, quartic coercivity-to-dissipation, and the cubic-degenerate identity.
-- `LpExponentCore.lean`: concrete `r` and Holder-partner `s` selection from `p>max{n,2}`, exact identity `1/r=1/p+1/s`, `s>2`, and positivity of the transfer-rate exponent.
+The root `formal/AMLStabilization.lean` imports **44 AMLStabilization modules**.
+The current kernel-checked strengthening includes substantially more than the
+older representative `q=4` branch:
 
-The arbitrary-real-`q` Holder/coercivity theorem and the full parabolic `Lp` PDE regularity assembly remain paper-level proofs. The full strengthened `L-infinity x W^{1,infinity}` theorem is therefore **not** claimed to be fully Lean-verified.
+- genuine arbitrary-real-`q` weighted Holder and nonlinear mass-weighted coercivity;
+- arbitrary `q>2` Bihari integration, including the zero-energy branch;
+- general quadratic/exponential and superquadratic/polynomial weighted-damping endpoints;
+- a manuscript-facing `q=theta+2` degenerate endpoint with energy exponent `2/theta` and signal exponent `1/theta`;
+- compact-positive-factor derivation of quantitative degenerate dissipativity for arbitrary real `theta>0`;
+- finite-measure `L^p -> L^2`, Holder-product, and bounded-interpolation machinery;
+- exact construction of an admissible spatial exponent for every
+  `0 < mu < (1/theta) min{1,2(p-n)/(pn)}`;
+- an explicit mixed time exponent `Q=4p/(p-n)` satisfying `Q>2` and `n/p+2/Q<1`, including the one-dimensional cylinder-lift specialization;
+- forced cell-energy exponential/polynomial decay, energy-to-norm conversion, and final full-rate assembly conditional on the named deep parabolic interfaces;
+- direct superlinear-consumption specialization `F(s)=-s|s|^(m-1)` into the arbitrary-order signal theorem;
+- signed sharpness with the exact absolute-value profile
+  `|w(t)|=(|w0|^(-theta)+theta*k*t)^(-1/theta)`;
+- scalar mass-conservation propagation from a zero mass derivative;
+- dominated differentiation of the squared `L^2` energy using mathlib's parametric-integral calculus.
+
+Therefore the arbitrary-real-`q` weighted-damping theorem package and the
+novel rate bookkeeping are no longer only paper-level proofs.  The correct
+formal claim is that the full rate assembly is kernel-checked **conditional on
+explicitly named geometric/parabolic PDE inputs**.
+
+A literal first-principles Lean formalization of the chemotaxis PDE theorem on
+an arbitrary smooth bounded Neumann domain is still not claimed.  The remaining
+deep analytic infrastructure is concentrated in:
+
+1. the geometric Poincare inequality in the manuscript's exact Sobolev setting;
+2. the Neumann Green/integration-by-parts and flux identities on the required domains;
+3. the invariant signal interval / maximum-principle argument;
+4. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
+5. Choi's mixed-norm conormal/local boundedness theorem in the required arbitrary-domain setting;
+6. the concrete function-space derivation of the cell-density PDE energy identity.
+
+The calculus step for differentiating `int w^2` and the scalar propagation step
+for mass conservation are already formalized; only their PDE-specific analytic
+hypotheses remain to be connected.
+
+Accordingly, the repository must not describe the complete arbitrary-smooth-domain
+PDE theorem as fully Lean-verified from first principles.  It is accurate to say
+that the novel arbitrary-order weighted-damping/coercivity/rate machinery and the
+final stabilization-rate assembly conditional on named standard analytic inputs
+are kernel-checked in Lean 4/mathlib.
