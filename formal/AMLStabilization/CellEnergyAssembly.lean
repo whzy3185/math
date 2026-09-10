@@ -37,14 +37,19 @@ theorem cellEnergy_exponentialDecay_from_gradientRate
         Cbase * Real.exp (-(2 * lambda) * (τ - T)) := by
       have hdiv := div_le_div_of_nonneg_right hsq (le_of_lt ha)
       simpa [Cbase, div_eq_mul_inv, mul_assoc, mul_left_comm, mul_comm] using hdiv
-    have hshift :
-        Cbase * Real.exp (-(2 * lambda) * (τ - T)) =
-          C0 * Real.exp (-(2 * lambda) * τ) := by
-      dsimp [C0]
+    have hexpShift :
+        Real.exp (-(2 * lambda) * (τ - T)) =
+          Real.exp ((2 * lambda) * T) * Real.exp (-(2 * lambda) * τ) := by
       rw [← Real.exp_add]
       congr 1
       ring
-    exact hcell.trans (by simpa [hshift] using hscale)
+    have hshift :
+        Cbase * Real.exp (-(2 * lambda) * (τ - T)) =
+          C0 * Real.exp (-(2 * lambda) * τ) := by
+      rw [hexpShift]
+      simp only [C0]
+      ring
+    exact hcell.trans (hscale.trans_eq hshift)
   have hmain := forcedEnergy_exponential_bound
     hdamp hb hrate hQderiv hforced0 hst
   have hbar :
