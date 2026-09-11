@@ -95,9 +95,10 @@ theorem exists_upper_tilted_contact_on_box
     dsimp [barrier]
     fun_prop
   have hphiCont : ContinuousOn phi cyl := by
-    change ContinuousOn (fun p => z p.1 p.2 - barrier p)
+    change ContinuousOn
+      ((fun p : ℝ × (Fin (n + 1) → ℝ) => z p.1 p.2) - barrier)
       (Icc s T ×ˢ Icc a b)
-    simpa only [Pi.sub_apply] using hzcont.sub hbar.continuousOn
+    exact hzcont.sub hbar.continuousOn
   obtain ⟨p0, hp0, hpmax⟩ := hcyl.exists_isMaxOn hcylne hphiCont
   have hpmax' := isMaxOn_iff.mp hpmax
   rcases hviol with ⟨tw, htw, xw, hxw, hw⟩
@@ -170,9 +171,10 @@ theorem exists_lower_tilted_contact_on_box
     dsimp [barrier]
     fun_prop
   have hphiCont : ContinuousOn phi cyl := by
-    change ContinuousOn (fun p => barrier p - z p.1 p.2)
+    change ContinuousOn
+      (barrier - (fun p : ℝ × (Fin (n + 1) → ℝ) => z p.1 p.2))
       (Icc s T ×ˢ Icc a b)
-    simpa only [Pi.sub_apply] using hbar.continuousOn.sub hzcont
+    exact hbar.continuousOn.sub hzcont
   obtain ⟨p0, hp0, hpmax⟩ := hcyl.exists_isMaxOn hcylne hphiCont
   have hpmax' := isMaxOn_iff.mp hpmax
   rcases hviol with ⟨tw, htw, xw, hxw, hw⟩
