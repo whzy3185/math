@@ -38,13 +38,9 @@ The application to the cell equation then verifies uniform ellipticity, the cono
 
 **Action:** the local-upgrade lemma now includes a one-dimensional proof ingredient. For an interval and
 
-`1/P + 2/Q = 1/2`, `2<=P<infinity`,
+`1/P + 2/Q = 1/2`,
 
-the manuscript proves
-
-`||h||_{L_t^Q L_x^P} <= C(sup_t ||h(t)||_2 + ||h_x||_{L^2_{x,t}})`
-
-from the one-dimensional Gagliardo--Nirenberg inequality. It then identifies this as the exact replacement for Choi Lemma 2.3 in Section 2.2 and notes that the remaining Caccioppoli estimate and De Giorgi iteration require only this embedding plus the local measure lower bound, which is automatic on an interval.
+the manuscript proves a mixed-norm estimate from the one-dimensional Gagliardo--Nirenberg inequality and identifies it as the replacement for Choi Lemma 2.3 in Section 2.2. The remaining Caccioppoli estimate and De Giorgi iteration then use the same argument together with the automatic interval measure lower bound.
 
 ## 5. Sharpness
 
@@ -72,10 +68,22 @@ The manuscript now uses the natural no-flux formulation
 
 This is exactly the conormal condition needed in the final scalar parabolic equation. Qin--Zheng impose `partial_nu u=partial_nu v=0`, which implies this no-flux condition for classical solutions.
 
-## 9. Length
+## 9. Second-round minor corrections
 
-A local `elsarticle` compilation in `final,5p,times,twocolumn` format with a 10-item inline reference list still occupies three journal-format pages. Thus none of the proof-hardening material had to be removed to stay within the AML page limit.
+A second adversarial audit reduced the remaining issues to four minor points. All four are now closed in `main.tex`:
+
+1. **One-dimensional endpoint.** The unnecessary endpoint `Q=4, P=infinity` is avoided by stating the auxiliary one-dimensional embedding for finite exponents `2<P<infinity`, `4<Q<infinity`, with `1/P+2/Q=1/2`.
+2. **Solution class in the boundary lemma.** The lemma now assumes a weak energy solution explicitly:
+   `y in L^infinity_loc(J;L^2(Omega)) cap L^2_loc(J;H^1(Omega))`, with the equation and conormal condition understood weakly.
+3. **Mixed norm definition.** The notation is now defined explicitly as `L^{p,Q}=L_t^Q L_x^p`.
+4. **Choi auxiliary exponents.** The proof now sets `p_1=p`, `q_1=Q` and states that, since all lower-order coefficients and the scalar source vanish, `p_0,q_0,p_2,q_2` may be chosen arbitrarily large; hence `p_min=p`, `q_min=Q`.
+
+These are statement-level and notation-level corrections; they do not alter the main decay exponents or theorem hypotheses.
+
+## 10. Length and layout
+
+After the second-round corrections, a local `elsarticle` compilation in `final,5p,times,twocolumn` format with the 10-item inline reference list occupies four journal-format pages. The rendered pages were inspected and show no clipping, overlap, or overfull boxes. The extra page is almost entirely references, so the mathematical body remains compact while the boundary lemma is now self-contained enough for referee verification.
 
 ## Current assessment
 
-After this revision, the referee's two principal objections -- incomplete exact-model literature positioning and an under-verified final Linfinity bootstrap -- have been directly addressed. The main remaining external risk is novelty collision with very recent 2026 work not yet found in the current search, rather than a known proof gap in the present theorem chain.
+After the second-round corrections, there is no known substantive mathematical objection from the two adversarial referee passes. The remaining external risk is novelty collision with very recent 2026 work not yet found in the current search, rather than a known proof gap or incomplete theorem interface in the present manuscript.
