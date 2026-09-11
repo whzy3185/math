@@ -98,7 +98,7 @@ theorem motilityDrift_memLp_and_L2_bound
   have hDriftLp : MemLp
       (fun x => finiteCoordinateL2Norm
         (fun i => u x * (phiPrime x * gradV x i))) 2 μ := by
-    refine MemLp.of_le_mul hGradLp hDriftMeas ?_
+    refine MemLp.of_le_mul (c := U * L) hGradLp hDriftMeas ?_
     filter_upwards [hpoint] with x hx
     have hd0 := finiteCoordinateL2Norm_nonneg
       (fun i => u x * (phiPrime x * gradV x i))
