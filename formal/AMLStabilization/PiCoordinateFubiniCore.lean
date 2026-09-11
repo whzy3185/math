@@ -79,4 +79,28 @@ theorem integral_pi_split_coordinate_symm
         ∂Measure.pi (fun j => μ (i.succAbove j)) := by
       rw [integral_prod_symm _ hsplit]
 
+/-- If a function on the full finite product is integrable, then after Fubini
+the function obtained by integrating out one chosen coordinate is integrable
+on the remaining product. -/
+theorem integrable_integral_pi_split_coordinate_symm
+    {X : Type*} [MeasurableSpace X] {n : ℕ}
+    (μ : Fin (n + 1) → Measure X) [∀ j, SigmaFinite (μ j)]
+    (i : Fin (n + 1))
+    (f : (Fin (n + 1) → X) → ℝ)
+    (hf : Integrable f (Measure.pi μ)) :
+    Integrable
+      (fun xr : Fin n → X => ∫ xi : X, f (i.insertNth xi xr) ∂μ i)
+      (Measure.pi fun j => μ (i.succAbove j)) := by
+  let e := MeasurableEquiv.piFinSuccAbove (fun _ : Fin (n + 1) => X) i
+  have hmp := measurePreserving_piFinSuccAbove μ i
+  have hcomp : Integrable (f ∘ e.symm)
+      ((μ i).prod (Measure.pi fun j => μ (i.succAbove j))) := by
+    exact (hmp.symm.integrable_comp_emb e.symm.measurableEmbedding).2 hf
+  have hsplit : Integrable
+      (fun p : X × (Fin n → X) => f (i.insertNth p.1 p.2))
+      ((μ i).prod (Measure.pi fun j => μ (i.succAbove j))) := by
+    simpa [e, Function.comp_def, MeasurableEquiv.piFinSuccAbove_symm_apply,
+      Fin.insertNthEquiv] using hcomp
+  exact hsplit.integral_prod_right
+
 end AMLStabilization
