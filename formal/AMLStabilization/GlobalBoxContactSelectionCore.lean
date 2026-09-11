@@ -26,7 +26,7 @@ theorem derivative_ge_epsilon_at_upper_Icc_max
     (hy : HasDerivAt y dy t0) :
     eps ≤ dy := by
   have hcontact : IsLocalMaxOn (fun t => y t - eps * (t - s)) (Icc s T) t0 :=
-    IsMaxOn.isLocalMaxOn hmax
+    hmax.localize
   have hlin : HasDerivAt (fun t : ℝ => eps * (t - s)) eps t0 := by
     simpa [mul_one] using ((hasDerivAt_id t0).sub_const s).const_mul eps
   have hshift : HasDerivAt (fun t => y t - eps * (t - s)) (dy - eps) t0 :=
@@ -47,7 +47,7 @@ theorem derivative_le_neg_epsilon_at_lower_Icc_min
     (hy : HasDerivAt y dy t0) :
     dy ≤ -eps := by
   have hcontact : IsLocalMinOn (fun t => y t + eps * (t - s)) (Icc s T) t0 :=
-    IsMinOn.isLocalMinOn hmin
+    hmin.localize
   have hlin : HasDerivAt (fun t : ℝ => eps * (t - s)) eps t0 := by
     simpa [mul_one] using ((hasDerivAt_id t0).sub_const s).const_mul eps
   have hshift : HasDerivAt (fun t => y t + eps * (t - s)) (dy + eps) t0 :=
@@ -95,14 +95,17 @@ theorem exists_upper_tilted_contact_on_box
     dsimp [barrier]
     fun_prop
   have hphiCont : ContinuousOn phi cyl := by
-    simpa [phi, cyl] using hzcont.sub hbar.continuousOn
+    change ContinuousOn (fun p => z p.1 p.2 - barrier p)
+      (Icc s T ×ˢ Icc a b)
+    simpa only [Pi.sub_apply] using hzcont.sub hbar.continuousOn
   obtain ⟨p0, hp0, hpmax⟩ := hcyl.exists_isMaxOn hcylne hphiCont
+  have hpmax' := isMaxOn_iff.mp hpmax
   rcases hviol with ⟨tw, htw, xw, hxw, hw⟩
   have hwphi : 0 < phi (tw, xw) := by
     dsimp [phi, barrier]
     linarith
   have hmaxpos : 0 < phi p0 := by
-    exact lt_of_lt_of_le hwphi (hpmax (a := (tw, xw)) ⟨htw, hxw⟩)
+    exact lt_of_lt_of_le hwphi (hpmax' (tw, xw) ⟨htw, hxw⟩)
   have ht0gt : s < p0.1 := by
     have hsle : s ≤ p0.1 := hp0.1.1
     rcases hsle.eq_or_lt with hEq | hlt
@@ -110,22 +113,24 @@ theorem exists_upper_tilted_contact_on_box
       have hphi0 : phi p0 ≤ 0 := by
         dsimp [phi, barrier]
         rw [← hEq]
-        simp
-        exact hz0
+        simp only [sub_self, mul_zero, add_zero]
+        exact sub_nonpos.mpr hz0
       linarith
     · exact hlt
   have hcontactval : hi + eps * (p0.1 - s) < z p0.1 p0.2 := by
     dsimp [phi, barrier] at hmaxpos
     linarith
   have hsp : IsMaxOn (z p0.1) (Icc a b) p0.2 := by
+    rw [isMaxOn_iff]
     intro x hx
-    have h := hpmax (a := (p0.1, x)) ⟨hp0.1, hx⟩
+    have h := hpmax' (p0.1, x) ⟨hp0.1, hx⟩
     dsimp [phi, barrier] at h
     linarith
   have htime : IsMaxOn
       (fun t => z t p0.2 - eps * (t - s)) (Icc s T) p0.1 := by
+    rw [isMaxOn_iff]
     intro t ht
-    have h := hpmax (a := (t, p0.2)) ⟨ht, hp0.2⟩
+    have h := hpmax' (t, p0.2) ⟨ht, hp0.2⟩
     dsimp [phi, barrier] at h
     linarith
   exact ⟨p0.1, hp0.1, p0.2, hp0.2, ht0gt, hcontactval, hsp, htime⟩
@@ -165,14 +170,17 @@ theorem exists_lower_tilted_contact_on_box
     dsimp [barrier]
     fun_prop
   have hphiCont : ContinuousOn phi cyl := by
-    simpa [phi, cyl] using hbar.continuousOn.sub hzcont
+    change ContinuousOn (fun p => barrier p - z p.1 p.2)
+      (Icc s T ×ˢ Icc a b)
+    simpa only [Pi.sub_apply] using hbar.continuousOn.sub hzcont
   obtain ⟨p0, hp0, hpmax⟩ := hcyl.exists_isMaxOn hcylne hphiCont
+  have hpmax' := isMaxOn_iff.mp hpmax
   rcases hviol with ⟨tw, htw, xw, hxw, hw⟩
   have hwphi : 0 < phi (tw, xw) := by
     dsimp [phi, barrier]
     linarith
   have hmaxpos : 0 < phi p0 := by
-    exact lt_of_lt_of_le hwphi (hpmax (a := (tw, xw)) ⟨htw, hxw⟩)
+    exact lt_of_lt_of_le hwphi (hpmax' (tw, xw) ⟨htw, hxw⟩)
   have ht0gt : s < p0.1 := by
     have hsle : s ≤ p0.1 := hp0.1.1
     rcases hsle.eq_or_lt with hEq | hlt
@@ -180,22 +188,24 @@ theorem exists_lower_tilted_contact_on_box
       have hphi0 : phi p0 ≤ 0 := by
         dsimp [phi, barrier]
         rw [← hEq]
-        simp
-        linarith
+        simp only [sub_self, mul_zero, sub_zero]
+        exact sub_nonpos.mpr hz0
       linarith
     · exact hlt
   have hcontactval : z p0.1 p0.2 < lo - eps * (p0.1 - s) := by
     dsimp [phi, barrier] at hmaxpos
     linarith
   have hsp : IsMinOn (z p0.1) (Icc a b) p0.2 := by
+    rw [isMinOn_iff]
     intro x hx
-    have h := hpmax (a := (p0.1, x)) ⟨hp0.1, hx⟩
+    have h := hpmax' (p0.1, x) ⟨hp0.1, hx⟩
     dsimp [phi, barrier] at h
     linarith
   have htime : IsMinOn
       (fun t => z t p0.2 + eps * (t - s)) (Icc s T) p0.1 := by
+    rw [isMinOn_iff]
     intro t ht
-    have h := hpmax (a := (t, p0.2)) ⟨ht, hp0.2⟩
+    have h := hpmax' (t, p0.2) ⟨ht, hp0.2⟩
     dsimp [phi, barrier] at h
     linarith
   exact ⟨p0.1, hp0.1, p0.2, hp0.2, ht0gt, hcontactval, hsp, htime⟩
