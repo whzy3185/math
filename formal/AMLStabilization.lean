@@ -59,6 +59,7 @@ import AMLStabilization.MotilityChainRuleCore
 import AMLStabilization.MotilityForcingCore
 import AMLStabilization.BoxMotilityForcingCore
 import AMLStabilization.BoxMotilityCellEnergyCore
+import AMLStabilization.TimeDependentBoxMotilityCellEnergyCore
 import AMLStabilization.GeneralPolynomialEnergyDecay
 import AMLStabilization.NonlinearCoercivityAlgebra
 import AMLStabilization.WeightedHolderQ
