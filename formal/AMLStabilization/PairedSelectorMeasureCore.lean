@@ -40,15 +40,15 @@ theorem map_pi_prod_select
     simpa only [hcoord] using hmap
   letI : ∀ i, IsFiniteMeasure ((μ i Set.univ) • μ i) := fun i =>
     { measure_univ_lt_top := by
-        rw [Measure.smul_apply MeasurableSet.univ]
-        exact ENNReal.mul_lt_top (measure_lt_top (μ i) Set.univ)
-          (measure_lt_top (μ i) Set.univ) }
+        simpa only [Measure.smul_apply, smul_eq_mul] using
+          ENNReal.mul_lt_top (measure_lt_top (μ i) Set.univ)
+            (measure_lt_top (μ i) Set.univ) }
   have hscaled :
       Measure.pi (fun i => (μ i Set.univ) • μ i) =
         (∏ i, μ i Set.univ) • Measure.pi μ := by
     apply Measure.pi_eq
     intro s hs
-    simp [Measure.pi_pi, Measure.smul_apply, hs, Finset.prod_mul_distrib]
+    simp [Measure.pi_pi, Measure.smul_apply, Finset.prod_mul_distrib]
   simpa [sel] using hmap'.trans hscaled
 
 end AMLStabilization
