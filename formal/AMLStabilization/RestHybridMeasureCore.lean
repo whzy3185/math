@@ -15,9 +15,14 @@ theorem map_pairedRestHybrid
     (μ : Fin n → Measure α) [∀ j, IsFiniteMeasure (μ j)] :
     (Measure.pi (fun j => (μ j).prod (μ j))).map (pairedRestHybrid i) =
       (∏ j, μ j Set.univ) • Measure.pi μ := by
-  simpa [pairedRestHybrid] using
-    (map_pi_prod_select μ
-      (fun j => (i.succAbove j : Fin (n + 1)).val < i.val))
+  let pick : Fin n → Prop :=
+    fun j => (i.succAbove j : Fin (n + 1)).val < i.val
+  have hfun :
+      (fun (z : Fin n → α × α) (j : Fin n) =>
+        if pick j then (z j).2 else (z j).1) = pairedRestHybrid i := by
+    rfl
+  rw [← hfun]
+  exact map_pi_prod_select μ pick
 
 /-- Integrability is preserved when an ordinary rest-coordinate function is
 composed with the hybrid selector and integrated against all paired rest
@@ -33,7 +38,7 @@ theorem Integrable.comp_pairedRestHybrid
       (Measure.pi (fun j => (μ j).prod (μ j))) := by
   let ν : Measure (Fin n → α × α) :=
     Measure.pi (fun j => (μ j).prod (μ j))
-  let c : ℝ≥0∞ := ∏ j, μ j Set.univ
+  let c : ENNReal := ∏ j, μ j Set.univ
   have hc : c ≠ ∞ := by
     dsimp [c]
     exact ENNReal.prod_ne_top fun j _ => measure_ne_top (μ j) Set.univ
@@ -69,7 +74,7 @@ theorem integral_pairedRestHybrid_of_integrable
         ∫ x : Fin n → α, g x ∂Measure.pi μ := by
   let ν : Measure (Fin n → α × α) :=
     Measure.pi (fun j => (μ j).prod (μ j))
-  let c : ℝ≥0∞ := ∏ j, μ j Set.univ
+  let c : ENNReal := ∏ j, μ j Set.univ
   have hc : c ≠ ∞ := by
     dsimp [c]
     exact ENNReal.prod_ne_top fun j _ => measure_ne_top (μ j) Set.univ
