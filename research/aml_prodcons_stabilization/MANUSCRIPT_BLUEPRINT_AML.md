@@ -90,11 +90,11 @@ Then:
 =O((1+t-T)^{-\mu}).
 \]
 
-This finite-`L^p` formulation should replace the old uniform-`L^\infty` hypothesis in the main theorem.
+This finite-`L^p` formulation replaces the old uniform-`L^\infty` hypothesis in the main theorem. The theorem retains the natural scope `n>=1`: use Choi 2016 directly for the final local-boundedness step when `n>=2`, and in `n=1` replace Choi's mixed-norm Sobolev lemma by the one-dimensional Gagliardo--Nirenberg estimate before running the same lower-order-free De Giorgi iteration.
 
 ### Result 4 — applications and sharpness
 
-1. **Qin–Zheng 2026:** `F(s)=1-alpha s`, `v_*=1/alpha`, quadratic branch, hence full exponential stabilization of their bounded classical solutions.
+1. **Qin–Zheng 2026:** `F(s)=1-alpha s`, `v_*=1/alpha`, quadratic branch, hence full exponential stabilization of their bounded classical solutions for every `n>=1`.
 2. **Superlinear consumption:** `F(s)=-s^m`, `m>1`, so `q=m+1`; obtain signal rate `t^{-1/(m-1)}` and the corresponding uniform rate threshold.
 3. **Sharp homogeneous profile:** for
 \[
@@ -126,22 +126,24 @@ State the abstract rate dichotomy and the full stabilization theorem on page 1 o
 - prove the mass-weighted coercivity lemma explicitly;
 - derive the signal energy inequality;
 - close `q=2` by a spectral gap;
-- close `q>2` by Bihari;
+- close `q>2` by the differential inequality for `E^{-(q-2)/2}`;
 - record the exact `L^2` algebraic exponent.
 
 ### Pages 3–4 — strong signal and cell stabilization
 
 - eventual finite `L^p` gives the `L^2` weight bound;
-- Duhamel + Neumann heat-semigroup smoothing gives `W^{1,infinity}` signal decay;
+- write the unit-interval Duhamel formula and use Neumann heat-semigroup smoothing for `W^{1,infinity}` signal decay;
 - show the exponent transfer through `1/r=1/p+1/s`;
+- recover the signal `L^infinity` norm from its mean and gradient;
 - test the cell equation by `u-ubar`;
-- use `||u phi'(v) grad v||_2` as the forcing;
-- use Choi's Neumann local boundedness theorem for the final `L^infinity` upgrade.
+- write the exact conormal identity for `q=u-ubar`;
+- use Choi's Neumann local boundedness theorem for the final `L^infinity` upgrade when `n>=2`;
+- retain a compact two-sentence explanation of the `n=1` Gagliardo--Nirenberg/De Giorgi replacement. Do not drop this during compression.
 
 ### Page 5 — applications, sharpness, comparison
 
-- Qin–Zheng in one paragraph;
-- superlinear consumption in one paragraph;
+- Qin–Zheng in one paragraph, including the invariant signal interval and the fact that their uniform boundedness supplies every finite `L^p` hypothesis;
+- superlinear consumption in one paragraph, explicitly inheriting the remaining hypotheses of the full theorem;
 - homogeneous profile in one displayed formula;
 - one short paragraph explaining that direct-consumption stabilization is known and that the contribution is the structural rate-dichotomy framework, not “the first stabilization result”.
 
@@ -169,21 +171,21 @@ Do not use without further evidence:
 
 ## Current literature comparison to preserve
 
-- Qin–Zheng, *Applied Mathematics Letters* 180 (2026), 109995: exact production–consumption signal-dependent-motility model; boundedness theorem.
+- Qin–Zheng, *Applied Mathematics Letters* 180 (2026), 109995: exact production–consumption signal-dependent-motility model; boundedness theorem and `n>=1` scope.
 - Tao–Winkler, *European Journal of Applied Mathematics* 36 (2025), 570–583: same production–consumption reaction with classical Keller–Segel flux; stabilization.
 - D. Li–J. Zhao, *ZAMP* 72 (2021), Art. 57: direct consumption with signal-dependent motility; boundedness and exponential large-time behavior.
 - X. Li–L. Wang–X. Pan, *ZAMP* 72 (2021), Art. 170: direct consumption plus logistic cell source; boundedness and exponential stabilization.
 - G. Li–M. Winkler, *Commun. Math. Sci.* 21 (2023), 299–322: relaxation in a direct-consumption signal-dependent-motility setting.
 - Z. Zhang–Y. Li, *JMAA* 541 (2025), 128711: superlinear consumption with singular density-suppressed motility; global-solution theory.
-- J. Choi, *Bull. Korean Math. Soc.* 53 (2016), 1123–1148: boundary local boundedness estimate used for the cell `L^infinity` upgrade.
+- J. Choi, *Bull. Korean Math. Soc.* 53 (2016), 1123–1148: boundary local boundedness estimate used for the cell `L^infinity` upgrade in `n>=2`; its proof structure is also used for the manuscript's explicit `n=1` adaptation.
 
 Novelty remains **observed/promising, not certified exhaustive**. Run a final forward-citation and same-author search immediately before submission freeze.
 
 ## Current writing state
 
 - Full English draft: `MANUSCRIPT_DRAFT_AML.md`.
+- Submission LaTeX: `research/paper/aml_mass_weighted_stabilization/main.tex`.
 - Main theorem package: mathematically aligned with `STRENGTHENED_RATE_DICHOTOMY.md`.
-- Abstract: upgraded to include the rate dichotomy, finite-`L^p` condition, applications and sharpness.
-- Introduction: should be kept comparison-driven rather than historical.
-- Proof body: should remain self-contained at the energy/coercivity level; cite standard Neumann semigroup smoothing and Choi for the two deep parabolic upgrades.
-- Next editorial task: convert the full draft into a compact LaTeX version matching AML length and house style, then perform theorem-by-theorem line checking and bibliography normalization.
+- Abstract and title: synchronized to the rate-dichotomy version.
+- Proof body: theorem-by-theorem hardening pass completed on 2026-09-11; the `n=1` endpoint and exact conormal boundary mapping are now explicit.
+- Remaining editorial tasks: fresh novelty audit, bibliography/source normalization, actual Elsevier compile/page-count compression, and author/submission metadata.
