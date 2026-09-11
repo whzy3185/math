@@ -18,6 +18,7 @@ import AMLStabilization.IntegratedCoordinateTelescopingCore
 import AMLStabilization.HybridFiberCore
 import AMLStabilization.BoxProductMeasureCore
 import AMLStabilization.PairedProductMeasureCore
+import AMLStabilization.PairedSelectorMeasureCore
 import AMLStabilization.PiCoordinateFubiniCore
 import AMLStabilization.InvariantRangeCore
 import AMLStabilization.MaximumPrincipleContactCore
