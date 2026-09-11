@@ -25,6 +25,7 @@ import AMLStabilization.PiCoordinateFubiniCore
 import AMLStabilization.BoxHybridFiberPoincareCore
 import AMLStabilization.FullBoxPoincareCore
 import AMLStabilization.FullBoxPoincareSqrtCore
+import AMLStabilization.BoxPoincareCellInterfaceCore
 import AMLStabilization.FullBoxCoercivityBridge
 import AMLStabilization.InvariantRangeCore
 import AMLStabilization.MaximumPrincipleContactCore
