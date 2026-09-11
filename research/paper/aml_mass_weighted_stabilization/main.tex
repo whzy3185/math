@@ -25,7 +25,7 @@ We consider
 \[
 u_t=\Delta(\varphi(v)u),\qquad v_t=\Delta v+uF(v)
 \]
-on a smooth bounded domain with no-flux boundary conditions. Positive conserved cell mass yields a coercive mechanism even without a pointwise lower bound for $u$. For every $q\ge2$ an elementary mass-weighted Poincar\'e estimate converts $\int u|v-v_*|^q$ into control of the signal energy. Consequently, quadratic dissipativity gives exponential decay, whereas $(s-v_*)F(s)\le-\beta|s-v_*|^{2+\theta}$ yields the algebraic signal rate $t^{-1/\theta}$. If $u$ is eventually bounded in one finite $L^p$ space with $p>\max\{n,2\}$, the decay propagates to $L^\infty\times W^{1,\infty}$. In the degenerate case every
+on a smooth bounded domain with no-flux boundary conditions. Positive conserved cell mass together with a uniform $L^2$ control of the cell density yields a coercive mechanism even without a pointwise lower bound for $u$. For every $q\ge2$ an elementary mass-weighted Poincar\'e estimate converts $\int u|v-v_*|^q$ into control of the signal energy. Consequently, quadratic dissipativity gives exponential decay, whereas $(s-v_*)F(s)\le-\beta|s-v_*|^{2+\theta}$ yields the algebraic signal rate $t^{-1/\theta}$. If $u$ is eventually bounded in one finite $L^p$ space with $p>\max\{n,2\}$, the decay propagates to $L^\infty\times W^{1,\infty}$. In the degenerate case every
 \[
 0<\mu<\frac1\theta\min\left\{1,\frac{2(p-n)}{pn}\right\}
 \]
@@ -48,7 +48,7 @@ subject to
 \end{equation}
 Set $m:=\int_\Om u_0>0$ and $\ubar:=m/|\Om|$. Then $m$ is conserved.
 
-A recent motivation is the production--consumption law $F(s)=1-\alpha s$ studied by Qin and Zheng \cite{QinZheng2026}, who establish global boundedness under a structural motility condition; for the same reaction with a classical chemotactic flux, Tao and Winkler proved stabilization \cite{TaoWinkler2025}. For direct consumption $F(s)=-s$, however, signal-dependent-motility systems already possess a substantial large-time theory: Li and Zhao proved boundedness and exponential convergence under their hypotheses \cite{LiZhao2021}; Li and Winkler established relaxation for very weak solutions \cite{LiWinkler2023}; Lauren\c{c}ot obtained spatial homogenization in arbitrary dimension \cite{Laurencot2023}; and refined regularity and smooth stabilization were developed by Li and Winkler \cite{LiWinkler2024}. Related stabilization with a logistic cell source appears in \cite{LiWangPan2021}. Superlinear consumption $F(s)=-s^m$ has also been studied from the viewpoint of global solution theory \cite{ZhangLi2025}.
+A recent motivation is the production--consumption law $F(s)=1-\alpha s$ studied by Qin and Zheng \cite{QinZheng2026}, who establish global boundedness under a structural motility condition; for the same reaction with a classical chemotactic flux, Tao and Winkler proved stabilization \cite{TaoWinkler2025}. For direct consumption $F(s)=-s$, however, signal-dependent-motility systems already possess a substantial large-time theory: Li and Zhao proved boundedness and exponential convergence under their hypotheses \cite{LiZhao2021}; Li and Winkler established relaxation for very weak solutions \cite{LiWinkler2023}; Lauren\c{c}ot obtained spatial homogenization in arbitrary dimension \cite{Laurencot2023}; and refined regularity and smooth stabilization were developed by Li and Winkler \cite{LiWinkler2024}. Related stabilization with a logistic cell source appears in \cite{LiWangPan2021}. Superlinear-consumption kinetics have also appeared in global-solution studies with singular motility \cite{ZhangLi2025}; that singular regime is outside Theorem~\ref{thm:full} when the limiting signal is zero. Quantitative convergence rates for classical chemotactic-flux consumption systems were obtained earlier in \cite{ZhangLi2015}; the present mechanism instead concerns the signal-dependent-motility structure and general weighted kinetics.
 
 Thus neither signal-dependent motility nor stabilization for $F(s)=-s$ is new here. The contribution is a common \emph{rate mechanism}: positive mass closes the signal energy for a general dissipative $F$, including nonzero equilibria and superquadratic degeneracy; the damping order determines an exponential/algebraic dichotomy; and only an eventual finite-$L^p$ bound on $u$ is needed to transfer this decay to strong norms. No sign condition on $\varphi'$ is used in this conditional stabilization stage.
 
@@ -67,13 +67,14 @@ A=C_P^2\left(1+\frac{2|\Om|K^2}{m^2}\right),\qquad B_q=2|\Om|m^{-2/q}.
 The estimate is elementary; its role is to recover unweighted coercivity from positive mass without pointwise positivity of $\rho$.
 
 \begin{theorem}[Weighted-damping dichotomy]\label{thm:weighted}
-Let $z$ solve $z_t=\Delta z+\rho(x,t)F(z)$, $\partial_\nu z=0$, on $[T,\infty)$ and remain in a compact interval $I$. Assume $\rho\ge0$, $\int_\Om\rho(\cdot,t)=m>0$, $\sup_{t\ge T}\norm{\rho(t)}_2\le K$, and for some $z_*\in I$, $\beta>0$ and $q\ge2$,
+Let $z$ be a sufficiently regular solution (for instance, a classical solution) of $z_t=\Delta z+\rho(x,t)F(z)$, $\partial_\nu z=0$, on $[T,\infty)$ and remain in a compact interval $I$. Assume $\rho\ge0$, $\int_\Om\rho(\cdot,t)=m>0$, $\sup_{t\ge T}\norm{\rho(t)}_2\le K$, and for some $z_*\in I$, $\beta>0$ and $q\ge2$,
 \begin{equation}\label{dissq}
 F(z_*)=0,\qquad (s-z_*)F(s)\le-\beta|s-z_*|^q \quad (s\in I).
 \end{equation}
 If $q=2$, then $\norm{z(t)-z_*}_2\le Ce^{-\lambda(t-T)}$. If $q>2$, then
 \begin{equation}\label{rateweighted}
 \norm{z(t)-z_*}_2\le C(1+t-T)^{-1/(q-2)}.
+\end{equation}
 \end{theorem}
 
 \begin{theorem}[Full stabilization from finite $L^p$ control]\label{thm:full}
@@ -116,10 +117,10 @@ Let $J$ be a time interval and let $y$ be a weak energy solution on $\Om\times J
 \]
 of
 \[
- y_t-\nabla\cdot(a\nabla y)=\nabla\cdot H,
+ y_t-\nabla\!\cdot(a\nabla y)=\nabla\!\cdot H,
  \qquad (a\nabla y+H)\cdot\nu=0,
 \]
-in the weak sense. Assume $a$ is measurable with $0<a_*\le a\le a^*$ and $H\in L^{p,Q}_{\rm loc}(\Om\times J)). If $p>\max\{n,2\}$, $Q>2$ and $n/p+2/Q<1$, then there is $r_0\in(0,1]$, depending only on $\Om,a_*,a^*,p,Q$, such that for all admissible backward cylinders compactly contained in the time interval $J$,
+in the weak sense. Assume $a$ is measurable with $0<a_*\le a\le a^*$ and $H\in L^{p,Q}_{\rm loc}(\Om\times J)$. If $p>\max\{n,2\}$, $Q>2$ and $n/p+2/Q<1$, then there is $r_0\in(0,1]$, depending only on $\Om,a_*,a^*,p,Q$, such that for all admissible backward cylinders compactly contained in the time interval $J$,
 \begin{equation}\label{localup}
 \norm y_{L^\infty(\mathcal Q_{r_0/2})}
 \le C\norm y_{L^2(\mathcal Q_{r_0})}
@@ -148,23 +149,36 @@ whereas Lemma~\ref{lem:coerc} yields $E\le AG+B_qD^{2/q}$. For $q=2$ this gives 
 \begin{proof}[Proof of Lemma~\ref{lem:local}]
 For $n\ge2$, this is Theorem~1.1 of Choi \cite{Choi2016}. In his notation take $A_{ij}=a\delta_{ij}$, all lower-order coefficients and the scalar source equal to zero, and the forcing vector $F=H$. A smooth bounded domain is a Sobolev extension domain. Set $p_1=p$ and $q_1=Q$. Since all lower-order coefficients and the scalar source vanish, the auxiliary exponents $p_0,q_0,p_2,q_2$ in Choi's hypotheses may be chosen arbitrarily large; hence $p_{\min}=p$ and $q_{\min}=Q$, and his condition is exactly $n/p+2/Q<1$. Since the lower-order norm $D$ there is zero, the admissible radius and constant are independent of the terminal time. Powers of the fixed radius are absorbed into $C$ in \eqref{localup}.
 
-It remains to justify $n=1$, because Choi states his theorem for $d\ge2$. Here $p>2$, consistently with the exponent range used for the forcing term in the De Giorgi iteration. On a bounded interval the mixed-norm embedding used as Lemma~2.3 in \cite{Choi2016} has the following one-dimensional counterpart. Choose exponents away from the unnecessary endpoint: if $2<P<\infty$ and $4<Q<\infty$ satisfy
+It remains to justify $n=1$, because Choi states his theorem for $d\ge2$. Here $p>2$. Since $1/p+2/Q<1$, choose auxiliary exponents $\widehat p\in(2,p)$ and $\widehat Q\in(2,Q)$ such that
 \[
-\frac1P+\frac2Q=\frac12,
+\delta:=1-\frac1{\widehat p}-\frac2{\widehat Q}>0.
 \]
-then every space--time cutoff $h$ satisfies
+On a bounded interval, replace Choi's mixed-norm Lemma~2.3 by the one-dimensional Gagliardo--Nirenberg estimate. If $2<P<\infty$ and $4<R<\infty$ satisfy $1/P+2/R=1/2$, then
 \begin{equation}\label{1dembed}
-\norm h_{L_t^Q L_x^P}
+\norm h_{L_t^R L_x^P}
 \le C\left(\sup_\tau\norm{h(\tau)}_2+\norm{\partial_xh}_{L^2_{x,t}}\right).
 \end{equation}
-Indeed, the one-dimensional Gagliardo--Nirenberg inequality gives
-$\norm{h(\tau)}_P\le C\norm{h_x(\tau)}_2^{2/Q}\norm{h(\tau)}_2^{1-2/Q}+C\norm{h(\tau)}_2$; raising to $Q$ and integrating proves \eqref{1dembed}. In the boundedness proof of Choi's Theorem~1.1 (Section~2.2), the restriction $d\ge2$ enters through that mixed-norm lemma; replacing it by \eqref{1dembed}, while using the automatic interval measure bound $|\Om\cap B_r(x_0)|\ge cr$, leaves the Caccioppoli estimate and De Giorgi iteration unchanged. Hence \eqref{localup} follows also for $n=1$.
+Indeed, $\norm{h(\tau)}_P\le C\norm{h_x(\tau)}_2^{2/R}\norm{h(\tau)}_2^{1-2/R}+C\norm{h(\tau)}_2$, and integration gives \eqref{1dembed}. To see that the iteration itself closes, let $v_j=(y-k_j)_+$ and $E_j(\tau)=\{v_j(\cdot,\tau)>0\}$. Put $\alpha_*:=((\widehat p-2)\widehat Q)/(\widehat p(\widehat Q-2))$. After Cauchy and H\"older, the forcing term in the Caccioppoli inequality satisfies
+\[
+\begin{aligned}
+\iint |H|\eta_j^2|\partial_xv_j|
+&\le\varepsilon\iint\eta_j^2|\partial_xv_j|^2\\
+&\quad+C_\varepsilon\norm H_{L^{p,Q}}^2
+\left(\int |E_j(\tau)|^{\alpha_*}d\tau\right)^{(\widehat Q-2)/\widehat Q}.
+\end{aligned}
+\]
+The cutoff part is estimated in the same way. Combining this with \eqref{1dembed} gives for the standard De Giorgi quantity $Y_j$ the recurrence
+\[
+Y_{j+1}\le Cb^jY_j^{1+\frac{2\delta}{1+2\delta}},
+\qquad b>1.
+\]
+The exponent is strictly larger than one because $\delta>0$; hence the usual nonlinear iteration yields \eqref{localup}. The boundary measure bound $|\Om\cap B_r(x_0)|\ge cr$ is automatic on an interval. Thus the one-dimensional case is closed without invoking the $d\ge2$ form of Choi's theorem.
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:full}]
-Since $p>2$, the assumed $L^p$ bound gives a uniform $L^2$ bound for $u$, so Theorem~\ref{thm:weighted} yields the stated $L^2$ signal rates. Put $w=v-v_*$. Since $F(v_*)=0$ and $F\in C^1(I)$, $|F(V)|\le L_F|w|$. Choose $n<r<p$ and $s$ by $1/r=1/p+1/s$. Interpolation with the bounded signal range (and finite-measure embedding when $s<2$) gives, in the degenerate case,
+Since $p>2$, the assumed $L^p$ bound gives a uniform $L^2$ bound for $u$, so Theorem~\ref{thm:weighted} yields the stated $L^2$ signal rates. Put $w=v-v_*$. Since $F(v_*)=0$ and $F\in C^1(I)$, $|F(v)|\le L_F|w|$. Choose $n<r<p$ and $s$ by $1/r=1/p+1/s$. Interpolation with the bounded signal range (and finite-measure embedding when $s<2$) gives, in the degenerate case,
 \begin{equation}\label{wrate}
-\norm{w(t)}_s=O((1+t-T)^{-\sigma(r)/\theta}),\qquad
+\norm{w(t)}_s=O((1+t-T)^{-\sigma(r)/\theta}),\quad
 \sigma(r):=\min\left\{1,\frac{2(p-r)}{pr}\right\}.
 \end{equation}
 Hence $\norm{uF(v)}_r$ has the same rate. For $t\ge T+1$,
@@ -218,15 +232,15 @@ and uniform boundedness supplies the finite-$L^p$ hypothesis. Their structural a
 \end{corollary}
 
 \begin{corollary}[Superlinear consumption]\label{cor:super}
-Under the remaining hypotheses of Theorem~\ref{thm:full}, suppose $I\subset[0,\infty)$ and $F(s)=-s^m$, $m>1$. Then $v_*=0$ and \eqref{deg} holds with $\theta=m-1$. Therefore
+Under the remaining hypotheses of Theorem~\ref{thm:full}, suppose $I\subset[0,\infty)$ and $F(s)=-s^\gamma$, $\gamma>1$. Then $v_*=0$ and \eqref{deg} holds with $\theta=\gamma-1$. Therefore
 \[
-\norm{v(t)}_2=O((1+t-T)^{-1/(m-1)}),
+\norm{v(t)}_2=O((1+t-T)^{-1/(\gamma-1)}),
 \]
 and \eqref{full-alg} holds for every
 \[
-0<\mu<\frac1{m-1}\min\left\{1,\frac{2(p-n)}{pn}\right\}.
+0<\mu<\frac1{\gamma-1}\min\left\{1,\frac{2(p-n)}{pn}\right\}.
 \]
-This complements global-solution results for superlinear consumption such as \cite{ZhangLi2025} by identifying the conditional decay scale once an eventual finite-$L^p$ bound is available.
+This concerns the same superlinear-consumption kinetics as \cite{ZhangLi2025}, but under the regular-motility assumptions of Theorem~\ref{thm:full}; it does not cover the singular motility regime treated in \cite{ZhangLi2025}.
 \end{corollary}
 
 \begin{proposition}[Sharp signal exponent]\label{prop:sharp}
@@ -238,7 +252,7 @@ Hence the \emph{signal} exponent $1/\theta$ cannot in general be improved; no sh
 \end{proposition}
 
 \section{Conclusion}
-Positive conserved mass converts weighted signal dissipation into a closed energy inequality without pointwise positivity of the cell density. The resulting mechanism extends beyond the pure-consumption setting by allowing general dissipative kinetics, nonzero equilibria and degenerate damping, while the finite-$L^p$ hypothesis separates the asymptotic argument from the problem of obtaining global bounded solutions.
+Positive conserved mass together with finite $L^2$ control converts weighted signal dissipation into a closed energy inequality without pointwise positivity of the cell density. The resulting mechanism extends beyond the pure-consumption setting by allowing general dissipative kinetics, nonzero equilibria and degenerate damping, while the finite-$L^p$ hypothesis separates the asymptotic argument from the problem of obtaining global bounded solutions.
 
 \bibliographystyle{elsarticle-num}
 \bibliography{references}
