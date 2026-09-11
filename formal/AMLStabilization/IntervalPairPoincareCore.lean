@@ -25,25 +25,25 @@ theorem intervalPairDifferenceL2
     dsimp only [μ]
     exact hf_cont.aestronglyMeasurable_of_isCompact isCompact_Icc measurableSet_Icc
   have hsqcont : ContinuousOn (fun x => f x ^ 2) (Icc a b) := by
-    simpa only [Pi.pow_apply] using hf_cont.pow 2
+    simpa [pow_two] using hf_cont.mul hf_cont
   have hf2int : Integrable (fun x => f x ^ 2) μ := by
     dsimp only [μ]
-    exact hsqcont.integrableOn_isCompact isCompact_Icc
+    exact (hsqcont.locallyIntegrableOn measurableSet_Icc).integrableOn_isCompact isCompact_Icc
   have hfLp : MemLp f 2 μ :=
     (memLp_two_iff_integrable_sq hfmeas).2 hf2int
   have hvol : (∫ _ : ℝ, (1 : ℝ) ∂μ) = b - a := by
     dsimp only [μ]
-    rw [MeasureTheory.integral_const, Measure.restrict_apply_univ, smul_eq_mul]
-    · rw [Real.volume_real_Icc_of_le hab.le]
-      ring
-    · exact measurableSet_Icc
+    rw [MeasureTheory.integral_const]
+    simp only [MeasurableSet.univ, measureReal_restrict_apply, Set.univ_inter,
+      smul_eq_mul, mul_one]
+    exact Real.volume_real_Icc_of_le hab.le
   have hsetIntegral : (∫ x, f x ∂μ) = ∫ x in a..b, f x := by
     dsimp only [μ]
     change (∫ x in Icc a b, f x) = ∫ x in a..b, f x
     rw [MeasureTheory.integral_Icc_eq_integral_Ioc,
       ← intervalIntegral.integral_of_le hab.le]
   have hmean : (∫ x, f x ∂μ) = (b - a) * fbar := by
-    have hne : b - a ≠ 0 := sub_ne_zero.mpr hab.ne
+    have hne : b - a ≠ 0 := sub_ne_zero.mpr hab.ne'
     have hinv : (b - a) * (1 / (b - a)) = 1 := by
       field_simp [hne]
     rw [hsetIntegral]
