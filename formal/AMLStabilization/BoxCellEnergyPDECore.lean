@@ -66,10 +66,10 @@ theorem boxCellEnergy_exact_identity_from_local_derivatives
     (hgradUcont : ∀ i, ContinuousOn (fun x => gradU x i) (Icc a b))
     (hgradCcont : ∀ i, ContinuousOn (fun x => gradC x i) (Icc a b))
     (hudiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
       HasFDerivAt u (du x) x)
     (hgradProdDiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
       ∀ i, HasFDerivAt
         (fun y => cellProductGradient c u gradC gradU y i)
         (dgradProd x i) x)
@@ -104,7 +104,7 @@ theorem boxCellEnergy_exact_identity_from_local_derivatives
     dsimp [gradProd, cellProductGradient]
     exact (hccont.mul (hgradUcont i)).add (hucont.mul (hgradCcont i))
   have hqdiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
       HasFDerivAt q (du x) x := by
     intro x hx
     dsimp [q]
@@ -189,10 +189,10 @@ theorem boxCellEnergy_raw_dissipation_from_PDE
     (hgradUcont : ∀ i, ContinuousOn (fun x => gradU x i) (Icc a b))
     (hgradCcont : ∀ i, ContinuousOn (fun x => gradC x i) (Icc a b))
     (hudiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
       HasFDerivAt u (du x) x)
     (hgradProdDiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
       ∀ i, HasFDerivAt
         (fun y => cellProductGradient c u gradC gradU y i)
         (dgradProd x i) x)
