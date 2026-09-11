@@ -83,6 +83,7 @@ import AMLStabilization.CellEnergyCore
 import AMLStabilization.LpProductCore
 import AMLStabilization.PolynomialForcedEnergyDecay
 import AMLStabilization.CellEnergyAssembly
+import AMLStabilization.CellEnergyInterfaceAssemblyCore
 import AMLStabilization.LocalPolynomialEnergyDecay
 import AMLStabilization.GeneralWeightedDampingNonnegativeFinal
 import AMLStabilization.RateRootCore
