@@ -32,7 +32,7 @@ hence an effective Poincare constant
 C_P=\sqrt N\,C.
 \]
 
-`FullBoxCoercivityBridge.lean` feeds this directly into the mass-weighted coercivity theorem, so no external box-level Poincare or variance-decomposition hypothesis is needed.
+`FullBoxCoercivityBridge.lean` feeds this directly into the mass-weighted coercivity theorem, so no external box-level Poincare or variance-decomposition hypothesis is needed. `BoxPoincareCellInterfaceCore.lean` supplies the same geometry directly in the scalar form used by the cell-energy ODE assembly.
 
 ## 2. Abstract weighted-damping rate dichotomy
 
@@ -159,14 +159,14 @@ Evidence state: **Observed/promising novelty, not certified exhaustive novelty.*
 ## 8. Lean verification status
 
 The current formal tree is verified at commit
-`29edbb1d97ecc9b0409b8b13bbfc51c3b18eea84`, GitHub Actions run
-`34564427878` (run 254). The proof-hygiene gate passed and the complete root build finished with
+`8af07749fe733276054660a732bceaed8a86da4c`, GitHub Actions run
+`34586143612` (run 290). The proof-hygiene gate passed and the complete root build finished with
 
 ```text
-Build completed successfully (8786 jobs).
+Build completed successfully (8800 jobs).
 ```
 
-The root `formal/AMLStabilization.lean` imports **79 AMLStabilization modules**.
+The root `formal/AMLStabilization.lean` imports **92 AMLStabilization modules**.
 
 The current kernel-checked strengthening includes:
 
@@ -176,24 +176,36 @@ The current kernel-checked strengthening includes:
 - the `q=theta+2` degenerate endpoint with energy exponent `2/theta` and signal exponent `1/theta`;
 - compact-positive-factor derivation of degenerate dissipativity for arbitrary real `theta>0`;
 - exact eventual finite-`Lp` rate optimization and mixed time exponent `Q=4p/(p-n)`;
-- forced cell-energy decay, energy-to-norm conversion, and full-rate assembly conditional on named deep parabolic inputs;
 - direct superlinear-consumption signal specialization and signed sharpness;
 - dominated differentiation of spatial energies;
-- rectangular-box divergence theorem applications giving zero-flux mass conservation and Green's first identity;
+- rectangular-box divergence theorem applications giving zero-flux mass conservation, Green's first identity, and cross Green identities;
 - pointwise-PDE-to-integrated-pairing and time-dependent box signal-energy endpoints;
-- **a genuine multi-dimensional rectangular-box Poincare theorem derived from one-dimensional FTC, independent-copy variance, finite-coordinate telescoping, and product-measure Fubini**;
-- its square-root form with `Cp = sqrt(N) C`;
-- **a direct rectangular-box mass-weighted coercivity bridge with no external geometric Poincare or variance-decomposition hypothesis**;
-- **a global rectangular-box Neumann maximum principle/invariant-range theorem**, including contacts on faces, edges, and corners.
+- a genuine multi-dimensional rectangular-box Poincare theorem derived from one-dimensional FTC, independent-copy variance, finite-coordinate telescoping, and product-measure Fubini;
+- its square-root and cell-energy forms with `Cp = sqrt(N) C`;
+- a direct rectangular-box mass-weighted coercivity bridge with no external geometric Poincare or variance-decomposition hypothesis;
+- a global rectangular-box Neumann maximum principle/invariant-range theorem, including contacts on faces, edges, and corners;
+- **the concrete rectangular-box motility cell-energy identity for `u_t = Delta(phi(v)u)`**, including dominated time differentiation, cross integration by parts, `grad(phi(v)) = phi'(v) grad v`, Neumann inheritance, integrated finite-gradient Cauchy-Schwarz, drift `MemLp`, and the forcing estimate
 
-The maximum-principle chain is no longer only local. `GlobalBoxContactSelectionCore.lean` selects the compact-cylinder epsilon-tilted contact; `NeumannEndpointSecondDerivativeCore.lean` proves the second-derivative sign at one-dimensional Neumann endpoints by a derivative-sign/mean-value argument; `BoxNeumannMaximumContactCore.lean` lifts this coordinatewise to arbitrary box extrema; and `GlobalBoxNeumannMaximumPrincipleCore.lean` proves upper/lower and two-sided invariant bounds.
+```text
+||u phi'(v) grad v||_2 <= U L_phi ||grad v||_2;
+```
+
+- `BoxMotilityCellScalarInterfaceCore.lean`, which packages the concrete box quantities `Q,dQ,g,H,Cp` and automatically supplies the derivative, nonnegativity, Poincare, and raw energy fields expected by the ODE layer;
+- `CellEnergyInterfaceAssemblyCore.lean` and `BoxMotilityCellDecayCore.lean`, which drive exponential/polynomial cell decay directly from the pointwise PDE package and the signal-gradient rate;
+- `BoxMotilityFullStabilizationCore.lean`, which connects those concrete box objects to the final rate assembly.
+
+Consequently, at the **rectangular-box** level, the final exponential/polynomial stabilization-rate assembly no longer asks for abstract cell-energy hypotheses such as `hQderiv`, `hPoincare`, or `henergy`. The intentionally retained deep analytic interfaces are now concentrated in:
+
+1. the strong signal rate produced by the Neumann semigroup/mixed-norm regularity argument;
+2. the comparison from that strong signal norm to the box signal `L^2` gradient used in the cell forcing;
+3. the Choi-type local/parabolic upgrade from cell `L^2` energy and forcing to cell `L^infinity`.
 
 A literal first-principles Lean formalization of the manuscript theorem on an arbitrary smooth bounded Neumann domain is still not claimed. The remaining deep infrastructure is concentrated in:
 
-1. extending the verified box Poincare/divergence/Green/Neumann-maximum-principle machinery to arbitrary smooth Neumann domains and traces;
+1. extending the verified box Poincare/divergence/Green/Neumann-maximum-principle/cell-energy machinery to arbitrary smooth Neumann domains and traces;
 2. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
 3. Choi's mixed-norm conormal/local boundedness theorem;
-4. the concrete function-space derivation of the cell-density PDE energy identity;
+4. the exact strong-norm-to-`L^2`-gradient comparison in the manuscript's function-space formulation;
 5. PDE uniqueness/invariance for the full spatially homogeneous sharpness reduction.
 
-The correct formal claim is therefore stronger and more precise than before: the novel arbitrary-order weighted-damping/coercivity/rate machinery and final stabilization-rate assembly are kernel-checked conditional on named deep parabolic inputs; in addition, on rectangular boxes the conservative mass/Green identities, geometric Poincare inequality, its mass-weighted coercivity consequence, and the global Neumann invariant-range theorem are all fully derived in Lean. The arbitrary-smooth-domain geometric/parabolic infrastructure remains the genuine boundary.
+The correct formal claim is therefore substantially stronger than the old run-254 state: the novel arbitrary-order weighted-damping/coercivity/rate machinery is kernel-checked, and on rectangular boxes the conservative mass/Green identities, geometric Poincare inequality, mass-weighted coercivity, global Neumann invariant range, concrete signal-dependent-motility cell-energy PDE identity, forcing estimate, cell decay, and final stabilization-rate assembly are all formally connected. The arbitrary-smooth-domain geometry and the genuinely deep strong-signal/Choi parabolic estimates remain the boundary.
