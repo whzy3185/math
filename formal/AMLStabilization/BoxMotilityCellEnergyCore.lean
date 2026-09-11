@@ -92,11 +92,11 @@ theorem boxMotilityCellEnergy_raw_dissipation_from_PDE
   have hgradCFront : ∀ i (x : Fin n → ℝ), gradC (i.insertNth (b i) x) i = 0 := by
     dsimp [gradC]
     exact motilityCoordinateGradient_front_zero
-      (phiPrime := phiPrimeSpace) (gradV := gradV) hgradVFront
+      (a := a) (b := b) (phiPrime := phiPrimeSpace) (gradV := gradV) hgradVFront
   have hgradCBack : ∀ i (x : Fin n → ℝ), gradC (i.insertNth (a i) x) i = 0 := by
     dsimp [gradC]
     exact motilityCoordinateGradient_back_zero
-      (phiPrime := phiPrimeSpace) (gradV := gradV) hgradVBack
+      (a := a) (b := b) (phiPrime := phiPrimeSpace) (gradV := gradV) hgradVBack
   have hGradUSqCont : ContinuousOn
       (fun x => ∑ i : Fin (n + 1), (gradU x i) ^ 2) (Icc a b) := by
     exact continuousOn_finsetSum Finset.univ fun i hi => (hgradUcont i).pow 2
