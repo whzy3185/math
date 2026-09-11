@@ -33,22 +33,14 @@ theorem map_pi_prod_select
     · simp [sel, hi, Measure.map_fst_prod]
   have hmap := Measure.pi_map_pi
     (μ := fun i => (μ i).prod (μ i)) (f := sel) hsel_meas
-  have hmap' :
-      (Measure.pi (fun i => (μ i).prod (μ i))).map
-          (fun z i => sel i (z i)) =
-        Measure.pi (fun i => (μ i Set.univ) • μ i) := by
-    simpa only [hcoord] using hmap
-  letI : ∀ i, IsFiniteMeasure ((μ i Set.univ) • μ i) := fun i =>
-    { measure_univ_lt_top := by
-        simpa only [Measure.smul_apply, smul_eq_mul] using
-          ENNReal.mul_lt_top (measure_lt_top (μ i) Set.univ)
-            (measure_lt_top (μ i) Set.univ) }
   have hscaled :
-      Measure.pi (fun i => (μ i Set.univ) • μ i) =
+      Measure.pi (fun i => ((μ i).prod (μ i)).map (sel i)) =
         (∏ i, μ i Set.univ) • Measure.pi μ := by
     apply Measure.pi_eq
     intro s hs
-    simp [Measure.pi_pi, Measure.smul_apply, Finset.prod_mul_distrib]
-  simpa [sel] using hmap'.trans hscaled
+    simp [hcoord, Measure.pi_pi, Measure.smul_apply, hs,
+      Finset.prod_mul_distrib]
+  have hmain := hmap.trans hscaled
+  simpa [sel] using hmain
 
 end AMLStabilization
