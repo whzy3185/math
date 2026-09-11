@@ -52,6 +52,7 @@ import AMLStabilization.BoxNeumannFluxCore
 import AMLStabilization.ProductRuleGreenCore
 import AMLStabilization.CanonicalBoxGreenCore
 import AMLStabilization.CrossBoxGreenCore
+import AMLStabilization.FiniteGradientCauchyCore
 import AMLStabilization.GeneralPolynomialEnergyDecay
 import AMLStabilization.NonlinearCoercivityAlgebra
 import AMLStabilization.WeightedHolderQ
