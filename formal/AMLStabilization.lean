@@ -54,6 +54,7 @@ import AMLStabilization.CanonicalBoxGreenCore
 import AMLStabilization.CrossBoxGreenCore
 import AMLStabilization.FiniteGradientCauchyCore
 import AMLStabilization.BoxCellEnergyPDECore
+import AMLStabilization.TimeDependentBoxCellEnergyCore
 import AMLStabilization.GeneralPolynomialEnergyDecay
 import AMLStabilization.NonlinearCoercivityAlgebra
 import AMLStabilization.WeightedHolderQ
