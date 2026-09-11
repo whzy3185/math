@@ -74,7 +74,6 @@ F(z_*)=0,\qquad (s-z_*)F(s)\le-\beta|s-z_*|^q \quad (s\in I).
 If $q=2$, then $\norm{z(t)-z_*}_2\le Ce^{-\lambda(t-T)}$. If $q>2$, then
 \begin{equation}\label{rateweighted}
 \norm{z(t)-z_*}_2\le C(1+t-T)^{-1/(q-2)}.
-\end{equation}
 \end{theorem}
 
 \begin{theorem}[Full stabilization from finite $L^p$ control]\label{thm:full}
@@ -117,10 +116,10 @@ Let $J$ be a time interval and let $y$ be a weak energy solution on $\Om\times J
 \]
 of
 \[
- y_t-\nabla\!\cdot(a\nabla y)=\nabla\!\cdot H,
+ y_t-\nabla\cdot(a\nabla y)=\nabla\cdot H,
  \qquad (a\nabla y+H)\cdot\nu=0,
 \]
-in the weak sense. Assume $a$ is measurable with $0<a_*\le a\le a^*$ and $H\in L^{p,Q}_{\rm loc}(\Om\times J)$. If $p>n$, $Q>2$ and $n/p+2/Q<1$, then there is $r_0\in(0,1]$, depending only on $\Om,a_*,a^*,p,Q$, such that for all admissible backward cylinders compactly contained in the time interval $J$,
+in the weak sense. Assume $a$ is measurable with $0<a_*\le a\le a^*$ and $H\in L^{p,Q}_{\rm loc}(\Om\times J)). If $p>\max\{n,2\}$, $Q>2$ and $n/p+2/Q<1$, then there is $r_0\in(0,1]$, depending only on $\Om,a_*,a^*,p,Q$, such that for all admissible backward cylinders compactly contained in the time interval $J$,
 \begin{equation}\label{localup}
 \norm y_{L^\infty(\mathcal Q_{r_0/2})}
 \le C\norm y_{L^2(\mathcal Q_{r_0})}
@@ -149,7 +148,7 @@ whereas Lemma~\ref{lem:coerc} yields $E\le AG+B_qD^{2/q}$. For $q=2$ this gives 
 \begin{proof}[Proof of Lemma~\ref{lem:local}]
 For $n\ge2$, this is Theorem~1.1 of Choi \cite{Choi2016}. In his notation take $A_{ij}=a\delta_{ij}$, all lower-order coefficients and the scalar source equal to zero, and the forcing vector $F=H$. A smooth bounded domain is a Sobolev extension domain. Set $p_1=p$ and $q_1=Q$. Since all lower-order coefficients and the scalar source vanish, the auxiliary exponents $p_0,q_0,p_2,q_2$ in Choi's hypotheses may be chosen arbitrarily large; hence $p_{\min}=p$ and $q_{\min}=Q$, and his condition is exactly $n/p+2/Q<1$. Since the lower-order norm $D$ there is zero, the admissible radius and constant are independent of the terminal time. Powers of the fixed radius are absorbed into $C$ in \eqref{localup}.
 
-It remains to justify $n=1$, because Choi states his theorem for $d\ge2$. On a bounded interval the mixed-norm embedding used as Lemma~2.3 in \cite{Choi2016} has the following one-dimensional counterpart. Choose exponents away from the unnecessary endpoint: if $2<P<\infty$ and $4<Q<\infty$ satisfy
+It remains to justify $n=1$, because Choi states his theorem for $d\ge2$. Here $p>2$, consistently with the exponent range used for the forcing term in the De Giorgi iteration. On a bounded interval the mixed-norm embedding used as Lemma~2.3 in \cite{Choi2016} has the following one-dimensional counterpart. Choose exponents away from the unnecessary endpoint: if $2<P<\infty$ and $4<Q<\infty$ satisfy
 \[
 \frac1P+\frac2Q=\frac12,
 \]
@@ -163,9 +162,9 @@ $\norm{h(\tau)}_P\le C\norm{h_x(\tau)}_2^{2/Q}\norm{h(\tau)}_2^{1-2/Q}+C\norm{h(
 \end{proof}
 
 \begin{proof}[Proof of Theorem~\ref{thm:full}]
-Since $p>2$, the assumed $L^p$ bound gives a uniform $L^2$ bound for $u$, so Theorem~\ref{thm:weighted} yields the stated $L^2$ signal rates. Put $w=v-v_*$. Since $F(v_*)=0$ and $F\in C^1(I)$, $|F(v)|\le L_F|w|$. Choose $n<r<p$ and $s$ by $1/r=1/p+1/s$. Interpolation with the bounded signal range (and finite-measure embedding when $s<2$) gives, in the degenerate case,
+Since $p>2$, the assumed $L^p$ bound gives a uniform $L^2$ bound for $u$, so Theorem~\ref{thm:weighted} yields the stated $L^2$ signal rates. Put $w=v-v_*$. Since $F(v_*)=0$ and $F\in C^1(I)$, $|F(V)|\le L_F|w|$. Choose $n<r<p$ and $s$ by $1/r=1/p+1/s$. Interpolation with the bounded signal range (and finite-measure embedding when $s<2$) gives, in the degenerate case,
 \begin{equation}\label{wrate}
-\norm{w(t)}_s=O((1+t-T)^{-\sigma(r)/\theta}),\quad
+\norm{w(t)}_s=O((1+t-T)^{-\sigma(r)/\theta}),\qquad
 \sigma(r):=\min\left\{1,\frac{2(p-r)}{pr}\right\}.
 \end{equation}
 Hence $\norm{uF(v)}_r$ has the same rate. For $t\ge T+1$,
