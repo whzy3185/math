@@ -38,10 +38,12 @@ theorem map_pi_prod_select
           (fun z i => sel i (z i)) =
         Measure.pi (fun i => (μ i Set.univ) • μ i) := by
     simpa only [hcoord] using hmap
-  rw [show (fun z i => if pickSecond i then (z i).2 else (z i).1) =
-      (fun z i => sel i (z i)) by funext z i; rfl, hmap']
-  apply Measure.pi_eq
-  intro s hs
-  simp [Measure.smul_apply, hs, Measure.pi_pi, Finset.prod_mul_distrib]
+  have hscaled :
+      Measure.pi (fun i => (μ i Set.univ) • μ i) =
+        (∏ i, μ i Set.univ) • Measure.pi μ := by
+    apply Measure.pi_eq
+    intro s hs
+    simp [Measure.pi_pi, Measure.smul_apply, hs, Finset.prod_mul_distrib]
+  simpa [sel] using hmap'.trans hscaled
 
 end AMLStabilization
