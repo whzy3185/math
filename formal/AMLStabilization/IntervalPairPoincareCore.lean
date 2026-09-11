@@ -25,8 +25,11 @@ theorem intervalPairDifferenceL2
     dsimp only [μ]
     exact hf_cont.aestronglyMeasurable_of_isCompact isCompact_Icc measurableSet_Icc
   have hsqcont : ContinuousOn (fun x => f x ^ 2) (Icc a b) := by
-    have hmul : ContinuousOn (f * f) (Icc a b) := hf_cont.mul hf_cont
-    simpa only [Pi.mul_apply, pow_two] using hmul
+    have hfun : (fun x => f x ^ 2) = f * f := by
+      funext x
+      simp [pow_two]
+    rw [hfun]
+    exact hf_cont.mul hf_cont
   have hf2int : Integrable (fun x => f x ^ 2) μ := by
     dsimp only [μ]
     exact (hsqcont.locallyIntegrableOn measurableSet_Icc).integrableOn_isCompact isCompact_Icc
