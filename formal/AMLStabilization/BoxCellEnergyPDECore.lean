@@ -66,10 +66,10 @@ theorem boxCellEnergy_exact_identity_from_local_derivatives
     (hgradUcont : ∀ i, ContinuousOn (fun x => gradU x i) (Icc a b))
     (hgradCcont : ∀ i, ContinuousOn (fun x => gradC x i) (Icc a b))
     (hudiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
       HasFDerivAt u (du x) x)
     (hgradProdDiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
       ∀ i, HasFDerivAt
         (fun y => cellProductGradient c u gradC gradU y i)
         (dgradProd x i) x)
@@ -104,7 +104,7 @@ theorem boxCellEnergy_exact_identity_from_local_derivatives
     dsimp [gradProd, cellProductGradient]
     exact (hccont.mul (hgradUcont i)).add (hucont.mul (hgradCcont i))
   have hqdiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
       HasFDerivAt q (du x) x := by
     intro x hx
     dsimp [q]
@@ -145,7 +145,7 @@ theorem boxCellEnergy_exact_identity_from_local_derivatives
         ∫ x in Icc a b, q x * lapProd x := by
     apply integral_congr_ae
     exact ae_restrict_of_forall_mem measurableSet_Icc fun x hx => by
-      rw [hPDE x hx]
+      exact congrArg (fun z : ℝ => q x * z) (hPDE x hx)
   have hPairingExpand :
       (∫ x in Icc a b, ∑ i : Fin (n + 1), gradU x i * gradProd x i) =
         (∫ x in Icc a b, c x * ∑ i : Fin (n + 1), (gradU x i) ^ 2) +
@@ -189,10 +189,10 @@ theorem boxCellEnergy_raw_dissipation_from_PDE
     (hgradUcont : ∀ i, ContinuousOn (fun x => gradU x i) (Icc a b))
     (hgradCcont : ∀ i, ContinuousOn (fun x => gradC x i) (Icc a b))
     (hudiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
       HasFDerivAt u (du x) x)
     (hgradProdDiff : ∀ x,
-      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \ bad →
+      x ∈ (Set.pi Set.univ fun i => Ioo (a i) (b i)) \\ bad →
       ∀ i, HasFDerivAt
         (fun y => cellProductGradient c u gradC gradU y i)
         (dgradProd x i) x)
@@ -236,6 +236,8 @@ theorem boxCellEnergy_raw_dissipation_from_PDE
     hucont hccont hgradUcont hgradCcont hudiff hgradProdDiff
     hgradUCoord hlapProd hgradUFront hgradUBack hgradCFront hgradCBack
     hPDE hQderiv hQutInt hDiffusionInt hDriftInt
+  have hexact' : dQ = -2 * D - 2 * X := by
+    simpa [D, X] using hexact
   have hG0 : 0 ≤ G := by
     dsimp [G]
     apply integral_nonneg
@@ -248,11 +250,14 @@ theorem boxCellEnergy_raw_dissipation_from_PDE
     exact Finset.sum_nonneg fun i hi => sq_nonneg _
   have hGradSqInt : Integrable
       (fun x => ∑ i : Fin (n + 1), (gradU x i) ^ 2) μ := by
-    have hsquare := hGradLp.integrable_sq
-    apply Integrable.congr_fun hsquare
-    · intro x
-      exact finiteCoordinateL2Norm_sq (gradU x)
-    · exact ae_of_all _ fun x => finiteCoordinateL2Norm_sq (gradU x)
+    have hsquare : Integrable
+        (fun x => (finiteCoordinateL2Norm (gradU x)) ^ 2) μ := by
+      simpa [μ] using hGradLp.integrable_sq
+    have heq :
+        (fun x => (finiteCoordinateL2Norm (gradU x)) ^ 2) =ᵐ[μ]
+          (fun x => ∑ i : Fin (n + 1), (gradU x i) ^ 2) :=
+      ae_of_all μ fun x => finiteCoordinateL2Norm_sq (gradU x)
+    exact (integrable_congr heq).mp hsquare
   have hAInt : Integrable
       (fun x => a0 * ∑ i : Fin (n + 1), (gradU x i) ^ 2) μ :=
     hGradSqInt.const_mul a0
@@ -260,13 +265,20 @@ theorem boxCellEnergy_raw_dissipation_from_PDE
       (fun x => c x * ∑ i : Fin (n + 1), (gradU x i) ^ 2) μ := by
     simpa [μ, IntegrableOn] using hDiffusionInt
   have hDlower : a0 * G ≤ D := by
-    dsimp [G, D]
-    change (∫ x, a0 * ∑ i : Fin (n + 1), (gradU x i) ^ 2 ∂μ) ≤
-      ∫ x, c x * ∑ i : Fin (n + 1), (gradU x i) ^ 2 ∂μ
-    apply integral_mono_ae hAInt hDInt
-    exact ae_restrict_of_forall_mem measurableSet_Icc fun x hx =>
-      mul_le_mul_of_nonneg_right (hcLower x hx)
-        (Finset.sum_nonneg fun i hi => sq_nonneg _)
+    calc
+      a0 * G = ∫ x in Icc a b,
+          a0 * ∑ i : Fin (n + 1), (gradU x i) ^ 2 := by
+        dsimp [G]
+        rw [integral_const_mul]
+      _ ≤ ∫ x in Icc a b,
+          c x * ∑ i : Fin (n + 1), (gradU x i) ^ 2 := by
+        apply integral_mono_ae
+          (by simpa [μ] using hAInt)
+          (by simpa [μ] using hDInt)
+        exact ae_restrict_of_forall_mem measurableSet_Icc fun x hx =>
+          mul_le_mul_of_nonneg_right (hcLower x hx)
+            (Finset.sum_nonneg fun i hi => sq_nonneg _)
+      _ = D := by rfl
   have hDriftInt' : Integrable
       (fun x => ∑ i : Fin (n + 1), gradU x i * (u x * gradC x i)) μ := by
     simpa [μ, IntegrableOn] using hDriftInt
@@ -278,10 +290,10 @@ theorem boxCellEnergy_raw_dissipation_from_PDE
     simpa [μ, X, G, H2] using hCS
   have hnegX : -X ≤ Real.sqrt G * Real.sqrt H2 := by
     exact (neg_le_abs X).trans hCS'
+  have hnegX' : -X ≤ Real.sqrt H2 * Real.sqrt G := by
+    simpa [mul_comm] using hnegX
   have hraw : dQ + 2 * a0 * G ≤ 2 * Real.sqrt H2 * Real.sqrt G := by
-    dsimp [D, X] at hexact
-    dsimp [G, H2, D, X] at hDlower hnegX ⊢
-    nlinarith
+    nlinarith [hexact', hDlower, hnegX']
   have hGsqrt : (Real.sqrt G) ^ 2 = G := Real.sq_sqrt hG0
   simpa [G, H2, hGsqrt, mul_comm, mul_left_comm, mul_assoc] using hraw
 
