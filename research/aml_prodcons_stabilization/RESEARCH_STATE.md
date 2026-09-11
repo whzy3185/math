@@ -1,6 +1,6 @@
-# RESEARCH_STATE — AML boundedness-to-stabilization project
+# RESEARCH_STATE — AML mass-weighted stabilization project
 
-Date: 2026-09-09
+Date: 2026-09-11
 Target journal: Applied Mathematics Letters
 Branch: `research/aml-production-consumption-stabilization`
 
@@ -13,94 +13,183 @@ Qin–Zheng, *Applied Mathematics Letters* 180 (2026), 109995, studies
  v_t=\Delta v+u-\alpha uv,
 \end{cases}
 \]
-with Neumann/no-flux boundary conditions and proves global classical boundedness under an explicit motility condition for positive decreasing \(\varphi\).
+with `partial_nu u = partial_nu v = 0` on a smooth bounded domain in `R^n`, `n >= 1`, and proves global classical boundedness under an explicit motility condition for positive decreasing \(\varphi\).
 
 ## Current strongest theorem
 
-Consider the more general system
+Consider
 \[
  u_t=\Delta(\varphi(v)u),
  \qquad
  v_t=\Delta v+uF(v)
 \]
-on a smooth bounded connected domain. Assume:
+on a smooth bounded connected domain \(\Omega\subset\mathbb R^n\), \(n\ge1\), with homogeneous Neumann boundary conditions. Assume:
 
 - \(m=\int_\Omega u_0>0\);
-- the global nonnegative classical solution satisfies \(\sup_t\|u(t)\|_\infty<\infty\);
 - the signal remains in a compact interval \(I\);
 - \(\varphi\in C^1(I)\) and \(\min_I\varphi>0\);
-- for some \(v_*\in I\), \(\beta>0\),
+- for some finite \(p>\max\{n,2\}\), \(T\ge0\),
   \[
-  F(v_*)=0,
-  \qquad
-  (s-v_*)F(s)\le-\beta(s-v_*)^2
-  \quad(s\in I).
+  \sup_{t\ge T}\|u(t)\|_p<\infty;
   \]
+- \(F\in C^1(I)\), \(F(v_*)=0\) for some \(v_*\in I\).
 
-Then there exist \(C,\lambda>0\) such that
+The proof splits by damping order.
+
+### Quadratic branch
+
+If
+\[
+(s-v_*)F(s)\le-\beta|s-v_*|^2,
+\]
+then
 \[
 \boxed{
 \|u(t)-\bar u_0\|_{L^\infty}
 +\|v(t)-v_*\|_{W^{1,\infty}}
-\le Ce^{-\lambda t}
+\le Ce^{-\lambda(t-T)}
 }
-\qquad (t\ge2),
+\qquad (t\ge T+2).
 \]
-where \(\bar u_0=m/|\Omega|\).
 
-Evidence status: **Proved** in the repository campaign sense. Novelty status remains **Observed**, not certified.
+### Degenerate branch
 
-## Proof architecture
+If for some \(\theta>0\),
+\[
+(s-v_*)F(s)\le-\beta|s-v_*|^{2+\theta},
+\]
+then
+\[
+\|v(t)-v_*\|_2=O((1+t-T)^{-1/\theta}),
+\]
+and for every
+\[
+0<\mu<\frac1\theta
+\min\left\{1,\frac{2(p-n)}{pn}\right\},
+\]
+\[
+\boxed{
+\|u(t)-\bar u_0\|_{L^\infty}
++\|v(t)-v_*\|_{W^{1,\infty}}
+=O((1+t-T)^{-\mu}).
+}
+\]
 
-1. Mass conservation + a mass-weighted Poincare/coercivity inequality.
-2. Dissipative signal kinetics give exponential \(L^2\)-decay of \(v-v_*\).
-3. Neumann heat-semigroup smoothing upgrades the signal to \(W^{1,\infty}\)-exponential decay.
-4. Energy + Poincare give \(L^2\)-exponential decay of \(u-\bar u_0\).
-5. Direct uniform upgrade: write
-   \[
-   q_t-\nabla\cdot(\varphi(v)\nabla q)=\nabla\cdot\big(u\varphi'(v)\nabla v\big).
-   \]
-   The forcing flux decays exponentially in \(L^\infty\). Choi 2016, Theorem 1.1, gives a local \(L^2\to L^\infty\) estimate up to the Neumann boundary for exactly this inhomogeneous divergence-form structure. A finite covering closes the global \(L^\infty\)-rate.
+Evidence status: **proof chain line-checked in the manuscript**. Novelty status remains **Observed**, not certified.
 
-Reference for Step 5:
-J. Choi, *Note on local estimates for weak solution of boundary value problem for second order parabolic equation*, Bull. Korean Math. Soc. 53 (2016), 1123–1148, DOI 10.4134/BKMS.b150567.
+## Structural core
 
-## Qin–Zheng corollary
+### 1. Nonlinear mass-weighted coercivity
+
+For every \(q\ge2\), \(\rho\ge0\), \(\int\rho=m>0\), \(\|\rho\|_2\le K\),
+\[
+\|f\|_2^2
+\le A\|\nabla f\|_2^2
++B_q\left(\int_\Omega\rho|f|^q\right)^{2/q},
+\]
+with
+\[
+A=C_P^2\left(1+\frac{2|\Omega|K^2}{m^2}\right),
+\qquad
+B_q=2|\Omega|m^{-2/q}.
+\]
+
+### 2. Weighted-damping rate dichotomy
+
+For
+\[
+z_t=\Delta z+\rho(x,t)F(z)
+\]
+with fixed positive mass and only a uniform \(L^2\) bound on \(\rho\), the coercivity estimate closes the signal energy without using any evolution law for \(\rho\). Quadratic damping gives exponential decay; order \(q>2\) gives \(t^{-1/(q-2)}\).
+
+### 3. Finite-`L^p` transfer to strong norms
+
+An eventual finite \(L^p\) bound with \(p>\max\{n,2\}\) is enough to control the reaction source in some \(L^r\), \(r>n\). Unit-interval Neumann semigroup smoothing gives the strong signal rate. A cell energy estimate gives \(L^2\) decay of \(u-\bar u_0\).
+
+### 4. Direct `L^infinity` cell upgrade
+
+Write
+\[
+q_t-\nabla\cdot(a\nabla q)=\nabla\cdot B,
+\qquad
+a=\varphi(v),
+\qquad
+B=u\varphi'(v)\nabla v,
+\]
+with the exact conormal boundary condition
+\[
+(a\nabla q+B)\cdot\nu=0.
+\]
+For \(n\ge2\), Choi 2016, Theorem 1.1, gives the required fixed-radius local boundedness estimate because all lower-order coefficients vanish and \(B\in L_t^{Q_*}L_x^p\) with
+\[
+Q_*=\frac{4p}{p-n},
+\qquad
+\frac np+\frac2{Q_*}<1.
+\]
+
+Choi states the Neumann theorem for spatial dimension \(d\ge2\). The manuscript closes \(n=1\) separately: on an interval, the mixed-norm embedding used in Choi's De Giorgi iteration follows from the one-dimensional Gagliardo--Nirenberg inequality whenever
+\[
+\frac1P+\frac2Q=\frac12.
+\]
+The lower measure bound is automatic, and the remaining lower-order-free iteration is unchanged. Thus the full theorem retains \(n\ge1\).
+
+## Applications
+
+### Qin–Zheng production--consumption
 
 For
 \[
 F(s)=1-\alpha s,
 \qquad v_*=1/\alpha,
 \]
-we have
 \[
 (s-v_*)F(s)=-\alpha(s-v_*)^2.
 \]
-Therefore every uniformly bounded solution of the exact Qin–Zheng model satisfies
+The maximum principle gives the invariant signal interval
 \[
-\|u(t)-\bar u_0\|_\infty
-+\left\|v(t)-\frac1\alpha\right\|_{W^{1,\infty}}
-\le Ce^{-\lambda t}.
+0\le v(x,t)\le\max\left\{\|v_0\|_\infty,\frac1\alpha\right\},
 \]
-The stabilization implication itself does **not** use \(\varphi'<0\).
+and Qin--Zheng's uniform boundedness theorem supplies the finite-`L^p` hypothesis for every finite \(p\). Hence their bounded solutions stabilize exponentially for every \(n\ge1\). The stabilization implication itself does **not** use \(\varphi'<0\).
+
+### Superlinear consumption
+
+For \(F(s)=-s^m\), \(m>1\), the degenerate branch has \(\theta=m-1\), giving the exact signal exponent \(1/(m-1)\) and the corresponding full-rate threshold.
+
+### Sharpness
+
+For
+\[
+F(s)=-\kappa(s-v_*)|s-v_*|^\theta,
+\]
+spatially homogeneous data satisfy
+\[
+|v(t)-v_*|
+=\left(|w_0|^{-\theta}+\theta\kappa\bar u_0 t\right)^{-1/\theta}.
+\]
+This certifies sharpness of the signal exponent \(1/\theta\), not of the full strong-norm threshold.
 
 ## Novelty posture
 
-Deep audit dated 2026-09-09 found material predecessors:
+Material predecessors remain essential:
 
 - Li–Zhao 2021: direct pure-consumption signal-dependent motility with exponential large-time behavior;
-- Tao–Winkler 2025: simultaneous production–consumption with classical chemotactic sensitivity;
-- 2026 indirect-signal/global-dynamics papers.
-
-No exact-model exponential-stabilization collision or identical abstract dissipativity theorem was located, but this is not an open-status certificate.
+- Tao–Winkler 2025: simultaneous production--consumption with classical chemotactic sensitivity;
+- Qin–Zheng 2026: exact production--consumption signal-dependent-motility system with global boundedness.
 
 Safe contribution architecture:
 
-1. general boundedness-to-uniform-stabilization principle;
-2. mass-weighted coercivity mechanism;
-3. no monotonicity requirement on motility in the stabilization stage;
-4. timely Qin–Zheng 2026 corollary.
+1. nonlinear mass-weighted coercivity as the mechanism;
+2. abstract quadratic/superquadratic rate dichotomy;
+3. eventual finite-`L^p` rather than uniform-`L^infinity` input for full stabilization;
+4. explicit algebraic strong-norm threshold;
+5. Qin–Zheng exponential corollary and superlinear-consumption algebraic corollary;
+6. homogeneous sharpness for the signal exponent.
 
 ## Current priority
 
-The proof DAG is closed. Next priority is **adversarial novelty/referee audit and manuscript compression to AML's six-page format**, unless a further theorem strengthening is attempted first.
+The manuscript proof chain is closed for `n >= 1` after the 2026-09-11 hardening pass. Next priorities are:
+
+1. fresh theorem-to-theorem novelty/referee audit;
+2. LaTeX compile and AML page-count compression;
+3. bibliography/source audit, especially the original Neumann semigroup source;
+4. author/funding/submission metadata.
