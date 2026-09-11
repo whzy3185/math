@@ -24,6 +24,7 @@ import AMLStabilization.RestHybridMeasureCore
 import AMLStabilization.PiCoordinateFubiniCore
 import AMLStabilization.BoxHybridFiberPoincareCore
 import AMLStabilization.FullBoxPoincareCore
+import AMLStabilization.FullBoxPoincareSqrtCore
 import AMLStabilization.InvariantRangeCore
 import AMLStabilization.MaximumPrincipleContactCore
 import AMLStabilization.SpatialExtremumSecondDerivativeCore
