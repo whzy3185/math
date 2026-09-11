@@ -21,6 +21,7 @@ import AMLStabilization.PairedProductMeasureCore
 import AMLStabilization.PairedSelectorMeasureCore
 import AMLStabilization.RestHybridMeasureCore
 import AMLStabilization.PiCoordinateFubiniCore
+import AMLStabilization.BoxHybridFiberPoincareCore
 import AMLStabilization.InvariantRangeCore
 import AMLStabilization.MaximumPrincipleContactCore
 import AMLStabilization.SpatialExtremumSecondDerivativeCore
