@@ -17,7 +17,7 @@ Target: *Applied Mathematics Letters*
 
 ## Referee-strengthened status (2026-09-11)
 
-The current `main.tex` now addresses the main objections raised by an adversarial AML-style referee audit.
+The current `main.tex` now addresses the main objections raised by two adversarial AML-style referee passes.
 
 ### Novelty positioning
 
@@ -41,14 +41,24 @@ The manuscript explicitly says that neither signal-dependent motility nor stabil
 - The `q>2` step records `X <= X^(2/q)` when `X <= 1`.
 - The strong-signal step contains the unit-interval Duhamel formula and the integrability condition `1/2+n/(2r)<1`.
 - The cell `L^2` estimate no longer introduces the unnecessary exponent `s0`; the eventual `L^p` hypothesis first gives an `L^2` bound on `u`, which is then paired directly with `||grad v||_infinity`.
-- The final `L^infinity` bootstrap is now isolated as a separate boundary local-boundedness lemma.
-- For `n>=2`, the mapping to Choi Theorem 1.1 is explicit: leading matrix `a I`, lower-order coefficients and scalar source zero, forcing vector `H`, smooth bounded domain as Sobolev extension domain, unused mixed exponents chosen large, and the fixed radius is time-independent because Choi's lower-order norm `D` vanishes.
-- For `n=1`, the manuscript proves the missing mixed-norm embedding from the one-dimensional Gagliardo--Nirenberg inequality and explains exactly how it replaces Choi Lemma 2.3 in the De Giorgi proof. The interval measure-density bound is automatic.
+- The final `L^infinity` bootstrap is isolated as a separate boundary local-boundedness lemma.
+- For `n>=2`, the mapping to Choi Theorem 1.1 is explicit: leading matrix `a I`, lower-order coefficients and scalar source zero, forcing vector `H`, smooth bounded domain as Sobolev extension domain, and fixed radius independent of terminal time.
+- For `n=1`, the manuscript supplies the missing mixed-norm embedding from the one-dimensional Gagliardo--Nirenberg inequality and explains how it replaces Choi Lemma 2.3 in the De Giorgi proof. The interval measure-density bound is automatic.
 - The Qin--Zheng application states that their structural motility assumptions remain upstream boundedness assumptions and are not removed by the stabilization theorem.
 - The superlinear-consumption corollary is explicitly framed as an illustration/conditional decay result, not a new global-existence theorem.
 - Sharpness is explicitly restricted to the signal exponent `1/theta`; no sharpness claim is made for the full-system threshold.
 
-Current manuscript proof status: **no known theorem-level gap for `n>=1` after the referee-strengthening pass**. This is not a novelty certificate.
+### Second-round minor closure
+
+The second referee pass reduced the manuscript to four minor technical corrections. These are now all implemented:
+
+1. The one-dimensional auxiliary embedding avoids the inconsistent endpoint by using finite exponents `2<P<infinity`, `4<Q<infinity`, `1/P+2/Q=1/2`.
+2. The boundary local-boundedness lemma specifies the weak energy solution class explicitly:
+   `L^infinity_loc(J;L^2(Omega)) cap L^2_loc(J;H^1(Omega))`.
+3. The mixed norm is defined in the manuscript as `L^{p,Q}=L_t^Q L_x^p`.
+4. The Choi matching now explicitly sets `p_1=p`, `q_1=Q`; because the lower-order coefficients and scalar source vanish, `p_0,q_0,p_2,q_2` may be chosen arbitrarily large, giving `p_min=p`, `q_min=Q`.
+
+Current manuscript proof status: **no known theorem-level gap for `n>=1` after the two referee-strengthening passes**. This is not a novelty certificate.
 
 ## Safe novelty language
 
@@ -65,7 +75,7 @@ Avoid:
 
 ## Length status
 
-The referee-strengthened version still compiles in the `elsarticle` `final,5p,times,twocolumn` format in **3 journal-format pages** with a 10-item reference list in the local preview. Thus there is no need to delete the Choi mapping, the one-dimensional endpoint argument, or the expanded prior-art comparison merely to meet AML's page cap.
+After the second-round minor corrections, the manuscript compiles locally in `elsarticle` `final,5p,times,twocolumn` format in **4 journal-format pages** using the 10-item inline reference preview. The rendered pages were inspected: there is no clipping, overlap, or overfull box. The fourth page is almost entirely references, so the mathematical body remains compact and comfortably below AML's page cap.
 
 ## Remaining pre-submission items
 
