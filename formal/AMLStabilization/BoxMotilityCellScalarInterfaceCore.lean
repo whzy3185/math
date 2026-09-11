@@ -183,7 +183,10 @@ theorem boxMotilityCell_scalarInterfaces_at
     hside hC hSideBound (u t0) (gradU t0) hmean hULp hPairDiffInt
     hStepInt hDerivInt hFiberDeriv hFiberCont hFiberDCont
   refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩
-  · simpa [boxCellEnergy, boxCellEnergyDerivative] using hpde.1
+  · change HasDerivAt
+      (fun t => ∫ x in Icc a b, (u t x - ubar) ^ 2)
+      (2 * ∫ x in Icc a b, (u t0 x - ubar) * ut t0 x) t0
+    exact hpde.1
   · dsimp [boxCellEnergy]
     apply integral_nonneg
     intro x
