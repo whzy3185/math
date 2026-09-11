@@ -96,8 +96,9 @@ theorem boxHybridCoordinateIncrement_sq_le
     have hinc : ∀ p : ℝ × ℝ,
         pairedCoordinateIncrement f (i.insertNth p zr) i.val =
           f (i.insertNth p.1 (pairedRestHybrid i zr)) -
-            f (i.insertNth p.2 (pairedRestHybrid i zr)) :=
-      pairedCoordinateIncrement_insertNth f i
+            f (i.insertNth p.2 (pairedRestHybrid i zr)) := by
+      intro p
+      exact pairedCoordinateIncrement_insertNth f i p zr
     have hGset :
         G (pairedRestHybrid i zr) =
           ∫ t in a i..b i,
@@ -141,7 +142,7 @@ theorem boxHybridCoordinateIncrement_sq_le
         ∂Measure.pi μpairRest := hmono
     _ = (2 * (b i - a i) ^ 3) *
         ∫ zr : Fin n → ℝ × ℝ, G (pairedRestHybrid i zr)
-          ∂Measure.pi μpairRest := by rw [integral_const_mul]
+          ∂Measure.pi μpairRest := by rw [MeasureTheory.integral_const_mul]
     _ = (2 * (b i - a i) ^ 3) *
         ((∏ j, μrest j Set.univ).toReal *
           ∫ xr : Fin n → ℝ, G xr ∂Measure.pi μrest) := by
