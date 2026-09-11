@@ -17,6 +17,7 @@ import AMLStabilization.CoordinateTelescopingCore
 import AMLStabilization.IntegratedCoordinateTelescopingCore
 import AMLStabilization.HybridFiberCore
 import AMLStabilization.BoxProductMeasureCore
+import AMLStabilization.BoxVolumeFactorCore
 import AMLStabilization.PairedProductMeasureCore
 import AMLStabilization.PairedSelectorMeasureCore
 import AMLStabilization.RestHybridMeasureCore
