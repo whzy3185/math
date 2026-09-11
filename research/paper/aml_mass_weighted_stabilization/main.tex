@@ -1,0 +1,471 @@
+\documentclass[preprint,12pt]{elsarticle}
+
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+\usepackage{enumitem}
+\usepackage{microtype}
+
+\journal{Applied Mathematics Letters}
+
+\newtheorem{theorem}{Theorem}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{remark}[theorem]{Remark}
+
+\newcommand{\Om}{\Omega}
+\newcommand{\R}{\mathbb R}
+\newcommand{\norm}[1]{\left\lVert #1\right\rVert}
+\newcommand{\abs}[1]{\left|#1\right|}
+\newcommand{\ubar}{\overline u_0}
+
+\begin{document}
+
+\begin{frontmatter}
+
+\title{Mass-weighted damping and stabilization in chemotaxis with signal-dependent motility}
+
+% TODO: insert author names, affiliations, and corresponding-author metadata.
+\author{}
+
+\begin{abstract}
+We consider the signal-dependent-motility system
+\[
+ u_t=\Delta(\varphi(v)u),\qquad v_t=\Delta v+uF(v)
+\]
+in a smooth bounded domain with homogeneous Neumann boundary conditions.  The main observation is that positive conserved cell mass supplies a coercive mechanism even when no pointwise lower bound for the cell density is available.  More precisely, for every $q\ge2$ we prove a nonlinear mass-weighted Poincar\'e estimate which converts the dissipation $\int u|v-v_*|^q$ into control of the signal energy.  This yields an exponential--algebraic rate dichotomy: quadratic dissipativity gives exponential signal decay, whereas
+\[
+ (s-v_*)F(s)\le-\beta|s-v_*|^{2+\theta},\qquad \theta>0,
+\]
+produces the algebraic signal rate $t^{-1/\theta}$.  If, for some finite $p>\max\{n,2\}$, the cell density is eventually bounded in $L^p$, then the signal decay propagates through Neumann semigroup smoothing and a boundary local-boundedness estimate to full uniform stabilization.  In the degenerate case, for every
+\[
+ 0<\mu<\frac1\theta\min\left\{1,\frac{2(p-n)}{pn}\right\},
+\]
+we obtain
+\[
+ \norm{u(t)-\ubar}_{\infty}+\norm{v(t)-v_*}_{W^{1,\infty}}
+ =O(t^{-\mu}),
+\]
+while the quadratic case is exponential.  The result applies in particular to the recent production--consumption model of Qin and Zheng and to superlinear signal consumption.  A spatially homogeneous family shows that the signal exponent $1/\theta$ is optimal for the degenerate damping law.
+\end{abstract}
+
+\begin{keyword}
+chemotaxis \sep signal-dependent motility \sep weighted damping \sep stabilization \sep algebraic decay \sep production--consumption
+\end{keyword}
+
+\end{frontmatter}
+
+\section{Introduction}
+
+Signal-dependent motility models replace the classical Keller--Segel drift by a diffusion rate modulated by the chemical signal.  A representative two-component system is
+\begin{equation}\label{sys}
+\left\{
+\begin{aligned}
+ u_t&=\Delta(\varphi(v)u),\\
+ v_t&=\Delta v+uF(v),
+\end{aligned}\right.
+\qquad x\in\Om,\ t>0,
+\end{equation}
+where $\Om\subset\R^n$ is smooth, bounded and connected, $u\ge0$ denotes the cell density, and $v$ is the signal.  We impose homogeneous Neumann boundary conditions and nonnegative initial data, and write
+\[
+ m:=\int_\Om u_0>0,
+ \qquad
+ \ubar:=\frac{m}{|\Om|}.
+\]
+The first equation conserves $m$.
+
+A timely motivation is the production--consumption model studied by Qin and Zheng \cite{QinZheng2026}, corresponding to
+\[
+ F(s)=1-\alpha s,\qquad \alpha>0.
+\]
+They establish global boundedness under an explicit structural condition on the motility.  Stabilization for the same production--consumption reaction, but with the classical chemotactic flux, was obtained by Tao and Winkler \cite{TaoWinkler2025}.  For signal-dependent motility, exponential relaxation is already known in the pure-consumption case $F(s)=-s$; see Li and Zhao \cite{LiZhao2021} and related work.  Thus neither exponential stabilization nor signal-dependent motility alone is the point here.
+
+The purpose of this note is to isolate a rate mechanism that survives simultaneously under time-dependent weights, nonzero signal equilibria, degenerate damping, and only eventual finite-$L^p$ control of the cell density.  The key elementary estimate is a mass-weighted coercivity inequality.  It avoids any eventual pointwise positivity of $u$ and applies directly to sign-changing deviations $v-v_*$.  Once the signal energy is closed, standard Neumann heat-semigroup smoothing and the boundary local boundedness estimate of Choi \cite{Choi2016} propagate the decay to the full system.
+
+The resulting picture is a rate dichotomy.  Uniformly quadratic dissipation toward an equilibrium produces exponential stabilization.  If the dissipation vanishes at order $2+\theta$, then the natural signal rate becomes $t^{-1/\theta}$, and the finite-$L^p$ smoothing step yields an explicit admissible range of uniform algebraic rates.  The same framework contains the Qin--Zheng production--consumption law and superlinear consumption $F(s)=-s^m$ as short applications.
+
+\section{Main results}
+
+We first record the coercivity estimate that drives the signal energy argument.  Let $C_P$ be a Poincar\'e constant of $\Om$ in the form
+\[
+ \norm{f-f_\Om}_2\le C_P\norm{\nabla f}_2,
+ \qquad
+ f_\Om:=\frac1{|\Om|}\int_\Om f.
+\]
+
+\begin{lemma}[Nonlinear mass-weighted coercivity]\label{lem:coercivity}
+Let $q\ge2$, let $\rho\ge0$ satisfy
+\[
+ \int_\Om\rho=m>0,
+ \qquad
+ \norm{\rho}_2\le K,
+\]
+and let $f\in H^1(\Om)$ with $\int_\Om\rho|f|^q<\infty$.  Then
+\begin{equation}\label{coercivity}
+ \norm{f}_2^2
+ \le A\norm{\nabla f}_2^2
+ +B_q\left(\int_\Om\rho|f|^q\right)^{2/q},
+\end{equation}
+where one may take
+\begin{equation}\label{AB}
+ A=C_P^2\left(1+\frac{2|\Om|K^2}{m^2}\right),
+ \qquad
+ B_q=2|\Om|m^{-2/q}.
+\end{equation}
+\end{lemma}
+
+The next statement separates the damping mechanism from the cell equation entirely.
+
+\begin{theorem}[Weighted-damping rate dichotomy]\label{thm:weighted}
+Let $z$ solve
+\begin{equation}\label{weighted-eq}
+ z_t=\Delta z+\rho(x,t)F(z),\qquad \partial_\nu z=0,
+\end{equation}
+on $[T,\infty)$, and assume that $z(x,t)$ remains in a compact interval $I$.  Suppose
+\[
+ \rho\ge0,\qquad
+ \int_\Om\rho(\cdot,t)=m>0,
+ \qquad
+ \sup_{t\ge T}\norm{\rho(t)}_2\le K,
+\]
+and that for some $z_*\in I$, $\beta>0$ and $q\ge2$,
+\begin{equation}\label{diss-q}
+ F(z_*)=0,
+ \qquad
+ (s-z_*)F(s)\le-\beta|s-z_*|^q
+ \quad(s\in I).
+\end{equation}
+Then the following alternatives hold.
+
+\begin{enumerate}[label=\rm(\roman*)]
+\item If $q=2$, then there exist $C,\lambda>0$ such that
+\[
+ \norm{z(t)-z_*}_2\le Ce^{-\lambda(t-T)}.
+\]
+\item If $q>2$, put $R=\max_{s\in I}|s-z_*|$ and let $A,B_q$ be given by \eqref{AB}.  With
+\[
+ \Gamma_q:=\max\left\{A+B_q\beta^{-2/q},\ 1,\ |\Om|R^2\right\},
+ \qquad
+ c_q:=\Gamma_q^{-q/2},
+\]
+one has, on the nonzero-energy branch,
+\begin{equation}\label{explicit-rate}
+ \norm{z(t)-z_*}_2
+ \le
+ \left(
+ \norm{z(T)-z_*}_2^{-(q-2)}
+ +(q-2)c_q(t-T)
+ \right)^{-1/(q-2)}.
+\end{equation}
+If the energy reaches zero, it remains zero afterwards.
+\end{enumerate}
+\end{theorem}
+
+We now return to \eqref{sys}.  The compact interval in the next theorem is an invariant signal range; for the concrete applications below it follows from the maximum principle.
+
+\begin{theorem}[Full stabilization from eventual finite $L^p$ control]\label{thm:full}
+Let $(u,v)$ be a nonnegative global classical solution of \eqref{sys} with $m>0$.  Assume that $v(x,t)\in I$ for a compact interval $I$, that
+\[
+ \varphi\in C^1(I),\qquad \min_I\varphi>0,
+ \qquad F\in C^1(I),
+\]
+and that for some finite
+\[
+ p>\max\{n,2\},\qquad T\ge0,
+\]
+there is $U_p>0$ such that
+\begin{equation}\label{Lp-assump}
+ \sup_{t\ge T}\norm{u(t)}_p\le U_p.
+\end{equation}
+Let $v_*\in I$ satisfy $F(v_*)=0$.
+
+\begin{enumerate}[label=\rm(\alph*)]
+\item If
+\begin{equation}\label{quad}
+ (s-v_*)F(s)\le-\beta|s-v_*|^2
+ \qquad(s\in I)
+\end{equation}
+for some $\beta>0$, then there are $C,\lambda>0$ such that
+\begin{equation}\label{exp-full}
+ \norm{u(t)-\ubar}_{\infty}
+ +\norm{v(t)-v_*}_{W^{1,\infty}}
+ \le Ce^{-\lambda(t-T)}
+ \qquad(t\ge T+2).
+\end{equation}
+
+\item Suppose instead that for some $\theta>0$,
+\begin{equation}\label{deg}
+ (s-v_*)F(s)\le-\beta|s-v_*|^{2+\theta}
+ \qquad(s\in I).
+\end{equation}
+Then
+\begin{equation}\label{signal-alg}
+ \norm{v(t)-v_*}_2=O\big((1+t-T)^{-1/\theta}\big).
+\end{equation}
+Moreover, for every
+\begin{equation}\label{mu-range}
+ 0<\mu<\frac1\theta
+ \min\left\{1,\frac{2(p-n)}{pn}\right\},
+\end{equation}
+one has
+\begin{equation}\label{alg-full}
+ \norm{u(t)-\ubar}_{\infty}
+ +\norm{v(t)-v_*}_{W^{1,\infty}}
+ =O\big((1+t-T)^{-\mu}\big).
+\end{equation}
+\end{enumerate}
+No sign condition on $\varphi'$ is used in the stabilization argument.
+\end{theorem}
+
+\begin{remark}\label{rem:meaning}
+The hypothesis \eqref{Lp-assump} is deliberately separated from the stabilization mechanism.  Any global existence or boundedness theorem that supplies such an eventual $L^p$ bound can be inserted upstream.  In particular, a uniform $L^\infty$ estimate is more than sufficient, but is not required by Theorem~\ref{thm:full}.
+\end{remark}
+
+\section{Weighted damping and signal decay}
+
+\begin{proof}[Proof of Lemma~\ref{lem:coercivity}]
+Weighted H\"older and Cauchy--Schwarz give
+\[
+\begin{aligned}
+ m|f_\Om|
+ &\le \left|\int_\Om\rho f\right|
+      +\left|\int_\Om\rho(f_\Om-f)\right|\\
+ &\le m^{1-1/q}
+      \left(\int_\Om\rho|f|^q\right)^{1/q}
+      +K\norm{f-f_\Om}_2\\
+ &\le m^{1-1/q}
+      \left(\int_\Om\rho|f|^q\right)^{1/q}
+      +KC_P\norm{\nabla f}_2.
+\end{aligned}
+\]
+Using the exact mean decomposition
+\[
+ \norm{f}_2^2=\norm{f-f_\Om}_2^2+|\Om||f_\Om|^2
+\]
+and $(a+b)^2\le2a^2+2b^2$ yields \eqref{coercivity}--\eqref{AB}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:weighted}]
+Set
+\[
+ w=z-z_*,\qquad
+ E=\norm{w}_2^2,\qquad
+ G=\norm{\nabla w}_2^2,\qquad
+ D=\int_\Om\rho|w|^q.
+\]
+Testing \eqref{weighted-eq} by $w$ gives
+\begin{equation}\label{energy}
+ \frac12E'(t)+G(t)+\beta D(t)\le0.
+\end{equation}
+By Lemma~\ref{lem:coercivity},
+\begin{equation}\label{E-coerc}
+ E\le AG+B_qD^{2/q}.
+\end{equation}
+
+For $q=2$, \eqref{E-coerc} implies
+\[
+ E\le \max\{A,B_2/\beta\}(G+\beta D),
+\]
+and \eqref{energy} gives the exponential estimate.
+
+Let $q>2$ and write $X=G+\beta D$.  If $X\le1$, then $G\le X$ and $D\le X/\beta$, hence
+\[
+ E\le (A+B_q\beta^{-2/q})X^{2/q}.
+\]
+If $X\ge1$, the bounded signal range gives $E\le|\Om|R^2\le\Gamma_qX^{2/q}$.  Thus in all cases
+\[
+ X\ge c_qE^{q/2}.
+\]
+Consequently
+\[
+ E'\le-2c_qE^{q/2}.
+\]
+On the positive-energy branch, differentiation of $E^{-(q-2)/2}$ yields
+\[
+ \frac{d}{dt}E^{-(q-2)/2}\ge(q-2)c_q,
+\]
+which is exactly \eqref{explicit-rate}.  Finally, \eqref{energy} shows that $E$ is nonincreasing, so once $E$ is zero it stays zero.
+\end{proof}
+
+\section{From finite $L^p$ control to uniform stabilization}
+
+\begin{proof}[Proof of Theorem~\ref{thm:full}]
+We only indicate the steps where the finite-$L^p$ hypothesis affects the rates; the remaining estimates are standard parabolic arguments.
+
+\smallskip
+\noindent\textit{Step 1: signal energy.}
+Since $p>2$ and $\Om$ has finite measure, \eqref{Lp-assump} provides a uniform $L^2$ bound for $u$.  Applying Theorem~\ref{thm:weighted} with $\rho=u$ gives exponential $L^2$ decay under \eqref{quad} and \eqref{signal-alg} under \eqref{deg}.
+
+\smallskip
+\noindent\textit{Step 2: strong signal norm.}
+Put $w=v-v_*$.  Since $F\in C^1(I)$ and $F(v_*)=0$,
+\[
+ |F(v)|\le L_F|w|,
+ \qquad L_F:=\max_I|F'|.
+\]
+Choose $r$ with $n<r<p$ and define $s$ by
+\[
+ \frac1r=\frac1p+\frac1s.
+\]
+In the degenerate case, interpolation with the bounded signal range (or the finite-measure embedding when $s<2$) gives
+\begin{equation}\label{ws-rate}
+ \norm{w(t)}_s
+ =O\big((1+t-T)^{-\sigma(r)/\theta}\big),
+ \qquad
+ \sigma(r):=\min\left\{1,\frac{2(p-r)}{pr}\right\}.
+\end{equation}
+Hence
+\[
+ \norm{u(t)F(v(t))}_r
+ \le C\norm{u(t)}_p\norm{w(t)}_s
+ =O\big((1+t-T)^{-\sigma(r)/\theta}\big).
+\]
+Duhamel's formula on a fixed unit time interval and the Neumann estimate
+\begin{equation}\label{semigroup}
+ \norm{\nabla e^{\tau\Delta}f}_\infty
+ \le C\left(1+\tau^{-\frac12-\frac n{2r}}\right)\norm{f}_r,
+ \qquad 0<\tau\le1,
+\end{equation}
+are applicable because $r>n$.  They give
+\[
+ \norm{\nabla v(t)}_\infty
+ =O\big((1+t-T)^{-\sigma(r)/\theta}\big).
+\]
+The spatial mean is controlled by the $L^2$ estimate, and therefore the same rate holds for $\norm{w(t)}_{W^{1,\infty}}$.  Since $r$ may be chosen arbitrarily close to $n$, every $\mu$ satisfying \eqref{mu-range} is admissible.  In the quadratic case the same argument, with exponential interpolation, yields
+\[
+ \norm{v(t)-v_*}_{W^{1,\infty}}\le Ce^{-\lambda_v(t-T)}.
+\]
+A standard source for \eqref{semigroup} is the Neumann heat-semigroup estimate collected in \cite{KeLiWang2022}.
+
+\smallskip
+\noindent\textit{Step 3: cell $L^2$ decay.}
+Set $q=u-\ubar$, so $\int_\Om q=0$.  With
+\[
+ \varphi_*:=\min_I\varphi>0,
+ \qquad
+ L_\varphi:=\max_I|\varphi'|,
+\]
+integration by parts gives
+\begin{equation}\label{cell-energy}
+ \frac12\frac d{dt}\norm{q}_2^2
+ =-\int_\Om\varphi(v)|\nabla q|^2
+  -\int_\Om u\varphi'(v)\nabla q\cdot\nabla v.
+\end{equation}
+Let $s_0=2p/(p-2)$.  H\"older and Young yield
+\[
+ \left|\int_\Om u\varphi'(v)\nabla q\cdot\nabla v\right|
+ \le U_pL_\varphi\norm{\nabla q}_2\norm{\nabla v}_{s_0}
+ \le \frac{\varphi_*}{2}\norm{\nabla q}_2^2
+      +C\norm{\nabla v}_\infty^2.
+\]
+Poincar\'e's inequality therefore turns \eqref{cell-energy} into
+\[
+ \frac d{dt}\norm{q}_2^2+c\norm{q}_2^2
+ \le C\norm{\nabla v(t)}_\infty^2.
+\]
+Thus $\norm{q(t)}_2$ decays exponentially in case \eqref{quad}, and at every rate $O((1+t-T)^{-\mu})$ allowed by \eqref{mu-range} in case \eqref{deg}.
+
+\smallskip
+\noindent\textit{Step 4: cell $L^\infty$ decay.}
+Rewrite the first equation as
+\begin{equation}\label{divform}
+ q_t-\nabla\cdot(a\nabla q)=\nabla\cdot B,
+ \qquad
+ a=\varphi(v),
+ \qquad
+ B=u\varphi'(v)\nabla v.
+\end{equation}
+On $I$, the coefficient $a$ is uniformly elliptic and bounded.  Moreover,
+\[
+ \norm{B(t)}_p
+ \le U_pL_\varphi\norm{\nabla v(t)}_\infty,
+\]
+so $B$ has the same exponential or algebraic decay as the strong signal norm.  Choose
+\[
+ Q:=\frac{4p}{p-n}.
+\]
+Then $Q>2$ and
+\[
+ \frac np+\frac2Q=\frac{p+n}{2p}<1.
+\]
+Choi's boundary local boundedness theorem for scalar divergence-form parabolic equations with conormal boundary condition \cite[Theorem~1.1]{Choi2016}, applied on fixed backward cylinders, gives
+\begin{equation}\label{choi}
+ \norm{q}_{L^\infty(Q_{r_0/2})}
+ \le C\norm{q}_{L^2(Q_{r_0})}
+ +C\norm{B}_{L^{p,Q}(Q_{r_0})}.
+\end{equation}
+The two terms on the right inherit the decay already established above.  A finite covering of $\overline\Om$ by interior and boundary cylinders yields \eqref{exp-full} in the quadratic case and \eqref{alg-full} in the degenerate case.
+\end{proof}
+
+\section{Applications and sharpness}
+
+\begin{corollary}[Production--consumption kinetics]\label{cor:QZ}
+Let
+\[
+ F(s)=1-\alpha s,\qquad \alpha>0.
+\]
+Then $v_*=1/\alpha$ and
+\[
+ (s-v_*)F(s)=-\alpha(s-v_*)^2.
+\]
+Consequently every global classical solution of \eqref{sys} satisfying the invariant-range assumptions of Theorem~\ref{thm:full} and an eventual finite-$L^p$ bound with $p>\max\{n,2\}$ converges exponentially to $(\ubar,1/\alpha)$ in $L^\infty\times W^{1,\infty}$.  In particular, the uniformly bounded solutions obtained by Qin and Zheng \cite{QinZheng2026} satisfy this conclusion.
+\end{corollary}
+
+The stabilization stage in Corollary~\ref{cor:QZ} uses positivity of $\varphi$ on the bounded signal range but not the sign of $\varphi'$.  This does not remove the structural assumptions used in \cite{QinZheng2026} to prove boundedness; it separates those assumptions from the subsequent relaxation mechanism.
+
+\begin{corollary}[Superlinear signal consumption]\label{cor:superlinear}
+Assume $v\ge0$ and
+\[
+ v_t=\Delta v-uv^m,
+ \qquad m>1.
+\]
+Then $v_*=0$ and \eqref{deg} holds with $\theta=m-1$ and $\beta=1$.  Under \eqref{Lp-assump},
+\[
+ \norm{v(t)}_2=O\big((1+t-T)^{-1/(m-1)}\big),
+\]
+and for every
+\[
+ 0<\mu<\frac1{m-1}
+ \min\left\{1,\frac{2(p-n)}{pn}\right\}
+\]
+one has
+\[
+ \norm{u(t)-\ubar}_\infty+\norm{v(t)}_{W^{1,\infty}}
+ =O\big((1+t-T)^{-\mu}\big).
+\]
+For $m=1$ the damping is quadratic and the corresponding conclusion is exponential, consistently with the pure-consumption literature such as \cite{LiZhao2021}.
+\end{corollary}
+
+\begin{proposition}[Sharp signal exponent for homogeneous data]\label{prop:sharp}
+Let
+\[
+ F(s)=-\kappa(s-v_*)|s-v_*|^\theta,
+ \qquad \kappa>0,\quad \theta>0.
+\]
+For spatially homogeneous data $u_0\equiv\ubar>0$ and $v_0-v_*\equiv w_0\ne0$, the homogeneous solution satisfies
+\begin{equation}\label{exact-hom}
+ |v(t)-v_*|
+ =\left(|w_0|^{-\theta}+\theta\kappa\ubar t\right)^{-1/\theta}.
+\end{equation}
+Hence the exponent $1/\theta$ in \eqref{signal-alg} cannot in general be improved for the signal component.
+\end{proposition}
+
+\begin{proof}
+The cell component remains constant, and $w=v-v_*$ solves
+\[
+ w'=-\kappa\ubar\,w|w|^\theta.
+\]
+The sign of $w$ is preserved and direct integration gives \eqref{exact-hom}.
+\end{proof}
+
+\section{Concluding remark}
+
+The argument separates three issues that are often intertwined in chemotaxis stabilization: existence or boundedness of a global solution, dissipation of the signal around its equilibrium, and parabolic transfer of this decay to the cell density.  The mass-weighted coercivity estimate addresses the second issue without any pointwise positivity of $u$, while the finite-$L^p$ hypothesis in Theorem~\ref{thm:full} is only used in the smoothing and cell-forcing steps.  This separation allows boundedness results for concrete motilities to be combined with a common stabilization mechanism and also makes the transition from exponential to algebraic rates transparent when the signal kinetics becomes degenerate.
+
+\section*{Acknowledgements}
+% TODO: insert funding and acknowledgements if needed.
+
+\bibliographystyle{elsarticle-num}
+\bibliography{references}
+
+\end{document}
