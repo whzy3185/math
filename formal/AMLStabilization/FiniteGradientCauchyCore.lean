@@ -23,7 +23,10 @@ theorem abs_sum_mul_le_finiteCoordinateL2Norm_mul
   have hupper' :
       (∑ i, f i * g i) ≤ finiteCoordinateL2Norm f * finiteCoordinateL2Norm g := by
     simpa [finiteCoordinateL2Norm] using hupper
-  exact abs_le.mpr ⟨hlower', hupper'⟩
+  have hlower'' :
+      -(finiteCoordinateL2Norm f * finiteCoordinateL2Norm g) ≤ ∑ i, f i * g i := by
+    linarith
+  exact abs_le.mpr ⟨hlower'', hupper'⟩
 
 /-- The square of the finite-coordinate `L²` length is the sum of coordinate squares. -/
 theorem finiteCoordinateL2Norm_sq
@@ -51,7 +54,10 @@ theorem integral_finiteCoordinate_dot_cauchySchwarz
         Real.sqrt (∫ x, ∑ i, (g x i) ^ 2 ∂μ) := by
   have hNormProdInt : Integrable
       (fun x => finiteCoordinateL2Norm (f x) * finiteCoordinateL2Norm (g x)) μ := by
-    simpa only [Pi.mul_apply] using hf.integrable_mul hg
+    change Integrable
+      ((fun x => finiteCoordinateL2Norm (f x)) *
+        (fun x => finiteCoordinateL2Norm (g x))) μ
+    exact hf.integrable_mul hg
   have hPoint : ∀ x,
       |∑ i, f x i * g x i| ≤
         finiteCoordinateL2Norm (f x) * finiteCoordinateL2Norm (g x) :=
@@ -60,6 +66,16 @@ theorem integral_finiteCoordinate_dot_cauchySchwarz
     (μ := μ)
     (f := fun x => finiteCoordinateL2Norm (f x))
     (g := fun x => finiteCoordinateL2Norm (g x)) hf hg
+  have hNormProdNonneg :
+      0 ≤ ∫ x, finiteCoordinateL2Norm (f x) * finiteCoordinateL2Norm (g x) ∂μ := by
+    apply integral_nonneg
+    intro x
+    exact mul_nonneg (Real.sqrt_nonneg _) (Real.sqrt_nonneg _)
+  have hScalarCS' :
+      (∫ x, finiteCoordinateL2Norm (f x) * finiteCoordinateL2Norm (g x) ∂μ) ≤
+        Real.sqrt (∫ x, (finiteCoordinateL2Norm (f x)) ^ 2 ∂μ) *
+          Real.sqrt (∫ x, (finiteCoordinateL2Norm (g x)) ^ 2 ∂μ) := by
+    simpa [abs_of_nonneg hNormProdNonneg] using hScalarCS
   have hfSq :
       (∫ x, (finiteCoordinateL2Norm (f x)) ^ 2 ∂μ) =
         ∫ x, ∑ i, (f x i) ^ 2 ∂μ := by
@@ -87,7 +103,7 @@ theorem integral_finiteCoordinate_dot_cauchySchwarz
       apply integral_mono_ae hDotInt.abs hNormProdInt
       exact Filter.Eventually.of_forall hPoint
     _ ≤ Real.sqrt (∫ x, (finiteCoordinateL2Norm (f x)) ^ 2 ∂μ) *
-        Real.sqrt (∫ x, (finiteCoordinateL2Norm (g x)) ^ 2 ∂μ) := hScalarCS
+        Real.sqrt (∫ x, (finiteCoordinateL2Norm (g x)) ^ 2 ∂μ) := hScalarCS'
     _ = Real.sqrt (∫ x, ∑ i, (f x i) ^ 2 ∂μ) *
         Real.sqrt (∫ x, ∑ i, (g x i) ^ 2 ∂μ) := by
       rw [hfSq, hgSq]
