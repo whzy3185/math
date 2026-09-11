@@ -20,7 +20,7 @@ B_q=2|\Omega|m^{-2/q}.
 
 The proof uses Holder with respect to the measure `rho dx`, Cauchy-Schwarz, Poincare, and exact mean decomposition.
 
-For rectangular boxes, the Poincare input is now itself Lean-derived. If the dimension is `N` and every side length is bounded by `C`, the formal tree proves
+For rectangular boxes, the Poincare input is now Lean-derived. If the dimension is `N` and every side length is bounded by `C`, the formal tree proves
 
 \[
 \int_\Omega |f-\bar f|^2\le NC^2\sum_i\int_\Omega |\partial_i f|^2,
@@ -159,14 +159,14 @@ Evidence state: **Observed/promising novelty, not certified exhaustive novelty.*
 ## 8. Lean verification status
 
 The current formal tree is verified at commit
-`f7382928cdd5f525724cc18596dfde56b25c5ac3`, GitHub Actions run
-`34559739511` (run 237). The proof-hygiene gate passed and the complete root build finished with
+`29edbb1d97ecc9b0409b8b13bbfc51c3b18eea84`, GitHub Actions run
+`34564427878` (run 254). The proof-hygiene gate passed and the complete root build finished with
 
 ```text
-Build completed successfully (8780 jobs).
+Build completed successfully (8786 jobs).
 ```
 
-The root `formal/AMLStabilization.lean` imports **73 AMLStabilization modules**.
+The root `formal/AMLStabilization.lean` imports **79 AMLStabilization modules**.
 
 The current kernel-checked strengthening includes:
 
@@ -181,18 +181,19 @@ The current kernel-checked strengthening includes:
 - dominated differentiation of spatial energies;
 - rectangular-box divergence theorem applications giving zero-flux mass conservation and Green's first identity;
 - pointwise-PDE-to-integrated-pairing and time-dependent box signal-energy endpoints;
-- local maximum-principle contact/Hessian/barrier machinery;
 - **a genuine multi-dimensional rectangular-box Poincare theorem derived from one-dimensional FTC, independent-copy variance, finite-coordinate telescoping, and product-measure Fubini**;
 - its square-root form with `Cp = sqrt(N) C`;
-- **a direct rectangular-box mass-weighted coercivity bridge with no external geometric Poincare or variance-decomposition hypothesis**.
+- **a direct rectangular-box mass-weighted coercivity bridge with no external geometric Poincare or variance-decomposition hypothesis**;
+- **a global rectangular-box Neumann maximum principle/invariant-range theorem**, including contacts on faces, edges, and corners.
+
+The maximum-principle chain is no longer only local. `GlobalBoxContactSelectionCore.lean` selects the compact-cylinder epsilon-tilted contact; `NeumannEndpointSecondDerivativeCore.lean` proves the second-derivative sign at one-dimensional Neumann endpoints by a derivative-sign/mean-value argument; `BoxNeumannMaximumContactCore.lean` lifts this coordinatewise to arbitrary box extrema; and `GlobalBoxNeumannMaximumPrincipleCore.lean` proves upper/lower and two-sided invariant bounds.
 
 A literal first-principles Lean formalization of the manuscript theorem on an arbitrary smooth bounded Neumann domain is still not claimed. The remaining deep infrastructure is concentrated in:
 
-1. extending the verified box Poincare/divergence/Green machinery to arbitrary smooth Neumann domains and traces;
-2. the global invariant-range/parabolic maximum-principle theorem beyond the compiled local contact/barrier core;
-3. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
-4. Choi's mixed-norm conormal/local boundedness theorem;
-5. the concrete function-space derivation of the cell-density PDE energy identity;
-6. PDE uniqueness/invariance for the full spatially homogeneous sharpness reduction.
+1. extending the verified box Poincare/divergence/Green/Neumann-maximum-principle machinery to arbitrary smooth Neumann domains and traces;
+2. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
+3. Choi's mixed-norm conormal/local boundedness theorem;
+4. the concrete function-space derivation of the cell-density PDE energy identity;
+5. PDE uniqueness/invariance for the full spatially homogeneous sharpness reduction.
 
-The correct formal claim is therefore stronger and more precise than before: the novel arbitrary-order weighted-damping/coercivity/rate machinery and final stabilization-rate assembly are kernel-checked conditional on named deep analytic inputs; in addition, on rectangular boxes the conservative mass/Green identities, geometric Poincare inequality, and its mass-weighted coercivity consequence are fully derived in Lean. The arbitrary-smooth-domain geometric/parabolic infrastructure remains the genuine boundary.
+The correct formal claim is therefore stronger and more precise than before: the novel arbitrary-order weighted-damping/coercivity/rate machinery and final stabilization-rate assembly are kernel-checked conditional on named deep parabolic inputs; in addition, on rectangular boxes the conservative mass/Green identities, geometric Poincare inequality, its mass-weighted coercivity consequence, and the global Neumann invariant-range theorem are all fully derived in Lean. The arbitrary-smooth-domain geometric/parabolic infrastructure remains the genuine boundary.
