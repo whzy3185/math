@@ -93,8 +93,15 @@ theorem rectangularBoxPoincareL2
     simpa [μbox, V, rectangularBoxMeasure, rectangularBoxVolume] using
       (integralOne_piBox_eq_prod_side hside)
   have hmean : (∫ x : Fin (n + 1) → ℝ, f x ∂μbox) = V * fbar := by
-    dsimp [fbar, rectangularBoxMean, μbox, V]
-    field_simp [hVne]
+    change (∫ x : Fin (n + 1) → ℝ, f x ∂μbox) =
+      V * (V⁻¹ * ∫ x : Fin (n + 1) → ℝ, f x ∂μbox)
+    have hinv : V * V⁻¹ = 1 := by
+      field_simp [hVne]
+    calc
+      (∫ x : Fin (n + 1) → ℝ, f x ∂μbox) =
+          1 * (∫ x : Fin (n + 1) → ℝ, f x ∂μbox) := by ring
+      _ = (V * V⁻¹) * (∫ x : Fin (n + 1) → ℝ, f x ∂μbox) := by rw [hinv]
+      _ = V * (V⁻¹ * ∫ x : Fin (n + 1) → ℝ, f x ∂μbox) := by ring
   letI : IsFiniteMeasure μbox := by
     dsimp [μbox, rectangularBoxMeasure]
     infer_instance
@@ -129,7 +136,7 @@ theorem rectangularBoxPoincareL2
           ∑ i : Fin (n + 1),
             ∫ z : Fin (n + 1) → ℝ × ℝ,
               (pairedCoordinateIncrement f z i.val) ^ 2 ∂ν := by
-    simpa only [Finset.sum_range] using htel
+    simpa only [Finset.sum_range, Nat.cast_add, Nat.cast_one] using htel
   have hcoord : ∀ i : Fin (n + 1),
       (∫ z : Fin (n + 1) → ℝ × ℝ,
         (pairedCoordinateIncrement f z i.val) ^ 2 ∂ν) ≤
@@ -224,7 +231,7 @@ theorem rectangularBoxPoincareL2
           (2 * V * C ^ 2 *
             ∑ i : Fin (n + 1),
               ∫ x : Fin (n + 1) → ℝ, (df x i) ^ 2 ∂μbox) := by
-                rw [Finset.mul_sum]
+                rw [← Finset.mul_sum]
   rw [hpairPaired] at htelBound
   have hcancel :
       (2 * V) *
@@ -246,7 +253,12 @@ theorem rectangularBoxPoincareL2
           ((n + 1 : ℝ) * C ^ 2 *
             ∑ i : Fin (n + 1),
               ∫ x : Fin (n + 1) → ℝ, (df x i) ^ 2 ∂μbox) := by ring
-  have hfinal := (mul_le_mul_left (show 0 < 2 * V by positivity)).mp hcancel
+  have hfinal :
+      (∫ x : Fin (n + 1) → ℝ, (f x - fbar) ^ 2 ∂μbox) ≤
+        (n + 1 : ℝ) * C ^ 2 *
+          ∑ i : Fin (n + 1),
+            ∫ x : Fin (n + 1) → ℝ, (df x i) ^ 2 ∂μbox := by
+    exact le_of_mul_le_mul_left hcancel (show 0 < 2 * V by positivity)
   simpa [μbox, V, fbar, rectangularBoxMean, rectangularBoxVolume] using hfinal
 
 end AMLStabilization
