@@ -44,8 +44,8 @@ theorem secondDeriv_nonpos_at_left_endpoint_of_isMaxOn_of_deriv_zero
     have hs := hsignr c hcball
     have hca : 0 < c - a := sub_pos.mpr hc.1
     have hs' : SignType.sign (deriv f c) = 1 := by
-      simpa [SignType.sign_pos hca] using hs
-    exact SignType.sign_eq_one_iff.mp hs'
+      simpa [sign_pos hca] using hs
+    exact sign_eq_one_iff.mp hs'
   have hcont' : ContinuousOn f (Icc a y) := by
     apply hcont.mono
     intro x hx
@@ -92,8 +92,8 @@ theorem secondDeriv_nonpos_at_right_endpoint_of_isMaxOn_of_deriv_zero
     have hs := hsignr c hcball
     have hcb : c - b < 0 := sub_neg.mpr hc.2
     have hs' : SignType.sign (deriv f c) = -1 := by
-      simpa [SignType.sign_neg hcb] using hs
-    exact SignType.sign_eq_neg_one_iff.mp hs'
+      simpa [sign_neg hcb] using hs
+    exact sign_eq_neg_one_iff.mp hs'
   have hcont' : ContinuousOn f (Icc x b) := by
     apply hcont.mono
     intro y hy
@@ -141,8 +141,8 @@ theorem secondDeriv_nonneg_at_left_endpoint_of_isMinOn_of_deriv_zero
     have hs := hsignr c hcball
     have hac : a - c < 0 := sub_neg.mpr hc.1
     have hs' : SignType.sign (deriv f c) = -1 := by
-      simpa [SignType.sign_neg hac] using hs
-    exact SignType.sign_eq_neg_one_iff.mp hs'
+      simpa [sign_neg hac] using hs
+    exact sign_eq_neg_one_iff.mp hs'
   have hcont' : ContinuousOn f (Icc a y) := by
     apply hcont.mono
     intro x hx
@@ -189,8 +189,8 @@ theorem secondDeriv_nonneg_at_right_endpoint_of_isMinOn_of_deriv_zero
     have hs := hsignr c hcball
     have hbc : 0 < b - c := sub_pos.mpr hc.2
     have hs' : SignType.sign (deriv f c) = 1 := by
-      simpa [SignType.sign_pos hbc] using hs
-    exact SignType.sign_eq_one_iff.mp hs'
+      simpa [sign_pos hbc] using hs
+    exact sign_eq_one_iff.mp hs'
   have hcont' : ContinuousOn f (Icc x b) := by
     apply hcont.mono
     intro y hy
