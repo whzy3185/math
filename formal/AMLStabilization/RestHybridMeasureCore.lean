@@ -54,6 +54,52 @@ theorem Integrable.comp_pairedRestHybrid
   have hcomp := hmapped.comp_aemeasurable hsel
   simpa [ν, Function.comp_def] using hcomp
 
+/-- Integral transport from an integrability hypothesis.  This is the version
+used by the box Poincare assembly, where integrability of the fiber-energy
+function is itself obtained from Fubini. -/
+theorem integral_pairedRestHybrid_of_integrable
+    {α : Type*} [MeasurableSpace α] {n : ℕ}
+    (i : Fin (n + 1))
+    (μ : Fin n → Measure α) [∀ j, IsFiniteMeasure (μ j)]
+    (g : (Fin n → α) → ℝ)
+    (hg : Integrable g (Measure.pi μ)) :
+    (∫ z : Fin n → α × α, g (pairedRestHybrid i z)
+        ∂Measure.pi (fun j => (μ j).prod (μ j))) =
+      (∏ j, μ j Set.univ).toReal *
+        ∫ x : Fin n → α, g x ∂Measure.pi μ := by
+  let ν : Measure (Fin n → α × α) :=
+    Measure.pi (fun j => (μ j).prod (μ j))
+  let c : ℝ≥0∞ := ∏ j, μ j Set.univ
+  have hc : c ≠ ∞ := by
+    dsimp [c]
+    exact ENNReal.prod_ne_top fun j _ => measure_ne_top (μ j) Set.univ
+  have hscaled : Integrable g (c • Measure.pi μ) := hg.smul_measure hc
+  have hmapped : Integrable g (Measure.map (pairedRestHybrid i) ν) := by
+    rw [show Measure.map (pairedRestHybrid i) ν = c • Measure.pi μ by
+      simpa [ν, c] using map_pairedRestHybrid i μ]
+    exact hscaled
+  have hsel : AEMeasurable (pairedRestHybrid i : (Fin n → α × α) → (Fin n → α)) ν := by
+    apply Measurable.aemeasurable
+    apply measurable_pi_lambda
+    intro j
+    by_cases h : (i.succAbove j : Fin (n + 1)).val < i.val
+    · simpa [pairedRestHybrid, h] using
+        (measurable_pi_apply j).snd
+    · simpa [pairedRestHybrid, h] using
+        (measurable_pi_apply j).fst
+  have hmapInt := integral_map hsel hmapped.aestronglyMeasurable
+  calc
+    (∫ z : Fin n → α × α, g (pairedRestHybrid i z) ∂ν) =
+        ∫ x : Fin n → α, g x ∂Measure.map (pairedRestHybrid i) ν := by
+      exact hmapInt.symm
+    _ = ∫ x : Fin n → α, g x ∂(c • Measure.pi μ) := by
+      rw [show Measure.map (pairedRestHybrid i) ν = c • Measure.pi μ by
+        simpa [ν, c] using map_pairedRestHybrid i μ]
+    _ = c.toReal * ∫ x : Fin n → α, g x ∂Measure.pi μ := by
+      simp [MeasureTheory.integral_smul_measure, smul_eq_mul]
+    _ = (∏ j, μ j Set.univ).toReal *
+        ∫ x : Fin n → α, g x ∂Measure.pi μ := by rfl
+
 /-- Integral transport form of `map_pairedRestHybrid`.  Integrating a function
 of the selected hybrid rest-coordinates against all paired rest-coordinates
 produces exactly the unused-copy mass factor times the ordinary product
