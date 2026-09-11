@@ -46,12 +46,17 @@ theorem crossGradientFlux_divergence_identity
     _ = w x * (∑ i : Fin (n + 1), dgradH i (Pi.single i 1)) +
         ∑ i : Fin (n + 1), gradH x i * gradW x i := by
       rw [Finset.sum_add_distrib, Finset.mul_sum]
-    _ = (∑ i : Fin (n + 1), gradW x i * gradH x i) + w x * lapH x := by
+    _ = (∑ i : Fin (n + 1), gradH x i * gradW x i) + w x * lapH x := by
       rw [← hlapH]
-      congr 1
-      apply Finset.sum_congr rfl
-      intro i hi
       ring
+    _ = (∑ i : Fin (n + 1), gradW x i * gradH x i) + w x * lapH x := by
+      have hsum :
+          (∑ i : Fin (n + 1), gradH x i * gradW x i) =
+            ∑ i : Fin (n + 1), gradW x i * gradH x i := by
+        apply Finset.sum_congr rfl
+        intro i hi
+        ring
+      rw [hsum]
 
 /--
 Cross Green identity on a rectangular box from local first/second derivative
