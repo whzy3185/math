@@ -1,6 +1,6 @@
 Dear Editor,
 
-Please consider our manuscript, **“Mass-weighted damping and stabilization in chemotaxis with signal-dependent motility,”** for publication in *Applied Mathematics Letters*.
+Please consider our manuscript, **“Mass-weighted damping and a rate dichotomy for chemotaxis with signal-dependent motility,”** for publication in *Applied Mathematics Letters*.
 
 We study the system
 
