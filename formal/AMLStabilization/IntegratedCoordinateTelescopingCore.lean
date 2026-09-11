@@ -34,7 +34,10 @@ theorem integral_coordinateTelescoping_sq_le
   have hSumInt : Integrable
       (fun z : Fin n → α × α =>
         ∑ k ∈ Finset.range n, (pairedCoordinateIncrement f z k) ^ 2) ν := by
-    simpa only using integrable_finsetSum' (Finset.range n) hStepInt
+    change Integrable
+      (∑ k ∈ Finset.range n,
+        fun z : Fin n → α × α => (pairedCoordinateIncrement f z k) ^ 2) ν
+    exact integrable_finsetSum' (Finset.range n) hStepInt
   have hScaledInt : Integrable
       (fun z : Fin n → α × α =>
         (n : ℝ) * ∑ k ∈ Finset.range n,
