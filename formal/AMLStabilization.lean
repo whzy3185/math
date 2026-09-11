@@ -19,6 +19,7 @@ import AMLStabilization.HybridFiberCore
 import AMLStabilization.BoxProductMeasureCore
 import AMLStabilization.PairedProductMeasureCore
 import AMLStabilization.PairedSelectorMeasureCore
+import AMLStabilization.RestHybridMeasureCore
 import AMLStabilization.PiCoordinateFubiniCore
 import AMLStabilization.InvariantRangeCore
 import AMLStabilization.MaximumPrincipleContactCore
