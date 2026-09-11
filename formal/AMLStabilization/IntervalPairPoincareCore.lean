@@ -24,14 +24,16 @@ theorem intervalPairDifferenceL2
   have hfmeas : AEStronglyMeasurable f μ := by
     dsimp only [μ]
     exact hf_cont.aestronglyMeasurable_of_isCompact isCompact_Icc measurableSet_Icc
+  have hsqcont : ContinuousOn (fun x => f x ^ 2) (Icc a b) := by
+    simpa only [Pi.pow_apply] using hf_cont.pow 2
   have hf2int : Integrable (fun x => f x ^ 2) μ := by
     dsimp only [μ]
-    exact (hf_cont.pow 2).integrableOn_isCompact isCompact_Icc
+    exact hsqcont.integrableOn_isCompact isCompact_Icc
   have hfLp : MemLp f 2 μ :=
     (memLp_two_iff_integrable_sq hfmeas).2 hf2int
   have hvol : (∫ _ : ℝ, (1 : ℝ) ∂μ) = b - a := by
     dsimp only [μ]
-    rw [integral_const, Measure.restrict_apply_univ, smul_eq_mul]
+    rw [MeasureTheory.integral_const, Measure.restrict_apply_univ, smul_eq_mul]
     · rw [Real.volume_real_Icc_of_le hab.le]
       ring
     · exact measurableSet_Icc
@@ -41,9 +43,15 @@ theorem intervalPairDifferenceL2
     rw [MeasureTheory.integral_Icc_eq_integral_Ioc,
       ← intervalIntegral.integral_of_le hab.le]
   have hmean : (∫ x, f x ∂μ) = (b - a) * fbar := by
+    have hne : b - a ≠ 0 := sub_ne_zero.mpr hab.ne
+    have hinv : (b - a) * (1 / (b - a)) = 1 := by
+      field_simp [hne]
     rw [hsetIntegral]
     dsimp only [fbar]
-    field_simp [sub_ne_zero.mpr hab.ne]
+    calc
+      (∫ x in a..b, f x) = 1 * (∫ x in a..b, f x) := by ring
+      _ = ((b - a) * (1 / (b - a))) * (∫ x in a..b, f x) := by rw [hinv]
+      _ = (b - a) * ((1 / (b - a)) * ∫ x in a..b, f x) := by ring
   have hpair :=
     productDifferenceSquareIntegral_eq_two_mul_volume_mul_deviation
       (μ := μ) (f := f) (fbar := fbar) (V := b - a)
