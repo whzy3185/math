@@ -1,6 +1,6 @@
 # Strengthened rate-dichotomy theorem package
 
-Date: 2026-09-10
+Date: 2026-09-11
 Branch: `research/aml-production-consumption-stabilization`
 
 ## 1. Nonlinear mass-weighted coercivity
@@ -19,6 +19,20 @@ B_q=2|\Omega|m^{-2/q}.
 \]
 
 The proof uses Holder with respect to the measure `rho dx`, Cauchy-Schwarz, Poincare, and exact mean decomposition.
+
+For rectangular boxes, the Poincare input is now itself Lean-derived. If the dimension is `N` and every side length is bounded by `C`, the formal tree proves
+
+\[
+\int_\Omega |f-\bar f|^2\le NC^2\sum_i\int_\Omega |\partial_i f|^2,
+\]
+
+hence an effective Poincare constant
+
+\[
+C_P=\sqrt N\,C.
+\]
+
+`FullBoxCoercivityBridge.lean` feeds this directly into the mass-weighted coercivity theorem, so no external box-level Poincare or variance-decomposition hypothesis is needed.
 
 ## 2. Abstract weighted-damping rate dichotomy
 
@@ -122,64 +136,63 @@ For
 F(s)=-\kappa(s-v_*)|s-v_*|^\theta,
 \]
 
-spatially homogeneous data remain homogeneous and satisfy
+the signed homogeneous ODE profile satisfies
 
 \[
 |v(t)-v_*|=
 \left(|w_0|^{-\theta}+\theta\kappa\bar u_0t\right)^{-1/\theta}.
 \]
 
-Hence the signal exponent `1/theta` is optimal in general.
+Lean verifies this exact absolute-value profile for arbitrary nonzero signed initial deviation. The PDE statement that spatially homogeneous data remain homogeneous still requires the corresponding PDE uniqueness/invariance infrastructure.
 
 ## 6. Concrete applications
 
 - Qin-Zheng production-consumption bounded solutions: the published uniform `L-infinity` bound implies the strengthened eventual finite `Lp` hypothesis for every finite `p`, hence full exponential stabilization.
-- Superlinear consumption `v_t = Delta v - u v^m`, `m>1`: on the nonnegative signal range use the `C1(R)` extension `F(s)=-s|s|^{m-1}`. Then `theta=m-1`, giving signal `L2` decay of order `t^{-1/(m-1)}` and the corresponding full uniform algebraic rate under eventual finite `Lp` control.
+- Superlinear consumption `v_t = Delta v - u v^m`, `m>1`: on the nonnegative signal range use `F(s)=-s|s|^{m-1}`. Then `theta=m-1`, giving signal `L2` decay of order `t^{-1/(m-1)}` and the corresponding full uniform algebraic rate under eventual finite `Lp` control.
 
 ## 7. Prior-art status
 
-Targeted searches on 2026-09-10 located nearby work on linear consumption, production-consumption stabilization with classical Keller-Segel flux, Qin-Zheng boundedness, and superlinear-consumption global solution theory. No theorem identical to the abstract fixed-mass time-dependent weighted-damping rate dichotomy, the eventual finite-`Lp` full stabilization theorem, or the algebraic-rate/sharpness package was located in this audit.
+Targeted searches located nearby work on linear consumption, production-consumption stabilization with classical Keller-Segel flux, Qin-Zheng boundedness, and superlinear-consumption global solution theory. No theorem identical to the abstract fixed-mass time-dependent weighted-damping rate dichotomy, the eventual finite-`Lp` full stabilization theorem, or the algebraic-rate/sharpness package was located in this audit.
 
 Evidence state: **Observed/promising novelty, not certified exhaustive novelty.**
 
 ## 8. Lean verification status
 
 The current formal tree is verified at commit
-`16fce36272273430fa31fe3fdb18f66b3e29941b`, GitHub Actions run
-`34448754427` (run 150).  The proof-hygiene gate passed and the complete root
-build finished with
+`f7382928cdd5f525724cc18596dfde56b25c5ac3`, GitHub Actions run
+`34559739511` (run 237). The proof-hygiene gate passed and the complete root build finished with
 
 ```text
-Build completed successfully (8752 jobs).
+Build completed successfully (8780 jobs).
 ```
 
-The root `formal/AMLStabilization.lean` imports **45 AMLStabilization modules**.
-The current kernel-checked strengthening includes substantially more than the
-older representative `q=4` branch:
+The root `formal/AMLStabilization.lean` imports **73 AMLStabilization modules**.
 
-- genuine arbitrary-real-`q` weighted Holder and nonlinear mass-weighted coercivity;
-- arbitrary `q>2` Bihari integration, including the zero-energy branch;
+The current kernel-checked strengthening includes:
+
+- arbitrary-real-`q` weighted Holder and nonlinear mass-weighted coercivity;
+- arbitrary `q>2` Bihari integration including the zero-energy branch;
 - general quadratic/exponential and superquadratic/polynomial weighted-damping endpoints;
-- a manuscript-facing `q=theta+2` degenerate endpoint with energy exponent `2/theta` and signal exponent `1/theta`;
-- compact-positive-factor derivation of quantitative degenerate dissipativity for arbitrary real `theta>0`;
-- finite-measure `L^p -> L^2`, Holder-product, and bounded-interpolation machinery;
-- exact construction of an admissible spatial exponent for every `0 < mu < (1/theta) min{1,2(p-n)/(pn)}`;
-- explicit mixed time exponent `Q=4p/(p-n)` satisfying `Q>2` and `n/p+2/Q<1`, including the one-dimensional cylinder-lift specialization;
-- forced cell-energy exponential/polynomial decay, energy-to-norm conversion, and final full-rate assembly conditional on the named deep parabolic interfaces;
-- direct superlinear-consumption specialization `F(s)=-s|s|^(m-1)` into the arbitrary-order signal theorem;
-- signed sharpness with the exact absolute-value profile `|w(t)|=(|w0|^(-theta)+theta*k*t)^(-1/theta)`;
-- scalar mass-conservation propagation and dominated differentiation of spatial integrals;
-- **box-level Neumann geometry from mathlib's divergence theorem**: zero face flux gives zero total divergence, conservation laws give exact mass conservation, and zero normal derivative plus the local product rule gives Green's first identity.
+- the `q=theta+2` degenerate endpoint with energy exponent `2/theta` and signal exponent `1/theta`;
+- compact-positive-factor derivation of degenerate dissipativity for arbitrary real `theta>0`;
+- exact eventual finite-`Lp` rate optimization and mixed time exponent `Q=4p/(p-n)`;
+- forced cell-energy decay, energy-to-norm conversion, and full-rate assembly conditional on named deep parabolic inputs;
+- direct superlinear-consumption signal specialization and signed sharpness;
+- dominated differentiation of spatial energies;
+- rectangular-box divergence theorem applications giving zero-flux mass conservation and Green's first identity;
+- pointwise-PDE-to-integrated-pairing and time-dependent box signal-energy endpoints;
+- local maximum-principle contact/Hessian/barrier machinery;
+- **a genuine multi-dimensional rectangular-box Poincare theorem derived from one-dimensional FTC, independent-copy variance, finite-coordinate telescoping, and product-measure Fubini**;
+- its square-root form with `Cp = sqrt(N) C`;
+- **a direct rectangular-box mass-weighted coercivity bridge with no external geometric Poincare or variance-decomposition hypothesis**.
 
-This last item moves a genuine part of the PDE boundary below the abstract-interface level.  On rectangular boxes, the global flux and Green identities are now derived rather than assumed.
+A literal first-principles Lean formalization of the manuscript theorem on an arbitrary smooth bounded Neumann domain is still not claimed. The remaining deep infrastructure is concentrated in:
 
-A literal first-principles Lean formalization of the manuscript theorem on an arbitrary smooth bounded Neumann domain is still not claimed.  The remaining deep infrastructure is concentrated in:
+1. extending the verified box Poincare/divergence/Green machinery to arbitrary smooth Neumann domains and traces;
+2. the global invariant-range/parabolic maximum-principle theorem beyond the compiled local contact/barrier core;
+3. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
+4. Choi's mixed-norm conormal/local boundedness theorem;
+5. the concrete function-space derivation of the cell-density PDE energy identity;
+6. PDE uniqueness/invariance for the full spatially homogeneous sharpness reduction.
 
-1. geometric Poincare theory in the manuscript's exact Sobolev setting;
-2. extension of the now-verified box divergence/Green theory to arbitrary smooth Neumann domains and traces;
-3. the invariant signal interval / maximum-principle argument;
-4. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing;
-5. Choi's mixed-norm conormal/local boundedness theorem in the required arbitrary-domain setting;
-6. the concrete function-space derivation of the cell-density PDE energy identity.
-
-The correct formal claim is therefore stronger than before but still precise: the novel arbitrary-order weighted-damping/coercivity/rate machinery and the final stabilization-rate assembly are kernel-checked conditional on named deep analytic inputs; in addition, the conservative mass and Green identities are fully derived on rectangular boxes from mathlib's Bochner divergence theorem.  The arbitrary-smooth-domain geometric/parabolic infrastructure remains the genuine boundary.
+The correct formal claim is therefore stronger and more precise than before: the novel arbitrary-order weighted-damping/coercivity/rate machinery and final stabilization-rate assembly are kernel-checked conditional on named deep analytic inputs; in addition, on rectangular boxes the conservative mass/Green identities, geometric Poincare inequality, and its mass-weighted coercivity consequence are fully derived in Lean. The arbitrary-smooth-domain geometric/parabolic infrastructure remains the genuine boundary.
