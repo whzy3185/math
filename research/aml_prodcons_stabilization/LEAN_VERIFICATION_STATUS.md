@@ -1,15 +1,15 @@
 # Lean verification status — AML weighted-damping stabilization
 
-Date: 2026-09-10  
+Date: 2026-09-11  
 Branch: `research/aml-production-consumption-stabilization`  
-Verified formal-tree commit: `16fce36272273430fa31fe3fdb18f66b3e29941b`  
-Successful GitHub Actions run: `34448754427` (run 150)  
+Verified formal-tree commit: `f7382928cdd5f525724cc18596dfde56b25c5ac3`  
+Successful GitHub Actions run: `34559739511` (run 237)  
 Toolchain: Lean `v4.33.1`, mathlib revision `0df444a360eaa60ab8c11dca51a86af692955474`  
 Build command: `lake build` from `formal/`  
-Result: **SUCCESS — `Build completed successfully (8752 jobs)`**.  
+Result: **SUCCESS — `Build completed successfully (8780 jobs)`**.  
 Proof-hygiene gate: **SUCCESS** — CI rejects `sorry`, `admit`, and explicit user `axiom` declarations before compilation.
 
-The verification root `formal/AMLStabilization.lean` now imports **45 AMLStabilization modules**.  Relative to the older strengthening note, the arbitrary-real-`q` weighted-damping chain is no longer merely represented by the `q=4` branch: the general coercivity, rate dichotomy, zero-energy branch, eventual finite-`L^p` exponent machinery, degenerate `theta` endpoint, superlinear-consumption specialization, exact rate optimization, signed sharpness formula, mass-conservation propagation, dominated differentiation of the squared `L^2` energy, and a first genuine Neumann/divergence layer on rectangular boxes are all present in the compiled tree.
+The verification root `formal/AMLStabilization.lean` now imports **73 AMLStabilization modules**. The formal tree now contains the arbitrary-real-order weighted-damping/rate machinery, exact finite-`L^p` rate optimization, signed sharpness, dominated energy differentiation, box divergence/Green/mass conservation, local maximum-principle contact machinery, time-dependent box signal-energy identities, and a genuine multi-dimensional rectangular-box Poincare theorem wired directly into the mass-weighted coercivity chain.
 
 ## 1. Arbitrary-real-`q` weighted damping is kernel-checked
 
@@ -17,9 +17,9 @@ The following pieces are compiled for general real exponents rather than only a 
 
 - `WeightedHolderQ.lean`: weighted Holder with respect to a nonnegative finite-mass weight;
 - `NonlinearCoercivityAlgebra.lean` and `NonlinearIntegralCoercivity.lean`: nonlinear mass-weighted coercivity for arbitrary real `q >= 2`;
-- `GeneralSignalEnergyIdentityQ.lean`: arbitrary-order reaction dissipation and signal-energy inequality from named PDE/Green interfaces;
+- `GeneralSignalEnergyIdentityQ.lean`: arbitrary-order reaction dissipation and signal-energy inequality;
 - `GeneralRateAssembly.lean`: fractional coercivity and `q/2`-power dissipation closure;
-- `GeneralPolynomialEnergyDecay.lean`, `LocalPolynomialEnergyDecay.lean`, `ZeroEnergyBranch.lean`: arbitrary `q>2` Bihari decay including the natural nonnegative zero-energy branch;
+- `GeneralPolynomialEnergyDecay.lean`, `LocalPolynomialEnergyDecay.lean`, `ZeroEnergyBranch.lean`: arbitrary `q>2` Bihari decay including the zero-energy branch;
 - `GeneralQuadraticWeightedDampingFinal.lean`: quadratic/exponential endpoint;
 - `GeneralWeightedDampingFinal.lean` and `GeneralWeightedDampingNonnegativeFinal.lean`: superquadratic/polynomial endpoint.
 
@@ -30,183 +30,184 @@ q = 2  -> exponential signal decay,
 q > 2  -> polynomial signal decay
 ```
 
-is represented in the Lean library at arbitrary real damping order, conditional only on the explicitly named geometric/PDE identities at the analytic boundary.
+is represented in Lean at arbitrary real damping order.
 
-## 2. Degenerate kinetics match the manuscript parameter `theta`
+## 2. Degenerate kinetics and exact manuscript rate threshold
 
-`DegenerateWeightedDampingFinal.lean` specializes the general theorem to
+`DegenerateWeightedDampingFinal.lean` specializes to `q = theta + 2`, `theta > 0`, with energy exponent `2/theta` and signal `L^2` exponent `1/theta`.
 
-```text
-q = theta + 2,   theta > 0,
-```
-
-and exposes the decay directly in manuscript variables.  The energy exponent is kernel-checked as `2/theta`, and the square-root signal `L^2` exponent as `1/theta`.
-
-`AttractorDissipativityCore.lean` is also compiled in the verification root.  If on a compact invariant signal set
+`AttractorDissipativityCore.lean` proves quantitative dissipativity from
 
 ```text
 F(s) = -h(s) (s-v_*) |s-v_*|^theta,
-h(s) > 0,
+h(s) > 0
 ```
 
-with continuous `h`, Lean obtains a quantitative `beta>0` and proves
+on a compact signal range, so the formal mechanism allows `F'(v_*)=0` and is not restricted to shifted affine consumption.
 
-```text
-(s-v_*) F(s) <= -beta |s-v_*|^(theta+2).
-```
-
-This formalizes the structural mechanism that allows `F'(v_*)=0`; it is not restricted to shifted linear consumption.
-
-## 3. Eventual finite-`L^p` exponent layer and exact full-rate threshold
-
-The compiled exponent layer contains:
-
-- `LpExponentCore.lean`: an admissible spatial exponent `r`, Holder partner `s`, the exact relation `1/r = 1/p + 1/s`, and positivity of the transfer rate;
-- `LpFiniteMeasureCore.lean`: finite-measure `L^p -> L^2` transfer;
-- `LpProductCore.lean`: actual `MemLp` product transfer for the Holder exponents;
-- `BoundedInterpolationCore.lean`: bounded interpolation with exponential and polynomial rate propagation;
-- `MixedNormExponentCore.lean`: an explicit finite time exponent
-
-```text
-Q = 4 p / (p-n)
-```
-
-satisfying `Q>2` and `n/p + 2/Q < 1` whenever `p>max{n,2}`.  The same module proves the one-dimensional cylinder-lift specialization: after lifting to effective dimension two, the hypothesis `p>2` is enough;
-- `LpRateOptimization.lean`: for every
+`LpRateOptimization.lean` kernel-checks the exact manuscript threshold: for every
 
 ```text
 0 < mu < (1/theta) * min {1, 2(p-n)/(pn)},
 ```
 
-Lean constructs an admissible `r` for which
+an admissible exponent `r` is constructed with
 
 ```text
 mu < 2(p-r)/(theta p r).
 ```
 
-This is the exact optimization step behind the polynomial full-stabilization threshold in the manuscript.
-
-## 4. Cell-energy and full-rate assembly
-
-The scalar/parabolic-rate bookkeeping remains compiled through:
-
-- `CellEnergyCore.lean`, `ForcedEnergyDecay.lean`, `PolynomialForcedEnergyDecay.lean`, and `CellEnergyAssembly.lean`;
-- `RateComparisonCore.lean` and `CellEnergyEnvelope.lean`;
-- `RateRootCore.lean`;
-- `FullStabilizationAssembly.lean`.
-
-Consequently, once the named signal `W^{1,infinity}` smoothing estimate and Choi-type local boundedness estimate are supplied, Lean propagates the signal rate through coefficient forcing, cell `L^2` energy, square-root norm conversion, and the final cell `L^infinity` rate for both exponential and polynomial branches.
-
-This is a **kernel-checked full rate assembly conditional on the deep analytic interfaces**.  It is not a claim that those arbitrary-domain parabolic regularity theorems themselves have been formalized.
-
-## 5. Concrete superlinear-consumption application
-
-`SuperlinearConsumptionCore.lean` proves for real `ell>1`
+`MixedNormExponentCore.lean` provides the explicit finite time exponent
 
 ```text
-F(s) = -s |s|^(ell-1),
-s F(s) = -|s|^(ell+1).
+Q = 4p/(p-n),
 ```
 
-`SuperlinearConsumptionSignalFinal.lean` feeds this identity directly into the arbitrary-`q` weighted-damping theorem with `q=ell+1`.  Thus the superlinear-consumption application is no longer represented only by an isolated reaction identity: its polynomial signal-rate specialization is a compiled endpoint theorem under the same named geometric/PDE interfaces as the abstract result.
+with `Q>2` and `n/p + 2/Q < 1`, including the one-dimensional cylinder-lift specialization.
 
-For the manuscript model `v_t = Delta v - u v^m`, one sets `ell=m`, so `q-2=m-1` and the signal norm exponent is `1/(m-1)`.
+## 3. Concrete superlinear consumption and sharpness
 
-## 6. Sharpness covers arbitrary sign
+`SuperlinearConsumptionSignalFinal.lean` specializes the arbitrary-order theorem to
 
-`SharpnessCore.lean` retains the positive homogeneous profile and its exact ODE derivative identity.
+```text
+F(s) = -s |s|^(m-1),
+q = m+1,
+```
 
-`SignedSharpnessCore.lean` adds the signed profile for every nonzero initial deviation `w0`, proves recovery of the initial value, and kernel-checks
+so the signal exponent is `1/(m-1)`.
+
+`SignedSharpnessCore.lean` kernel-checks, for nonzero signed initial deviation,
 
 ```text
 |w(t)| = (|w0|^(-theta) + theta*k*t)^(-1/theta),
 ```
 
-including the manuscript substitution `k = kappa * ubar`.
+including `k = kappa * ubar`. This verifies the exact sharp ODE profile used in the manuscript. The remaining PDE-level sharpness step is the uniqueness/invariance argument identifying spatially constant PDE data with that ODE solution.
 
-Therefore the sharp signal order `t^(-1/theta)` is represented in Lean with the same absolute-value formula stated in the paper.
+## 4. Time differentiation, box mass conservation, and Green identity are derived
 
-## 7. Calculus interfaces reduced before the geometric PDE layer
-
-`MassConservationCore.lean` proves that a differentiable scalar mass functional with zero derivative is constant and propagates an initial positive integral mass to a fixed positive mass at all times.
-
-`EnergyDifferentiationCore.lean` uses mathlib's dominated parametric-integral differentiation theorem to prove
+`EnergyDifferentiationCore.lean` uses mathlib's parametric-integral differentiation theorem to prove
 
 ```text
 d/dt integral w(t,x)^2 dx = 2 integral w(t,x) w_t(t,x) dx
 ```
 
-under standard local measurability, integrability, domination, and pointwise time-differentiability hypotheses.
+under local dominated-differentiation hypotheses.
 
-These calculus steps are no longer opaque assumptions.
+`BoxNeumannFluxCore.lean` uses mathlib's Bochner divergence theorem on rectangular boxes to prove:
 
-## 8. New box-Neumann divergence, mass conservation, and Green layer
+- zero face flux implies zero integral of the divergence;
+- dominated differentiation of the spatial mass integral;
+- `u_t = div J` plus zero face flux implies exact mass conservation;
+- zero normal derivative plus the local product rule implies Green's first identity.
 
-File: `formal/AMLStabilization/BoxNeumannFluxCore.lean`
+`ProductRuleGreenCore.lean` and `CanonicalBoxGreenCore.lean` push the Green identity down to local Frechet/product-rule data rather than assuming the global integration-by-parts formula.
 
-Mathlib `v4.33.1` contains a Bochner divergence theorem on rectangular boxes in finite-dimensional Euclidean space.  The new module uses that theorem directly and proves four PDE-facing results:
+## 5. Signal-energy PDE interfaces are reduced on boxes
 
-1. `boxIntegral_divergence_eq_zero_of_zero_face_flux`: if every normal coordinate of a flux vanishes on the corresponding front and back faces of a box, then
+`SignalPDEPairingCore.lean` derives the integrated PDE pairing from the pointwise PDE and integrability rather than taking the pairing identity as an input.
 
-```text
-integral_box div J = 0.
-```
+`BoxSignalEnergyCore.lean` combines pointwise PDE data with the canonical box Green identity.
 
-This is a genuine application of mathlib's divergence theorem, not an assumed global flux identity.
-
-2. `hasDerivAt_boxIntegral_of_dominated`: under the standard dominated parametric-integral hypotheses,
-
-```text
-d/dt integral_box u(t,x) dx = integral_box u_t(t,x) dx.
-```
-
-3. `boxMass_conserved_from_fluxPDE`: if
+`TimeDependentBoxSignalEnergyCore.lean` additionally generates
 
 ```text
-u_t = div J
+d/dt integral w^2 = 2 integral w w_t
 ```
 
-and the face flux is zero, Lean combines the preceding two results with the divergence theorem to obtain exact spatial mass conservation.
+internally from dominated differentiation. On boxes, the signal-energy chain therefore no longer requires opaque `hEnergyDerivative`, `hPDEPairing`, or global Green assumptions.
 
-4. `boxGreenIdentity_of_zero_normalDerivative`: for the flux `w * grad w`, zero normal derivative on every face and the local product-rule divergence identity imply
+## 6. Rectangular-box Poincare is now fully derived
+
+The box Poincare chain is no longer an abstract tensorization interface. The compiled modules are:
+
+- `BoxPoincareCore.lean`: one-dimensional `[0,h]` weak `L^2` Poincare from FTC;
+- `IntervalPoincareShiftCore.lean`: arbitrary interval `[a,b]`;
+- `IntervalPairPoincareCore.lean`: independent-double-copy interval estimate;
+- `ProductVarianceCore.lean`: probability and finite-measure double-copy variance identities;
+- `CoordinateTelescopingCore.lean` and `IntegratedCoordinateTelescopingCore.lean`: finite-coordinate hybrid Cauchy-Schwarz telescoping, pointwise and integrated;
+- `BoxProductMeasureCore.lean`, `PairedProductMeasureCore.lean`, `PairedSelectorMeasureCore.lean`, `RestHybridMeasureCore.lean`, and `PiCoordinateFubiniCore.lean`: product-measure, paired-coordinate, selector, and Fubini bookkeeping;
+- `HybridFiberCore.lean` and `BoxHybridFiberPoincareCore.lean`: identification and estimate of a single coordinate hybrid increment;
+- `BoxVolumeFactorCore.lean`: exact side-length and rest-volume factor identities;
+- `FullBoxPoincareCore.lean`: final multi-dimensional theorem.
+
+For a nondegenerate rectangular box of dimension `N=n+1`, if every side length is at most `C`, Lean proves
 
 ```text
-integral_box w * lap w = - integral_box |grad w|^2.
+integral |f-fbar|^2 <= N * C^2 * sum_i integral |partial_i f|^2.
 ```
 
-Thus, **on rectangular boxes**, the two global Neumann identities most heavily used by the paper — zero total conservative flux and Green's first identity — are now below the abstract interface boundary and kernel-checked.  The remaining input in the Green theorem is local differentiability/product-rule data for the flux, not the global integration-by-parts conclusion itself.
+No external `hVarianceDecomp` or geometric `hPoincare` assumption occurs in this final box theorem.
 
-This is an important refinement of the earlier provenance statement: it is no longer correct to say that all Green/flux identities are external to the Lean library.  They remain external for the manuscript's full arbitrary-smooth-domain setting, but are now formally derived on boxes from mathlib's divergence theorem.
+`FullBoxPoincareSqrtCore.lean` exposes the square-root form with effective constant
 
-## 9. Final CI evidence
+```text
+Cp = sqrt(N) * C.
+```
 
-GitHub Actions run `34448754427` (run 150), at formal-tree commit
-`16fce36272273430fa31fe3fdb18f66b3e29941b`, records:
+## 7. Box Poincare is wired into mass-weighted coercivity
+
+`FullBoxCoercivityBridge.lean` proves `integralMassWeightedCoercivity_on_rectangularBox`.
+
+This theorem internally constructs:
+
+- the rectangular-box volume;
+- the integral mean;
+- the Poincare estimate with `Cp = sqrt(N) * C`;
+- the exact mean-square decomposition;
+- the gradient energy as the sum of coordinate derivative energies.
+
+It then feeds those results into `integralMassWeightedCoercivity_of_MemLp_and_Poincare`.
+
+Therefore, **on rectangular boxes the mass-weighted coercivity layer no longer asks the caller for either a variance-decomposition hypothesis or a geometric Poincare hypothesis**. The remaining assumptions at that theorem are the genuinely weight-dependent `rho` mass/`L^2`/weighted-integrability data and the regularity/integrability needed to instantiate the box Poincare theorem.
+
+## 8. Maximum-principle core has been pushed below the reaction-sign interface
+
+The compiled tree contains:
+
+- `InvariantRangeCore.lean`: reaction-sign preservation algebra;
+- `SpatialExtremumSecondDerivativeCore.lean`: spatial extremum gives the expected Hessian/Laplacian sign;
+- `MaximumPrincipleContactCore.lean`: combines contact sign, Laplacian sign, and PDE data;
+- `FirstContactBarrierCore.lean`: epsilon-tilted first-contact time barrier.
+
+Thus the local contradiction mechanism behind the parabolic maximum principle is kernel-checked. What is not yet claimed is the complete global-in-time first-contact selection theorem for a continuous PDE solution on an arbitrary smooth Neumann domain.
+
+## 9. Full rate assembly remains kernel-checked
+
+The cell/rate tree remains compiled through:
+
+- `CellEnergyCore.lean`, `ForcedEnergyDecay.lean`, `PolynomialForcedEnergyDecay.lean`, `CellEnergyAssembly.lean`;
+- `RateComparisonCore.lean`, `CellEnergyEnvelope.lean`, `RateRootCore.lean`;
+- `FullStabilizationAssembly.lean`.
+
+Consequently, once the named signal `W^{1,infinity}` smoothing estimate and Choi-type local boundedness estimate are supplied, Lean propagates the signal rate through coefficient forcing, cell `L^2` energy, square-root conversion, and final cell `L^infinity` rate for both exponential and polynomial branches.
+
+## 10. Final CI evidence
+
+GitHub Actions run `34559739511` (run 237), at formal-tree commit
+`f7382928cdd5f525724cc18596dfde56b25c5ac3`, records:
 
 - checkout of exactly that commit;
 - `Reject placeholders and explicit axioms`: **SUCCESS**;
-- successful compilation of `BoxNeumannFluxCore`;
-- successful compilation of `EnergyDifferentiationCore`, `MassConservationCore`, `MixedNormExponentCore`, `LpRateOptimization`, `AttractorDissipativityCore`, `SignedSharpnessCore`, `SuperlinearConsumptionSignalFinal`, and `DegenerateWeightedDampingFinal`;
+- successful compilation of `BoxVolumeFactorCore`, `BoxHybridFiberPoincareCore`, `FullBoxPoincareCore`, `FullBoxPoincareSqrtCore`, and `FullBoxCoercivityBridge`;
 - successful compilation of the root `AMLStabilization` target;
-- **`Build completed successfully (8752 jobs)`**.
+- **`Build completed successfully (8780 jobs)`**.
 
-The root imports **45 modules**, all compiled under the pinned Lean/mathlib toolchain.
+The root imports **73 AMLStabilization modules**, all compiled under the pinned Lean/mathlib toolchain.
 
-## 10. What still prevents a literal arbitrary-smooth-domain PDE formalization
+## 11. What still prevents a literal arbitrary-smooth-domain PDE formalization
 
-It would still be inaccurate to write that the entire chemotaxis PDE theorem on an arbitrary smooth bounded domain has been formalized from first principles.  The genuinely remaining infrastructure is concentrated in:
+It would still be inaccurate to say that the entire manuscript theorem on an arbitrary smooth bounded Neumann domain is formalized from first principles. The remaining genuinely deep infrastructure is now concentrated in:
 
-1. geometric Poincare theory in the manuscript's exact Sobolev setting on an arbitrary smooth bounded connected domain;
-2. extending the box-level divergence/Green/zero-flux formalization to the manuscript's arbitrary smooth Neumann domain geometry and traces;
-3. the invariant signal interval / parabolic maximum-principle argument for the concrete system;
-4. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing on the required domains;
-5. Choi's mixed-norm conormal/local boundedness estimate in the required arbitrary-domain implementation;
-6. the concrete function-space derivation of the cell-density PDE energy identity.
+1. extension of the now-verified rectangular-box Poincare/divergence/Green/trace machinery to arbitrary smooth bounded connected Neumann domains;
+2. a global parabolic maximum-principle/invariant-range theorem for the concrete system, beyond the already verified local extremum/contact/barrier core;
+3. Neumann heat-semigroup `L^p -> W^{1,infinity}` smoothing on the required arbitrary domains;
+4. Choi's mixed-norm conormal/local boundedness theorem in the required arbitrary-domain setting;
+5. the concrete function-space derivation of the cell-density PDE energy identity;
+6. PDE uniqueness/invariance for the spatially homogeneous sharpness reduction.
 
-The calculus part of differentiating the squared `L^2` energy, scalar propagation of mass conservation, and the full global flux/Green step on boxes are now Lean-proved.
+The rectangular-box geometric Poincare input is **no longer part of this unresolved list**: it is now derived and connected to coercivity in Lean.
 
-A targeted mathlib audit in this pass found no ready-made theorem matching the required arbitrary-smooth-domain analytic Poincare inequality, Neumann heat-semigroup smoothing, parabolic maximum principle, or Choi conormal estimate.  Mathlib does provide parametric-integral differentiation and a rectangular-box divergence theorem, and both are now used directly in the formal tree.
+## 12. Correct provenance statement
 
-## 11. Correct provenance statement
-
-> **Strengthened Lean verification (current formal-tree level):** the novel arbitrary-real-order weighted-damping machinery — genuine weighted Holder, nonlinear mass-weighted coercivity, quadratic/exponential versus superquadratic/polynomial signal endpoints, the nonnegative zero-energy branch, degenerate `theta` specialization, exact eventual finite-`L^p` exponent and rate-threshold arithmetic, mixed-norm time-exponent selection including the one-dimensional lift, superlinear-consumption signal specialization, signed sharpness formula, dominated time differentiation, forced cell-energy decay, energy-to-norm conversion, and final exponential/polynomial rate assembly conditional on explicitly named deep analytic inputs — is kernel-checked in Lean 4/mathlib.  In addition, on rectangular boxes the conservative zero-flux identity, exact mass conservation for `u_t = div J`, and Green's first identity under zero normal derivative are derived directly from mathlib's Bochner divergence theorem and are kernel-checked.  CI rejects `sorry`, `admit`, and explicit user axioms.  The remaining gap is the extension of these geometric/PDE tools to arbitrary smooth Neumann domains together with the missing Poincare, maximum-principle, semigroup, Choi, and cell-energy analytic infrastructure.
+> **Strengthened Lean verification (current formal-tree level):** the arbitrary-real-order weighted-damping machinery — weighted Holder, nonlinear mass-weighted coercivity, quadratic/exponential versus superquadratic/polynomial signal endpoints, zero-energy branch, degenerate `theta` specialization, exact eventual finite-`L^p` exponent and rate-threshold arithmetic, mixed-norm time-exponent selection including the one-dimensional lift, superlinear-consumption specialization, signed sharpness, dominated time differentiation, forced cell-energy decay, energy-to-norm conversion, and final exponential/polynomial rate assembly conditional on explicitly named deep parabolic inputs — is kernel-checked in Lean 4/mathlib. On rectangular boxes, the conservative zero-flux identity, exact mass conservation, Green's first identity, a genuine finite-dimensional `L^2` Poincare inequality, its `Cp = sqrt(N) C` square-root form, and the resulting mass-weighted coercivity bridge are all derived rather than assumed. CI rejects `sorry`, `admit`, and explicit user axioms. The remaining gap is the arbitrary-smooth-domain geometric/parabolic extension together with the global maximum principle, Neumann semigroup, Choi, cell-energy, and PDE-uniqueness infrastructure.
