@@ -42,4 +42,41 @@ theorem integral_pi_split_coordinate
         ∂μ i := by
       rw [integral_prod _ hsplit]
 
+/-- Symmetric Bochner Fubini form for one chosen coordinate.  This version
+integrates over all remaining coordinates first in the outer integral and over
+the chosen coordinate in the inner integral, which is the convenient order for
+applying one-dimensional fiber estimates. -/
+theorem integral_pi_split_coordinate_symm
+    {X : Type*} [MeasurableSpace X] {n : ℕ}
+    (μ : Fin (n + 1) → Measure X) [∀ j, SigmaFinite (μ j)]
+    (i : Fin (n + 1))
+    (f : (Fin (n + 1) → X) → ℝ)
+    (hf : Integrable f (Measure.pi μ)) :
+    (∫ x : Fin (n + 1) → X, f x ∂Measure.pi μ) =
+      ∫ xr : Fin n → X,
+        ∫ xi : X, f (i.insertNth xi xr) ∂μ i
+        ∂Measure.pi (fun j => μ (i.succAbove j)) := by
+  let e := MeasurableEquiv.piFinSuccAbove (fun _ : Fin (n + 1) => X) i
+  have hmp := measurePreserving_piFinSuccAbove μ i
+  have hcomp : Integrable (f ∘ e.symm)
+      ((μ i).prod (Measure.pi fun j => μ (i.succAbove j))) := by
+    exact (hmp.symm.integrable_comp_emb e.symm.measurableEmbedding).2 hf
+  have hsplit : Integrable
+      (fun p : X × (Fin n → X) => f (i.insertNth p.1 p.2))
+      ((μ i).prod (Measure.pi fun j => μ (i.succAbove j))) := by
+    simpa [e, Function.comp_def, MeasurableEquiv.piFinSuccAbove_symm_apply,
+      Fin.insertNthEquiv] using hcomp
+  have htransport := hmp.symm.integral_comp' f
+  calc
+    (∫ x : Fin (n + 1) → X, f x ∂Measure.pi μ) =
+        ∫ p : X × (Fin n → X), f (i.insertNth p.1 p.2)
+          ∂((μ i).prod (Measure.pi fun j => μ (i.succAbove j))) := by
+      symm
+      simpa [e, Function.comp_def, MeasurableEquiv.piFinSuccAbove_symm_apply,
+        Fin.insertNthEquiv] using htransport
+    _ = ∫ xr : Fin n → X,
+        ∫ xi : X, f (i.insertNth xi xr) ∂μ i
+        ∂Measure.pi (fun j => μ (i.succAbove j)) := by
+      rw [integral_prod_symm _ hsplit]
+
 end AMLStabilization
