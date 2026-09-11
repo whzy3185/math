@@ -28,9 +28,8 @@ theorem intervalPoincareL2_Icc
   have hg : ∀ t ∈ Icc 0 h, HasDerivAt g (g' t) t := by
     intro t ht
     have hx := hmap ht
-    have hlin : HasDerivAt (fun s : ℝ => s + a) 1 t :=
-      (hasDerivAt_id t).add_const a
-    simpa [g, g'] using (hf (t + a) hx).comp t hlin
+    dsimp [g, g']
+    exact (hf (t + a) hx).comp t ((hasDerivAt_id t).add_const a)
   have hg_cont : ContinuousOn g (Icc 0 h) := by
     exact hf_cont.comp (by fun_prop) hmap
   have hg'_cont : ContinuousOn g' (Icc 0 h) := by
@@ -38,9 +37,27 @@ theorem intervalPoincareL2_Icc
   have hmain := intervalPoincareL2
     (h := h) (f := g) (f' := g') hh hg hg_cont hg'_cont
   dsimp only at hmain
-  have hend : h + a = b := by
+  have hgint :
+      (∫ x in (0 : ℝ)..h, g x) = ∫ x in a..b, f x := by
+    change (∫ x in (0 : ℝ)..h, f (x + a)) = ∫ x in a..b, f x
+    rw [intervalIntegral.integral_comp_add_right]
     simp [h]
-  simpa [g, g', h, fbar, intervalIntegral.integral_comp_add_right, hend,
-    add_comm, add_left_comm, add_assoc] using hmain
+  have hdev (c : ℝ) :
+      (∫ x in (0 : ℝ)..h, |g x - c| ^ 2) =
+        ∫ x in a..b, |f x - c| ^ 2 := by
+    change (∫ x in (0 : ℝ)..h, |f (x + a) - c| ^ 2) =
+      ∫ x in a..b, |f x - c| ^ 2
+    rw [intervalIntegral.integral_comp_add_right]
+    simp [h]
+  have hderiv :
+      (∫ x in (0 : ℝ)..h, |g' x| ^ 2) =
+        ∫ x in a..b, |f' x| ^ 2 := by
+    change (∫ x in (0 : ℝ)..h, |f' (x + a)| ^ 2) =
+      ∫ x in a..b, |f' x| ^ 2
+    rw [intervalIntegral.integral_comp_add_right]
+    simp [h]
+  rw [hgint] at hmain
+  rw [hdev, hderiv] at hmain
+  simpa [h, fbar] using hmain
 
 end AMLStabilization
