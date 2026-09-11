@@ -16,8 +16,8 @@ private theorem coordinateHybrid_insertNth_first
     {α : Type*} {n : ℕ}
     (i : Fin (n + 1)) (p : α × α) (zr : Fin n → α × α) :
     coordinateHybrid
-        (fun j => ((i.insertNth p zr) j).1)
-        (fun j => ((i.insertNth p zr) j).2) i.val =
+        (fun j => (((i.insertNth p zr : Fin (n + 1) → α × α) j)).1)
+        (fun j => (((i.insertNth p zr : Fin (n + 1) → α × α) j)).2) i.val =
       i.insertNth p.1 (pairedRestHybrid i zr) := by
   rw [funext_iff, i.forall_iff_succAbove]
   constructor
@@ -35,8 +35,8 @@ private theorem coordinateHybrid_insertNth_second
     {α : Type*} {n : ℕ}
     (i : Fin (n + 1)) (p : α × α) (zr : Fin n → α × α) :
     coordinateHybrid
-        (fun j => ((i.insertNth p zr) j).1)
-        (fun j => ((i.insertNth p zr) j).2) (i.val + 1) =
+        (fun j => (((i.insertNth p zr : Fin (n + 1) → α × α) j)).1)
+        (fun j => (((i.insertNth p zr : Fin (n + 1) → α × α) j)).2) (i.val + 1) =
       i.insertNth p.2 (pairedRestHybrid i zr) := by
   rw [funext_iff, i.forall_iff_succAbove]
   constructor
@@ -49,8 +49,7 @@ private theorem coordinateHybrid_insertNth_second
     by_cases hlt : (i.succAbove j : Fin (n + 1)).val < i.val
     · have hlt' : (i.succAbove j : Fin (n + 1)).val < i.val + 1 := by omega
       simp [coordinateHybrid, pairedRestHybrid, hlt, hlt']
-    · have hge : i.val + 1 ≤ (i.succAbove j : Fin (n + 1)).val := by omega
-      have hnot : ¬(i.succAbove j : Fin (n + 1)).val < i.val + 1 := by omega
+    · have hnot : ¬(i.succAbove j : Fin (n + 1)).val < i.val + 1 := by omega
       simp [coordinateHybrid, pairedRestHybrid, hlt, hnot]
 
 /-- The `i.val`-th hybrid increment changes exactly coordinate `i`. -/
@@ -58,7 +57,7 @@ theorem pairedCoordinateIncrement_insertNth
     {α : Type*} {n : ℕ}
     (f : (Fin (n + 1) → α) → ℝ)
     (i : Fin (n + 1)) (p : α × α) (zr : Fin n → α × α) :
-    pairedCoordinateIncrement f (i.insertNth p zr) i.val =
+    pairedCoordinateIncrement f (i.insertNth p zr : Fin (n + 1) → α × α) i.val =
       f (i.insertNth p.1 (pairedRestHybrid i zr)) -
         f (i.insertNth p.2 (pairedRestHybrid i zr)) := by
   rw [pairedCoordinateIncrement,
