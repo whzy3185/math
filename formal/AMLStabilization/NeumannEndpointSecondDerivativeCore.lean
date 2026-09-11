@@ -37,13 +37,15 @@ theorem secondDeriv_nonpos_at_left_endpoint_of_isMaxOn_of_deriv_zero
       rw [Metric.mem_ball, Real.dist_eq]
       have hca : 0 < c - a := sub_pos.mpr hc.1
       rw [abs_of_pos hca]
-      dsimp [y] at hc
-      linarith
+      have hcar : c - a < r := by
+        dsimp [y] at hc
+        linarith [hc.2, hdr]
+      exact hcar
     have hs := hsignr c hcball
     have hca : 0 < c - a := sub_pos.mpr hc.1
-    have hs' : sign (deriv f c) = 1 := by
-      simpa [sign_pos hca] using hs
-    exact sign_eq_one_iff.mp hs'
+    have hs' : SignType.sign (deriv f c) = 1 := by
+      simpa [SignType.sign_pos hca] using hs
+    exact SignType.sign_eq_one_iff.mp hs'
   have hcont' : ContinuousOn f (Icc a y) := by
     apply hcont.mono
     intro x hx
@@ -83,13 +85,15 @@ theorem secondDeriv_nonpos_at_right_endpoint_of_isMaxOn_of_deriv_zero
       rw [Metric.mem_ball, Real.dist_eq]
       have hcb : c - b < 0 := sub_neg.mpr hc.2
       rw [abs_of_neg hcb]
-      dsimp [x] at hc
-      linarith
+      have hbcr : -(c - b) < r := by
+        dsimp [x] at hc
+        linarith [hc.1, hdr]
+      exact hbcr
     have hs := hsignr c hcball
     have hcb : c - b < 0 := sub_neg.mpr hc.2
-    have hs' : sign (deriv f c) = -1 := by
-      simpa [sign_neg hcb] using hs
-    exact sign_eq_neg_one_iff.mp hs'
+    have hs' : SignType.sign (deriv f c) = -1 := by
+      simpa [SignType.sign_neg hcb] using hs
+    exact SignType.sign_eq_neg_one_iff.mp hs'
   have hcont' : ContinuousOn f (Icc x b) := by
     apply hcont.mono
     intro y hy
@@ -130,13 +134,15 @@ theorem secondDeriv_nonneg_at_left_endpoint_of_isMinOn_of_deriv_zero
       rw [Metric.mem_ball, Real.dist_eq]
       have hca : 0 < c - a := sub_pos.mpr hc.1
       rw [abs_of_pos hca]
-      dsimp [y] at hc
-      linarith
+      have hcar : c - a < r := by
+        dsimp [y] at hc
+        linarith [hc.2, hdr]
+      exact hcar
     have hs := hsignr c hcball
     have hac : a - c < 0 := sub_neg.mpr hc.1
-    have hs' : sign (deriv f c) = -1 := by
-      simpa [sign_neg hac] using hs
-    exact sign_eq_neg_one_iff.mp hs'
+    have hs' : SignType.sign (deriv f c) = -1 := by
+      simpa [SignType.sign_neg hac] using hs
+    exact SignType.sign_eq_neg_one_iff.mp hs'
   have hcont' : ContinuousOn f (Icc a y) := by
     apply hcont.mono
     intro x hx
@@ -176,13 +182,15 @@ theorem secondDeriv_nonneg_at_right_endpoint_of_isMinOn_of_deriv_zero
       rw [Metric.mem_ball, Real.dist_eq]
       have hcb : c - b < 0 := sub_neg.mpr hc.2
       rw [abs_of_neg hcb]
-      dsimp [x] at hc
-      linarith
+      have hbcr : -(c - b) < r := by
+        dsimp [x] at hc
+        linarith [hc.1, hdr]
+      exact hbcr
     have hs := hsignr c hcball
     have hbc : 0 < b - c := sub_pos.mpr hc.2
-    have hs' : sign (deriv f c) = 1 := by
-      simpa [sign_pos hbc] using hs
-    exact sign_eq_one_iff.mp hs'
+    have hs' : SignType.sign (deriv f c) = 1 := by
+      simpa [SignType.sign_pos hbc] using hs
+    exact SignType.sign_eq_one_iff.mp hs'
   have hcont' : ContinuousOn f (Icc x b) := by
     apply hcont.mono
     intro y hy
