@@ -75,7 +75,8 @@ theorem motilityCoordinateGradient_continuousOn
     (hgradV : ∀ i, ContinuousOn (fun x => gradV x i) s) :
     ∀ i, ContinuousOn (fun x => motilityCoordinateGradient phiPrime gradV x i) s := by
   intro i
-  simpa [motilityCoordinateGradient] using hphiPrime.mul (hgradV i)
+  change ContinuousOn (fun x => phiPrime x * gradV x i) s
+  exact hphiPrime.mul (hgradV i)
 
 /-- Zero normal signal derivative on a front face is inherited by `phi(v)`. -/
 theorem motilityCoordinateGradient_front_zero
