@@ -39,7 +39,7 @@ theorem Integrable.comp_pairedRestHybrid
   let ν : Measure (Fin n → α × α) :=
     Measure.pi (fun j => (μ j).prod (μ j))
   let c : ENNReal := ∏ j, μ j Set.univ
-  have hc : c ≠ ∞ := by
+  have hc : c ≠ ⊤ := by
     dsimp [c]
     exact ENNReal.prod_ne_top fun j _ => measure_ne_top (μ j) Set.univ
   have hscaled : Integrable g (c • Measure.pi μ) := hg.smul_measure hc
@@ -75,7 +75,7 @@ theorem integral_pairedRestHybrid_of_integrable
   let ν : Measure (Fin n → α × α) :=
     Measure.pi (fun j => (μ j).prod (μ j))
   let c : ENNReal := ∏ j, μ j Set.univ
-  have hc : c ≠ ∞ := by
+  have hc : c ≠ ⊤ := by
     dsimp [c]
     exact ENNReal.prod_ne_top fun j _ => measure_ne_top (μ j) Set.univ
   have hscaled : Integrable g (c • Measure.pi μ) := hg.smul_measure hc
