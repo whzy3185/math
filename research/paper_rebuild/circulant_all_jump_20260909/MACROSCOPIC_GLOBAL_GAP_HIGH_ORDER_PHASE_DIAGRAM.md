@@ -2,7 +2,9 @@
 
 Date: 2026-09-14
 
-Status: **Proved** by combining the endpoint and phase-slip refinements.
+Status: **Proved after hostile-audit correction**.
+
+The displayed algebraic coefficients are unchanged. The correction is that the `m>N` optimizer is exponentially close to the compressed-antiperiodic well rather than generally exactly equal to physical `z=-1`.
 
 ## 1. Setup
 
@@ -24,7 +26,7 @@ The leading theorem is symmetric:
 \max\{N,m\}^2\Gamma_{N,m,q}\to\frac{\pi^2}{4}.
 \]
 
-At higher order the two sides are not symmetric because only the periodic well has an algebraic cusp.
+At higher order the two sides differ because only the periodic well has an algebraic cusp; the physical seam on the compressed-antiperiodic side produces only an exponentially small correction.
 
 ## Theorem A — periodic-dominant expansion
 
@@ -51,7 +53,7 @@ Then uniformly over arbitrary odd multipliers,
 
 The difference from the periodic endpoint first appears at order `N^-4`.
 
-## Theorem B — antiperiodic-dominant expansion
+## Theorem B — compressed-antiperiodic-dominant expansion
 
 Assume
 
@@ -59,7 +61,7 @@ Assume
 \frac mN\to\gamma\in(1,\infty).
 \]
 
-Then eventual exact antiperiodic locking gives
+Then the global maximizing phase lies exponentially close to `d=-2`, and
 
 \[
 \boxed{
@@ -69,12 +71,12 @@ Then eventual exact antiperiodic locking gives
 &+\frac{\pi^2(72-\pi^2)}{192m^4}\\
 &+\frac{\sqrt2\pi^2(-64+3\pi^2)}{256m^5}\\
 &+\frac{\pi^2(\pi^4-750\pi^2+7200)}{23040m^6}
-+O(m^{-7}).
++O(m^{-7})+O(\Lambda^{-2N}).
 \end{aligned}}
 \tag{1.2}
 \]
 
-No phase-slip subtraction appears.
+There is no algebraic phase-slip subtraction on this side.
 
 ## Theorem C — balanced expansion
 
@@ -84,7 +86,7 @@ For
 N=m=r\to\infty,
 \]
 
-the periodic cusp beats the two endpoint values by an algebraic amount, while their mutual difference is only exponential. Hence
+the endpoint gaps agree to every algebraic order, but the periodic cusp lowers the full global gap by an algebraic amount. Hence
 
 \[
 \boxed{
@@ -99,11 +101,9 @@ the periodic cusp beats the two endpoint values by an algebraic amount, while th
 \tag{1.3}
 \]
 
-Thus the balanced geometry inherits the periodic-side algebraic expansion.
-
 ---
 
-## 2. Proof by coefficient subtraction
+## 2. Coefficient derivation
 
 From `MACROSCOPIC_ENDPOINT_HIGH_ORDER_EXPANSION.md`, with soft length `ell`,
 
@@ -132,24 +132,15 @@ e_\ell-\Gamma
 \tag{2.2}
 \]
 
-Subtracting (2.2) from (2.1) gives the coefficients in (1.1) and (1.3).
+Subtracting (2.2) from (2.1) gives (1.1) and (1.3).
 
-In the antiperiodic-dominant regime, `ANTIPERIODIC_EXACT_LOCKING_AND_HIGH_ORDER_GAP.md` gives `Gamma=e^-` exactly for all sufficiently large parameters, so (1.2) is just (2.1) with `ell=m`.
+On the `m>N` side, `ANTIPERIODIC_EXACT_LOCKING_AND_HIGH_ORDER_GAP.md` in its corrected form proves that the physical-seam correction is `O(Lambda^-2N)`, beyond every displayed algebraic order. Therefore the universal endpoint coefficients with `ell=m` give (1.2).
 
 ## 3. Structural consequence
 
-The balanced transition is symmetric only at the first three displayed scales:
+The balanced transition is symmetric only in its endpoint Robin series. The full Bloch problem is orientation-sensitive because
 
-\[
-\ell^{-2},\qquad \ell^{-3},\qquad \text{and the endpoint part of }\ell^{-4}.
-\]
+- the periodic side has an algebraic avoided-crossing cusp;
+- the compressed-antiperiodic side is analytic at algebraic scale and has only an exponentially small physical-seam displacement.
 
-The avoided-crossing cusp lowers the periodic-side global gap by
-
-\[
-\frac{\pi^2}{32\ell^4}+O(\ell^{-5}),
-\]
-
-whereas the antiperiodic side remains locked. Thus the first genuine orientation-sensitive coefficient occurs at fourth order.
-
-This provides an algebraic signature of the spectral phase transition that is invisible in the leading Dirichlet theory.
+Thus the first algebraic orientation-sensitive coefficient occurs at order `ell^-4`, while the exact finite phase on the antiperiodic side carries an additional beyond-all-orders correction.
