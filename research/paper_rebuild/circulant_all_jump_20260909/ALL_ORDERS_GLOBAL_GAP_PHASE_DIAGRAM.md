@@ -2,7 +2,9 @@
 
 Date: 2026-09-14
 
-Status: **Proved** by combining the all-orders Robin theorem, the all-orders periodic cusp theorem, and the uniform integer orientation-selection theorem.
+Status: **Proved after hostile-audit correction**.
+
+The algebraic phase diagram is unchanged.  The corrected finite statement is that the `m>N` optimizer is exponentially close to the compressed-antiperiodic set `d=-2`; it is not generally the literal physical phase `z=-1` when the odd multiplier exceeds one.
 
 ## 1. Setup
 
@@ -25,23 +27,15 @@ Let
 
 There are two universal coefficient sequences:
 
-1. the endpoint Robin coefficients
-   \[
-   a_2,a_3,a_4,\ldots;
-   \]
-2. the periodic phase-slip gain coefficients
-   \[
-   c_0,c_1,c_2,\ldots.
-   \]
+1. endpoint Robin coefficients `a_2,a_3,...`;
+2. periodic phase-slip gain coefficients `c_0,c_1,...`.
 
-Define the periodic-global coefficients `g_j` by
+Define
 
 \[
-\boxed{
  g_j=a_j\quad(j=2,3),
- \qquad
+\qquad
  g_j=a_j-c_{j-4}\quad(j\ge4).
-}
 \tag{1.1}
 \]
 
@@ -53,7 +47,7 @@ If
 \boxed{m\le N,}
 \]
 
-then for every fixed `K>=2`, uniformly in the compatible odd multiplier,
+then for every fixed `K>=2`, uniformly in the odd multiplier,
 
 \[
 \boxed{
@@ -64,11 +58,10 @@ then for every fixed `K>=2`, uniformly in the compatible odd multiplier,
 +O(\Lambda^{-2m}).
 }
 \tag{1.2}
-\]
 
-This includes the balanced point `m=N`: the two endpoint gaps agree beyond every algebraic order, but the periodic cusp lowers the global gap by the gain series.
+This includes balance: the endpoint gaps agree beyond every algebraic order, but the periodic cusp supplies the global algebraic improvement.
 
-## Theorem B — all-orders antiperiodic branch
+## Theorem B — all-orders compressed-antiperiodic branch
 
 If
 
@@ -76,7 +69,13 @@ If
 \boxed{m>N,}
 \]
 
-then the global maximizing phase is exactly `z=-1` for all sufficiently large parameters and
+then every global maximizing phase lies exponentially close to the compressed well
+
+\[
+\boxed{d=z^{2q+1}+z^{-(2q+1)}=-2.}
+\]
+
+For every fixed `K>=2`,
 
 \[
 \boxed{
@@ -88,19 +87,28 @@ then the global maximizing phase is exactly `z=-1` for all sufficiently large pa
 }
 \tag{1.3}
 
-Thus the antiperiodic side contains no algebraic phase-slip series.
+Thus there is no algebraic phase-slip series on this side.  The physical seam induces only an exponentially small shift of the maximizing phase.
+
+If `n=2q+1` and `z_0=e^{\pm i\pi/n}`, then a global maximizer can be written
+
+\[
+z_*=z_0e^{i\delta/n},
+\qquad
+|\delta|=O(\Lambda^{-2N}).
+\tag{1.4}
+
+For `n=1`, this reduces to physical `z=-1` up to the exact symmetry of that case.
 
 ---
 
 ## 2. First displayed coefficients
 
-The endpoint series begins
+The endpoint series is
 
 \[
 \boxed{
 \begin{aligned}
-A(\ell):={}&\sum_{j\ge2}a_j\ell^{-j}\\
-={}&\frac{\pi^2}{4\ell^2}
+A(\ell)={}&\frac{\pi^2}{4\ell^2}
 -\frac{\sqrt2\pi^2}{4\ell^3}
 +\frac{\pi^2(72-\pi^2)}{192\ell^4}\\
 &+\frac{\sqrt2\pi^2(-64+3\pi^2)}{256\ell^5}\\
@@ -114,29 +122,28 @@ The periodic gain series is
 
 \[
 \boxed{
-\begin{aligned}
-C(N):={}&\sum_{j\ge0}c_jN^{-j-4}\\
-={}&\frac{\pi^2}{32N^4}
+C(N)=\frac{\pi^2}{32N^4}
 -\frac{3\pi^2}{32\sqrt2N^5}
 +\frac{\pi^2(32\sqrt2-3)}{768N^6}
 +\cdots.
-\end{aligned}}
+}
 \tag{2.2}
-\]
 
-Hence the periodic/balanced branch is
+Hence
 
 \[
-\boxed{G_+(N)=A(N)-C(N),}
+\boxed{G_+(N)=A(N)-C(N)}
 \tag{2.3}
 \]
 
-whereas the antiperiodic branch is simply
+on the periodic/balanced side and
 
 \[
-\boxed{G_-(m)=A(m).}
+\boxed{G_-(m)=A(m)}
 \tag{2.4}
 \]
+
+as the complete algebraic series on the compressed-antiperiodic side.
 
 Through sixth order,
 
@@ -155,32 +162,32 @@ G_+(N)={}&\frac{\pi^2}{4N^2}
 
 ---
 
-## 3. Algebraic Stokes-type switch at balance
+## 3. Algebraic switch at balance
 
-The two universal formal series agree through cubic order after identifying the soft length, but differ beginning at fourth order:
+At a common soft length `ell`,
 
 \[
-\boxed{
 G_+(\ell)-G_-(\ell)
 =-\frac{\pi^2}{32\ell^4}+O(\ell^{-5}).
-}
 \tag{3.1}
 \]
 
-The physical integer geometry selects
+The integer geometry selects
 
 \[
 \boxed{
 \begin{cases}
 G_+(N),&m\le N,\\
-G_-(m),&m>N.
+G_-(m),&m>N,
 \end{cases}}
 \tag{3.2}
 \]
 
-Thus the balanced hyperplane is a genuine higher-order switching surface: the endpoint Robin series is the same on both sides, but one side acquires a cusp transseries correction and the other does not.
+to every algebraic order.
 
-Because `m-N` is integral, the switch occurs between the two neighboring physical layers
+The physical phase on the second branch differs from the exact `d=-2` set only beyond every algebraic order, so it does not alter (3.2).
+
+Because `m-N` is integral, the algebraic switch occurs between
 
 \[
 m=N
@@ -190,22 +197,19 @@ m=N+1.
 
 ---
 
-## 4. Full all-orders optimizer data
+## 4. Optimizer data
 
-On the periodic/balanced side, the maximizing compressed phase has an all-orders series
+On the periodic/balanced side,
 
 \[
-\boxed{
 |\delta_N|
 =N^{-2}
 \left(
  b_0+b_1N^{-1}+b_2N^{-2}+\cdots
 \right),
-}
-\tag{4.1}
 \]
 
-where
+with
 
 \[
 b_0=\frac\pi{4\sqrt2},
@@ -215,19 +219,14 @@ b_1=-\frac\pi8,
 b_2=\frac{\pi(32-27\sqrt2)}{192}.
 \]
 
-On the antiperiodic side,
+On the compressed-antiperiodic side there is **no algebraic displacement series**.  Instead the physical optimizer satisfies the exponential localization (1.4).
 
-\[
-\boxed{z=-1}
-\]
-
-exactly for all sufficiently large parameters; there is no algebraic displacement series.
-
----
+This is the precise asymmetry between the two wells.
 
 ## 5. Consequences
 
-1. The macroscopic two-defect theory is governed by only two universal formal series, `A` and `C`.
-2. Every endpoint coefficient `a_j` is orientation-independent; orientation enters only through the cusp gain coefficients `c_j`.
-3. Balance is not merely where the leading Dirichlet lengths agree. It is the unique integer layer on which an exponentially small endpoint degeneracy is resolved by an algebraic cusp correction.
-4. All higher coefficients are recursively computable from fixed analytic implicit equations, so no new growing-matrix calculation is required at higher order.
+1. The algebraic macroscopic theory is governed by only two universal formal series, `A` and `C`.
+2. Endpoint coefficients are orientation-independent; algebraic orientation enters only through the periodic cusp.
+3. The `m>N` physical seam affects the optimizer only beyond every algebraic order.
+4. Balance is the unique integer layer where an endpoint degeneracy is resolved by an algebraic cusp correction.
+5. All algebraic coefficients remain recursively computable from the fixed Robin and cusp implicit equations.
