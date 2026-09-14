@@ -1,26 +1,26 @@
-# Balanced endpoint lies strictly above the next Dirichlet competitor level
+# Balanced endpoint lies above the next Dirichlet competitor level
 
 Date: 2026-09-14
 
-Status: **Proved**.  This is the endpoint half of the all-layer quarter-period optimization problem.
+Status: **Proved after hostile audit**.
+
+Correction record: the first version stated the endpoint comparison for `r>=1` and used an overstrong factorization. Direct evaluation shows that `r=1` is exceptional. The corrected theorem is for `r>=2`; this is exactly what is needed for the nontrivial minimal-period layers, while `r=1` has no competing separation at all.
 
 ## 1. Statement
 
-Fix `r>=1` and the balanced geometry
+Fix the balanced geometry
 
 \[
-N=m=r,
-\qquad
-N+m=2r.
+N=m=r
 \]
 
-Let
+and let
 
 \[
 e_r^+:=8-\rho(H_{r,r,q}(1))^2
 \]
 
-be the periodic endpoint gap.  Define the next Dirichlet level
+be its periodic endpoint gap. Define
 
 \[
 D_{r+1}:=2-2\cos\frac{\pi}{2(r+1)}.
@@ -28,7 +28,13 @@ D_{r+1}:=2-2\cos\frac{\pi}{2(r+1)}.
 
 ### Theorem
 
-For every `r>=1`,
+For every
+
+\[
+\boxed{r\ge2,}
+\]
+
+one has
 
 \[
 \boxed{
@@ -36,7 +42,7 @@ e_r^+>D_{r+1}.}
 \tag{1.1}
 \]
 
-Equivalently the first periodic-endpoint soft angle satisfies
+Equivalently, if `theta_r^+` is the first periodic soft angle, then
 
 \[
 \boxed{
@@ -45,13 +51,13 @@ Equivalently the first periodic-endpoint soft angle satisfies
 \tag{1.2}
 \]
 
-Combined with `UNIVERSAL_ENDPOINT_DIRICHLET_UPPER_BOUND.md`, this means that the balanced **endpoint** already has a larger gap than the full Bloch gap of every unbalanced geometry in the same cell.  The only remaining issue for full balanced optimality is to control the off-endpoint phase-slip loss.
+For `r=1` the reverse inequality holds, but the minimal cell has only the single separation `m=N=1`, so no optimization issue exists in that layer.
 
 ---
 
-## 2. Exact balanced endpoint equation
+## 2. Exact endpoint equation
 
-For the periodic endpoint the exact quantization equation is
+The periodic endpoint quantization is
 
 \[
 \begin{aligned}
@@ -65,182 +71,211 @@ For the periodic endpoint the exact quantization equation is
 \tag{2.1}
 \]
 
-The top squared endpoint eigenvalue is
+At `theta=0` its left side is `T_r(3)>1`.
+
+Put
 
 \[
-y=6+2\cos\theta,
+t:=\frac\pi{2(r+1)},
+\qquad
+c:=\cos t,
+\qquad
+a:=2+c.
 \]
 
-where the first soft solution lies in `(0,pi/(2r))`.
-
-Set
+Since
 
 \[
-\theta_0:=\frac\pi{2(r+1)}.
+r t=\frac\pi2-t,
 \]
 
-We show that the left side of (2.1) is still strictly larger than `1` at `theta_0`.  Since the first soft branch crosses the level `1` only afterwards, this proves (1.2).
+we have
+
+\[
+\sin(rt)=c,
+\]
+
+and
+
+\[
+\frac{\cos((r-\tfrac12)t)}{\cos(t/2)}
+=(1+2c)\tan(t/2).
+\]
+
+Thus the left side of (2.1) at `theta=t` is
+
+\[
+\tan\frac t2\,K_r,
+\tag{2.2}
+\]
+
+where
+
+\[
+K_r
+:=(1+2c)T_r(a)
+-c\,[U_r(a)+U_{r-1}(a)].
+\tag{2.3}
+\]
+
+It suffices to prove
+
+\[
+K_r>\cot(t/2).
+\tag{2.4}
+\]
 
 ---
 
-## 3. Evaluation at the comparison angle
+## 3. Uniform lower bound on the bracket
 
 Write
 
 \[
-a=2+\cos\theta_0,
-\qquad
-A=T_r(a),
-\qquad
-B=U_r(a)+U_{r-1}(a).
+a=\cosh\eta,
+\qquad \eta>0.
+\]
+
+The exact ratio is
+
+\[
+\frac{U_r(a)+U_{r-1}(a)}{T_r(a)}
+=1+\tanh(r\eta)\coth(\eta/2).
+\tag{3.1}
 \]
 
 Because
 
 \[
-(r+1)\theta_0=\frac\pi2,
+\coth(\eta/2)
+=\sqrt{\frac{a+1}{a-1}}
+=\sqrt{\frac{3+c}{1+c}},
+\]
+
+and for `r>=2`
+
+\[
+t\le\frac\pi6,
+\qquad c\ge\frac{\sqrt3}{2}>rac35,
 \]
 
 we have
 
 \[
-r\theta_0=\frac\pi2-\theta_0,
-\]
-
-and hence
-
-\[
-\sin(r\theta_0)=\cos\theta_0.
-\tag{3.1}
-\]
-
-Also
-
-\[
-(r-\tfrac12)\theta_0
-=\frac\pi2-\frac{3\theta_0}{2},
-\]
-
-so
-
-\[
-\frac{\cos((r-\tfrac12)\theta_0)}{\cos(\theta_0/2)}
-=
-\frac{\sin(3\theta_0/2)}{\cos(\theta_0/2)}.
+\sqrt{\frac{3+c}{1+c}}<\frac32.
 \tag{3.2}
 \]
 
-Using
+Using `tanh(r eta)<1`, equations (3.1)--(3.2) imply
 
 \[
-\sin\frac{3t}{2}
-=\sin\frac t2\,(1+2\cos t),
+\frac{U_r+U_{r-1}}{T_r}<\frac52.
 \]
 
-and
+Hence
 
 \[
-\tan\frac t2=\frac{\sin(t/2)}{\cos(t/2)},
-\]
-
-we obtain
-
-\[
-\frac{\sin(3t/2)}{\cos(t/2)}
-=(1+2\cos t)\tan(t/2).
+\begin{aligned}
+K_r
+&>T_r(a)\left(1+2c-\frac52c\right)\\
+&=T_r(a)\left(1-\frac c2\right)\\
+&\ge\frac12T_r(a).
+\end{aligned}
 \tag{3.3}
 \]
 
-Therefore the left side of (2.1) at `theta_0` is
+---
+
+## 4. Chebyshev growth beats the comparison angle
+
+For `r>=2`, `T_r(x)` is convex on `[1,\infty)` and
 
 \[
-\tan\frac{\theta_0}{2}
-\Bigl[
-(1+2\cos\theta_0)A
--\cos\theta_0\,B
-\Bigr].
-\tag{3.4}
+T_r(1)=1,
+\qquad T_r'(1)=r^2.
 \]
 
-The bracket can be simplified with the Chebyshev representations.  Put
+Therefore
 
 \[
-a=\cosh\eta>1.
+T_r(a)
+\ge1+r^2(a-1).
+\tag{4.1}
 \]
 
-Then
+Since `c>=sqrt(3)/2`,
 
 \[
-A=\cosh(r\eta),
+a-1=1+c
+\ge1+\frac{\sqrt3}{2}.
 \]
 
-and
+Combining with (3.3),
 
 \[
-B
-=\frac{\sinh((r+1)\eta)+\sinh(r\eta)}{\sinh\eta}.
+K_r
+>\frac12\left[1+r^2\left(1+\frac{\sqrt3}{2}\right)\right].
+\tag{4.2}
 \]
 
-Since `a=2+cos theta_0`, direct use of the addition formulas gives
+On the other hand, `tan x>x` for `x>0`, so
 
 \[
-(1+2\cos\theta_0)A
--\cos\theta_0 B
->
-\cot\frac{\theta_0}{2}.
-\tag{3.5}
+\cot(t/2)
+<\frac2t
+=\frac{4(r+1)}\pi.
+\tag{4.3}
 \]
 
-For completeness, after multiplying (3.5) by `sinh eta sin(theta_0/2)`, the difference factors as
+For `r=2`, the right side of (4.2) is
 
 \[
-2\sin^3\frac{\theta_0}{2}
-\Bigl[
-\sinh((r+1)\eta)-\sinh(r\eta)
-\Bigr]
-+
-\sin\frac{\theta_0}{2}
-\bigl(2\cosh\eta-2\bigr)\sinh(r\eta),
+\frac12(5+2\sqrt3)>\frac{12}{\pi},
 \]
 
-which is strictly positive because `theta_0>0` and `eta>0`.
-
-Multiplying (3.5) by `tan(theta_0/2)` shows that (3.4) is strictly larger than `1`.
-
-Thus the first crossing of (2.1) occurs at an angle
+and the difference between the quadratic lower bound in (4.2) and the linear upper bound in (4.3) increases for every larger integer `r`. Therefore
 
 \[
-\theta_r^+>\theta_0=\frac\pi{2(r+1)}.
+K_r>\cot(t/2)
+\qquad(r\ge2).
 \]
 
-Since `2-2cos theta` is strictly increasing on the first soft interval, (1.1) follows.
+By (2.2), the left side of the exact endpoint equation is still larger than `1` at `theta=t`. The first soft crossing therefore occurs strictly after `t`, proving (1.2) and hence (1.1).
 
-## 4. Consequence for geometry optimization
+---
 
-For every unbalanced integer pair
+## 5. Geometry consequence
+
+Fix total geometry
 
 \[
-N+m=2r,
-\qquad (N,m)\ne(r,r),
+N+m=2r.
 \]
 
-we have
+Every unbalanced pair has
 
 \[
 M:=\max\{N,m\}\ge r+1.
 \]
 
-The universal endpoint Dirichlet bound gives
+By `UNIVERSAL_ENDPOINT_DIRICHLET_UPPER_BOUND.md`,
 
 \[
-\Gamma_{N,m,q}<D_M\le D_{r+1}<e_r^+.
+\Gamma_{N,m,q}<D_M\le D_{r+1}.
 \]
 
-Hence the endpoint comparison is already strict for **every** `r`.  The all-layer quarter-period conjecture is therefore equivalent to the finite phase-slip inequality
+Thus for every `r>=2`,
 
 \[
- e_r^+-\Gamma_{r,r,q}
-<e_r^+-D_{r+1}.
+\boxed{
+\Gamma_{N,m,q}<D_{r+1}<e_r^+
+\qquad((N,m)\ne(r,r)).
+}
+\tag{5.1}
 \]
 
-The left side is the balanced periodic cusp gain; the right side is the exact discrete geometry margin.
+The remaining all-layer balanced-optimality question is exactly whether the periodic phase-slip loss of the balanced full Bloch gap remains smaller than the endpoint margin
+
+\[
+e_r^+-D_{r+1}.
+\]
