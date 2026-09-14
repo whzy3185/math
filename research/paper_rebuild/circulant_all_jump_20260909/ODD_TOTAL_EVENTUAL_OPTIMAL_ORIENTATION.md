@@ -2,9 +2,9 @@
 
 Date: 2026-09-14
 
-Status: **Proved**.
+Status: **Proved, with corrected beyond-all-orders seam term**.
 
-This complements `ALL_FIXED_PERIOD_BALANCED_OPTIMALITY.md`.  When the coefficient period is congruent to `4 mod 8`, exact balance is impossible; the two nearest-balanced orientations are no longer equivalent beyond leading order.
+When the coefficient period is congruent to `4 mod 8`, exact balance is impossible. The two nearest-balanced orientations agree at leading Dirichlet order but are separated by the periodic cusp at algebraic order four; the compressed-antiperiodic orientation also carries a much smaller hard-channel tunneling correction.
 
 ## 1. Setup
 
@@ -12,54 +12,37 @@ Fix
 
 \[
 N+m=2r+1,
-\qquad r\to\infty.
+\qquad r\to\infty,
 \]
 
-Then
+so
 
 \[
-L=2(N+m)=4r+2
-\]
-
-and the primitive coefficient period is
-
-\[
-\boxed{p=2L=8r+4.}
+p=8r+4.
 \]
 
 Let
 
 \[
-\Gamma_{N,m,q}
-=8-\max_{|z|=1}\rho(H_{N,m,q}(z))^2.
-\]
-
-The two nearest-balanced geometries are
-
-\[
 A_r=(r+1,r)
 \]
 
-and
+be the periodic-cusp orientation and
 
 \[
-B_r=(r,r+1).
+B_r=(r,r+1)
 \]
 
-Both have the same dominant soft length `r+1`, but they have opposite orientation:
+the compressed-antiperiodic orientation. Put
 
-- `A_r` belongs to the periodic-cusp side;
-- `B_r` belongs to the compressed-antiperiodic analytic side.
+\[
+\Gamma_{N,m,q}=8-\max_{|z|=1}\rho(H_{N,m,q}(z))^2,
+\qquad n=2q+1.
+\]
 
 ## Theorem A — eventual unique optimizer
 
-There exists `r_0` such that for every
-
-\[
-r\ge r_0
-\]
-
-and every compatible odd multiplier,
+There exists `r_0` such that for every `r>=r_0` and every compatible odd multiplier,
 
 \[
 \boxed{
@@ -67,175 +50,136 @@ and every compatible odd multiplier,
 >
 \Gamma_{N,m,q}
 }
-\tag{1.1}
-
-for every other positive integer pair
-
-\[
-N+m=2r+1,
-\qquad
-(N,m)\ne(r,r+1).
 \]
 
-Thus for all sufficiently large periods
+for every other pair `N+m=2r+1`.
+
+Thus the eventual unique optimizer is
 
 \[
-p\equiv4\pmod8,
+\boxed{(N,m)=(r,r+1),}
 \]
 
-the unique gap-maximizing two-defect geometry is the nearly balanced orientation with the **defect arc one unit longer**:
-
-\[
-\boxed{m=N+1.}
-\tag{1.2}
+i.e. the defect arc is one unit longer.
 
 ---
 
-## 2. Comparison of the two nearest-balanced orientations
+## 2. Precise nearest-orientation splitting
 
-Let
-
-\[
-A(\ell)=\sum_{j\ge2}a_j\ell^{-j}
-\]
-
-be the universal endpoint Robin series and
+Let `A(ell)` be the universal endpoint Robin series and `C(ell)` the periodic cusp-gain series. Then
 
 \[
-C(\ell)=\sum_{j\ge0}c_j\ell^{-j-4}
+\Gamma_{A_r}
+\sim A(r+1)-C(r+1).
+\tag{2.1}
 \]
 
-be the periodic cusp-gain series.
+For the compressed-antiperiodic orientation define
 
-For `A_r=(r+1,r)`, the dominant soft length is `r+1` and the periodic cusp applies:
+\[
+U_r:=U_{r-1}(3)
+\]
+
+and
 
 \[
 \boxed{
-\Gamma_{A_r}
-\sim A(r+1)-C(r+1).
+S_{r,n}:=
+\frac{(2+2\cos(\pi/n))\pi^2}
+{64\sqrt2\,U_r(r+1)^3}
+\left(1+O(r^{-1})\right)
++O(U_r^{-2}(r+1)^{-6}).
 }
-\tag{2.1}
+\tag{2.2}
 
-For `B_r=(r,r+1)`, the dominant soft length is also `r+1`, but the compressed-antiperiodic well is analytic.  The corrected physical-seam theorem gives
+The seam-tunneling theorem gives
 
 \[
 \boxed{
 \Gamma_{B_r}
-=A(r+1)+O(\Lambda^{-2r}),
-\qquad
-\Lambda=3+2\sqrt2.
+=A(r+1)-S_{r,n}+O_K(r^{-K})
 }
-\tag{2.2}
+\tag{2.3}
 
-Therefore
+for every fixed algebraic order `K` after the displayed Robin truncation is interpreted asymptotically.
+
+Since
+
+\[
+S_{r,n}=O((3+2\sqrt2)^{-r}r^{-3})
+\]
+
+while
+
+\[
+C(r+1)
+\sim\frac{\pi^2}{32(r+1)^4},
+\]
+
+we obtain
 
 \[
 \boxed{
 \Gamma_{B_r}-\Gamma_{A_r}
-\sim C(r+1)
-\sim\frac{\pi^2}{32(r+1)^4}>0.
+=C(r+1)-S_{r,n}+o(r^{-K})
+\sim\frac{\pi^2}{32r^4}>0.
 }
-\tag{2.3}
+\tag{2.4}
 
-The exponentially small physical-seam correction in (2.2) is negligible compared with the algebraic cusp gap. Hence `B_r` strictly beats `A_r` for every sufficiently large `r`.
+Thus the physical seam reduces the advantage of the compressed-antiperiodic orientation only by an exponentially small amount; it cannot change the eventual sign.
 
 ---
 
-## 3. Excluding more distant geometries
+## 3. More distant geometries
 
 Every pair other than `A_r,B_r` has
 
 \[
-M:=\max\{N,m\}\ge r+2.
+M=\max\{N,m\}\ge r+2.
 \]
 
 The universal endpoint Dirichlet bound gives
 
 \[
 \Gamma_{N,m,q}<D_M,
-\qquad
-D_M=2-2\cos\frac\pi{2M}.
+\qquad D_M=2-2\cos\frac\pi{2M}.
 \]
 
-At the algebraic level, the best possible gap with soft length at least `r+2` is governed by
+At algebraic scale the best possible soft-length improvement is bounded by `A(M)`, and
 
 \[
-A(r+2)
-=
-A(r+1)-\frac{\pi^2}{2r^3}+O(r^{-4}).
+A(r+1)-A(r+2)
+=\frac{\pi^2}{2r^3}+O(r^{-4}).
 \]
 
-By contrast,
-
-\[
-\Gamma_{B_r}
-=A(r+1)+O(\Lambda^{-2r}).
-\]
-
-Thus
-
-\[
-\Gamma_{B_r}-\Gamma_{N,m,q}
-\ge\frac{c}{r^3}
-\]
-
-for all sufficiently large `r`, uniformly over every geometry with `M>=r+2` and every compatible odd multiplier.
-
-This excludes all non-nearest geometries and proves Theorem A.
+The tunneling correction (2.2) is exponentially smaller. Hence `B_r` beats every geometry with `M>=r+2` by order `r^-3` for all sufficiently large `r`.
 
 ---
 
-## 4. Two different stability scales
+## 4. Two stability scales
 
-The odd-total geometry has two nested spectral separations.
-
-### Orientation splitting
-
-Between the two nearest-balanced orientations,
+The odd-total geometry has two distinct stability scales:
 
 \[
 \boxed{
 \Gamma_{B_r}-\Gamma_{A_r}
-\sim\frac{\pi^2}{32r^4}.
+\sim\frac{\pi^2}{32r^4},
 }
-\tag{4.1}
-
-This is exactly the periodic cusp scale.
-
-### Distance-from-balance splitting
-
-Between the winner `B_r` and any geometry two or more units away from balance, the gap is
-
-\[
-\boxed{\Theta(r^{-3}).}
-\tag{4.2}
-
-Thus the hierarchy is
-
-\[
-\text{coarse geometry cost }r^{-3}
-\gg
-\text{orientation/cusp cost }r^{-4}.
 \]
 
----
+while the separation from any geometry farther than one unit from balance is
 
-## 5. Full period-parity picture
+\[
+\Theta(r^{-3}).
+\]
 
-Together with `ALL_FIXED_PERIOD_BALANCED_OPTIMALITY.md`, the large-period variational geometry is now:
+The physical seam adds only the beyond-all-orders correction `S_(r,n)`.
 
-- if
-  \[
-  p\equiv0\pmod8,
-  \]
-  exact balance is available and is uniquely optimal;
-- if
-  \[
-  p\equiv4\pmod8,
-  \]
-  exact balance is impossible and the unique eventual optimizer is the one-step orientation
-  \[
-  \boxed{m=N+1.}
-  \]
+## 5. Finite switch
 
-The asymmetry in the second case is entirely a fourth-order Bloch effect: at leading Dirichlet order the two nearest-balanced orientations are indistinguishable.
+Exact rational certificates establish:
+
+- `r=1,...,5`: `(r+1,r)` is uniquely optimal;
+- `r=6,7,8`: `(r,r+1)` is uniquely optimal.
+
+Thus the finite orientation switch is known to occur exactly between `r=5` and `r=6`. Making the eventual theorem effective from `r>=9` yields the complete all-period classification for `p=8r+4`.
