@@ -2,7 +2,9 @@
 
 Date: 2026-09-14
 
-Status: **Proved**. This sharpens the macroscopic phase diagram in the near-balanced integer regime.
+Status: **Proved after hostile-audit correction**.
+
+The orientation transition remains exactly one lattice step wide.  The correction is that the positive side is locked to the **compressed antiperiodic well** up to an exponentially small physical-seam shift, not necessarily to the literal phase `z=-1` when the odd multiplier exceeds one.
 
 ## 1. Setup
 
@@ -12,7 +14,7 @@ Write
 L=2(N+m),\qquad h=2m,
 \]
 
-and fix an integer offset
+and fix
 
 \[
 j:=m-N\in\mathbb Z.
@@ -22,38 +24,39 @@ Let
 
 \[
 N\to\infty,
-\qquad m=N+j,
+\qquad m=N+j.
 \]
 
-with `j` fixed. For any compatible odd multiplier let
+For an odd multiplier `n=2q+1`, let
 
 \[
 \Gamma_{N,N+j,q}
-:=8-\max_{|z|=1}\rho(H_{N,N+j,q}(z))^2.
+=8-\max_{|z|=1}\rho(H_{N,N+j,q}(z))^2.
 \]
 
-The endpoint/high-order results established earlier give two competing local wells:
+The periodic optimized well has
 
-- the periodic well near `z=1`, whose optimized gap has the expansion
-  \[
-  \Gamma_+(N)
-  =\frac{\pi^2}{4N^2}
-  -\frac{\sqrt2\pi^2}{4N^3}
-  +\frac{\pi^2(66-\pi^2)}{192N^4}
-  +O(N^{-5});
-  \tag{1.1}
-  \]
-- the antiperiodic endpoint at `z=-1`, whose gap for soft length `m=N+j` is
-  \[
-  e_-(N+j)
-  =\frac{\pi^2}{4(N+j)^2}
-  -\frac{\sqrt2\pi^2}{4(N+j)^3}
-  +\frac{\pi^2(72-\pi^2)}{192(N+j)^4}
-  +O_j(N^{-5}).
-  \tag{1.2}
-  \]
+\[
+\Gamma_+(N)
+=\frac{\pi^2}{4N^2}
+-\frac{\sqrt2\pi^2}{4N^3}
++\frac{\pi^2(66-\pi^2)}{192N^4}
++O(N^{-5}).
+\tag{1.1}
+\]
 
-The periodic formula already includes its algebraic phase-slip gain. The antiperiodic well is analytic and has no algebraic phase slip.
+The compressed-antiperiodic well has, to every algebraic order, the universal endpoint series evaluated at `m=N+j`:
+
+\[
+A(N+j)
+=\frac{\pi^2}{4(N+j)^2}
+-\frac{\sqrt2\pi^2}{4(N+j)^3}
++\frac{\pi^2(72-\pi^2)}{192(N+j)^4}
++O_j(N^{-5}).
+\tag{1.2}
+\]
+
+Its actual physical optimizer differs from the exact `d=-2` set only by an exponentially small compressed displacement.
 
 ---
 
@@ -69,16 +72,13 @@ If
 m=N+j<N,
 \]
 
-then every global maximizing phase lies in the periodic well and
+then the periodic well is globally selected and
 
 \[
 \boxed{
 \Gamma_{N,N+j,q}=\Gamma_+(N).
 }
 \tag{2.1}
-\]
-
-In particular the maximizing compressed phase has the periodic phase-slip expansion.
 
 ### (ii) Balanced point: `j=0`
 
@@ -88,20 +88,19 @@ If
 m=N,
 \]
 
-then the two endpoint gaps agree to every algebraic order, but the periodic cusp lowers the global gap by
+then the two endpoint gaps agree to every algebraic order, but the periodic cusp lowers the true global gap by
 
 \[
 \frac{\pi^2}{32N^4}+O(N^{-5}).
 \]
 
-Hence the true global optimizer is the periodic off-endpoint phase and
+Hence
 
 \[
 \boxed{
 \Gamma_{N,N,q}=\Gamma_+(N).
 }
 \tag{2.2}
-\]
 
 ### (iii) Positive side: `j>=1`
 
@@ -111,33 +110,47 @@ If
 m=N+j>N,
 \]
 
-then the global maximizing phase is exactly antiperiodic:
+then the compressed-antiperiodic well is globally selected.  If `z_*` is a maximizing phase and `z_0^n=-1` is the nearest compressed-antiperiodic root, write
 
 \[
-\boxed{z=-1,}
-\tag{2.3}
+z_*=z_0e^{i\delta/n}.
 \]
 
-and
+Then
 
 \[
 \boxed{
-\Gamma_{N,N+j,q}=e_-(N+j).
+|\delta|=O(\Lambda^{-2N}),
+\qquad\Lambda=3+2\sqrt2.
+}
+\tag{2.3}
+
+Moreover
+
+\[
+\boxed{
+\Gamma_{N,N+j,q}
+=A(N+j)+O(\Lambda^{-2N}).
 }
 \tag{2.4}
+
+Among the exact roots `z_0^n=-1`, the physical seam coordinate is largest at
+
+\[
+z_0=e^{\pm i\pi/n}.
 \]
 
-Thus the physical integer model changes from a phase-slipped periodic maximizer at `j=0` to exact antiperiodic locking already at the next lattice point `j=1`.
+Thus the one-lattice-step transition is exact at algebraic scale; only the finite physical phase within the positive-side well is shifted exponentially.
 
 ---
 
-## 2. Gap splitting between the two wells
+## 2. Algebraic splitting of the two wells
 
-Expanding (1.2) in inverse powers of `N` gives
+Expanding (1.2) in powers of `N^-1` gives
 
 \[
 \boxed{
-\Gamma_+(N)-e_-(N+j)
+\Gamma_+(N)-A(N+j)
 =
 \frac{\pi^2j}{2N^3}
 -
@@ -145,95 +158,53 @@ Expanding (1.2) in inverse powers of `N` gives
 +O_j(N^{-5}).
 }
 \tag{3.1}
-\]
 
-This single formula contains all three regimes.
+If `j>=1`, the leading term is positive, so the compressed-antiperiodic well has the smaller gap and hence the larger spectral edge by order `N^-3`.  The exponential physical-seam correction cannot change that algebraic sign.
 
-If `j>=1`, the leading term in (3.1) is positive, so
+If `j<=-1`, the periodic well wins by order `N^-3`.
 
-\[
-e_-(N+j)<\Gamma_+(N)
-\]
-
-for all large `N`. Since a smaller gap corresponds to a larger squared spectral edge, the antiperiodic well wins by order `N^-3`. The antiperiodic local locking theorem then makes `z=-1` the exact global maximizer.
-
-If `j<=-1`, the leading term is negative, so
+At `j=0`,
 
 \[
-\Gamma_+(N)<e_-(N+j).
-\]
-
-The periodic well wins by order `N^-3`; its local phase slip therefore determines the global edge.
-
-At `j=0`, equation (3.1) becomes
-
-\[
-\Gamma_+(N)-e_-(N)
+\Gamma_+(N)-A(N)
 =-\frac{\pi^2}{32N^4}+O(N^{-5}),
-\tag{3.2}
 \]
 
-which is exactly the periodic phase-slip gain. Hence the periodic well wins only at fourth order at the balanced lattice point.
+which is the periodic cusp gain.
 
 ---
 
-## 3. Why there is no physical continuous crossover window
+## 3. No physical continuous crossover window
 
-Suppose formally that `m=N+delta` with a real interpolation parameter `delta=o(1)`. Then (3.1) gives, at the first relevant scales,
+Formally interpolate `m=N+delta` with real `delta=o(1)`. Then
 
 \[
-\Gamma_+(N)-e_-(N+\delta)
+\Gamma_+(N)-A(N+\delta)
 =
 \frac{\pi^2\delta}{2N^3}
 -
 \frac{\pi^2}{32N^4}
 +o(N^{-4}).
-\tag{4.1}
 \]
 
-The formal equality of the two wells occurs at
+The formal equality occurs at
 
 \[
-\boxed{
-\delta_{\mathrm c}(N)
-\sim\frac1{16N}.
-}
-\tag{4.2}
+\delta_c(N)\sim\frac1{16N}.
 \]
 
-But in the actual graph problem `delta=m-N` is an integer. For all sufficiently large `N`, the only integer inside this `O(N^-1)` crossover window is
+But `delta=m-N` is integral in the graph problem, so the only lattice point in this shrinking window is `delta=0`.  Hence the physical orientation changes directly from
 
 \[
-\delta=0.
+\boxed{j=0\quad\text{to}\quad j=1.}
 \]
 
-Thus the continuous crossover is invisible on the physical lattice: the model exhibits a one-lattice-step transition
+The seam-induced positive-side displacement is exponentially smaller still and does not create an additional algebraic crossover scale.
 
-\[
-\boxed{
- j=0\;\longrightarrow\;j=1.
-}
-\tag{4.3}
-\]
+## 4. Structural picture
 
-The scale separation is
+- `m<N`: periodic avoided crossing and algebraic phase slip;
+- `m=N`: periodic cusp resolves the balanced degeneracy;
+- `m>N`: compressed-antiperiodic analytic well, with only an exponentially small physical-seam displacement.
 
-\[
-\text{integer imbalance cost}=\Theta(N^{-3}),
-\qquad
-\text{periodic cusp gain}=\Theta(N^{-4}).
-\]
-
-This is why the balanced point is isolated rather than sitting inside a broad physical crossover region.
-
----
-
-## 4. Structural interpretation
-
-The macroscopic transition is symmetric at leading Dirichlet order, but the integer lattice resolves it asymmetrically:
-
-- on the `m<N` side the periodic avoided crossing survives;
-- at `m=N` the periodic cusp wins an otherwise degenerate competition;
-- on the `m>N` side a one-site excess in the defect arc already creates an `N^-3` antiperiodic advantage and destroys the periodic phase-slip competition.
-
-Thus balance is an isolated codimension-one lattice geometry with a fourth-order spectral anomaly.
+Thus balance remains an isolated codimension-one lattice geometry with a fourth-order spectral anomaly.
