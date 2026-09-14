@@ -4,7 +4,11 @@ Date: 2026-09-14
 
 Status: **Proved**.
 
-This is the analytic tail needed to close quarter-period optimality in every minimal `2`-adic period.  It is fully non-asymptotic from `r>=16` onward.
+This is the analytic tail for fixed-period balanced geometry. The original proof started at `r>=16`; sharpening one elementary lower bound moves the exact threshold to
+
+\[
+\boxed{r\ge9.}
+\]
 
 ## 1. Statement
 
@@ -12,7 +16,7 @@ Let
 
 \[
 N=m=r,
-\qquad r\ge16,
+\qquad r\ge9,
 \]
 
 and let
@@ -30,7 +34,7 @@ D_{r+1}=2-2\cos\frac\pi{2(r+1)}.
 
 ### Theorem A — uniform all-phase lower gap
 
-For every integer `q>=0` and every integer `r>=16`,
+For every integer `q>=0` and every integer `r>=9`,
 
 \[
 \boxed{
@@ -142,7 +146,7 @@ Since
 c=\cos\frac\pi{2(r+1)}>t_1,
 \]
 
-both Chebyshev polynomials are positive on `[c,infinity)`.  Moreover
+both Chebyshev polynomials are positive on `[c,\infty)`. Moreover
 
 \[
 (\log R_r)'(z)
@@ -171,7 +175,7 @@ Let
 S=2+2c
 \]
 
-and, for `b in [c,S/2]`, define
+and, for `b\in[c,S/2]`, define
 
 \[
 F(b)=R_r(b)R_r(S-b)+b(S-b)-3.
@@ -201,7 +205,7 @@ Since `Z=upF(min{a,x})`, this gives the common lower scattering factor used on b
 
 ## 4. Explicit lower bound on the endpoint scattering factor
 
-At `b=c`, put `H=2+c`.  The soft values are
+At `b=c`, put `H=2+c`. The soft values are
 
 \[
 U_{r-1}(c)=\cot\tau,
@@ -214,7 +218,7 @@ For the hard ratio,
 R_r(H)>\sqrt{H^2-1}=\sqrt{(1+c)(3+c)}.
 \]
 
-Multiplying `F_0` by `cot tau` gives
+Multiplying `F_0` by `\cot\tau` gives
 
 \[
 \cot\tau\,F_0
@@ -232,14 +236,13 @@ The right side simplifies exactly to
 \tag{4.1}
 \]
 
-For `0<c<=1`,
+For `0<c\le1`,
 
 \[
 \frac{1+3c}
 {\sqrt{(1+c)^3/(3+c)}+c}
 >\frac{33}{20}.
 \tag{4.2}
-\]
 
 Indeed, after moving the `c` term and squaring positive quantities, (4.2) is equivalent to
 
@@ -253,9 +256,7 @@ and the difference is
 -(3c+1)(120c^2-40c-111)>0
 \]
 
-on `[0,1]` because the quadratic is negative there.
-
-Hence
+on `[0,1]`. Hence
 
 \[
 \boxed{
@@ -280,7 +281,7 @@ Because `U_{r-1}` is increasing to the right of all its zeros,
 u\ge U_{r-1}(1+c).
 \]
 
-Also `p>=U_{r-1}(c)=cot tau>1`. By (3.4),
+Also `p>=U_{r-1}(c)=\cot\tau>1`. By (3.4),
 
 \[
 \frac Zp=uF(a)
@@ -288,25 +289,26 @@ Also `p>=U_{r-1}(c)=cot tau>1`. By (3.4),
 \tag{5.1}
 \]
 
-For `r>=4`, `tau<=pi/10` and
+For `r>=4`, `\tau<=\pi/10` and
 
 \[
 c>1-\frac{\pi^2}{200}>\frac{19}{20},
 \]
 
-using `pi^2<10`. Thus
+using `\pi^2<10`. Thus
 
 \[
 U_{r-1}(1+c)>U_{r-1}(39/20).
 \]
 
-From (4.3), `tan x>x`, and `pi^2>9`,
+From (4.3), `\tan x>x`, and `\pi^2>9`,
 
 \[
 U_{r-1}(1+c)F_0
 >
 \frac{33\pi^2}{160(r+1)^2}U_{r-1}(39/20).
 \tag{5.2}
+\]
 
 At `r=4`,
 
@@ -320,13 +322,13 @@ so the right side of (5.2) is larger than
 \frac{15301143}{4000000}>\frac94>\sqrt5.
 \]
 
-Moreover the sequence
+Moreover
 
 \[
 \frac{U_{r-1}(39/20)}{(r+1)^2}
 \]
 
-is strictly increasing for `r>=4`: the Chebyshev recurrence and monotonicity give
+is strictly increasing for `r>=4`: the Chebyshev recurrence gives
 
 \[
 U_r(39/20)>\frac{29}{10}U_{r-1}(39/20),
@@ -338,7 +340,7 @@ while
 \frac{29}{10}\frac{(r+1)^2}{(r+2)^2}>1.
 \]
 
-Thus (5.1) is larger than `sqrt5` for every `r>=4`. Consequently
+Thus (5.1) is larger than `\sqrt5` for every `r>=4`. Consequently
 
 \[
 \begin{aligned}
@@ -352,7 +354,7 @@ This proves (2.3) on the first half interval.
 
 ---
 
-## 6. The half interval `1/2<=s<=1`
+## 6. The half interval `1/2<=s<=1`: sharpened tail estimate
 
 Put
 
@@ -372,7 +374,7 @@ while
 a=2+c-2v\ge1+c.
 \]
 
-By (3.4), `F(b)>=F_0`.  The polynomial `U_{r-1}` is convex on `[c,infinity)`: all derivatives of a real-rooted Chebyshev polynomial have their largest zero to the left of `c`, and the leading coefficient is positive. Hence
+By (3.4), `F(b)>=F_0`. The polynomial `U_{r-1}` is convex on `[c,\infty)`, so
 
 \[
 u=U_{r-1}(c+2v)
@@ -386,7 +388,7 @@ where
 U_0=U_{r-1}(c)=\cot\tau
 \]
 
-and direct differentiation gives
+and
 
 \[
 U_1=U_{r-1}'(c)
@@ -400,7 +402,7 @@ Also
 p\ge P_0:=U_{r-1}(1+c).
 \]
 
-Use the explicit lower bound
+Use
 
 \[
 f_0:=\frac{33}{20}\tan\frac\tau2\tan\tau<F_0
@@ -417,56 +419,78 @@ Then
 
 \[
 \frac1{p^2}\bigl[Z^2-1-4vp^2\bigr]
-\ge (A+Bv)^2-4v-P_0^{-2}.
+\ge(A+Bv)^2-4v-P_0^{-2}.
 \tag{6.3}
 \]
 
-For `r>=16`, `U_1>0` because
+A direct simplification gives
 
 \[
-c^2-r\sin^2\tau
-=1-(r+1)\sin^2\tau
->1-\frac{\pi^2}{4(r+1)}>0.
-\]
-
-Furthermore
-
-\[
-A B
+AB
 =\frac{1089}{200}
 \frac{c^2-r\sin^2\tau}{c(1+c)^2}.
 \tag{6.4}
 \]
 
-Using `pi^2<10`, `r>=16`, and `c(1+c)^2<=4`,
+Now
 
 \[
-AB
->
-\frac{1089}{200}\frac{29/34}{4}
-=\frac{31581}{27200}
-=1+\frac{4381}{27200}.
-\tag{6.5}
+c^2-r\sin^2\tau
+=1-(r+1)\sin^2\tau.
+\]
 
-Also `c>1/2`, `1+c>3/2`, and `sin tau>2tau/pi=1/(r+1)`, so
+Since `\sin\tau<\tau` and `\pi^2<10`, for every `r>=9`,
+
+\[
+1-(r+1)\sin^2\tau
+>
+1-\frac{\pi^2}{4(r+1)}
+\ge1-\frac{10}{40}
+=\frac34.
+\tag{6.5}
+\]
+
+Also
+
+\[
+c(1+c)^2<4.
+\]
+
+Therefore
+
+\[
+\boxed{
+AB>
+\frac{1089}{200}\frac{3/4}{4}
+=\frac{3267}{3200}
+=1+\frac{67}{3200}.
+}
+\tag{6.6}
+\]
+
+As before, `c>1/2`, `1+c>3/2`, and `\sin\tau>1/(r+1)` give
 
 \[
 B<\frac{22}{5}(r+1).
-\tag{6.6}
+\tag{6.7}
+\]
 
-The quadratic on the right side of (6.3), minimized over the whole real line, has minimum
+The quadratic on the right of (6.3), minimized over the whole real line, has minimum
 
 \[
 \frac{4(AB-1)}{B^2}-P_0^{-2}.
 \]
 
-Equations (6.5)--(6.6) give
+Equations (6.6)--(6.7) imply
 
 \[
 \frac{4(AB-1)}{B^2}
 >
-\frac{4381}{131648(r+1)^2}.
-\tag{6.7}
+\boxed{
+\frac{67}{15488(r+1)^2}.
+}
+\tag{6.8}
+\]
 
 Finally
 
@@ -474,29 +498,30 @@ Finally
 P_0>U_{r-1}(3/2)>2^{r-1},
 \]
 
-where the last inequality follows inductively from
-
-\[
-U_n(3/2)=3U_{n-1}(3/2)-U_{n-2}(3/2)>2U_{n-1}(3/2).
-\]
-
-Thus
+so
 
 \[
 P_0^{-2}<4^{-(r-1)}.
-\tag{6.8}
-
-At `r=16`, exact integer comparison gives
-
-\[
-4^{-15}
-<
-\frac{4381}{131648\cdot17^2},
+\tag{6.9}
 \]
 
-and this remains true for every larger `r` because the left side falls by a factor four at each step whereas the right side falls by a factor smaller than four. Combining (6.7)--(6.8) proves strict positivity in (6.3).
+At `r=9`,
 
-This completes (2.3) on the second half interval.
+\[
+4^{-8}=\frac1{65536}
+<\frac{67}{15488\cdot100}.
+\tag{6.10}
+\]
+
+For each subsequent increment of `r`, the left side falls by a factor four, whereas the rational lower bound on the right is multiplied by
+
+\[
+\left(\frac{r+1}{r+2}\right)^2>\frac14.
+\]
+
+Hence (6.10) remains true for every `r>=9`. Combining (6.8)--(6.9) proves that the right side of (6.3) is strictly positive.
+
+This completes (2.3) on the second half interval for every `r>=9`.
 
 ---
 
@@ -509,7 +534,7 @@ P(y_*;d,2)>0
 \qquad(-2\le d\le2)
 \]
 
-for every `r>=16`. For a physical phase,
+for every `r>=9`. For a physical phase,
 
 \[
 P(y_*;d,e)=P(y_*;d,2)+(2-e)>0.
@@ -533,4 +558,4 @@ For any unbalanced geometry with `N+m=2r`, `UNIVERSAL_ENDPOINT_DIRICHLET_UPPER_B
 \Gamma_{N,m,q}<D_{r+1}.
 \]
 
-Thus the balanced geometry is the unique full-gap maximizer for every integer `r>=16`, uniformly in the odd multiplier.
+Thus the balanced geometry is the unique full-gap maximizer for every integer `r>=9`, uniformly in the odd multiplier.
