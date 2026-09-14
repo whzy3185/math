@@ -2,7 +2,9 @@
 
 Date: 2026-09-14
 
-Status: **Proved**. This unifies the fixed-ratio, balanced, and fixed-offset transition theorems.
+Status: **Proved after hostile-audit correction**.
+
+This theorem unifies the fixed-ratio, balanced, and fixed-offset transition results.  The orientation selection is exact, while the antiperiodic-side phase location is exponentially rather than exactly locked for a general odd multiplier.
 
 ## 1. Setup
 
@@ -24,16 +26,26 @@ N,m\to\infty,
 Let
 
 \[
+n=2q+1
+\]
+
+and
+
+\[
 \Gamma_{N,m,q}
 =8-\max_{|z|=1}\rho(H_{N,m,q}(z))^2.
 \]
 
-The two distinguished endpoint gaps are
+The two distinguished compressed wells are
 
 \[
-e^+_{N,m}=8-\rho(H(1))^2,
-\qquad
-e^-_{N,m}=8-\rho(H(-1))^2.
+d=z^n+z^{-n}\approx2
+\]
+
+and
+
+\[
+d\approx-2.
 \]
 
 The periodic well has an algebraic cusp improvement
@@ -44,9 +56,9 @@ e^+_{N,m}-\Gamma_+(N)
 \tag{1.2}
 \]
 
-whereas the antiperiodic well is analytic and has no algebraic phase slip.
+whereas the compressed-antiperiodic well is analytic at algebraic scale and has only an exponentially small physical-seam displacement.
 
-## Theorem A — eventual exact orientation selection
+## Theorem A — uniform orientation selection
 
 There exists `N_0=N_0(c_0,c_1)` such that whenever (1.1) holds and
 
@@ -54,7 +66,7 @@ There exists `N_0=N_0(c_0,c_1)` such that whenever (1.1) holds and
 \min\{N,m\}\ge N_0,
 \]
 
-the following dichotomy is exact.
+the following dichotomy holds.
 
 ### Periodic side
 
@@ -64,18 +76,20 @@ If
 \boxed{m\le N,}
 \]
 
-then every global maximizing Bloch phase lies in the periodic well. If `m<N`, the periodic well is separated from the antiperiodic well by order at least `N^-3`; if `m=N`, the endpoint values are algebraically degenerate but the periodic cusp wins at order `N^-4`.
+then every global maximizing Bloch phase lies in the periodic well.  If `m<N`, that well is separated from the competing well at order at least `N^-3`; if `m=N`, the endpoint values are algebraically degenerate but the periodic cusp wins at order `N^-4`.
 
 Thus
 
 \[
 \boxed{
 \Gamma_{N,m,q}=\Gamma_+(N),
-\qquad m\le N.
+\qquad m\le N,
 }
 \tag{1.3}
 
-### Antiperiodic side
+where `Gamma_+(N)` denotes the periodic-cusp branch.
+
+### Compressed-antiperiodic side
 
 If
 
@@ -83,27 +97,59 @@ If
 \boxed{m>N,}
 \]
 
-then the global maximizing phase is exactly
+then every global maximizing phase lies exponentially close to
 
 \[
-\boxed{z=-1}
+\boxed{d=-2.}
 \]
 
-and
+Among the exact physical roots `z^n=-1`, the seam coordinate is largest at
+
+\[
+\boxed{z_0=e^{\pm i\pi/n}.}
+\]
+
+Writing
+
+\[
+z=z_0e^{i\delta/n},
+\]
+
+the actual maximizing phase satisfies
 
 \[
 \boxed{
-\Gamma_{N,m,q}=e^-_{N,m}.
+|\delta|=O(\Lambda^{-2N}),
+\qquad
+\Lambda=3+2\sqrt2.
 }
 \tag{1.4}
 
-The statement is uniform over the compatible odd multiplier.
+The global gap satisfies
+
+\[
+\boxed{
+\Gamma_{N,m,q}=e^-_{N,m}+O(\Lambda^{-2N}),
+}
+\tag{1.5}
+
+where `e^-_{N,m}` may be evaluated at the convenient physical fiber `z=-1`.  Hence, to every algebraic order,
+
+\[
+\boxed{
+\Gamma_{N,m,q}\sim A(m),
+}
+\tag{1.6}
+
+with `A` the universal endpoint Robin series.
+
+For `n=1`, the selected compressed endpoint is literally `z=-1` and the exponentially small seam displacement vanishes by symmetry.
 
 ---
 
 ## 2. Uniform endpoint splitting
 
-By the all-orders Robin theorem, the two endpoint gaps are evaluations of the same universal decreasing function of the soft length, up to exponentially small errors. In particular, uniformly under (1.1),
+By the all-orders Robin theorem, the two endpoint gap scales are evaluations of the same universal decreasing function of the soft length, up to exponentially small errors. In particular,
 
 \[
 E(\ell)
@@ -121,7 +167,7 @@ E'(\ell)
 \tag{2.2}
 \]
 
-Hence there are constants `a,b>0` such that for all large comparable lengths,
+Hence there are constants `a,b>0` such that for all sufficiently large comparable lengths,
 
 \[
 -\frac b{\ell^3}
@@ -130,84 +176,59 @@ Hence there are constants `a,b>0` such that for all large comparable lengths,
 \tag{2.3}
 \]
 
-If `m>N`, the mean-value theorem gives
+If `m>N`, the mean-value theorem gives a compressed-antiperiodic well advantage
 
 \[
 \boxed{
- e^+_{N,m}-e^-_{N,m}
+ e^+_{N,m}-E(m)
  \ge c\frac{m-N}{N^3}
- +O(\Lambda^{-c'N}),
+ +O(\Lambda^{-c'N}).
 }
 \tag{2.4}
-\]
 
-for an absolute positive `c` after fixing the compact ratio range. Since `m-N` is a positive integer,
+Since `m-N` is a positive integer, this advantage is at least order `N^-3`, one full algebraic scale larger than the periodic cusp gain `O(N^-4)`.
 
-\[
-e^+_{N,m}-e^-_{N,m}\ge cN^{-3}
-\tag{2.5}
-\]
-
-for all sufficiently large parameters.
-
-Similarly, if `N>m`,
-
-\[
- e^-_{N,m}-e^+_{N,m}\ge cN^{-3}.
-\tag{2.6}
-\]
+The same comparison with roles reversed holds when `N>m`.
 
 ---
 
 ## 3. Comparison with the cusp scale
 
-The entire periodic-well phase-slip improvement is only
+If `m>N`, the `N^-3` soft-length advantage of the compressed-antiperiodic well dominates both
 
-\[
-O(N^{-4}).
-\tag{3.1}
-\]
+- the periodic cusp gain `O(N^-4)`, and
+- the physical seam correction `O(Lambda^-2N)`.
 
-Therefore a one-integer-unit imbalance already produces an endpoint advantage of order `N^-3`, one full algebraic scale larger than the cusp correction.
+Hence that well is globally selected.
 
-If `m>N`, equations (2.5) and (3.1) imply
+If `N>m`, the periodic well has the corresponding `N^-3` endpoint advantage and remains globally selected after its cusp improvement.
 
-\[
-e^-_{N,m}
-<\Gamma_+(N)
-\]
+At `N=m`, the two endpoint gaps agree to every algebraic order, while the periodic cusp gain is algebraic and strictly positive, so the periodic well wins.
 
-for all large parameters. Thus the antiperiodic well wins even after allowing the best periodic phase slip.
-
-If `N>m`, equations (2.6) and (3.1) imply
-
-\[
-\Gamma_+(N)<e^-_{N,m},
-\]
-
-so the periodic well wins.
-
-At `N=m`, the endpoint gaps differ only exponentially, while (1.2) is algebraic and strictly positive; hence the periodic cusp wins.
+This proves the orientation dichotomy.
 
 ---
 
 ## 4. Excluding all other phases
 
-The full-Bloch hard/soft localization theorem shows that any phase capable of competing within `O(N^-2)` of the edge lies in a shrinking neighborhood of one of the two endpoint wells. Away from those neighborhoods there is a uniform leading-order spectral penalty.
+The full-Bloch hard/soft localization theorem shows that any phase capable of competing within `O(N^-2)` of the edge lies in a shrinking neighborhood of one of the two compressed wells.
 
-On the periodic side, the local cusp theorem identifies the unique improving pair of phases and its gap. On the antiperiodic side, the local characteristic function is analytic, even in the displacement, and has a strictly positive quadratic gap coefficient; hence `z=-1` is a strict local maximizer of the squared edge.
+On the periodic side, the local cusp theorem identifies the improving phases and their all-orders expansion.
 
-Combining this local information with the endpoint comparison above proves (1.3)--(1.4).
+On the compressed-antiperiodic side, after division by the exponentially growing hard-channel transfer, the normalized soft root is analytic with positive quadratic coefficient in the compressed displacement.  The physical seam contributes an exponentially small linear perturbation, shifting the optimizer by only `O(Lambda^-2N)`.  This is proved in `ANTIPERIODIC_EXACT_LOCKING_AND_HIGH_ORDER_GAP.md` in its corrected form.
+
+No third phase region can compete.
 
 ---
 
 ## 5. Consequences
 
-1. The physical transition is exactly located at the integer hyperplane
+1. The physical orientation transition is exactly located at the integer hyperplane
    \[
    \boxed{m=N.}
    \]
-2. The balanced point belongs to the **periodic-cusp side** of the higher-order phase diagram.
-3. The first unbalanced point `m=N+1` already belongs to the **exact antiperiodic-locking side**.
-4. There is no physical algebraic crossover band wider than one lattice point.
-5. Once the side is known, the full global gap inherits the corresponding all-orders local expansion.
+2. The balanced point belongs to the **periodic-cusp side** of the algebraic phase diagram.
+3. The first unbalanced point `m=N+1` already belongs to the **compressed-antiperiodic side**.
+4. There is no algebraic crossover band wider than one lattice point.
+5. For `m>N`, the global phase is not generally exactly `z=-1`; instead it is exponentially close to the best physical representative of `d=-2`.
+6. The full global gap nevertheless inherits the same universal Robin series `A(m)` to every algebraic order.
