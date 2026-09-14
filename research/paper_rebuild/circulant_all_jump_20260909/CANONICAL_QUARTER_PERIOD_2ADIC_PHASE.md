@@ -1,8 +1,8 @@
-# Canonical quarter-period 2-adic phase for every sufficiently even jump
+# Canonical quarter-period `2`-adic phase for every sufficiently even jump
 
-Date: 2026-09-10
+Date: 2026-09-14
 
-Status: **Proved**. This packages the period-compression, exact phase-diagram, and geometry-optimization results directly in the original jump variable.
+Status: **Proved**. This packages the exact period-compression, all-layer geometry optimization, and Bloch phase-slip results directly in the original jump variable.
 
 ## 1. Construction
 
@@ -41,34 +41,39 @@ with every other local flux equal to `-1`.
 Since
 
 \[
-s=L n
+s=Ln
 \]
 
 and `n` is odd, this word is compatible with the jump.
 
-The geometry is exactly balanced. In the standard parameters
+In the standard geometry parameters
 
 \[
 L=2(N+m),
-\qquad
-h=2m,
+\qquad h=2m,
 \]
 
-we have
+the phase is exactly balanced:
 
 \[
 \boxed{N=m=2^{k-2}.}
 \tag{1.3}
 \]
 
-Let `R_s^{\rm can}` be its continuous squared Bloch edge.
+Let `R_s^{can}` be its continuous squared Bloch edge and
+
+\[
+\Gamma_s^{can}:=8-R_s^{can}.
+\]
+
+---
 
 ## Theorem A — canonical exact sub-eight phase
 
 For every `k>=2` and every odd `n`,
 
 \[
-\boxed{R_s^{\rm can}<8.}
+\boxed{R_s^{can}<8.}
 \tag{2.1}
 \]
 
@@ -82,180 +87,240 @@ R<8
 2m<T_N(3).
 \]
 
-Here `m=N=2^{k-2}`. Since `T_N(3)>=3N` for every `N>=1`,
+Here `m=N=2^(k-2)`. Since `T_N(3)>=3N` for every `N>=1`,
 
 \[
 2m=2N<T_N(3),
 \]
 
-and hence (2.1) follows.
-
-Thus the quarter-period balanced word gives a strict sub-eight phase for every jump with `v_2(s)>=2`.
+so the canonical phase is strictly sub-eight.
 
 ---
 
 ## Theorem B — minimal period inside the reflection-chiral two-defect class
 
-The period `p=2^{k+1}` in (1.1) is the shortest possible primitive period within the compatible reflection-chiral two-defect ansatz.
-
-Indeed compatibility requires
+The period in (1.1) is the shortest possible primitive period within the compatible reflection-chiral two-defect ansatz:
 
 \[
-s\equiv L\pmod{2L},
-\]
-
-or equivalently
-
-\[
-L\mid s,
-\qquad
-s/L\text{ odd}.
-\]
-
-Thus
-
-\[
-v_2(L)=v_2(s)=k,
-\]
-
-so the smallest possible `L` is `2^k`, giving the smallest period
-
-\[
-\boxed{p_{\min}=2^{k+1}.}
+\boxed{p_{min}=2^{k+1}.}
 \tag{3.1}
 \]
 
-Hence the canonical balanced phase achieves strict spectral improvement without enlarging the shortest arithmetic period.
+Indeed compatibility is equivalent to
+
+\[
+L\mid s,
+\qquad s/L\text{ odd},
+\]
+
+so `v_2(L)=v_2(s)=k`; the smallest possible half-period is `L=2^k`.
 
 ---
 
-## Theorem C — sharp large-valuation gap
+## Theorem C — exact all-layer geometry optimality
 
-Let `k->infinity`, while the odd part `n` may vary arbitrarily. Then
-
-\[
-\boxed{
-p^2\bigl(8-R_s^{\rm can}\bigr)
-\longrightarrow16\pi^2.
-}
-\tag{4.1}
-\]
-
-Equivalently,
-
-\[
-\boxed{
-8-R_s^{\rm can}
-=\frac{16\pi^2}{p^2}+o(p^{-2})
-=\frac{4\pi^2}{4^k}+o(4^{-k}).
-}
-\tag{4.2}
-\]
-
-### Proof
-
-The balanced macroscopic full-Bloch theorem gives
-
-\[
-L^2(8-R_s^{\rm can})\to4\pi^2.
-\]
-
-Since `p=2L`, multiplication by four gives (4.1).
-
----
-
-## Theorem D — eventual uniqueness of the quarter-period separation
-
-There exists `k_0` such that for every
-
-\[
-k\ge k_0
-\]
-
-and every odd part `n`, the separation
+For **every** integer `k>=2`, not merely for sufficiently large `k`, the quarter-period separation
 
 \[
 \boxed{h=p/4}
 \]
 
-is the unique even defect separation that maximizes the full Bloch gap among all reflection-chiral two-defect words having the same minimal period `p=2^{k+1}`.
+is the unique even defect separation maximizing the full continuous Bloch gap among all reflection-chiral two-defect phases of the same minimal primitive period `p=2^(k+1)`.
 
-This is exactly the eventual finite balanced-separation optimality theorem with
-
-\[
-r=2^{k-2}.
-\]
-
----
-
-## Theorem E — second-order Bloch phase slip of the canonical phase
-
-Write
+Equivalently, with
 
 \[
-r=2^{k-2}.
+r=2^{k-2},
 \]
 
-Let `z_k` be a global maximizing Bloch phase and measure its displacement from the nearer compressed endpoint using
+for every positive integer pair
 
 \[
-\delta_k
-=(2q+1)\arg z_k-\psi_{\rm end},
-\qquad
-\psi_{\rm end}\in\{0,\pi\}.
+N+m=2r
 \]
 
-Then
+and every odd part `n`,
 
 \[
 \boxed{
-r^2|\delta_k|
-\to\frac{\pi}{4\sqrt2},}
+\Gamma_{r,r,q}
+>
+\Gamma_{N,m,q}
+\qquad((N,m)\ne(r,r)).
+}
+\tag{4.1}
+\]
+
+### Proof structure
+
+The complete proof is `ALL_LAYER_MINIMAL_PERIOD_QUARTER_OPTIMALITY.md`.
+
+The universal competitor bound is
+
+\[
+\Gamma_{N,m,q}
+< D_{\max\{N,m\}},
+\qquad
+D_j:=2-2\cos\frac\pi{2j}.
+\]
+
+Thus an unbalanced pair with `N+m=2r` obeys
+
+\[
+\Gamma_{N,m,q}<D_{r+1}.
+\]
+
+The balanced comparison is then closed as follows:
+
+- `k=2`, `r=1`: there is no competing geometry;
+- `k=3`, `r=2`: exact rational certificate;
+- `k=4`, `r=4`: exact all-energy degree-16 Bernstein certificate;
+- `k=5`, `r=8`: exact all-energy degree-32 Bernstein certificate;
+- `k>=6`, hence `r>=16`: the analytic all-phase Dirichlet comparison theorem gives
+  \[
+  \Gamma_{r,r,q}>D_{r+1}
+  \]
+  uniformly in the odd multiplier.
+
+Independent exact certificates at `r=16` and `r=32` audit the beginning of the analytic tail.
+
+Therefore the minimal-period geometry is uniquely fixed at every `2`-adic layer.
+
+---
+
+## Theorem D — sharp large-valuation gap
+
+Let `k->infinity`, while the odd part `n` may vary arbitrarily. Then
+
+\[
+\boxed{
+p^2\Gamma_s^{can}
+\longrightarrow16\pi^2.
+}
 \tag{5.1}
 \]
 
-and, if `e_r` denotes the better endpoint gap,
+Equivalently,
 
 \[
-\boxed{
-r^4\left(e_r-(8-R_s^{\rm can})\right)
-\to\frac{\pi^2}{32}.}
-\tag{5.2}
+\Gamma_s^{can}
+=\frac{16\pi^2}{p^2}+o(p^{-2}).
 \]
 
-Thus the discrete geometry locks exactly at quarter period before the continuous Bloch phase locks: the latter retains a universal `r^-2` compressed phase slip.
+Since `p=2L`, this is the optimal period-normalized constant in the macroscopic even-separation two-defect family.
 
 ---
 
-## 6. Comparison with the original `h=2` compressed phase
+## Theorem E — all-orders Bloch phase slip of the canonical phase
 
-At the same minimal period, the shortest-separation phase has normalized leading constant
+Put
 
 \[
-16\arccos(1/3)^2
+r=2^{k-2}.
 \]
 
-in `p^2(8-R)` normalization, whereas the canonical balanced phase has
+At balanced geometry, the periodic compressed endpoint is the algebraically improving well. Let `delta_r` denote the compressed displacement from that periodic endpoint. Then
+
+\[
+\boxed{
+|\delta_r|
+=r^{-2}\left(
+\frac\pi{4\sqrt2}
+-\frac\pi{8r}
++\frac{\pi(32-27\sqrt2)}{192r^2}
++\cdots
+\right).
+}
+\tag{6.1}
+\]
+
+The phase-slip gain also admits a full algebraic series,
+
+\[
+\boxed{
+ e_r^+-\Gamma_s^{can}
+=r^{-4}\left(
+\frac{\pi^2}{32}
+-\frac{3\pi^2}{32\sqrt2\,r}
++\frac{\pi^2(32\sqrt2-3)}{768r^2}
++\cdots
+\right).
+}
+\tag{6.2}
+\]
+
+The existence of both complete series is proved in `ALL_ORDERS_PERIODIC_PHASE_SLIP_EXPANSION.md`.
+
+Important orientation statement: the antiperiodic well is analytic and carries no cusp. At balance its endpoint gap agrees with the periodic endpoint to every algebraic order, but the periodic cusp lowers the true global gap by the algebraic amount (6.2), thereby selecting the periodic Bloch well.
+
+---
+
+## 7. Full high-order global series
+
+Let
+
+\[
+A(r)=\sum_{j\ge2}a_jr^{-j}
+\]
+
+be the universal Robin endpoint series and
+
+\[
+C(r)=\sum_{j\ge0}c_jr^{-j-4}
+\]
+
+be the periodic cusp-gain series. Then the canonical balanced phase satisfies, to every algebraic order,
+
+\[
+\boxed{
+\Gamma_s^{can}\sim A(r)-C(r).
+}
+\tag{7.1}
+
+The first displayed terms are
+
+\[
+\begin{aligned}
+\Gamma_s^{can}={}&\frac{\pi^2}{4r^2}
+-\frac{\sqrt2\pi^2}{4r^3}
++\frac{\pi^2(66-\pi^2)}{192r^4}\\
+&+\frac{\sqrt2\pi^2(-52+3\pi^2)}{256r^5}
++O(r^{-6}).
+\end{aligned}
+\tag{7.2}
+\]
+
+All higher coefficients are recursively determined by the two analytic implicit equations for the Robin root and the periodic cusp minimizer.
+
+---
+
+## 8. Comparison with the original shortest-separation compressed phase
+
+At the same minimal period, the old separation-two compressed family has period-normalized leading constant
+
+\[
+16\arccos(1/3)^2,
+\]
+
+whereas the canonical balanced phase has
 
 \[
 16\pi^2.
 \]
 
-Therefore the asymptotic improvement factor is
+The asymptotic improvement factor is therefore
 
 \[
 \boxed{
-\left(\frac{\pi}{\arccos(1/3)}\right)^2\approx6.51.
+\left(\frac{\pi}{\arccos(1/3)}\right)^2.
 }
-\tag{6.1}
+\tag{8.1}
 \]
 
-The gain comes entirely from defect geometry; the primitive period is unchanged.
+The improvement is purely geometric: no extra period is paid.
 
-## 7. Recommended headline formulation
+## 9. Headline formulation
 
-The even-jump construction can now be stated directly as follows:
+The even-jump construction can now be stated without an eventuality qualifier:
 
-> **If `v_2(s)=k>=2`, there is an explicit two-defect signing of the shortest compatible period `2^{k+1}` whose defects are separated by one quarter of the period and whose continuous squared Bloch edge is strictly below `8`. As `k->infinity`, its period-normalized gap tends to the optimal two-defect constant `16pi^2`; for all sufficiently large `k`, the quarter-period separation is the unique gap-maximizing even separation within that minimal period.**
-
-This is the canonical even-jump theorem that should replace the old period-`4s` construction in the abstract and introduction.
+> **If `v_2(s)=k>=2`, the shortest compatible reflection-chiral two-defect period is `2^{k+1}`. Within that minimal period there is a unique gap-maximizing even defect geometry: the two positive flux defects are separated by exactly one quarter of the period. The resulting canonical phase is strictly sub-eight for every finite layer, has optimal period-normalized gap constant `16pi^2`, and admits a complete Bloch phase-slip asymptotic expansion.**
