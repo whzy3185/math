@@ -31,3 +31,10 @@ Added the independently audited arbitrary unequal-legal-cell theorem, the change
 ## Integrated18-page manuscript and exact-radius formal checkpoint
 
 Added a separately reviewed integrated paper, preserving the earlier11-page snapshot, together with the237-declaration exact finite-radius Lean bundle. The integrated article consolidates both certificate regimes, all-phase/unequal-cell assembly and all-even witness coverage. The formal result supplies both a universal eigenvalue-modulus bound and attainment; it does not formalize the Schur families.
+
+
+## Verified formal addenda after the integrated article
+
+- 246 declarations: identified the endpoint radical as the global largest real root of the conjecture quartic and transferred the strict raw negative-holonomy eigenvalue bound to that constant
+- 254 declarations: typed terminal Schur positivity and exact cross-term corrections under the explicit positive-pivot premise; full R2 formalization remains incomplete
+- Both builds and full standard-axiom audits passed; earlier source bundles and both reviewed PDFs are unchanged

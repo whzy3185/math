@@ -8,21 +8,21 @@
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 3699,
-      "sha256": "6a194dccc8d73b0ada45c71bf2d5a9011dd0d484380ef7aebd4cc6446d29d46e",
-      "git_blob_sha": "efecf79dc194d98aaddf387bebe44c7f3a4bdd71"
+      "bytes": 4233,
+      "sha256": "00d933cba821ec0d5688a69fa4925733f52bad8ea129b279a693bf41810805fa",
+      "git_blob_sha": "c321d7b9e4840cdb8fc857a7374fc2d6128ffb90"
     },
     {
       "path": "README.md",
-      "bytes": 9167,
-      "sha256": "cbb79fc9263a9692dbb95c17bdd8365b3c04b2035513ddbf908821da86542f5d",
-      "git_blob_sha": "e00d3cf4c01aaba78d00b6c33277e1183fe062cb"
+      "bytes": 9475,
+      "sha256": "12cff59c984890779043405510c6291358f43bac4456a893e3c563aeb115680c",
+      "git_blob_sha": "be5eba075019aa67db71c262c5ef6e7d76b660b8"
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 10619,
-      "sha256": "bdd7ad8ebd8aa34a685b8e2b1e69ef3ae87f017690fcb89c5c07ffa46d022860",
-      "git_blob_sha": "1ded457299c89721d73f37e194b8af62ae4b4ebc"
+      "bytes": 14393,
+      "sha256": "edc0b5396becacb36c6cc00ee186b158a4f4fae2f6b302a28ea02e9f7dd0e5c8",
+      "git_blob_sha": "700b9a1add66d4595aff256a7e519dd86897242a"
     },
     {
       "path": "certificates/analytic/INTEGRATION_HANDOFF.md",
@@ -428,9 +428,9 @@
     },
     {
       "path": "lean/CURRENT_STATUS.md",
-      "bytes": 878,
-      "sha256": "00e444bb4e8c6d1ac1e19fa2ee82d8b934e401a94d13bfea136dcb7d1034f47b",
-      "git_blob_sha": "db3a2e689df155ff524a59af6a9b4fa127b331bb"
+      "bytes": 1766,
+      "sha256": "73c11244932bf147a31c9a3f5c88d9170651a915be62d28307a2692ff450fc58",
+      "git_blob_sha": "7cb5236a0dc92be9f1bf63ed87e0abca357fe0a6"
     },
     {
       "path": "lean/SHA256SUMS",
@@ -449,6 +449,132 @@
       "bytes": 18865,
       "sha256": "360cbe6dac0e6418f1ecc27a79981cbc3e77b76b3bb4f23412d69a00425dacda",
       "git_blob_sha": "c0150882881a6314f139b9ed3af88091ee499aef"
+    },
+    {
+      "path": "lean/constant_alignment/CONSTANT_ALIGNMENT_VERIFICATION_REPORT.md",
+      "bytes": 5199,
+      "sha256": "b698a6bcb379b6792446d71d2f30f8df4e2537dbda0d897986022fb6c9671516",
+      "git_blob_sha": "8bfd164aaca215661870f91eb993ff42991b5429"
+    },
+    {
+      "path": "lean/constant_alignment/SHA256SUMS",
+      "bytes": 2061,
+      "sha256": "77317946b331705f87b96df37178a1cec60dc3c0879580bd013c374a2263f485",
+      "git_blob_sha": "12d5d8b15d9adb6d47e3bc82724f5f2d1be0fe98"
+    },
+    {
+      "path": "lean/constant_alignment/c029_constant_alignment.patch",
+      "bytes": 78158,
+      "sha256": "a0575e88d554eb84caeff2258abd9a87ae741a5d6a12b6e155f4f923dc239ccb",
+      "git_blob_sha": "342f335316d81427a43feb40fc8187d9ad292baf"
+    },
+    {
+      "path": "lean/constant_alignment/formal/ConjectureConstantAxiomAudit.lean",
+      "bytes": 13705,
+      "sha256": "2cc604a156a0a05d07fc3d3a9ad5d60baf987905acbbd3e4fdc0f990ba02403a",
+      "git_blob_sha": "4772e71ab5b7f45e8f126abd6ad8dd5c15ca94b2"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8AntiperiodicBridge.lean",
+      "bytes": 4490,
+      "sha256": "0a8da5e9dbad5dc636c75b1c76c32cbed27c26a7e19ee7533eaf8cebb81ef9f7",
+      "git_blob_sha": "ff8e3f75bce2957447eb18be22adaf4e414ac44a"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8AntiperiodicCells.lean",
+      "bytes": 4595,
+      "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707",
+      "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8ConjectureConstant.lean",
+      "bytes": 4084,
+      "sha256": "ef6d6253b2f0a4203f0f3262917aecf2491177f1c6e1ef15624b3d3e86dba716",
+      "git_blob_sha": "f422566f525eea9056ead35ecc60c3830f62c58d"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8DoubleCover.lean",
+      "bytes": 14526,
+      "sha256": "1695e3ca392be8a726e59ac0ae0833b1624145abd849c665be57628526ef861e",
+      "git_blob_sha": "5be69540859b61da41118f98e6e2341bb11a6630"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8ExactFiniteRadius.lean",
+      "bytes": 7538,
+      "sha256": "097d607cbfd4cf199f1900865bc198174214d9ab867e437c4ed764bf5a6a9b03",
+      "git_blob_sha": "970fc9e615318e2860d76024321936df408a5e34"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8ExactRoot.lean",
+      "bytes": 4140,
+      "sha256": "0f9a6a39a5b598ad56504ff1964e6d5b8a5cf1dfe6178c6cebae0755caca0ad4",
+      "git_blob_sha": "f8586c52913b2633165f965b2d3476c636a10216"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8FiberAttainment.lean",
+      "bytes": 7720,
+      "sha256": "0fde8baf09d1936f5df7a96041877e44d465f89bf02f7375a27c1c408a824205",
+      "git_blob_sha": "f393c71060e069899408eb01339818d6d2a27a76"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8PhaseMaximum.lean",
+      "bytes": 3919,
+      "sha256": "d8697f0fa8f52706e869cc5e486859617ada5769edfacf0ea297e86664ce8b67",
+      "git_blob_sha": "261db27b3e8ea9d08f69164c446d3e70efbc3bb5"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8ReverseBloch.lean",
+      "bytes": 6686,
+      "sha256": "f42abe0bb70bc25d5dae48fe23f472d313422f8b760596db9e91cfb5433c1c9a",
+      "git_blob_sha": "03586debe204a30084f668575fb3e52c5817d289"
+    },
+    {
+      "path": "lean/constant_alignment/formal/TargetA/Period8SharpEdge.lean",
+      "bytes": 4277,
+      "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612",
+      "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b"
+    },
+    {
+      "path": "lean/constant_alignment/logs/constant_alignment_attempt1.log",
+      "bytes": 13283,
+      "sha256": "0e09553bd599e5d210fe097423d5f9cfe3585128429126a475c1eeab373a5d48",
+      "git_blob_sha": "3a398ea6cb7fbe644542c7d2681a16257ed6771c"
+    },
+    {
+      "path": "lean/constant_alignment/logs/fresh_constant_alignment_axioms.log",
+      "bytes": 25247,
+      "sha256": "774af0154d7814c3d4b390005f27f2902f34804d77588dff7ee884ed44038d61",
+      "git_blob_sha": "8d319f09d734911ab68f8e041b8bfedf3cc9d559"
+    },
+    {
+      "path": "lean/constant_alignment/reproduction/lake-manifest.json",
+      "bytes": 3121,
+      "sha256": "bcf1b2418e4dbd801c48073899e6596885ad82ad71972d1cd21578926294fa85",
+      "git_blob_sha": "883a856f7a51ddf0b85fa99ca4937fd4e705544a"
+    },
+    {
+      "path": "lean/constant_alignment/reproduction/lakefile.lean",
+      "bytes": 193,
+      "sha256": "cbc44c2ebb703d667340b02483a2240be472667aca43c6ec7fd9a198c566fba7",
+      "git_blob_sha": "402b4cfbea7a71f89f879c5c420932354f0d7cce"
+    },
+    {
+      "path": "lean/constant_alignment/reproduction/lean-toolchain",
+      "bytes": 25,
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+      "git_blob_sha": "a8afa7d1b02d96f0671eba854a8dc4b416beb473"
+    },
+    {
+      "path": "lean/constant_alignment/source_sha256.json",
+      "bytes": 2646,
+      "sha256": "ce42804111de6b59bc87102e0e2fc4d4d65ffc3f3031b47afe672691bcf532b4",
+      "git_blob_sha": "8616a3b17b3a9c166b818a8a01356c5d0512cf1c"
+    },
+    {
+      "path": "lean/constant_alignment/verification_summary.json",
+      "bytes": 2293,
+      "sha256": "ccf6a31e20f895d7a1e8080fb532f68c31875e955f3c4c4db11b6faaa0edcdfc",
+      "git_blob_sha": "3ce62c313b23c23228876a2af025da9459d61b9a"
     },
     {
       "path": "lean/exact_radius/EXACT_RADIUS_VERIFICATION_REPORT.md",
@@ -623,6 +749,60 @@
       "bytes": 204,
       "sha256": "8c28405cb5b96817ff33454a8ac5408afdfc8bc0e5572ef70b9c240350e926ac",
       "git_blob_sha": "b8b41b5e4be4ef1fdfcc5b94ec846a57560156e5"
+    },
+    {
+      "path": "lean/r2_terminal/R2_TERMINAL_VERIFICATION_REPORT.md",
+      "bytes": 3176,
+      "sha256": "bf459d7b17dad926abb6ac869f3731dc39fcecabcfc01d43395f65216ee1b1e6",
+      "git_blob_sha": "ddf585d5e756ad32fafbac9c27a3cae0f639dca1"
+    },
+    {
+      "path": "lean/r2_terminal/SHA256SUMS",
+      "bytes": 769,
+      "sha256": "7ea91e63002621b2b495a74a02edac8a47e63720dd635806f965c2ccf30bffc4",
+      "git_blob_sha": "5d1b45f15f43b1959e1038f4d774727853a00de2"
+    },
+    {
+      "path": "lean/r2_terminal/formal/R2TerminalAxiomAudit.lean",
+      "bytes": 13998,
+      "sha256": "eeb71c56442bca1fae3dfb5c6ac2631805c8fc979c54c7e82bdfc7e89f5a565e",
+      "git_blob_sha": "e0e61f4b7c49eebfd8fe330e900d0033c497d30e"
+    },
+    {
+      "path": "lean/r2_terminal/formal/TargetA/R2TerminalSchur.lean",
+      "bytes": 7579,
+      "sha256": "85f1c7b345b741f06533169c9179f446570ba005dc3d1e572af87c763f026fe1",
+      "git_blob_sha": "cfd2c88a89947796fee0df155413d8a421a1e94b"
+    },
+    {
+      "path": "lean/r2_terminal/logs/fresh_r2_terminal_axioms.log",
+      "bytes": 26311,
+      "sha256": "0283b0ce2ca0964a23bee6f7849662b5a75aded4bfe5e0a8209c159b52c8a97c",
+      "git_blob_sha": "e47223a1d5e4a7bd30b267398cc1d6f36a47e4be"
+    },
+    {
+      "path": "lean/r2_terminal/logs/r2_terminal_attempt1.log",
+      "bytes": 551,
+      "sha256": "dacc730bcbabb5602653f21513a9b2412a50ec4267a7395d0a495acdc7b70340",
+      "git_blob_sha": "f5c6e607d950dea6cdbfabdd6e73d0c80534fd3e"
+    },
+    {
+      "path": "lean/r2_terminal/r2_terminal_increment.patch",
+      "bytes": 22138,
+      "sha256": "5a4034f09ad98e930bb88851a2a293e0f4eebb2d6cf8e8f0bd844270587bdf19",
+      "git_blob_sha": "1bbcfc35efff0c743c0a45653538e64215668a3d"
+    },
+    {
+      "path": "lean/r2_terminal/source_sha256.json",
+      "bytes": 2387,
+      "sha256": "e94e4fa58741b5136a9e548c049824a36893da56c998d05be84708de93aa837d",
+      "git_blob_sha": "c94fe779932611dea18fdef6dfb58c53e59971e7"
+    },
+    {
+      "path": "lean/r2_terminal/verification_summary.json",
+      "bytes": 1196,
+      "sha256": "edd0f63208fa4bc0e15c0d6bb6f712da27bd4c8e2195dfee17a8fe5f340af68e",
+      "git_blob_sha": "aefa0f0cf3118b4ed3284fad698743cfa3b990e3"
     },
     {
       "path": "lean/raw_graph_extension/RAW_GRAPH_VERIFICATION_REPORT.md",
@@ -962,8 +1142,8 @@
     }
   ],
   "first_snapshot_commit": "b0c8b51efa3e77cd4c0117ce3cb97ca126e3580d",
-  "latest_supplement": "Unequal legal-cell assembly, full R4 and R6 witnesses, and all-even N>=48 witness-only corollary",
-  "formal_extension_note": "Exact finite-radius raw graph theorem,237-declaration checkpoint; later addenda separate.",
+  "latest_supplement": "Linked246 and254 formal addenda after the preserved18-page integrated article",
+  "formal_extension_note": "254-declaration checkpoint: exact finite radius, largest-root alignment, and conditional local terminal-Schur reduction; reviewed article remains at237.",
   "formal_extension_files": [
     {
       "repository_path": "formal/AllAxiomAudit.lean",
@@ -976,9 +1156,19 @@
       "git_blob_sha": "dc102906c6328acb47c7589253c1dc464ba326a4"
     },
     {
+      "repository_path": "formal/ConjectureConstantAxiomAudit.lean",
+      "sha256": "2cc604a156a0a05d07fc3d3a9ad5d60baf987905acbbd3e4fdc0f990ba02403a",
+      "git_blob_sha": "4772e71ab5b7f45e8f126abd6ad8dd5c15ca94b2"
+    },
+    {
       "repository_path": "formal/ExactRadiusAxiomAudit.lean",
       "sha256": "e0446e0dc1189bad4e4ffb94340f3ece81ddc84a1b910710fd7cc4ba8464ec80",
       "git_blob_sha": "1cc0cd8b8a11acde7628135e367cc9aafd164060"
+    },
+    {
+      "repository_path": "formal/R2TerminalAxiomAudit.lean",
+      "sha256": "eeb71c56442bca1fae3dfb5c6ac2631805c8fc979c54c7e82bdfc7e89f5a565e",
+      "git_blob_sha": "e0e61f4b7c49eebfd8fe330e900d0033c497d30e"
     },
     {
       "repository_path": "formal/RawBridgeAxiomAudit.lean",
@@ -994,6 +1184,11 @@
       "repository_path": "formal/TargetA/Period8AntiperiodicCells.lean",
       "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707",
       "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8ConjectureConstant.lean",
+      "sha256": "ef6d6253b2f0a4203f0f3262917aecf2491177f1c6e1ef15624b3d3e86dba716",
+      "git_blob_sha": "f422566f525eea9056ead35ecc60c3830f62c58d"
     },
     {
       "repository_path": "formal/TargetA/Period8DoubleCover.lean",
@@ -1029,6 +1224,11 @@
       "repository_path": "formal/TargetA/Period8SharpEdge.lean",
       "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612",
       "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b"
+    },
+    {
+      "repository_path": "formal/TargetA/R2TerminalSchur.lean",
+      "sha256": "85f1c7b345b741f06533169c9179f446570ba005dc3d1e572af87c763f026fe1",
+      "git_blob_sha": "cfd2c88a89947796fee0df155413d8a421a1e94b"
     }
   ]
 }

@@ -1,0 +1,37 @@
+{
+  "status": "PASS",
+  "completed_utc": "2026-10-05T09:36:13Z",
+  "new_theorems": 8,
+  "audited_theorems": 254,
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "checks": {
+    "r2_terminal_attempt1": {
+      "command": "lake build TargetA.R2TerminalSchur",
+      "exit_code": 0,
+      "start_utc": "2026-10-05T09:31:02Z",
+      "end_utc": "2026-10-05T09:32:17Z"
+    },
+    "fresh_r2_terminal_axioms": {
+      "command": "lake env lean R2TerminalAxiomAudit.lean",
+      "exit_code": 0,
+      "start_utc": "2026-10-05T09:34:47Z",
+      "end_utc": "2026-10-05T09:36:13Z"
+    }
+  },
+  "prior_checkpoint_required": "verified_constant_alignment (246 theorems)",
+  "prior_checkpoint_unchanged": true,
+  "lean": "4.33.1",
+  "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "scope": "Typed R2 terminal block algebra and strict Schur positivity only, with a positive 4x4 pivot; not the full R2 family theorem.",
+  "still_unformalized": [
+    "seed-to-orbit and raw-graph/block identification",
+    "rational seed verification in this checkpoint",
+    "local contraction and response decay",
+    "infinite Schur-series tails",
+    "all-length R2 positivity"
+  ]
+}

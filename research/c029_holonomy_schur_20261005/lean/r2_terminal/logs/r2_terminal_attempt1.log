@@ -1,0 +1,14 @@
+START 2026-10-05T09:31:02Z
+COMMAND: lake build TargetA.R2TerminalSchur
+⚠ [8706/8706] Built TargetA.R2TerminalSchur (65s)
+warning: TargetA/R2TerminalSchur.lean:59:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+Build completed successfully (8706 jobs).
+EXIT_CODE=0
+END 2026-10-05T09:32:17Z

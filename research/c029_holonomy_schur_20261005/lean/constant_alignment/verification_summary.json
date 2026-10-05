@@ -1,0 +1,59 @@
+{
+  "status": "PASS",
+  "verification_completed_utc": "2026-10-05T09:20:25Z",
+  "baseline_repository": "https://github.com/whzy3185/math",
+  "baseline_commit": "7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2",
+  "lean_version": "4.33.1",
+  "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+  "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audited_theorems": 246,
+  "new_theorems_in_this_increment": 9,
+  "new_theorems_since_baseline": 97,
+  "extension_module_counts": {
+    "Period8SharpEdge": 11,
+    "Period8AntiperiodicCells": 5,
+    "Period8AntiperiodicBridge": 6,
+    "Period8DoubleCover": 25,
+    "Period8ExactRoot": 10,
+    "Period8FiberAttainment": 7,
+    "Period8PhaseMaximum": 5,
+    "Period8ReverseBloch": 10,
+    "Period8ExactFiniteRadius": 9,
+    "Period8ConjectureConstant": 9
+  },
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "checks": {
+    "constant_alignment_attempt1": {
+      "command": "lake build TargetA.Period8ConjectureConstant",
+      "exit_code": 0,
+      "start_utc": "2026-10-05T09:17:24Z",
+      "end_utc": "2026-10-05T09:19:13Z"
+    },
+    "fresh_constant_alignment_axioms": {
+      "command": "lake env lean ConjectureConstantAxiomAudit.lean",
+      "exit_code": 0,
+      "start_utc": "2026-10-05T09:19:34Z",
+      "end_utc": "2026-10-05T09:20:25Z"
+    }
+  },
+  "baseline_sources_unchanged": true,
+  "previous_237_theorem_bundle_unchanged": true,
+  "largest_root_identification_proved": true,
+  "constant": "sqrt(4 + sqrt(10 + 2*sqrt(5)))",
+  "polynomial": "x^4 - 2*x^3 - 6*x^2 + 12*x - 4",
+  "root_characterization": "f(R)=0 and every real root x of f satisfies x<=R",
+  "strict_family_theorem": "TargetA.period8_conjecture28_strict_family",
+  "strict_family_scope": "For every natural L>=4, the raw alpha-minus 8L matrix has every Hermitian eigenvalue modulus strictly below R, and R has the global largest-real-root characterization above.",
+  "exact_finite_radius_preserved": true,
+  "unformalized_in_this_bundle": [
+    "literal arXiv prose or a universal formal optimization statement over all signings",
+    "n=32 integer principal-minor certificate",
+    "R2/R4/R6 Schur or tail arguments",
+    "finite-radius asymptotic coefficient",
+    "unrestricted minimum or literature-wide novelty"
+  ]
+}

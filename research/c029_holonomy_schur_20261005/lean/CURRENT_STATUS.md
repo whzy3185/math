@@ -1,7 +1,11 @@
-# Current formal checkpoint: exact finite radius
+# Current formal checkpoint: 254 audited declarations
 
-The [237-declaration report](exact_radius/EXACT_RADIUS_VERIFICATION_REPORT.md) verifies the expanded exact negative-holonomy finite-radius radical for every L>0 through a universal modulus bound and an attained positive eigenvalue of the raw adjacency matrix. Its build and full axiom audit passed; only propext, Classical.choice and Quot.sound occur.
+The [246-declaration constant-alignment report](constant_alignment/CONSTANT_ALIGNMENT_VERIFICATION_REPORT.md) proves that the explicit endpoint radical is the global largest real root of x^4−2x^3−6x^2+12x−4. The strict eigenvalue-modulus comparison for the raw negative-holonomy matrix is verified for every L>0, with the Conjecture 28 family statement for L>=4. This closes the algebraic naming gap left in the 237 checkpoint.
 
-The earlier165/196 reports remain unchanged historical checkpoints. Their then-open graph bridge and attained-radius obligations are now superseded. Original baseline sources and earlier extension modules remain byte-identical.
+The [254-declaration terminal-Schur addendum](r2_terminal/R2_TERMINAL_VERIFICATION_REPORT.md) adds a typed Fin 10 to Fin 6 positive-definiteness equivalence under an explicit positive Fin 4 pivot, plus the exact terminal C/H corrections and actual E-plus specialization. It does not formalize the full R2 family. The pivot orbit, graph-to-block identification, finite seed, contraction, response decay and infinite tails remain obligations.
 
-The separate paper-quartic naming identification, asymptotic coefficient, integer n32 certificate, R2/R4/R6 Schur arguments and unrestricted minima are not claimed by this checkpoint. See the linked report for exact declarations and assumptions.
+Both increments built successfully and passed full axiom audits using only propext, Classical.choice and Quot.sound. Sources and portable audit drivers are installed under the repository formal/ directory. Reproduce the constant-alignment checkpoint first, then the incremental terminal-Schur package.
+
+The [237-declaration exact-radius report](exact_radius/EXACT_RADIUS_VERIFICATION_REPORT.md) and earlier 165/196 bundles remain unchanged historical checkpoints. The reviewed 18-page paper remains at its explicit 237 checkpoint; these linked reports are subsequent addenda. The exact finite-radius formula includes both the universal modulus bound and an attained eigenvalue for every L>0.
+
+Integer n32 certification, all-length R2/R4/R6 results, finite-size asymptotics and unrestricted minima are not end-to-end Lean claims here.
