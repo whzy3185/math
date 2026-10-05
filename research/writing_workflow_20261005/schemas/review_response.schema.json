@@ -1,0 +1,141 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Different editor response",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "paper": {
+      "type": "string",
+      "minLength": 1
+    },
+    "baseline_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "new_version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "reviewer_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "editor_id": {
+      "type": "string",
+      "minLength": 1
+    },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "issue_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "severity": {
+            "enum": [
+              "critical",
+              "major",
+              "minor",
+              "optional"
+            ]
+          },
+          "original_location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "disposition": {
+            "enum": [
+              "accepted",
+              "partly_accepted",
+              "rebutted",
+              "deferred"
+            ]
+          },
+          "change_kind": {
+            "enum": [
+              "editorial",
+              "mathematical",
+              "citation",
+              "formalization",
+              "reproducibility"
+            ]
+          },
+          "response": {
+            "type": "string",
+            "minLength": 1
+          },
+          "new_location": {
+            "type": "string",
+            "minLength": 1
+          },
+          "affected_claims": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "evidence": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "reviewer_closure": {
+            "enum": [
+              "pending",
+              "closed",
+              "reopened"
+            ]
+          }
+        },
+        "required": [
+          "issue_id",
+          "severity",
+          "original_location",
+          "disposition",
+          "change_kind",
+          "response",
+          "new_location",
+          "affected_claims",
+          "evidence",
+          "reviewer_closure"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper",
+    "baseline_version",
+    "new_version",
+    "reviewer_id",
+    "editor_id",
+    "issues"
+  ],
+  "additionalProperties": false
+}

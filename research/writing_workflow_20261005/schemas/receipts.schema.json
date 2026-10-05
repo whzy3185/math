@@ -1,0 +1,793 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "type": "object",
+  "additionalProperties": false,
+  "title": "Attributed stage receipts",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "paper": {
+      "type": "string",
+      "minLength": 1
+    },
+    "version": {
+      "type": "string",
+      "minLength": 1
+    },
+    "receipts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "receipt_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "gate": {
+            "enum": [
+              "S00",
+              "S01",
+              "S02",
+              "S03",
+              "S04",
+              "S05",
+              "S06",
+              "S07",
+              "S08",
+              "S09",
+              "S10",
+              "S11",
+              "S12",
+              "S13",
+              "S14",
+              "S15"
+            ]
+          },
+          "type": {
+            "enum": [
+              "venue_policy",
+              "mathematical_audit",
+              "blind_review",
+              "rereview",
+              "formal_audit",
+              "pdf_visual_qa",
+              "archive_replay",
+              "authorship_consent",
+              "stage_attestation",
+              "computational_audit"
+            ]
+          },
+          "version": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recorded_utc": {
+            "type": "string",
+            "minLength": 1
+          },
+          "recorded_by": {
+            "type": "string",
+            "minLength": 1
+          },
+          "result": {
+            "enum": [
+              "pass",
+              "fail",
+              "pending"
+            ]
+          },
+          "evidence": {
+            "type": "array",
+            "minItems": 1,
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "details": {
+            "type": "object"
+          }
+        },
+        "required": [
+          "receipt_id",
+          "gate",
+          "type",
+          "version",
+          "recorded_utc",
+          "recorded_by",
+          "result",
+          "evidence",
+          "details"
+        ],
+        "additionalProperties": false,
+        "allOf": [
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "venue_policy"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "venue": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "official_policy_urls": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "actual_ai_uses": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "compatibility_basis": {
+                      "type": "string",
+                      "minLength": 1
+                    }
+                  },
+                  "required": [
+                    "venue",
+                    "official_policy_urls",
+                    "actual_ai_uses",
+                    "compatibility_basis"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "computational_audit"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "finite_claim_ids": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "obligation_ids": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "arithmetic": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "fresh_run_scope": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "run_evidence": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "locator": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "path",
+                          "sha256"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "reduction_evidence": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "locator": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "path",
+                          "sha256"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "finite_claim_ids",
+                    "obligation_ids",
+                    "arithmetic",
+                    "fresh_run_scope",
+                    "run_evidence",
+                    "reduction_evidence",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "mathematical_audit"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "claim_ids": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "coverage": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "review_report_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "claim_ids",
+                    "coverage",
+                    "review_report_sha256",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "blind_review"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "context_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "packet_manifest_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "packet_manifest": {
+                      "type": "object",
+                      "properties": {
+                        "path": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "locator": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "path",
+                        "sha256"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "pdf_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "no_inherited_history": {
+                      "type": "boolean"
+                    },
+                    "exposure": {
+                      "enum": [
+                        "clean",
+                        "contaminated_disclosed"
+                      ]
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "context_id",
+                    "packet_manifest_sha256",
+                    "packet_manifest",
+                    "pdf_sha256",
+                    "no_inherited_history",
+                    "exposure",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "rereview"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "context_id": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "packet_manifest_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "packet_manifest": {
+                      "type": "object",
+                      "properties": {
+                        "path": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "locator": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "path",
+                        "sha256"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "pdf_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "closed_issue_ids": {
+                      "type": "array",
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "review_report_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "context_id",
+                    "packet_manifest_sha256",
+                    "packet_manifest",
+                    "pdf_sha256",
+                    "closed_issue_ids",
+                    "review_report_sha256",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "formal_audit"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "declarations": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "lean_version": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "mathlib_commit": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "axiom_results": {
+                      "type": "array"
+                    },
+                    "semantic_correspondence": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "build_exit_code": {
+                      "type": "integer"
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "declarations",
+                    "lean_version",
+                    "mathlib_commit",
+                    "axiom_results",
+                    "semantic_correspondence",
+                    "build_exit_code",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "pdf_visual_qa"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "pdf_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "page_count": {
+                      "type": "integer",
+                      "minimum": 1
+                    },
+                    "inspected_pages": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "integer",
+                        "minimum": 1
+                      }
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "pdf_sha256",
+                    "page_count",
+                    "inspected_pages",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "archive_replay"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "url": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "archive_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "archive": {
+                      "type": "object",
+                      "properties": {
+                        "path": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "locator": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "path",
+                        "sha256"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "anonymous_retrieval": {
+                      "type": "boolean"
+                    },
+                    "entrypoint": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "replay_exit_code": {
+                      "type": "integer"
+                    },
+                    "fresh_output_sha256": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    },
+                    "fresh_output": {
+                      "type": "object",
+                      "properties": {
+                        "path": {
+                          "type": "string",
+                          "minLength": 1
+                        },
+                        "sha256": {
+                          "type": "string",
+                          "pattern": "^[0-9a-f]{64}$"
+                        },
+                        "locator": {
+                          "type": "string",
+                          "minLength": 1
+                        }
+                      },
+                      "required": [
+                        "path",
+                        "sha256"
+                      ],
+                      "additionalProperties": false
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "url",
+                    "archive_sha256",
+                    "archive",
+                    "anonymous_retrieval",
+                    "entrypoint",
+                    "replay_exit_code",
+                    "fresh_output_sha256",
+                    "fresh_output",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "authorship_consent"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "authors": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "journal": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "approval_scope": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "consent_evidence": {
+                      "type": "array",
+                      "minItems": 1,
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "path": {
+                            "type": "string",
+                            "minLength": 1
+                          },
+                          "sha256": {
+                            "type": "string",
+                            "pattern": "^[0-9a-f]{64}$"
+                          },
+                          "locator": {
+                            "type": "string",
+                            "minLength": 1
+                          }
+                        },
+                        "required": [
+                          "path",
+                          "sha256"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "authors",
+                    "journal",
+                    "approval_scope",
+                    "consent_evidence",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          },
+          {
+            "if": {
+              "properties": {
+                "type": {
+                  "const": "stage_attestation"
+                }
+              }
+            },
+            "then": {
+              "properties": {
+                "details": {
+                  "type": "object",
+                  "properties": {
+                    "acceptance": {
+                      "type": "string",
+                      "minLength": 1
+                    },
+                    "source_fingerprint": {
+                      "type": "string",
+                      "pattern": "^[0-9a-f]{64}$"
+                    }
+                  },
+                  "required": [
+                    "acceptance",
+                    "source_fingerprint"
+                  ],
+                  "additionalProperties": false
+                }
+              }
+            }
+          }
+        ]
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper",
+    "version",
+    "receipts"
+  ]
+}

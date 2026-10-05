@@ -1,0 +1,194 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Version and review context registry",
+  "type": "object",
+  "properties": {
+    "schema_version": {
+      "const": "1.0"
+    },
+    "paper": {
+      "type": "string",
+      "minLength": 1
+    },
+    "versions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "version_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "parent_version": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "created_utc": {
+            "type": "string",
+            "minLength": 1
+          },
+          "source_commit": {
+            "type": [
+              "string",
+              "null"
+            ]
+          },
+          "files": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "path": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "sha256": {
+                  "type": "string",
+                  "pattern": "^[0-9a-f]{64}$"
+                },
+                "locator": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              },
+              "required": [
+                "path",
+                "sha256"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "changed_claims": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "invalidated_gates": {
+            "type": "array",
+            "items": {
+              "type": "string",
+              "minLength": 1
+            }
+          },
+          "editor_id": {
+            "type": "string",
+            "minLength": 1
+          },
+          "review_contexts": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "properties": {
+                "context_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "reviewer_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "editor_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "rounds_used": {
+                  "type": "integer",
+                  "minimum": 1,
+                  "maximum": 2
+                },
+                "retired": {
+                  "type": "boolean"
+                },
+                "initial_inherited_history": {
+                  "const": false
+                },
+                "exposure": {
+                  "enum": [
+                    "clean",
+                    "contaminated_disclosed"
+                  ]
+                },
+                "reviewed_version": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "replacement_context_id": {
+                  "type": "string",
+                  "minLength": 1
+                },
+                "exposure_evidence": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "path": {
+                        "type": "string",
+                        "minLength": 1
+                      },
+                      "sha256": {
+                        "type": "string",
+                        "pattern": "^[0-9a-f]{64}$"
+                      },
+                      "locator": {
+                        "type": "string",
+                        "minLength": 1
+                      }
+                    },
+                    "required": [
+                      "path",
+                      "sha256"
+                    ],
+                    "additionalProperties": false
+                  }
+                }
+              },
+              "required": [
+                "context_id",
+                "reviewer_id",
+                "editor_id",
+                "rounds_used",
+                "retired",
+                "initial_inherited_history",
+                "exposure",
+                "reviewed_version"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "pdf_sha256": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          },
+          "source_fingerprint": {
+            "type": "string",
+            "pattern": "^[0-9a-f]{64}$"
+          }
+        },
+        "required": [
+          "version_id",
+          "parent_version",
+          "created_utc",
+          "source_commit",
+          "files",
+          "changed_claims",
+          "invalidated_gates",
+          "editor_id",
+          "review_contexts",
+          "pdf_sha256",
+          "source_fingerprint"
+        ],
+        "additionalProperties": false
+      }
+    }
+  },
+  "required": [
+    "schema_version",
+    "paper",
+    "versions"
+  ],
+  "additionalProperties": false
+}
