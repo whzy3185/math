@@ -1,0 +1,57 @@
+{
+  "date": "2026-10-05",
+  "status": "PASS",
+  "evidence": "finite-certificate-assisted analytic theorem, independently audited",
+  "primary_exact_checks": 139,
+  "independent_exact_checks": 139,
+  "finite_R6_bases": 33,
+  "theorem": "N=8k+6,k>=6; three legal cells j_i=floor((k+i)/3),i=0,1,2; holonomy+1;rho^2<198/25<rho_minus(N)^2",
+  "analytic_tail": {
+    "k_min": 39,
+    "n_min": 318,
+    "minimum_cell_order": 106
+  },
+  "formalization": "not Lean-formalized",
+  "dependencies": [
+    "../unequal_cells/UNEQUAL_CELL_SCHUR_THEOREM.md",
+    "../unequal_cells/unequal_cells_certificate.json"
+  ],
+  "files": {
+    "R6_FINITE_COMPLETION.md": {
+      "bytes": 6305,
+      "sha256": "959a0a9f3409002c005f9942b71c096e4130b9f62e4da5c3573858b24e755cfc"
+    },
+    "HANDOFF.md": {
+      "bytes": 2110,
+      "sha256": "383c9496d43622e107eb3e065ecc7d857eeb1d979ea6638ef0755238f70ae34d"
+    },
+    "verify_r6_completion.py": {
+      "bytes": 3920,
+      "sha256": "1dbb6f69b8b8475766c62086be4a53f991e465d2b7c8db719c4d8a536acef0e2"
+    },
+    "r6_completion_certificate.json": {
+      "bytes": 33302,
+      "sha256": "481834b2a81b8bf2a6e35142175f607f6edbe8331591fd870834b0d57d78236b"
+    },
+    "verification_output.json": {
+      "bytes": 5530,
+      "sha256": "d9f52f6640fb7c029f5660dd103ac648ceeb1c667e7bbf3af765ebaf059152ad"
+    },
+    "audit/INDEPENDENT_R6_AUDIT.md": {
+      "bytes": 6174,
+      "sha256": "15c1727db7e49b8b58a9d9de24e0edee321a5414f7b7b639ec38db9e1a61d568"
+    },
+    "audit/replay_r6.py": {
+      "bytes": 4465,
+      "sha256": "f07de9f32d184c78d977fbfc8089046666e6743cdf0dcdf8c189d0d0e22291ed"
+    },
+    "audit/independent_replay.json": {
+      "bytes": 26966,
+      "sha256": "74f740083379a27cc2e1981127ec2c1434d8fd7a98fde947d6eeb42b28fa5f22"
+    },
+    "audit/verification_stdout.txt": {
+      "bytes": 779,
+      "sha256": "fbf09e1f43da5bedc8f04bd63d707a032a6358dfe85e679649071b8768d75711"
+    }
+  }
+}

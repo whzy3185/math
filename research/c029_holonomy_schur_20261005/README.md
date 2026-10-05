@@ -29,6 +29,16 @@ The [phase-uniform assembly proof](certificates/r4_pilot/PHASE_UNIFORM_R4_ASSEMB
 
 For the balanced negative-holonomy R4 family at `N=16j+4`, the cap holds for every `j>=1`, with 24 exact finite bases completing the small orders. It strictly improves the twisted benchmark for `j>=3` (`N>=52`). This covers the even-k subsequence of `N=8k+4`; an exact negative-pivot certificate at `N=60` disproves deletion of that parity restriction. Arbitrary defect arrangements and the odd-k R4 theorem are outside this result. See [independent audit](certificates/r4_pilot/audit/INDEPENDENT_R4_PHASE_AUDIT.md).
 
+## Unequal-cell assembly and all-even witness completion
+
+The [unequal-cell Schur theorem](certificates/unequal_cells/UNEQUAL_CELL_SCHUR_THEOREM.md) allows any positive number of unequal legal cells and either holonomy. If every cell has length at least106, the squared spectral radius is below7.92; at length at least202, it is below7.90537. A degree-two bound controls the full6r-dimensional retained matrix with error independent of the cell count.
+
+For every `N=8k+4>=52`, the near-balanced two-cell construction has `rho^2<7.92<rho_tw(N)^2`. Odd k uses a changed unequal-cell word;20 exact finite bases join the analytic tail. The sharper7.90537 cap fails for some short changed examples, so it is not substituted into this full-range theorem.
+
+The [residue-six completion](certificates/r6_completion/R6_FINITE_COMPLETION.md) uses three legal cells and positive Hamilton holonomy to prove the same strict7.92 comparison for every `N=8k+6>=54`. Its33 exact bases end at310, immediately before the analytic range beginning at318.
+
+Together with the period-eight and R2 results, these constructions give explicit witnesses beating the twisted benchmark at every even `N>=48`. This completes the witness direction, not the smaller-order equality cases, actual global minima or minimizer classification. All new Schur-family results remain outside the Lean formalization.
+
 ## Exact reproduction
 
 Run from this directory with Python 3. The analytic verifier and direct-graph finite replay use the standard library; the symbolic checks also require SymPy (the recorded runs used version 1.14.0). NumPy is optional and used only for labeled numerical illustrations.
@@ -43,6 +53,10 @@ python certificates/strengthening/verify_uniform_cap.py
 python certificates/strengthening/audit/replay_stronger_cap.py
 python certificates/r4_pilot/verify_r4_pilot.py
 python certificates/r4_pilot/audit/replay_r4_phase.py
+python certificates/unequal_cells/verify_unequal_cells.py
+python certificates/unequal_cells/audit/independent_assembly.py
+python certificates/r6_completion/verify_r6_completion.py
+python certificates/r6_completion/audit/replay_r6.py
 ```
 
 The programs write their output certificates alongside their source. Exact graph construction, rational/integer positive-definiteness checks, and symbolic identities provide the mathematical evidence. Floating-point previews do not supply proof premises. The full infinite-family arguments are in the manuscript and separate proof reports.

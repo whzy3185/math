@@ -23,3 +23,7 @@ Added all-unit-phase Schur closure and arbitrary identical-cell repetition, plus
 ## Verified raw negative-holonomy graph bridge
 
 Added the exact seam-entry identities, injective double-cover lift and full raw Hermitian eigenvalue theorem for every L>0. The two new modules contribute31 theorems, and the full196-declaration axiom audit passes. The earlier165-theorem bundle is retained as a checkpoint; its raw-graph gap is now superseded. No R2/R4 or global-minimum formalization is claimed.
+
+## Unequal-cell assembly and complete nonzero-residue witnesses
+
+Added the independently audited arbitrary unequal-legal-cell theorem, the changed full R4 family with20 finite bases, and the R6 completion with33 finite bases. Primary/independent checks pass22/119 for assembly and139/139 for R6. The construction side now covers every even N>=48; smaller-order equality and global-optimum claims are not added. Earlier proof packages and the first11-page PDF remain unchanged.

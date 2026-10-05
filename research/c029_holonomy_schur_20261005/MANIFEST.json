@@ -8,21 +8,21 @@
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 2748,
-      "sha256": "cc27e45e340ebb827030b2b4c9218ef11b03c01f4dd82e740bb8e02c4eab5eb1",
-      "git_blob_sha": "39467c056ce4d03ee11b15cde5c9b97169047c3b"
+      "bytes": 3226,
+      "sha256": "01e6d4fed796ba525421f10dea5c90b7f11cdb78d5945cc3b33ea6e50973d1e5",
+      "git_blob_sha": "e73a1460ae71a11ace9a42698feffcbac8c9ecc5"
     },
     {
       "path": "README.md",
-      "bytes": 7258,
-      "sha256": "e77a0dddb2fe38e431223b3a058b9cb580037db32048f66c2ccb0e57fe9910a9",
-      "git_blob_sha": "2c09fb8e791ea74e0cc4943bbbfe82afb2b33206"
+      "bytes": 8864,
+      "sha256": "753193766ee325294909f8e469cc4be782f0696207c364442c674652bf031c40",
+      "git_blob_sha": "4cb104746bceaf06b013eac3d168daf43d4b32a8"
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 6985,
-      "sha256": "4a732a834831412a5b376265a496eb8cdefad62c26d3309caf34a6c19ee8e07d",
-      "git_blob_sha": "03935272ce1dce6bc408ee02536ba14d3fa45d2a"
+      "bytes": 8143,
+      "sha256": "6f0339f39ad7fa62c204f760ec5c148fc36ef95447405d68d26d2fc33402b386",
+      "git_blob_sha": "83554ba2069600c6db48014969c01d89327a4569"
     },
     {
       "path": "certificates/analytic/INTEGRATION_HANDOFF.md",
@@ -241,6 +241,66 @@
       "git_blob_sha": "175c2f762e33d21d2a8d54a488098fab25dabdc6"
     },
     {
+      "path": "certificates/r6_completion/HANDOFF.md",
+      "bytes": 2110,
+      "sha256": "383c9496d43622e107eb3e065ecc7d857eeb1d979ea6638ef0755238f70ae34d",
+      "git_blob_sha": "32fa4afdc2349388bc81d719bee903bc8bfba9b9"
+    },
+    {
+      "path": "certificates/r6_completion/R6_FINITE_COMPLETION.md",
+      "bytes": 6305,
+      "sha256": "959a0a9f3409002c005f9942b71c096e4130b9f62e4da5c3573858b24e755cfc",
+      "git_blob_sha": "306b6ca2f9d0f4a23dfe776ff94b85717c0b6ede"
+    },
+    {
+      "path": "certificates/r6_completion/audit/INDEPENDENT_R6_AUDIT.md",
+      "bytes": 6174,
+      "sha256": "15c1727db7e49b8b58a9d9de24e0edee321a5414f7b7b639ec38db9e1a61d568",
+      "git_blob_sha": "b967d265ec616d6d50d9fd0ad7267ae3da5c0baf"
+    },
+    {
+      "path": "certificates/r6_completion/audit/independent_replay.json",
+      "bytes": 26966,
+      "sha256": "74f740083379a27cc2e1981127ec2c1434d8fd7a98fde947d6eeb42b28fa5f22",
+      "git_blob_sha": "246854cfd155bdec7ac324ae5f3ffb383050720d"
+    },
+    {
+      "path": "certificates/r6_completion/audit/replay_r6.py",
+      "bytes": 4465,
+      "sha256": "f07de9f32d184c78d977fbfc8089046666e6743cdf0dcdf8c189d0d0e22291ed",
+      "git_blob_sha": "a867fcbe311021dded9981884cd9463462677661"
+    },
+    {
+      "path": "certificates/r6_completion/audit/verification_stdout.txt",
+      "bytes": 779,
+      "sha256": "fbf09e1f43da5bedc8f04bd63d707a032a6358dfe85e679649071b8768d75711",
+      "git_blob_sha": "ad3a62403d60f00ab8fed3690e480d848ce64620"
+    },
+    {
+      "path": "certificates/r6_completion/manifest.json",
+      "bytes": 1925,
+      "sha256": "da3671440e948ce535ea8b9238c0d3e8a1ea55b28f4a7d300589fff97042e26b",
+      "git_blob_sha": "190324942a971597b51c40d4bd157ffdc5556eb8"
+    },
+    {
+      "path": "certificates/r6_completion/r6_completion_certificate.json",
+      "bytes": 33302,
+      "sha256": "481834b2a81b8bf2a6e35142175f607f6edbe8331591fd870834b0d57d78236b",
+      "git_blob_sha": "57c86fbe51e1f3dc6d9efb81b7834e4b00ce0206"
+    },
+    {
+      "path": "certificates/r6_completion/verification_output.json",
+      "bytes": 5530,
+      "sha256": "d9f52f6640fb7c029f5660dd103ac648ceeb1c667e7bbf3af765ebaf059152ad",
+      "git_blob_sha": "b72ae9fdfb735bc58ecd0c17a108e93a3a9a2b5b"
+    },
+    {
+      "path": "certificates/r6_completion/verify_r6_completion.py",
+      "bytes": 3920,
+      "sha256": "1dbb6f69b8b8475766c62086be4a53f991e465d2b7c8db719c4d8a536acef0e2",
+      "git_blob_sha": "0d3f96632cc09d4972839d2d367d5213e6d32859"
+    },
+    {
       "path": "certificates/strengthening/HANDOFF.md",
       "bytes": 3030,
       "sha256": "1d1f74996d93895b63cbc2b3a5675cf8fc8282549cbd467a4bce4ea0bb170e2f",
@@ -299,6 +359,72 @@
       "bytes": 9315,
       "sha256": "e9d6af6966f16439329c26fa91f7f4c8de84346e5371d9bae981e01055c09ab2",
       "git_blob_sha": "78e92384d4e39c74545d500e0ee843309f15709c"
+    },
+    {
+      "path": "certificates/unequal_cells/HANDOFF.md",
+      "bytes": 3615,
+      "sha256": "cd4ab1f307bc4ead1663cc5245494469932367f7597405eea4b1d6566c3a21ff",
+      "git_blob_sha": "e5da68ddfada74f1457deb9b18e44f6ed06be54a"
+    },
+    {
+      "path": "certificates/unequal_cells/UNEQUAL_CELL_SCHUR_THEOREM.md",
+      "bytes": 13051,
+      "sha256": "ff4e296bd19f57e71b56522a049729606cb974b479a5230006391fc37c6dff5f",
+      "git_blob_sha": "a06ed4e1866aaf561ea401a12a1a77d4ab5ab82c"
+    },
+    {
+      "path": "certificates/unequal_cells/assembly.py",
+      "bytes": 4068,
+      "sha256": "75dcf4274217c5bcc16c94e957e5dbd28f5dc9d316a7f2c2bf6e1cf5800709b3",
+      "git_blob_sha": "b5b667760a46b84a143d656c2f62090b6d51963c"
+    },
+    {
+      "path": "certificates/unequal_cells/audit/INDEPENDENT_UNEQUAL_CELL_AUDIT.md",
+      "bytes": 9927,
+      "sha256": "d9da925858e3c0251685e5993c84923d74fd37c2ab0dfdd80e5ecef3d5c228ee",
+      "git_blob_sha": "771300a442a6d1c530d6ac7a1c0a5aebeb2ebb25"
+    },
+    {
+      "path": "certificates/unequal_cells/audit/independent_assembly.py",
+      "bytes": 8614,
+      "sha256": "08bf22f7802cc25a8ffd7de7fe177f73fbe157e610d65261019560a7cdabc6f3",
+      "git_blob_sha": "a3ab42ee26512475dd04d03efef9f998e22f4e04"
+    },
+    {
+      "path": "certificates/unequal_cells/audit/independent_replay.json",
+      "bytes": 70524,
+      "sha256": "c1563f87bbe51b6d1aff07dd2f10275af9da48762106cb6635c8ca8f4a888257",
+      "git_blob_sha": "eb0baa62ccd5a47bee3de0c74c0c56c7b8f122cb"
+    },
+    {
+      "path": "certificates/unequal_cells/audit/verification_stdout.txt",
+      "bytes": 167,
+      "sha256": "32f813b14e0453e38b1929e52102dfcff20e6a3a8dbfa0ff66c9285c0015f966",
+      "git_blob_sha": "45c91c790a93f53184d561680d257c1b5c50aa23"
+    },
+    {
+      "path": "certificates/unequal_cells/manifest.json",
+      "bytes": 2409,
+      "sha256": "33133e14842cacbcae1ff8100e4bed9b2a9be9388b3fdb67feb85287d2df4eba",
+      "git_blob_sha": "27df6295c6121d5ceef82866107bc1ceca060dbd"
+    },
+    {
+      "path": "certificates/unequal_cells/unequal_cells_certificate.json",
+      "bytes": 12093,
+      "sha256": "bafe62d2b246713d22e5d7c3221fe1497e05b3e9a99cdb8e4ca944ae64995eb5",
+      "git_blob_sha": "6d81378a8312d5b95cc15d3a8d2559691b7cf8fd"
+    },
+    {
+      "path": "certificates/unequal_cells/verification_output.json",
+      "bytes": 10912,
+      "sha256": "18bab6b0abe74cfa48f337379aef56ac7c1bd2f64f53ede4921c55e4a8d7f063",
+      "git_blob_sha": "3e6877690dcbce4117526a5f6e3e78e82f3603af"
+    },
+    {
+      "path": "certificates/unequal_cells/verify_unequal_cells.py",
+      "bytes": 4457,
+      "sha256": "842bdb021805f664f2249999cc1403e3150175f6e1126d338492a7b9deb542a1",
+      "git_blob_sha": "2747902a897a85f510543e93c7fdf5613adc1168"
     },
     {
       "path": "lean/CURRENT_STATUS.md",
@@ -512,9 +638,9 @@
     },
     {
       "path": "manuscript/CLAIM_LEDGER.md",
-      "bytes": 9741,
-      "sha256": "faa3ee5e5596eaa179c9eb24c8012376bed627f8a801885ed94a7c6b76a3e135",
-      "git_blob_sha": "0cf5d9b35ca22b6bde2b590f940cab6cc8215224"
+      "bytes": 11851,
+      "sha256": "6a33efde55f66c4c0e18207ccda02a3786656a3fca5d3334a127ec6c80013746",
+      "git_blob_sha": "5be86832feaf1f25a2daddc23dc764dbc1c6c737"
     },
     {
       "path": "manuscript/HANDOFF.zh-CN.md",
@@ -524,9 +650,9 @@
     },
     {
       "path": "manuscript/MANIFEST.json",
-      "bytes": 3086,
-      "sha256": "8b7ba1c489eb0c89ca6535ea4b83051dc00a382052e586eebfee95e02c3a6ed7",
-      "git_blob_sha": "1a615fb63ec0a6e5508e86bb8ec7b4187875908a"
+      "bytes": 3091,
+      "sha256": "ffbe28f9f9e16172cf0b8ac4bf534740918597be6bbe03276e15d47f8836fd6b",
+      "git_blob_sha": "03a672ab8faa0a629e83e7f378c75f5b4c844e5b"
     },
     {
       "path": "manuscript/PROOF_DEPENDENCY_MAP.md",
@@ -602,7 +728,7 @@
     }
   ],
   "first_snapshot_commit": "b0c8b51efa3e77cd4c0117ce3cb97ca126e3580d",
-  "latest_supplement": "Phase-uniform equal-cell assembly and balanced even-k R4 theorem; exact odd-k N60 obstruction",
+  "latest_supplement": "Unequal legal-cell assembly, full R4 and R6 witnesses, and all-even N>=48 witness-only corollary",
   "formal_extension_note": "Raw negative-holonomy graph bridge and strict squared-eigenvalue theorem verified for L>0;196 declarations audited. R2/R4 and global minimization are not formalized.",
   "formal_extension_files": [
     {

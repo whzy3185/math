@@ -83,3 +83,18 @@ For the balanced negative-holonomy family N=16j+4, all j>=1 satisfy this cap: 24
 Evidence: complete phase law and Hermitian terminal-core proof; unchanged R2 exact premises; 20 primary exact checks and72 independent checks, including quotient-ring fiber embeddings and a distinct full-graph LDL ordering. See [proof](../certificates/r4_pilot/PHASE_UNIFORM_R4_ASSEMBLY.md) and [audit](../certificates/r4_pilot/audit/INDEPENDENT_R4_PHASE_AUDIT.md).
 
 Does not establish: arbitrary placements/types of interfaces, all residue-four orders, an odd-k theorem, a global minimum or any R4 Lean formalization. The historical r-to-2r correction is respected; no localized-mode count supplies the argument. The original manuscript PDF is unchanged and this is a separate supplement.
+
+
+## C8 Unequal-cell theorem and full R4 witness range
+
+Proved and independently audited: arbitrary concatenations of legal cells w_j, with either global holonomy, have rho²<198/25 when every cell order is at least106, and rho²<790537/100000 when every cell order is at least202. The proof uses the exact6r-dimensional additive Schur complement and a degree-two quadratic-form estimate, with no error growing in the cell count. Cell lengths may be unequal; cell words and congruence2mod8 remain required.
+
+For N=8k+4,k>=6, choose two cell parameters floor(k/2),ceil(k/2) and holonomy−1. The cap7.92 holds throughout and beats the twisted benchmark. Twenty exact bases k6..25 join the tail at k26. Odd-k placements are changed to near-balanced unequal cells. Sharp-cap failures at changed N60,N76 are retained as exact negative-pivot evidence.
+
+Evidence:22 primary checks,119 independent checks and complete line audit. See [proof](../certificates/unequal_cells/UNEQUAL_CELL_SCHUR_THEOREM.md) and [audit](../certificates/unequal_cells/audit/INDEPENDENT_UNEQUAL_CELL_AUDIT.md). No arbitrary-signing theorem, localized-mode count, optimum classification or Lean result is claimed.
+
+## C9 R6 completion and the all-even witness direction
+
+Proved and independently audited: for every N=8k+6,k>=6, concatenate cells with parameters floor(k/3),floor((k+1)/3),floor((k+2)/3), using positive Hamilton holonomy. Then rho²<198/25<rho_tw(N)². Thirty-three exact full-graph bases N54,62,…,310 join the unequal-cell tail at N318. Both the primary and independent gap-based replays pass139 checks. See [proof](../certificates/r6_completion/R6_FINITE_COMPLETION.md) and [audit](../certificates/r6_completion/audit/INDEPENDENT_R6_AUDIT.md).
+
+The period-eight, R2, changed R4 and R6 constructions jointly provide a strict twisted-benchmark counterexample for every even N>=48. This is the witness/existence direction only. The smaller equality orders, full truth-set classification, actual optimum and minimizing classes retain their separate evidence obligations. The R6/unequal-cell arguments are not Lean-formalized.

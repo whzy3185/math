@@ -194,5 +194,45 @@
       "unrestricted spectral minimization",
       "literature-wide novelty"
     ]
+  },
+  "unequal_cells_supplement": {
+    "commands": [
+      {
+        "path": "certificates/unequal_cells/verify_unequal_cells.py",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "path": "certificates/unequal_cells/audit/independent_assembly.py",
+        "exit_code": 0,
+        "stderr": ""
+      }
+    ],
+    "mathematical_output_mismatches": [],
+    "metadata_only_changes": [
+      "audit/independent_replay.json:/seconds"
+    ],
+    "all_passed": true,
+    "retained_artifacts": "Original audited output bytes are retained if only elapsed-time metadata differs."
+  },
+  "r6_completion": {
+    "commands": [
+      {
+        "path": "certificates/r6_completion/verify_r6_completion.py",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "path": "certificates/r6_completion/audit/replay_r6.py",
+        "exit_code": 0,
+        "stderr": ""
+      }
+    ],
+    "mathematical_output_mismatches": [],
+    "metadata_only_changes": [
+      "audit/independent_replay.json:/seconds"
+    ],
+    "all_passed": true,
+    "retained_artifacts": "Original audited output bytes retained if only elapsed-time metadata differs."
   }
 }

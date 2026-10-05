@@ -1,0 +1,70 @@
+{
+  "date": "2026-10-05",
+  "status": "PASS",
+  "evidence": "finite-certificate-assisted analytic theorem, independently audited",
+  "primary_exact_checks": 22,
+  "independent_exact_checks": 119,
+  "finite_R4_bases": 20,
+  "scope": "arbitrary unequal legal one-G6 cells h_i=8j_i+2; cell count and both holonomies unrestricted",
+  "bounds": [
+    {
+      "minimum_cell_order": 106,
+      "cap": "198/25"
+    },
+    {
+      "minimum_cell_order": 202,
+      "cap": "790537/100000"
+    }
+  ],
+  "R4_theorem": "N=8k+4,k>=6; cells8floor(k/2)+2 and8ceil(k/2)+2, alpha=-1; rho^2<198/25<rho_minus(N)^2",
+  "falsification": "sharp cap790537/100000 fails at changed R4 N60,N76",
+  "formalization": "not Lean-formalized",
+  "dependencies": [
+    "../analytic/R2_ANALYTIC_TAIL_CLOSURE.md",
+    "../analytic/r2_exact_certificate.json",
+    "../strengthening/UNIFORM_ONE_G6_CAP.md",
+    "../strengthening/uniform_cap_certificate.json"
+  ],
+  "files": {
+    "UNEQUAL_CELL_SCHUR_THEOREM.md": {
+      "bytes": 13051,
+      "sha256": "ff4e296bd19f57e71b56522a049729606cb974b479a5230006391fc37c6dff5f"
+    },
+    "HANDOFF.md": {
+      "bytes": 3615,
+      "sha256": "cd4ab1f307bc4ead1663cc5245494469932367f7597405eea4b1d6566c3a21ff"
+    },
+    "assembly.py": {
+      "bytes": 4068,
+      "sha256": "75dcf4274217c5bcc16c94e957e5dbd28f5dc9d316a7f2c2bf6e1cf5800709b3"
+    },
+    "verify_unequal_cells.py": {
+      "bytes": 4457,
+      "sha256": "842bdb021805f664f2249999cc1403e3150175f6e1126d338492a7b9deb542a1"
+    },
+    "unequal_cells_certificate.json": {
+      "bytes": 12093,
+      "sha256": "bafe62d2b246713d22e5d7c3221fe1497e05b3e9a99cdb8e4ca944ae64995eb5"
+    },
+    "verification_output.json": {
+      "bytes": 10912,
+      "sha256": "18bab6b0abe74cfa48f337379aef56ac7c1bd2f64f53ede4921c55e4a8d7f063"
+    },
+    "audit/INDEPENDENT_UNEQUAL_CELL_AUDIT.md": {
+      "bytes": 9927,
+      "sha256": "d9da925858e3c0251685e5993c84923d74fd37c2ab0dfdd80e5ecef3d5c228ee"
+    },
+    "audit/independent_assembly.py": {
+      "bytes": 8614,
+      "sha256": "08bf22f7802cc25a8ffd7de7fe177f73fbe157e610d65261019560a7cdabc6f3"
+    },
+    "audit/independent_replay.json": {
+      "bytes": 70524,
+      "sha256": "c1563f87bbe51b6d1aff07dd2f10275af9da48762106cb6635c8ca8f4a888257"
+    },
+    "audit/verification_stdout.txt": {
+      "bytes": 167,
+      "sha256": "32f813b14e0453e38b1929e52102dfcff20e6a3a8dbfa0ff66c9285c0015f966"
+    }
+  }
+}
