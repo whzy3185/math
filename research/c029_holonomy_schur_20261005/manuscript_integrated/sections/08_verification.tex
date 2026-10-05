@@ -1,0 +1,91 @@
+\section{Verification, provenance, and remaining questions}
+\label{sec:verification}
+
+The proof has three exact computational inputs: the fixed rational
+premises of Lemma~\ref{lem:finite-premises}, the explicitly bounded finite
+graph lists, and the strict lower obstructions. Everything that extends
+those data to unbounded lengths, phases, or numbers of cells is proved in
+Sections~\ref{sec:uniform} and~\ref{sec:cells}.
+The finite lists are summarized below; a separate seed check supplies each
+long-cell argument.
+\begin{center}
+\small
+\begin{tabular}{lccc}
+\toprule
+Family & Finite parameter range & Graph orders & Analytic from\\
+\midrule
+One cell ($\cone$) & $1\le k\le24$ & $10,18,\ldots,194$ & $202$\\
+Two equal cells ($\cone$) & $1\le j\le24$ & $20,36,\ldots,388$ & $404$\\
+Two near-equal cells ($\czero$) & $6\le k\le25$ & $52,60,\ldots,204$ & $212$\\
+Three near-equal cells ($\czero$) & $6\le k\le38$ & $54,62,\ldots,310$ & $318$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All acceptance comparisons use integers or rational numbers. Positive
+pivots certify positive definiteness by exact Schur congruence; negative
+pivots with positive predecessors certify the claimed strict obstructions.
+The scripts store construction parameters, pivot counts, exact certificate
+matrices or pivot data, and integrity digests. Digests identify outputs;
+the mathematical tests are the rational computations that generate them.
+Floating spectra used during exploration are excluded from the proof.
+
+Independent replays reconstruct the underlying graphs or isolated chain
+responses separately, use different elimination orderings where applicable,
+and match the exact statements rather than trusting stored positivity flags.
+For example, the unequal-cell replay compares direct full-graph elimination
+with independently eliminated chains embedded additively into the cyclic
+boundary space, including loops and parallel contributions. These finite
+comparisons test the implementations; Lemma~\ref{lem:assembly} proves the
+identity for every admissible length and number of cells.
+
+\begingroup\raggedright
+The public supplement preserves the directories
+\nolinkurl{certificates/analytic/},
+\nolinkurl{certificates/strengthening/},
+\nolinkurl{certificates/r4_pilot/},
+\nolinkurl{certificates/unequal_cells/}, and
+\nolinkurl{certificates/r6_completion/}.
+Their respective primary verifiers are
+\nolinkurl{verify_r2_certificate.py},
+\nolinkurl{verify_uniform_cap.py},
+\nolinkurl{verify_r4_pilot.py},
+\nolinkurl{verify_unequal_cells.py}, and
+\nolinkurl{verify_r6_completion.py}.
+Each directory supplies its exact output. The first package's independent
+replays are in \nolinkurl{certificates/audit/}; the later packages have their
+own \nolinkurl{audit/} subdirectories.
+\nolinkurl{assembly.py} accompanies the unequal-cell verifier.
+The package README gives commands and required dependencies.
+\par\endgroup
+
+A separate Lean development verifies the exact negative-holonomy finite
+radius in Theorem~\ref{thm:period8}. For the explicit raw graph matrix and
+every positive cell count, it proves that all Hermitian eigenvalue moduli
+are at most the stated radical and that an eigenvalue equals its positive
+value. The proof includes the seam and raw-operator bridges, maximal
+antiperiodic phase, determinant root, and lower attainment. The verified
+Lean~4.33.1 checkpoint audits $237$ declarations, with axiom union exactly
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+The separate quartic identification used to name the conjectured constant,
+the finite-size asymptotic, the integer principal-minor certificate, and
+the Riccati/Schur and residue-completion arguments are not formalized by
+that checkpoint. They retain their stated analytic and exact-certificate
+evidence.
+
+The exact period-eight formula and the witness range are inherited
+project results; the present application to the revised conjecture and the
+common unequal-cell proof have their scope distinguished in the supplement's
+claim ledger. The new proof requires neither the older physical
+interface-edge calculation nor an IMS localization estimate or a count of
+localized modes. It does not change the status of historical equality
+certificates at smaller orders.
+
+The principal extremal problem remains to determine $\mu_N$ and its
+minimizing switching classes. Even within the prescribed one-cell family,
+the interval \eqref{eq:supremum} does not determine the exact supremum or
+prove convergence. For broader cell arrangements, the two-cell
+obstructions at orders $60$ and $76$ show that shortening cells can affect
+the sharper cap. A structural lower bound over arbitrary triangle-sign
+words would be needed to turn any of these explicit upper bounds into a
+global minimization theorem.

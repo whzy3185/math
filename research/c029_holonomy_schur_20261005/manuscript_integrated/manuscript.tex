@@ -1,0 +1,98 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\rstar}{r_*}
+\newcommand{\tw}{\rho_{\mathrm{tw}}}
+\newcommand{\cone}{c_1}
+\newcommand{\czero}{c_0}
+\newcommand{\etaedge}{\eta_*}
+\title{Uniform Schur bounds and holonomy in signed cycle squares}
+\author{}
+\date{Integrated research manuscript\quad 5 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We give a direct Schur-complement proof of spectral bounds for explicit
+signings of cycle squares. A rationally certified four-dimensional Riccati
+recurrence produces a common six-dimensional limiting boundary matrix.
+Concatenating any number of prescribed cells, with unequal lengths and
+either Hamilton holonomy, preserves a squared spectral-radius bound of
+$7.92$ when every cell has length at least $106$, and $7.90537$ when every
+cell has length at least $202$. A degree-two estimate keeps the error
+independent of the number of cells. The one-cell family satisfies the
+sharper bound at every admissible size, and its supremum lies in an interval
+of width $10^{-6}$. Exact finite bases complete explicit competitors to the
+twisted signing at orders $32,40$ and every even order at least $48$.
+This recovers the previously known witness range through a common analytic
+mechanism. We also present the exact period-eight holonomy calculation and
+its application to the revised global-optimality conjecture. Unrestricted
+minima and minimizing signings are not determined.
+\end{abstract}
+\input{sections/01_introduction}
+\input{sections/02_holonomy}
+\input{sections/03_period_eight}
+\input{sections/04_chain_reduction}
+\input{sections/05_uniform_estimates}
+\input{sections/06_cells}
+\input{sections/07_finite_completion}
+\input{sections/08_verification}
+
+\begin{thebibliography}{9}
+\bibitem{Suvagiya2026old}
+V. Suvagiya,
+\emph{Signed circulants at the Ramanujan bound},
+arXiv:2607.18334v1, 19 July 2026;
+withdrawn in version 2, 22 September 2026, and merged into
+\cite{Suvagiya2026}.
+\url{https://arxiv.org/abs/2607.18334}.
+
+\bibitem{Suvagiya2026}
+V. Suvagiya,
+\emph{Parity families and signed spectra: kernel averaging,
+near-Ramanujan bounds, and exact circulant models},
+arXiv:2607.17343v2, 22 September 2026,
+Theorem 26, Remark 27, and Conjecture 28.
+\url{https://arxiv.org/abs/2607.17343v2}.
+
+\bibitem{LuoRoy2026}
+Y. Luo and A. Roy,
+\emph{Homological spectral graph theory and weighted cycle counting},
+arXiv:2403.01550v4, 4 August 2026.
+\url{https://arxiv.org/abs/2403.01550v4}.
+
+\bibitem{ChenDamBu2024}
+L. Chen, E. R. van Dam, and C. Bu,
+Spectra of power hypergraphs and signed graphs via parity-closed walks,
+\emph{Journal of Combinatorial Theory, Series A} \textbf{207} (2024),
+105909.
+\url{https://doi.org/10.1016/j.jcta.2024.105909}.
+
+\bibitem{EarlierPeriodEight}
+\emph{The exact period-eight phase}, Section 4 of the earlier period-eight
+research manuscript, frozen repository source at commit
+\texttt{085ea698475b7b32e0ae57457ec903a922248f69}.
+\href{https://github.com/whzy3185/math/blob/085ea698475b7b32e0ae57457ec903a922248f69/research/paper_strengthening/manuscript_period8_jgt/sections_en/04_period8_exact.tex}{Archived source section}.
+
+\bibitem{EarlierTargetA}
+\emph{Earlier Target A finite structured counterexample package},
+frozen project source at commit
+\texttt{44ff33a89294056907d0b909d68a8db27371c4f0}.
+\href{https://github.com/whzy3185/math/blob/44ff33a89294056907d0b909d68a8db27371c4f0/research/proofs/task54/TARGET_A_FINITE_STRUCTURED_COUNTEREXAMPLE_TAIL.md}{Archived construction and finite-tail source}.
+
+\end{thebibliography}
+\end{document}

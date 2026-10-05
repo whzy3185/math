@@ -1,9 +1,7 @@
-# Current formal status — 5 October 2026
+# Current formal checkpoint: exact finite radius
 
-The raw negative-holonomy graph bridge is now verified. Read [RAW_GRAPH_VERIFICATION_REPORT.md](raw_graph_extension/RAW_GRAPH_VERIFICATION_REPORT.md) for the exact final declaration, source identity, fresh successful build and196-declaration axiom audit.
+The [237-declaration report](exact_radius/EXACT_RADIUS_VERIFICATION_REPORT.md) verifies the expanded exact negative-holonomy finite-radius radical for every L>0 through a universal modulus bound and an attained positive eigenvalue of the raw adjacency matrix. Its build and full axiom audit passed; only propext, Classical.choice and Quot.sound occur.
 
-The earlier165-theorem report and bundle remain unchanged as the08:13 checkpoint. Its then-open raw-graph bridge is superseded by the08:33:48 verified extension. There are47 new theorems beyond the frozen baseline, including31 added bridge theorems. The axiom union remains propext, Classical.choice and Quot.sound, with no sorryAx or project axiom.
+The earlier165/196 reports remain unchanged historical checkpoints. Their then-open graph bridge and attained-radius obligations are now superseded. Original baseline sources and earlier extension modules remain byte-identical.
 
-For every L>0, every Hermitian eigenvalue of the explicitly defined raw alpha-minus signed adjacency matrix on8L vertices has square strictly below4+sqrt(10+2sqrt5). The final theorem has no assumed seam equivalence, Fourier decomposition or spectral bound.
-
-The exact attained finite-size radical formula, integer n32 certificate, R2/R4 Schur results and unrestricted minimization are not formalized by this extension. The older report's separate source/configuration/log files are retained for reproducibility, not as a current gap statement.
+The separate paper-quartic naming identification, asymptotic coefficient, integer n32 certificate, R2/R4/R6 Schur arguments and unrestricted minima are not claimed by this checkpoint. See the linked report for exact declarations and assumptions.

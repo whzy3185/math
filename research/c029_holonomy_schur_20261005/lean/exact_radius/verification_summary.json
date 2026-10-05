@@ -1,0 +1,56 @@
+{
+  "status": "PASS",
+  "verification_completed_utc": "2026-10-05T09:12:30Z",
+  "baseline_repository": "https://github.com/whzy3185/math",
+  "baseline_commit": "7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2",
+  "lean_version": "4.33.1",
+  "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+  "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "audited_theorems": 237,
+  "new_theorems_in_this_increment": 41,
+  "new_theorems_since_baseline": 88,
+  "extension_module_counts": {
+    "Period8SharpEdge": 11,
+    "Period8AntiperiodicCells": 5,
+    "Period8AntiperiodicBridge": 6,
+    "Period8DoubleCover": 25,
+    "Period8ExactRoot": 10,
+    "Period8FiberAttainment": 7,
+    "Period8PhaseMaximum": 5,
+    "Period8ReverseBloch": 10,
+    "Period8ExactFiniteRadius": 9
+  },
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "checks": {
+    "fresh_exact_finite_radius": {
+      "command": "lake build TargetA.Period8ExactFiniteRadius",
+      "exit_code": 0,
+      "start_utc": "2026-10-05T09:10:22Z",
+      "end_utc": "2026-10-05T09:11:46Z"
+    },
+    "fresh_exact_radius_axioms": {
+      "command": "lake env lean ExactRadiusAxiomAudit.lean",
+      "exit_code": 0,
+      "start_utc": "2026-10-05T09:11:51Z",
+      "end_utc": "2026-10-05T09:12:30Z"
+    }
+  },
+  "baseline_sources_unchanged": true,
+  "previous_196_theorem_bundle_unchanged": true,
+  "exact_finite_radius_proved": true,
+  "final_theorem": "TargetA.period8_alpha_minus_exact_finite_radius",
+  "radical_theorem": "TargetA.period8_finite_radius_radical",
+  "scope": "For every L>0, every Hermitian eigenvalue modulus of the raw alpha-minus 8L matrix is <= R_L, and one is exactly R_L. R_L = sqrt(4 + sqrt(8 + 2*cos(pi/L) + sqrt(26 - 6*cos(pi/L)))).",
+  "unformalized_in_this_bundle": [
+    "identification of the continuous endpoint as the largest root of the separate quartic stated in Conjecture 28",
+    "n=32 integer principal-minor certificate",
+    "R2 tail argument",
+    "unrestricted minimum over all signings",
+    "asymptotic coefficient",
+    "literature-wide novelty"
+  ]
+}

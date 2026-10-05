@@ -8,21 +8,21 @@
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 3226,
-      "sha256": "01e6d4fed796ba525421f10dea5c90b7f11cdb78d5945cc3b33ea6e50973d1e5",
-      "git_blob_sha": "e73a1460ae71a11ace9a42698feffcbac8c9ecc5"
+      "bytes": 3699,
+      "sha256": "6a194dccc8d73b0ada45c71bf2d5a9011dd0d484380ef7aebd4cc6446d29d46e",
+      "git_blob_sha": "efecf79dc194d98aaddf387bebe44c7f3a4bdd71"
     },
     {
       "path": "README.md",
-      "bytes": 8864,
-      "sha256": "753193766ee325294909f8e469cc4be782f0696207c364442c674652bf031c40",
-      "git_blob_sha": "4cb104746bceaf06b013eac3d168daf43d4b32a8"
+      "bytes": 9167,
+      "sha256": "cbb79fc9263a9692dbb95c17bdd8365b3c04b2035513ddbf908821da86542f5d",
+      "git_blob_sha": "e00d3cf4c01aaba78d00b6c33277e1183fe062cb"
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 8143,
-      "sha256": "6f0339f39ad7fa62c204f760ec5c148fc36ef95447405d68d26d2fc33402b386",
-      "git_blob_sha": "83554ba2069600c6db48014969c01d89327a4569"
+      "bytes": 10619,
+      "sha256": "bdd7ad8ebd8aa34a685b8e2b1e69ef3ae87f017690fcb89c5c07ffa46d022860",
+      "git_blob_sha": "1ded457299c89721d73f37e194b8af62ae4b4ebc"
     },
     {
       "path": "certificates/analytic/INTEGRATION_HANDOFF.md",
@@ -428,9 +428,9 @@
     },
     {
       "path": "lean/CURRENT_STATUS.md",
-      "bytes": 1196,
-      "sha256": "b7600217b625978ed012a39740afb8aa65ae70544e1238e1f7a162548b16d214",
-      "git_blob_sha": "9294b9e804acd816da4377a63d1dbb90e6207fe0"
+      "bytes": 878,
+      "sha256": "00e444bb4e8c6d1ac1e19fa2ee82d8b934e401a94d13bfea136dcb7d1034f47b",
+      "git_blob_sha": "db3a2e689df155ff524a59af6a9b4fa127b331bb"
     },
     {
       "path": "lean/SHA256SUMS",
@@ -449,6 +449,126 @@
       "bytes": 18865,
       "sha256": "360cbe6dac0e6418f1ecc27a79981cbc3e77b76b3bb4f23412d69a00425dacda",
       "git_blob_sha": "c0150882881a6314f139b9ed3af88091ee499aef"
+    },
+    {
+      "path": "lean/exact_radius/EXACT_RADIUS_VERIFICATION_REPORT.md",
+      "bytes": 5473,
+      "sha256": "2ce751410f4114714f7a194e9a39a461eead09278b9640e7e37e408bddf5d279",
+      "git_blob_sha": "cf3ea63224fc0a72db91c9c832fdbf1437ed5a27"
+    },
+    {
+      "path": "lean/exact_radius/SHA256SUMS",
+      "bytes": 1922,
+      "sha256": "7c7089e8a96bcb2d03df7a7c3197c3ee144c818f4805bc49c65d0bdc56d3b514",
+      "git_blob_sha": "535ed5f856b86dd38cfb962c7323e6f3d2f51df2"
+    },
+    {
+      "path": "lean/exact_radius/c029_exact_radius.patch",
+      "bytes": 73376,
+      "sha256": "ff8fb58ee1135d693575999157486c084170a0e3d7a520e4b67fc45cd81f6508",
+      "git_blob_sha": "a4c678e84714b88ac1aadf756b34612919f0ee46"
+    },
+    {
+      "path": "lean/exact_radius/formal/ExactRadiusAxiomAudit.lean",
+      "bytes": 13189,
+      "sha256": "e0446e0dc1189bad4e4ffb94340f3ece81ddc84a1b910710fd7cc4ba8464ec80",
+      "git_blob_sha": "1cc0cd8b8a11acde7628135e367cc9aafd164060"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8AntiperiodicBridge.lean",
+      "bytes": 4490,
+      "sha256": "0a8da5e9dbad5dc636c75b1c76c32cbed27c26a7e19ee7533eaf8cebb81ef9f7",
+      "git_blob_sha": "ff8e3f75bce2957447eb18be22adaf4e414ac44a"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8AntiperiodicCells.lean",
+      "bytes": 4595,
+      "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707",
+      "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8DoubleCover.lean",
+      "bytes": 14526,
+      "sha256": "1695e3ca392be8a726e59ac0ae0833b1624145abd849c665be57628526ef861e",
+      "git_blob_sha": "5be69540859b61da41118f98e6e2341bb11a6630"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8ExactFiniteRadius.lean",
+      "bytes": 7538,
+      "sha256": "097d607cbfd4cf199f1900865bc198174214d9ab867e437c4ed764bf5a6a9b03",
+      "git_blob_sha": "970fc9e615318e2860d76024321936df408a5e34"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8ExactRoot.lean",
+      "bytes": 4140,
+      "sha256": "0f9a6a39a5b598ad56504ff1964e6d5b8a5cf1dfe6178c6cebae0755caca0ad4",
+      "git_blob_sha": "f8586c52913b2633165f965b2d3476c636a10216"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8FiberAttainment.lean",
+      "bytes": 7720,
+      "sha256": "0fde8baf09d1936f5df7a96041877e44d465f89bf02f7375a27c1c408a824205",
+      "git_blob_sha": "f393c71060e069899408eb01339818d6d2a27a76"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8PhaseMaximum.lean",
+      "bytes": 3919,
+      "sha256": "d8697f0fa8f52706e869cc5e486859617ada5769edfacf0ea297e86664ce8b67",
+      "git_blob_sha": "261db27b3e8ea9d08f69164c446d3e70efbc3bb5"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8ReverseBloch.lean",
+      "bytes": 6686,
+      "sha256": "f42abe0bb70bc25d5dae48fe23f472d313422f8b760596db9e91cfb5433c1c9a",
+      "git_blob_sha": "03586debe204a30084f668575fb3e52c5817d289"
+    },
+    {
+      "path": "lean/exact_radius/formal/TargetA/Period8SharpEdge.lean",
+      "bytes": 4277,
+      "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612",
+      "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b"
+    },
+    {
+      "path": "lean/exact_radius/logs/fresh_exact_finite_radius.log",
+      "bytes": 13223,
+      "sha256": "5b6162a88a35f1e9dada17663544e35ab1828e715f0bd88f832d80e736de99ad",
+      "git_blob_sha": "c13d1ef3a36d46e1e33c818c05634cbc59fecc34"
+    },
+    {
+      "path": "lean/exact_radius/logs/fresh_exact_radius_axioms.log",
+      "bytes": 24348,
+      "sha256": "4a84315df5d79cdcdb77a4232a27ab247fcac9af602184335655be7095cbb8b0",
+      "git_blob_sha": "9d49bf201481681dcb4aac71c96c89600b1e2073"
+    },
+    {
+      "path": "lean/exact_radius/reproduction/lake-manifest.json",
+      "bytes": 3121,
+      "sha256": "bcf1b2418e4dbd801c48073899e6596885ad82ad71972d1cd21578926294fa85",
+      "git_blob_sha": "883a856f7a51ddf0b85fa99ca4937fd4e705544a"
+    },
+    {
+      "path": "lean/exact_radius/reproduction/lakefile.lean",
+      "bytes": 193,
+      "sha256": "cbc44c2ebb703d667340b02483a2240be472667aca43c6ec7fd9a198c566fba7",
+      "git_blob_sha": "402b4cfbea7a71f89f879c5c420932354f0d7cce"
+    },
+    {
+      "path": "lean/exact_radius/reproduction/lean-toolchain",
+      "bytes": 25,
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+      "git_blob_sha": "a8afa7d1b02d96f0671eba854a8dc4b416beb473"
+    },
+    {
+      "path": "lean/exact_radius/source_sha256.json",
+      "bytes": 2527,
+      "sha256": "eaa40b42d94c7ba9854a686fa42c2d14b176c98b9b3e97b046b1419385426a1d",
+      "git_blob_sha": "7e1130fe2f32f3e2cdb0e9c2eb10a193d7a4ae52"
+    },
+    {
+      "path": "lean/exact_radius/verification_summary.json",
+      "bytes": 2088,
+      "sha256": "58203b290d88574eee00c28b329488676a0efa0d78c45f41494217f0df9ed35f",
+      "git_blob_sha": "267e7539a55fc6599d46367ddbbe0552deb6d650"
     },
     {
       "path": "lean/formal/AllAxiomAudit.lean",
@@ -638,9 +758,9 @@
     },
     {
       "path": "manuscript/CLAIM_LEDGER.md",
-      "bytes": 11851,
-      "sha256": "6a33efde55f66c4c0e18207ccda02a3786656a3fca5d3334a127ec6c80013746",
-      "git_blob_sha": "5be86832feaf1f25a2daddc23dc764dbc1c6c737"
+      "bytes": 11552,
+      "sha256": "1a5726cf5f4866f7ca14329eb387198e241852b74934706848b991a41f7d42e6",
+      "git_blob_sha": "5841a13bf5f6afee1e139c58a6845a79e701a6d6"
     },
     {
       "path": "manuscript/HANDOFF.zh-CN.md",
@@ -651,8 +771,8 @@
     {
       "path": "manuscript/MANIFEST.json",
       "bytes": 3091,
-      "sha256": "ffbe28f9f9e16172cf0b8ac4bf534740918597be6bbe03276e15d47f8836fd6b",
-      "git_blob_sha": "03a672ab8faa0a629e83e7f378c75f5b4c844e5b"
+      "sha256": "5eec2d6cc50817ad911ed4633c1843cae3a05c0d4250120e9053b208418d84ee",
+      "git_blob_sha": "2c2be5922d90b7a6dfdf1e3bed7bb54f356f23f7"
     },
     {
       "path": "manuscript/PROOF_DEPENDENCY_MAP.md",
@@ -725,11 +845,125 @@
       "bytes": 12148,
       "sha256": "ee715fe086da26972adf939e937009a067d611689c0506c8e3c6d07a6e49432d",
       "git_blob_sha": "72223a93415797c6e9362292bce72e1c0cef4833"
+    },
+    {
+      "path": "manuscript_integrated/CLAIM_LEDGER.md",
+      "bytes": 6810,
+      "sha256": "710a8da880b412d9ac05b242799bb5fcd7857ae8d2b486545b9029fb8c75d531",
+      "git_blob_sha": "5e0eab192b0070c00d4facd6b3bb26834421ff33"
+    },
+    {
+      "path": "manuscript_integrated/HANDOFF.zh-CN.md",
+      "bytes": 4092,
+      "sha256": "6d3ef52a881dca27fec9bb3d5b2bb0c419fe45401896ab7dfa0b8f9f12f81f2f",
+      "git_blob_sha": "c12a9a8028a8cf8456c604b6daf8158605bcea9a"
+    },
+    {
+      "path": "manuscript_integrated/MANIFEST.json",
+      "bytes": 3377,
+      "sha256": "3f27a330e8972f476ef8d4574d18555d448dc91d5eb6292cbe25aea04ce8e694",
+      "git_blob_sha": "07d5adf78d673d0a5e785e8dd4ba332170b5042d"
+    },
+    {
+      "path": "manuscript_integrated/PROOF_DEPENDENCY_MAP.md",
+      "bytes": 3419,
+      "sha256": "882f7dace084876037a327f3de2657d6846921807821f2962b1d1f2f5f903bbe",
+      "git_blob_sha": "87f90f157dc29f2a89e0a9ee649a9d09576d40d1"
+    },
+    {
+      "path": "manuscript_integrated/README.md",
+      "bytes": 4721,
+      "sha256": "320cbcc3f891853dbf1a8e8a467d7e9553a289634c608328696c6ae19febb09e",
+      "git_blob_sha": "272a8dee6e71dc6c4dd761682d77351e87b632b6"
+    },
+    {
+      "path": "manuscript_integrated/build_environment.sh",
+      "bytes": 828,
+      "sha256": "49a6c402bec88de6b2963d1fae456a8561441c1a78c2c6db90ead23f0a8f2c09",
+      "git_blob_sha": "c0ee3fcb47844c6b71ce2be00378e2190aa065e4"
+    },
+    {
+      "path": "manuscript_integrated/manuscript.md",
+      "bytes": 53369,
+      "sha256": "0335e8ed026818b9746a2022c585738d157e95b4a2f9a687d577c6e0a938316b",
+      "git_blob_sha": "066b105bfbba5c783a88c55e233a1cb6609104d9"
+    },
+    {
+      "path": "manuscript_integrated/manuscript.pdf",
+      "bytes": 410177,
+      "sha256": "c02e389258bd93c82710fcb99d9c7738a0e9878d73a1a3ba73844f5e5153ce7c",
+      "git_blob_sha": "f7339aa927a780b4c9682a7d14124df19442ee5e"
+    },
+    {
+      "path": "manuscript_integrated/manuscript.tex",
+      "bytes": 4177,
+      "sha256": "01548b2fd917eb6307cbedddd38a250ff7f2c28acda24a3dda6ad8fd82a68408",
+      "git_blob_sha": "f531a9bff6f9168982694a4736f93af8d1f6ebfa"
+    },
+    {
+      "path": "manuscript_integrated/sections/01_introduction.tex",
+      "bytes": 5570,
+      "sha256": "53cffcbf5719d007242e29cf59042324dcd4b6d4676f5722714e2f38619cdd5b",
+      "git_blob_sha": "00d13d74207f87101464b80758f8145b2182e9f2"
+    },
+    {
+      "path": "manuscript_integrated/sections/02_holonomy.tex",
+      "bytes": 3229,
+      "sha256": "be26115c341ddd1fecd822306cf07596642cf82975c3bdece04ee42e63809710",
+      "git_blob_sha": "7e504e868577f10b48577501281a5880483a32a8"
+    },
+    {
+      "path": "manuscript_integrated/sections/03_period_eight.tex",
+      "bytes": 5469,
+      "sha256": "bd434448bfba925fc003987eb0efb3fc4e82c55ffa71c624bb13830a2b264629",
+      "git_blob_sha": "bd31a15b0826f09cc57acedb72b6588ae7715172"
+    },
+    {
+      "path": "manuscript_integrated/sections/04_chain_reduction.tex",
+      "bytes": 6222,
+      "sha256": "afa25014e616c4b261c787264192f8f64ed964e3363a39e1800bbb19adb275b7",
+      "git_blob_sha": "08d133fa106a61e158a9056de9b49c4dd2a6f1bb"
+    },
+    {
+      "path": "manuscript_integrated/sections/05_uniform_estimates.tex",
+      "bytes": 7791,
+      "sha256": "c3e64c78f65dbba468ca333b3c419107ccdca1989a5b37956a20f5ce6882503c",
+      "git_blob_sha": "bdc8f512fcbc5acb114236326c811f390aef095b"
+    },
+    {
+      "path": "manuscript_integrated/sections/06_cells.tex",
+      "bytes": 7161,
+      "sha256": "d81a67c367bd740a7a0d37dc07d60b12600c70f27adf89e47581f9e920800a97",
+      "git_blob_sha": "037b0ea698a9c0d8c641c766a625dc05e9ddd804"
+    },
+    {
+      "path": "manuscript_integrated/sections/07_finite_completion.tex",
+      "bytes": 6989,
+      "sha256": "b2fc50e03966591efcf00565b77bad4081ddb0669435c453ebde01a908c92ecc",
+      "git_blob_sha": "e65c11e01917d7005957affa4203e3ca03f8dfd5"
+    },
+    {
+      "path": "manuscript_integrated/sections/08_verification.tex",
+      "bytes": 4769,
+      "sha256": "425e121372844c91133c013ec29b2e4065966d67bf003bb2416697e768a33772",
+      "git_blob_sha": "1790223b761bef45085b6bfd9657fd04ce6b0e11"
+    },
+    {
+      "path": "manuscript_integrated_review/INTEGRATION_REVIEW.md",
+      "bytes": 6271,
+      "sha256": "8bc6b1ade024de8386305c3d29ac503ad06ec5e7aaba980f84dff0c61d0f0bbb",
+      "git_blob_sha": "eff5bef395e34f62c3902b2bc7c082248c67b80c"
+    },
+    {
+      "path": "manuscript_integrated_review/source_manifest.json",
+      "bytes": 2099,
+      "sha256": "9b8d624bd98e58485d451ecc1c004f463f61012c7ecb133c357e2b7180def2a2",
+      "git_blob_sha": "94e35e6c0378cad6bebe7e3379e5d3f0d068036a"
     }
   ],
   "first_snapshot_commit": "b0c8b51efa3e77cd4c0117ce3cb97ca126e3580d",
   "latest_supplement": "Unequal legal-cell assembly, full R4 and R6 witnesses, and all-even N>=48 witness-only corollary",
-  "formal_extension_note": "Raw negative-holonomy graph bridge and strict squared-eigenvalue theorem verified for L>0;196 declarations audited. R2/R4 and global minimization are not formalized.",
+  "formal_extension_note": "Exact finite-radius raw graph theorem,237-declaration checkpoint; later addenda separate.",
   "formal_extension_files": [
     {
       "repository_path": "formal/AllAxiomAudit.lean",
@@ -740,6 +974,11 @@
       "repository_path": "formal/AxiomAudit.lean",
       "sha256": "d41e29ea2fa89b286320deef3bdc5e4db316187fc0a65f6a770b45ccafa0520f",
       "git_blob_sha": "dc102906c6328acb47c7589253c1dc464ba326a4"
+    },
+    {
+      "repository_path": "formal/ExactRadiusAxiomAudit.lean",
+      "sha256": "e0446e0dc1189bad4e4ffb94340f3ece81ddc84a1b910710fd7cc4ba8464ec80",
+      "git_blob_sha": "1cc0cd8b8a11acde7628135e367cc9aafd164060"
     },
     {
       "repository_path": "formal/RawBridgeAxiomAudit.lean",
@@ -760,6 +999,31 @@
       "repository_path": "formal/TargetA/Period8DoubleCover.lean",
       "sha256": "1695e3ca392be8a726e59ac0ae0833b1624145abd849c665be57628526ef861e",
       "git_blob_sha": "5be69540859b61da41118f98e6e2341bb11a6630"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8ExactFiniteRadius.lean",
+      "sha256": "097d607cbfd4cf199f1900865bc198174214d9ab867e437c4ed764bf5a6a9b03",
+      "git_blob_sha": "970fc9e615318e2860d76024321936df408a5e34"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8ExactRoot.lean",
+      "sha256": "0f9a6a39a5b598ad56504ff1964e6d5b8a5cf1dfe6178c6cebae0755caca0ad4",
+      "git_blob_sha": "f8586c52913b2633165f965b2d3476c636a10216"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8FiberAttainment.lean",
+      "sha256": "0fde8baf09d1936f5df7a96041877e44d465f89bf02f7375a27c1c408a824205",
+      "git_blob_sha": "f393c71060e069899408eb01339818d6d2a27a76"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8PhaseMaximum.lean",
+      "sha256": "d8697f0fa8f52706e869cc5e486859617ada5769edfacf0ea297e86664ce8b67",
+      "git_blob_sha": "261db27b3e8ea9d08f69164c446d3e70efbc3bb5"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8ReverseBloch.lean",
+      "sha256": "f42abe0bb70bc25d5dae48fe23f472d313422f8b760596db9e91cfb5433c1c9a",
+      "git_blob_sha": "03586debe204a30084f668575fb3e52c5817d289"
     },
     {
       "repository_path": "formal/TargetA/Period8SharpEdge.lean",

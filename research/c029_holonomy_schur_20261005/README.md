@@ -4,6 +4,11 @@ Research snapshot: 5 October 2026. This standalone increment is based on `analyt
 
 ## Start here
 
+- [Current integrated18-page paper](manuscript_integrated/manuscript.pdf), [editable source](manuscript_integrated/manuscript.tex), and [Chinese handoff](manuscript_integrated/HANDOFF.zh-CN.md)
+- [Independent integration review](manuscript_integrated_review/INTEGRATION_REVIEW.md)
+
+The earlier11-page paper below is preserved as the first snapshot. The integrated paper consolidates both caps, unequal-cell assembly and all R2/R4/R6 witness ranges at the237-declaration formal checkpoint.
+
 - [Complete English manuscript (PDF)](manuscript/manuscript.pdf)
 - [English reading copy](manuscript/manuscript.md) and [editable LaTeX](manuscript/manuscript.tex)
 - [中文交接与证明边界](manuscript/HANDOFF.zh-CN.md)
@@ -63,13 +68,13 @@ The programs write their output certificates alongside their source. Exact graph
 
 For the PDF, run `pdflatex -interaction=nonstopmode -halt-on-error manuscript.tex` twice from `manuscript/`. See [build instructions](manuscript/README.md) for the local TeX format fallback used in this environment.
 
-## Verified raw-graph Lean extension
+## Exact finite-radius Lean checkpoint
 
-The [current formal status](lean/CURRENT_STATUS.md) and [raw-graph verification report](lean/raw_graph_extension/RAW_GRAPH_VERIFICATION_REPORT.md) record the completed negative-holonomy adjacency-to-cell bridge. The checked theorem `TargetA.period8_alpha_minus_main_theorem` gives, for every `L>0`, a strict squared-eigenvalue bound below `4+sqrt(10+2sqrt5)` for every Hermitian eigenvalue of the explicitly defined raw alpha-minus matrix on `8L` vertices. It has no assumed seam equivalence, Fourier decomposition or spectral bound.
+The [exact-radius verification report](lean/exact_radius/EXACT_RADIUS_VERIFICATION_REPORT.md) proves, for every L>0, the precise negative-holonomy finite radius `sqrt(4+sqrt(8+2*cos(pi/L)+sqrt(26-6*cos(pi/L))))` for the original raw matrix: every Hermitian eigenvalue modulus is at most this number, and a positive eigenvalue attains it. No radius equality, seam equivalence or Fourier decomposition is assumed.
 
-The extension now has 47 new theorems beyond the frozen baseline. All 196 theorem declarations were freshly axiom-audited, with exactly `propext`, `Classical.choice`, and `Quot.sound`, and no `sorryAx` or project axiom. New modules and audit drivers are installed under `formal/`; all inherited sources and configuration remain unchanged. The earlier165-theorem bundle is retained unchanged as a historical checkpoint, with its bridge gap now superseded.
+The full audit covers237 declarations (149 baseline and88 extension theorems), using only propext, Classical.choice and Quot.sound. Sources and audit drivers are installed under formal/; inherited source and configuration files remain unchanged. Earlier165/196 bundles remain preserved checkpoints. See [current status](lean/CURRENT_STATUS.md).
 
-The exact attained finite-size radical formula, the integer n32 certificate, R2/R4 analytic Schur results and unrestricted minimization remain separate analytic/computational claims. The formal endpoint is a Hermitian eigenvalue-list theorem rather than a separately defined graph spectral-radius wrapper.
+At this checkpoint, identification with the largest root of the separate paper-naming quartic, finite-size asymptotics, the integer n32 certificate, the Riccati/Schur families and unrestricted minima remain outside formal scope. The integrated18-page article records this precise237 checkpoint; subsequent verified addenda may be linked separately.
 
 ## Provenance and file integrity
 

@@ -52,11 +52,9 @@ Status: not reverified in this increment. No theorem in the manuscript relies on
 
 ## Formal proof status
 
-The raw negative-holonomy matrix bridge is now verified by `TargetA.period8_alpha_minus_main_theorem`: for every L>0 and every Hermitian eigenvalue of the explicit raw matrix on8L vertices, the eigenvalue square is strictly below period8Edge. Its assumptions no longer contain an unproved seam equivalence or a Fourier bridge. See [the current formal report](../lean/raw_graph_extension/RAW_GRAPH_VERIFICATION_REPORT.md).
+The exact raw negative-holonomy finite radius is now formally verified for every L>0: all Hermitian eigenvalue moduli are bounded by the displayed nested radical and a positive eigenvalue attains it. The final expanded-radical identity is also checked. See [the237-declaration report](../lean/exact_radius/EXACT_RADIUS_VERIFICATION_REPORT.md).
 
-The two bridge modules add31 theorems, for47 new theorems beyond baseline; all196 baseline-plus-extension declarations have a successful axiom audit with only propext, Classical.choice and Quot.sound. This supersedes the raw-graph gap recorded in the earlier165-declaration report, which remains an unchanged historical checkpoint.
-
-This extension does not formalize the exact attained finite-size radical formula, integer n32 certificate, R2/R4 analytic tail arguments, unrestricted global minimum or publication novelty. The final declaration uses the Hermitian eigenvalue list, without a separate spectral-radius wrapper.
+This checkpoint has88 extension theorems beyond149 baseline declarations, with only propext, Classical.choice and Quot.sound in the full axiom union. The165/196 bundles are retained unchanged. At this checkpoint the separate quartic naming identification, asymptotics, integer n32 certificate and all R2/R4/R6 Schur theorems remain outside formal scope. No unrestricted-minimum or novelty claim is made.
 
 ## Literature boundary
 

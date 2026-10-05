@@ -1,0 +1,137 @@
+\section{Introduction and main results}
+
+For $N\ge8$, the cycle square $C_N(1,2)$ has vertex set $\Z/N\Z$ and
+edges $\{i,i+1\}$ and $\{i,i+2\}$. A real signing assigns $\pm1$ to each
+edge. For its symmetric adjacency matrix $A$, write
+\[
+ \rho(A)=\max\{|\lambda|:\lambda\in\spec(A)\},
+ \qquad \mu_N=\min_\sigma\rho(A_\sigma).
+\]
+The minimization controls both spectral edges. The benchmark in the
+original twisted-optimality question \cite{Suvagiya2026old} is
+\begin{equation}
+ \tw(N)^2=4+2\cos\frac{2\pi}{N}+2\cos\frac{4\pi}{N}
+ \qquad(N\text{ even},\ N\ge8).
+ \label{eq:twisted}
+\end{equation}
+
+Our main result is a uniform bound for a family whose local structure is
+fixed but whose cell lengths and cell count are arbitrary. Set
+\begin{equation}
+ t=(1,1,-1,1,-1,-1,1,-1),\qquad
+ w_j=t^j\mathbin{\|}(1,-1),\qquad h_j=8j+2\quad(j\ge1).
+ \label{eq:word}
+\end{equation}
+Here $\|$ denotes concatenation. For a length-$N$ triangle-sign word
+$\tau$ and $\alpha\in\{\pm1\}$, define $A_N(\tau,\alpha)$ by the edge signs
+\begin{equation}
+ a_i=\begin{cases}1&i<N-1,\\\alpha&i=N-1,\end{cases}
+ \quad
+ \sigma\{i,i+1\}=a_i,\qquad
+ \sigma\{i,i+2\}=\tau_i a_i a_{i+1},
+ \label{eq:gauge-definition}
+\end{equation}
+with cyclic indices. The triangle signs are $\tau_i$, and the
+Hamilton-cycle sign product is $\alpha$.
+Define the two rational caps
+\[
+ \czero=\frac{198}{25}=7.92,\qquad
+ \cone=\frac{790537}{100000}=7.90537.
+\]
+
+\begin{theorem}[Unequal-cell bound]\label{thm:cells}
+Let $r\ge1$, $j_0,\ldots,j_{r-1}\ge1$, and
+$\tau=w_{j_0}\|\cdots\|w_{j_{r-1}}$, of total length $N$.
+For either holonomy $\alpha$,
+\begin{align}
+ \min_i h_{j_i}\ge106&\quad\Longrightarrow\quad
+       \rho(A_N(\tau,\alpha))^2<\czero,\label{eq:cell-cap0}\\
+ \min_i h_{j_i}\ge202&\quad\Longrightarrow\quad
+       \rho(A_N(\tau,\alpha))^2<\cone.\label{eq:cell-cap1}
+\end{align}
+The constants do not depend on $r$, and the lengths need not be equal.
+\end{theorem}
+
+The allowed cell words are part of the hypotheses. The theorem does not
+cover arbitrary signings or arbitrary arrangements of local defects.
+Its proof retains six coordinates at each cell boundary and eliminates the
+four-site interior chains exactly. A common positive limiting core and a
+quadratic-form estimate with two chain incidences per boundary control the
+resulting $6r$-dimensional cyclic matrix. The error is independent of $r$;
+no count of localized eigenmodes is assumed.
+
+The single-cell family permits a sharper finite completion.
+\begin{theorem}[One-cell bound]\label{thm:one-cell}
+For every $k\ge1$,
+\[
+ \rho(A_{8k+2}(w_k,+1))^2<\cone.
+\]
+Moreover,
+\begin{equation}
+ \frac{7905369}{1000000}
+ <\sup_{k\ge1}\rho(A_{8k+2}(w_k,+1))^2
+ \le\frac{790537}{100000}.
+ \label{eq:supremum}
+\end{equation}
+\end{theorem}
+The interval in \eqref{eq:supremum} has width $10^{-6}$. Its upper endpoint
+is non-strict; no convergence, monotonicity, or exact supremum is asserted.
+
+To cover each nonzero even residue modulo eight, put
+\[
+ W_{k,r}=\mathop{\|}_{a=0}^{r-1}w_{\lfloor(k+a)/r\rfloor},
+ \qquad r\in\{1,2,3\},\ k\ge6.
+\]
+The cell parameters sum to $k$, so the word has length $8k+2r$.
+\begin{theorem}[Explicit finite competitors]\label{thm:witnesses}
+For $r\in\{1,2,3\}$ and $k\ge6$, the matrix
+\[
+ B_{k,r}=A_{8k+2r}(W_{k,r},(-1)^{r+1})
+\]
+satisfies
+\begin{equation}
+ \rho(B_{k,r})^2<\czero<\tw(8k+2r)^2.
+ \label{eq:nonzero-witnesses}
+\end{equation}
+For $r=1$ the stronger cap $\cone$ holds. Together with the period-eight
+family, these constructions prove
+\[
+ \mu_N<\tw(N)
+ \quad\text{for }N\in\{32,40\}\cup\{N\ge48:N\text{ even}\}.
+\]
+\end{theorem}
+
+This witness range already occurs in the earlier Target A project
+\cite{EarlierTargetA}. The contribution here is a common transparent
+analytic mechanism, sharper quantitative bounds, and a finite completion
+with directly specified signings. For odd $k$ in residue four, and for
+$3\nmid k$ in residue six, our placements need not be the older balanced-gap
+placements. Their finite certificates are recomputed for the words above.
+We do not reprove the universal lower bounds at complementary smaller
+orders, determine $\mu_N$ when the twisted signing fails, or classify
+minimizing signings.
+
+The literature target has also changed. The original preprint
+\cite{Suvagiya2026old} was withdrawn and merged into
+\cite{Suvagiya2026}. Its revised Theorem 26 supplies the positive-holonomy
+period-eight value
+\begin{equation}
+ \etaedge=4+\sqrt{10+2\sqrt5},\qquad \rstar=\sqrt{\etaedge},
+ \label{eq:rstar}
+\end{equation}
+for $N=8m$, $m\ge4$, while Conjecture 28 proposes $\mu_{8m}=\rstar$
+throughout that range. The exact negative-holonomy formula from the earlier
+project manuscript \cite{EarlierPeriodEight} is strictly smaller at every
+finite size. We provide its full proof and apply it to that revised claim.
+This application is distinct from a priority claim for the inherited formula.
+
+The use of holonomy belongs to the established character approach to
+spectral graph theory; Luo and Roy \cite[Theorems 3.6 and 3.13]{LuoRoy2026}
+study character families and endpoint attainment. Those results do not
+supply the fixed-support minimum here. Likewise, signed moments averaged
+over all signings, as in Chen, van Dam, and Bu
+\cite[Theorem 3.1]{ChenDamBu2024}, are not pointwise lower bounds for every
+signing. Our estimates instead arise from an explicit fiber calculation
+and exact positive-definiteness tests after a uniform analytic reduction.
+The latter proofs are finite-certificate-assisted, with independent exact
+replays; their finite checks are specified in Section~\ref{sec:finite}.

@@ -27,3 +27,7 @@ Added the exact seam-entry identities, injective double-cover lift and full raw 
 ## Unequal-cell assembly and complete nonzero-residue witnesses
 
 Added the independently audited arbitrary unequal-legal-cell theorem, the changed full R4 family with20 finite bases, and the R6 completion with33 finite bases. Primary/independent checks pass22/119 for assembly and139/139 for R6. The construction side now covers every even N>=48; smaller-order equality and global-optimum claims are not added. Earlier proof packages and the first11-page PDF remain unchanged.
+
+## Integrated18-page manuscript and exact-radius formal checkpoint
+
+Added a separately reviewed integrated paper, preserving the earlier11-page snapshot, together with the237-declaration exact finite-radius Lean bundle. The integrated article consolidates both certificate regimes, all-phase/unequal-cell assembly and all-even witness coverage. The formal result supplies both a universal eigenvalue-modulus bound and attainment; it does not formalize the Schur families.
