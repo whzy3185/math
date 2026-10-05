@@ -68,3 +68,14 @@ Evidence: Proved, finite-certificate-assisted analytic theorem. The separate sup
 Source: [complete stronger proof](../certificates/strengthening/UNIFORM_ONE_G6_CAP.md) and [independent audit](../certificates/strengthening/audit/INDEPENDENT_STRONGER_CAP_AUDIT.md). This supplement strengthens C4 without changing the earlier 11-page PDF.
 
 Does not establish: the unrestricted minimum over all signings, global minimizing classes, exact family supremum, convergence or monotonicity in k, a new twisted-benchmark counterexample below n50, residues4 or6, or a Lean proof of this theorem.
+
+
+## C7 Phase-uniform assembly and the balanced even-k R4 family
+
+Proved, finite-certificate-assisted analytic theorem and independent audit PASS: a one-G6 cell of length h=8j+2>=202 has squared spectral radius below7.90537 at every unit complex phase. Any positive number of identical equally spaced cells, with either real Hamilton holonomy, has the same cap by the complete finite Fourier decomposition.
+
+For the balanced negative-holonomy family N=16j+4, all j>=1 satisfy this cap: 24 exact real-graph bases N20,36,…,388 join the analytic range beginning at N404. The twisted comparison follows for j>=3 (N>=52). A strictly negative LDL pivot at the balanced odd-k case N60 proves the same sharp cap fails there.
+
+Evidence: complete phase law and Hermitian terminal-core proof; unchanged R2 exact premises; 20 primary exact checks and72 independent checks, including quotient-ring fiber embeddings and a distinct full-graph LDL ordering. See [proof](../certificates/r4_pilot/PHASE_UNIFORM_R4_ASSEMBLY.md) and [audit](../certificates/r4_pilot/audit/INDEPENDENT_R4_PHASE_AUDIT.md).
+
+Does not establish: arbitrary placements/types of interfaces, all residue-four orders, an odd-k theorem, a global minimum or any R4 Lean formalization. The historical r-to-2r correction is respected; no localized-mode count supplies the argument. The original manuscript PDF is unchanged and this is a separate supplement.

@@ -128,5 +128,28 @@
       "TargetA.period8_antiperiodic_nonzero_dft_holonomy",
       "TargetA.period8_antiperiodic_cell_eigen_square_lt_edge"
     ]
+  },
+  "phase_uniform_R4_supplement": {
+    "commands": [
+      {
+        "path": "certificates/r4_pilot/verify_r4_pilot.py",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "path": "certificates/r4_pilot/audit/replay_r4_phase.py",
+        "exit_code": 0,
+        "stderr": ""
+      }
+    ],
+    "changed_certificates": [
+      "certificates/r4_pilot/audit/independent_replay.json"
+    ],
+    "all_passed": true,
+    "mathematical_outputs_equal": true,
+    "changed_metadata_only": [
+      "independent_replay.json:/seconds"
+    ],
+    "retained_certificate": "The original audited output is retained; a fresh replay agreed on every mathematical field and differed only in elapsed time."
   }
 }

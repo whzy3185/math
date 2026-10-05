@@ -15,3 +15,7 @@ Added the all-k≥1 one-G6 family cap7.90537 and the n202 lower obstruction7.905
 ## Fresh partial Lean verification
 
 Added the exact compiled sharp-edge and antiperiodic-cell sources and both portable axiom-audit drivers, together with five fresh successful command logs and the pinned reproduction configuration. Sixteen new theorems are compiled; all 165 baseline-plus-extension theorem declarations are audited with only the standard propext/Classical.choice/Quot.sound axiom union. No existing baseline source/configuration was changed. The raw negative-holonomy graph bridge and R2 formalizations remain outside this extension.
+
+## Verified phase-uniform and R4 supplement
+
+Added all-unit-phase Schur closure and arbitrary identical-cell repetition, plus the balanced negative-holonomy even-k R4 family completed by24 exact finite bases. Included the exact N60 obstruction to removing the parity restriction, primary and independent verification code, complete proof and C7 ledger entry. Existing proof packages and PDF remain unchanged.

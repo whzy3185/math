@@ -23,6 +23,12 @@ The [uniform one-G6 supplement](certificates/strengthening/UNIFORM_ONE_G6_CAP.md
 
 The complete supplement has new exact finite premises, 24 smaller bases, one seed, and an independent direct-graph/analytic audit. The 11-page manuscript remains the first snapshot; this stronger theorem is supplied as a separate proof supplement. See the additional C6 entry in the claim ledger.
 
+## Phase-uniform and balanced R4 supplement
+
+The [phase-uniform assembly proof](certificates/r4_pilot/PHASE_UNIFORM_R4_ASSEMBLY.md) extends the one-G6 cap to every unit complex phase for cell length `h=8j+2>=202`. Repeating an identical cell any positive number of times, with either Hamilton holonomy, preserves the squared-radius cap `7.90537`.
+
+For the balanced negative-holonomy R4 family at `N=16j+4`, the cap holds for every `j>=1`, with 24 exact finite bases completing the small orders. It strictly improves the twisted benchmark for `j>=3` (`N>=52`). This covers the even-k subsequence of `N=8k+4`; an exact negative-pivot certificate at `N=60` disproves deletion of that parity restriction. Arbitrary defect arrangements and the odd-k R4 theorem are outside this result. See [independent audit](certificates/r4_pilot/audit/INDEPENDENT_R4_PHASE_AUDIT.md).
+
 ## Exact reproduction
 
 Run from this directory with Python 3. The analytic verifier and direct-graph finite replay use the standard library; the symbolic checks also require SymPy (the recorded runs used version 1.14.0). NumPy is optional and used only for labeled numerical illustrations.
@@ -35,6 +41,8 @@ python certificates/new_conjecture/verify_antiperiodic_counterexample.py
 python certificates/audit/replay_antiperiodic.py
 python certificates/strengthening/verify_uniform_cap.py
 python certificates/strengthening/audit/replay_stronger_cap.py
+python certificates/r4_pilot/verify_r4_pilot.py
+python certificates/r4_pilot/audit/replay_r4_phase.py
 ```
 
 The programs write their output certificates alongside their source. Exact graph construction, rational/integer positive-definiteness checks, and symbolic identities provide the mathematical evidence. Floating-point previews do not supply proof premises. The full infinite-family arguments are in the manuscript and separate proof reports.

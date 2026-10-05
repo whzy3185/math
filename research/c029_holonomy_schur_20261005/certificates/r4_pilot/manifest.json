@@ -1,0 +1,55 @@
+{
+  "date": "2026-10-05",
+  "status": "PASS",
+  "evidence": "finite-certificate-assisted analytic theorem, independently audited",
+  "primary_exact_checks": 20,
+  "independent_exact_checks": 72,
+  "finite_R4_bases": 24,
+  "cap": "790537/100000",
+  "assembly_scope": "cell h=8j+2>=202, any positive integer repeat count r, both global holonomies",
+  "R4_scope": "balanced two-G6 signing N=16j+4, j>=1, holonomy -1; strict twisted comparison for j>=3",
+  "excluded_case": "sharp cap fails at balanced odd-k N=60 by exact negative LDL pivot",
+  "formalization": "not Lean-formalized",
+  "dependencies": [
+    "../strengthening/UNIFORM_ONE_G6_CAP.md",
+    "../strengthening/uniform_cap_certificate.json"
+  ],
+  "files": {
+    "PHASE_UNIFORM_R4_ASSEMBLY.md": {
+      "bytes": 12208,
+      "sha256": "2803b41f025ea9a8996478bd07c6ab695d67f61c692882244521b4bb58db66ea"
+    },
+    "HANDOFF.md": {
+      "bytes": 3167,
+      "sha256": "b4549720eeb4cac557cbec7acb794dfa5db9a9877c1155456740033993fdbcf0"
+    },
+    "verify_r4_pilot.py": {
+      "bytes": 6666,
+      "sha256": "99d15f9497d4297aa3db1e5bdcfafa59fdb4e1acabf6646c0b2e4c8e41e6170d"
+    },
+    "r4_pilot_certificate.json": {
+      "bytes": 23953,
+      "sha256": "fb45dc33315caa9b2a216e6b52190c2712c4fa0cea6ac56c6706f6e0337bc7dc"
+    },
+    "verification_output.json": {
+      "bytes": 6103,
+      "sha256": "805210d56db3424a9da21ff2a4d6852dd2deb9e4cf61b3fe30816e3f736bfc70"
+    },
+    "audit/INDEPENDENT_R4_PHASE_AUDIT.md": {
+      "bytes": 7904,
+      "sha256": "7db2c798a8ce4d763c6d8c7e24c28f4fe2e9877f0a5652d287712b7fe7f2d7d7"
+    },
+    "audit/replay_r4_phase.py": {
+      "bytes": 7004,
+      "sha256": "da25d13fa429d4f4dff2f8a56cb9ea709a67eab424073689c2db390fbb83b78a"
+    },
+    "audit/independent_replay.json": {
+      "bytes": 25936,
+      "sha256": "f1eefc62f56dcd54054399bf04b064f475e572b0ccb083330b91d3c4a8d5ec78"
+    },
+    "audit/verification_stdout.txt": {
+      "bytes": 608,
+      "sha256": "4d5900c694344c44b1c00a22af17aea9d99fd60385f7edae5828a981bf16270b"
+    }
+  }
+}
