@@ -1,0 +1,85 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\rstar}{r_*}
+\newcommand{\tw}{\rho_{\mathrm{tw}}}
+\title{Holonomy and spectral bounds for signed cycle squares}
+\author{}
+\date{Research manuscript increment\quad 5 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We study the adjacency spectral radius of real signings of the cycle square
+$C_n(1,2)$. For the triangle-sign word $(+,+,-,+,-,-,+,-)$ repeated on
+$8m$ vertices, we give a self-contained proof of the exact radii in the two
+Hamilton-cycle holonomy sectors. Negative holonomy has radius
+$\sqrt{4+\sqrt{8+2\cos(\pi/m)+\sqrt{26-6\cos(\pi/m)}}}$,
+strictly below the positive-holonomy value
+$\sqrt{4+\sqrt{10+2\sqrt5}}$ for every finite $m$. This disproves the
+unrestricted-minimum conjecture in Suvagiya's September 2026 revision.
+Separately, an explicit signing on every $n\equiv2\pmod8$, $n\ge50$,
+satisfies $\rho^2<198/25$. Its proof combines a rational finite entrance
+certificate with an analytic Riccati contraction and a uniform Schur-tail
+bound. Neither result determines the unrestricted minimum over all signings.
+\end{abstract}
+
+\input{sections/01_introduction}
+\input{sections/02_holonomy}
+\input{sections/03_antiperiodic}
+\input{sections/04_consequences}
+\appendix
+\input{sections/05_residue_two}
+
+\begin{thebibliography}{9}
+\bibitem{Suvagiya2026old}
+V. Suvagiya,
+\emph{Signed circulants at the Ramanujan bound},
+arXiv:2607.18334v1, 19 July 2026;
+withdrawn in version 2, 22 September 2026, and merged into
+\cite{Suvagiya2026}.
+\url{https://arxiv.org/abs/2607.18334}.
+
+\bibitem{Suvagiya2026}
+V. Suvagiya,
+\emph{Parity families and signed spectra: kernel averaging,
+near-Ramanujan bounds, and exact circulant models},
+arXiv:2607.17343v2, 22 September 2026,
+Theorem 26, Remark 27, and Conjecture 28.
+\url{https://arxiv.org/abs/2607.17343v2}.
+
+\bibitem{LuoRoy2026}
+Y. Luo and A. Roy,
+\emph{Homological spectral graph theory and weighted cycle counting},
+arXiv:2403.01550v4, 4 August 2026.
+\url{https://arxiv.org/abs/2403.01550v4}.
+
+\bibitem{ChenDamBu2024}
+L. Chen, E. R. van Dam, and C. Bu,
+Spectra of power hypergraphs and signed graphs via parity-closed walks,
+\emph{Journal of Combinatorial Theory, Series A} \textbf{207} (2024),
+105909.
+\url{https://doi.org/10.1016/j.jcta.2024.105909}.
+
+\bibitem{EarlierPeriodEight}
+\emph{The exact period-eight phase}, Section 4 of the earlier period-eight
+research manuscript, frozen repository source at commit
+\texttt{085ea698475b7b32e0ae57457ec903a922248f69}.
+\href{https://github.com/whzy3185/math/blob/085ea698475b7b32e0ae57457ec903a922248f69/research/paper_strengthening/manuscript_period8_jgt/sections_en/04_period8_exact.tex}{Archived source section}.
+
+\end{thebibliography}
+\end{document}

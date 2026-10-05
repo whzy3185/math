@@ -1,0 +1,86 @@
+\section{Switching and finite holonomy}
+
+Write $a_i$ for the sign of $\{i,i+1\}$ and $d_i$ for the sign of
+$\{i,i+2\}$, with cyclic indices. The triangle sign and Hamilton-cycle
+holonomy are
+\[
+ \tau_i=a_i a_{i+1}d_i,\qquad \alpha=\prod_{i=0}^{n-1}a_i.
+\]
+Switching by vertex signs $g_i\in\{\pm1\}$ replaces $A$ by $GAG$,
+where $G=\diag(g_i)$. It preserves the spectrum, every $\tau_i$, and
+$\alpha$.
+
+\begin{lemma}\label{lem:gauge}
+For prescribed triangle signs $(\tau_i)_{i\in\Z/n\Z}$, there are exactly
+two switching classes, indexed by $\alpha\in\{\pm1\}$. Each has a unique
+representative with
+\[
+ a_0=\cdots=a_{n-2}=1,\qquad a_{n-1}=\alpha,
+ \qquad d_i=\tau_i a_i a_{i+1}.
+\]
+\end{lemma}
+\begin{proof}
+Set $g_0=1$ and recursively $g_{i+1}=g_i a_i$ for $0\le i<n-1$.
+After switching, the first $n-1$ step-one signs are positive. Their product
+with the remaining sign is $\alpha$, so that remaining sign is $\alpha$.
+The triangle equations force every step-two sign. Conversely, the displayed
+signs realize the prescribed data for either choice of $\alpha$.
+A switch between two such representatives is constant along the path
+$0,1,\ldots,n-1$, hence constant on all vertices and acts trivially.
+Finally, distinct values of the switching invariant $\alpha$ cannot be
+switching equivalent.
+\end{proof}
+
+For the repeated word \eqref{eq:word}, this gauge yields exactly $A_m^+$
+and $A_m^-$ in \eqref{eq:seam}. Reversing only the Hamilton edge would
+change two triangle signs. The two additional step-two reversals are
+therefore essential.
+
+Extend $u\in\C^{8m}$ to the integer line by
+\begin{equation}
+ u_{i+8m}=\alpha u_i.
+ \label{eq:extension}
+\end{equation}
+Let $t_i=t_{i\bmod8}$. In either seam gauge the adjacency action is the
+restriction of
+\begin{equation}
+ (Lu)_i=u_{i-1}+u_{i+1}+t_{i-2}u_{i-2}+t_i u_{i+2}.
+ \label{eq:infinite-action}
+\end{equation}
+In particular, the signs of all cut-crossing edges in the finite matrix
+agree with \eqref{eq:extension}, including for $m=1$.
+
+\begin{lemma}\label{lem:bloch}
+The complexification of $A_m^\alpha$ is unitarily equivalent to
+\[
+ \bigoplus_{z^m=\alpha}H(z),
+\]
+where, in the order $0,1,\ldots,7$,
+\begin{equation}
+ H(z)=\begin{pmatrix}
+0&1&1&0&0&0&z^{-1}&z^{-1}\\
+1&0&1&1&0&0&0&-z^{-1}\\
+1&1&0&1&-1&0&0&0\\
+0&1&1&0&1&1&0&0\\
+0&0&-1&1&0&1&-1&0\\
+0&0&0&1&1&0&1&-1\\
+z&0&0&0&-1&1&0&1\\
+z&-z&0&0&0&-1&1&0
+\end{pmatrix}.
+\label{eq:fiber}
+\end{equation}
+\end{lemma}
+\begin{proof}
+For each root $z^m=\alpha$ and $v\in\C^8$, set
+$u_{8j+a}=m^{-1/2}z^jv_a$ for $0\le j<m$ and $0\le a<8$.
+This satisfies \eqref{eq:extension}. Substitution into
+\eqref{eq:infinite-action} gives \eqref{eq:fiber}. For two different
+allowed phases $z,w$, the ratio $z\overline w$ is a nontrivial $m$th
+root of unity, so
+\[
+ \sum_{j=0}^{m-1}(z\overline w)^j=0.
+\]
+Thus the $m$ fiber spaces are mutually orthogonal, each has dimension
+eight, and together they exhaust dimension $8m$. The displayed map is
+unitary. Since $|z|=1$, the fiber matrix is Hermitian.
+\end{proof}

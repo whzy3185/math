@@ -1,0 +1,286 @@
+{
+  "date": "2026-10-05",
+  "repository": "whzy3185/math",
+  "branch": "research/c029-holonomy-schur-20261005",
+  "parent_commit": "7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2",
+  "scope": "C029 standalone holonomy and residue-two Schur-tail increment; no full global classification or end-to-end Lean claim",
+  "manifest_excludes_itself": true,
+  "files": [
+    {
+      "path": "CHANGELOG.md",
+      "bytes": 1020,
+      "sha256": "0b19f0cfbb5c1b1ff16aec01da8a8e5d1b91d043238a408cd36a5a1f857b6095",
+      "git_blob_sha": "f96a9f3e2ffb775f3dfc43ac25b3b9d9b8f55bec"
+    },
+    {
+      "path": "README.md",
+      "bytes": 4513,
+      "sha256": "d952afcfd5ca32ad08fa00451f21a6df7233eac889c68e3b83668528a7aae712",
+      "git_blob_sha": "885068cf4c4730727da77e2968187e3866dc181f"
+    },
+    {
+      "path": "VERIFICATION.json",
+      "bytes": 1321,
+      "sha256": "a1dc9e1f53397e94e7f6bb1fa3e2b093e21c47cbb6c1bfda8cfd88407cee3033",
+      "git_blob_sha": "f52490cfe61a875b533d293cf76bd168e7d8431d"
+    },
+    {
+      "path": "certificates/analytic/INTEGRATION_HANDOFF.md",
+      "bytes": 4216,
+      "sha256": "4797478837caba392780a52905daade25927f47e5e12a1c0460f6dbab62f8b2c",
+      "git_blob_sha": "2555fbeb6500e882b8e77c6e5980ce1843b4c33c"
+    },
+    {
+      "path": "certificates/analytic/R2_ANALYTIC_TAIL_CLOSURE.md",
+      "bytes": 14047,
+      "sha256": "c91a38b98ad68dd41284d630beaca3ae3ce5a79048fe568db12d5c021d43489a",
+      "git_blob_sha": "863334683f71d265fe3e1a5e2f8a535569903180"
+    },
+    {
+      "path": "certificates/analytic/manifest.json",
+      "bytes": 2008,
+      "sha256": "86111af2b14dbcd521955ea589154469e4d28fc35bddee7f6cef92d3cb527a1f",
+      "git_blob_sha": "afc4d904b670146372699cc4a0a31f072fd2673c"
+    },
+    {
+      "path": "certificates/analytic/r2_exact_certificate.json",
+      "bytes": 48885,
+      "sha256": "1f407435db8b048f6aa86bbc81edff75f9c16c044e7542a9417d98b4b0bcd25c",
+      "git_blob_sha": "59da838a5677c9c4efed9a278c05fad716fc3874"
+    },
+    {
+      "path": "certificates/analytic/verification_output.json",
+      "bytes": 8222,
+      "sha256": "b8cfa3dab4bcf88f555e307af5a6091b3a2052eb4fd37cc195576c150ce6d81b",
+      "git_blob_sha": "c92fac6c3b42c97db30884e6bc3ddf1d72696791"
+    },
+    {
+      "path": "certificates/analytic/verify_r2_certificate.py",
+      "bytes": 7630,
+      "sha256": "9bfe38f1ef4d69528544d296554a1ff9e356f41a74f244daec650f8e74c62b97",
+      "git_blob_sha": "de4177bd10147e801e92c8825f036b2130829fa6"
+    },
+    {
+      "path": "certificates/audit/RECOVERY.md",
+      "bytes": 1651,
+      "sha256": "0b2863325976d2aafb84ac8883e881e23f95f43a526747ac75014cbe459be323",
+      "git_blob_sha": "e87c901b938ca0b46b112e81dd8ac13d2d51e60d"
+    },
+    {
+      "path": "certificates/audit/SHA256SUMS",
+      "bytes": 1228,
+      "sha256": "6b6502d87ed6f12a2b2c445ee554bbe5ec24d25962ec764c15420b9e77fa419c",
+      "git_blob_sha": "6fa3e60058e0e8bf70990a65be989e4bdaa87cff"
+    },
+    {
+      "path": "certificates/audit/antiperiodic_independent_replay.json",
+      "bytes": 5671,
+      "sha256": "fc28c57f9ddda467a70857f8023c8916570312e7700087154155cdb1a02d7953",
+      "git_blob_sha": "4910066f0bf63621f2d5e18339f84a2c94f2339b"
+    },
+    {
+      "path": "certificates/audit/antiperiodic_stdout.json",
+      "bytes": 412,
+      "sha256": "fc57e3f2df3cef3c79380010bb5c9c2728b4b44997e854534bbcd53d9386f8a9",
+      "git_blob_sha": "419774a2cd6c419aff8570db25c79239a395c131"
+    },
+    {
+      "path": "certificates/audit/direct_graph_local_replay.json",
+      "bytes": 535,
+      "sha256": "95d00313929d5a0b61f5261652b0cdb9752c9d276bbf0a86b6d7c97e740de410",
+      "git_blob_sha": "37d6948cbfac02f4192413063212a53c34e6485d"
+    },
+    {
+      "path": "certificates/audit/direct_graph_local_stdout.json",
+      "bytes": 535,
+      "sha256": "95d00313929d5a0b61f5261652b0cdb9752c9d276bbf0a86b6d7c97e740de410",
+      "git_blob_sha": "37d6948cbfac02f4192413063212a53c34e6485d"
+    },
+    {
+      "path": "certificates/audit/direct_graph_seed_replay.json",
+      "bytes": 2908,
+      "sha256": "7d712572873b9d93b286a706b66d44e07c3789ced450a040b2fe18b3dd6c058d",
+      "git_blob_sha": "fc5ea4f16115beacb046bf33e0bdb7d282e83768"
+    },
+    {
+      "path": "certificates/audit/direct_graph_seed_stdout.json",
+      "bytes": 232,
+      "sha256": "430abf2ae0a60251aeefed9d091c236cf6bc5dbd962febd34866e60fcc652c55",
+      "git_blob_sha": "67d60cc269498f597c3f49682ef6eb9d85f0a49a"
+    },
+    {
+      "path": "certificates/audit/independent_antiperiodic_audit.md",
+      "bytes": 4542,
+      "sha256": "342357e990dea153e1bf33bb5fb94f2c831da764f60dbc582d0f126e42882707",
+      "git_blob_sha": "a47a42df80ff76c836513340befb4e47f6e4bbcb"
+    },
+    {
+      "path": "certificates/audit/independent_schur_tail_audit.md",
+      "bytes": 10213,
+      "sha256": "5c8aaf5367b4ec867117b7b80c82d44dbdc512a4b560e0eadc70d200d167732c",
+      "git_blob_sha": "d9c24241c8e8957b9f7db6c434b8a8dd9b969738"
+    },
+    {
+      "path": "certificates/audit/recovery_manifest.json",
+      "bytes": 2622,
+      "sha256": "bfab9563c0ccf0fb1e77896c9297c3972d01b5718ae890e1fd830d4c09036879",
+      "git_blob_sha": "02525415f5cea19d4dd7281e0e8dcfd97f6c145d"
+    },
+    {
+      "path": "certificates/audit/replay_antiperiodic.py",
+      "bytes": 2540,
+      "sha256": "d45851cecf75b99af27cfda54ea1605b3c93bff652dc9a9e58af7bb8ab997cb2",
+      "git_blob_sha": "af7ca07587d98a52bc786a32a749f2396b5f224e"
+    },
+    {
+      "path": "certificates/audit/replay_direct_graph_seed.py",
+      "bytes": 4152,
+      "sha256": "4e0a3335b3560d53391e5c6902cb00ec102e7a175e10bc5d377c176c5551792e",
+      "git_blob_sha": "8c77566fc4e67ca064e499190703b52532865922"
+    },
+    {
+      "path": "certificates/audit/replay_local_from_direct_graph.py",
+      "bytes": 2378,
+      "sha256": "31552b6299996d7b92af9edac9d8628eb80831ab08abe474d729b2d4b1adfd34",
+      "git_blob_sha": "3a1423efa6bb4e6911a32ff5db68b2bdd14ddeef"
+    },
+    {
+      "path": "certificates/new_conjecture/ANTIPERIODIC_COUNTEREXAMPLE.md",
+      "bytes": 9089,
+      "sha256": "d1a92911af1462fc9461bd163b584abaf28a6ca8daa288272b0dd8a8c3d9a9ad",
+      "git_blob_sha": "0d984393d65ce4564ebf812fcb90a496bb91832c"
+    },
+    {
+      "path": "certificates/new_conjecture/RECOVERY.md",
+      "bytes": 1784,
+      "sha256": "896ab1c6320487e642f0f1ac5068a0403d9c4c43eb89239ecca523cd253cea13",
+      "git_blob_sha": "fdf04146af1dcb44f210e601a7329da958e57715"
+    },
+    {
+      "path": "certificates/new_conjecture/SHA256SUMS",
+      "bytes": 462,
+      "sha256": "9eaac57bd4345e934f33c054a0fb245a06c34f078feaa193235b558002d406a5",
+      "git_blob_sha": "04cca09beb426d4c12bc4164191fea386387b8d3"
+    },
+    {
+      "path": "certificates/new_conjecture/exact_n32_certificate.json",
+      "bytes": 13157,
+      "sha256": "2de50dfb827c006029b8ac0e2b1b0ff257e3732a51c0d8b8c57cfbf5660863ed",
+      "git_blob_sha": "79975fea90e3a11db0920573d81e0a5468ad11c4"
+    },
+    {
+      "path": "certificates/new_conjecture/verification_output.txt",
+      "bytes": 819,
+      "sha256": "342dce3b9e39921c57daffeb909de52d96e51e3667552089176bf651fa6b029f",
+      "git_blob_sha": "f8a5026e443135081f6518d75667e7029c7061fa"
+    },
+    {
+      "path": "certificates/new_conjecture/verify_antiperiodic_counterexample.py",
+      "bytes": 5891,
+      "sha256": "c93e9ae6b550dab4f42e2193f14ef35ad553ac925a9155b843bfd865c3dcecfb",
+      "git_blob_sha": "58c93cd8dd8c223e2fd4eeaed776b8417d4f6a63"
+    },
+    {
+      "path": "literature/LITERATURE_AUDIT.md",
+      "bytes": 11683,
+      "sha256": "fce030ff6c6a37df18f20af56093c95dd86d7aa30948124f1b26cefbde5112c2",
+      "git_blob_sha": "4245a494800ea010674754cf93c82fee89e75e13"
+    },
+    {
+      "path": "literature/source_manifest.json",
+      "bytes": 2113,
+      "sha256": "8ef3fa989a36aa6d6be52899e9eaaa137a45ce2bb29bf260b9dbfca4d634140f",
+      "git_blob_sha": "3260ad02f94237480ae36251684030994f159ecc"
+    },
+    {
+      "path": "manuscript/CLAIM_LEDGER.md",
+      "bytes": 6312,
+      "sha256": "ba9719e6c66c084992e7b1cbbca57e457dbf7fb2f87f5ff081d0c7b4784bda78",
+      "git_blob_sha": "6be6f2b9c20f4737e03bb41bda5f2ff8613c4dc4"
+    },
+    {
+      "path": "manuscript/HANDOFF.zh-CN.md",
+      "bytes": 5804,
+      "sha256": "7cb6a7d85656350f6bd9ed8cd7a133a0a8f24e5db9e871e06afd2c25363fd168",
+      "git_blob_sha": "837007a609b90b9ed18206805f0a1a33cadd5cb7"
+    },
+    {
+      "path": "manuscript/MANIFEST.json",
+      "bytes": 2848,
+      "sha256": "a04f5cf93657c03b2e57225c035c509814ccf8513c05500d086b73f1e0bd834c",
+      "git_blob_sha": "ea1b4f112fd2c98db29d6e0bdcadde3b83b328d3"
+    },
+    {
+      "path": "manuscript/PROOF_DEPENDENCY_MAP.md",
+      "bytes": 2620,
+      "sha256": "64722949e554d556bbed66afd14f0c98694f27d438abca9e5c291732c2ac1fcc",
+      "git_blob_sha": "da461f363c3e7c75a1811ab84ea16a861cf39538"
+    },
+    {
+      "path": "manuscript/README.md",
+      "bytes": 3195,
+      "sha256": "a704b74e5d338f92c89b67a9e45a6808d13094855a6eadd5e052efec222edf3f",
+      "git_blob_sha": "c3fb07680fadca2504fc73c62501437827da46bb"
+    },
+    {
+      "path": "manuscript/RECOVERY.md",
+      "bytes": 1960,
+      "sha256": "8a1e72716f62af7fba02d7d956bdd16f08adf75a8f3dbaedbf421ef261ce4c29",
+      "git_blob_sha": "d13c9e2877332f2c14adb209d75939252d4db4f5"
+    },
+    {
+      "path": "manuscript/build_environment.sh",
+      "bytes": 828,
+      "sha256": "49a6c402bec88de6b2963d1fae456a8561441c1a78c2c6db90ead23f0a8f2c09",
+      "git_blob_sha": "c0ee3fcb47844c6b71ce2be00378e2190aa065e4"
+    },
+    {
+      "path": "manuscript/manuscript.md",
+      "bytes": 28958,
+      "sha256": "fff790c8b9ffedbd468dcad6af8306ffa20249264dca049a2d6622c3422c07d2",
+      "git_blob_sha": "3412cacbf547837147ff8c37b1e0cbd105230cba"
+    },
+    {
+      "path": "manuscript/manuscript.pdf",
+      "bytes": 337418,
+      "sha256": "120f7a2830e4dc05edae5207acaf121f0948d88d599da1bc592844722683f0bf",
+      "git_blob_sha": "5e78978cf3fac8398a21d9a2d0cdbf4c6a8e3ae2"
+    },
+    {
+      "path": "manuscript/manuscript.tex",
+      "bytes": 3363,
+      "sha256": "73b9d98e0d4b52fc1a079dcf18b2c046915d59233217f0de25432393bd96cda1",
+      "git_blob_sha": "8c5e2826eac06524e170b0081dacd8bb637f0bb0"
+    },
+    {
+      "path": "manuscript/sections/01_introduction.tex",
+      "bytes": 4554,
+      "sha256": "c0efcf70ba566c7b21fc53e53708cc17df5d147fe638a16fc13d6ff1ea4b963a",
+      "git_blob_sha": "c4385542fb1a39bae89189923a56896cfe36478f"
+    },
+    {
+      "path": "manuscript/sections/02_holonomy.tex",
+      "bytes": 2995,
+      "sha256": "202877fb27ae8baad5aa451279017d7e0cc83bbd19e90af9dba8e3217ab71faa",
+      "git_blob_sha": "33a703b26da2bacc93583a47fe8f4f71b5797bdb"
+    },
+    {
+      "path": "manuscript/sections/03_antiperiodic.tex",
+      "bytes": 3854,
+      "sha256": "63da8ffa81dd6feb45506be1b404de4d0951c2dc333a6709e6631149bd9ba6e0",
+      "git_blob_sha": "77de949d971d318547c9af246e12afee370c2948"
+    },
+    {
+      "path": "manuscript/sections/04_consequences.tex",
+      "bytes": 1796,
+      "sha256": "24d36f56eb58b5adb4531676d3df617e5c5b11b837bd3686cd0070d783310d1f",
+      "git_blob_sha": "402c67b96bc1f9c04d424f8d89fb10972402b08a"
+    },
+    {
+      "path": "manuscript/sections/05_residue_two.tex",
+      "bytes": 12148,
+      "sha256": "ee715fe086da26972adf939e937009a067d611689c0506c8e3c6d07a6e49432d",
+      "git_blob_sha": "72223a93415797c6e9362292bce72e1c0cef4833"
+    }
+  ]
+}

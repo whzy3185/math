@@ -1,0 +1,45 @@
+\section{An exact certificate at order 32}
+
+At $m=4$, Theorem~\ref{thm:main} gives
+\begin{equation}
+ \rho(A_4^-)
+ =\sqrt{4+\sqrt{8+\sqrt2+\sqrt{26-3\sqrt2}}}
+ =2.7842697993\ldots.
+ \label{eq:n32}
+\end{equation}
+The characteristic polynomial computed directly from the signed
+$32\times32$ integer matrix is $Q(x)^2$, where
+\begin{align*}
+ Q(x)={}&x^{16}-32x^{14}+416x^{12}-2816x^{10}+10568x^8\\
+       &-21632x^6+22168x^4-9408x^2+1262.
+\end{align*}
+This agrees with $P(x,\sqrt2)P(x,-\sqrt2)$; each value of $s$ occurs twice
+on the antiperiodic four-cell grid.
+
+A separate rational certificate avoids both the fiber calculation and
+numerical eigenvalues. Every leading principal minor of each integer matrix
+\[
+ 279I_{32}-100A_4^-,\qquad 279I_{32}+100A_4^-
+\]
+is strictly positive. The certificate records all $64$ integer minors;
+fraction-free elimination checks every division exactly. Sylvester's
+criterion yields $\rho(A_4^-)<279/100$. Meanwhile,
+\[
+ f(279/100)=-\frac{6766519}{100000000}<0,
+ \qquad f(14/5)=\frac{76}{625}>0.
+\]
+The monotonicity proved above gives the exact separation
+\[
+ \rho(A_4^-)<2.79<\rstar<2.8.
+\]
+The direct graph certificate and the all-$m$ analytic proof provide
+independent ways of checking the failure at $n=32$.
+
+The next extremal question remains to determine $\mu_{8m}$ and its
+minimizing switching classes. The period-eight negative-holonomy family is
+an explicit upper bound, not a proof of optimality. Establishing optimality
+would require a lower bound over arbitrary triangle words, including
+nonperiodic words. Similarly, Theorem~\ref{thm:r2} is an existence theorem
+for one signing on each order $8k+2$. Combining such witnesses does not
+certify a complete truth set for the twisted benchmark without independent
+lower bounds at the complementary orders.

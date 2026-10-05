@@ -1,0 +1,34 @@
+{
+  "date_utc": "2026-10-05",
+  "restoration": "All eight original files were restored and verified against the recorded original SHA-256 values before editorial changes. All three replay scripts were then rerun successfully.",
+  "editorial_changes": "Neutral wording only in the two audit reports and the antiperiodic script docstring; no mathematical statement or executable instruction changed.",
+  "original_sha256": {
+    "independent_antiperiodic_audit.md": "b971acbffcf06e3d8e525c48b90dd2083905b63dd782eac57a2f1247382aaafc",
+    "independent_schur_tail_audit.md": "bed4b63ee980e30302f90ed0a0e387a2b818d7d4383b82acf1a516b83750bac8",
+    "replay_antiperiodic.py": "4b0e7d95f1af032595ce0342579265028cb89676f115efc7862ec36de2dc999b",
+    "replay_direct_graph_seed.py": "4e0a3335b3560d53391e5c6902cb00ec102e7a175e10bc5d377c176c5551792e",
+    "replay_local_from_direct_graph.py": "31552b6299996d7b92af9edac9d8628eb80831ab08abe474d729b2d4b1adfd34",
+    "antiperiodic_independent_replay.json": "fc28c57f9ddda467a70857f8023c8916570312e7700087154155cdb1a02d7953",
+    "direct_graph_local_replay.json": "95d00313929d5a0b61f5261652b0cdb9752c9d276bbf0a86b6d7c97e740de410",
+    "direct_graph_seed_replay.json": "7d712572873b9d93b286a706b66d44e07c3789ced450a040b2fe18b3dd6c058d"
+  },
+  "current_sha256": {
+    "direct_graph_seed_stdout.json": "430abf2ae0a60251aeefed9d091c236cf6bc5dbd962febd34866e60fcc652c55",
+    "direct_graph_seed_replay.json": "7d712572873b9d93b286a706b66d44e07c3789ced450a040b2fe18b3dd6c058d",
+    "replay_direct_graph_seed.py": "4e0a3335b3560d53391e5c6902cb00ec102e7a175e10bc5d377c176c5551792e",
+    "replay_local_from_direct_graph.py": "31552b6299996d7b92af9edac9d8628eb80831ab08abe474d729b2d4b1adfd34",
+    "independent_antiperiodic_audit.md": "342357e990dea153e1bf33bb5fb94f2c831da764f60dbc582d0f126e42882707",
+    "replay_antiperiodic.py": "d45851cecf75b99af27cfda54ea1605b3c93bff652dc9a9e58af7bb8ab997cb2",
+    "independent_schur_tail_audit.md": "5c8aaf5367b4ec867117b7b80c82d44dbdc512a4b560e0eadc70d200d167732c",
+    "direct_graph_local_stdout.json": "95d00313929d5a0b61f5261652b0cdb9752c9d276bbf0a86b6d7c97e740de410",
+    "direct_graph_local_replay.json": "95d00313929d5a0b61f5261652b0cdb9752c9d276bbf0a86b6d7c97e740de410",
+    "antiperiodic_independent_replay.json": "fc28c57f9ddda467a70857f8023c8916570312e7700087154155cdb1a02d7953",
+    "antiperiodic_stdout.json": "fc57e3f2df3cef3c79380010bb5c9c2728b4b44997e854534bbcd53d9386f8a9"
+  },
+  "fresh_checks": {
+    "seed_and_bases": "PASS",
+    "local_premises": "PASS",
+    "antiperiodic": "PASS"
+  },
+  "certificate_outputs_match_originals": true
+}

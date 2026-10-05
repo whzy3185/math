@@ -1,0 +1,114 @@
+\section{Introduction}
+
+For $n\ge8$, the cycle square $C_n(1,2)$ has vertex set $\Z/n\Z$ and
+edges $\{i,i+1\}$ and $\{i,i+2\}$. A signing assigns a value in
+$\{\pm1\}$ to each edge. Its signed adjacency matrix $A_\sigma$ is real
+symmetric, and we write
+\[
+ \rho(A_\sigma)=\max\{|\lambda|:\lambda\in\spec(A_\sigma)\},
+ \qquad \mu_n=\min_\sigma\rho(A_\sigma).
+\]
+Both spectral edges matter in this minimization. An upper bound for
+$\lambda_{\max}$ alone does not give the required upper bound for $\rho$.
+
+The earlier twisted-optimality conjecture \cite{Suvagiya2026old} compared
+$\mu_n$ with the benchmark
+\begin{equation}
+ \tw(n)^2=4+2\cos\frac{2\pi}{n}+2\cos\frac{4\pi}{n}
+ \qquad(n\text{ even},\ n\ge8).
+ \label{eq:twisted}
+\end{equation}
+That preprint has been withdrawn and incorporated into
+\cite{Suvagiya2026}. The revised Theorem 26 gives a period-eight signing
+with radius
+\begin{equation}
+ \rstar=\sqrt{4+\sqrt{10+2\sqrt5}}
+       =2.7936044933\ldots
+ \label{eq:rstar}
+\end{equation}
+on $8m$ vertices for $m\ge4$, and Conjecture 28 asserts $\mu_{8m}=\rstar$
+for $m\ge4$. The construction has positive Hamilton-cycle holonomy;
+Remark 27 identifies the opposite holonomy as absent from the reported
+search. Changing that holonomy while preserving the triangle signs gives
+a strict improvement at every finite size.
+
+Fix the word
+\begin{equation}
+ t=(1,1,-1,1,-1,-1,1,-1).
+ \label{eq:word}
+\end{equation}
+For $n=8m$, begin with positive step-one edges and step-two signs
+$t_{i\bmod8}$. Let $A_m^+$ be this adjacency matrix. Let $A_m^-$ be obtained
+by reversing the signs of exactly three edges:
+\begin{equation}
+ \{n-1,0\},\qquad \{n-2,0\},\qquad \{n-1,1\}.
+ \label{eq:seam}
+\end{equation}
+These are distinct edges for every $n\ge8$.
+
+\begin{theorem}\label{thm:main}
+For every integer $m\ge1$, define
+\[
+ R(s)=\sqrt{4+\sqrt{8+s+\sqrt{26-3s}}}\qquad(-2\le s\le2).
+\]
+Then
+\begin{equation}
+ \rho(A_m^+)=R(2)=\rstar,
+ \qquad
+ \rho(A_m^-)=R\!\left(2\cos\frac{\pi}{m}\right)<\rstar.
+ \label{eq:main}
+\end{equation}
+Moreover, among all signings with the prescribed labeled triangle signs
+$t_{i\bmod8}$, the negative-holonomy switching class is the unique
+minimizing switching class. In particular,
+\[
+ \mu_{8m}\le R\!\left(2\cos\frac{\pi}{m}\right)<\rstar
+ \qquad(m\ge4),
+\]
+so Conjecture 28 of \cite{Suvagiya2026} is false as stated.
+\end{theorem}
+
+The uniqueness assertion is confined to the prescribed triangle signs.
+The theorem supplies no matching lower bound for arbitrary triangle words,
+and therefore no classification of unrestricted minimizers. The dispersion relation and exact finite formula are recorded in the
+earlier period-eight research manuscript \cite{EarlierPeriodEight}.
+The present application concerns the revised conjecture and makes explicit
+why its proposed endpoint is missed by every finite negative-holonomy grid.
+
+A separate issue is to obtain a short proof for an explicit family outside
+the $8$-divisible subsequence. The following statement is independent of
+Theorem~\ref{thm:main}.
+
+\begin{theorem}\label{thm:r2}
+Let $k\ge6$, $n=8k+2$, and let $B_n$ be the signed adjacency matrix with
+all step-one signs positive and the step-two sign word
+\[
+ \tau=t^k\mathbin{\|}(1,-1).
+\]
+Then
+\begin{equation}
+ \frac{198}{25}I_n-B_n^2\succ0,
+ \qquad
+ \rho(B_n)^2<\frac{198}{25}<\tw(n)^2.
+ \label{eq:r2}
+\end{equation}
+\end{theorem}
+
+Appendix~\ref{app:r2} gives the full analytic argument and its finite
+rational premises. The latter have been checked both through the block
+recurrence and independently from the signed graph by scalar Schur
+elimination. The theorem is thus a finite-certificate-assisted analytic
+result. The signing is inherited from the earlier residue-two construction;
+the increment is the analytic closure and its corrected exact certificates.
+The proof does not rely on the historical all-even classification.
+
+The character interpretation of twists is part of established spectral
+methods. Luo and Roy \cite{LuoRoy2026}, particularly their Theorems 3.6 and
+3.13, study graph spectra over homology-character families and endpoint
+attainment. Their setting provides context for holonomy, but does not give
+an all-signing minimum for this fixed cycle-square support. The
+parity-closed-walk identity of Chen, van Dam, and Bu
+\cite[Theorem 3.1]{ChenDamBu2024} expresses signed moments averaged over
+all signings; an average is likewise not a uniform lower bound for each
+signing. Our proofs instead use the explicit fiber polynomial for one
+triangle word and exact positive-definiteness certificates for another.

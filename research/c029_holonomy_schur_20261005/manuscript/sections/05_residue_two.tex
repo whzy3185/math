@@ -1,0 +1,332 @@
+\section{A uniform residue-two Schur bound}\label{app:r2}
+
+We prove Theorem~\ref{thm:r2}. In this appendix $n=8k+2=4\ell+2$,
+where $\ell=2k$ is even and $k\ge6$. The letter $\ell$ counts four-vertex
+blocks and is distinct from the cell count $m$ in the main text. Put
+\[
+ M_n=\frac{198}{25}I_n-B_n^2.
+\]
+All matrix inequalities in this appendix concern real symmetric matrices;
+$X\succ0$ means positive definite. The norm $\norm{\cdot}_2$ is the
+Euclidean operator norm, and $\norm{\cdot}_F$ is the Frobenius norm.
+
+\subsection{The exact block recurrence}
+
+Partition the vertices into
+\[
+ V_0=\{0,1\},\qquad
+ V_j=\{2+4(j-1),\ldots,5+4(j-1)\}\quad(1\le j\le\ell).
+\]
+The diagonal block on each $V_j$, $j\ge1$, is
+\[
+ D=\begin{pmatrix}
+ 98/25&0&-1&0\\0&98/25&0&-1\\-1&0&98/25&0\\0&-1&0&98/25
+ \end{pmatrix}.
+\]
+The block $M_n[V_j,V_{j+1}]$ equals $E_+$ for odd $j$ and $E_-$ for
+even $j$, where
+\[
+ E_+=\begin{pmatrix}-1&0&0&0\\0&1&0&0\\-1&2&1&0\\2&-1&0&-1\end{pmatrix},
+ \qquad
+ E_-=\begin{pmatrix}-1&0&0&0\\0&1&0&0\\-1&-2&1&0\\-2&-1&0&-1\end{pmatrix}.
+\]
+The exceptional blocks are
+\begin{gather*}
+ G_0=M_n[V_0,V_0]=(98/25)I_2,\qquad H_0=D,\\
+ R_0=M_n[V_0,V_1]=\begin{pmatrix}-1&-2&1&0\\-2&-1&0&-1\end{pmatrix},\\
+ C_0=M_n[V_0,V_\ell]=\begin{pmatrix}-1&0&-1&0\\0&-1&0&-1\end{pmatrix},
+ \qquad
+ W_0=M_n[V_1,V_\ell]=\begin{pmatrix}0&0&-1&0\\0&0&0&1\\0&0&0&0\\0&0&0&0\end{pmatrix}.
+\end{gather*}
+All other nonadjacent bulk blocks vanish. To verify these identities at
+all lengths, the only nonzero entries of $B_n^2$ on the forward cyclic
+diagonals, apart from transposes, are
+\begin{align*}
+ (B_n^2)_{i,i}&=4,&
+ (B_n^2)_{i,i+1}&=\tau_{i-1}+\tau_i,&
+ (B_n^2)_{i,i+2}&=1,\\
+ (B_n^2)_{i,i+3}&=\tau_i+\tau_{i+1},&
+ (B_n^2)_{i,i+4}&=\tau_i\tau_{i+2}.&&
+\end{align*}
+They follow by enumerating the possible two-edge walks. Since $n\ge50$,
+these cyclic offsets do not collide. Substitution of $t^k\|(1,-1)$ gives
+the displayed blocks without a length-dependent assumption.
+
+Let $E_j=E_+$ for even $j$ and $E_j=E_-$ for odd $j$. Set $X_0=D$.
+Before closing the right boundary, elimination of the current four-vertex
+pivot gives the length-independent recurrence
+\begin{align}
+ X_{j+1}&=D-E_j^TX_j^{-1}E_j,&
+ R_{j+1}&=-R_jX_j^{-1}E_j,\notag\\
+ W_{j+1}&=-E_j^TX_j^{-1}W_j,&
+ G_{j+1}&=G_j-R_jX_j^{-1}R_j^T,\label{eq:recurrence}\\
+ H_{j+1}&=H_j-W_j^TX_j^{-1}W_j,&
+ C_{j+1}&=C_j-R_jX_j^{-1}W_j.\notag
+\end{align}
+The terminal elimination index is $p=\ell-2$, which is even.
+At that step only, the coupling to the retained last block becomes
+$W_p+E_+$. Thus the normalized six-dimensional core is
+\begin{equation}
+ S_\ell=
+ \begin{pmatrix}
+ G_p-R_pX_p^{-1}R_p^T&C_p-R_pX_p^{-1}(W_p+E_+)\\
+ *&H_p-(W_p+E_+)^TX_p^{-1}(W_p+E_+)
+ \end{pmatrix}.
+ \label{eq:core}
+\end{equation}
+Here $*$ denotes the transpose block. Repeated Schur congruence proves
+that $M_n\succ0$ if all eliminated pivots and $S_\ell$ are positive.
+The subscript of $S_\ell$ is a block count: in particular, $S_{26}$
+corresponds to graph order $106$.
+
+\subsection{Finite exact premises}
+
+Define $F_\pm(X)=D-E_\pm^TX^{-1}E_\pm$ and
+$\Phi=F_-\circ F_+$. Put $Z=\Phi^{12}(D)=X_{24}$,
+$Y=F_+(Z)$, and $L_Z=Z^{-1}E_+Y^{-1}E_-$. Use the rational matrices
+\begin{align*}
+ P&=\frac1{10000}\begin{pmatrix}
+10766&87&19&974\\87&12664&148&-2418\\19&148&10093&-25\\974&-2418&-25&14009
+\end{pmatrix},\\
+ Q&=\frac1{10000}\begin{pmatrix}
+11503&614&990&-1101\\614&10470&15&113\\990&15&12299&-2632\\-1101&113&-2632&13260
+\end{pmatrix}.
+\end{align*}
+Set $r=10^{-10}$. The following finite inequalities are the complete
+certificate premises used below:
+\begin{enumerate}
+\item $X_0,\ldots,X_{24}\succ0$ and $Z,Y\succ I_4/2$;
+\item $(9/10)I_4\prec P,Q\prec2I_4$;
+\item $L_Z^TPL_Z\prec(2/5)P$ and $L_ZQL_Z^T\prec(2/5)Q$;
+\item $\norm{\Phi(Z)-Z}_F<r/40$;
+\item $R_{24}QR_{24}^T\prec10^{-10}I_2$ and
+$W_{24}^TQW_{24}\prec10^{-10}I_4$;
+\item $S_{26}\succ(1/50)I_6$;
+\item $S_\ell\succ0$ for $\ell=12,14,16,18,20,22,24$.
+\end{enumerate}
+They have been verified using exact rational arithmetic. For clarity, their
+verification requires no limiting or approximate matrix: all matrices are
+specified by the displayed rational initial data and a finite number of
+recurrence steps. Positive definiteness is checked by successive scalar
+Schur pivots. For a symmetric matrix $K$, start with $K^{(0)}=K$; at each
+step require $d_j=K^{(j)}_{11}>0$ and replace the remaining block by
+$K^{(j+1)}=K^{(j)}_{22}-K^{(j)}_{21}(d_j)^{-1}K^{(j)}_{12}$.
+All resulting scalars are rational, so each test is exact. The residual
+test in item 4 is the rational inequality
+\[
+ \sum_{a,b}(\Phi(Z)-Z)_{ab}^2<(r/40)^2.
+\]
+The accompanying certificate records the matrices and the positive pivots.
+An independent replay constructs $B_{106}$ from its edges, eliminates
+$96$ scalar vertices to recover the entrance data, and verifies items
+1--5 without generating that entrance by the block recurrence. Direct
+scalar elimination from the graphs also verifies the seven base orders
+$50,58,66,74,82,90,98$ and the normalized seed at $106$.
+
+\subsection{A local Riccati contraction}
+
+For symmetric $U$, define the order-unit norm
+\[
+ |U|_P=\inf\{a\ge0:-aP\preceq U\preceq aP\}
+      =\norm{P^{-1/2}UP^{-1/2}}_2.
+\]
+Consider the closed ball
+$\mathcal K=\{X=X^T:|X-Z|_P\le r\}$. Since $P\prec2I$,
+\[
+ \norm{X-Z}_2\le2r=:e.
+\]
+The certified lower bound $Z\succ I/2$ gives $X\succ I/3$ and
+$\norm{X^{-1}}_2\le3$. The inverse identity yields
+\[
+ \norm{X^{-1}-Z^{-1}}_2\le6e.
+\]
+Both $E_\pm$ have squared Frobenius norm $14$. Writing $Y_X=F_+(X)$,
+we obtain
+\[
+ \norm{Y_X-Y}_2\le84e<1/6,
+ \qquad Y_X\succ I/3,
+ \qquad \norm{Y_X^{-1}-Y^{-1}}_2\le504e.
+\]
+Define $L(X)=X^{-1}E_+Y_X^{-1}E_-$. Splitting its difference from
+$L_Z$ into two terms gives
+\begin{equation}
+ \norm{L(X)-L_Z}_2
+ \le14(6\cdot3+2\cdot504)e=14364e.
+ \label{eq:Lperturb}
+\end{equation}
+For the two transfer norms
+\[
+ \norm{L}_{P,\mathrm{col}}=\norm{P^{1/2}LP^{-1/2}}_2,
+ \qquad
+ \norm{L}_{Q,\mathrm{row}}=\norm{Q^{-1/2}LQ^{1/2}}_2,
+\]
+conversion from the Euclidean norm costs at most
+$\sqrt{20/9}<3/2$. Therefore the perturbation in either norm is less
+than $21546e=43092r<10^{-4}$. The certified bounds at $Z$, together with
+$\sqrt{2/5}+10^{-4}<2/3$, imply throughout $\mathcal K$ that
+\begin{equation}
+ L(X)^TPL(X)\prec\frac49P,
+ \qquad L(X)QL(X)^T\prec\frac49Q.
+ \label{eq:dual-contractions}
+\end{equation}
+Direct differentiation gives
+$D\Phi_X[U]=L(X)^TUL(X)$. If $-aP\preceq U\preceq aP$, the first
+inequality in \eqref{eq:dual-contractions} bounds this derivative in
+$|\cdot|_P$ by $4a/9$. Integrating along a line segment in the convex
+ball proves that $\Phi$ is $4/9$-Lipschitz there.
+
+The residual premise gives
+$|\Phi(Z)-Z|_P<(10/9)(r/40)=r/36$. Consequently
+\[
+ |\Phi(X)-Z|_P<r/36+(4/9)r=(17/36)r<r.
+\]
+The ball is invariant. Banach's fixed-point theorem supplies a unique
+$X_*\in\mathcal K$ with $\Phi(X_*)=X_*$. The actual even trajectory
+starts at $Z$, so, with $\theta=4/9$,
+\begin{equation}
+ \norm{X_{24+2h}-X_*}_2\le4r\theta^h
+ \qquad(h\ge0).
+ \label{eq:pivot-decay}
+\end{equation}
+The constant $4r$ follows already from the diameter of the ball. All these
+even pivots and their intermediate odd partners exceed $I/3$. Together
+with the finite entrance this proves positivity of every pivot needed
+at any length.
+
+\subsection{Response decay}
+
+Two consecutive updates in \eqref{eq:recurrence} act by
+$R\mapsto RL(X)$ and $W\mapsto L(X)^TW$. For these two orientations,
+respectively, use
+\[
+ \alpha(R)=\norm{RQ^{1/2}}_2,
+ \qquad \beta(W)=\norm{Q^{1/2}W}_2.
+\]
+The second inequality in \eqref{eq:dual-contractions} contracts both
+quantities by $q=2/3$. Hence the entrance premises imply
+\begin{align*}
+ R_{24+2h}QR_{24+2h}^T&\prec10^{-10}q^{2h}I_2,\\
+ W_{24+2h}^TQW_{24+2h}&\prec10^{-10}q^{2h}I_4.
+\end{align*}
+Since $Q\succ(9/10)I$, it follows that
+\begin{equation}
+ \norm{R_{24+2h}}_2,\ \norm{W_{24+2h}}_2<a q^h,
+ \qquad a=1/30000.
+ \label{eq:even-response}
+\end{equation}
+Each one-step transfer has norm at most $3\sqrt{14}<12$. Thus both
+members of the $h$th pair obey
+\begin{equation}
+ \norm{R_j}_2,\ \norm{W_j}_2\le bq^h,
+ \qquad b=12a=1/2500,
+ \quad j\in\{24+2h,25+2h\}.
+ \label{eq:pair-response}
+\end{equation}
+The row orientation $LQL^T$ is needed here. A bound on $L^TQL$ alone
+would not justify these response estimates.
+
+\subsection{The limiting core and its uniform tail}
+
+Use the actual infinite trajectory, not a trajectory with constant pivots,
+to define the absolutely convergent series
+\begin{align*}
+ G_\infty&=G_0-\sum_{j\ge0}R_jX_j^{-1}R_j^T,\\
+ H_\infty&=H_0-\sum_{j\ge0}W_j^TX_j^{-1}W_j,\\
+ C_\infty&=C_0-\sum_{j\ge0}R_jX_j^{-1}W_j.
+\end{align*}
+Convergence follows from \eqref{eq:pair-response} and
+$\norm{X_j^{-1}}_2\le3$ after $j=24$. Set
+\[
+ S_\infty=\begin{pmatrix}
+ G_\infty&C_\infty\\
+ C_\infty^T&H_\infty-E_+^TX_*^{-1}E_+
+ \end{pmatrix}.
+\]
+Take even $\ell\ge26$ and write its terminal index as
+$p=\ell-2=24+2h$. Each of the three Schur-series suffixes after index
+$p$ is bounded in norm by
+\begin{equation}
+ T_h=\frac{6b^2q^{2h}}{1-q^2}.
+ \label{eq:Th}
+\end{equation}
+Indeed, every increment in the $j$th pair has norm at most
+$3b^2q^{2j}$, and there are two increments per pair. The bound in
+\eqref{eq:Th} harmlessly includes the term at $p$ as well.
+
+The terminal linear terms from \eqref{eq:core} satisfy
+\begin{align*}
+ \norm{R_pX_p^{-1}E_+}_2&\le12a q^h,\\
+ \norm{W_p^TX_p^{-1}E_++E_+^TX_p^{-1}W_p}_2&\le24a q^h.
+\end{align*}
+The inverse identity and \eqref{eq:pivot-decay}, with $\delta=4r$,
+give
+\[
+ \norm{X_p^{-1}-X_*^{-1}}_2\le9\delta\theta^h,
+ \qquad
+ \norm{E_+^T(X_p^{-1}-X_*^{-1})E_+}_2
+ \le144\delta\theta^h.
+\]
+For the differences of the three blocks in $S_\ell-S_\infty$ we
+therefore have
+\begin{align*}
+ \norm{\Delta G}_2&\le T_h,\\
+ \norm{\Delta C}_2&\le T_h+12a q^h,\\
+ \norm{\Delta H}_2&\le T_h+24a q^h+144\delta\theta^h.
+\end{align*}
+The block estimate
+\[
+ \norm{\begin{pmatrix}U&V\\V^T&Z\end{pmatrix}}_2
+ \le\norm U_2+2\norm V_2+\norm Z_2
+\]
+now gives the explicit uniform tail bound
+\begin{align}
+ \norm{S_\ell-S_\infty}_2
+ &\le4T_h+48a q^h+144\delta\theta^h\notag\\
+ &\le\frac{251089}{156250000}<\frac1{500}.
+ \label{eq:tail}
+\end{align}
+The rational middle expression is the value of this majorant at $h=0$;
+each geometric factor decreases for $h\ge0$. Because the series were
+defined along the actual trajectory, the common initial terms cancel
+exactly. Only the terminal pure-pivot term requires the inverse-limit
+comparison above.
+
+\subsection{Completion of the spectral estimate}
+
+The exact seed $S_{26}\succ I_6/50$ and two applications of
+\eqref{eq:tail} imply, for every even $\ell\ge26$,
+\[
+ \norm{S_\ell-S_{26}}_2<2/500=1/250,
+ \qquad S_\ell\succ\left(\frac1{50}-\frac1{250}\right)I_6
+                  =\frac2{125}I_6.
+\]
+Both tail errors are required: the seed is a finite core, not the limiting
+core. The remaining even block counts $12\le\ell<26$ are exactly the
+seven certified bases. Thus every core and every eliminated pivot is
+positive. Schur congruence proves $M_n\succ0$, and the spectral theorem
+then gives $\rho(B_n)^2<198/25$.
+
+This use of Schur congruence asserts positivity only. The lower bound
+$2/125$ for the reduced core is not a lower bound for the least Euclidean
+eigenvalue of the original matrix $M_n$.
+Finally, $\cos x>1-x^2/2$ for $x>0$ and $\pi^2<10$ yield
+\[
+ \tw(n)^2>8-\frac{20\pi^2}{n^2}
+          >8-\frac{200}{n^2}\ge\frac{198}{25}
+ \qquad(n\ge50).
+\]
+This completes the proof of Theorem~\ref{thm:r2}.
+
+\paragraph{Reproducibility.}
+\begingroup\raggedright
+The accompanying source package includes
+\nolinkurl{certificates/analytic/verify_r2_certificate.py} and
+\nolinkurl{r2_exact_certificate.json}, together with the independent
+\nolinkurl{replay_direct_graph_seed.py} and
+\nolinkurl{replay_local_from_direct_graph.py} under
+\nolinkurl{certificates/audit/}. For the separate antiperiodic check, the script
+\nolinkurl{verify_antiperiodic_counterexample.py} under
+\nolinkurl{certificates/new_conjecture/} constructs the graph,
+checks the symbolic identities, and verifies all recorded integer minors.
+The package README lists the exact execution commands and dependencies.
+\par\endgroup

@@ -1,0 +1,35 @@
+{
+  "date": "2026-10-05",
+  "baseline": "7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2",
+  "verification": "PASS, fresh rerun after workspace recovery; 124 required rational checks and 46 finite cores",
+  "proof_status": "finite-certificate-assisted analytic closure for the stated explicit residue-two family",
+  "recovery": "All five original files were recovered byte-for-byte and checked against their earlier recorded hashes. The proof and integration handoff then received non-mathematical editorial wording changes. The verifier and regenerated certificate/stdout remain byte-identical.",
+  "files": {
+    "R2_ANALYTIC_TAIL_CLOSURE.md": {
+      "bytes": 14047,
+      "sha256": "c91a38b98ad68dd41284d630beaca3ae3ce5a79048fe568db12d5c021d43489a",
+      "recovered_pre_editorial_sha256": "ee5ac480fc8bba83e24434097a4b35ac996716d0225f2ac2cacf2a9f821af40b"
+    },
+    "INTEGRATION_HANDOFF.md": {
+      "bytes": 4216,
+      "sha256": "4797478837caba392780a52905daade25927f47e5e12a1c0460f6dbab62f8b2c",
+      "recovered_pre_editorial_sha256": "57f8beae441c9c2b3401bc8253faf28fd3473bc668603ff3008d7a075d2234b6",
+      "publication_edit": "Replaced redundant baseline-copy listing with exact-commit source citations; no mathematical change."
+    },
+    "verify_r2_certificate.py": {
+      "bytes": 7630,
+      "sha256": "9bfe38f1ef4d69528544d296554a1ff9e356f41a74f244daec650f8e74c62b97",
+      "recovered_pre_editorial_sha256": "9bfe38f1ef4d69528544d296554a1ff9e356f41a74f244daec650f8e74c62b97"
+    },
+    "r2_exact_certificate.json": {
+      "bytes": 48885,
+      "sha256": "1f407435db8b048f6aa86bbc81edff75f9c16c044e7542a9417d98b4b0bcd25c",
+      "recovered_pre_editorial_sha256": "1f407435db8b048f6aa86bbc81edff75f9c16c044e7542a9417d98b4b0bcd25c"
+    },
+    "verification_output.json": {
+      "bytes": 8222,
+      "sha256": "b8cfa3dab4bcf88f555e307af5a6091b3a2052eb4fd37cc195576c150ce6d81b",
+      "recovered_pre_editorial_sha256": "b8cfa3dab4bcf88f555e307af5a6091b3a2052eb4fd37cc195576c150ce6d81b"
+    }
+  }
+}
