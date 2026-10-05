@@ -1,5 +1,9 @@
 # Current mathematical status
 
+The ten-page paper_v2/manuscript.pdf combines the completed all-γ equality classification at n=3γ+1 with the independently audited sharp maximum ceil(γ²/2)+5γ at n=3γ+2. The latter theorem gives connected attainment and at least two nonisomorphic extremals for even γ>=4, without a complete second-boundary classification. See extension/two_extra/ and paper_v2/audit/.
+
+Subsequent verified completion: extension/LOW_GAMMA_EQUALITY.md and its independent audit establish the equality description also for γ=2,3. The combined current equality classification therefore holds for every γ>=2. The earlier seven-page manuscript is preserved as its original theorem scope.
+
 Independent mathematical audit: PASS, 5 October 2026.
 
 The theorem max e(G)=gamma(gamma+7)/2 for bipartite graphs without isolated vertices of order3gamma+1 and unique minimum dominating set sizegamma is supported by a complete elementary proof and the independent audit in audit/PROOF_AUDIT.md. Connectedness can be imposed without changing the maximum. Equality rigidity has been proved and audited for gamma>=4.

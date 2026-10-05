@@ -2,7 +2,7 @@
   "status": "INDEPENDENT_MATHEMATICAL_AUDIT_PASS",
   "date": "2026-10-05",
   "proof_kind": "Elementary analytic proof; finite certificates supplementary",
-  "scope": "all gamma>=2 sharp bound at n=3gamma+1; equality uniqueness only gamma>=4",
+  "scope": "Original sharp n=3gamma+1 proof and gamma>=4 rigidity; current low-gamma completion and second boundary are in separate extension manifests.",
   "files": [
     {
       "file": "COUNTEREXAMPLE_FAMILY.md",
@@ -18,8 +18,8 @@
     },
     {
       "file": "STATUS.md",
-      "sha256": "c128a6293cf1c9eba1692fc1dddc5ea36feb9845f082f5fc47548cdd0e4968e0",
-      "bytes": 1745,
+      "sha256": "09d3b339dfb8034a652a4453477df2944e11a2d42b95e0ce3356ce8a185a406b",
+      "bytes": 2421,
       "source_sha256": "b389dfe9b3542b804c73c134af6989bd892ad2ba92a214fbf0cd2c5eb12ae01a",
       "publication_edit": "Reference to non-delivered inspection/old-draft artifact replaced; no mathematical change."
     },
@@ -85,5 +85,11 @@
     }
   ],
   "frozen_utc": "2026-10-05T08:46:00Z",
-  "attribution_revision": "Prior n=13 counterexample credited to John Erlbacher; mathematical claims unchanged"
+  "attribution_revision": "Prior n=13 counterexample credited to John Erlbacher; mathematical claims unchanged",
+  "supplement_note": "Current STATUS includes the separately audited low-gamma completion; original main proof/audit files remain unchanged.",
+  "current_supplements": [
+    "extension/EXTENSION_MANIFEST.json",
+    "extension/two_extra/MANIFEST.json",
+    "paper_v2/PAPER_MANIFEST.json"
+  ]
 }

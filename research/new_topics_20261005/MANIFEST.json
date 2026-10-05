@@ -3,14 +3,14 @@
   "repository": "whzy3185/math",
   "branch": "research/graph-new-topics-20261005",
   "parent_commit": "c3e4460929c38d10f0b3a0e878267142303c9675",
-  "scope": "Audited domination sharp theorem and complete M6 Hall-extremizer classification; two reviewed papers; explicit prior-work attribution; no novelty/asymptotic claim.",
+  "scope": "Audited sharp domination maxima at n=3gamma+1 and n=3gamma+2; full first-boundary rigidity, restricted second-boundary nonuniqueness; complete finite M6 Hall classification; three preserved reviewed PDF versions; explicit prior attribution.",
   "manifest_excludes_itself": true,
   "files": [
     {
       "path": "CLAIM_LEDGER.md",
-      "bytes": 3438,
-      "sha256": "89afc4e415610ab318d67cdb326882a506b9518205b5121bbca557bd35bc496c",
-      "git_blob_sha": "bf072edee91e869d991614f3e878696a1341e4e7"
+      "bytes": 5273,
+      "sha256": "12e7f6b0f7826429bc0129524fbeab8531aeec14cae23325788c13b9758b4319",
+      "git_blob_sha": "27136f965a467ca1c78ee4fa77628d80088ef415"
     },
     {
       "path": "DOMINATION_FORMULA_NOTE.md",
@@ -26,9 +26,9 @@
     },
     {
       "path": "README.md",
-      "bytes": 5123,
-      "sha256": "df2b742820d19efa4878869a22e27c26e5afdfc2d46c286ea18b8802bcc7443e",
-      "git_blob_sha": "301d655454c1957cbdb2c3730b7c9ff290dbec43"
+      "bytes": 6284,
+      "sha256": "f735fb515b8dc74f4b6567b6087cbe69595d2283d2b3f09f9df36b8f50aa00fb",
+      "git_blob_sha": "d5dc0a8513cc4471e20372a3f57fd55e69c260e9"
     },
     {
       "path": "TOPIC_SCREENING.md",
@@ -38,9 +38,9 @@
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 3247,
-      "sha256": "873941356f92532ac46e90bfb13c807c64c159eb8a36b4bb4f1d9260fa94630d",
-      "git_blob_sha": "65667d1c76a6cac624f0f08e005183f81ea3c7f6"
+      "bytes": 4891,
+      "sha256": "6cfe527a3003adfefbfd8fce14e032383d90b4831d3198b72c15b7f486335811",
+      "git_blob_sha": "7bd97c3b27c46e55df8b8142f1a6e8492d34dd69"
     },
     {
       "path": "check_domination_formula.py",
@@ -434,9 +434,9 @@
     },
     {
       "path": "unique_domination_pilot/AUDITED_MANIFEST.json",
-      "bytes": 3227,
-      "sha256": "0bbd2b2c5f9ab792b04a7aa66559bf0b8d635502ca42eacd2d507c3851af762b",
-      "git_blob_sha": "0f25ee1430ab8be571c6f0b092df550102437ea7"
+      "bytes": 3586,
+      "sha256": "1662ef064d97b438a0dc8fdb0c51bc90e21f1ca420a7475c6cc5efa578d8cfb8",
+      "git_blob_sha": "cdbb671ab8199b3f5b220dce016e09fdca45d7b4"
     },
     {
       "path": "unique_domination_pilot/COUNTEREXAMPLE_FAMILY.md",
@@ -452,9 +452,9 @@
     },
     {
       "path": "unique_domination_pilot/STATUS.md",
-      "bytes": 1745,
-      "sha256": "c128a6293cf1c9eba1692fc1dddc5ea36feb9845f082f5fc47548cdd0e4968e0",
-      "git_blob_sha": "1e24ef4247e8a2d58d9b718b2b1881f9088d04ac"
+      "bytes": 2421,
+      "sha256": "09d3b339dfb8034a652a4453477df2944e11a2d42b95e0ce3356ce8a185a406b",
+      "git_blob_sha": "a4028d436518dbd0ab2c93f8e9eb2404f941e8f6"
     },
     {
       "path": "unique_domination_pilot/audit/PROOF_AUDIT.md",
@@ -511,6 +511,66 @@
       "git_blob_sha": "11235e75798b91521ed92cb0d5e5c8563568ca78"
     },
     {
+      "path": "unique_domination_pilot/extension/EXTENSION_MANIFEST.json",
+      "bytes": 2220,
+      "sha256": "6ded6545917313420399ffde0f1450d2fd360e7c4e9488b1656090c29962a5e9",
+      "git_blob_sha": "0d64cc5297a5631a37878b895bde66e27943d7e7"
+    },
+    {
+      "path": "unique_domination_pilot/extension/LOW_GAMMA_EQUALITY.md",
+      "bytes": 7356,
+      "sha256": "613615d4e5aa8528c711687c9525055c60a66241db5b3822f932bc339ecf6ad7",
+      "git_blob_sha": "e80ec14789b475b84ff6444d9341a59f99f20b56"
+    },
+    {
+      "path": "unique_domination_pilot/extension/audit/PROOF_AUDIT.md",
+      "bytes": 6121,
+      "sha256": "0ca4ded8e0292894d92a5384fd6c1f6bf070f826c0272215b1636243441a78e3",
+      "git_blob_sha": "a4667bd5a15f33cb3014d709d91c884b7914ccda"
+    },
+    {
+      "path": "unique_domination_pilot/extension/audit/SHA256SUMS",
+      "bytes": 439,
+      "sha256": "f589bdeb304fed549d792180dd6644c9c48719ef25938f701c5f2608a72ce864",
+      "git_blob_sha": "22cea8135b7ff872820d3f441fda568d036cc959"
+    },
+    {
+      "path": "unique_domination_pilot/extension/audit/independent_low_gamma.py",
+      "bytes": 4642,
+      "sha256": "7662b8e65fc4b4db8382bf52e9faf7bd7d1a2dbc670718ac24d1348d49bc1cce",
+      "git_blob_sha": "0e0f70630a8ba617e252387485ab4e26a782c91b"
+    },
+    {
+      "path": "unique_domination_pilot/extension/audit/independent_result.json",
+      "bytes": 8195,
+      "sha256": "09dd5f2d10f88f498b843bac68a84332efeb9af1f1f8131a607f9af1c56223ea",
+      "git_blob_sha": "d46a88c0f29b499e8124ffafcbe1c7f5374fd9b8"
+    },
+    {
+      "path": "unique_domination_pilot/extension/audit/independent_stdout.json",
+      "bytes": 467,
+      "sha256": "d3dfee8ebbb1e0e66a59c9133925b493d2efa34774df61d8e29df1f29fdc69f4",
+      "git_blob_sha": "243b5731485af4f40a08d53385239ed05924d94e"
+    },
+    {
+      "path": "unique_domination_pilot/extension/audit/source_manifest.json",
+      "bytes": 713,
+      "sha256": "58bfac426f4dee8e63c36a18c405864493bdff0b5075224f59d70cdbcc4bb969",
+      "git_blob_sha": "a331a7b903d89a4b4cf91a75c217c9a1eb8fdb93"
+    },
+    {
+      "path": "unique_domination_pilot/extension/check_low_gamma.py",
+      "bytes": 2775,
+      "sha256": "fe1be8237806e4c4f0b5cd0397685e0d58b5f61ad27c9c9f7bc6fecaa6aa612e",
+      "git_blob_sha": "e265c479e89bb5f00b43ee54b29e9f2de9448810"
+    },
+    {
+      "path": "unique_domination_pilot/extension/low_gamma_certificate.json",
+      "bytes": 7469,
+      "sha256": "2756b2aec683c27a3632ff9fe8fa0544d3fcb6ceafa5be48aed72621700f71dd",
+      "git_blob_sha": "57e1a98003fd15a55839e405fd4ff95f87259c48"
+    },
+    {
       "path": "unique_domination_pilot/extension/prior_work/PRIOR_WORK_ADDENDUM.md",
       "bytes": 6817,
       "sha256": "a82dd9dc5bc0e8dc000701bef4d45bf9802b18f3eee4bc9dccdf71fd618508e4",
@@ -533,6 +593,96 @@
       "bytes": 992,
       "sha256": "ac42d889ff8ad7c8e050915365a7d8c8aa7bacec5f2e0060674d456abc6af7d4",
       "git_blob_sha": "fce6dcd8066ee8c73a48be727e2f290e12fa4ed2"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/CANDIDATE_BOUNDARY_THEOREM.md",
+      "bytes": 12333,
+      "sha256": "277a58b964fe93f142579ab72819a241510ebc2d8678aa52d43bcae6c71e635c",
+      "git_blob_sha": "d06243cc9fb9806c6aeccb72a890fd6937c7d01b"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/MANIFEST.json",
+      "bytes": 2531,
+      "sha256": "0ad3ade41a5f37c1c5cd5fd8adf0539a6663afbfc024fdd4a92b04c8c9c818ee",
+      "git_blob_sha": "bfae42b7ed5d38b6d54c8fc6ee4ad9b14213764d"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/SOURCE_COMPARISON.md",
+      "bytes": 3568,
+      "sha256": "f441f3fa323492bc6c0be61d1dc024d8e60c4e1af2ff2775f710d8eb2bc31604",
+      "git_blob_sha": "60fe0705abfaad7e59a0528ec721200e8354c6df"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/audit/PROOF_AUDIT.md",
+      "bytes": 11248,
+      "sha256": "6ed765bd6fb65be6b03e236a1dfa898bd8f159df0ce96a9acbbd54180f97b844",
+      "git_blob_sha": "ab7e1d0029e638bd603da29f42657deb8f05e29a"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/audit/SHA256SUMS",
+      "bytes": 721,
+      "sha256": "050214b8ca4d1bdd31ccb2a5f2e7d5e17a7a3f94ea346fd9e65469cdee8ffe92",
+      "git_blob_sha": "36c0d884c4e5352152bab6eb597da4559bf41f1c"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/audit/boundary_search_stdout.txt",
+      "bytes": 660,
+      "sha256": "4f99e8c1b6035683832457d72d7797ed74cd32f0b7b400fda4591d8e208914e1",
+      "git_blob_sha": "8a83a4a3dcd29365f0f075e7f3ca44d21abfd5a8"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/audit/independent_results.json",
+      "bytes": 19023,
+      "sha256": "d3f6a1728ab8946ed69aa882f8e5d4fb52db60ed085610db483633348e43fc47",
+      "git_blob_sha": "73058b06c7003953c9e11cf08d189ead8bbdb5bd"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/audit/independent_stdout.json",
+      "bytes": 1502,
+      "sha256": "ee8f827bbb21a647c5f7c8ee071513e451dd5531a12b07fbd55c039e0a74677f",
+      "git_blob_sha": "c722ace7cf733ab9c7d5b9d90bbbd58d7147de56"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/audit/independent_two_extra.py",
+      "bytes": 5753,
+      "sha256": "9d7a8eed75c5681168183c5867363681bcbd4460ae55edb97bde0b8e4efe0e8f",
+      "git_blob_sha": "86b88660fa6c20f4a8a596f8440ceab0d6a2009f"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/audit/search_boundary_skeletons.cpp",
+      "bytes": 2379,
+      "sha256": "3a7e5c9f2a56b23a340888bdb67e4a559077017fe7c40e449e6d390a0e5887eb",
+      "git_blob_sha": "945ba6a75ec80b0dd0253fce5a9e25e514a9a37c"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/audit/source_manifest.json",
+      "bytes": 676,
+      "sha256": "cec4299d8b1665eb1b8acede529417f4ddbace573203fec9a03749fe4bb922f1",
+      "git_blob_sha": "4ff4286ac89559bd01f98c8d56dcb8529f08e48f"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/check_stdout.json",
+      "bytes": 837,
+      "sha256": "c43370df605af86addd1c1789138153e32983881f3b7ae2d48115b22a6d05228",
+      "git_blob_sha": "1044113d556be1c4949986126443e409e6e83215"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/check_two_extra.py",
+      "bytes": 5577,
+      "sha256": "0c3dd3e7df054208f74c999e1450ffadbba3d06ad43f7e6e554ba6cfffd5fe01",
+      "git_blob_sha": "7f70ca3d4dc7fd7ab80d70e221beaa640246b58a"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/exact_results.json",
+      "bytes": 23092,
+      "sha256": "4a01ac5f5c6f79b4b06fb681d3e761a8609f72635154adad38433fd765697a2e",
+      "git_blob_sha": "603b86e3ba6ebad5258358c4ceeaad92f0e46fd4"
+    },
+    {
+      "path": "unique_domination_pilot/extension/two_extra/local_patterns.json",
+      "bytes": 196364,
+      "sha256": "3a45b9e95771aa9c5390787fff1a8608ec9449856b836003e25be1cd7f7e425e",
+      "git_blob_sha": "de948ac8f35c0815b7ce91deb3e225f1fac086a9"
     },
     {
       "path": "unique_domination_pilot/independent_check_result.json",
@@ -595,11 +745,84 @@
       "git_blob_sha": "df769286487e3eb1590fd1f6a258fa8f05a3077a"
     },
     {
+      "path": "unique_domination_pilot/paper_v2/HANDOFF.zh-CN.md",
+      "bytes": 6115,
+      "sha256": "b7e0797ee7533de33820b06da854fedc438148044d98b16dab7824e8ee9c1d1c",
+      "git_blob_sha": "9bcd68abeeeeff78d4c345ae9b893a4384ed7aa0"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/PAPER_MANIFEST.json",
+      "bytes": 2456,
+      "sha256": "6612b0b694ebf30c1c51005e4fb4fe27dd1823886db998e40ee13e1d5faf358b",
+      "git_blob_sha": "bd42f2eb6de7cf12ae2aac7b52522dd3f70d1c95"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/QA_REPORT.md",
+      "bytes": 2241,
+      "sha256": "540784722a1165880b5186fe26e40098f26ab0cc6fdc6d2f2a4ebf7521873c00",
+      "git_blob_sha": "37dc8cbbb3d21c331a454b2aab6c9556442c9997"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/README.md",
+      "bytes": 1401,
+      "sha256": "b8c8237646e2078681f470de18123ccc1ccd5d82ee70dfacb84bb670b6bf5bc3",
+      "git_blob_sha": "cb94fa902a84f41313c2fe868e0e54ed2b3e94ec"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/SOURCE_STATUS.md",
+      "bytes": 3467,
+      "sha256": "5892949cb295d532d80675eff78fcb3efb88073cb098b817a34c40cb0b006eb7",
+      "git_blob_sha": "67907dab220647d32cc01d0565da2270aa9d6474"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/VERSION_HISTORY.md",
+      "bytes": 1672,
+      "sha256": "c46f8209940dfd795ad3fddab881c5547224fea4a195a1283d950110872541bd",
+      "git_blob_sha": "8393245ca4c1c481cef96cfd4fa682cdb5ebaaac"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/audit/FINAL_INTEGRATED_REVIEW.md",
+      "bytes": 7274,
+      "sha256": "eb1caa65783bb81a7c63707595f37ee8e3f3c19ca10fac9434b9418154a16874",
+      "git_blob_sha": "de5be8acb5f9931d4bf8d0b2c17b4dbc6b61624d"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/audit/SHA256SUMS",
+      "bytes": 180,
+      "sha256": "ad53593b7b6b99afa0440aa428684b260a077c3a9d4f5cfdcf6cadd32d706475",
+      "git_blob_sha": "3d000b3da72ba246d0dd631cb85e7a69d4d66381"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/audit/checked_sources.json",
+      "bytes": 1507,
+      "sha256": "05d772baf0554c70f5683809c7cab7f8ecbf6a781569bd4ded6797e131465af1",
+      "git_blob_sha": "8b06e41b89098cb2309d8f89e1fda94641253af7"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/build.sh",
+      "bytes": 828,
+      "sha256": "49a6c402bec88de6b2963d1fae456a8561441c1a78c2c6db90ead23f0a8f2c09",
+      "git_blob_sha": "c0ee3fcb47844c6b71ce2be00378e2190aa065e4"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/manuscript.pdf",
+      "bytes": 340064,
+      "sha256": "81cdb0db1af3b30da9691bdcedd3bc10f73e8b9e50a0f6ba1d71c151aee60828",
+      "git_blob_sha": "2e981452bb46b1474478086d47f745dc5fee987f"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/manuscript.tex",
+      "bytes": 33039,
+      "sha256": "202cd2f830d501f3640642db7a7ffdd3ca5ebe1f85be6fc73e1e627b0cf79be3",
+      "git_blob_sha": "a19870d30d8044b8674cc51107db0aa3f76b470a"
+    },
+    {
       "path": "unique_domination_pilot/small_family_results.json",
       "bytes": 1120,
       "sha256": "547936557a79f884b4e962ed3ff0950eef13d7086e667ea06d45ea67f975d10a",
       "git_blob_sha": "e0b99dfb39a617d507513099b5ec2b27eca693cb"
     }
   ],
-  "first_snapshot_commit": "4e2fa1c9b22fd8e09931c1f06b1fd3d316db2467"
+  "first_snapshot_commit": "4e2fa1c9b22fd8e09931c1f06b1fd3d316db2467",
+  "latest_supplement": "Equality classification completed at gamma2,3 with independent elementary/exact audit; no two-extra theorem included yet."
 }

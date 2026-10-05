@@ -118,6 +118,55 @@
       "pages": 7,
       "sha256": "af2b565b3e933a3a4db556a8a193a40737a0e409f9926db7350c854e62942660",
       "validation": "attribution-revised two-pass pdfLaTeX build; all pages inspected; publisher rechecked first/final pages"
+    },
+    {
+      "path": "unique_domination_pilot/paper_v2/manuscript.pdf",
+      "pages": 10,
+      "sha256": "81cdb0db1af3b30da9691bdcedd3bc10f73e8b9e50a0f6ba1d71c151aee60828",
+      "validation": "Author and independent reviewer checked all ten pages and integrated proof; publisher rechecked first/final pages and every selected source hash."
     }
-  ]
+  ],
+  "low_gamma_completion": {
+    "commands": [
+      {
+        "path": "unique_domination_pilot/extension/check_low_gamma.py",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "path": "unique_domination_pilot/extension/audit/independent_low_gamma.py",
+        "exit_code": 0,
+        "stderr": ""
+      }
+    ],
+    "changed_certificates": [
+      "audit/independent_result.json"
+    ],
+    "all_passed": true,
+    "mathematical_outputs_equal": true,
+    "metadata_only_changes": [
+      "audit/independent_result.json:/seconds"
+    ],
+    "retained_artifacts": "Original audited output retained; fresh replay differs only in diagnostic elapsed time."
+  },
+  "second_boundary_replay": {
+    "commands": [
+      {
+        "path": "unique_domination_pilot/extension/two_extra/check_two_extra.py",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "path": "unique_domination_pilot/extension/two_extra/audit/independent_two_extra.py",
+        "exit_code": 0,
+        "stderr": ""
+      }
+    ],
+    "all_passed": true,
+    "mathematical_outputs_equal": true,
+    "metadata_only_files": [
+      "audit/independent_results.json"
+    ],
+    "independent_reduced_skeleton_search": "Prior exact audit PASS; its C++ search was not rerun for this publication."
+  }
 }

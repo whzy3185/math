@@ -4,21 +4,24 @@ This branch is an additive research snapshot based on `main` at `c3e4460929c38d1
 
 ## Two independently audited results
 
-### Sharp unique domination at n = 3γ + 1
+### Sharp unique domination at n = 3γ + 1 and 3γ + 2
 
 For every integer `γ>=2`, the maximum edge count of a finite simple bipartite graph without isolated vertices, of order `3γ+1` and with a unique minimum dominating set of size γ, is
 
 `γ(γ+7)/2`.
 
-The maximum is attained by a connected graph. For `γ>=4`, the extremizer is unique up to isomorphism. At `γ=4`, a connected 13-vertex graph with 22 edges has a unique minimum dominating four-set and exceeds the proposed bound 21 in Koch–Narayan, arXiv:2511.01719v1, Conjecture 1. This comparison is unaffected by a separate printed summation-cutoff issue. The same n13 counterexample and the cutoff issue were already reported by John Erlbacher; the emphasis here is the all-γ sharp maximum and equality structure. See the [prior-work attribution and exact isomorphism check](unique_domination_pilot/extension/prior_work/PRIOR_WORK_ADDENDUM.md).
+The maximum is attained by a connected graph. The equality graph is unique up to isomorphism for every `γ>=2`: the [audited low-γ supplement](unique_domination_pilot/extension/LOW_GAMMA_EQUALITY.md) completes the two small cases beyond the first paper’s `γ>=4` rigidity proof. At `γ=4`, a connected 13-vertex graph with 22 edges has a unique minimum dominating four-set and exceeds the proposed bound 21 in Koch–Narayan, arXiv:2511.01719v1, Conjecture 1. This comparison is unaffected by a separate printed summation-cutoff issue. The same n13 counterexample and the cutoff issue were already reported by John Erlbacher; the emphasis here is the all-γ sharp maximum and equality structure. See the [prior-work attribution and exact isomorphism check](unique_domination_pilot/extension/prior_work/PRIOR_WORK_ADDENDUM.md).
 
-- [Seven-page article with corrected prior-work attribution](unique_domination_pilot/paper/manuscript.pdf) and [Chinese handoff](unique_domination_pilot/paper/HANDOFF.zh-CN.md)
+- [Current ten-page integrated article](unique_domination_pilot/paper_v2/manuscript.pdf) and [Chinese handoff](unique_domination_pilot/paper_v2/HANDOFF.zh-CN.md)
+- [Preserved seven-page article with corrected prior-work attribution](unique_domination_pilot/paper/manuscript.pdf) and [Chinese handoff](unique_domination_pilot/paper/HANDOFF.zh-CN.md)
 - [Complete sharp theorem and equality proof](unique_domination_pilot/SHARP_BOUNDARY_THEOREM.md)
 - [Explicit counterexample family and source comparison](unique_domination_pilot/COUNTEREXAMPLE_FAMILY.md)
 - [Independent proof audit](unique_domination_pilot/audit/PROOF_AUDIT.md)
 - [Current scope and status](unique_domination_pilot/STATUS.md)
 
-The general result is elementary and analytically proved; exhaustive local/finite checks corroborate it. No smallest-counterexample claim across the source's whole parameter domain, equality classification for γ=2,3, publication novelty or Lean formalization is asserted.
+At order `3γ+2`, the sharp maximum is `ceil(γ²/2)+5γ` for every `γ>=2`, with connected attainment. At least two nonisomorphic connected extremals exist for every even `γ>=4`; a complete equality classification for this second boundary is not claimed. See the [complete analytic proof](unique_domination_pilot/extension/two_extra/CANDIDATE_BOUNDARY_THEOREM.md), [independent audit](unique_domination_pilot/extension/two_extra/audit/PROOF_AUDIT.md), and [precise prior overlap](unique_domination_pilot/extension/two_extra/SOURCE_COMPARISON.md).
+
+The general result is elementary and analytically proved; exhaustive local/finite checks corroborate it. No smallest-counterexample claim across the source's whole parameter domain, publication novelty or Lean formalization is asserted.
 
 ### Hall ratio of the six-chromatic Mycielski graph
 
@@ -53,6 +56,10 @@ python mycielski_strengthening/test_general_module.py
 python mycielski_strengthening/check_strengthening.py
 python mycielski_strengthening/audit/independent_check.py
 python unique_domination_pilot/extension/prior_work/check_prior_isomorphism.py
+python unique_domination_pilot/extension/check_low_gamma.py
+python unique_domination_pilot/extension/audit/independent_low_gamma.py
+python unique_domination_pilot/extension/two_extra/check_two_extra.py
+python unique_domination_pilot/extension/two_extra/audit/independent_two_extra.py
 ```
 
 The optional numerical discovery scripts in the Mycielski folder require SciPy/NumPy and are labeled exploratory. They are not proof premises. `mycielski_profile.cpp` supplies the exact M2–M5 baseline; compile it with a C++17 compiler. `VERIFICATION.json` records fresh package-level replay, and `MANIFEST.json` records delivered file hashes. The broad project registry and historical research log are preserved unchanged; this directory's status and claim ledger govern these new results.
