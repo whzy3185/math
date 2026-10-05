@@ -1,0 +1,35 @@
+{
+  "scope": "Generic software and synthetic data only",
+  "unit_test_count": 31,
+  "unit_tests_pass": true,
+  "synthetic_regressions": [
+    {
+      "cases": 38,
+      "met": 38,
+      "pass": true
+    },
+    {
+      "cases": 28,
+      "met": 28,
+      "pass": true
+    },
+    {
+      "cases": 8,
+      "met": 8,
+      "pass": true
+    }
+  ],
+  "schema_count": 8,
+  "schemas_pass": true,
+  "synthetic_positive_record_pass": true,
+  "missing_explicit_input_rejected": true,
+  "actual_research_inputs_used": false,
+  "publication_performed": false,
+  "full_schema_validation_environment": "Normal Python with the optional jsonschema package available",
+  "optional_full_schema_reporting": {
+    "unperformed_check_value": null,
+    "unperformed_check_reason_required": true,
+    "normal_and_no_site_dispositions_match": true,
+    "normal_and_no_site_regression_cases": 38
+  }
+}
