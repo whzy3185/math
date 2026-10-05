@@ -10,8 +10,9 @@ For every integer `γ>=2`, the maximum edge count of a finite simple bipartite g
 
 `γ(γ+7)/2`.
 
-The maximum is attained by a connected graph. For `γ>=4`, the extremizer is unique up to isomorphism. At `γ=4`, a connected 13-vertex graph with 22 edges has a unique minimum dominating four-set and exceeds the proposed bound 21 in Koch–Narayan, arXiv:2511.01719v1, Conjecture 1. This comparison is unaffected by a separate printed summation-cutoff issue.
+The maximum is attained by a connected graph. For `γ>=4`, the extremizer is unique up to isomorphism. At `γ=4`, a connected 13-vertex graph with 22 edges has a unique minimum dominating four-set and exceeds the proposed bound 21 in Koch–Narayan, arXiv:2511.01719v1, Conjecture 1. This comparison is unaffected by a separate printed summation-cutoff issue. The same n13 counterexample and the cutoff issue were already reported by John Erlbacher; the emphasis here is the all-γ sharp maximum and equality structure. See the [prior-work attribution and exact isomorphism check](unique_domination_pilot/extension/prior_work/PRIOR_WORK_ADDENDUM.md).
 
+- [Seven-page article with corrected prior-work attribution](unique_domination_pilot/paper/manuscript.pdf) and [Chinese handoff](unique_domination_pilot/paper/HANDOFF.zh-CN.md)
 - [Complete sharp theorem and equality proof](unique_domination_pilot/SHARP_BOUNDARY_THEOREM.md)
 - [Explicit counterexample family and source comparison](unique_domination_pilot/COUNTEREXAMPLE_FAMILY.md)
 - [Independent proof audit](unique_domination_pilot/audit/PROOF_AUDIT.md)
@@ -27,7 +28,9 @@ With `M2=K2` and ordinary Mycielski iteration, `M6` has 47 vertices and Hall rat
 - [Reproduction entry point](mycielski_pilot/README.md)
 - [Independent exact audit](mycielski_pilot/audit/PROOF_AUDIT.md)
 
-This first snapshot certifies the finite invariant and one extremal witness. Complete extremal classification, an all-order asymptotic result and literature-wide novelty are outside this snapshot.
+The [complete classification supplement](mycielski_strengthening/CLASSIFICATION.md) now gives exactly1,990 labelled maximizing subsets in199 ambient-automorphism orbits, all of size20 and independence number6. The three original/clone/apex layer types have109,83,7 orbits. These are embedded-subset orbits, not abstract graph-isomorphism types. Two different exact enumerations reproduce the same complete list.
+
+Read the [six-page note including Chinese abstract](mycielski_manuscript/output/pdf/mycielski_hall_note.pdf), [general compression theorem](mycielski_strengthening/GENERAL_THEOREM.md), and [independent completeness audit](mycielski_strengthening/audit/PROOF_AUDIT.md). No all-order asymptotic or publication-novelty claim is made.
 
 ## Source-led topic selection
 
@@ -46,6 +49,10 @@ python unique_domination_pilot/check_local_cells.py
 python unique_domination_pilot/check_small_family.py
 python unique_domination_pilot/audit/independent_check.py
 python check_domination_formula.py
+python mycielski_strengthening/test_general_module.py
+python mycielski_strengthening/check_strengthening.py
+python mycielski_strengthening/audit/independent_check.py
+python unique_domination_pilot/extension/prior_work/check_prior_isomorphism.py
 ```
 
 The optional numerical discovery scripts in the Mycielski folder require SciPy/NumPy and are labeled exploratory. They are not proof premises. `mycielski_profile.cpp` supplies the exact M2–M5 baseline; compile it with a C++17 compiler. `VERIFICATION.json` records fresh package-level replay, and `MANIFEST.json` records delivered file hashes. The broad project registry and historical research log are preserved unchanged; this directory's status and claim ledger govern these new results.

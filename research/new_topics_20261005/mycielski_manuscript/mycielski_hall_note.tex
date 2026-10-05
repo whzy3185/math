@@ -1,0 +1,396 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\newfontfamily\chinesefont{Noto Serif CJK SC}
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{booktabs,array,enumitem}
+\usepackage[hidelinks,unicode]{hyperref}
+\usepackage{microtype}
+\setlength{\emergencystretch}{2em}
+\setlist{itemsep=2pt,topsep=5pt}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Aut}{Aut}
+\newcommand{\mi}{\operatorname{mis}}
+\newcommand{\ind}{\mathcal I}
+\newcommand{\V}{V}
+\newcommand{\N}{N}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\title{Independent set compression and Hall extremizers\\
+in the sixth Mycielski graph}
+\author{}
+\date{5 October 2026}
+\begin{document}
+\maketitle
+\vspace{-1.5em}
+\begin{abstract}
+We give a computer-assisted determination of the Hall ratio of the
+47-vertex Mycielski graph, with the convention $M_2=K_2$ and
+$M_{r+1}=\mu(M_r)$. Its Hall ratio is $10/3$. Exactly 1,990 induced vertex
+subsets attain this value, forming 199 orbits under the full ambient
+automorphism group, each of size ten. Every maximizer has twenty vertices,
+independence number six, and contains the final apex. A general
+neighborhood-union identity generates maximal independent sets of
+$\mu(G)$ from independent sets of $G$. For $M_6$, this yields 857 constraints
+from 7,407 independent sets of $M_5$. Exact rational certificates establish
+the upper bound and equality reductions; two different exact algorithms
+independently enumerate all extremizers. The accompanying programs and
+certificates avoid enumerating all $2^{47}$ induced subsets.
+\end{abstract}
+
+\section{The finite result and its scope}
+For a nonempty finite graph $H$, its Hall ratio is
+\[
+ \rho(H)=\max_{\varnothing\ne S\subseteq V(H)}
+ \frac{\abs S}{\alpha(H[S])}.
+\]
+Here $\alpha$ denotes the independence number, and $H[S]$ is the induced
+subgraph. We abbreviate $\alpha(H[S])$ to $\alpha(S)$ when the ambient graph
+is clear. We use the ordinary Mycielski construction: $\mu(G)$ has original
+vertices $V(G)$, an independent clone layer $V(G)'$, and an apex $z$.
+Original vertices retain their edges; $u$ is adjacent to $v'$ precisely
+when $uv\in E(G)$; and $z$ is adjacent to every clone. Set $M_2=K_2$ and
+$M_{r+1}=\mu(M_r)$, so the successive orders are $2,5,11,23,47$.
+
+\begin{theorem}[Computer-assisted finite classification]\label{thm:main}
+The graph $M_6$ satisfies $\rho(M_6)=10/3$. Every maximizing subset has
+order $20$, independence number $6$, and contains the final apex.
+There are exactly $1,990$ labelled maximizing subsets, in $199$ orbits
+under $\Aut(M_6)\cong D_5$. Every orbit has size $10$. The final
+original/clone/apex layer counts are as follows.
+\begin{center}
+\begin{tabular}{@{}ccc rr@{}}
+\toprule
+Originals & Clones & Apex & Orbits & Labelled subsets\\
+\midrule
+13 & 6 & 1 & 109 & 1,090\\
+14 & 5 & 1 & 83 & 830\\
+15 & 4 & 1 & 7 & 70\\
+\midrule
+\multicolumn{3}{l}{Total} & 199 & 1,990\\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{theorem}
+
+The orbits in this theorem concern embedded subsets under automorphisms
+of the ambient graph. They are not asserted to be distinct abstract
+isomorphism types of the induced graphs.
+
+Cropper, Gy\'arf\'as and Lehel~\cite{CGL} give the values
+$\rho(M_2)=2$, $\rho(M_3)=5/2$, $\rho(M_4)=8/3$ and $\rho(M_5)=3$, and prove
+that the sequence of Hall ratios is unbounded. The cardinality-profile
+formulation used below predates this calculation; see Barnett~\cite{Barnett}.
+Steiner~\cite{Steiner} records that boundedness of
+$\chi_f(M_r)/\rho(M_r)$ remains open. The present finite calculation does
+not resolve that asymptotic question. This note records reproducible
+results and complete proofs of the structural reductions; it makes no
+claim that publication priority has been established.
+
+\section{Neighborhood compression for a general base graph}
+Throughout this section, $G$ is a finite simple graph with $n\ge1$ vertices.
+Let $\ind(G)$ contain all independent sets, including the empty set, and
+write $i(G)=\abs{\ind(G)}$ and $\mi(G)$ for the number of maximal independent
+sets. For $I\subseteq V(G)$, $N(I)$ is the union of its open neighborhoods.
+Define
+\[
+ \mathcal D(G)=\{N(I):I\in\ind(G)\},\qquad d(G)=\abs{\mathcal D(G)}.
+\]
+
+\begin{theorem}[Neighborhood-union identity]\label{thm:compression}
+For every nonempty finite simple graph $G$,
+\begin{equation}\label{eq:count}
+ \mi(\mu(G))=\mi(G)+d(G).
+\end{equation}
+For $N\in\mathcal D(G)$ put $J_N=\{v:N(v)\subseteq N\}$. The maximal
+independent sets avoiding the apex are exactly
+\[
+ K_N=J_N\cup(V(G)\setminus N)',\qquad N\in\mathcal D(G),
+\]
+with one distinct set for each $N$. Those containing the apex are exactly
+$\{z\}\cup I$, where $I$ is maximal independent in $G$.
+\end{theorem}
+\begin{proof}
+Choose independent $I$ with $N=N(I)$. Then $I\subseteq J_N$ and
+$J_N\cap N=\varnothing$. Indeed, if $v\in J_N\cap N$, it has a neighbor
+$i\in I$, and $N(v)\subseteq N$ would force $i\in N$, contrary to the
+independence of $I$. It follows that $J_N$ is independent and
+$N(J_N)=N(I)=N$.
+
+Thus $K_N$ is independent. An excluded original vertex has a neighbor
+among its selected clones, by the definition of $J_N$. An excluded clone
+has a neighbor in $I\subseteq J_N$. There is a selected clone: $V\setminus N$
+contains $I$ when $I$ is nonempty, and equals $V$ otherwise. Hence the apex
+also has a neighbor in $K_N$, so $K_N$ is maximal.
+
+Conversely, a maximal independent set avoiding $z$, with original part
+$I$, must contain every available clone, namely $(V\setminus N(I))'$.
+Maximality then forces its original part to be $J_{N(I)}$. The clone part
+uniquely determines $N$. A maximal independent set containing $z$ contains
+no clone, and its original part is maximal in $G$. These two bijections
+prove~\eqref{eq:count}.
+\end{proof}
+
+\begin{corollary}\label{cor:complexity}
+All maximal independent sets of $\mu(G)$ can be generated in
+$O(n^2i(G))$ elementary Boolean operations, with
+$O(n^2+ni(G))$ bits of working and output storage. Their number is at most
+$2i(G)$.
+\end{corollary}
+\begin{proof}
+Enumerate independent sets of $G$, collect their distinct neighborhood
+unions, and identify maximal sets by $I\cup N(I)=V(G)$. Construct the sets
+in Theorem~\ref{thm:compression}. Boolean adjacency arrays give the stated
+bounds; bitsets improve the implementation. Finally,
+$d(G)\le i(G)$ and $\mi(G)\le i(G)$.
+\end{proof}
+
+This is a bound in the number of independent sets of the base graph.
+It does not imply polynomial-time Hall optimization in the number of
+vertices, or a polynomial bound on the size of a branch certificate.
+For the present instance, exact enumeration gives
+\begin{equation}\label{eq:counts}
+ i(M_5)=7,407,\qquad d(M_5)=778,\qquad \mi(M_5)=79,
+ \qquad \mi(M_6)=857.
+\end{equation}
+
+\begin{proposition}[Induced-subset recurrence]\label{prop:recurrence}
+Let $A,B\subseteq V(G)$ and $\varepsilon\in\{0,1\}$. For the induced subset
+consisting of originals $A$, clones $B'$, and the apex when
+$\varepsilon=1$, its independence number equals
+\begin{equation}\label{eq:recurrence}
+ \max\left\{\varepsilon+\alpha(G[A]),\quad
+ \max_{\substack{I\subseteq A\\ I\in\ind(G)}}
+ \bigl(\abs I+\abs{B\setminus N(I)}\bigr)\right\}.
+\end{equation}
+\end{proposition}
+\begin{proof}
+An independent set avoiding the apex chooses independent original part
+$I$ and may include every available clone. A set using the apex chooses
+no clone and may include a maximum independent set in $G[A]$. If
+$\varepsilon=0$, the first term is redundant and does not change the
+maximum.
+\end{proof}
+The same decomposition gives the exact independence-polynomial identity
+\[
+ Z_{\mu(G)}(t)=tZ_G(t)+\sum_{I\in\ind(G)}t^{\abs I}
+ (1+t)^{n-\abs{N(I)}},\qquad
+ Z_G(t)=\sum_{I\in\ind(G)}t^{\abs I}.
+\]
+For example, it yields $i(M_6)=39,473,983$ without enumerating those sets.
+
+\section{An exact certificate for the Hall ratio}
+Let $K_1,\ldots,K_q$ be all maximal independent sets of a graph $H$, and
+let $x_v\in\{0,1\}$ indicate a subset $S$. Then
+\begin{equation}\label{eq:profile}
+ \alpha(H[S])\le k
+ \quad\Longleftrightarrow\quad
+ \sum_{v\in K_j}x_v\le k\quad(1\le j\le q).
+\end{equation}
+Every independent set extends to a maximal one, which proves the reverse
+implication; each intersection $S\cap K_j$ proves the forward one.
+Thus maximizing $\sum_vx_v$ under~\eqref{eq:profile} is an exact binary
+model for the cardinality profile. For $M_6$ it has 47 variables and
+857 independent-set rows.
+
+\subsection{Rational leaves and binary splits}
+At a certificate node, fix vertices $O$ to one and $Z$ to zero, leaving
+$U=V(H)\setminus(O\cup Z)$ free. Set $b_j=k-\abs{K_j\cap O}$.
+A rational-dual leaf supplies $y_j\ge0$ and $z_v\ge0$ satisfying
+\begin{equation}\label{eq:coverage}
+ \sum_{j:v\in K_j}y_j+z_v\ge1\qquad(v\in U).
+\end{equation}
+Multiplying the residual rows by $y_j$ and the bounds $x_v\le1$ by $z_v$
+proves
+\begin{equation}\label{eq:dual}
+ \abs S\le B:=\abs O+\sum_j y_jb_j+\sum_{v\in U}z_v.
+\end{equation}
+If the exact rational $B$ is below an excluded integer cardinality $T$,
+that node contains no subset of order at least $T$. An internal node
+splits on a free binary variable and checks both assignments. The
+certificate therefore covers every subset. Checking the displayed
+inequalities uses exact integer and rational arithmetic; numerical
+optimization is used only to propose weights or branches.
+
+\subsection{Upper bound and witness}
+For $k\in\{1,3,4,\ldots,14\}$, the supplied certificate excludes
+\[
+ T_k=\left\lfloor\frac{10k}{3}\right\rfloor+1.
+\]
+The case $k=5$ uses 130 splits and 131 rational leaves. Each of the other
+twelve cases uses one leaf, for 273 nodes in total. The missing case
+$k=2$ is elementary: every six vertices of a triangle-free graph contain
+an independent triple. Given a vertex, three neighbors are independent;
+otherwise it has three nonneighbors, among which a nonedge together
+with the vertex gives an independent triple. Thus $\alpha\le2$ implies
+$\abs S\le5$. For $k\ge15$, use $\abs S/k\le47/15<10/3$.
+The graph is checked to be triangle-free, so these cases prove
+$\rho(M_6)\le10/3$.
+
+For the reverse bound, label originals $0,\ldots,n-1$, their clones
+$n,\ldots,2n-1$, and the apex $2n$ at each step. The subset
+\begin{align*}
+ S=\{&0,1,2,3,4,5,6,7,11,12,15,19,21,22,\\
+     &26,32,33,41,45,46\}
+\end{align*}
+has twenty vertices and independence number six. Its maximum
+intersection with all 857 maximal independent sets is exactly six;
+$\{0,2,5,7,11,41\}$ is one independent six-set. The independent audit also
+checks its independence number by a direct include/exclude recursion on
+these twenty vertices. Hence $\rho(M_6)=10/3$.
+
+\section{Classifying all equality subsets}
+Equality forces $\alpha(S)$ to be divisible by three. The only possible
+pairs are
+\[
+ (10,3),\quad(20,6),\quad(30,9),\quad(40,12).
+\]
+Additional exact certificates
+exclude the first, third and fourth pairs using 19, 1 and 1 nodes,
+respectively. One further leaf excludes a twenty-set with independence
+number at most six when the final apex is absent. These 22 nodes have
+nine binary splits and thirteen rational leaves.
+
+Consequently every maximizing subset has twenty vertices, independence
+number six, and contains the apex. Write it as $A\cup B'\cup\{z\}$.
+The apex implies $\alpha(M_5[A])\le5$, while $\abs B\le6$. Exact base
+independence values give
+\begin{equation}\label{eq:baseprofile}
+ \max_{\alpha(M_5[A])\le4}\abs A=12,\qquad
+ \max_{\alpha(M_5[A])\le5}\abs A=15.
+\end{equation}
+These bounds are reverified by both complete enumerations. Since
+$\abs A+\abs B=19$, they imply
+\[
+ \abs A\in\{13,14,15\},\quad \alpha(M_5[A])=5,
+ \quad \abs B=19-\abs A.
+\]
+By Proposition~\ref{prop:recurrence}, such a pair is a maximizer exactly
+when
+\begin{equation}\label{eq:family}
+ \abs{B\setminus N(I)}\le6-\abs I
+ \qquad\text{for every independent }I\subseteq A.
+\end{equation}
+This is a complete neighborhood description of the three structural
+families, not just a condition satisfied by the displayed witness.
+
+\subsection{The full ambient automorphism group}
+The graph $M_3$ is $C_5$, in cyclic order $(0,1,2,4,3)$. At each later
+stage the apex is the unique maximum-degree vertex. Indeed, for a base
+of order $n$ and maximum degree $(n-1)/2$, the new original degrees are
+at most $n-1$, clone degrees at most $(n+1)/2$, and apex degree $n$.
+The property starts with $C_5$ and inducts.
+
+Every automorphism therefore fixes the apex and preserves both layers.
+Its restriction to originals is an automorphism of the base. The bases
+are open-neighborhood twin-free, beginning with $C_5$, and this forces
+the clone permutation to agree with the original permutation. Conversely,
+every base automorphism extends. Thus $\Aut(M_6)\cong D_5$ has order ten.
+The independent checker obtains the ten automorphisms of the initial
+cycle by testing its 120 permutations, then lifts them and verifies
+adjacency, closure, and the unique-apex and twin-free hypotheses.
+
+\subsection{Two complete exact enumerations}
+The primary enumeration computes $\alpha(M_5[A])$ for all $2^{23}$ base
+subsets by vertex-deletion dynamic programming. It keeps only canonical
+$A$ of sizes 13--15 with independence number five. There are 4,370 such
+$D_5$ representatives. For each one, choose an independent five-set
+$I_0\subseteq A$ minimizing $\abs{N(I_0)}$. Equation~\eqref{eq:family}
+requires at most one clone index outside $N(I_0)$. Thus, for
+$b=19-\abs A$, enumerate only
+\begin{enumerate}
+\item $b$ indices from $N(I_0)$;
+\item $b-1$ indices from $N(I_0)$ and one from its complement.
+\end{enumerate}
+Check the remaining inequalities~\eqref{eq:family}, then canonicalize the
+full subset under $D_5$. The choice of $I_0$ changes efficiency, not
+coverage: every admissible $B$ appears in exactly one of the two cases.
+
+This run tests 50,504,405 filtered clone candidates. It accepts 200 pairs
+at canonical $A$ representatives, which become 199 full-subset orbits.
+The final deduplication is needed because a stabilizer of $A$ can act
+nontrivially on $B$.
+
+A separate implementation constructs all independent sets of $M_5$ and
+computes $\alpha(A)$ by a maximum subset-zeta transform, rather than the
+primary recurrence. It enumerates clone sets through recursive capacity
+propagation of~\eqref{eq:family}, rather than the anchor-neighborhood
+filter. It explores 184,588 recursive nodes and independently produces
+exactly the same sorted 199 canonical masks. Its completeness proof
+checks every pruning rule: saturation, insufficient remaining vertices,
+and the residual cardinality bound of a capacity constraint.
+
+Both methods cover every original-set orbit and every clone choice
+permitted by~\eqref{eq:family}. All 1,990 labelled subsets in the output
+orbits are checked against all 857 maximal independent sets. Every
+stabilizer is trivial. The orbit counts in Theorem~\ref{thm:main} follow.
+
+\section{Reproducibility and verification boundary}
+The core verification commands are below. Run the first in
+\path{mycielski_pilot} and the remaining commands in
+\path{mycielski_strengthening}. The accompanying manifests identify all
+source files, certificates, orbit data, and independent audit records.
+\begin{quote}\begin{minipage}{\linewidth}\small\ttfamily
+python check\_exact\_certificate.py\par
+ g++ -O3 -std=c++17 enumerate\_extremizers.cpp -o enumerate\_extremizers\par
+ ./enumerate\_extremizers\par
+ python check\_strengthening.py
+\end{minipage}\end{quote}
+The independent audit has its own enumeration and checker. Python checking requires version 3.10 or later and only the
+standard library; regenerating proposed LP weights additionally uses
+SciPy. The primary complete enumeration has a safety time limit: a limit
+exit is explicitly incomplete and must not be treated as a proof.
+
+The general structural module is tested on all 75 simple nonempty base
+graphs of order at most four, including 33,864 induced-subset recurrence
+checks. These finite tests supplement the general proofs. All proof
+certificates and enumeration code are preserved with checksums.
+No floating-point solver status is a proof premise. No proof-assistant
+formalization is claimed, and no conclusion about the asymptotic ratio
+$\chi_f(M_r)/\rho(M_r)$ is inferred.
+
+\section*{\chinesefont 中文摘要}
+\begingroup\chinesefont
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip=0pt plus 1pt
+
+本文给出第六个 Mycielski 图的 Hall 比的计算机辅助精确证明。采用
+$M_2=K_2$、$M_{r+1}=\mu(M_r)$ 的编号约定，$M_6$ 有 $47$ 个顶点，且
+$\rho(M_6)=10/3$。达到该比值的诱导顶点集恰有 $1\,990$ 个；在整个图的
+自同构群 $D_5$ 作用下，它们分成 $199$ 个轨道，每个轨道含 $10$ 个顶点集。
+每个极值集都有 $20$ 个顶点、独立数 $6$，并包含最后加入的顶点。按原顶点、
+复制顶点和最后顶点的数量划分，三类轨道数分别为 $109$、$83$ 和 $7$。
+一般的邻域并集恒等式把 $\mu(G)$ 的极大独立集生成问题压缩到基图 $G$ 的
+独立集枚举。对于本例，$M_5$ 的 $7\,407$ 个独立集生成 $M_6$ 的 $857$ 个
+极大独立集约束。精确有理数证书证明上界及等号情形的必要限制，两种不同的
+整数算法独立完成全部极值集枚举，避免遍历 $2^{47}$ 个诱导顶点集。本文只陈述
+可复核的有限结论，不声称已确立发表优先权，也不解决该图族的渐近问题。
+
+\endgroup
+
+\begin{thebibliography}{9}
+\bibitem{CGL}
+M.~Cropper, A.~Gy\'arf\'as and J.~Lehel,
+\emph{Hall ratio of the Mycielski graphs},
+Discrete Mathematics \textbf{306} (2006), 1988--1990.
+\href{https://doi.org/10.1016/j.disc.2005.09.020}{doi:10.1016/j.disc.2005.09.020}.
+
+\bibitem{Barnett}
+J.~B.~Barnett,
+\emph{The Fractional Chromatic Number and the Hall Ratio},
+Ph.D. dissertation, Auburn University, 2016.
+\href{https://etd.auburn.edu/handle/10415/5316}{Auburn dissertation repository},
+Definition~2.1.1 and Chapter~4.
+
+\bibitem{Steiner}
+R.~Steiner,
+\emph{Fractional Chromatic Number Vs. Hall Ratio},
+Combinatorica \textbf{45} (2025), article~37.
+\href{https://doi.org/10.1007/s00493-025-00164-0}{doi:10.1007/s00493-025-00164-0}.
+\end{thebibliography}
+\end{document}

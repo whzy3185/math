@@ -125,3 +125,7 @@ At n=3γ+1 the source proposes 2γ+2ab+2a+1, whereas the sharp expression above 
 ## Audit boundary
 
 The local-pattern classifications and the 13-vertex graph have exact independently coded finite checks. The general upper bound and equality proof above passed independent mathematical review at the stated scope. No claim of Lean verification or publication novelty is made here.
+
+## Prior-work attribution update, 5 October 2026
+
+The 13-vertex, 22-edge example and the printed-cutoff issue were already reported in John Erlbacher's public [Demonstrandum counterexample package](https://github.com/demonstrandum-research/artifacts/blob/94db9ed50d48a57aae5ccb72e6a95a2b8f8f39d3/problems/p2-factory/kills/koch-narayan/WRITEUP.md), whose Git commit is dated 13 June 2026. An explicit isomorphism and fresh exhaustive check are in extension/prior_work/. The present contribution is framed as the all-gamma sharp boundary maximum and equality theorem; no proof of that general theorem was located in the inspected prior package. This is a bounded source comparison, not an exhaustive priority claim. Mathematical statements and audit conclusions are unchanged.

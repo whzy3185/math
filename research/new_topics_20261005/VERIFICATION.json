@@ -57,5 +57,67 @@
   "date": "2026-10-05",
   "proof_scope": "Independent mathematical audits PASS; exact finite checks supplementary for general domination theorem and essential finite certificate for Mycielski Hall ratio.",
   "publication_novelty": "not certified",
-  "formalization": "not Lean-formalized"
+  "formalization": "not Lean-formalized",
+  "classification_and_prior_work_replay": {
+    "commands": [
+      {
+        "command": "compile_primary_extremizers",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "command": "enumerate_primary_extremizers",
+        "exit_code": 0,
+        "stderr": "canonical original sets 4370\n",
+        "completed": true
+      },
+      {
+        "command": "check_strengthening",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "command": "test_general_module",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "command": "compile_independent_capacity",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "command": "enumerate_independent_capacity",
+        "exit_code": 0,
+        "stderr": "",
+        "completed": true
+      },
+      {
+        "command": "check_independent_classification",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "command": "check_prior_isomorphism",
+        "exit_code": 0,
+        "stderr": ""
+      }
+    ],
+    "changed_mathematical_artifacts": [],
+    "all_passed": true
+  },
+  "papers": [
+    {
+      "path": "mycielski_manuscript/output/pdf/mycielski_hall_note.pdf",
+      "pages": 6,
+      "sha256": "551f206ce8108e7c1a518bb6afb8ab4bea00380ec192d36f76c12501080c59f7",
+      "validation": "two XeLaTeX passes; all pages inspected; publisher rechecked first/final pages"
+    },
+    {
+      "path": "unique_domination_pilot/paper/manuscript.pdf",
+      "pages": 7,
+      "sha256": "af2b565b3e933a3a4db556a8a193a40737a0e409f9926db7350c854e62942660",
+      "validation": "attribution-revised two-pass pdfLaTeX build; all pages inspected; publisher rechecked first/final pages"
+    }
+  ]
 }

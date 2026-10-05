@@ -3,14 +3,14 @@
   "repository": "whzy3185/math",
   "branch": "research/graph-new-topics-20261005",
   "parent_commit": "c3e4460929c38d10f0b3a0e878267142303c9675",
-  "scope": "Two independently audited graph-theory pilots, with primary-source topic screening. No pending 199-orbit extension or unpublished manuscript draft included.",
+  "scope": "Audited domination sharp theorem and complete M6 Hall-extremizer classification; two reviewed papers; explicit prior-work attribution; no novelty/asymptotic claim.",
   "manifest_excludes_itself": true,
   "files": [
     {
       "path": "CLAIM_LEDGER.md",
-      "bytes": 1725,
-      "sha256": "35086b267413458a19c351c05fd49f7015c53725ddcfe3f3e8ea34ba2d9c81fb",
-      "git_blob_sha": "c7f330a867285512ea0df65e4c09b520fb0656f0"
+      "bytes": 3438,
+      "sha256": "89afc4e415610ab318d67cdb326882a506b9518205b5121bbca557bd35bc496c",
+      "git_blob_sha": "bf072edee91e869d991614f3e878696a1341e4e7"
     },
     {
       "path": "DOMINATION_FORMULA_NOTE.md",
@@ -26,21 +26,21 @@
     },
     {
       "path": "README.md",
-      "bytes": 3863,
-      "sha256": "1a8dcde120c749440e2a932fe4338b5371ddd681a78a6cae5e0826d3212f1c3f",
-      "git_blob_sha": "8b6f70ca0897ad6b65a55929412c6f2cd7df10a7"
+      "bytes": 5123,
+      "sha256": "df2b742820d19efa4878869a22e27c26e5afdfc2d46c286ea18b8802bcc7443e",
+      "git_blob_sha": "301d655454c1957cbdb2c3730b7c9ff290dbec43"
     },
     {
       "path": "TOPIC_SCREENING.md",
-      "bytes": 15280,
-      "sha256": "0ef6333fb3028989fe2198653dce71b08a4c7f2f6387896265164631ad78d3db",
-      "git_blob_sha": "7ad312d184df6434d07bf17637cbd5bf0be38fea"
+      "bytes": 15769,
+      "sha256": "43e94d9d04cb9b15840ac0fbd461c745932f025beb655289e2b079480c087660",
+      "git_blob_sha": "a1e44157b479ec043e67d136c3bb063f7d45be52"
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 1528,
-      "sha256": "a812caced590fa84d39efbd7c871721495f194861e4a96e4ef8c5a90b34585f4",
-      "git_blob_sha": "062fb5b9353139702b18c40d7042e8e7cd624183"
+      "bytes": 3247,
+      "sha256": "873941356f92532ac46e90bfb13c807c64c159eb8a36b4bb4f1d9260fa94630d",
+      "git_blob_sha": "65667d1c76a6cac624f0f08e005183f81ea3c7f6"
     },
     {
       "path": "check_domination_formula.py",
@@ -53,6 +53,54 @@
       "bytes": 1960,
       "sha256": "c201fd70f06348c11a87012cce23f859658ca3cc99c6f8874702b276972f4517",
       "git_blob_sha": "c4bde8bf0a3d7a3506a29aef4652e57d6272854b"
+    },
+    {
+      "path": "mycielski_manuscript/PACKAGE_MANIFEST.json",
+      "bytes": 1283,
+      "sha256": "81a71b005bd278d0d927fdcd7a60b501c4a1ef67e48db02baaec54ca33da90eb",
+      "git_blob_sha": "a1ae15d532919779e2aee86a43e339dd335e9cca"
+    },
+    {
+      "path": "mycielski_manuscript/README.md",
+      "bytes": 1529,
+      "sha256": "3086a5e3e3c0d437b45c3d9da2b928e236e1faf6e230fb6fd7d4d04b356c689b",
+      "git_blob_sha": "53b13579c0150086976d79ba0ed123fc553bae19"
+    },
+    {
+      "path": "mycielski_manuscript/SHA256SUMS",
+      "bytes": 508,
+      "sha256": "6fc14d5f77309d921badf0a4402eba425b747068cf08017dfef43c50a864e9ea",
+      "git_blob_sha": "758c69ebe69afcd648e4fb0a581905e8e1233bee"
+    },
+    {
+      "path": "mycielski_manuscript/VALIDATION.md",
+      "bytes": 1183,
+      "sha256": "109523f3b9081b4a30d3bdc3a278b4e8adc7848359d18eed5ef3442b0b358ff5",
+      "git_blob_sha": "5c757d688b50cce70e19c75bfcb745ae71ab2e3e"
+    },
+    {
+      "path": "mycielski_manuscript/build.sh",
+      "bytes": 1259,
+      "sha256": "e4b76183d1307842e9ff92f11480c7d0d9ea34be9524c3c8d782f984d2f74151",
+      "git_blob_sha": "b798a6002ad86d800a62853cc1de4a4609be954b"
+    },
+    {
+      "path": "mycielski_manuscript/chinese_abstract.md",
+      "bytes": 1185,
+      "sha256": "c0d9bfb5770b421198e9e3b7d0f23ce924b96b6df773782ad4865937bc6b3406",
+      "git_blob_sha": "aff34fee4ca171c2ab474f9f25660f3be071d360"
+    },
+    {
+      "path": "mycielski_manuscript/mycielski_hall_note.tex",
+      "bytes": 18338,
+      "sha256": "a934eea546cfaf74ab48081bd8aa4da9def598642c1aafa834a86e3e984f30ce",
+      "git_blob_sha": "7538e1070951665e98be52b71cb3e0c9ca4c8c10"
+    },
+    {
+      "path": "mycielski_manuscript/output/pdf/mycielski_hall_note.pdf",
+      "bytes": 126064,
+      "sha256": "551f206ce8108e7c1a518bb6afb8ab4bea00380ec192d36f76c12501080c59f7",
+      "git_blob_sha": "0dcd059857f9e3e5b6b80a8f99bb206d9236e8a1"
     },
     {
       "path": "mycielski_pilot/PROOF.md",
@@ -205,6 +253,180 @@
       "git_blob_sha": "7ef36dab81b25996d3034a9231a4f720857f9dd9"
     },
     {
+      "path": "mycielski_strengthening/CLASSIFICATION.md",
+      "bytes": 8947,
+      "sha256": "84d78f90f6af8261b632208063a536e549ad57c0230c5f6b6ca2529d43d45121",
+      "git_blob_sha": "2e7a36bf56e16508d225bcc57413431ad9d63190"
+    },
+    {
+      "path": "mycielski_strengthening/GENERAL_THEOREM.md",
+      "bytes": 6514,
+      "sha256": "85b8d59dd7aefeeee4c223fc36080b47c2b3de4881c61236b42eaeab2e2a4099",
+      "git_blob_sha": "b9e8b785ea29eff7f10de38193a63ada5db3f83a"
+    },
+    {
+      "path": "mycielski_strengthening/LITERATURE_SCOPE.md",
+      "bytes": 2101,
+      "sha256": "6c5135be7784b9fb7df405541fc017e23ee597578c7084bee60bba4f75ee262e",
+      "git_blob_sha": "ce9ce28d83af350d9274259f21547fe9bcc4923c"
+    },
+    {
+      "path": "mycielski_strengthening/PACKAGE_MANIFEST.json",
+      "bytes": 5006,
+      "sha256": "2733547fc821912b8facff69278214fa708d7fca8b32da573630c77b707cf166",
+      "git_blob_sha": "d0ac39a22d7e0ac9c4d5f1c46340c2cc0b1f6f6e"
+    },
+    {
+      "path": "mycielski_strengthening/README.md",
+      "bytes": 2139,
+      "sha256": "6278e861bf7d5c22607020fba1823280c80fabb0f4015e819c45889421f19c09",
+      "git_blob_sha": "7f775fd9dc4edde12702432dbf006232315daa3f"
+    },
+    {
+      "path": "mycielski_strengthening/SHA256SUMS",
+      "bytes": 2499,
+      "sha256": "a386eabc2fd56112ab0b05824cb10e00e944a1703ec8989ee8eac814466a88e0",
+      "git_blob_sha": "c80fd960fd28e3512d08ec8ee687376849bed110"
+    },
+    {
+      "path": "mycielski_strengthening/audit/PROOF_AUDIT.md",
+      "bytes": 10413,
+      "sha256": "7e5751cefc12413dda0eb24d3495221bba39a8606543189710b30f9390aebcb0",
+      "git_blob_sha": "db065873bb249dd0edc24a9a31aab67a4d0b3c05"
+    },
+    {
+      "path": "mycielski_strengthening/audit/SHA256SUMS",
+      "bytes": 814,
+      "sha256": "22a6a734b336de013d137faf911a70a2085a9909a65eb08134a5d4d86f871435",
+      "git_blob_sha": "74139ea00ed8d6efa33f6292045e1e4cbce54042"
+    },
+    {
+      "path": "mycielski_strengthening/audit/enumerate_by_capacity.cpp",
+      "bytes": 4691,
+      "sha256": "28389f30990a91af11dbe3b169ad6a203ffe9e429cc663f8fd23afc54a674887",
+      "git_blob_sha": "fbde10e59a4c8ea5268f9d9b06a0f1f3bf992066"
+    },
+    {
+      "path": "mycielski_strengthening/audit/enumeration_stdout.txt",
+      "bytes": 310,
+      "sha256": "1344d7f00d217fd161c74e1e0bc3297e4d614205b8a1dc3c7c040c0261de50d7",
+      "git_blob_sha": "d3d2773afc80c247a1ab1d3b1b26dc94dd1bbe86"
+    },
+    {
+      "path": "mycielski_strengthening/audit/independent_check.py",
+      "bytes": 8348,
+      "sha256": "3b5e4a5937c1ed1e99d85d7ffc14784c1b746aa50f004c14d0b60fa8fc6db5eb",
+      "git_blob_sha": "d05f2dba07118bb13a036e3ecc2e09de4bf63ea1"
+    },
+    {
+      "path": "mycielski_strengthening/audit/independent_check_result.json",
+      "bytes": 1022,
+      "sha256": "f90955c7190e3c33e07dfd46d90f4aa95b0cecb7f956b3b6ffd16ade00520b8b",
+      "git_blob_sha": "cc9dc76335e4885505eba9aa75448bbb9cb77007"
+    },
+    {
+      "path": "mycielski_strengthening/audit/independent_check_stdout.json",
+      "bytes": 1022,
+      "sha256": "f90955c7190e3c33e07dfd46d90f4aa95b0cecb7f956b3b6ffd16ade00520b8b",
+      "git_blob_sha": "cc9dc76335e4885505eba9aa75448bbb9cb77007"
+    },
+    {
+      "path": "mycielski_strengthening/audit/independent_representatives.txt",
+      "bytes": 3184,
+      "sha256": "cd448a35040e65254021f4e2f8981ee24ffbe86e5f793664389226af8e9282a1",
+      "git_blob_sha": "6c48cca3dd4c923be2a29ae4c96ddf2860457051"
+    },
+    {
+      "path": "mycielski_strengthening/audit/source_manifest.json",
+      "bytes": 1279,
+      "sha256": "2a6cca8540d36a44bb9cce0cd609c0f0e8c82a64eb41992655d664fcffc9ce34",
+      "git_blob_sha": "9ce74d390d85ab0191bfbb4da2e88965facf1d36"
+    },
+    {
+      "path": "mycielski_strengthening/certify_strengthening.py",
+      "bytes": 2712,
+      "sha256": "160a0578e32c9a4917ede9c0831896da8f380d326d74d988d65b652e08971568",
+      "git_blob_sha": "2fc7330529ec25af269da3925cd8f375b2952143"
+    },
+    {
+      "path": "mycielski_strengthening/check_strengthening.py",
+      "bytes": 6139,
+      "sha256": "d815e1e1716e5c76c08de972ee7c03ea7b0d05cae72f6229ac3f680b9960ee52",
+      "git_blob_sha": "2caaf29e455344288ac4832481bde26c8933ba9a"
+    },
+    {
+      "path": "mycielski_strengthening/complete_orbit_representatives.txt",
+      "bytes": 3184,
+      "sha256": "cd448a35040e65254021f4e2f8981ee24ffbe86e5f793664389226af8e9282a1",
+      "git_blob_sha": "6c48cca3dd4c923be2a29ae4c96ddf2860457051"
+    },
+    {
+      "path": "mycielski_strengthening/complete_orbits.json",
+      "bytes": 157423,
+      "sha256": "8e2434c0ac9690557943144f51aa5627f8d3615f5685246f2f139251fbf35ed7",
+      "git_blob_sha": "983d0fe2f2a7d423422781d18ae84ddb887eb559"
+    },
+    {
+      "path": "mycielski_strengthening/compression_counts.json",
+      "bytes": 250,
+      "sha256": "d6349800f51fd44e3cfd5c5899051c686dab4102f807fa5d8ca2c96e04e33e2f",
+      "git_blob_sha": "c6d2f399a5847939e51cf2c7a29dae0e78f8e3e1"
+    },
+    {
+      "path": "mycielski_strengthening/enumerate_extremizers.cpp",
+      "bytes": 3675,
+      "sha256": "146fb3e765710e40334b0babc14f294a399b18e93fc110f446fda662a84ae7c2",
+      "git_blob_sha": "359a7129539ab7f93c9089996e1b2a2a07c3608b"
+    },
+    {
+      "path": "mycielski_strengthening/exact_enumeration_output.txt",
+      "bytes": 155,
+      "sha256": "a14df9835024ba1360fa64ef01a26c104a5dccd55a6534b41557412a56189fb7",
+      "git_blob_sha": "5b3de8e89ab21eb0e78f99428d86a0bbbedd7c2e"
+    },
+    {
+      "path": "mycielski_strengthening/general_module_checks.json",
+      "bytes": 256,
+      "sha256": "643f36d61f1a563df392c04044a3c9fbd5365965e3da7119b616cc8bdc597dea",
+      "git_blob_sha": "5b58d3b6c355c01eae812a8a248a99370f9451f3"
+    },
+    {
+      "path": "mycielski_strengthening/mycielski_structure.py",
+      "bytes": 4487,
+      "sha256": "e374bb369edf99647dfa15a778b0575af99b9c4d2400f19edcbda96a7bfeac58",
+      "git_blob_sha": "b62d8e5f9abfebeb6c2459874ed492b16ca59c00"
+    },
+    {
+      "path": "mycielski_strengthening/strengthening_certificate_build_output.txt",
+      "bytes": 266,
+      "sha256": "71ae8b9e1711bb75d419510d8a20513dccfc920d2df913080d00902b5e8fea15",
+      "git_blob_sha": "ca01f284ae0913d09e53c8c70ef39f01f0b8fd6a"
+    },
+    {
+      "path": "mycielski_strengthening/strengthening_certificates.json",
+      "bytes": 3891,
+      "sha256": "1d4fd25c8f8918eedc5a3dcbd00515353fdd8c177190487bfe565c06e2aba30f",
+      "git_blob_sha": "718660c06a5f72ec909507ff3d66aace2d2b8f85"
+    },
+    {
+      "path": "mycielski_strengthening/strengthening_check.json",
+      "bytes": 613,
+      "sha256": "cb08dbc4ae00a37913750665affbb3b56a3e9cfbcc5928baebc66d0934091df7",
+      "git_blob_sha": "7057079e73a7d8d2f67a48ef4d4e994137128191"
+    },
+    {
+      "path": "mycielski_strengthening/strengthening_check_output.txt",
+      "bytes": 759,
+      "sha256": "4411de09ca1744588f0118294409cd2c2c8a553612215bbebb2ab88c4d56da64",
+      "git_blob_sha": "50f0c8ca2cd6e8098aa2458e6adf363bd4836f0b"
+    },
+    {
+      "path": "mycielski_strengthening/test_general_module.py",
+      "bytes": 2234,
+      "sha256": "d832e7904ceb09e902b98e49ee40b0fb482275c48e92e0a955d08bab965281a8",
+      "git_blob_sha": "6d79be5aacd36dcdac15d0988aca1eb45486f575"
+    },
+    {
       "path": "source_manifest.json",
       "bytes": 2644,
       "sha256": "02a26e6866e004663e310ffb6e89e837b5c02f7791d0c15fef7be3b74386be15",
@@ -212,27 +434,27 @@
     },
     {
       "path": "unique_domination_pilot/AUDITED_MANIFEST.json",
-      "bytes": 3179,
-      "sha256": "18569e4546f91a22ff97b4d6155778311c2a2410b4cae6c05cbc9a8f455694be",
-      "git_blob_sha": "a7adda80daaba7e4512fc0c0b82ef32ba092b79d"
+      "bytes": 3227,
+      "sha256": "0bbd2b2c5f9ab792b04a7aa66559bf0b8d635502ca42eacd2d507c3851af762b",
+      "git_blob_sha": "0f25ee1430ab8be571c6f0b092df550102437ea7"
     },
     {
       "path": "unique_domination_pilot/COUNTEREXAMPLE_FAMILY.md",
-      "bytes": 4921,
-      "sha256": "dd765e9b09d9e5f1ee5e8063b55e2afacc53f453004eef08d73f312dc126759f",
-      "git_blob_sha": "fb59a31e8372988432b9da555eecff2fa1469f8a"
+      "bytes": 5697,
+      "sha256": "b911217dcb572fcc7e8f8b25d69f2d3b067a7508519f75c5471908b7a04d60ac",
+      "git_blob_sha": "a1dd4aca5917c0c05e908defd3019fe892fbc99f"
     },
     {
       "path": "unique_domination_pilot/SHARP_BOUNDARY_THEOREM.md",
-      "bytes": 9515,
-      "sha256": "18ffadedf0b339bdb62485a3fc2ae13cba35ea91d44932a1d11fdf05472cdb58",
-      "git_blob_sha": "c11999c839a9b21d2b594e4b2eaef5f3fd92e11f"
+      "bytes": 10291,
+      "sha256": "4a6573ff77bb4616d12426378464af408fe08779151e0e5a9ce6a9f3d4da06c0",
+      "git_blob_sha": "8fee921d8f39127fadf60a0cec5a1d12be9e4541"
     },
     {
       "path": "unique_domination_pilot/STATUS.md",
-      "bytes": 1021,
-      "sha256": "6cb5976d2622145cdb24a9c49ae51aaa3e9ee5ed659ab1c77ef55cd1d4f52744",
-      "git_blob_sha": "79b38293cefce9d905c441442d558c889e42ca51"
+      "bytes": 1745,
+      "sha256": "c128a6293cf1c9eba1692fc1dddc5ea36feb9845f082f5fc47548cdd0e4968e0",
+      "git_blob_sha": "1e24ef4247e8a2d58d9b718b2b1881f9088d04ac"
     },
     {
       "path": "unique_domination_pilot/audit/PROOF_AUDIT.md",
@@ -289,6 +511,30 @@
       "git_blob_sha": "11235e75798b91521ed92cb0d5e5c8563568ca78"
     },
     {
+      "path": "unique_domination_pilot/extension/prior_work/PRIOR_WORK_ADDENDUM.md",
+      "bytes": 6817,
+      "sha256": "a82dd9dc5bc0e8dc000701bef4d45bf9802b18f3eee4bc9dccdf71fd618508e4",
+      "git_blob_sha": "1161804f087c091e8e093b67069d951faa076e5f"
+    },
+    {
+      "path": "unique_domination_pilot/extension/prior_work/check_prior_isomorphism.py",
+      "bytes": 2254,
+      "sha256": "4f2a602b4276185ccad5ce898bd1ecd836afb6b26bbf77cf8f5c92bc2447a4dd",
+      "git_blob_sha": "c3a57df70e8f7755686e6b636703a19cddf86228"
+    },
+    {
+      "path": "unique_domination_pilot/extension/prior_work/check_stdout.json",
+      "bytes": 992,
+      "sha256": "ac42d889ff8ad7c8e050915365a7d8c8aa7bacec5f2e0060674d456abc6af7d4",
+      "git_blob_sha": "fce6dcd8066ee8c73a48be727e2f290e12fa4ed2"
+    },
+    {
+      "path": "unique_domination_pilot/extension/prior_work/isomorphism_result.json",
+      "bytes": 992,
+      "sha256": "ac42d889ff8ad7c8e050915365a7d8c8aa7bacec5f2e0060674d456abc6af7d4",
+      "git_blob_sha": "fce6dcd8066ee8c73a48be727e2f290e12fa4ed2"
+    },
+    {
       "path": "unique_domination_pilot/independent_check_result.json",
       "bytes": 456,
       "sha256": "9de2446e517a3f7f4697e9a45d02e2126c3fbcb43c30646748f8b84518470ce5",
@@ -301,10 +547,59 @@
       "git_blob_sha": "af5c329127e420d2ae36f7e1b3f4515d8c3217a8"
     },
     {
+      "path": "unique_domination_pilot/paper/HANDOFF.zh-CN.md",
+      "bytes": 6010,
+      "sha256": "f53674c05da03790ddfcc42b18e84bdbf24251175a43f321707bc00db68be8c1",
+      "git_blob_sha": "8a90de71ccbf21e605c3ba2760046725ef0f0581"
+    },
+    {
+      "path": "unique_domination_pilot/paper/PAPER_MANIFEST.json",
+      "bytes": 1621,
+      "sha256": "6e625bb96ff691a88fbfe29d686065a5161f19e035ef9241663c091ea662fcdc",
+      "git_blob_sha": "b4751c85d8633b3b3e90bf7da5d7df8225741865"
+    },
+    {
+      "path": "unique_domination_pilot/paper/QA_REPORT.md",
+      "bytes": 3011,
+      "sha256": "ed2a0a0d3e664a7c4435dcfe8e133a381c11effb9d7d235f3367f7b589d7dcfa",
+      "git_blob_sha": "b685d0171b332c12990001c8024a2dabba3b6e85"
+    },
+    {
+      "path": "unique_domination_pilot/paper/README.md",
+      "bytes": 1640,
+      "sha256": "5121e945cb5bb06c78fa4c97c2026095ab0a4b93bb35755259618f5c4d4de567",
+      "git_blob_sha": "60ad89be616803f2a38d374cb2afbf0f719e21da"
+    },
+    {
+      "path": "unique_domination_pilot/paper/SOURCE_STATUS.md",
+      "bytes": 3167,
+      "sha256": "04bc9f06e6ff8fedc966bdff8a53cc686607daded040bf7fb46216a652133c0a",
+      "git_blob_sha": "6cbfc340c71cc28ffa952f6813797d8ca71f9ec3"
+    },
+    {
+      "path": "unique_domination_pilot/paper/build.sh",
+      "bytes": 828,
+      "sha256": "49a6c402bec88de6b2963d1fae456a8561441c1a78c2c6db90ead23f0a8f2c09",
+      "git_blob_sha": "c0ee3fcb47844c6b71ce2be00378e2190aa065e4"
+    },
+    {
+      "path": "unique_domination_pilot/paper/manuscript.pdf",
+      "bytes": 307449,
+      "sha256": "af2b565b3e933a3a4db556a8a193a40737a0e409f9926db7350c854e62942660",
+      "git_blob_sha": "2464da17d07bed9df205ee292d41364be6fc0466"
+    },
+    {
+      "path": "unique_domination_pilot/paper/manuscript.tex",
+      "bytes": 22458,
+      "sha256": "c42592da7c2432d704451bce4440513648022ff1569471ed0006cbc7f3e86b8d",
+      "git_blob_sha": "df769286487e3eb1590fd1f6a258fa8f05a3077a"
+    },
+    {
       "path": "unique_domination_pilot/small_family_results.json",
       "bytes": 1120,
       "sha256": "547936557a79f884b4e962ed3ff0950eef13d7086e667ea06d45ea67f975d10a",
       "git_blob_sha": "e0b99dfb39a617d507513099b5ec2b27eca693cb"
     }
-  ]
+  ],
+  "first_snapshot_commit": "4e2fa1c9b22fd8e09931c1f06b1fd3d316db2467"
 }

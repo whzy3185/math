@@ -1,0 +1,25 @@
+PASS exact strengthening: non20_k3
+PASS exact strengthening: non20_k9
+PASS exact strengthening: non20_k12
+PASS exact strengthening: apex_required
+{
+  "status": "PASS",
+  "rational_certificate_nodes": {
+    "nodes": 22,
+    "split": 9,
+    "dual": 13
+  },
+  "orbit_count": 199,
+  "labelled_extremizers": 1990,
+  "orbit_sizes": {
+    "10": 199
+  },
+  "orbit_layer_counts": {
+    "(13, 6, 1)": 109,
+    "(14, 5, 1)": 83,
+    "(15, 4, 1)": 7
+  },
+  "automorphism_group": "D5 of order10; structural hypotheses checked",
+  "enumeration_completeness": "Requires exact enumerate_extremizers.cpp run; this checker matches its regenerated representatives to stored orbit data",
+  "scope": "Ambient-automorphism orbits, not abstract induced-graph isomorphism classes"
+}

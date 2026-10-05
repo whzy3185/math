@@ -1,5 +1,7 @@
 # Five independent topic screens and two bounded pilots
 
+Later attribution update: the isolated n13 unique-domination counterexample and printed-cutoff issue were already reported in Erlbacher's public artifacts. See unique_domination_pilot/extension/prior_work/PRIOR_WORK_ADDENDUM.md for the pinned source and exact isomorphism verification. The new-topic branch now also includes the audited199-orbit M6 classification. The source screen below is preserved as the earlier selection record; current claims are in README.md and CLAIM_LEDGER.md.
+
 Date: 5 October 2026 UTC. This screening is separate from the ongoing C029 signed-cycle-square work. It concerns extremal domination, directed matchings, induced-subgraph density, additive packing, and tournament quasirandomness. Status claims below are bounded by the primary sources actually checked, not a complete citation database.
 
 ## Update after the bounded pilot

@@ -1,0 +1,521 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,needspace}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Unique domination in bipartite graphs of order 3 gamma plus 1},pdfauthor={}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\epn}{\operatorname{epn}}
+\newcommand{\e}{e}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\setminusone}[2]{#1\setminus\{#2\}}
+\setlength{\emergencystretch}{2em}
+\clubpenalty=10000 \widowpenalty=10000
+\title{Unique domination in bipartite graphs\\of order $3\gamma+1$}
+\author{}
+\date{5 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+A graph with no isolated vertices and a unique minimum dominating set of
+cardinality $\gamma$ has at least $3\gamma$ vertices. We determine the maximum
+number of edges in a bipartite graph one vertex above this threshold. For every
+$\gamma\ge2$, the maximum at order $3\gamma+1$ is $\gamma(\gamma+7)/2$, and a
+connected graph attains it. For $\gamma\ge4$, we characterize the extremal graph
+uniquely up to isomorphism. The construction exceeds the corresponding bound
+conjectured by Koch and Narayan by $\lfloor\gamma/2\rfloor-1$ edges; in particular,
+we recover a previously reported $13$-vertex, $22$-edge counterexample. The proof is elementary. It combines the two
+exterior private neighbours forced by uniqueness with replacement arguments
+on six and seven vertices, followed by a rigidity analysis of the equality case.
+\end{abstract}
+\noindent\textbf{Keywords:} unique minimum dominating set; bipartite graph;
+extremal size; private neighbour.
+\par\smallskip
+\noindent\textbf{2020 Mathematics Subject Classification:} 05C69, 05C35.
+
+\section{Introduction}
+
+All graphs in this paper are finite and simple. A set $D\subseteq V(G)$ is
+\emph{dominating} if every vertex outside $D$ has a neighbour in $D$.
+The domination number $\gamma(G)$ is the minimum cardinality of a dominating
+set. A graph has a \emph{unique minimum dominating set} if exactly one dominating
+set has cardinality $\gamma(G)$. Throughout, uniqueness refers to minimum
+cardinality, not to inclusion-minimality. Write $n(G)=|V(G)|$ and
+$\e(G)=|E(G)|$.
+
+Fischermann, Rautenbach and Volkmann~\cite{FRV} investigated the maximum size
+of graphs with a unique minimum dominating set. Fraboni and Shank~\cite{FS}
+subsequently settled their conjectured size bound when the domination number
+is two. Koch and Narayan~\cite{KN} considered the bipartite problem and proposed
+a bound depending on the order and the domination number. They proved their
+bound for domination number two and at order $n=3\gamma$.
+Erlbacher's public artifacts~\cite{E} already give the $13$-vertex, $22$-edge
+counterexample, further examples, and finite extremal computations.
+The result below recovers that example and proves the sharp boundary maximum
+and equality structure for general domination number.
+Koch and Narayan also identify the unique extremal graph at
+$(n,\gamma)=(10,3)$ in their Figure~1 discussion.
+
+The order restriction is intrinsic. If $D$ is the unique minimum dominating
+set of a graph with no isolated vertices, every vertex of $D$ has at least two
+exterior private neighbours with respect to $D$. These neighbours are distinct
+for distinct members of $D$, and hence $n(G)\ge3\gamma(G)$. We recall the short
+argument in Lemma~\ref{lem:private}.
+
+We examine the next possible order. Let $\mathcal B_\gamma$ be the class of
+bipartite graphs with no isolated vertices, of order $3\gamma+1$, whose minimum
+dominating set is unique and has cardinality $\gamma$. No connectedness
+assumption is imposed in the definition.
+
+\Needspace{10\baselineskip}
+\begin{theorem}\label{thm:main}
+For every integer $\gamma\ge2$,
+\[
+ \max_{G\in\mathcal B_\gamma}\e(G)=\frac{\gamma(\gamma+7)}2.
+\]
+The maximum is attained by a connected graph. For $\gamma\ge4$, equality holds
+if and only if
+\[
+ G\cong H\bigl(\ceil{\gamma/2},\floor{\gamma/2}\bigr),
+\]
+where $H(p,q)$ is the graph defined in Section~\ref{sec:construction}.
+\end{theorem}
+
+At order $3\gamma+1$, Conjecture~1 of~\cite{KN} specializes to
+\begin{equation}\label{eq:sourcebound}
+ \e(G)\le 2\gamma+2ab+2a+1,
+ \qquad a=\ceil{\gamma/2},\quad b=\floor{\gamma/2}.
+\end{equation}
+The summation term in the conjecture is empty at this order. Since
+\begin{equation}\label{eq:gap}
+ \frac{\gamma(\gamma+7)}2-(2\gamma+2ab+2a+1)=b-1,
+\end{equation}
+Theorem~\ref{thm:main} has the following consequence.
+
+\begin{corollary}\label{cor:counter}
+For every $\gamma\ge4$, there is a connected bipartite graph on $3\gamma+1$
+vertices with a unique minimum dominating set of cardinality $\gamma$ that
+violates~\eqref{eq:sourcebound}. The excess is $\floor{\gamma/2}-1$.
+In particular, at $\gamma=4$ the extremal graph has $13$ vertices and $22$
+edges, whereas~\eqref{eq:sourcebound} gives $21$.
+\end{corollary}
+
+The additional vertex explains the change from the threshold case $n=3\gamma$.
+It may be adjacent to several members of the unique minimum dominating set.
+Our extremal graph uses this possibility. The proof of the upper bound keeps
+track of whether the additional vertex has one or several such neighbours;
+the equality argument then forces the whole construction.
+
+\section{The extremal construction}\label{sec:construction}
+
+\begin{definition}\label{def:H}
+For integers $p,q\ge1$, let $H(p,q)$ have pairwise distinct vertices
+\[
+ X=\{x_i:1\le i\le p\},\qquad Y=\{y_j:1\le j\le q\},
+\]
+\[
+ U_i=\{u_i^0,u_i^1\}\ (1\le i\le p),\qquad
+ V_j=\{v_j^0,v_j^1\}\ (1\le j\le q),
+\]
+and one further vertex $z$. Its edges are exactly
+\begin{align*}
+ &x_i u_i^\varepsilon &&(1\le i\le p,\ \varepsilon\in\{0,1\}),\\
+ &y_j v_j^\varepsilon &&(1\le j\le q,\ \varepsilon\in\{0,1\}),\\
+ &u_i^\varepsilon v_j^0 &&(1\le i\le p,\ 1\le j\le q,\ \varepsilon\in\{0,1\}),\\
+ &z u_i^\varepsilon &&(1\le i\le p,\ \varepsilon\in\{0,1\}),\\
+ &z y_j &&(1\le j\le q).
+\end{align*}
+\end{definition}
+
+The displayed graph is bipartite, with parts
+\begin{equation}\label{eq:bipH}
+ X\cup\bigcup_{j=1}^q V_j\cup\{z\}
+ \quad\text{and}\quad
+ Y\cup\bigcup_{i=1}^p U_i.
+\end{equation}
+It is connected: $z$ is adjacent to all of $Y\cup\bigcup_iU_i$, each $x_i$
+has a neighbour in $U_i$, and each vertex of $V_j$ is adjacent to $y_j$.
+
+\begin{proposition}\label{prop:H}
+The graph $H(p,q)$ has order $3(p+q)+1$ and size $2pq+4p+3q$.
+Its unique minimum dominating set is $X\cup Y$, and its domination number is
+$p+q$.
+\end{proposition}
+
+\begin{proof}
+The order follows by counting vertices, and the five edge classes in
+Definition~\ref{def:H} have respective sizes $2p,2q,2pq,2p,q$.
+Clearly $D=X\cup Y$ dominates the graph.
+
+Every dominating set $K$ must meet $N[x_i]=\{x_i,u_i^0,u_i^1\}$ for each $i$.
+It must also meet $N[v_j^1]=\{y_j,v_j^1\}$ for each $j$, since $v_j^1$ is a
+leaf. These $p+q$ sets are pairwise disjoint, so $|K|\ge p+q$.
+This proves $\gamma(H(p,q))=p+q$.
+
+Suppose now that $|K|=p+q$. It chooses exactly one vertex from each of these
+sets and no other vertex. In particular, $z$ and all $v_j^0$ are absent.
+If $K$ contains $u_i^0$ rather than $x_i$, then $u_i^1$ is undominated:
+its neighbours are $x_i,z$ and the vertices $v_j^0$. The same argument with
+the superscripts reversed excludes $u_i^1$. Thus every $x_i$ belongs to $K$
+and no vertex of any $U_i$ belongs to $K$.
+Finally, choosing $v_j^1$ rather than $y_j$ leaves $v_j^0$ undominated,
+because its neighbours are $y_j$ and the vertices in the sets $U_i$.
+Hence $K=X\cup Y$.
+\end{proof}
+
+For $a=\ceil{\gamma/2}$ and $b=\floor{\gamma/2}$, a direct calculation gives
+\begin{equation}\label{eq:attain}
+ \e(H(a,b))=2ab+4a+3b=\frac{\gamma(\gamma+7)}2.
+\end{equation}
+Proposition~\ref{prop:H} therefore supplies the lower bound in
+Theorem~\ref{thm:main}, including connectedness.
+
+\section{Private neighbours and local replacements}
+
+For a dominating set $D$ and $d\in D$, define
+\[
+ \epn(d,D)=\{u\in V(G)\setminus D:N(u)\cap D=\{d\}\}.
+\]
+We use closed neighbourhoods only when square brackets are displayed.
+
+\begin{lemma}\label{lem:private}
+If $G$ has no isolated vertices and $D$ is its unique minimum dominating set,
+then $|\epn(d,D)|\ge2$ for every $d\in D$.
+\end{lemma}
+
+\begin{proof}
+If $\epn(d,D)=\{u\}$, the set $(D\setminus\{d\})\cup\{u\}$ dominates $G$:
+$u$ dominates itself and $d$, while every other vertex outside $D$ retains a
+neighbour in $D\setminus\{d\}$. This contradicts uniqueness.
+
+If $\epn(d,D)=\varnothing$ and $d$ has a neighbour in $D$, then
+$D\setminus\{d\}$ is a smaller dominating set. Otherwise $d$ has no neighbour
+in $D$. The no-isolate assumption gives a neighbour $u$ outside $D$, and
+$(D\setminus\{d\})\cup\{u\}$ is again a different dominating set of the same
+cardinality. All cases are impossible.
+\end{proof}
+
+The next two lemmas concern induced subgraphs that arise after two members
+of $D$ are removed. They include every possible edge between the two centers.
+The six-vertex argument is the local estimate used in the proof of
+Theorem~12 of~\cite{KN}; we record its equality patterns as well.
+
+\begin{lemma}\label{lem:six}
+Let $F$ be a bipartite graph with parts $\{x\}\cup V$ and $\{y\}\cup U$,
+where $|U|=|V|=2$. Assume that $x$ is adjacent to both vertices of $U$ and
+$y$ to both vertices of $V$. If $\{x,y\}$ is the unique dominating set of
+cardinality at most two, then at most two edges occur among $xy$ and the
+$U$--$V$ edges. If exactly two occur, either $xy$ is absent and the
+$U$--$V$ edges form a two-edge star, or $xy$ is present and there is exactly
+one $U$--$V$ edge.
+\end{lemma}
+
+\begin{proof}
+Two disjoint $U$--$V$ edges give an alternative dominating pair: select
+opposite endpoints, one from each edge. If $xy$ is absent, three
+$U$--$V$ edges contain two disjoint edges. Thus there are at most two, and a
+two-edge configuration must be a star.
+
+Suppose $xy$ is present. Two $U$--$V$ edges either are disjoint or form a
+star. A star centered at $u\in U$ gives the dominating pair $\{x,u\}$;
+a star centered at $v\in V$ gives $\{y,v\}$. Consequently at most one
+$U$--$V$ edge can accompany $xy$.
+\end{proof}
+
+\begin{lemma}\label{lem:seven}
+Let $F$ have the same form as in Lemma~\ref{lem:six}, except that $|U|=2$
+and $|V|=3$. If $\{x,y\}$ is the unique dominating set of cardinality at
+most two, then at most four edges occur among $xy$ and the $U$--$V$ edges.
+\end{lemma}
+
+\begin{proof}
+If $xy$ is absent and at least five $U$--$V$ edges occur, one vertex
+$u\in U$ is adjacent to all three vertices of $V$, and the other vertex
+$u'$ is adjacent to at least two. Choose $v\in V$ adjacent to $u'$.
+The pair $\{u,v\}$ dominates $F$, a contradiction.
+
+If $xy$ is present, any vertex $v\in V$ adjacent to both vertices of $U$
+gives the alternative dominating pair $\{y,v\}$. Every vertex of $V$
+therefore has at most one neighbour in $U$. There are at most three
+$U$--$V$ edges, and at most four edges when $xy$ is included.
+\end{proof}
+
+These are direct combinatorial proofs. The exhaustive checks summarized in
+Appendix~\ref{app:checks} are supplementary and are not used as hypotheses in
+what follows.
+
+\section{The sharp upper bound}\label{sec:upper}
+
+Let $G\in\mathcal B_\gamma$, and let $D$ be its unique minimum dominating set.
+By Lemma~\ref{lem:private}, we may select two exterior private neighbours for
+each vertex of $D$. The selected pairs are disjoint and account for $2\gamma$
+vertices. Since $n(G)=3\gamma+1$, exactly one further vertex $z$ remains.
+
+Choose the names of the bipartition classes so that $z\in A$, and write
+\[
+ D\cap A=\{x_1,\ldots,x_p\},\qquad
+ D\cap B=\{y_1,\ldots,y_q\},\qquad p+q=\gamma.
+\]
+Let $U_i\subseteq B$ be the selected private pair of $x_i$, and
+$V_j\subseteq A$ the selected private pair of $y_j$. Set
+\[
+ J=N(z)\cap D\subseteq\{y_1,\ldots,y_q\},\qquad t=|J|.
+\]
+Because $D$ dominates $z$, we have $t\ge1$, and in particular $q\ge1$.
+
+Privacy and bipartiteness give a complete list of possible edges:
+\begin{enumerate}
+\item the $2\gamma$ selected center-to-private edges;
+\item $x_iy_j$ and the edges between $U_i$ and $V_j$, for each pair $(i,j)$;
+\item the edges from $z$ to $J$ and to $\bigcup_iU_i$.
+\end{enumerate}
+In particular, edges inside $D$ have not been discarded: they are precisely
+the possible edges $x_iy_j$ in the second class.
+
+\subsection{The additional vertex has several dominators}
+
+Suppose $t\ge2$. For each $i,j$, consider the induced six-vertex graph
+\[
+ G[K_{ij}],\qquad K_{ij}=\{x_i,y_j\}\cup U_i\cup V_j.
+\]
+The set $D\setminus\{x_i,y_j\}$ dominates every vertex outside $K_{ij}$.
+Each selected private vertex outside the cell retains its own center;
+the vertex $z$ retains a neighbour in $J$ because only one $y$-center has
+been removed.
+
+If $G[K_{ij}]$ had a dominating set $S$ of cardinality at most two other
+than $\{x_i,y_j\}$, then
+\[
+ (D\setminus\{x_i,y_j\})\cup S
+\]
+would be a dominating set of $G$ of cardinality at most $\gamma$, distinct
+from $D$ when its cardinality is $\gamma$. This contradicts minimum
+cardinality or uniqueness. Thus Lemma~\ref{lem:six} applies to every cell.
+The optional edge sets of these cells are disjoint, and
+$\deg(z)\le2p+q$. Consequently
+\begin{equation}\label{eq:multiple}
+ \e(G)\le 2\gamma+2pq+2p+q.
+\end{equation}
+When $p=0$, the same bound follows directly from the edge list, with an
+empty sum over cells.
+
+\subsection{The additional vertex has one dominator}
+
+Suppose $J=\{y_{j_0}\}$. For every $j\ne j_0$, the preceding six-vertex
+replacement still applies, since $y_{j_0}$ is retained and dominates $z$.
+For each $i$ consider instead
+\[
+ L_i=\{x_i,y_{j_0}\}\cup U_i\cup V_{j_0}\cup\{z\}.
+\]
+In $G[L_i]$, the center $y_{j_0}$ has the three private vertices
+$V_{j_0}\cup\{z\}$. Every vertex outside $L_i$ is dominated by
+$D\setminus\{x_i,y_{j_0}\}$, so the same replacement argument proves that
+Lemma~\ref{lem:seven} applies.
+
+The optional edges of $G[L_i]$ are $x_i y_{j_0}$ and the edges from $U_i$
+to $V_{j_0}\cup\{z\}$. These edge sets are disjoint for different $i$.
+The edge $zy_{j_0}$ is counted once separately. Therefore
+\begin{align}
+ \e(G)&\le 2\gamma+1+2p(q-1)+4p\notag\\
+       &=2\gamma+1+2pq+2p\notag\\
+       &\le2\gamma+2pq+2p+q.\label{eq:single}
+\end{align}
+If $p=0$, only the $2\gamma$ fixed private edges and $zy_{j_0}$ occur,
+so the displayed inequalities remain valid.
+
+\subsection{Optimizing the bipartition}
+
+Put $d=p-q$. Since $p+q=\gamma$, both cases yield
+\begin{equation}\label{eq:opt}
+ \e(G)\le 2\gamma+2pq+2p+q
+ =\frac{\gamma(\gamma+7)}2-\frac{d(d-1)}2
+ \le\frac{\gamma(\gamma+7)}2.
+\end{equation}
+The final inequality holds because $d$ is an integer. Equality in the
+numerical optimization requires $d\in\{0,1\}$. The parity of $\gamma$
+then forces
+\begin{equation}\label{eq:balanced}
+ p=\ceil{\gamma/2},\qquad q=\floor{\gamma/2}.
+\end{equation}
+Together with~\eqref{eq:attain}, this proves the extremal-value assertion of
+Theorem~\ref{thm:main} for every $\gamma\ge2$.
+
+\section{Rigidity at equality}\label{sec:rigidity}
+
+Suppose now that $\gamma\ge4$ and
+$\e(G)=\gamma(\gamma+7)/2$. Equation~\eqref{eq:balanced} gives
+$q=\floor{\gamma/2}\ge2$. The final inequality in~\eqref{eq:single}
+loses $q-1$ edges, so the case $t=1$ cannot give equality.
+Every inequality in~\eqref{eq:multiple} must therefore be an equality.
+It follows that $z$ is adjacent to every $y_j$ and to every vertex of
+$\bigcup_iU_i$, and each six-vertex cell has exactly two optional edges.
+
+We first show that $D$ is independent. If $x_iy_j$ were an edge, then
+\[
+ (D\setminus\{x_i\})\cup\{z\}
+\]
+would be a different dominating set of cardinality $\gamma$.
+Indeed, $x_i$ is dominated by the retained $y_j$, the pair $U_i$ is
+dominated by $z$, and every other private pair retains its center.
+Thus no edge $x_iy_j$ occurs.
+
+Lemma~\ref{lem:six} now shows that the two edges between $U_i$ and $V_j$
+form a star. This star cannot be centered at $u\in U_i$, because
+\[
+ (D\setminus\{x_i,y_j\})\cup\{u,z\}
+\]
+would dominate $G$. The vertex $u$ dominates $x_i$ and both members of
+$V_j$, while $z$ dominates $y_j$ and both members of $U_i$.
+All other private pairs retain their centers. Therefore both members of
+$U_i$ are adjacent to exactly one vertex of $V_j$; denote it by $v_j^{(i)}$.
+
+Fix $j$. Suppose that the selected vertex $v_j^{(i)}$ is not constant as
+$i$ varies. Choose one vertex $u_i\in U_i$ for every $i$, and define
+\[
+ K=\{z\}\cup\{u_i:1\le i\le p\}
+       \cup\bigl((D\cap B)\setminus\{y_j\}\bigr).
+\]
+Then $|K|=1+p+(q-1)=\gamma$. Every $x_i$ is dominated by $u_i$;
+every vertex in $\bigcup_iU_i$ and every $y$-center is dominated by $z$.
+The two vertices of $V_j$ are dominated because both possible choices of
+$v_j^{(i)}$ occur. Every other pair $V_\ell$ retains $y_\ell$.
+Hence $K$ is a second minimum dominating set, a contradiction.
+
+For each $j$, rename the members of $V_j$ so that their common selected
+vertex is $v_j^0$. The complete edge list is now exactly that of $H(p,q)$.
+Equation~\eqref{eq:balanced} proves the equality assertion in
+Theorem~\ref{thm:main}.
+
+\section{Consequences and further questions}
+
+The extremal values at $\gamma=2,3$ are $9$ and $15$; the graphs
+$H(1,1)$ and $H(2,1)$ attain them. The rigidity assertion proved above is
+restricted to $\gamma\ge4$. Neither the theorem nor Corollary~\ref{cor:counter}
+asserts that the $13$-vertex example is the smallest counterexample over all
+orders in the conjecture of~\cite{KN}.
+
+For $\gamma\ge4$, the additional vertex of the extremal graph has
+$q=\floor{\gamma/2}\ge2$ neighbours in the unique minimum dominating set.
+Consequently this set is not an efficient dominating set. The shared vertex
+is forced at equality and is responsible for the additional edges over
+\eqref{eq:sourcebound}. At $n=3\gamma$, there is no vertex available for this
+role.
+
+A natural next problem is to determine the extremal size at $n=3\gamma+r$
+for a fixed $r\ge2$, together with the equality cases. Selecting two private
+neighbours for each dominator then leaves $r$ vertices. Replacing two centers
+may leave some of those vertices undominated, so their incidences with the
+dominating set must be retained in any local reduction. The exact threshold
+at which new patterns arise is not determined here.
+
+\appendix
+\section{Supplementary exact checks}\label{app:checks}
+
+The proofs in the main text do not depend on a computer enumeration.
+Two separate implementations were nevertheless used to check the local
+lemmas, the explicit counterexample, and the first values of the construction.
+All tests use finite sets or integer bit masks.
+
+For the six-vertex cell, the fixed edges are $xu_0,xu_1,yv_0,yv_1$.
+The optional edges, in bit order, are
+\[
+ xy,\ u_0v_0,\ u_0v_1,\ u_1v_0,\ u_1v_1.
+\]
+For the seven-vertex cell, the fixed edges are $xu_0,xu_1,yv_0,yv_1,yv_2$,
+and the optional edges are
+\[
+ xy,\ u_0v_0,\ u_0v_1,\ u_0v_2,\ u_1v_0,\ u_1v_1,\ u_1v_2.
+\]
+Each implementation considers every optional-edge subset and tests every
+vertex subset of cardinality at most two for domination. Table~\ref{tab:cells}
+records the results. ``Admissible'' means that $\{x,y\}$ is the only dominating
+set of cardinality at most two. Decimal masks use the first listed edge as
+the least significant bit.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{lrrrl}
+\toprule
+Cell & Patterns & Admissible & Maximum & Maximizing masks\\
+\midrule
+Six vertices & 32 & 14 & 2 & 3, 5, 6, 9, 10, 17, 20, 24\\
+Seven vertices & 128 & 58 & 4 & 54, 90, 108\\
+\bottomrule
+\end{tabular}
+\caption{Exhaustive local checks. The maximum counts optional edges.}
+\label{tab:cells}
+\end{table}
+
+A separate verifier reads the explicit $13$-vertex edge list and checks all
+$2^{13}=8192$ vertex subsets. It finds no dominating set of size at most three
+and exactly one of size four, namely $X\cup Y$. It also checks connectedness,
+bipartiteness, simplicity and the edge count $22$. The counts of dominating
+sets, by cardinality $0,1,\ldots,13$, are
+\[
+ (0,0,0,0,1,127,492,855,876,586,262,76,13,1).
+\]
+The first balanced construction values are recorded in
+Table~\ref{tab:small}; all subsets of cardinality at most $\gamma$ were checked.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{rrrrr}
+\toprule
+$\gamma$ & $(p,q)$ & $n$ & $\e(H(p,q))$ & Minimum dominating sets\\
+\midrule
+2 & $(1,1)$ & 7 & 9 & 1\\
+3 & $(2,1)$ & 10 & 15 & 1\\
+4 & $(2,2)$ & 13 & 22 & 1\\
+5 & $(3,2)$ & 16 & 30 & 1\\
+6 & $(3,3)$ & 19 & 39 & 1\\
+\bottomrule
+\end{tabular}
+\caption{Small instances of the connected extremal family.}
+\label{tab:small}
+\end{table}
+
+The accompanying files \path{check_local_cells.py} and
+\path{local_cells_certificate.json} give all local patterns and their
+dominating pairs. The explicit example is in \path{candidate13.json};
+\path{check_counterexample_independent.py} verifies it from that edge list.
+A second implementation, \path{audit/independent_check.py}, independently
+repeats the local checks and tests all $4096$ saturated assemblies at $p=q=2$.
+Exactly four labelled assemblies retain a unique minimum dominating set;
+they correspond to the independent choice of which member of each $V_j$
+is named $v_j^0$, and are isomorphic to $H(2,2)$.
+
+\begin{thebibliography}{9}
+\bibitem{FRV}
+M.~Fischermann, D.~Rautenbach and L.~Volkmann,
+\emph{Maximum graphs with a unique minimum dominating set},
+Discrete Mathematics \textbf{260} (2003), 197--203.
+
+\bibitem{FS}
+M.~Fraboni and N.~Shank,
+\emph{Maximum graphs with unique minimum dominating set of size two},
+Australasian Journal of Combinatorics \textbf{46} (2010), 91--99.
+\url{https://ajc.maths.uq.edu.au/pdf/46/ajc_v46_p091.pdf}.
+
+\bibitem{E}
+J.~Erlbacher,
+\emph{Demonstrandum---wave-1 verified artifacts: Koch--Narayan counterexample package},
+public research artifacts, 2026.
+\href{https://github.com/demonstrandum-research/artifacts/blob/94db9ed50d48a57aae5ccb72e6a95a2b8f8f39d3/problems/p2-factory/kills/koch-narayan/WRITEUP.md}{Pinned write-up, commit \texttt{94db9ed50d48} (13 June 2026)}.
+
+\bibitem{KN}
+G.~Koch and D.~Narayan,
+\emph{Maximal bipartite graphs with a unique minimum dominating set},
+arXiv:2511.01719v1, 3 November 2025.
+\url{https://arxiv.org/abs/2511.01719v1}.
+\end{thebibliography}
+\end{document}
