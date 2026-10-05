@@ -1,0 +1,95 @@
+{
+  "status": "INHERITED_CUMULATIVE_BYTE_MATCHED_COVERAGE",
+  "repackaging_did_not_freshly_rebuild_numerical_chain": true,
+  "declarations": 607,
+  "coverage_kind": "successful_partitioned592_plus_successful_inline3_5_7_reports",
+  "fresh_monolithic607_audit_pass": false,
+  "fresh_new15_aggregate_audit_pass": false,
+  "groups": [
+    {
+      "kind": "successful_partitioned592",
+      "count": 592,
+      "status_sha256": "d9a603e88819ec106de649c035f0290d22e1ca34a8413bb5bb0f4be825e5089b",
+      "axiom_coverage_sha256": "f76f877d5a7bec785dccbbf9f42d32d806991f9598a94525ac85da1f0e89aa88"
+    },
+    {
+      "kind": "successful_full_artifact_compile_and_inline_axiom_reports",
+      "module": "R2FinalInverseCertificate",
+      "count": 3,
+      "source_sha256": "da450e36ec215b295c0bbcff59fb9c7626f0263b3b9e12c047a24dc437ad7eba",
+      "log_sha256": "805c98fe0fdc0b258bb369e0d2ca8039a285cbc4b5c1b1ae321eb9081c34b439",
+      "status_sha256": "0461956b8114d5e9104488c162755706cac1ad8bfdd6d89430a791a3accf8a71",
+      "output_hashes": {
+        "olean": "2164d49531ce00ef4bb7b017bb4c4a04cc450a5bbf501be10e21ef0cc3bf622c",
+        "ilean": "697f2aed51cb9e48c8ca49d10e34fbc950d5d3d1ba3660b5362bd7114a60fac5",
+        "c": "6353c956cc128978798ee0457dac799ba5edd1cc2079a64205462325b99dc280"
+      },
+      "exit_code": 0,
+      "end_utc": "2026-10-05T14:32:07Z"
+    },
+    {
+      "kind": "successful_full_artifact_compile_and_inline_axiom_reports",
+      "module": "R2TerminalIdentificationCertificate",
+      "count": 5,
+      "source_sha256": "72e282117734c65026b88f5f0c91d20bfcecc8405137c89966dd7559e83b5f8e",
+      "log_sha256": "13c170678e517ea0459ddc2db1a3d8ecfe469f3f113f0bf59a40654769f019c9",
+      "status_sha256": "c09ecae72007fa5ad88c8a708ac1c29c2b256f3ddf7a316398fbe0355b714497",
+      "output_hashes": {
+        "olean": "b3672e4fcc236c523c6459117495e53ba387adfbec3fef8d162eed14db214407",
+        "ilean": "856670d6c3caf4e1e39cbf3ef4e4b4a9cc44d0f3fe33d900f4695275e62a2fa1",
+        "c": "39c69b007b12dd3b9d86430b8e67a7e02595a8e3a6d27a8acce4a2fc392d53a7"
+      },
+      "exit_code": 0,
+      "end_utc": "2026-10-05T14:34:30Z"
+    },
+    {
+      "kind": "successful_full_artifact_compile_and_inline_axiom_reports",
+      "module": "R2FiniteSeedIdentification",
+      "count": 7,
+      "source_sha256": "86ccdeb200d16e263ab2b986160fe60918b31f694ef8f93e4b6aeb7570cb78ca",
+      "log_sha256": "fecaf3624c672b93428827a210e490685dfec0fb7604ebcdcae928a1d030e984",
+      "status_sha256": "0c2070c56aa0c566345e7bfffcd028521b20fe06da5b1d7c7983c21f1bcc537f",
+      "output_hashes": {
+        "olean": "a7729f883601eee4c02902482a384d25ebd3402f41ac0d3ba352fb928f0a93e9",
+        "ilean": "444d2bfe488b24841905e129991ee3a744aad34a92954d7f7ea4c3c1de10b686",
+        "c": "c2271f105afa6bccb81de4b541ddd694b3318a51ff0f1c63d381e86e7b25ce38"
+      },
+      "exit_code": 0,
+      "end_utc": "2026-10-05T14:36:28Z"
+    }
+  ],
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "missing_names": [],
+  "extra_names": [],
+  "duplicate_names": [],
+  "finite_equality_premises": {
+    "initial": 1,
+    "inverses": 25,
+    "open_transitions": 24,
+    "terminal": 1,
+    "total": 51,
+    "remaining_equality_premises_for_this_seed": 0
+  },
+  "seed_scope": "first cap 7.92 seed only; actual rational and real r2Core26 identified with recorded seed; strict 1/50 positive-definite margin",
+  "not_certified": [
+    "all eliminated-pivot positive definiteness",
+    "all finite contraction inequalities",
+    "raw-graph/block identification",
+    "infinite tail and response estimates",
+    "arbitrary unequal-cell assembly for the concrete endpoints",
+    "separate c1=790537/100000 energy and J48 certificate",
+    "full R2 theorem"
+  ],
+  "operational_failed_new15_audit": {
+    "exit_code": -15,
+    "wall_seconds": 118.65311195599861,
+    "start_utc": "2026-10-05T14:38:30Z",
+    "end_utc": "2026-10-05T14:40:29Z",
+    "profile_import_completed": false,
+    "axiom_output_lines": 0
+  }
+}

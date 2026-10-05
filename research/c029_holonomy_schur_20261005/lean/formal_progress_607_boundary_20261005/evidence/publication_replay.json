@@ -1,0 +1,550 @@
+{
+  "status": "PASS",
+  "lean_version": "Lean (version 4.33.1, x86_64-unknown-linux-gnu, commit 819816b2e0a3bf405af45ae5c7af2491d8f5bee6, Release)",
+  "hard_wall_seconds_each": 90,
+  "third_party_cache_reused": true,
+  "prior_project_objects_used": false,
+  "source_sha256": {
+    "C029InnerProductCrossEstimate.lean": "d2efcbd1ff370eb9ed3976338a572aa950d83d2aa599b746899e7b1c0ecc894e",
+    "C029FlattenedMatrixPosDef.lean": "073aca7e8740cf4d9a71e9ed07bd7703aa4cc3a727002d75e81faf220a64609a",
+    "C029AssembledQuadraticPositivity.lean": "9aa95a760ade59d97bf96a23fcdd27c397c12849581da6b89f3a760c8b11a53f",
+    "C029OpenSchur.lean": "3679c4f494fa48fde12866ae13cad9db0d6ebeadac821243fde6f2ecc55f74be",
+    "C029BoundaryIncidenceEstimate.lean": "846ab092f88ce884bd44529b98f5c6362ef92c17eed157332b7d0075d9d2f097",
+    "TargetA/R2TerminalSchur.lean": "03d5aafca01b84c129f7f2bb95dc4cc7237f90c951ccb7b2d9f27ff878d5c99b",
+    "TargetA/R2GenericSchurBridge.lean": "b0e521510fb325ea7e0a72863f17375225c0b580105266e0f18db5edfe2ab849",
+    "TargetA/R2RationalRecurrence.lean": "c79c12d3ab46a359d7950ac91bbc6d1e8d2cbe9cb7a2b94bc9c57009abb684dd"
+  },
+  "parser_selftests": {
+    "valid_format_tests": 4,
+    "negative_tests": 7,
+    "status": "PASS"
+  },
+  "runs": [
+    {
+      "module": "C029OpenSchur",
+      "source_sha256": "3679c4f494fa48fde12866ae13cad9db0d6ebeadac821243fde6f2ecc55f74be",
+      "start_utc": "2026-10-05T16:10:40.142670+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 5.348551897997822,
+      "axiom_check": {
+        "count": 5,
+        "axiom_union": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axioms": {
+          "C029OpenSchur.posDef_submatrix_equiv": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.strict_schur_criterion": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.open_sum_schur_eq_update": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.open_schur_eq_update": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.open_posDef_iff": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      },
+      "output_sha256": {
+        "olean": "4210bfeb280438b4c106e42892657db30419528aca7e2ee14f2089fd0ffe6e9e",
+        "ilean": "607641c8859047f535ff7312d404091ff020f23ace0d35aa644caee933cb7b69"
+      },
+      "status": "PASS"
+    },
+    {
+      "module": "TargetA/R2TerminalSchur",
+      "source_sha256": "03d5aafca01b84c129f7f2bb95dc4cc7237f90c951ccb7b2d9f27ff878d5c99b",
+      "start_utc": "2026-10-05T16:10:45.493327+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 4.1718341979976685,
+      "axiom_check": {
+        "count": 0,
+        "axiom_union": [],
+        "axioms": {}
+      },
+      "output_sha256": {
+        "olean": "bbaadbee1ee3944164d8319026701bfbb47a7031df4f0516dcd463802f3cd39a",
+        "ilean": "9d99dd310c1238105a59d2cbb4303d2c9ef9df9ffd04a9694e4753ece2a305ea"
+      },
+      "status": "PASS"
+    },
+    {
+      "module": "TargetA/R2RationalRecurrence",
+      "source_sha256": "c79c12d3ab46a359d7950ac91bbc6d1e8d2cbe9cb7a2b94bc9c57009abb684dd",
+      "start_utc": "2026-10-05T16:10:49.667458+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 3.3887602089998836,
+      "axiom_check": {
+        "count": 0,
+        "axiom_union": [],
+        "axioms": {}
+      },
+      "output_sha256": {
+        "olean": "8fd064b1af9a0783b0d7041cac04102321469c44df8bfadf0b0616e90b21354a",
+        "ilean": "b5a537e67ed2b959ba383ed916153fc62d6c6ee0df3253260312c6949775a71d"
+      },
+      "status": "PASS"
+    },
+    {
+      "module": "TargetA/R2GenericSchurBridge",
+      "source_sha256": "b0e521510fb325ea7e0a72863f17375225c0b580105266e0f18db5edfe2ab849",
+      "start_utc": "2026-10-05T16:10:53.057680+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 3.2920941559968924,
+      "axiom_check": {
+        "count": 30,
+        "axiom_union": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axioms": {
+          "TargetA.r2_posDef_submatrix_equiv": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_strict_schur_criterion": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_terminal_posDef_iff": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_terminal_core_blocks": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_terminal_core_symmetric_blocks": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_terminal_cross_correction": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_terminal_H_corrections": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_terminal_EPlus_posDef_iff": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.R2RecurrenceState.ext": [],
+          "TargetA.r2D": [
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2EP": [
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2EM": [
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2Coupling": [
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2InitialState": [
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2UpdateWithInverse": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2RecurrenceStep": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2Orbit": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2CoreWithInverse": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2Core26": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.posDef_submatrix_equiv": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.strict_schur_criterion": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.open_sum_schur_eq_update": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.open_schur_eq_update": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029OpenSchur.open_posDef_iff": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2GenericStateEquiv": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_generic_update_bridge": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_generic_packed_bridge": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_generic_updated_packed_bridge": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_generic_schur_bridge": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "TargetA.r2_generic_open_posDef_iff": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      },
+      "output_sha256": {
+        "olean": "34524d34d16e6b8702534c6cc0bb050fb83cbeb0cc0d542d284f418084edb75f",
+        "ilean": "45ab124313b4b68bed3df4b4d49a7928c5a6bbfa56e5467fcaabebd9167dfb7c"
+      },
+      "status": "PASS"
+    },
+    {
+      "module": "C029BoundaryIncidenceEstimate",
+      "source_sha256": "846ab092f88ce884bd44529b98f5c6362ef92c17eed157332b7d0075d9d2f097",
+      "start_utc": "2026-10-05T16:10:56.351203+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 2.1047531589974824,
+      "axiom_check": {
+        "count": 7,
+        "axiom_union": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axioms": {
+          "C029BoundaryIncidence.weighted_pair_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029BoundaryIncidence.sum_squared_endpoint_incidences": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029BoundaryIncidence.permutation_cross_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029BoundaryIncidence.abs_cross_form_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029BoundaryIncidence.cyclic_cross_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029BoundaryIncidence.one_cell_loop_expansion": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029BoundaryIncidence.two_cell_parallel_expansion": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      },
+      "output_sha256": {
+        "olean": "1465eb0d83aeccc7e0f5b74d89ac14b69d13c1f4c5d8f9c8ac5f175866fe7303",
+        "ilean": "5f1970f6a41951c4702b299ce9c5eaa352f222948eaadb37d6d0f134c5d041d0"
+      },
+      "status": "PASS"
+    },
+    {
+      "module": "C029InnerProductCrossEstimate",
+      "source_sha256": "d2efcbd1ff370eb9ed3976338a572aa950d83d2aa599b746899e7b1c0ecc894e",
+      "start_utc": "2026-10-05T16:10:58.457006+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 3.42770143099915,
+      "axiom_check": {
+        "count": 6,
+        "axiom_union": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axioms": {
+          "C029InnerProductCross.abs_inner_apply_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029InnerProductCross.permutation_inner_cross_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029InnerProductCross.cyclic_inner_cross_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029InnerProductCross.matrixOperator": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029InnerProductCross.matrixOperator_apply": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029InnerProductCross.cyclic_matrix_cross_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      },
+      "output_sha256": {
+        "olean": "e87c90b8506951ac61b14df0ceb5dbfd6d4e928eb8c74480742934460c7a2173",
+        "ilean": "734c753f10005018cd1dd29bf55352baaecca4ab326c15f30ac1c93b6dcc56cc"
+      },
+      "status": "PASS"
+    },
+    {
+      "module": "C029AssembledQuadraticPositivity",
+      "source_sha256": "9aa95a760ade59d97bf96a23fcdd27c397c12849581da6b89f3a760c8b11a53f",
+      "start_utc": "2026-10-05T16:11:01.886612+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 5.207733131999703,
+      "axiom_check": {
+        "count": 9,
+        "axiom_union": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axioms": {
+          "C029AssembledQuadratic.assembledOperator": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029AssembledQuadratic.assembledOperator_apply": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029AssembledQuadratic.assembled_quadratic_identity": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029AssembledQuadratic.signed_edge_norm_le": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029AssembledQuadratic.diagonal_quadratic_lower": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029AssembledQuadratic.assembled_quadratic_lower_bound": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029AssembledQuadratic.block_energy_pos": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029AssembledQuadratic.assembled_strict_quadratic_pos": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029AssembledQuadratic.cyclic_selfAdjoint_core_strict_quadratic_pos": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      },
+      "output_sha256": {
+        "olean": "5da4ba4dbb09731b36cb20bde41dbd8eef119ea13d7eb6f1f32ee0fefa124f18",
+        "ilean": "9c6f2b5b4a29006c7c53ca464757c6988579914f2b20bdd7102f2534c92decb5"
+      },
+      "status": "PASS"
+    },
+    {
+      "module": "C029FlattenedMatrixPosDef",
+      "source_sha256": "073aca7e8740cf4d9a71e9ed07bd7703aa4cc3a727002d75e81faf220a64609a",
+      "start_utc": "2026-10-05T16:11:07.096147+00:00",
+      "exit_code": 0,
+      "timed_out": false,
+      "wall_seconds": 7.152288323999528,
+      "axiom_check": {
+        "count": 15,
+        "axiom_union": [
+          "Classical.choice",
+          "Quot.sound",
+          "propext"
+        ],
+        "axioms": {
+          "C029FlattenedMatrix.l2Operator": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.l2Operator_apply": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.assembled_bilinear_identity": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.assembled_pairing_symmetric": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.l2Operator_isSymmetric": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.BlockSpace": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.blockBasis": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.blockBasis_repr_apply": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.flatten_norm_sq": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.assembledMatrix": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.assembledMatrix_mulVec_repr": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.assembledMatrix_quadratic_eq": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.assembledMatrix_isHermitian": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.assembledMatrix_posDef": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ],
+          "C029FlattenedMatrix.cyclic_assembledMatrix_posDef": [
+            "Classical.choice",
+            "Quot.sound",
+            "propext"
+          ]
+        }
+      },
+      "output_sha256": {
+        "olean": "b33c9fd57a0dc04f4ef1c42302f71fee829912f5134e21a72b21473cd4af9a78",
+        "ilean": "5c69f266ad7e4e2bfcc64957c2e7d79d5b812126a36fc8e7f05e1957f6a53540"
+      },
+      "status": "PASS"
+    }
+  ],
+  "sources_unchanged": true
+}

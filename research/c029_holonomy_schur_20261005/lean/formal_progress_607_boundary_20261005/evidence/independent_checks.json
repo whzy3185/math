@@ -1,0 +1,81 @@
+{
+  "boundary_structural": {
+    "status": "PASS",
+    "scope": "conditional generic additive-boundary matrix positivity",
+    "count": 37,
+    "fresh_source_modules": [
+      {
+        "module": "C029BoundaryIncidenceEstimate",
+        "source_sha256": "846ab092f88ce884bd44529b98f5c6362ef92c17eed157332b7d0075d9d2f097",
+        "exit_code": 0,
+        "timed_out": false,
+        "wall_seconds": 5.021456114001921,
+        "status": "PASS"
+      },
+      {
+        "module": "C029InnerProductCrossEstimate",
+        "source_sha256": "d2efcbd1ff370eb9ed3976338a572aa950d83d2aa599b746899e7b1c0ecc894e",
+        "exit_code": 0,
+        "timed_out": false,
+        "wall_seconds": 3.7911757540023245,
+        "status": "PASS"
+      },
+      {
+        "module": "C029AssembledQuadraticPositivity",
+        "source_sha256": "9aa95a760ade59d97bf96a23fcdd27c397c12849581da6b89f3a760c8b11a53f",
+        "exit_code": 0,
+        "timed_out": false,
+        "wall_seconds": 5.2901286959968274,
+        "status": "PASS"
+      },
+      {
+        "module": "C029FlattenedMatrixPosDef",
+        "source_sha256": "073aca7e8740cf4d9a71e9ed07bd7703aa4cc3a727002d75e81faf220a64609a",
+        "exit_code": 0,
+        "timed_out": false,
+        "wall_seconds": 7.9338270490006835,
+        "status": "PASS"
+      }
+    ],
+    "standard_axioms_only": true
+  },
+  "typed_bridge": {
+    "status": "PASS",
+    "scope": "local typed recurrence Schur bridge under explicit positive-pivot hypothesis",
+    "count": 30,
+    "fresh_source_modules": [
+      {
+        "module": "C029OpenSchur",
+        "source_sha256": "3679c4f494fa48fde12866ae13cad9db0d6ebeadac821243fde6f2ecc55f74be",
+        "exit_code": 0,
+        "wall_seconds": 11.097292930000549
+      },
+      {
+        "module": "TargetA/R2TerminalSchur",
+        "source_sha256": "03d5aafca01b84c129f7f2bb95dc4cc7237f90c951ccb7b2d9f27ff878d5c99b",
+        "exit_code": 0,
+        "wall_seconds": 7.64721423499941
+      },
+      {
+        "module": "TargetA/R2RationalRecurrence",
+        "source_sha256": "c79c12d3ab46a359d7950ac91bbc6d1e8d2cbe9cb7a2b94bc9c57009abb684dd",
+        "exit_code": 0,
+        "wall_seconds": 5.001328207999904
+      },
+      {
+        "module": "TargetA/R2GenericSchurBridge",
+        "source_sha256": "b0e521510fb325ea7e0a72863f17375225c0b580105266e0f18db5edfe2ab849",
+        "exit_code": 0,
+        "wall_seconds": 4.185454681999545
+      }
+    ],
+    "standard_axioms_only": true,
+    "original_recurrence_byte_identical": true,
+    "terminal_changes_imports_only": true
+  },
+  "lean_version": "4.33.1",
+  "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+  "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "third_party_cached_dependencies_reused": true,
+  "prior_project_binaries_excluded_in_fresh_structural_checks": true
+}
