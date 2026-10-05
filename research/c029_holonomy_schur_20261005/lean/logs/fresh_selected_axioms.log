@@ -1,0 +1,15 @@
+START 2026-10-05T08:11:39Z
+COMMAND: lake env lean AxiomAudit.lean
+'TargetA.period8_alpha_plus_main_theorem' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TargetA.period8_root_le_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TargetA.period8_root_lt_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TargetA.period8_edge_root_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TargetA.period8_antiperiodic_parameter_re_lt_two' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TargetA.period8_antiperiodic_holonomy_root_lt_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TargetA.period8_antiperiodic_fiber_eigen_square_lt_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+'TargetA.period8_antiperiodic_cell_eigen_square_lt_edge' depends on axioms: [propext, Classical.choice, Quot.sound]
+TargetA.period8_antiperiodic_cell_eigen_square_lt_edge {N L : ℕ} [NeZero N] (hL : L ≠ 0) (F : ZMod N → Fin 8 → ℂ)
+  (lambda : ℝ) (hF : F ≠ 0) (hanti : TargetA.period8CellTranslation (↑L) F = -F)
+  (hEig : TargetA.period8CellAction F = ↑lambda • F) : lambda ^ 2 < TargetA.period8Edge
+EXIT_CODE=0
+END 2026-10-05T08:12:22Z

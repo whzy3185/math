@@ -1,0 +1,71 @@
+{
+  "status": "PASS",
+  "verification_completed_utc": "2026-10-05T08:13:01Z",
+  "baseline_repository": "https://github.com/whzy3185/math",
+  "baseline_commit": "7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2",
+  "lean_version": "4.33.1",
+  "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+  "lean_archive_sha256": "890afd185370f85666025b883914ab4f4b339136f8c96167b69cfb62aecaf235",
+  "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "mathlib_cached_modules_restored": 8690,
+  "new_theorem_count": 16,
+  "audited_theorem_count": 165,
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "baseline_theorem_sources_unchanged": true,
+  "forbidden_source_tokens_found": [],
+  "checks": {
+    "fresh_baseline": {
+      "exit_code": 0,
+      "start_utc": "2026-10-05T07:58:27Z",
+      "end_utc": "2026-10-05T08:10:04Z",
+      "command": "lake build TargetA.AllTheorems"
+    },
+    "fresh_sharp_edge": {
+      "exit_code": 0,
+      "start_utc": "2026-10-05T08:10:04Z",
+      "end_utc": "2026-10-05T08:10:52Z",
+      "command": "lake build TargetA.Period8SharpEdge"
+    },
+    "fresh_antiperiodic_cells": {
+      "exit_code": 0,
+      "start_utc": "2026-10-05T08:10:52Z",
+      "end_utc": "2026-10-05T08:11:39Z",
+      "command": "lake build TargetA.Period8AntiperiodicCells"
+    },
+    "fresh_selected_axioms": {
+      "exit_code": 0,
+      "start_utc": "2026-10-05T08:11:39Z",
+      "end_utc": "2026-10-05T08:12:22Z",
+      "command": "lake env lean AxiomAudit.lean"
+    },
+    "fresh_all_axioms": {
+      "exit_code": 0,
+      "start_utc": "2026-10-05T08:12:22Z",
+      "end_utc": "2026-10-05T08:13:01Z",
+      "command": "lake env lean AllAxiomAudit.lean"
+    }
+  },
+  "scope_exclusion": "No formal raw alpha-minus adjacency matrix to antiperiodic cell-sector seam/reindexing bridge; no formal unrestricted minimum or full Conjecture 28 counterexample theorem.",
+  "new_theorems": [
+    "TargetA.period8_edge_lt_bound",
+    "TargetA.period8_edge_ge_fifteen_halves",
+    "TargetA.period8_edge_quadratic",
+    "TargetA.period8_at_two_nonneg_of_edge_le",
+    "TargetA.period8_at_two_pos_of_edge_lt",
+    "TargetA.period8_flux_factor_pos",
+    "TargetA.period8_polynomial_ge_at_two_of_edge_le",
+    "TargetA.period8_polynomial_pos_of_edge_le_flux_lt",
+    "TargetA.period8_root_lt_edge",
+    "TargetA.period8_root_le_edge",
+    "TargetA.period8_edge_root_iff",
+    "TargetA.period8_antiperiodic_parameter_re_lt_two",
+    "TargetA.period8_antiperiodic_holonomy_root_lt_edge",
+    "TargetA.period8_antiperiodic_fiber_eigen_square_lt_edge",
+    "TargetA.period8_antiperiodic_nonzero_dft_holonomy",
+    "TargetA.period8_antiperiodic_cell_eigen_square_lt_edge"
+  ]
+}

@@ -11,3 +11,7 @@ No global-optimality theorem, new all-even classification certificate, first-dis
 ## Separate verified strengthening supplement
 
 Added the all-k≥1 one-G6 family cap7.90537 and the n202 lower obstruction7.905369, with two exact implementations, complete analytic proof, independent audit and C6 ledger entry. The earlier manuscript PDF and its proofs remain unchanged. This is not a global minimum or an exact limiting-value claim.
+
+## Fresh partial Lean verification
+
+Added the exact compiled sharp-edge and antiperiodic-cell sources and both portable axiom-audit drivers, together with five fresh successful command logs and the pinned reproduction configuration. Sixteen new theorems are compiled; all 165 baseline-plus-extension theorem declarations are audited with only the standard propext/Classical.choice/Quot.sound axiom union. No existing baseline source/configuration was changed. The raw negative-holonomy graph bridge and R2 formalizations remain outside this extension.

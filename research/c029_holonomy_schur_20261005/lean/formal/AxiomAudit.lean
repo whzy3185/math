@@ -1,0 +1,12 @@
+import TargetA.AllTheorems
+import TargetA.Period8AntiperiodicCells
+
+#print axioms TargetA.period8_alpha_plus_main_theorem
+#print axioms TargetA.period8_root_le_edge
+#print axioms TargetA.period8_root_lt_edge
+#print axioms TargetA.period8_edge_root_iff
+#print axioms TargetA.period8_antiperiodic_parameter_re_lt_two
+#print axioms TargetA.period8_antiperiodic_holonomy_root_lt_edge
+#print axioms TargetA.period8_antiperiodic_fiber_eigen_square_lt_edge
+#print axioms TargetA.period8_antiperiodic_cell_eigen_square_lt_edge
+#check TargetA.period8_antiperiodic_cell_eigen_square_lt_edge

@@ -52,7 +52,7 @@ Status: not reverified in this increment. No theorem in the manuscript relies on
 
 ## Formal proof status
 
-Full graph-level formal certification is not claimed. Partial Lean build results and the recovery run are recorded separately. The raw negative-holonomy adjacency matrix to the antiperiodic cell/fiber operator bridge remains outside the stated formalization scope. The R2 contraction and Schur-tail proof are not formalized. A later build report must name the compiled theorems and retained assumptions; it cannot retroactively certify uncovered bridges. Do not describe the partial results as a full Lean proof of either graph theorem.
+Full graph-level formal certification is not claimed. Fresh builds of the baseline, Period8SharpEdge and Period8AntiperiodicCells all passed; the extension adds 16 theorems. All 165 baseline-plus-extension declarations passed an axiom audit using only propext, Classical.choice and Quot.sound. Exact sources, command results and theorem assumptions are recorded in [the formal verification report](../lean/VERIFICATION_REPORT.md). The raw negative-holonomy adjacency matrix to the antiperiodic cell/fiber operator bridge remains outside the stated formalization scope. The R2 contraction and Schur-tail proof are not formalized. A later build report must name the compiled theorems and retained assumptions; it cannot retroactively certify uncovered bridges. Do not describe the partial results as a full Lean proof of either graph theorem.
 
 ## Literature boundary
 

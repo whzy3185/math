@@ -41,13 +41,17 @@ The programs write their output certificates alongside their source. Exact graph
 
 For the PDF, run `pdflatex -interaction=nonstopmode -halt-on-error manuscript.tex` twice from `manuscript/`. See [build instructions](manuscript/README.md) for the local TeX format fallback used in this environment.
 
-## Formal verification boundary
+## Verified partial Lean extension
 
-The fresh Lean extension rebuild is separate and pending. This snapshot includes no new Lean extension sources or new formal-PASS claim. The existing `formal/TargetA` baseline is preserved unchanged in the repository. In particular, the raw negative-holonomy adjacency-to-cell bridge and the residue-two Schur argument remain outside the formalized scope. Verified partial extension results may be added in a later commit, with precise theorem coverage.
+The [fresh formal verification report](lean/VERIFICATION_REPORT.md) records successful baseline, sharp-edge and antiperiodic-cell builds plus two axiom audits, completed at 08:13:01 UTC. The extension adds 16 theorems; all 165 baseline-plus-extension theorem declarations were audited. Their axiom union is exactly `propext`, `Classical.choice`, and `Quot.sound`, with no `sorryAx` or project-specific axiom.
+
+The exact extension sources and audit drivers are installed under the repository's `formal/` directory and also preserved with the report, pinned reproduction configuration and fresh logs in `lean/`. Existing baseline sources and configuration are unchanged. From `formal/`, run the five commands in the report; the new modules are built explicitly without editing `AllTheorems.lean`.
+
+The results cover scalar polynomial endpoint bounds, antiperiodic phase exclusion, fiber eigenvalues, and the stated finite cell-eigenstate theorem. The raw negative-holonomy signed-graph adjacency-to-cell bridge, exact radical graph formula, integer n32 certificate and both R2 Schur theorems remain outside this formal extension. This is not an end-to-end Lean proof of either graph theorem.
 
 ## Provenance and file integrity
 
 The research workspace was replaced during preparation. Delivered certificates were rerun and the manuscript rebuilt; source restoration/reconstruction and historical evidence are labeled explicitly in the individual recovery records. Third-party papers are linked, not redistributed.
 
-`MANIFEST.json` records the SHA-256 and Git blob SHA for every delivered package file except the manifest itself. The repository commit independently fixes all file contents. Source and result files under `certificates/`, `literature/`, and `manuscript/` form the complete review package. This branch is a research delivery, not a journal submission.
+`MANIFEST.json` records the SHA-256 and Git blob SHA for every delivered package file except the manifest itself. The repository commit independently fixes all file contents. Source and result files under `certificates/`, `literature/`, `manuscript/`, and `lean/` form the complete review package. This branch is a research delivery, not a journal submission.
 

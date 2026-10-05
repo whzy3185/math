@@ -8,21 +8,21 @@
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 1372,
-      "sha256": "890be6cf150f6692f2545f150017da33a49bf6a26efe326c1a144afc3ace55ae",
-      "git_blob_sha": "7bcce4782cb414f471e82c8d20b60d7c852a6fbb"
+      "bytes": 1925,
+      "sha256": "de3867624b5df830aaecd1b53b91bd67e6e047826c04aa0b062bcb6427343695",
+      "git_blob_sha": "ff8d1c8b3b4a604a97512004f323e36549539bcd"
     },
     {
       "path": "README.md",
-      "bytes": 5433,
-      "sha256": "4e0ee4534f250ab91efb6528a2faf414c140aef6f7a7f0a157b2e0bdb7db5e06",
-      "git_blob_sha": "06e6ba0b0d13cb059dfd8a621d85e0bd37fe663c"
+      "bytes": 6181,
+      "sha256": "3a11c1c29579ad43c9edec2cb812f42e6ac73f82295c6dadff215459a11fb693",
+      "git_blob_sha": "ed3e943712d5e675741e6ba2dddd4da88297c602"
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 1702,
-      "sha256": "297336719052f59b79c21561c42e704efaa6fc83d8959c9f85e896e001cd0346",
-      "git_blob_sha": "f52d6a5f585b52155013d8ac8d5bb563b67063a6"
+      "bytes": 4569,
+      "sha256": "58c8ad40f5c757faad09f464bf675ab0bae28a3cd371347268939753e779f50a",
+      "git_blob_sha": "04ccc4df714324eaa32df219b24aa011faa774a4"
     },
     {
       "path": "certificates/analytic/INTEGRATION_HANDOFF.md",
@@ -241,6 +241,108 @@
       "git_blob_sha": "78e92384d4e39c74545d500e0ee843309f15709c"
     },
     {
+      "path": "lean/SHA256SUMS",
+      "bytes": 1509,
+      "sha256": "4bde6cc65ebd5621a9c6dfd817eab88fa42fb887650e41507394d37f6ef943d0",
+      "git_blob_sha": "0ce318a8dabb57f95aa342d0716485fa80c28b3c"
+    },
+    {
+      "path": "lean/VERIFICATION_REPORT.md",
+      "bytes": 5441,
+      "sha256": "02a5ee5981489c9ae67874f457efd842f811aed2e8da45efcafa7ea61285e174",
+      "git_blob_sha": "488c31d7c1f4da353f179596f9ac775a768d2e6f"
+    },
+    {
+      "path": "lean/c029_lean_increment.patch",
+      "bytes": 18865,
+      "sha256": "360cbe6dac0e6418f1ecc27a79981cbc3e77b76b3bb4f23412d69a00425dacda",
+      "git_blob_sha": "c0150882881a6314f139b9ed3af88091ee499aef"
+    },
+    {
+      "path": "lean/formal/AllAxiomAudit.lean",
+      "bytes": 8736,
+      "sha256": "3017f27f28fe64801aa07e18f3910b3155a59809140ed55ce7a7fb0c81b5dd39",
+      "git_blob_sha": "da37d24949b0dca8cd5d8e918b405d4d8738b6a8"
+    },
+    {
+      "path": "lean/formal/AxiomAudit.lean",
+      "bytes": 581,
+      "sha256": "d41e29ea2fa89b286320deef3bdc5e4db316187fc0a65f6a770b45ccafa0520f",
+      "git_blob_sha": "dc102906c6328acb47c7589253c1dc464ba326a4"
+    },
+    {
+      "path": "lean/formal/TargetA/Period8AntiperiodicCells.lean",
+      "bytes": 4595,
+      "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707",
+      "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e"
+    },
+    {
+      "path": "lean/formal/TargetA/Period8SharpEdge.lean",
+      "bytes": 4277,
+      "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612",
+      "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b"
+    },
+    {
+      "path": "lean/logs/fresh_all_axioms.log",
+      "bytes": 15672,
+      "sha256": "a844d5a0bd4a5e7e19d6be80b6064343a18ccd0852f7cd48827d51ce728857e9",
+      "git_blob_sha": "9e34b4caa0945f556e63eed7543fc8023ca35849"
+    },
+    {
+      "path": "lean/logs/fresh_antiperiodic_cells.log",
+      "bytes": 7376,
+      "sha256": "22a05479cab785917ff80fb8c680f27cc1af8a67661df0460be79136b207c3d1",
+      "git_blob_sha": "09a3ac3bf593ff8773ae2be72861846cb1d39f4d"
+    },
+    {
+      "path": "lean/logs/fresh_baseline.log",
+      "bytes": 7671,
+      "sha256": "b7e51a504efd9171e94093575a8c52b4f1c92d768244117c68fdc4b4b6c613ce",
+      "git_blob_sha": "c5da80c586ae7800c76785daca45b30923932473"
+    },
+    {
+      "path": "lean/logs/fresh_selected_axioms.log",
+      "bytes": 1233,
+      "sha256": "7f58cdd8b2ae114f13a227ec57296c3ea3fab388c96daf264a8c1b39da8e755d",
+      "git_blob_sha": "6bbb846b41172ae9f457e549499b4e7cd9b1f985"
+    },
+    {
+      "path": "lean/logs/fresh_sharp_edge.log",
+      "bytes": 204,
+      "sha256": "8c28405cb5b96817ff33454a8ac5408afdfc8bc0e5572ef70b9c240350e926ac",
+      "git_blob_sha": "b8b41b5e4be4ef1fdfcc5b94ec846a57560156e5"
+    },
+    {
+      "path": "lean/reproduction/lake-manifest.json",
+      "bytes": 3121,
+      "sha256": "bcf1b2418e4dbd801c48073899e6596885ad82ad71972d1cd21578926294fa85",
+      "git_blob_sha": "883a856f7a51ddf0b85fa99ca4937fd4e705544a"
+    },
+    {
+      "path": "lean/reproduction/lakefile.lean",
+      "bytes": 193,
+      "sha256": "cbc44c2ebb703d667340b02483a2240be472667aca43c6ec7fd9a198c566fba7",
+      "git_blob_sha": "402b4cfbea7a71f89f879c5c420932354f0d7cce"
+    },
+    {
+      "path": "lean/reproduction/lean-toolchain",
+      "bytes": 25,
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+      "git_blob_sha": "a8afa7d1b02d96f0671eba854a8dc4b416beb473"
+    },
+    {
+      "path": "lean/source_sha256.json",
+      "bytes": 1856,
+      "sha256": "8ea1abdbf0e310b7831133aaac94f55daee9d0b61d3b9c41def788a17e92d816",
+      "git_blob_sha": "35ae6a45fcbf19ba218b8a919c14f37b915dbaf3"
+    },
+    {
+      "path": "lean/verification_summary.json",
+      "bytes": 2701,
+      "sha256": "6f78fdc27364f6323ed74679bf4d212e5e00356108ed285da4e00158454f2667",
+      "git_blob_sha": "79f08ae6c0699b7f2e1c8e2e1927c813ea941617"
+    },
+    {
       "path": "literature/LITERATURE_AUDIT.md",
       "bytes": 11683,
       "sha256": "fce030ff6c6a37df18f20af56093c95dd86d7aa30948124f1b26cefbde5112c2",
@@ -254,9 +356,9 @@
     },
     {
       "path": "manuscript/CLAIM_LEDGER.md",
-      "bytes": 7820,
-      "sha256": "705f34d20e9ae044758f9c9c0bd19aeb0b3c9b799ce72160cde18365ab9812e2",
-      "git_blob_sha": "d39e0684e437f176487cf62dbeff4f78cce6e701"
+      "bytes": 8124,
+      "sha256": "9f5eb60eecc0871d6207670fd9871b58000e9dc8da91dd9840ad26ce47520bd1",
+      "git_blob_sha": "23b23f52c5f4784d8258fa7bc4c060e6a9cce134"
     },
     {
       "path": "manuscript/HANDOFF.zh-CN.md",
@@ -266,9 +368,9 @@
     },
     {
       "path": "manuscript/MANIFEST.json",
-      "bytes": 3094,
-      "sha256": "ad33d6693625bb0232fa78ec3d459af92561715b90dfd235225f6b3bf3dde46f",
-      "git_blob_sha": "12e168159cb983e59c795490e6753b79c0720dcf"
+      "bytes": 3131,
+      "sha256": "c45f22e2541bb535bdb858f7d354ef4d2f30e6283f01148437a6cb9b9a125644",
+      "git_blob_sha": "60a6018be580a129dc403d6e7a56f57c105b96fd"
     },
     {
       "path": "manuscript/PROOF_DEPENDENCY_MAP.md",
@@ -344,5 +446,28 @@
     }
   ],
   "first_snapshot_commit": "b0c8b51efa3e77cd4c0117ce3cb97ca126e3580d",
-  "latest_supplement": "Verified uniform one-G6 cap 7.90537 for every k>=1; n202 lower obstruction 7.905369"
+  "latest_supplement": "Verified uniform one-G6 cap 7.90537 for every k>=1; n202 lower obstruction 7.905369",
+  "formal_extension_note": "Verified partial Lean extension with 16 new theorems and 165-declaration axiom audit; not an end-to-end graph formalization.",
+  "formal_extension_files": [
+    {
+      "repository_path": "formal/AllAxiomAudit.lean",
+      "sha256": "3017f27f28fe64801aa07e18f3910b3155a59809140ed55ce7a7fb0c81b5dd39",
+      "git_blob_sha": "da37d24949b0dca8cd5d8e918b405d4d8738b6a8"
+    },
+    {
+      "repository_path": "formal/AxiomAudit.lean",
+      "sha256": "d41e29ea2fa89b286320deef3bdc5e4db316187fc0a65f6a770b45ccafa0520f",
+      "git_blob_sha": "dc102906c6328acb47c7589253c1dc464ba326a4"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8AntiperiodicCells.lean",
+      "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707",
+      "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8SharpEdge.lean",
+      "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612",
+      "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b"
+    }
+  ]
 }
