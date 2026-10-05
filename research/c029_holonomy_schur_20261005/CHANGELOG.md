@@ -7,3 +7,7 @@
 - Kept new Lean extension artifacts outside this verified mathematical snapshot while the fresh rebuild is pending; retained the raw graph-to-cell and R2 formalization boundaries
 
 No global-optimality theorem, new all-even classification certificate, first-discovery claim, or journal submission is represented by this snapshot.
+
+## Separate verified strengthening supplement
+
+Added the all-k≥1 one-G6 family cap7.90537 and the n202 lower obstruction7.905369, with two exact implementations, complete analytic proof, independent audit and C6 ledger entry. The earlier manuscript PDF and its proofs remain unchanged. This is not a global minimum or an exact limiting-value claim.

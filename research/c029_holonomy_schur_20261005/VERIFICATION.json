@@ -41,5 +41,21 @@
     "sha256": "120f7a2830e4dc05edae5207acaf121f0948d88d599da1bc592844722683f0bf",
     "build": "two-pass pdflatex; no warnings; author inspected all pages; publication readback inspected first and final pages"
   },
-  "formal_status": "Fresh Lean extension rebuild pending; no new extension artifacts included. Existing formal baseline preserved unchanged; no end-to-end formal claim."
+  "formal_status": "Fresh Lean extension rebuild pending; no new extension artifacts included. Existing formal baseline preserved unchanged; no end-to-end formal claim.",
+  "uniform_cap_supplement": {
+    "commands": [
+      {
+        "path": "certificates/strengthening/verify_uniform_cap.py",
+        "exit_code": 0,
+        "stderr": ""
+      },
+      {
+        "path": "certificates/strengthening/audit/replay_stronger_cap.py",
+        "exit_code": 0,
+        "stderr": ""
+      }
+    ],
+    "changed_certificates": [],
+    "all_passed": true
+  }
 }

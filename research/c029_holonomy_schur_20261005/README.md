@@ -17,6 +17,12 @@ Research snapshot: 5 October 2026. This standalone increment is based on `analyt
 
 These results do not determine unrestricted spectral minima, classify every minimizing signing, or freshly certify the historical all-even classification. The old unnormalized eight-dimensional `9/20` seed margin must not be used for the normalized six-dimensional core. The correct seed margin here is `1/50`.
 
+## Verified strengthening supplement
+
+The [uniform one-G6 supplement](certificates/strengthening/UNIFORM_ONE_G6_CAP.md) sharpens the explicit residue-two family to `rho(A_(8k+2))^2 < 7.90537` for every `k>=1`, including the exceptional order `n=10`. A separately checked order-202 obstruction gives `rho(A_202)^2 > 7.905369`, placing the supremum of this prescribed family in `(7.905369, 7.90537]`. The upper endpoint is closed. No global optimizer, exact supremum or limiting monotonicity is claimed.
+
+The complete supplement has new exact finite premises, 24 smaller bases, one seed, and an independent direct-graph/analytic audit. The 11-page manuscript remains the first snapshot; this stronger theorem is supplied as a separate proof supplement. See the additional C6 entry in the claim ledger.
+
 ## Exact reproduction
 
 Run from this directory with Python 3. The analytic verifier and direct-graph finite replay use the standard library; the symbolic checks also require SymPy (the recorded runs used version 1.14.0). NumPy is optional and used only for labeled numerical illustrations.
@@ -27,6 +33,8 @@ python certificates/audit/replay_direct_graph_seed.py
 python certificates/audit/replay_local_from_direct_graph.py
 python certificates/new_conjecture/verify_antiperiodic_counterexample.py
 python certificates/audit/replay_antiperiodic.py
+python certificates/strengthening/verify_uniform_cap.py
+python certificates/strengthening/audit/replay_stronger_cap.py
 ```
 
 The programs write their output certificates alongside their source. Exact graph construction, rational/integer positive-definiteness checks, and symbolic identities provide the mathematical evidence. Floating-point previews do not supply proof premises. The full infinite-family arguments are in the manuscript and separate proof reports.

@@ -8,21 +8,21 @@
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 1020,
-      "sha256": "0b19f0cfbb5c1b1ff16aec01da8a8e5d1b91d043238a408cd36a5a1f857b6095",
-      "git_blob_sha": "f96a9f3e2ffb775f3dfc43ac25b3b9d9b8f55bec"
+      "bytes": 1372,
+      "sha256": "890be6cf150f6692f2545f150017da33a49bf6a26efe326c1a144afc3ace55ae",
+      "git_blob_sha": "7bcce4782cb414f471e82c8d20b60d7c852a6fbb"
     },
     {
       "path": "README.md",
-      "bytes": 4513,
-      "sha256": "d952afcfd5ca32ad08fa00451f21a6df7233eac889c68e3b83668528a7aae712",
-      "git_blob_sha": "885068cf4c4730727da77e2968187e3866dc181f"
+      "bytes": 5433,
+      "sha256": "4e0ee4534f250ab91efb6528a2faf414c140aef6f7a7f0a157b2e0bdb7db5e06",
+      "git_blob_sha": "06e6ba0b0d13cb059dfd8a621d85e0bd37fe663c"
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 1321,
-      "sha256": "a1dc9e1f53397e94e7f6bb1fa3e2b093e21c47cbb6c1bfda8cfd88407cee3033",
-      "git_blob_sha": "f52490cfe61a875b533d293cf76bd168e7d8431d"
+      "bytes": 1702,
+      "sha256": "297336719052f59b79c21561c42e704efaa6fc83d8959c9f85e896e001cd0346",
+      "git_blob_sha": "f52d6a5f585b52155013d8ac8d5bb563b67063a6"
     },
     {
       "path": "certificates/analytic/INTEGRATION_HANDOFF.md",
@@ -181,6 +181,66 @@
       "git_blob_sha": "58c93cd8dd8c223e2fd4eeaed776b8417d4f6a63"
     },
     {
+      "path": "certificates/strengthening/HANDOFF.md",
+      "bytes": 3030,
+      "sha256": "1d1f74996d93895b63cbc2b3a5675cf8fc8282549cbd467a4bce4ea0bb170e2f",
+      "git_blob_sha": "b8a70c0789a13c1b016e9c558f8561dce6824dd3"
+    },
+    {
+      "path": "certificates/strengthening/UNIFORM_ONE_G6_CAP.md",
+      "bytes": 10280,
+      "sha256": "7104f85ae18c9a63a38bdfa08977e302cb4809a8925679ea9fa6a677ca943305",
+      "git_blob_sha": "6cd0c34d648a5a404679d8bb5dd261c95945b040"
+    },
+    {
+      "path": "certificates/strengthening/audit/INDEPENDENT_STRONGER_CAP_AUDIT.md",
+      "bytes": 6561,
+      "sha256": "9591097e8861f74fe631073c7fb20e045d70819df0406b4cf65a23c08f1bb40b",
+      "git_blob_sha": "d9af53249d1922bfced676ff34c669fe41c17ebf"
+    },
+    {
+      "path": "certificates/strengthening/audit/replay_stronger_cap.py",
+      "bytes": 6157,
+      "sha256": "fa9de14a93a7e9a356660213fd034f5ebc522edb36e4b93b35619a495c8370b0",
+      "git_blob_sha": "42649c9e2f68f9e83cde79d5b63335a723013b1f"
+    },
+    {
+      "path": "certificates/strengthening/audit/stronger_cap_independent_replay.json",
+      "bytes": 54873,
+      "sha256": "745930f1159daa7521d3e4e627c05fc370b60fc59b5d24b0fa3fe77d1e27b297",
+      "git_blob_sha": "bb4e81c499f718d95e9d3c540e04ab929a2c7120"
+    },
+    {
+      "path": "certificates/strengthening/audit/verification_stdout.json",
+      "bytes": 1392,
+      "sha256": "75b95337598d8b74d945e84ac69aa9fa9dde10080fe77651ec3505b48dc3f143",
+      "git_blob_sha": "07d8ebd17dd22262ef48d12ee2a7fc8037923d18"
+    },
+    {
+      "path": "certificates/strengthening/manifest.json",
+      "bytes": 2124,
+      "sha256": "b17fdf4d213f0ffebab65c131143f691c3d1f1af799b025229469fa70b68daca",
+      "git_blob_sha": "40e7e17a45edee822a3cef1a04ef67192a149143"
+    },
+    {
+      "path": "certificates/strengthening/uniform_cap_certificate.json",
+      "bytes": 161902,
+      "sha256": "bad59cc5311a561543c8ac1db971370d262ab67e5eb4d9020a93b9c9a26fd1d8",
+      "git_blob_sha": "0afe659dca6becc8426cb47f695482f41e205f26"
+    },
+    {
+      "path": "certificates/strengthening/uniform_cap_output.json",
+      "bytes": 6547,
+      "sha256": "a72710de8474dd7ea3f6c1f7127109cf1c58c075839570294cedef7cb604a58d",
+      "git_blob_sha": "7f0c5aa78e6234c160f07fba05ad47e7e79a5456"
+    },
+    {
+      "path": "certificates/strengthening/verify_uniform_cap.py",
+      "bytes": 9315,
+      "sha256": "e9d6af6966f16439329c26fa91f7f4c8de84346e5371d9bae981e01055c09ab2",
+      "git_blob_sha": "78e92384d4e39c74545d500e0ee843309f15709c"
+    },
+    {
       "path": "literature/LITERATURE_AUDIT.md",
       "bytes": 11683,
       "sha256": "fce030ff6c6a37df18f20af56093c95dd86d7aa30948124f1b26cefbde5112c2",
@@ -194,9 +254,9 @@
     },
     {
       "path": "manuscript/CLAIM_LEDGER.md",
-      "bytes": 6312,
-      "sha256": "ba9719e6c66c084992e7b1cbbca57e457dbf7fb2f87f5ff081d0c7b4784bda78",
-      "git_blob_sha": "6be6f2b9c20f4737e03bb41bda5f2ff8613c4dc4"
+      "bytes": 7820,
+      "sha256": "705f34d20e9ae044758f9c9c0bd19aeb0b3c9b799ce72160cde18365ab9812e2",
+      "git_blob_sha": "d39e0684e437f176487cf62dbeff4f78cce6e701"
     },
     {
       "path": "manuscript/HANDOFF.zh-CN.md",
@@ -206,9 +266,9 @@
     },
     {
       "path": "manuscript/MANIFEST.json",
-      "bytes": 2848,
-      "sha256": "a04f5cf93657c03b2e57225c035c509814ccf8513c05500d086b73f1e0bd834c",
-      "git_blob_sha": "ea1b4f112fd2c98db29d6e0bdcadde3b83b328d3"
+      "bytes": 3094,
+      "sha256": "ad33d6693625bb0232fa78ec3d459af92561715b90dfd235225f6b3bf3dde46f",
+      "git_blob_sha": "12e168159cb983e59c795490e6753b79c0720dcf"
     },
     {
       "path": "manuscript/PROOF_DEPENDENCY_MAP.md",
@@ -282,5 +342,7 @@
       "sha256": "ee715fe086da26972adf939e937009a067d611689c0506c8e3c6d07a6e49432d",
       "git_blob_sha": "72223a93415797c6e9362292bce72e1c0cef4833"
     }
-  ]
+  ],
+  "first_snapshot_commit": "b0c8b51efa3e77cd4c0117ce3cb97ca126e3580d",
+  "latest_supplement": "Verified uniform one-G6 cap 7.90537 for every k>=1; n202 lower obstruction 7.905369"
 }

@@ -1,0 +1,249 @@
+{
+  "status": "PASS",
+  "parameters": {
+    "cap": "790537/100000",
+    "lower_obstruction_cap": "7905369/1000000",
+    "entrance_index": 48,
+    "seed_graph_order": 202,
+    "radius": "1/1000000000000000000",
+    "response_quadratic_bound": "1/100000000000000000000",
+    "response_contraction": "3/4",
+    "riccati_contraction": "9/16",
+    "seed_margin": "1/1000000",
+    "tail_target": "1/100000000"
+  },
+  "checks": {
+    "graph_block_template_n18": true,
+    "graph_block_template_n26": true,
+    "graph_block_template_n34": true,
+    "graph_block_template_n202": true,
+    "direct_full_graph_n10_positive": true,
+    "EP_frobenius_squared_14": true,
+    "EM_frobenius_squared_14": true,
+    "P_gt_9over10": true,
+    "P_lt_2": true,
+    "Q_gt_9over10": true,
+    "Q_lt_2": true,
+    "pivot_positive_j0": true,
+    "pivot_positive_j1": true,
+    "pivot_positive_j2": true,
+    "pivot_positive_j3": true,
+    "pivot_positive_j4": true,
+    "pivot_positive_j5": true,
+    "pivot_positive_j6": true,
+    "pivot_positive_j7": true,
+    "pivot_positive_j8": true,
+    "pivot_positive_j9": true,
+    "pivot_positive_j10": true,
+    "pivot_positive_j11": true,
+    "pivot_positive_j12": true,
+    "pivot_positive_j13": true,
+    "pivot_positive_j14": true,
+    "pivot_positive_j15": true,
+    "pivot_positive_j16": true,
+    "pivot_positive_j17": true,
+    "pivot_positive_j18": true,
+    "pivot_positive_j19": true,
+    "pivot_positive_j20": true,
+    "pivot_positive_j21": true,
+    "pivot_positive_j22": true,
+    "pivot_positive_j23": true,
+    "pivot_positive_j24": true,
+    "pivot_positive_j25": true,
+    "pivot_positive_j26": true,
+    "pivot_positive_j27": true,
+    "pivot_positive_j28": true,
+    "pivot_positive_j29": true,
+    "pivot_positive_j30": true,
+    "pivot_positive_j31": true,
+    "pivot_positive_j32": true,
+    "pivot_positive_j33": true,
+    "pivot_positive_j34": true,
+    "pivot_positive_j35": true,
+    "pivot_positive_j36": true,
+    "pivot_positive_j37": true,
+    "pivot_positive_j38": true,
+    "pivot_positive_j39": true,
+    "pivot_positive_j40": true,
+    "pivot_positive_j41": true,
+    "pivot_positive_j42": true,
+    "pivot_positive_j43": true,
+    "pivot_positive_j44": true,
+    "pivot_positive_j45": true,
+    "pivot_positive_j46": true,
+    "pivot_positive_j47": true,
+    "pivot_positive_j48": true,
+    "six_core_202_margin_1over_million": true,
+    "center_gt_half_I": true,
+    "middle_gt_half_I": true,
+    "center_residual_lt_radius_over40": true,
+    "P_center_transfer_lt_half": true,
+    "Q_center_transfer_lt_half": true,
+    "R_entrance_Q_bound": true,
+    "W_entrance_Q_bound": true,
+    "finite_10_through_202_all_positive": true,
+    "base_coverage": true,
+    "local_L_variation_lt_1over10000": true,
+    "inverse_bootstrap": true,
+    "sqrt_half_plus_1over10000_lt_three_quarters": true,
+    "P_ball_self_map": true,
+    "response_norm_conversion": true,
+    "uniform_core_tail_lt_1over100million": true,
+    "two_error_seed_margin_positive": true,
+    "lower_cap_n202_strict_negative_core_pivot": true,
+    "lower_cap_n202_all_bulk_pivots_positive": true
+  },
+  "finite": [
+    {
+      "n": 10,
+      "positive": true,
+      "method": "direct full-matrix rational LDL"
+    },
+    {
+      "n": 18,
+      "terminal_index": 2,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 26,
+      "terminal_index": 4,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 34,
+      "terminal_index": 6,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 42,
+      "terminal_index": 8,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 50,
+      "terminal_index": 10,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 58,
+      "terminal_index": 12,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 66,
+      "terminal_index": 14,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 74,
+      "terminal_index": 16,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 82,
+      "terminal_index": 18,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 90,
+      "terminal_index": 20,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 98,
+      "terminal_index": 22,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 106,
+      "terminal_index": 24,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 114,
+      "terminal_index": 26,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 122,
+      "terminal_index": 28,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 130,
+      "terminal_index": 30,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 138,
+      "terminal_index": 32,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 146,
+      "terminal_index": 34,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 154,
+      "terminal_index": 36,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 162,
+      "terminal_index": 38,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 170,
+      "terminal_index": 40,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 178,
+      "terminal_index": 42,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 186,
+      "terminal_index": 44,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 194,
+      "terminal_index": 46,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    },
+    {
+      "n": 202,
+      "terminal_index": 48,
+      "positive": true,
+      "method": "six-by-six exact response core"
+    }
+  ],
+  "certificate_path": "/workspace/shared/c029_continue_20261005/strengthening/uniform_cap_certificate.json",
+  "certificate_sha256": "bad59cc5311a561543c8ac1db971370d262ab67e5eb4d9020a93b9c9a26fd1d8"
+}

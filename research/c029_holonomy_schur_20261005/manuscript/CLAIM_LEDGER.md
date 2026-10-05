@@ -57,3 +57,14 @@ Full graph-level formal certification is not claimed. Partial Lean build results
 ## Literature boundary
 
 The current-source audit checked the withdrawal/merger, September v2, the author's current source snapshot, and targeted follow-up searches. No later correction was found in that bounded search. This does not prove absence of later work or establish absolute novelty. The general holonomy/character method is prior art; the two external comparison sources are Luo–Roy and Chen–van Dam–Bu, with hypotheses and scope stated in the introduction.
+
+
+## C6 Subsequent uniform one-G6 strengthening
+
+Statement: for the same explicit positive-Hamilton-holonomy signing with step-two word t^k||(1,−1), rho(A_(8k+2))²<790537/100000=7.90537 for every k≥1. At n=202, rho(A_202)²>7905369/1000000=7.905369. Thus the supremum over this prescribed family lies in (7.905369,7.90537], with a non-strict upper endpoint.
+
+Evidence: Proved, finite-certificate-assisted analytic theorem. The separate supplement uses a fresh entrance at index48, radius10⁻¹⁸, metric bound1/2, response contraction3/4, Riccati contraction9/16, normalized seed margin10⁻⁶ at n202, and tail error below10⁻⁸. Twenty-four smaller bases n10,18,…,194 plus the seed cover all k≥1. The n10 graph is checked directly to handle coincident block couplings. The primary verifier passes79 exact checks; independent full-graph scalar-Schur extraction verifies every local premise and the exact lower-obstruction pivot. Both implementations freshly pass in the assembled package.
+
+Source: [complete stronger proof](../certificates/strengthening/UNIFORM_ONE_G6_CAP.md) and [independent audit](../certificates/strengthening/audit/INDEPENDENT_STRONGER_CAP_AUDIT.md). This supplement strengthens C4 without changing the earlier 11-page PDF.
+
+Does not establish: the unrestricted minimum over all signings, global minimizing classes, exact family supremum, convergence or monotonicity in k, a new twisted-benchmark counterexample below n50, residues4 or6, or a Lean proof of this theorem.

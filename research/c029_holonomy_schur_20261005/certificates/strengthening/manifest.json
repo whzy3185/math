@@ -1,0 +1,51 @@
+{
+  "date": "2026-10-05",
+  "status": "PASS",
+  "theorem": "rho(A_(8k+2))^2<790537/100000 for all k>=1; rho(A_202)^2>7905369/1000000",
+  "evidence": "finite-certificate-assisted analytic theorem, independently audited",
+  "primary_checks": 79,
+  "recorded_orders": 25,
+  "formalization": "not Lean-formalized",
+  "files": {
+    "UNIFORM_ONE_G6_CAP.md": {
+      "bytes": 10280,
+      "sha256": "7104f85ae18c9a63a38bdfa08977e302cb4809a8925679ea9fa6a677ca943305",
+      "source_sha256": "59e1d1120dd17fa8be5090ad6ee71e2a17143bd66e7ee52eeac623028e1ddce4",
+      "publication_edit": "Wording-only removal of supplementary probe-file availability promises; proof premises and theorem unchanged."
+    },
+    "HANDOFF.md": {
+      "bytes": 3030,
+      "sha256": "1d1f74996d93895b63cbc2b3a5675cf8fc8282549cbd467a4bce4ea0bb170e2f",
+      "source_sha256": "25d19c860ea4f592e0b7a307c54a4a94f25475a508787f67a17e4199d074c286",
+      "publication_edit": "Wording-only removal of supplementary probe-file availability promises; proof premises and theorem unchanged."
+    },
+    "verify_uniform_cap.py": {
+      "bytes": 9315,
+      "sha256": "e9d6af6966f16439329c26fa91f7f4c8de84346e5371d9bae981e01055c09ab2"
+    },
+    "uniform_cap_certificate.json": {
+      "bytes": 161902,
+      "sha256": "bad59cc5311a561543c8ac1db971370d262ab67e5eb4d9020a93b9c9a26fd1d8"
+    },
+    "uniform_cap_output.json": {
+      "bytes": 6547,
+      "sha256": "a72710de8474dd7ea3f6c1f7127109cf1c58c075839570294cedef7cb604a58d"
+    },
+    "audit/INDEPENDENT_STRONGER_CAP_AUDIT.md": {
+      "bytes": 6561,
+      "sha256": "9591097e8861f74fe631073c7fb20e045d70819df0406b4cf65a23c08f1bb40b"
+    },
+    "audit/replay_stronger_cap.py": {
+      "bytes": 6157,
+      "sha256": "fa9de14a93a7e9a356660213fd034f5ebc522edb36e4b93b35619a495c8370b0"
+    },
+    "audit/stronger_cap_independent_replay.json": {
+      "bytes": 54873,
+      "sha256": "745930f1159daa7521d3e4e627c05fc370b60fc59b5d24b0fa3fe77d1e27b297"
+    },
+    "audit/verification_stdout.json": {
+      "bytes": 1392,
+      "sha256": "75b95337598d8b74d945e84ac69aa9fa9dde10080fe77651ec3505b48dc3f143"
+    }
+  }
+}
