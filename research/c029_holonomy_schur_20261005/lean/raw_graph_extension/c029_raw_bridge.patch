@@ -1,0 +1,835 @@
+--- /dev/null
++++ b/formal/TargetA/Period8SharpEdge.lean
+@@ -0,0 +1,107 @@
++import TargetA.Period8Polynomial
++
++namespace TargetA
++
++/-- The exact squared top edge of the continuous period-eight family. -/
++noncomputable def period8Edge : ℝ := 4 + Real.sqrt (10 + 2 * Real.sqrt 5)
++
++theorem period8_edge_lt_bound : period8Edge < period8Bound := by
++  exact period8_root_lt_bound (by norm_num : (2 : ℝ) ≤ 2)
++    period8_edge_is_boundary_root
++
++theorem period8_edge_ge_fifteen_halves : (15 / 2 : ℝ) ≤ period8Edge := by
++  have h5 : (Real.sqrt 5)^2 = (5 : ℝ) := Real.sq_sqrt (by norm_num)
++  have h5n := Real.sqrt_nonneg (5 : ℝ)
++  have h5l : (2 : ℝ) ≤ Real.sqrt 5 := by nlinarith
++  have hsn := Real.sqrt_nonneg (10 + 2 * Real.sqrt 5)
++  have hs : (Real.sqrt (10 + 2 * Real.sqrt 5))^2 =
++      10 + 2 * Real.sqrt 5 := Real.sq_sqrt (by positivity)
++  unfold period8Edge
++  nlinarith
++
++theorem period8_edge_quadratic :
++    period8Edge^2 - 8 * period8Edge + 6 - 2 * Real.sqrt 5 = 0 := by
++  have hs : (Real.sqrt (10 + 2 * Real.sqrt 5))^2 =
++      10 + 2 * Real.sqrt 5 := Real.sq_sqrt (by positivity)
++  unfold period8Edge
++  nlinarith
++
++theorem period8_at_two_nonneg_of_edge_le {y : ℝ} (hy : period8Edge ≤ y) :
++    0 ≤ period8Polynomial y 2 := by
++  have he := period8_edge_ge_fifteen_halves
++  have hf : 0 ≤ y^2 - 8 * y + 6 - 2 * Real.sqrt 5 := by
++    have hm : 0 ≤ (y - period8Edge) * (y + period8Edge - 8) :=
++      mul_nonneg (by linarith) (by linarith)
++    nlinarith [period8_edge_quadratic]
++  rw [period8_boundary_factorization]
++  exact mul_nonneg hf (by linarith [Real.sqrt_nonneg (5 : ℝ)])
++
++theorem period8_at_two_pos_of_edge_lt {y : ℝ} (hy : period8Edge < y) :
++    0 < period8Polynomial y 2 := by
++  have he := period8_edge_ge_fifteen_halves
++  have hf : 0 < y^2 - 8 * y + 6 - 2 * Real.sqrt 5 := by
++    have hm : 0 < (y - period8Edge) * (y + period8Edge - 8) :=
++      mul_pos (by linarith) (by linarith)
++    nlinarith [period8_edge_quadratic]
++  rw [period8_boundary_factorization]
++  exact mul_pos hf (by linarith [Real.sqrt_nonneg (5 : ℝ)])
++
++theorem period8_flux_factor_pos {y c : ℝ}
++    (hy : period8Edge ≤ y) (hc : c ≤ 2) :
++    0 < 2 * y^2 - 16 * y + 11 - c := by
++  have he := period8_edge_ge_fifteen_halves
++  nlinarith [sq_nonneg (y - (15 / 2 : ℝ))]
++
++theorem period8_polynomial_ge_at_two_of_edge_le {y c : ℝ}
++    (hy : period8Edge ≤ y) (hc : c ≤ 2) :
++    period8Polynomial y 2 ≤ period8Polynomial y c := by
++  have hm : 0 ≤ (2 - c) * (2 * y^2 - 16 * y + 11 - c) :=
++    mul_nonneg (by linarith) (le_of_lt (period8_flux_factor_pos hy hc))
++  have hid : period8Polynomial y c - period8Polynomial y 2 =
++      (2 - c) * (2 * y^2 - 16 * y + 11 - c) := by
++    unfold period8Polynomial
++    ring
++  linarith
++
++theorem period8_polynomial_pos_of_edge_le_flux_lt {y c : ℝ}
++    (hy : period8Edge ≤ y) (hc : c < 2) :
++    0 < period8Polynomial y c := by
++  have hm : 0 < (2 - c) * (2 * y^2 - 16 * y + 11 - c) :=
++    mul_pos (by linarith) (period8_flux_factor_pos hy (le_of_lt hc))
++  have hid : period8Polynomial y c - period8Polynomial y 2 =
++      (2 - c) * (2 * y^2 - 16 * y + 11 - c) := by
++    unfold period8Polynomial
++    ring
++  have hb := period8_at_two_nonneg_of_edge_le hy
++  linarith
++
++/-- A root with a strictly non-endpoint flux is strictly below the exact edge. -/
++theorem period8_root_lt_edge {y c : ℝ} (hc : c < 2)
++    (hroot : period8Polynomial y c = 0) : y < period8Edge := by
++  by_contra h
++  have hp := period8_polynomial_pos_of_edge_le_flux_lt (le_of_not_gt h) hc
++  linarith
++
++/-- Endpoint-inclusive sharp bound, without a nonnegativity assumption on the root. -/
++theorem period8_root_le_edge {y c : ℝ} (hc : c ≤ 2)
++    (hroot : period8Polynomial y c = 0) : y ≤ period8Edge := by
++  by_contra h
++  have hy : period8Edge < y := lt_of_not_ge h
++  have hp := period8_at_two_pos_of_edge_lt hy
++  have hm := period8_polynomial_ge_at_two_of_edge_le (le_of_lt hy) hc
++  linarith
++
++/-- Among allowed flux parameters, the exact upper edge occurs only at c = 2. -/
++theorem period8_edge_root_iff {c : ℝ} (hc : c ≤ 2) :
++    period8Polynomial period8Edge c = 0 ↔ c = 2 := by
++  constructor
++  · intro hroot
++    by_contra hne
++    have hlt : c < 2 := lt_of_le_of_ne hc hne
++    have h := period8_root_lt_edge hlt hroot
++    exact (lt_irrefl period8Edge) h
++  · intro h
++    subst c
++    exact period8_edge_is_boundary_root
++
++end TargetA
+--- /dev/null
++++ b/formal/TargetA/Period8AntiperiodicCells.lean
+@@ -0,0 +1,107 @@
++import TargetA.Period8SharpEdge
++import TargetA.Period8BlochAction
++
++namespace TargetA
++
++theorem period8_antiperiodic_parameter_re_lt_two {xi z : ℂ} {L : ℕ}
++    (hL : L ≠ 0) (hxi : xi^2 = z) (hz : z^L = -1) :
++    (xi^2 + xi⁻¹^2).re < 2 := by
++  have hu := period8_xi_unit_from_holonomy hL hxi hz (by norm_num : (-1 : ℂ)^2 = 1)
++  have hle := period8_unit_parameter_re_le_two hu
++  have hinv : xi⁻¹ = (starRingEnd ℂ) xi := (period8_unit_conj_eq_inv hu).symm
++  have hcre : (xi^2 + xi⁻¹^2).re = 2 * z.re := by
++    rw [hinv, ← map_pow, hxi]
++    simp
++    ring
++  have hpow : z^(2 * L) = 1 := by
++    calc
++      z^(2 * L) = (z^L)^2 := by ring_nf
++      _ = 1 := by rw [hz]; norm_num
++  have hn : ‖z‖ = 1 := Complex.norm_eq_one_of_pow_eq_one hpow (by omega)
++  have hns : Complex.normSq z = 1 := by
++    rw [← Complex.norm_mul_self_eq_normSq, hn]
++    norm_num
++  have hri : z.re * z.re + z.im * z.im = 1 := by
++    simpa only [Complex.normSq_apply] using hns
++  by_contra h
++  have hre : z.re = 1 := by linarith
++  have himsq : z.im * z.im = 0 := by nlinarith
++  have him : z.im = 0 := (mul_self_eq_zero).mp himsq
++  have hz1 : z = 1 := by
++    apply Complex.ext
++    · simpa using hre
++    · simpa using him
++  simp [hz1] at hz
++  norm_num at hz
++
++theorem period8_antiperiodic_holonomy_root_lt_edge {xi z : ℂ} {L : ℕ} {y : ℝ}
++    (hL : L ≠ 0) (hxi : xi^2 = z) (hz : z^L = -1)
++    (hroot : period8PolynomialC (y : ℂ) (xi^2 + xi⁻¹^2) = 0) :
++    y < period8Edge := by
++  apply period8_root_lt_edge (period8_antiperiodic_parameter_re_lt_two hL hxi hz)
++  exact period8_unit_complex_root_is_real_root
++    (period8_xi_unit_from_holonomy hL hxi hz (by norm_num)) hroot
++
++/-- Every real eigenvalue in an antiperiodic fiber is strictly below the
++continuous endpoint in squared modulus. This does not assert the finite
++alpha-minus matrix-to-fiber decomposition. -/
++theorem period8_antiperiodic_fiber_eigen_square_lt_edge
++    {xi z : ℂ} {L : ℕ} {lambda : ℝ} {u : Fin 8 → ℂ}
++    (hL : L ≠ 0) (hxi_sq : xi^2 = z) (hz : z^L = -1)
++    (hEig : (period8Fiber xi).mulVec u = (lambda : ℂ) • u)
++    (hu : u ≠ 0) : lambda^2 < period8Edge := by
++  by_cases hlambda : lambda = 0
++  · rw [hlambda]
++    have he := period8_edge_ge_fifteen_halves
++    norm_num
++    linarith
++  · have hcast : (lambda : ℂ) ≠ 0 := by exact_mod_cast hlambda
++    have hxi : xi ≠ 0 := by
++      intro hzero
++      have hz0 : z = 0 := by simpa [hzero] using hxi_sq.symm
++      simp [hz0, hL] at hz
++    have hroot_fiber := period8_fiber_eigen_square_root
++      (xi := xi) (lambda := (lambda : ℂ)) hxi hcast hEig hu
++    have hroot : period8PolynomialC ((lambda^2 : ℝ) : ℂ)
++        (xi^2 + xi⁻¹^2) = 0 := by
++      rw [← period8_fiber_polynomialC_eq]
++      simpa using hroot_fiber
++    exact period8_antiperiodic_holonomy_root_lt_edge hL hxi_sq hz hroot
++
++/-- An antiperiodic state can have nonzero Fourier mass only at a phase
++whose L-th power is minus one. -/
++theorem period8_antiperiodic_nonzero_dft_holonomy
++    {N L : ℕ} [NeZero N] (F : ZMod N → Fin 8 → ℂ) (k : ZMod N)
++    (hanti : period8CellTranslation (L : ZMod N) F = -F)
++    (hk : period8CellDFT F k ≠ 0) :
++    (ZMod.stdAddChar k)^L = -1 := by
++  have hshift := congrArg (fun G => period8CellDFT G k) hanti
++  rw [period8_cell_dft_translation] at hshift
++  have hneg : period8CellDFT (-F) k = (-1 : ℂ) • period8CellDFT F k := by
++    change ZMod.dft (-F) k = (-1 : ℂ) • ZMod.dft F k
++    rw [map_neg]
++    simp
++  rw [hneg] at hshift
++  have hchar : ZMod.stdAddChar ((L : ZMod N) * k) = (ZMod.stdAddChar k)^L := by
++    rw [← nsmul_eq_mul, AddChar.map_nsmul_eq_pow]
++  rw [hchar] at hshift
++  exact (smul_left_injective ℂ hk) hshift
++
++/-- The complete strict spectral statement for an antiperiodic sector of
++the finite period-eight cell operator. A separate seam/reindexing lemma is
++still needed to instantiate it for the raw alpha-minus adjacency matrix. -/
++theorem period8_antiperiodic_cell_eigen_square_lt_edge
++    {N L : ℕ} [NeZero N] (hL : L ≠ 0)
++    (F : ZMod N → Fin 8 → ℂ) (lambda : ℝ)
++    (hF : F ≠ 0)
++    (hanti : period8CellTranslation (L : ZMod N) F = -F)
++    (hEig : period8CellAction F = (lambda : ℂ) • F) :
++    lambda^2 < period8Edge := by
++  obtain ⟨k, hk⟩ := exists_nonzero_period8_cell_dft F hF
++  obtain ⟨xi, hxi⟩ :=
++    IsAlgClosed.exists_pow_nat_eq (ZMod.stdAddChar k) (by norm_num : 0 < 2)
++  exact period8_antiperiodic_fiber_eigen_square_lt_edge hL hxi
++    (period8_antiperiodic_nonzero_dft_holonomy F k hanti hk)
++    (period8_cell_eigen_dft_fiber F (lambda : ℂ) k xi hxi hEig) hk
++
++end TargetA
+--- /dev/null
++++ b/formal/TargetA/Period8AntiperiodicBridge.lean
+@@ -0,0 +1,96 @@
++import TargetA.Period8AntiperiodicCells
++
++namespace TargetA
++
++/-- The existing raw-to-cell permutation is injective. -/
++theorem period8_raw_to_cell_injective (M : ℕ) [NeZero M] (hM : 0 < M) :
++    Function.Injective (rawToZModCellState M hM) := by
++  intro u v huv
++  funext i
++  have he := congrFun (congrFun huv
++    (ZMod.finEquiv M (cellReindex M hM i).1)) (cellReindex M hM i).2
++  simpa [rawToZModCellState, finCellToZModState, rawToFinCellState] using he
++
++/-- Exact operator intertwining for the already verified periodic reindexing. -/
++theorem period8_raw_to_cell_intertwines (M : ℕ) [NeZero M] (hM : 0 < M)
++    (u : Fin (8 * M) → ℂ) :
++    period8CellAction (rawToZModCellState M hM u) =
++      rawToZModCellState M hM ((period8TargetMatrixC M 1).mulVec u) := by
++  funext z r
++  obtain ⟨m, rfl⟩ := (ZMod.finEquiv M).surjective z
++  change period8CellAction (finCellToZModState M (rawToFinCellState M hM u))
++      (ZMod.finEquiv M m) r = _
++  rw [period8_fin_cell_action_to_zmod M hM]
++  rw [← period8_reindexed_matrix_mulVec M hM (rawToFinCellState M hM u) m r]
++  rw [period8_reindexed_matrix_mulVec_raw, cellEncode_rawToFinCell]
++  simp [rawToZModCellState, finCellToZModState, rawToFinCellState]
++
++/-- Translation of a finite cell index agrees with addition in `ZMod`. -/
++theorem zmod_finEquiv_cyclic_step (M : ℕ) [NeZero M]
++    (m : Fin M) (s : ℕ) :
++    ZMod.finEquiv M (cyclicNext m s) = (s : ZMod M) + ZMod.finEquiv M m := by
++  rw [zmod_finEquiv_eq_natCast, zmod_finEquiv_eq_natCast]
++  change (((m.val + s) % M : ℕ) : ZMod M) = (s : ZMod M) + (m.val : ZMod M)
++  rw [ZMod.natCast_mod, Nat.cast_add]
++  ring
++
++/-- On a doubled cycle, half-period cell translation is half-period raw translation. -/
++theorem period8_double_cell_shift_unindex (L : ℕ) (hL : 0 < L)
++    (m : Fin (2 * L)) (r : Fin 8) :
++    (cellReindex (2 * L) (by omega)).symm (cyclicNext m L, r) =
++      cyclicNext ((cellReindex (2 * L) (by omega)).symm (m, r)) (8 * L) := by
++  apply Fin.ext
++  change 8 * ((m.val + L) % (2 * L)) + r.val =
++    (8 * m.val + r.val + 8 * L) % (8 * (2 * L))
++  by_cases hm : m.val < L
++  · rw [Nat.mod_eq_of_lt (by omega : m.val + L < 2 * L)]
++    rw [Nat.mod_eq_of_lt (by omega : 8 * m.val + r.val + 8 * L < 8 * (2 * L))]
++    omega
++  · rw [Nat.mod_eq_sub_mod (by omega : 2 * L ≤ m.val + L)]
++    rw [Nat.mod_eq_of_lt (by omega : m.val + L - 2 * L < 2 * L)]
++    rw [Nat.mod_eq_sub_mod (by omega : 8 * (2 * L) ≤ 8 * m.val + r.val + 8 * L)]
++    rw [Nat.mod_eq_of_lt (by omega : 8 * m.val + r.val + 8 * L - 8 * (2 * L) < 8 * (2 * L))]
++    omega
++
++/-- Antiperiodicity is preserved by the explicit raw-to-cell permutation. -/
++theorem period8_raw_half_shift_to_cell_antiperiodic (L : ℕ) (hL : 0 < L)
++    (u : Fin (8 * (2 * L)) → ℂ)
++    (hu : ∀ i, u (cyclicNext i (8 * L)) = -u i) :
++    letI : NeZero (2 * L) := ⟨by omega⟩
++    period8CellTranslation (L : ZMod (2 * L))
++        (rawToZModCellState (2 * L) (by omega) u) =
++      -rawToZModCellState (2 * L) (by omega) u := by
++  letI : NeZero (2 * L) := ⟨by omega⟩
++  funext z r
++  obtain ⟨m, rfl⟩ := (ZMod.finEquiv (2 * L)).surjective z
++  change rawToZModCellState (2 * L) (by omega) u
++    ((L : ZMod (2 * L)) + ZMod.finEquiv (2 * L) m) r = _
++  rw [← zmod_finEquiv_cyclic_step]
++  simp only [rawToZModCellState, finCellToZModState, rawToFinCellState, Pi.neg_apply]
++  simp only [RingEquiv.symm_apply_apply]
++  rw [period8_double_cell_shift_unindex L hL]
++  exact hu _
++
++/-- A raw eigenvector on the periodic double cover in the negative half-shift
++sector has the sharp strict bound. The following raw-graph extension will
++supply this sector from the alpha-minus graph by an explicit embedding. -/
++theorem period8_double_cover_antisector_eigen_square_lt_edge
++    (L : ℕ) (hL : 0 < L) (u : Fin (8 * (2 * L)) → ℂ) (lambda : ℝ)
++    (hu : u ≠ 0)
++    (hanti : ∀ i, u (cyclicNext i (8 * L)) = -u i)
++    (hEig : (period8TargetMatrixC (2 * L) 1).mulVec u = (lambda : ℂ) • u) :
++    lambda^2 < period8Edge := by
++  letI : NeZero (2 * L) := ⟨by omega⟩
++  let G := rawToZModCellState (2 * L) (by omega) u
++  apply period8_antiperiodic_cell_eigen_square_lt_edge (N := 2 * L) (L := L) (by omega) G lambda
++  · intro hz
++    apply hu
++    apply period8_raw_to_cell_injective (2 * L) (by omega)
++    change G = 0
++    exact hz
++  · exact period8_raw_half_shift_to_cell_antiperiodic L hL u hanti
++  · rw [show G = rawToZModCellState (2 * L) (by omega) u by rfl]
++    rw [period8_raw_to_cell_intertwines, hEig]
++    rfl
++
++end TargetA
+--- /dev/null
++++ b/formal/TargetA/Period8DoubleCover.lean
+@@ -0,0 +1,306 @@
++import TargetA.Period8AntiperiodicBridge
++
++namespace TargetA
++
++def period8DoubleLow (L : ℕ) (i : Fin (8 * L)) : Fin (8 * (2 * L)) :=
++  ⟨i.val, by omega⟩
++
++def period8DoubleHigh (L : ℕ) (i : Fin (8 * L)) : Fin (8 * (2 * L)) :=
++  ⟨8 * L + i.val, by omega⟩
++
++/-- The two consecutive halves of the periodic double cover. -/
++def period8DoubleIndex (L : ℕ) :
++    (Fin (8 * L) ⊕ Fin (8 * L)) ≃ Fin (8 * (2 * L)) where
++  toFun := Sum.elim (period8DoubleLow L) (period8DoubleHigh L)
++  invFun i := if hi : i.val < 8 * L then Sum.inl ⟨i.val, hi⟩
++    else Sum.inr ⟨i.val - 8 * L, by omega⟩
++  left_inv i := by
++    cases i with
++    | inl i => simp [period8DoubleLow, i.isLt]
++    | inr i => simp [period8DoubleHigh, show ¬ (8 * L + i.val < 8 * L) by omega]
++  right_inv i := by
++    dsimp only
++    split_ifs with hi
++    · rfl
++    · apply Fin.ext
++      change 8 * L + (i.val - 8 * L) = i.val
++      omega
++
++/-- The explicit unnormalised antiperiodic lift `u ↦ [u,-u]`. -/
++noncomputable def period8DoubleLift (L : ℕ) (u : Fin (8 * L) → ℂ) :
++    Fin (8 * (2 * L)) → ℂ :=
++  fun i => Sum.elim u (fun j => -u j) ((period8DoubleIndex L).symm i)
++
++@[simp] theorem period8_double_lift_low (L : ℕ) (u : Fin (8 * L) → ℂ)
++    (i : Fin (8 * L)) : period8DoubleLift L u (period8DoubleLow L i) = u i := by
++  change Sum.elim u (fun j => -u j)
++    ((period8DoubleIndex L).symm ((period8DoubleIndex L) (Sum.inl i))) = u i
++  simp
++
++@[simp] theorem period8_double_lift_high (L : ℕ) (u : Fin (8 * L) → ℂ)
++    (i : Fin (8 * L)) : period8DoubleLift L u (period8DoubleHigh L i) = -u i := by
++  change Sum.elim u (fun j => -u j)
++    ((period8DoubleIndex L).symm ((period8DoubleIndex L) (Sum.inr i))) = -u i
++  simp
++
++theorem period8_double_lift_injective (L : ℕ) :
++    Function.Injective (period8DoubleLift L) := by
++  intro u v h
++  funext i
++  have he := congrFun h (period8DoubleLow L i)
++  simpa using he
++
++theorem period8_double_low_half_shift (L : ℕ) (hL : 0 < L)
++    (i : Fin (8 * L)) :
++    cyclicNext (period8DoubleLow L i) (8 * L) = period8DoubleHigh L i := by
++  apply Fin.ext
++  change (i.val + 8 * L) % (8 * (2 * L)) = 8 * L + i.val
++  rw [Nat.mod_eq_of_lt (by omega)]
++  omega
++
++theorem period8_double_high_half_shift (L : ℕ) (hL : 0 < L)
++    (i : Fin (8 * L)) :
++    cyclicNext (period8DoubleHigh L i) (8 * L) = period8DoubleLow L i := by
++  apply Fin.ext
++  change (8 * L + i.val + 8 * L) % (8 * (2 * L)) = i.val
++  rw [show 8 * L + i.val + 8 * L = i.val + 8 * (2 * L) by omega]
++  simp [Nat.mod_eq_of_lt (by omega : i.val < 8 * (2 * L))]
++
++theorem period8_double_lift_antiperiodic (L : ℕ) (hL : 0 < L)
++    (u : Fin (8 * L) → ℂ) :
++    ∀ i, period8DoubleLift L u (cyclicNext i (8 * L)) = -period8DoubleLift L u i := by
++  intro i
++  obtain ⟨j, rfl⟩ := (period8DoubleIndex L).surjective i
++  cases j with
++  | inl j =>
++    change period8DoubleLift L u (cyclicNext (period8DoubleLow L j) (8 * L)) = _
++    rw [period8_double_low_half_shift L hL]
++    simp [period8DoubleIndex]
++  | inr j =>
++    change period8DoubleLift L u (cyclicNext (period8DoubleHigh L j) (8 * L)) = _
++    rw [period8_double_high_half_shift L hL]
++    simp [period8DoubleIndex]
++
++/-- Simultaneously changing both half labels preserves a forward neighbour relation. -/
++theorem period8_double_same_half_next (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) (s : ℕ) (hs : s ≤ 2) :
++    (period8DoubleHigh L j = cyclicNext (period8DoubleHigh L i) s) ↔
++      (period8DoubleLow L j = cyclicNext (period8DoubleLow L i) s) := by
++  simp only [Fin.ext_iff, period8DoubleHigh, period8DoubleLow, cyclicNext]
++  by_cases hi : i.val + s < 8 * L
++  · rw [Nat.mod_eq_of_lt (by omega : 8 * L + i.val + s < 8 * (2 * L))]
++    rw [Nat.mod_eq_of_lt (by omega : i.val + s < 8 * (2 * L))]
++    omega
++  · rw [Nat.mod_eq_sub_mod (by omega : 8 * (2 * L) ≤ 8 * L + i.val + s)]
++    rw [Nat.mod_eq_of_lt (by omega : 8 * L + i.val + s - 8 * (2 * L) < 8 * (2 * L))]
++    rw [Nat.mod_eq_of_lt (by omega : i.val + s < 8 * (2 * L))]
++    omega
++
++/-- Exchanging the half labels reverses which seam crossing is used. -/
++theorem period8_double_cross_half_next (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) (s : ℕ) (hs : s ≤ 2) :
++    (period8DoubleLow L j = cyclicNext (period8DoubleHigh L i) s) ↔
++      (period8DoubleHigh L j = cyclicNext (period8DoubleLow L i) s) := by
++  simp only [Fin.ext_iff, period8DoubleHigh, period8DoubleLow, cyclicNext]
++  by_cases hi : i.val + s < 8 * L
++  · rw [Nat.mod_eq_of_lt (by omega : 8 * L + i.val + s < 8 * (2 * L))]
++    rw [Nat.mod_eq_of_lt (by omega : i.val + s < 8 * (2 * L))]
++    omega
++  · rw [Nat.mod_eq_sub_mod (by omega : 8 * (2 * L) ≤ 8 * L + i.val + s)]
++    rw [Nat.mod_eq_of_lt (by omega : 8 * L + i.val + s - 8 * (2 * L) < 8 * (2 * L))]
++    rw [Nat.mod_eq_of_lt (by omega : i.val + s < 8 * (2 * L))]
++    omega
++
++/-- A positive edge in the cover acquires exactly the cut sign in the negative sector. -/
++theorem period8_double_signed_forward_entry (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) (s : ℕ) (hs : s ≤ 2) (a : ℤ) :
++    (if period8DoubleLow L j = cyclicNext (period8DoubleLow L i) s then a else 0) -
++      (if period8DoubleHigh L j = cyclicNext (period8DoubleLow L i) s then a else 0) =
++    (if j = cyclicNext i s then (if i.val + s < 8 * L then a else -a) else 0) := by
++  simp only [Fin.ext_iff, period8DoubleLow, period8DoubleHigh, cyclicNext]
++  rw [Nat.mod_eq_of_lt (by omega : i.val + s < 8 * (2 * L))]
++  by_cases hi : i.val + s < 8 * L
++  · rw [Nat.mod_eq_of_lt hi]
++    simp only [hi, if_true]
++    have hne : ¬ (8 * L + j.val = i.val + s) := by omega
++    simp [hne]
++  · rw [Nat.mod_eq_sub_mod (by omega : 8 * L ≤ i.val + s)]
++    rw [Nat.mod_eq_of_lt (by omega : i.val + s - 8 * L < 8 * L)]
++    simp only [hi, if_false]
++    have hne : ¬ (j.val = i.val + s) := by omega
++    simp only [hne, if_false, zero_sub]
++    have he : 8 * L + j.val = i.val + s ↔ j.val = i.val + s - 8 * L := by omega
++    simp only [he]
++    split_ifs <;> ring
++
++@[simp] theorem period8_double_low_lift (L : ℕ) (i : Fin (8 * L)) :
++    period8TargetLift (period8DoubleLow L i).val = period8TargetLift i.val := rfl
++
++@[simp] theorem period8_double_high_lift (L : ℕ) (i : Fin (8 * L)) :
++    period8TargetLift (period8DoubleHigh L i).val = period8TargetLift i.val := by
++  change period8TargetLift (8 * L + i.val) = period8TargetLift i.val
++  rw [Nat.add_comm, period8_target_lift_periodic]
++
++theorem period8_periodic_matrix_entry (M : ℕ) (i j : Fin (8 * M)) :
++    period8TargetMatrix M 1 i j =
++      (if j = cyclicNext i 1 then 1 else 0) +
++      (if i = cyclicNext j 1 then 1 else 0) +
++      (if j = cyclicNext i 2 then period8TargetLift i.val else 0) +
++      (if i = cyclicNext j 2 then period8TargetLift j.val else 0) := by
++  simp [period8TargetMatrix, hamiltonGaugeMatrix, forwardStepOne, forwardStepTwo]
++
++theorem period8_double_matrix_same_blocks (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) :
++    period8TargetMatrix (2 * L) 1 (period8DoubleHigh L i) (period8DoubleHigh L j) =
++      period8TargetMatrix (2 * L) 1 (period8DoubleLow L i) (period8DoubleLow L j) := by
++  simp only [period8_periodic_matrix_entry, period8_double_high_lift, period8_double_low_lift,
++    period8_double_same_half_next L hL i j 1 (by omega),
++    period8_double_same_half_next L hL j i 1 (by omega),
++    period8_double_same_half_next L hL i j 2 (by omega),
++    period8_double_same_half_next L hL j i 2 (by omega)]
++
++theorem period8_double_matrix_cross_blocks (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) :
++    period8TargetMatrix (2 * L) 1 (period8DoubleHigh L i) (period8DoubleLow L j) =
++      period8TargetMatrix (2 * L) 1 (period8DoubleLow L i) (period8DoubleHigh L j) := by
++  simp only [period8_periodic_matrix_entry, period8_double_high_lift, period8_double_low_lift,
++    period8_double_cross_half_next L hL i j 1 (by omega),
++    period8_double_cross_half_next L hL j i 1 (by omega),
++    period8_double_cross_half_next L hL i j 2 (by omega),
++    period8_double_cross_half_next L hL j i 2 (by omega)]
++
++/-- Exact graph-entry identity, including all three seam edges. -/
++theorem period8_double_matrix_difference (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) :
++    period8TargetMatrix (2 * L) 1 (period8DoubleLow L i) (period8DoubleLow L j) -
++      period8TargetMatrix (2 * L) 1 (period8DoubleLow L i) (period8DoubleHigh L j) =
++        period8TargetMatrix L (-1) i j := by
++  have e1 := period8_double_signed_forward_entry L hL i j 1 (by omega) 1
++  have e2 := period8_double_signed_forward_entry L hL j i 1 (by omega) 1
++  have e3 := period8_double_signed_forward_entry L hL i j 2 (by omega)
++    (period8TargetLift i.val)
++  have e4 := period8_double_signed_forward_entry L hL j i 2 (by omega)
++    (period8TargetLift j.val)
++  rw [period8_periodic_matrix_entry, period8_periodic_matrix_entry]
++  simp only [period8_double_high_lift, period8_double_low_lift,
++    period8_double_cross_half_next L hL j i 1 (by omega),
++    period8_double_cross_half_next L hL j i 2 (by omega)]
++  simp only [period8TargetMatrix, hamiltonGaugeMatrix, forwardStepOne, forwardStepTwo,
++    neg_one_mul]
++  linear_combination e1 + e2 + e3 + e4
++
++/-- Sum over the cover as the two explicit vertex halves. -/
++theorem period8_sum_double (L : ℕ) (f : Fin (8 * (2 * L)) → ℂ) :
++    (∑ i, f i) = (∑ i, f (period8DoubleLow L i)) +
++      ∑ i, f (period8DoubleHigh L i) := by
++  rw [← (period8DoubleIndex L).sum_comp f, Fintype.sum_sum_type]
++  rfl
++
++theorem period8_double_matrixC_difference (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) :
++    period8TargetMatrixC (2 * L) 1 (period8DoubleLow L i) (period8DoubleLow L j) -
++      period8TargetMatrixC (2 * L) 1 (period8DoubleLow L i) (period8DoubleHigh L j) =
++        period8TargetMatrixC L (-1) i j := by
++  have h := period8_double_matrix_difference L hL i j
++  unfold period8TargetMatrixC
++  exact_mod_cast h
++
++theorem period8_double_matrixC_same_blocks (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) :
++    period8TargetMatrixC (2 * L) 1 (period8DoubleHigh L i) (period8DoubleHigh L j) =
++      period8TargetMatrixC (2 * L) 1 (period8DoubleLow L i) (period8DoubleLow L j) := by
++  unfold period8TargetMatrixC
++  exact_mod_cast period8_double_matrix_same_blocks L hL i j
++
++theorem period8_double_matrixC_cross_blocks (L : ℕ) (hL : 0 < L)
++    (i j : Fin (8 * L)) :
++    period8TargetMatrixC (2 * L) 1 (period8DoubleHigh L i) (period8DoubleLow L j) =
++      period8TargetMatrixC (2 * L) 1 (period8DoubleLow L i) (period8DoubleHigh L j) := by
++  unfold period8TargetMatrixC
++  exact_mod_cast period8_double_matrix_cross_blocks L hL i j
++
++theorem period8_double_action_low (L : ℕ) (hL : 0 < L)
++    (u : Fin (8 * L) → ℂ) (i : Fin (8 * L)) :
++    (period8TargetMatrixC (2 * L) 1).mulVec (period8DoubleLift L u)
++      (period8DoubleLow L i) = (period8TargetMatrixC L (-1)).mulVec u i := by
++  simp only [Matrix.mulVec, dotProduct]
++  rw [period8_sum_double L]
++  simp only [period8_double_lift_low, period8_double_lift_high]
++  rw [← Finset.sum_add_distrib]
++  apply Finset.sum_congr rfl
++  intro j _
++  rw [mul_neg, ← sub_eq_add_neg, ← sub_mul, period8_double_matrixC_difference L hL]
++
++theorem period8_double_action_high (L : ℕ) (hL : 0 < L)
++    (u : Fin (8 * L) → ℂ) (i : Fin (8 * L)) :
++    (period8TargetMatrixC (2 * L) 1).mulVec (period8DoubleLift L u)
++      (period8DoubleHigh L i) = -(period8TargetMatrixC L (-1)).mulVec u i := by
++  simp only [Matrix.mulVec, dotProduct]
++  rw [period8_sum_double L]
++  simp only [period8_double_lift_low, period8_double_lift_high,
++    period8_double_matrixC_same_blocks L hL, period8_double_matrixC_cross_blocks L hL]
++  rw [← Finset.sum_add_distrib, ← Finset.sum_neg_distrib]
++  apply Finset.sum_congr rfl
++  intro j _
++  have h := period8_double_matrixC_difference L hL i j
++  linear_combination -h * u j
++
++/-- The complete raw-graph operator intertwining; no spectral or cell hypothesis is assumed. -/
++theorem period8_double_lift_intertwines (L : ℕ) (hL : 0 < L)
++    (u : Fin (8 * L) → ℂ) :
++    (period8TargetMatrixC (2 * L) 1).mulVec (period8DoubleLift L u) =
++      period8DoubleLift L ((period8TargetMatrixC L (-1)).mulVec u) := by
++  funext i
++  obtain ⟨j, rfl⟩ := (period8DoubleIndex L).surjective i
++  cases j with
++  | inl j =>
++    change (period8TargetMatrixC (2 * L) 1).mulVec (period8DoubleLift L u)
++      (period8DoubleLow L j) = period8DoubleLift L _ (period8DoubleLow L j)
++    rw [period8_double_action_low L hL, period8_double_lift_low]
++  | inr j =>
++    change (period8TargetMatrixC (2 * L) 1).mulVec (period8DoubleLift L u)
++      (period8DoubleHigh L j) = period8DoubleLift L _ (period8DoubleHigh L j)
++    rw [period8_double_action_high L hL, period8_double_lift_high]
++
++theorem period8_double_lift_smul (L : ℕ) (u : Fin (8 * L) → ℂ) (c : ℂ) :
++    period8DoubleLift L (c • u) = c • period8DoubleLift L u := by
++  funext i
++  obtain ⟨j, rfl⟩ := (period8DoubleIndex L).surjective i
++  cases j with
++  | inl j =>
++    change period8DoubleLift L (c • u) (period8DoubleLow L j) =
++      c * period8DoubleLift L u (period8DoubleLow L j)
++    simp
++  | inr j =>
++    change period8DoubleLift L (c • u) (period8DoubleHigh L j) =
++      c * period8DoubleLift L u (period8DoubleHigh L j)
++    simp
++
++/-- Every real eigenvalue of the raw alpha-minus signed adjacency matrix is
++strictly below the continuous endpoint in squared modulus, for every L ≥ 1. -/
++theorem period8_alpha_minus_raw_eigen_square_lt_edge (L : ℕ) (hL : 0 < L)
++    (u : Fin (8 * L) → ℂ) (lambda : ℝ) (hu : u ≠ 0)
++    (hEig : (period8TargetMatrixC L (-1)).mulVec u = (lambda : ℂ) • u) :
++    lambda^2 < period8Edge := by
++  apply period8_double_cover_antisector_eigen_square_lt_edge L hL
++    (period8DoubleLift L u) lambda
++  · intro hz
++    apply hu
++    funext i
++    have he := congrFun hz (period8DoubleLow L i)
++    simpa using he
++  · exact period8_double_lift_antiperiodic L hL u
++  · rw [period8_double_lift_intertwines L hL, hEig, period8_double_lift_smul]
++
++/-- Unconditional raw-graph spectral conclusion in the existing Hermitian eigenvalue API. -/
++theorem period8_alpha_minus_main_theorem (L : ℕ) (hL : 0 < L) :
++    ∀ i : Fin (8 * L),
++      ((period8_target_matrix_isHermitian L (-1)).eigenvalues i)^2 < period8Edge := by
++  intro i
++  apply period8_alpha_minus_raw_eigen_square_lt_edge L hL
++    (u := ⇑((period8_target_matrix_isHermitian L (-1)).eigenvectorBasis i))
++  · exact (WithLp.ofLp_eq_zero 2).ne.2 <|
++      (period8_target_matrix_isHermitian L (-1)).eigenvectorBasis.orthonormal.ne_zero i
++  · exact (period8_target_matrix_isHermitian L (-1)).mulVec_eigenvectorBasis i
++
++end TargetA
+--- /dev/null
++++ b/formal/RawBridgeAxiomAudit.lean
+@@ -0,0 +1,204 @@
++import TargetA.AllTheorems
++import TargetA.Period8DoubleCover
++
++#print axioms TargetA.residueZero_mod
++#print axioms TargetA.residueZero_even
++#print axioms TargetA.residueZero_admissible
++#print axioms TargetA.dft_cellTranslation
++#print axioms TargetA.stdAddChar_pow_modulus
++#print axioms TargetA.cell_reindex_forward
++#print axioms TargetA.cell_reindex_unindex
++#print axioms TargetA.cell_unindex_next_one_interior
++#print axioms TargetA.cell_unindex_next_two_interior
++#print axioms TargetA.cell_unindex_next_one_seam
++#print axioms TargetA.cell_unindex_next_two_seam_six
++#print axioms TargetA.cell_unindex_next_two_seam_seven
++#print axioms TargetA.cell_unindex_next_one
++#print axioms TargetA.cell_unindex_next_two
++#print axioms TargetA.period8_forward_reindex_action
++#print axioms TargetA.period8_forward_reindex_actionC
++#print axioms TargetA.zmod_finEquiv_eq_natCast
++#print axioms TargetA.zmod_finEquiv_cyclic_next
++#print axioms TargetA.zmod_finEquiv_cyclic_prev
++#print axioms TargetA.cell_zmod_reindex_residue
++#print axioms TargetA.cyclic_next_prev
++#print axioms TargetA.cyclic_prev_next
++#print axioms TargetA.cyclic_next_eq_iff
++#print axioms TargetA.hamilton_gauge_matrix_eq_forward_add_transpose
++#print axioms TargetA.hamilton_gauge_forward_matrix_mulVec
++#print axioms TargetA.hamilton_gauge_forward_matrixC_mulVec
++#print axioms TargetA.hamilton_gauge_matrix_symmetric
++#print axioms TargetA.hamilton_gauge_matrix_zero_of_not_neighbour
++#print axioms TargetA.cyclic_next_one_ne_self
++#print axioms TargetA.cyclic_next_two_ne_self
++#print axioms TargetA.cyclic_next_one_then_one
++#print axioms TargetA.cyclic_next_one_ne_two
++#print axioms TargetA.hamilton_gauge_matrix_diagonal_zero
++#print axioms TargetA.period_eight_value_is_sign
++#print axioms TargetA.forward_step_one_is_sign
++#print axioms TargetA.forward_step_two_is_sign
++#print axioms TargetA.forward_step_one_periodic_holonomy
++#print axioms TargetA.forward_step_two_periodic_holonomy
++#print axioms TargetA.period_eight_repeat
++#print axioms TargetA.period8_target_lift_cell_value
++#print axioms TargetA.period8_target_tau_is_sign
++#print axioms TargetA.period8_target_lift_is_sign
++#print axioms TargetA.period8_target_lift_periodic
++#print axioms TargetA.period8_target_step_two_is_sign
++#print axioms TargetA.period8_target_step_one_is_sign
++#print axioms TargetA.period8_target_matrix_symmetric
++#print axioms TargetA.period8_target_matrix_isHermitian
++#print axioms TargetA.period8_target_matrix_diagonal_zero
++#print axioms TargetA.step_one_cut_rule
++#print axioms TargetA.step_two_cut_rule
++#print axioms TargetA.step_one_no_cut
++#print axioms TargetA.step_one_cut
++#print axioms TargetA.step_two_no_cut
++#print axioms TargetA.step_two_cut
++#print axioms TargetA.period_eight_fits_multiple
++#print axioms TargetA.period8_raw_to_cell_injective
++#print axioms TargetA.period8_raw_to_cell_intertwines
++#print axioms TargetA.zmod_finEquiv_cyclic_step
++#print axioms TargetA.period8_double_cell_shift_unindex
++#print axioms TargetA.period8_raw_half_shift_to_cell_antiperiodic
++#print axioms TargetA.period8_double_cover_antisector_eigen_square_lt_edge
++#print axioms TargetA.period8_antiperiodic_parameter_re_lt_two
++#print axioms TargetA.period8_antiperiodic_holonomy_root_lt_edge
++#print axioms TargetA.period8_antiperiodic_fiber_eigen_square_lt_edge
++#print axioms TargetA.period8_antiperiodic_nonzero_dft_holonomy
++#print axioms TargetA.period8_antiperiodic_cell_eigen_square_lt_edge
++#print axioms TargetA.period8_intra_as_forward_add_transpose
++#print axioms TargetA.period8_backward_is_forward_transpose
++#print axioms TargetA.period8_cell_action_fin_eq_forward_add_backward
++#print axioms TargetA.period8_forward_cell_operator_fin_apply
++#print axioms TargetA.period8_forward_reindex_actionC_eq_cell_operator
++#print axioms TargetA.period8_forward_cell_matrix_fin_mulVec
++#print axioms TargetA.period8_forward_cell_matrix_fin_transpose_mulVec
++#print axioms TargetA.period8_cell_matrix_fin_mulVec
++#print axioms TargetA.period8_reindexed_forward_matrix_mulVec
++#print axioms TargetA.period8_reindexed_forward_matrix_eq_cell_matrix
++#print axioms TargetA.period8_reindexed_matrix_eq_forward_add_transpose
++#print axioms TargetA.period8_reindexed_matrix_eq_cell_matrix
++#print axioms TargetA.period8_reindexed_matrix_mulVec
++#print axioms TargetA.period8_reindexed_forward_operator_eq
++#print axioms TargetA.period8_fiber_as_cell_symbol
++#print axioms TargetA.period8_cell_dft_translation
++#print axioms TargetA.period8_cell_dft_matrix
++#print axioms TargetA.cellEncode_rawToFinCell
++#print axioms TargetA.period8_reindexed_matrix_mulVec_raw
++#print axioms TargetA.period8_fin_cell_action_to_zmod
++#print axioms TargetA.exists_nonzero_period8_cell_dft
++#print axioms TargetA.period8_cell_dft_action
++#print axioms TargetA.period8_cell_eigen_dft_fiber
++#print axioms TargetA.period8_zmod_real_eigen_square_lt_bound
++#print axioms TargetA.period8_raw_real_eigen_square_lt_bound
++#print axioms TargetA.period8_target_eigenvalue_square_lt_bound
++#print axioms TargetA.period8_target_eigenvalue_beats_twisted
++#print axioms TargetA.period8_alpha_plus_main_theorem
++#print axioms TargetA.period8_chiral_determinant_complex
++#print axioms TargetA.period8_unit_conj_eq_inv
++#print axioms TargetA.period8_unit_of_pow_eq_one
++#print axioms TargetA.period8_xi_unit_from_holonomy
++#print axioms TargetA.period8_unit_parameter_real
++#print axioms TargetA.period8_unit_parameter_re_le_two
++#print axioms TargetA.period8_polynomialC_ofReal
++#print axioms TargetA.period8_complex_root_is_real_root
++#print axioms TargetA.period8_unit_complex_root_is_real_root
++#print axioms TargetA.period8_unit_complex_root_lt_bound
++#print axioms TargetA.period8_holonomy_root_lt_bound
++#print axioms TargetA.period8_squared_chiral_block
++#print axioms TargetA.period8_squared_block_annihilated
++#print axioms TargetA.period8_matrix_power_on_eigenvector
++#print axioms TargetA.period8_squared_block_eigen_root
++#print axioms TargetA.period8_squared_block_eigen_lt_bound
++#print axioms TargetA.period8_chiral_determinant
++#print axioms TargetA.period8_double_lift_low
++#print axioms TargetA.period8_double_lift_high
++#print axioms TargetA.period8_double_lift_injective
++#print axioms TargetA.period8_double_low_half_shift
++#print axioms TargetA.period8_double_high_half_shift
++#print axioms TargetA.period8_double_lift_antiperiodic
++#print axioms TargetA.period8_double_same_half_next
++#print axioms TargetA.period8_double_cross_half_next
++#print axioms TargetA.period8_double_signed_forward_entry
++#print axioms TargetA.period8_double_low_lift
++#print axioms TargetA.period8_double_high_lift
++#print axioms TargetA.period8_periodic_matrix_entry
++#print axioms TargetA.period8_double_matrix_same_blocks
++#print axioms TargetA.period8_double_matrix_cross_blocks
++#print axioms TargetA.period8_double_matrix_difference
++#print axioms TargetA.period8_sum_double
++#print axioms TargetA.period8_double_matrixC_difference
++#print axioms TargetA.period8_double_matrixC_same_blocks
++#print axioms TargetA.period8_double_matrixC_cross_blocks
++#print axioms TargetA.period8_double_action_low
++#print axioms TargetA.period8_double_action_high
++#print axioms TargetA.period8_double_lift_intertwines
++#print axioms TargetA.period8_double_lift_smul
++#print axioms TargetA.period8_alpha_minus_raw_eigen_square_lt_edge
++#print axioms TargetA.period8_alpha_minus_main_theorem
++#print axioms TargetA.period8_chiral_square
++#print axioms TargetA.period8_chiral_anticommutes
++#print axioms TargetA.period8_chiral_maps_plus_to_minus
++#print axioms TargetA.period8_chiral_basis_left_inverse
++#print axioms TargetA.period8_chiral_basis_right_inverse
++#print axioms TargetA.period8_xi_mul_inv_sq
++#print axioms TargetA.period8_inv_sq_mul_xi
++#print axioms TargetA.period8_xi_mul_inv
++#print axioms TargetA.period8_fiber_in_chiral_basis
++#print axioms TargetA.period8_fiber_similar_to_chiral_coordinates
++#print axioms TargetA.period8_complex_squared_block
++#print axioms TargetA.period8_complex_squared_block_annihilated
++#print axioms TargetA.period8_complex_matrix_power_on_eigenvector
++#print axioms TargetA.period8_complex_squared_block_eigen_root
++#print axioms TargetA.period8_top_project_embed
++#print axioms TargetA.period8_bottom_project_embed
++#print axioms TargetA.period8_top_project_bottom_embed
++#print axioms TargetA.period8_bottom_project_top_embed
++#print axioms TargetA.period8_embed_project_reconstruct
++#print axioms TargetA.period8_chiral_top_action
++#print axioms TargetA.period8_chiral_bottom_action
++#print axioms TargetA.period8_chiral_coordinate_action
++#print axioms TargetA.period8_chiral_top_equation
++#print axioms TargetA.period8_chiral_bottom_equation
++#print axioms TargetA.period8_chiral_top_nonzero
++#print axioms TargetA.period8_chiral_squared_top_eigen
++#print axioms TargetA.period8_chiral_eigen_square_root
++#print axioms TargetA.period8_fiber_inverse_intertwines
++#print axioms TargetA.period8_fiber_eigen_square_root
++#print axioms TargetA.period8_fiber_polynomialC_eq
++#print axioms TargetA.period8_fiber_real_eigen_square_lt_bound
++#print axioms TargetA.period8_fiber_isHermitian
++#print axioms TargetA.period8_bound_positive
++#print axioms TargetA.period8_boundary_factorization
++#print axioms TargetA.period8_edge_is_boundary_root
++#print axioms TargetA.period8_at_two_positive
++#print axioms TargetA.period8_polynomial_monotone_in_flux
++#print axioms TargetA.period8_polynomial_positive
++#print axioms TargetA.period8_root_lt_bound
++#print axioms TargetA.period8_edge_lt_bound
++#print axioms TargetA.period8_edge_ge_fifteen_halves
++#print axioms TargetA.period8_edge_quadratic
++#print axioms TargetA.period8_at_two_nonneg_of_edge_le
++#print axioms TargetA.period8_at_two_pos_of_edge_lt
++#print axioms TargetA.period8_flux_factor_pos
++#print axioms TargetA.period8_polynomial_ge_at_two_of_edge_le
++#print axioms TargetA.period8_polynomial_pos_of_edge_le_flux_lt
++#print axioms TargetA.period8_root_lt_edge
++#print axioms TargetA.period8_root_le_edge
++#print axioms TargetA.period8_edge_root_iff
++#print axioms TargetA.gapCharge_mod_four
++#print axioms TargetA.sector_after_gap
++#print axioms TargetA.twisted_block_symmetric
++#print axioms TargetA.twisted_block_trace_zero
++#print axioms TargetA.twisted_block_characteristic
++#print axioms TargetA.sqrt_two_gt_141_over_100
++#print axioms TargetA.sqrt_two_add_sqrt_two_gt_923_over_500
++#print axioms TargetA.sqrt_two_add_nested_gt_1961_over_1000
++#print axioms TargetA.twisted_at_thirty_two_gt_bound
++#print axioms TargetA.twisted_multiple_of_eight_gt_bound
++
++#check TargetA.period8_double_matrix_difference
++#check TargetA.period8_double_lift_intertwines
++#check TargetA.period8_alpha_minus_raw_eigen_square_lt_edge
++#check TargetA.period8_alpha_minus_main_theorem

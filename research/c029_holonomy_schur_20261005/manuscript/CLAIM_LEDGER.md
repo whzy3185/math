@@ -52,7 +52,11 @@ Status: not reverified in this increment. No theorem in the manuscript relies on
 
 ## Formal proof status
 
-Full graph-level formal certification is not claimed. Fresh builds of the baseline, Period8SharpEdge and Period8AntiperiodicCells all passed; the extension adds 16 theorems. All 165 baseline-plus-extension declarations passed an axiom audit using only propext, Classical.choice and Quot.sound. Exact sources, command results and theorem assumptions are recorded in [the formal verification report](../lean/VERIFICATION_REPORT.md). The raw negative-holonomy adjacency matrix to the antiperiodic cell/fiber operator bridge remains outside the stated formalization scope. The R2 contraction and Schur-tail proof are not formalized. A later build report must name the compiled theorems and retained assumptions; it cannot retroactively certify uncovered bridges. Do not describe the partial results as a full Lean proof of either graph theorem.
+The raw negative-holonomy matrix bridge is now verified by `TargetA.period8_alpha_minus_main_theorem`: for every L>0 and every Hermitian eigenvalue of the explicit raw matrix on8L vertices, the eigenvalue square is strictly below period8Edge. Its assumptions no longer contain an unproved seam equivalence or a Fourier bridge. See [the current formal report](../lean/raw_graph_extension/RAW_GRAPH_VERIFICATION_REPORT.md).
+
+The two bridge modules add31 theorems, for47 new theorems beyond baseline; all196 baseline-plus-extension declarations have a successful axiom audit with only propext, Classical.choice and Quot.sound. This supersedes the raw-graph gap recorded in the earlier165-declaration report, which remains an unchanged historical checkpoint.
+
+This extension does not formalize the exact attained finite-size radical formula, integer n32 certificate, R2/R4 analytic tail arguments, unrestricted global minimum or publication novelty. The final declaration uses the Hermitian eigenvalue list, without a separate spectral-radius wrapper.
 
 ## Literature boundary
 

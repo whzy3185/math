@@ -49,13 +49,13 @@ The programs write their output certificates alongside their source. Exact graph
 
 For the PDF, run `pdflatex -interaction=nonstopmode -halt-on-error manuscript.tex` twice from `manuscript/`. See [build instructions](manuscript/README.md) for the local TeX format fallback used in this environment.
 
-## Verified partial Lean extension
+## Verified raw-graph Lean extension
 
-The [fresh formal verification report](lean/VERIFICATION_REPORT.md) records successful baseline, sharp-edge and antiperiodic-cell builds plus two axiom audits, completed at 08:13:01 UTC. The extension adds 16 theorems; all 165 baseline-plus-extension theorem declarations were audited. Their axiom union is exactly `propext`, `Classical.choice`, and `Quot.sound`, with no `sorryAx` or project-specific axiom.
+The [current formal status](lean/CURRENT_STATUS.md) and [raw-graph verification report](lean/raw_graph_extension/RAW_GRAPH_VERIFICATION_REPORT.md) record the completed negative-holonomy adjacency-to-cell bridge. The checked theorem `TargetA.period8_alpha_minus_main_theorem` gives, for every `L>0`, a strict squared-eigenvalue bound below `4+sqrt(10+2sqrt5)` for every Hermitian eigenvalue of the explicitly defined raw alpha-minus matrix on `8L` vertices. It has no assumed seam equivalence, Fourier decomposition or spectral bound.
 
-The exact extension sources and audit drivers are installed under the repository's `formal/` directory and also preserved with the report, pinned reproduction configuration and fresh logs in `lean/`. Existing baseline sources and configuration are unchanged. From `formal/`, run the five commands in the report; the new modules are built explicitly without editing `AllTheorems.lean`.
+The extension now has 47 new theorems beyond the frozen baseline. All 196 theorem declarations were freshly axiom-audited, with exactly `propext`, `Classical.choice`, and `Quot.sound`, and no `sorryAx` or project axiom. New modules and audit drivers are installed under `formal/`; all inherited sources and configuration remain unchanged. The earlier165-theorem bundle is retained unchanged as a historical checkpoint, with its bridge gap now superseded.
 
-The results cover scalar polynomial endpoint bounds, antiperiodic phase exclusion, fiber eigenvalues, and the stated finite cell-eigenstate theorem. The raw negative-holonomy signed-graph adjacency-to-cell bridge, exact radical graph formula, integer n32 certificate and both R2 Schur theorems remain outside this formal extension. This is not an end-to-end Lean proof of either graph theorem.
+The exact attained finite-size radical formula, the integer n32 certificate, R2/R4 analytic Schur results and unrestricted minimization remain separate analytic/computational claims. The formal endpoint is a Hermitian eigenvalue-list theorem rather than a separately defined graph spectral-radius wrapper.
 
 ## Provenance and file integrity
 

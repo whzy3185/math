@@ -1,0 +1,43 @@
+{
+  "status": "PASS",
+  "verification_completed_utc": "2026-10-05T08:33:48Z",
+  "baseline_repository": "https://github.com/whzy3185/math",
+  "baseline_commit": "7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2",
+  "lean_version": "4.33.1",
+  "lean_commit": "819816b2e0a3bf405af45ae5c7af2491d8f5bee6",
+  "mathlib_commit": "0df444a360eaa60ab8c11dca51a86af692955474",
+  "new_bridge_theorems": 31,
+  "total_new_theorems_since_baseline": 47,
+  "audited_theorems": 196,
+  "axiom_union": [
+    "Classical.choice",
+    "Quot.sound",
+    "propext"
+  ],
+  "checks": {
+    "fresh_raw_bridge": {
+      "command": "lake build TargetA.Period8DoubleCover",
+      "exit_code": 0,
+      "start_utc": "2026-10-05T08:32:09Z",
+      "end_utc": "2026-10-05T08:33:00Z"
+    },
+    "fresh_raw_bridge_axioms": {
+      "command": "lake env lean RawBridgeAxiomAudit.lean",
+      "exit_code": 0,
+      "start_utc": "2026-10-05T08:33:13Z",
+      "end_utc": "2026-10-05T08:33:48Z"
+    }
+  },
+  "baseline_theorem_sources_unchanged": true,
+  "previous_165_theorem_bundle_unchanged": true,
+  "raw_graph_bridge_proved": true,
+  "raw_endpoint_theorem": "TargetA.period8_alpha_minus_main_theorem",
+  "raw_endpoint_scope": "For every natural L>0 and every Hermitian eigenvalue of period8TargetMatrixC L (-1), the eigenvalue squared is < 4 + sqrt(10 + 2*sqrt(5)).",
+  "excluded": [
+    "exact finite-size radical spectral-radius formula",
+    "n=32 integer certificate inside Lean",
+    "R2 analytic tail result inside Lean",
+    "unrestricted spectral minimization",
+    "literature-wide novelty"
+  ]
+}

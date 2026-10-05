@@ -8,21 +8,21 @@
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 2335,
-      "sha256": "79b84bd359c94d15cc1031c506451fe098d59126d952eee92ece8283ed216e7e",
-      "git_blob_sha": "fe4937ed6c4c929dfc968f17209f93fe03e0a283"
+      "bytes": 2748,
+      "sha256": "cc27e45e340ebb827030b2b4c9218ef11b03c01f4dd82e740bb8e02c4eab5eb1",
+      "git_blob_sha": "39467c056ce4d03ee11b15cde5c9b97169047c3b"
     },
     {
       "path": "README.md",
-      "bytes": 7149,
-      "sha256": "1e5a6e3c9bbcc1607301dbe0f21f7e468c966e0d87f9c739d9f5af9cf94b8f9c",
-      "git_blob_sha": "eeaebc923be942723804af771d0ae5a3722c4039"
+      "bytes": 7258,
+      "sha256": "e77a0dddb2fe38e431223b3a058b9cb580037db32048f66c2ccb0e57fe9910a9",
+      "git_blob_sha": "2c09fb8e791ea74e0cc4943bbbfe82afb2b33206"
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 5279,
-      "sha256": "0651284ef4f372e608fae10e8640e2575c0f9c1abcccbd80f161933fcd3f0949",
-      "git_blob_sha": "d91d0c56a0572856498a079717c34d155a4d2047"
+      "bytes": 6985,
+      "sha256": "4a732a834831412a5b376265a496eb8cdefad62c26d3309caf34a6c19ee8e07d",
+      "git_blob_sha": "03935272ce1dce6bc408ee02536ba14d3fa45d2a"
     },
     {
       "path": "certificates/analytic/INTEGRATION_HANDOFF.md",
@@ -301,6 +301,12 @@
       "git_blob_sha": "78e92384d4e39c74545d500e0ee843309f15709c"
     },
     {
+      "path": "lean/CURRENT_STATUS.md",
+      "bytes": 1196,
+      "sha256": "b7600217b625978ed012a39740afb8aa65ae70544e1238e1f7a162548b16d214",
+      "git_blob_sha": "9294b9e804acd816da4377a63d1dbb90e6207fe0"
+    },
+    {
       "path": "lean/SHA256SUMS",
       "bytes": 1509,
       "sha256": "4bde6cc65ebd5621a9c6dfd817eab88fa42fb887650e41507394d37f6ef943d0",
@@ -373,6 +379,96 @@
       "git_blob_sha": "b8b41b5e4be4ef1fdfcc5b94ec846a57560156e5"
     },
     {
+      "path": "lean/raw_graph_extension/RAW_GRAPH_VERIFICATION_REPORT.md",
+      "bytes": 5820,
+      "sha256": "cc33d50464d1e7e2c7072271fb63847e4d586e93cfc5fe95433b8b3fe5409949",
+      "git_blob_sha": "ac936a168c781b2c2fb17d0956e27e2ee5f727b6"
+    },
+    {
+      "path": "lean/raw_graph_extension/SHA256SUMS",
+      "bytes": 1369,
+      "sha256": "9f6b1590419aa2d94583f1557e6d98a8f26a9ad85fde1d5b4cbd0010e4e58771",
+      "git_blob_sha": "9a3c2f12e3865f7e373cd9d6242f5ef7ed26a3df"
+    },
+    {
+      "path": "lean/raw_graph_extension/c029_raw_bridge.patch",
+      "bytes": 39694,
+      "sha256": "1f98c70aa0bbb3d6a5e5553694d23b98e2eda583cc226a13fb41dbc833cd2d30",
+      "git_blob_sha": "12e9f1921c44390964b5936b1126f098848e2415"
+    },
+    {
+      "path": "lean/raw_graph_extension/formal/RawBridgeAxiomAudit.lean",
+      "bytes": 10598,
+      "sha256": "b28d7c586dd02e5ed5b116d922ac7ce18398e11ea681573a6d419844f73da5ed",
+      "git_blob_sha": "b3193cbff6d1468e9030fcfdacddf1c043e205a1"
+    },
+    {
+      "path": "lean/raw_graph_extension/formal/TargetA/Period8AntiperiodicBridge.lean",
+      "bytes": 4490,
+      "sha256": "0a8da5e9dbad5dc636c75b1c76c32cbed27c26a7e19ee7533eaf8cebb81ef9f7",
+      "git_blob_sha": "ff8e3f75bce2957447eb18be22adaf4e414ac44a"
+    },
+    {
+      "path": "lean/raw_graph_extension/formal/TargetA/Period8AntiperiodicCells.lean",
+      "bytes": 4595,
+      "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707",
+      "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e"
+    },
+    {
+      "path": "lean/raw_graph_extension/formal/TargetA/Period8DoubleCover.lean",
+      "bytes": 14526,
+      "sha256": "1695e3ca392be8a726e59ac0ae0833b1624145abd849c665be57628526ef861e",
+      "git_blob_sha": "5be69540859b61da41118f98e6e2341bb11a6630"
+    },
+    {
+      "path": "lean/raw_graph_extension/formal/TargetA/Period8SharpEdge.lean",
+      "bytes": 4277,
+      "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612",
+      "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b"
+    },
+    {
+      "path": "lean/raw_graph_extension/logs/fresh_raw_bridge.log",
+      "bytes": 9838,
+      "sha256": "231e75ffd0ef09485173b6caffb7db18564b82b50f35b8454a09b2ed29c4f761",
+      "git_blob_sha": "7aab5e86140f9887bdf0efe797f6829060a0f7e0"
+    },
+    {
+      "path": "lean/raw_graph_extension/logs/fresh_raw_bridge_axioms.log",
+      "bytes": 19646,
+      "sha256": "1bb059b88e66237781f604a433ab18e787be8c76ddd477c5a7ec1c19f08e3044",
+      "git_blob_sha": "daedb0103cd20cb339ef298fae5a8cba01a2465a"
+    },
+    {
+      "path": "lean/raw_graph_extension/reproduction/lake-manifest.json",
+      "bytes": 3121,
+      "sha256": "bcf1b2418e4dbd801c48073899e6596885ad82ad71972d1cd21578926294fa85",
+      "git_blob_sha": "883a856f7a51ddf0b85fa99ca4937fd4e705544a"
+    },
+    {
+      "path": "lean/raw_graph_extension/reproduction/lakefile.lean",
+      "bytes": 193,
+      "sha256": "cbc44c2ebb703d667340b02483a2240be472667aca43c6ec7fd9a198c566fba7",
+      "git_blob_sha": "402b4cfbea7a71f89f879c5c420932354f0d7cce"
+    },
+    {
+      "path": "lean/raw_graph_extension/reproduction/lean-toolchain",
+      "bytes": 25,
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+      "git_blob_sha": "a8afa7d1b02d96f0671eba854a8dc4b416beb473"
+    },
+    {
+      "path": "lean/raw_graph_extension/source_sha256.json",
+      "bytes": 1990,
+      "sha256": "b2e2e8beeb72776a8a0e239be59ccf0166314678a4e0025f6dcafbd9aecc9075",
+      "git_blob_sha": "8850449863ee28f537fe32bbe3a0cd011ac96a67"
+    },
+    {
+      "path": "lean/raw_graph_extension/verification_summary.json",
+      "bytes": 1558,
+      "sha256": "7ba53c228bea8225349f219850b6d8fb15b790a338853bb8c4ea62031d46acd0",
+      "git_blob_sha": "c36afaab25aac01a242896a30ece86fe2e42cf43"
+    },
+    {
       "path": "lean/reproduction/lake-manifest.json",
       "bytes": 3121,
       "sha256": "bcf1b2418e4dbd801c48073899e6596885ad82ad71972d1cd21578926294fa85",
@@ -416,21 +512,21 @@
     },
     {
       "path": "manuscript/CLAIM_LEDGER.md",
-      "bytes": 9534,
-      "sha256": "0718396c102eb2156d4cbea7cd9743f998e28d16aed199fc06281934771f1aa3",
-      "git_blob_sha": "586b71a8de45794b07fa50c3573dd0a1ab4eed44"
+      "bytes": 9741,
+      "sha256": "faa3ee5e5596eaa179c9eb24c8012376bed627f8a801885ed94a7c6b76a3e135",
+      "git_blob_sha": "0cf5d9b35ca22b6bde2b590f940cab6cc8215224"
     },
     {
       "path": "manuscript/HANDOFF.zh-CN.md",
-      "bytes": 5804,
-      "sha256": "7cb6a7d85656350f6bd9ed8cd7a133a0a8f24e5db9e871e06afd2c25363fd168",
-      "git_blob_sha": "837007a609b90b9ed18206805f0a1a33cadd5cb7"
+      "bytes": 6288,
+      "sha256": "c883c201724a0356069c3394cdb7fa8ca6a56b85f8c8927b0935d0a40a153c59",
+      "git_blob_sha": "a4790fc76470ebc110160c0e00ff3d9d777a0952"
     },
     {
       "path": "manuscript/MANIFEST.json",
-      "bytes": 3121,
-      "sha256": "58d50b5a80d910e25bcd904beeaab0b81760542f2c8029c60b85650486afd410",
-      "git_blob_sha": "e6b8da3eb552ea1e00f92c387a3f72747b068ad3"
+      "bytes": 3086,
+      "sha256": "8b7ba1c489eb0c89ca6535ea4b83051dc00a382052e586eebfee95e02c3a6ed7",
+      "git_blob_sha": "1a615fb63ec0a6e5508e86bb8ec7b4187875908a"
     },
     {
       "path": "manuscript/PROOF_DEPENDENCY_MAP.md",
@@ -507,7 +603,7 @@
   ],
   "first_snapshot_commit": "b0c8b51efa3e77cd4c0117ce3cb97ca126e3580d",
   "latest_supplement": "Phase-uniform equal-cell assembly and balanced even-k R4 theorem; exact odd-k N60 obstruction",
-  "formal_extension_note": "Verified partial Lean extension with 16 new theorems and 165-declaration axiom audit; not an end-to-end graph formalization.",
+  "formal_extension_note": "Raw negative-holonomy graph bridge and strict squared-eigenvalue theorem verified for L>0;196 declarations audited. R2/R4 and global minimization are not formalized.",
   "formal_extension_files": [
     {
       "repository_path": "formal/AllAxiomAudit.lean",
@@ -520,9 +616,24 @@
       "git_blob_sha": "dc102906c6328acb47c7589253c1dc464ba326a4"
     },
     {
+      "repository_path": "formal/RawBridgeAxiomAudit.lean",
+      "sha256": "b28d7c586dd02e5ed5b116d922ac7ce18398e11ea681573a6d419844f73da5ed",
+      "git_blob_sha": "b3193cbff6d1468e9030fcfdacddf1c043e205a1"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8AntiperiodicBridge.lean",
+      "sha256": "0a8da5e9dbad5dc636c75b1c76c32cbed27c26a7e19ee7533eaf8cebb81ef9f7",
+      "git_blob_sha": "ff8e3f75bce2957447eb18be22adaf4e414ac44a"
+    },
+    {
       "repository_path": "formal/TargetA/Period8AntiperiodicCells.lean",
       "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707",
       "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e"
+    },
+    {
+      "repository_path": "formal/TargetA/Period8DoubleCover.lean",
+      "sha256": "1695e3ca392be8a726e59ac0ae0833b1624145abd849c665be57628526ef861e",
+      "git_blob_sha": "5be69540859b61da41118f98e6e2341bb11a6630"
     },
     {
       "repository_path": "formal/TargetA/Period8SharpEdge.lean",

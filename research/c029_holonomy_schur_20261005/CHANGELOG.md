@@ -19,3 +19,7 @@ Added the exact compiled sharp-edge and antiperiodic-cell sources and both porta
 ## Verified phase-uniform and R4 supplement
 
 Added all-unit-phase Schur closure and arbitrary identical-cell repetition, plus the balanced negative-holonomy even-k R4 family completed by24 exact finite bases. Included the exact N60 obstruction to removing the parity restriction, primary and independent verification code, complete proof and C7 ledger entry. Existing proof packages and PDF remain unchanged.
+
+## Verified raw negative-holonomy graph bridge
+
+Added the exact seam-entry identities, injective double-cover lift and full raw Hermitian eigenvalue theorem for every L>0. The two new modules contribute31 theorems, and the full196-declaration axiom audit passes. The earlier165-theorem bundle is retained as a checkpoint; its raw-graph gap is now superseded. No R2/R4 or global-minimum formalization is claimed.
