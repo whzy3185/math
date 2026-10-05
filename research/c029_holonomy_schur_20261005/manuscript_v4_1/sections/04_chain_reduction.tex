@@ -1,0 +1,156 @@
+\section{A common four-site chain and six-coordinate boundary}
+\label{sec:chain}
+
+The remaining proofs use squared adjacency matrices. For a cap $c$,
+positive definiteness of $cI-A^2$ is equivalent to $\rho(A)^2<c$.
+Throughout, $\norm{\cdot}_2$ is the Euclidean operator norm and
+$\norm{\cdot}_F$ is the Frobenius norm.
+Eliminating an interior replaces its length by an exact response at its
+two ends. To control unequal concatenations, we need these responses to
+approach common limits and the combined junction block to be positive.
+We first derive the block system from a single cell, keeping all its
+boundary contributions. The system is certified separately at
+$c=\czero$ and $c=\cone$; each cap has its own recurrence trajectory,
+limiting matrix, and finite premises.
+
+For the one-cell word $w_j$, put $h=8j+2=4\ell+2$, where $\ell=2j$.
+Initially take positive holonomy and $h\ge18$. Partition the vertices into
+\[
+ V_0=\{0,1\},\qquad
+ V_s=\{2+4(s-1),\ldots,5+4(s-1)\}\quad(1\le s\le\ell).
+\]
+The normalized matrix $M_h(c)=cI-A_h(w_j,+1)^2$ has bulk diagonal and
+successive coupling blocks
+\begin{gather}
+ D_c=\begin{pmatrix}
+ c-4&0&-1&0\\0&c-4&0&-1\\-1&0&c-4&0\\0&-1&0&c-4
+ \end{pmatrix},\label{eq:D}\\
+ E_+=\begin{pmatrix}-1&0&0&0\\0&1&0&0\\-1&2&1&0\\2&-1&0&-1\end{pmatrix},
+ \qquad
+ E_-=\begin{pmatrix}-1&0&0&0\\0&1&0&0\\-1&-2&1&0\\-2&-1&0&-1\end{pmatrix}.
+ \label{eq:E}
+\end{gather}
+Here $M_h[V_s,V_{s+1}]=E_+$ for odd $s$ and $E_-$ for even $s$.
+The boundary blocks are
+\begin{gather}
+ G_0=(c-4)I_2,\qquad H_0=D_c,\qquad
+ R_0=\begin{pmatrix}-1&-2&1&0\\-2&-1&0&-1\end{pmatrix},\notag\\
+ C_0=\begin{pmatrix}-1&0&-1&0\\0&-1&0&-1\end{pmatrix},\qquad
+ W_0=\begin{pmatrix}0&0&-1&0\\0&0&0&1\\0&0&0&0\\0&0&0&0\end{pmatrix}.
+ \label{eq:boundary-data}
+\end{gather}
+Specifically, $R_0=M_h[V_0,V_1]$, $C_0=M_h[V_0,V_\ell]$, and
+$W_0=M_h[V_1,V_\ell]$. All other nonadjacent bulk blocks vanish.
+These identities follow from the complete two-walk expansion
+\begin{align}
+ (A^2)_{i,i}&=4,& (A^2)_{i,i+1}&=\tau_{i-1}+\tau_i,&
+ (A^2)_{i,i+2}&=1,\notag\\
+ (A^2)_{i,i+3}&=\tau_i+\tau_{i+1},&
+ (A^2)_{i,i+4}&=\tau_i\tau_{i+2},&&
+ \label{eq:two-walks}
+\end{align}
+their transposes, and zero entries at all other cyclic offsets. At
+$h\ge18$ these offsets and the stated block locations do not collide.
+The exceptional order $h=10$ will be checked directly.
+
+Use zero-based elimination indices: let $X_0=D_c$, with $E_a=E_+$ for
+even $a$ and $E_a=E_-$ for odd $a$. Eliminating the current four-site
+pivot gives the length-independent open recurrence
+\begin{align}
+ X_{a+1}&=D_c-E_a^TX_a^{-1}E_a,&
+ R_{a+1}&=-R_aX_a^{-1}E_a,\notag\\
+ W_{a+1}&=-E_a^TX_a^{-1}W_a,&
+ G_{a+1}&=G_a-R_aX_a^{-1}R_a^T,\label{eq:recurrence}\\
+ H_{a+1}&=H_a-W_a^TX_a^{-1}W_a,&
+ C_{a+1}&=C_a-R_aX_a^{-1}W_a.\notag
+\end{align}
+The final pivot has index $p=\ell-2$, which is even. At that step the
+right coupling is $W_p+E_+$, so the retained six-coordinate core is
+\begin{equation}
+ S_\ell(c)=\begin{pmatrix}
+ G_p-R_pX_p^{-1}R_p^T&C_p-R_pX_p^{-1}(W_p+E_+)\\
+ *&H_p-(W_p+E_+)^TX_p^{-1}(W_p+E_+)
+ \end{pmatrix}.
+ \label{eq:single-core}
+\end{equation}
+The lower-left block is the transpose of the upper-right block.
+Repeated Schur congruence proves $M_h(c)\succ0$ once every eliminated
+pivot and this core are positive. The subscript $\ell$ counts four-site
+blocks, not vertices.
+
+\subsection{The two finite rational certificates}
+
+Write $F_\pm(X)=D_c-E_\pm^TX^{-1}E_\pm$ and
+$\Phi=F_-\circ F_+$. At the even entrance $J$ set
+\[
+ Z=X_J=\Phi^{J/2}(D_c),\qquad Y=F_+(Z),\qquad
+ T_Z=Z^{-1}E_+Y^{-1}E_-.
+\]
+Both energies use the fixed rational weights
+\begin{align}
+ P&=\frac1{10000}\begin{pmatrix}
+10766&87&19&974\\87&12664&148&-2418\\19&148&10093&-25\\974&-2418&-25&14009
+\end{pmatrix},\notag\\
+ Q&=\frac1{10000}\begin{pmatrix}
+11503&614&990&-1101\\614&10470&15&113\\990&15&12299&-2632\\-1101&113&-2632&13260
+\end{pmatrix}.
+\label{eq:weights}
+\end{align}
+The numerical constants are exact rational numbers:
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+Quantity & $c=\czero$ & $c=\cone$\\
+\midrule
+Entrance $J$ & $24$ & $48$\\
+Riccati radius $\delta$ & $10^{-10}$ & $10^{-18}$\\
+Response square bound $\zeta$ & $10^{-10}$ & $10^{-20}$\\
+Center transfer factor $\kappa$ & $2/5$ & $1/2$\\
+Response contraction $q$ & $2/3$ & $3/4$\\
+Riccati contraction $\theta=q^2$ & $4/9$ & $9/16$\\
+Even response bound $a$ & $1/30000$ & $1/9000000000$\\
+Pair response bound $b=12a$ & $1/2500$ & $1/750000000$\\
+Seed margin $\gamma$ & $1/50$ & $10^{-6}$\\
+Tail tolerance $\epsilon$ & $1/500$ & $10^{-8}$\\
+Seed graph order $4(J+2)+2$ & $106$ & $202$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\begin{lemma}[Exact finite premises]\label{lem:finite-premises}
+For each column of the table, the rational recurrence satisfies:
+\begin{enumerate}
+\item $X_0,\ldots,X_J\succ0$ and $Z,Y\succ I_4/2$;
+\item $(9/10)I_4\prec P,Q\prec2I_4$;
+\item $T_Z^TPT_Z\prec\kappa P$ and $T_ZQT_Z^T\prec\kappa Q$;
+\item $\norm{\Phi(Z)-Z}_F<\delta/40$;
+\item $R_JQR_J^T\prec\zeta I_2$ and $W_J^TQW_J\prec\zeta I_4$;
+\item $S_{J+2}(c)\succ\gamma I_6$.
+\end{enumerate}
+\end{lemma}
+\begin{proof}
+All the matrices are specified by the rational initial data and at most
+$J+2$ recurrence steps. The accompanying exact verifiers evaluate them over
+$\mathbb Q$. For each positive-definiteness assertion they compute scalar
+Schur pivots: if a symmetric matrix is partitioned as
+$\left(\begin{smallmatrix}d&v^T\\v&K\end{smallmatrix}\right)$, they require
+$d>0$ and recurse on $K-vv^T/d$. Every pivot is a strictly positive
+rational number. The residual check is the exact comparison
+\[
+ \sum_{u,v}(\Phi(Z)-Z)_{uv}^2<(\delta/40)^2.
+\]
+The verifiers reconstruct the responses, and the certificates store the
+exact centers, seeds and positive pivots; the $\cone$ certificate also
+stores both entrance responses. An independent implementation constructs the full signed graph and
+uses scalar elimination, without generating the entrance through the
+four-site recurrence. It recovers the entrance after $4J$ scalar pivots,
+subtracts the physical terminal $E_+$ coupling to isolate $W_J$, and
+checks the same inequalities. Both energies pass these rational checks.
+The implementation and certificate locations are given in
+Section~\ref{sec:verification}.
+\end{proof}
+
+This lemma is the finite computational part of the uniform argument. No
+floating eigenvalue or limiting-matrix approximation is used in its
+acceptance tests. The seed margins refer to the normalized six-coordinate
+cores in \eqref{eq:single-core}.

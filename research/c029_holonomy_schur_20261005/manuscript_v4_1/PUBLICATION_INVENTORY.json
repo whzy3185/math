@@ -1,0 +1,581 @@
+{
+  "schema_version": "1.0",
+  "revision": "v4.1",
+  "title": "Uniform spectral bounds for signed cycle squares with unequal cells",
+  "date": "2026-10-05",
+  "pages": 20,
+  "formal_audit_scope": 237,
+  "fresh_full_formal_pass_claimed": false,
+  "source_provenance": {
+    "supplement_commit": "12e3389c07cc5a632023a1f6b972f9baf450a6a0",
+    "formal_baseline_commit": "7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2",
+    "formal_subbundle": "lean/exact_radius",
+    "axiom_audit_target_count": 237
+  },
+  "source_changes": [
+    {
+      "path": "supplement/certificates/unequal_cells/verify_unequal_cells.py",
+      "upstream_sha256": "842bdb021805f664f2249999cc1403e3150175f6e1126d338492a7b9deb542a1",
+      "supplied_sha256": "ad5bef2724a90032e7e4457577c53743eb5f46e712f0b6ecdc84e7635378a78d",
+      "description": "Requires both stated order-60 and order-76 strict obstructions in the final conjunction and stores their exact pivot prefixes."
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8AntiperiodicBridge.lean",
+      "upstream_sha256": "0a8da5e9dbad5dc636c75b1c76c32cbed27c26a7e19ee7533eaf8cebb81ef9f7",
+      "supplied_sha256": "725d0d290a260ec4a5fefeabf1691976f5b8c9808aa3a3a75ec989a07378c9c5",
+      "description": "One redundant evidential qualifier removed from a non-executable introductory comment. No formal definition, statement, or proof token changed."
+    }
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "sha256": "d9f278faad94ea91a2a3e7e8f3035a4cd9ed692d7f7bf0be732be3cac03137cb",
+      "git_blob_sha": "dcf213ff6d9557097839eb48277e9c29f1d5c27e",
+      "bytes": 1822
+    },
+    {
+      "path": "REPRODUCTION.md",
+      "sha256": "11fd330834f761c329b3264948998dcbe92b32f4901dae5c44920dbbe21fe5ff",
+      "git_blob_sha": "6dc8095aacf3acbccf812e78285780caf73463f3",
+      "bytes": 3977
+    },
+    {
+      "path": "build_environment.sh",
+      "sha256": "b752f9b2e8eb8954eb6502e13764dd2e23bd22ac710a44dd8e62685f461e9d40",
+      "git_blob_sha": "d11eb5f914ed7d069e1584c1149ac70f24097bda",
+      "bytes": 999
+    },
+    {
+      "path": "manuscript.pdf",
+      "sha256": "f0e542744a2cb8d251db922ea02bd44f0e9946125b8ddd7f9375898ef90052c0",
+      "git_blob_sha": "472b16d1c2327212e124331612ea48f9d645e694",
+      "bytes": 434348
+    },
+    {
+      "path": "manuscript.tex",
+      "sha256": "9aa10b583e88139623ef27c858d7459a16766de8683e5ebcbc2c7c569bdc3e6d",
+      "git_blob_sha": "41dd607ede0878e09ff3f235e1a006bfbb9e5861",
+      "bytes": 5884
+    },
+    {
+      "path": "sections/01_introduction.tex",
+      "sha256": "b75f29e1a9afc978662e6c993ec11d748f9ca281794bd530c9a40e57ae2fcd53",
+      "git_blob_sha": "0d39f0cdb8aca7ec58a1d83439bb8fff49c12bd3",
+      "bytes": 10104
+    },
+    {
+      "path": "sections/02_holonomy.tex",
+      "sha256": "b005799cd7a43470e883dfce974b3175d82fe20d59bc0c35632c6cebe55e295b",
+      "git_blob_sha": "d6a25ead612d00629447fff9d37aca2af556f8f1",
+      "bytes": 3249,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/sections/02_holonomy.tex",
+        "git_blob_sha": "d6a25ead612d00629447fff9d37aca2af556f8f1"
+      }
+    },
+    {
+      "path": "sections/03_period_eight.tex",
+      "sha256": "e20b2c130f2dd820741e74111913b99f73947aec89b4b8751c3c96968c675e38",
+      "git_blob_sha": "58c37614307e7c4ba5eb375e7da3e36b129ba59a",
+      "bytes": 5488,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/sections/03_period_eight.tex",
+        "git_blob_sha": "58c37614307e7c4ba5eb375e7da3e36b129ba59a"
+      }
+    },
+    {
+      "path": "sections/04_chain_reduction.tex",
+      "sha256": "a3a181a16ca9981ad427c842add1f63c81b35e4e360aaa4a1a752f95fd1e577d",
+      "git_blob_sha": "ab9b583656ac719f67ad81199678cab5e3066a1d",
+      "bytes": 6506
+    },
+    {
+      "path": "sections/05_uniform_estimates.tex",
+      "sha256": "be0de08730fb08171ea4b768f9b77dd11fe26a5f022da7f65d806ba1146743f8",
+      "git_blob_sha": "87c987adbf2a9138f46cee49fe1894c6b1a3b3ad",
+      "bytes": 8137
+    },
+    {
+      "path": "sections/06_cells.tex",
+      "sha256": "b3be1b692503052bdea5faf2433c0a9577b82fa366e618513bc98432ab9a7725",
+      "git_blob_sha": "37eadf085de9db91d27376809918c52431ee66fb",
+      "bytes": 7302
+    },
+    {
+      "path": "sections/07_finite_completion.tex",
+      "sha256": "3d7b9e731ddd073ef5f37b9803bda1a846becd8ec80432aeb944e249f68abb2d",
+      "git_blob_sha": "66d5806b395cf62d974fd8b5292f66bcb127244c",
+      "bytes": 7304
+    },
+    {
+      "path": "sections/08_verification.tex",
+      "sha256": "3ba63831e3793438d8810ee01b5045a1fc5cda5206065915dad2946b3d04125f",
+      "git_blob_sha": "3ef3788d9b3bfcaac87a3dfe45434988a5320976",
+      "bytes": 8812
+    },
+    {
+      "path": "sections/boundary_figure.tex",
+      "sha256": "8123390ea2fccc56211ead7dc9c7b4fc0b42178f86bcfefe9f8d423c9cb63036",
+      "git_blob_sha": "4f2de009eeeedfd171e108a89fd3d6a9e190a2da",
+      "bytes": 1907,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/sections/boundary_figure.tex",
+        "git_blob_sha": "4f2de009eeeedfd171e108a89fd3d6a9e190a2da"
+      }
+    },
+    {
+      "path": "supplement/certificates/analytic/verify_r2_certificate.py",
+      "sha256": "9bfe38f1ef4d69528544d296554a1ff9e356f41a74f244daec650f8e74c62b97",
+      "git_blob_sha": "de4177bd10147e801e92c8825f036b2130829fa6",
+      "bytes": 7630,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/analytic/verify_r2_certificate.py",
+        "git_blob_sha": "de4177bd10147e801e92c8825f036b2130829fa6"
+      }
+    },
+    {
+      "path": "supplement/certificates/audit/replay_antiperiodic.py",
+      "sha256": "d45851cecf75b99af27cfda54ea1605b3c93bff652dc9a9e58af7bb8ab997cb2",
+      "git_blob_sha": "af7ca07587d98a52bc786a32a749f2396b5f224e",
+      "bytes": 2540,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/audit/replay_antiperiodic.py",
+        "git_blob_sha": "af7ca07587d98a52bc786a32a749f2396b5f224e"
+      }
+    },
+    {
+      "path": "supplement/certificates/audit/replay_direct_graph_seed.py",
+      "sha256": "4e0a3335b3560d53391e5c6902cb00ec102e7a175e10bc5d377c176c5551792e",
+      "git_blob_sha": "8c77566fc4e67ca064e499190703b52532865922",
+      "bytes": 4152,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/audit/replay_direct_graph_seed.py",
+        "git_blob_sha": "8c77566fc4e67ca064e499190703b52532865922"
+      }
+    },
+    {
+      "path": "supplement/certificates/audit/replay_local_from_direct_graph.py",
+      "sha256": "31552b6299996d7b92af9edac9d8628eb80831ab08abe474d729b2d4b1adfd34",
+      "git_blob_sha": "3a1423efa6bb4e6911a32ff5db68b2bdd14ddeef",
+      "bytes": 2378,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/audit/replay_local_from_direct_graph.py",
+        "git_blob_sha": "3a1423efa6bb4e6911a32ff5db68b2bdd14ddeef"
+      }
+    },
+    {
+      "path": "supplement/certificates/new_conjecture/verify_antiperiodic_counterexample.py",
+      "sha256": "c93e9ae6b550dab4f42e2193f14ef35ad553ac925a9155b843bfd865c3dcecfb",
+      "git_blob_sha": "58c93cd8dd8c223e2fd4eeaed776b8417d4f6a63",
+      "bytes": 5891,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/new_conjecture/verify_antiperiodic_counterexample.py",
+        "git_blob_sha": "58c93cd8dd8c223e2fd4eeaed776b8417d4f6a63"
+      }
+    },
+    {
+      "path": "supplement/certificates/r4_pilot/audit/replay_r4_phase.py",
+      "sha256": "da25d13fa429d4f4dff2f8a56cb9ea709a67eab424073689c2db390fbb83b78a",
+      "git_blob_sha": "8c5bdcfa07c4b723b398bab1411686fbbc99f9e8",
+      "bytes": 7004,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/r4_pilot/audit/replay_r4_phase.py",
+        "git_blob_sha": "8c5bdcfa07c4b723b398bab1411686fbbc99f9e8"
+      }
+    },
+    {
+      "path": "supplement/certificates/r4_pilot/verify_r4_pilot.py",
+      "sha256": "99d15f9497d4297aa3db1e5bdcfafa59fdb4e1acabf6646c0b2e4c8e41e6170d",
+      "git_blob_sha": "175c2f762e33d21d2a8d54a488098fab25dabdc6",
+      "bytes": 6666,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/r4_pilot/verify_r4_pilot.py",
+        "git_blob_sha": "175c2f762e33d21d2a8d54a488098fab25dabdc6"
+      }
+    },
+    {
+      "path": "supplement/certificates/r6_completion/audit/replay_r6.py",
+      "sha256": "f07de9f32d184c78d977fbfc8089046666e6743cdf0dcdf8c189d0d0e22291ed",
+      "git_blob_sha": "a867fcbe311021dded9981884cd9463462677661",
+      "bytes": 4465,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/r6_completion/audit/replay_r6.py",
+        "git_blob_sha": "a867fcbe311021dded9981884cd9463462677661"
+      }
+    },
+    {
+      "path": "supplement/certificates/r6_completion/verify_r6_completion.py",
+      "sha256": "1dbb6f69b8b8475766c62086be4a53f991e465d2b7c8db719c4d8a536acef0e2",
+      "git_blob_sha": "0d3f96632cc09d4972839d2d367d5213e6d32859",
+      "bytes": 3920,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/r6_completion/verify_r6_completion.py",
+        "git_blob_sha": "0d3f96632cc09d4972839d2d367d5213e6d32859"
+      }
+    },
+    {
+      "path": "supplement/certificates/strengthening/audit/replay_stronger_cap.py",
+      "sha256": "fa9de14a93a7e9a356660213fd034f5ebc522edb36e4b93b35619a495c8370b0",
+      "git_blob_sha": "42649c9e2f68f9e83cde79d5b63335a723013b1f",
+      "bytes": 6157,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/strengthening/audit/replay_stronger_cap.py",
+        "git_blob_sha": "42649c9e2f68f9e83cde79d5b63335a723013b1f"
+      }
+    },
+    {
+      "path": "supplement/certificates/strengthening/verify_uniform_cap.py",
+      "sha256": "e9d6af6966f16439329c26fa91f7f4c8de84346e5371d9bae981e01055c09ab2",
+      "git_blob_sha": "78e92384d4e39c74545d500e0ee843309f15709c",
+      "bytes": 9315,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/strengthening/verify_uniform_cap.py",
+        "git_blob_sha": "78e92384d4e39c74545d500e0ee843309f15709c"
+      }
+    },
+    {
+      "path": "supplement/certificates/unequal_cells/assembly.py",
+      "sha256": "75dcf4274217c5bcc16c94e957e5dbd28f5dc9d316a7f2c2bf6e1cf5800709b3",
+      "git_blob_sha": "b5b667760a46b84a143d656c2f62090b6d51963c",
+      "bytes": 4068,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/unequal_cells/assembly.py",
+        "git_blob_sha": "b5b667760a46b84a143d656c2f62090b6d51963c"
+      }
+    },
+    {
+      "path": "supplement/certificates/unequal_cells/audit/independent_assembly.py",
+      "sha256": "08bf22f7802cc25a8ffd7de7fe177f73fbe157e610d65261019560a7cdabc6f3",
+      "git_blob_sha": "a3ab42ee26512475dd04d03efef9f998e22f4e04",
+      "bytes": 8614,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/unequal_cells/audit/independent_assembly.py",
+        "git_blob_sha": "a3ab42ee26512475dd04d03efef9f998e22f4e04"
+      }
+    },
+    {
+      "path": "supplement/certificates/unequal_cells/verify_unequal_cells.py",
+      "sha256": "ad5bef2724a90032e7e4457577c53743eb5f46e712f0b6ecdc84e7635378a78d",
+      "git_blob_sha": "3e635ec26b3d6c067213602d8f0e76cb5ac332be",
+      "bytes": 4657,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/certificates/unequal_cells/verify_unequal_cells.py",
+        "git_blob_sha": "3e635ec26b3d6c067213602d8f0e76cb5ac332be"
+      }
+    },
+    {
+      "path": "supplement/formal/ExactRadiusAxiomAudit.lean",
+      "sha256": "e0446e0dc1189bad4e4ffb94340f3ece81ddc84a1b910710fd7cc4ba8464ec80",
+      "git_blob_sha": "1cc0cd8b8a11acde7628135e367cc9aafd164060",
+      "bytes": 13189,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/ExactRadiusAxiomAudit.lean",
+        "git_blob_sha": "1cc0cd8b8a11acde7628135e367cc9aafd164060"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/AllTheorems.lean",
+      "sha256": "563305f8569a9a72a934c3bd725f42ca45fc7184ec497654e59ac78b071f89ba",
+      "git_blob_sha": "c3441466752f6094e163bebe070725ffed7e509b",
+      "bytes": 297,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/AllTheorems.lean",
+        "git_blob_sha": "c3441466752f6094e163bebe070725ffed7e509b"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Definitions.lean",
+      "sha256": "57e1474341337231cf8aeedb7cfddbf137c6005da4432162e9fdccf2f1c127c0",
+      "git_blob_sha": "4b2753bf7ce8395cfb62913c08341867de481bf6",
+      "bytes": 557,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Definitions.lean",
+        "git_blob_sha": "4b2753bf7ce8395cfb62913c08341867de481bf6"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/FiniteBloch.lean",
+      "sha256": "7ef127215488d195c936f341ff752a7026857685783ba2d9e69cf56910237e61",
+      "git_blob_sha": "97800281776a8e1b6bc3ac32abef70392db1bf10",
+      "bytes": 8895,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/FiniteBloch.lean",
+        "git_blob_sha": "97800281776a8e1b6bc3ac32abef70392db1bf10"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/HamiltonGauge.lean",
+      "sha256": "ad9c2ce1b2fac081e803fe5cd227de85ceba0ef75e4426817c9dd1d49c30b57f",
+      "git_blob_sha": "3bbbe35b58441e4471354c95017038596daaba2a",
+      "bytes": 12031,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/HamiltonGauge.lean",
+        "git_blob_sha": "3bbbe35b58441e4471354c95017038596daaba2a"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8AntiperiodicBridge.lean",
+      "sha256": "725d0d290a260ec4a5fefeabf1691976f5b8c9808aa3a3a75ec989a07378c9c5",
+      "git_blob_sha": "7a80d380d140436b3227cbdd4d4d536f6123b50a",
+      "bytes": 4473,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8AntiperiodicBridge.lean",
+        "git_blob_sha": "7a80d380d140436b3227cbdd4d4d536f6123b50a"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8AntiperiodicCells.lean",
+      "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707",
+      "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e",
+      "bytes": 4595,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8AntiperiodicCells.lean",
+        "git_blob_sha": "cc695a343b6365395f4ed7d758ae2cb95ffd020e"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8BlochAction.lean",
+      "sha256": "5d9e5d545591920c38a13312e41add49d59e66e0b7c5193c9c5f411a4f8b6e9c",
+      "git_blob_sha": "f259ce94a6f7fdba4643844198cd433fe9a7f2ff",
+      "bytes": 22790,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8BlochAction.lean",
+        "git_blob_sha": "f259ce94a6f7fdba4643844198cd433fe9a7f2ff"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8ChiralBlock.lean",
+      "sha256": "28a13da079382b773f9f95313db69d331abcc3e8c014e0e678db7fe4c908cf3c",
+      "git_blob_sha": "05f8f69658d824eb2a6d63d5b8bd7c0267864797",
+      "bytes": 9131,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8ChiralBlock.lean",
+        "git_blob_sha": "05f8f69658d824eb2a6d63d5b8bd7c0267864797"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8DoubleCover.lean",
+      "sha256": "1695e3ca392be8a726e59ac0ae0833b1624145abd849c665be57628526ef861e",
+      "git_blob_sha": "5be69540859b61da41118f98e6e2341bb11a6630",
+      "bytes": 14526,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8DoubleCover.lean",
+        "git_blob_sha": "5be69540859b61da41118f98e6e2341bb11a6630"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8ExactFiniteRadius.lean",
+      "sha256": "097d607cbfd4cf199f1900865bc198174214d9ab867e437c4ed764bf5a6a9b03",
+      "git_blob_sha": "970fc9e615318e2860d76024321936df408a5e34",
+      "bytes": 7538,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8ExactFiniteRadius.lean",
+        "git_blob_sha": "970fc9e615318e2860d76024321936df408a5e34"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8ExactRoot.lean",
+      "sha256": "0f9a6a39a5b598ad56504ff1964e6d5b8a5cf1dfe6178c6cebae0755caca0ad4",
+      "git_blob_sha": "f8586c52913b2633165f965b2d3476c636a10216",
+      "bytes": 4140,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8ExactRoot.lean",
+        "git_blob_sha": "f8586c52913b2633165f965b2d3476c636a10216"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8Fiber.lean",
+      "sha256": "6fd6d51b87f98a65487f7175d20ac92547fda9d62508adf65e81578ab283824f",
+      "git_blob_sha": "dcac8b664b1dbf7fe03628d7d72ef9e613996038",
+      "bytes": 21328,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8Fiber.lean",
+        "git_blob_sha": "dcac8b664b1dbf7fe03628d7d72ef9e613996038"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8FiberAttainment.lean",
+      "sha256": "0fde8baf09d1936f5df7a96041877e44d465f89bf02f7375a27c1c408a824205",
+      "git_blob_sha": "f393c71060e069899408eb01339818d6d2a27a76",
+      "bytes": 7720,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8FiberAttainment.lean",
+        "git_blob_sha": "f393c71060e069899408eb01339818d6d2a27a76"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8PhaseMaximum.lean",
+      "sha256": "d8697f0fa8f52706e869cc5e486859617ada5769edfacf0ea297e86664ce8b67",
+      "git_blob_sha": "261db27b3e8ea9d08f69164c446d3e70efbc3bb5",
+      "bytes": 3919,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8PhaseMaximum.lean",
+        "git_blob_sha": "261db27b3e8ea9d08f69164c446d3e70efbc3bb5"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8Polynomial.lean",
+      "sha256": "e4fdd7a952a88962d0f71558cd4cd18dc3ebab4022d57950b0166c101ee44bc8",
+      "git_blob_sha": "a26ac9674601f3639816b6cf5061326e8a36286c",
+      "bytes": 3995,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8Polynomial.lean",
+        "git_blob_sha": "a26ac9674601f3639816b6cf5061326e8a36286c"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8ReverseBloch.lean",
+      "sha256": "f42abe0bb70bc25d5dae48fe23f472d313422f8b760596db9e91cfb5433c1c9a",
+      "git_blob_sha": "03586debe204a30084f668575fb3e52c5817d289",
+      "bytes": 6686,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8ReverseBloch.lean",
+        "git_blob_sha": "03586debe204a30084f668575fb3e52c5817d289"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8SharpEdge.lean",
+      "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612",
+      "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b",
+      "bytes": 4277,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/Period8SharpEdge.lean",
+        "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/PhaseSlip.lean",
+      "sha256": "307c2f65dc2dad57fef04df13963325f8dcfeb175037e4673a8831ce33294022",
+      "git_blob_sha": "9e6a8c9e6b37a06981804e8c9ae8e082bc852963",
+      "bytes": 341,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/PhaseSlip.lean",
+        "git_blob_sha": "9e6a8c9e6b37a06981804e8c9ae8e082bc852963"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/TwistedBlock.lean",
+      "sha256": "d9518c5d2e8b1b6df66fee7275669a77477a928b7068f1dff329803faf694f47",
+      "git_blob_sha": "6e9f00d5dd427dc8380b3a218d16f71f40f5338a",
+      "bytes": 804,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/TwistedBlock.lean",
+        "git_blob_sha": "6e9f00d5dd427dc8380b3a218d16f71f40f5338a"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA/TwistedThreshold.lean",
+      "sha256": "6bd420efd661bc2b67a66826ca47ea1c6ca41c656b1d20b194d4c54d155addac",
+      "git_blob_sha": "92a213063581515752d63f5b49bb45d96d184bf4",
+      "bytes": 2874,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA/TwistedThreshold.lean",
+        "git_blob_sha": "92a213063581515752d63f5b49bb45d96d184bf4"
+      }
+    },
+    {
+      "path": "supplement/formal/TargetA.lean",
+      "sha256": "fa655f28cf0f974a4fc6638ea97b49f14181ca8a6cb6786e79830a8b00843f2c",
+      "git_blob_sha": "1c1d67e69adaf86aef2911acb35e7c7a372b8cbd",
+      "bytes": 27,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/TargetA.lean",
+        "git_blob_sha": "1c1d67e69adaf86aef2911acb35e7c7a372b8cbd"
+      }
+    },
+    {
+      "path": "supplement/formal/lake-manifest.json",
+      "sha256": "bcf1b2418e4dbd801c48073899e6596885ad82ad71972d1cd21578926294fa85",
+      "git_blob_sha": "883a856f7a51ddf0b85fa99ca4937fd4e705544a",
+      "bytes": 3121,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/lake-manifest.json",
+        "git_blob_sha": "883a856f7a51ddf0b85fa99ca4937fd4e705544a"
+      }
+    },
+    {
+      "path": "supplement/formal/lakefile.lean",
+      "sha256": "cbc44c2ebb703d667340b02483a2240be472667aca43c6ec7fd9a198c566fba7",
+      "git_blob_sha": "402b4cfbea7a71f89f879c5c420932354f0d7cce",
+      "bytes": 193,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/lakefile.lean",
+        "git_blob_sha": "402b4cfbea7a71f89f879c5c420932354f0d7cce"
+      }
+    },
+    {
+      "path": "supplement/formal/lean-toolchain",
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71",
+      "git_blob_sha": "a8afa7d1b02d96f0671eba854a8dc4b416beb473",
+      "bytes": 25,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/formal/lean-toolchain",
+        "git_blob_sha": "a8afa7d1b02d96f0671eba854a8dc4b416beb473"
+      }
+    },
+    {
+      "path": "supplement/requirements.txt",
+      "sha256": "25f9f1fb1988b230147a1d3092d34e09c069eb7a6c6d6df46b3973b9f2d36efc",
+      "git_blob_sha": "1ca5fd06160543f8bd736f1b51db6f42372c66f4",
+      "bytes": 14,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/requirements.txt",
+        "git_blob_sha": "1ca5fd06160543f8bd736f1b51db6f42372c66f4"
+      }
+    },
+    {
+      "path": "supplement/run_checks.py",
+      "sha256": "52aa6307b8b896b8a14b1f6288b7fe0cdf31ec2b3a96554532bcb62a0710c857",
+      "git_blob_sha": "e2599bf367f2bd5d9868a9a6b14377a50b68a21f",
+      "bytes": 1140,
+      "inherited_identical_source": {
+        "commit": "4e283741a64760368479513732523e2ab868fbad",
+        "path": "research/c029_holonomy_schur_20261005/manuscript_v3/supplement/run_checks.py",
+        "git_blob_sha": "e2599bf367f2bd5d9868a9a6b14377a50b68a21f"
+      }
+    }
+  ]
+}

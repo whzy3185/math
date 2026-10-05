@@ -1,0 +1,155 @@
+\section{Verification, provenance, and remaining questions}
+\label{sec:verification}
+
+The proof has three exact computational inputs: the fixed rational
+premises of Lemma~\ref{lem:finite-premises}, the explicitly bounded finite
+graph lists, and the strict lower obstructions. Everything that extends
+those data to unbounded lengths, phases, or numbers of cells is proved in
+Sections~\ref{sec:uniform} and~\ref{sec:cells}.
+The finite lists are summarized below; a separate seed check supplies each
+long-cell argument.
+\begin{center}
+\small
+\begin{tabular}{lccc}
+\toprule
+Family & Finite parameter range & Graph orders & Analytic from\\
+\midrule
+One cell ($\cone$) & $1\le k\le24$ & $10,18,\ldots,194$ & $202$\\
+Two equal cells ($\cone$) & $1\le j\le24$ & $20,36,\ldots,388$ & $404$\\
+Two near-equal cells ($\czero$) & $6\le k\le25$ & $52,60,\ldots,204$ & $212$\\
+Three near-equal cells ($\czero$) & $6\le k\le38$ & $54,62,\ldots,310$ & $318$\\
+\bottomrule
+\end{tabular}
+\end{center}
+
+All acceptance comparisons use integers or rational numbers. Positive
+pivots certify positive definiteness by exact Schur congruence; negative
+pivots with positive predecessors certify the claimed strict obstructions.
+The scripts store construction parameters, pivot counts, exact certificate
+matrices or pivot data, and integrity digests. Digests identify outputs;
+the mathematical tests are the rational computations that generate them.
+Floating spectra used during exploration are excluded from the proof.
+
+Independent replays reconstruct the underlying graphs or isolated chain
+responses separately, use different elimination orderings where applicable,
+and match the exact statements rather than trusting stored positivity flags.
+For example, the unequal-cell replay compares direct full-graph elimination
+with independently eliminated chains embedded additively into the cyclic
+boundary space, including loops and parallel contributions. These finite
+comparisons test the implementations; Lemma~\ref{lem:assembly} proves the
+identity for every admissible length and number of cells.
+
+\subsection{An immutable supplement and its entry points}
+
+All proof inputs are available in the commit-pinned supplement
+\cite{C029Supplement}. Its revision is
+\nolinkurl{12e3389c07cc5a632023a1f6b972f9baf450a6a0}; both the
+\href{https://github.com/whzy3185/math/tree/12e3389c07cc5a632023a1f6b972f9baf450a6a0/research/c029_holonomy_schur_20261005}{source tree}
+and the \href{https://github.com/whzy3185/math/archive/12e3389c07cc5a632023a1f6b972f9baf450a6a0.zip}{downloadable repository archive}
+are fixed to that revision. Within the archive, start in
+\nolinkurl{research/c029_holonomy_schur_20261005/}.
+The \href{https://github.com/whzy3185/math/blob/12e3389c07cc5a632023a1f6b972f9baf450a6a0/research/c029_holonomy_schur_20261005/README.md}{supplement README}
+gives the producer and independent-replay commands in dependency order.
+Reproducing the complete suite requires Python~3 and SymPy~1.14.0;
+NumPy is optional and is not part of an acceptance predicate. In particular,
+the analytic producer precedes its two direct-graph replays, and the
+residue-six producer precedes its independent replay.
+
+The following map identifies the proof inputs relative to that directory.
+Running \texttt{python} followed by each listed verifier path regenerates
+its exact output alongside the source.
+\begin{enumerate}
+\item Lemma~\ref{lem:finite-premises} at $\czero$:
+\nolinkurl{certificates/analytic/verify_r2_certificate.py};
+its direct-graph seed and local-response replays are in
+\nolinkurl{certificates/audit/}.
+\item Lemma~\ref{lem:finite-premises} at $\cone$,
+Theorem~\ref{thm:one-cell}, and the order-$202$ lower obstruction:
+\nolinkurl{certificates/strengthening/verify_uniform_cap.py}.
+\item Proposition~\ref{prop:balanced-sharp} and the older order-$60$
+obstruction: \nolinkurl{certificates/r4_pilot/verify_r4_pilot.py}.
+\item Lemma~\ref{lem:assembly}, the near-equal two-cell list, and its
+order-$60$ and order-$76$ obstructions:
+\nolinkurl{certificates/unequal_cells/verify_unequal_cells.py},
+with the additive construction in the same directory's
+\nolinkurl{assembly.py}.
+\item The three-cell finite list:
+\nolinkurl{certificates/r6_completion/verify_r6_completion.py}.
+\item The fiber determinant and the order-$32$ integer check:
+\nolinkurl{certificates/new_conjecture/verify_antiperiodic_counterexample.py}.
+\end{enumerate}
+The four finite parameter lists are exactly those in the table above.
+Each later certificate directory has its own \nolinkurl{audit/}
+subdirectory; all four raw replay scripts are also included in the source
+bundle accompanying this revision. Its reproduction instructions list every
+producer and replay, including their dependencies. The accompanying
+unequal-cell producer explicitly requires the order-$60$ and order-$76$
+strict obstructions and records their complete pivot prefixes; this is a
+checker refinement relative to the pinned archive. Both obstructions are
+also required by the independent assembly replay already in that archive.
+The mathematical assertions and frozen proof inputs are unchanged.
+
+\subsection{The frozen formal statement}
+
+A separate Lean development verifies the exact negative-holonomy finite
+radius in Theorem~\ref{thm:period8}. For the explicit raw graph matrix and
+every positive cell count, it proves that all Hermitian eigenvalue moduli
+are at most the stated radical and that an eigenvalue equals its positive
+value. The proof includes the seam and raw-operator bridges, maximal
+antiperiodic phase, determinant root, and lower attainment. The formal scope cited here is specifically the
+\href{https://github.com/whzy3185/math/tree/12e3389c07cc5a632023a1f6b972f9baf450a6a0/research/c029_holonomy_schur_20261005/lean/exact_radius}{\texttt{lean/exact\_radius/} subbundle}
+of the pinned supplement, verified on 5 October 2026. It freezes the
+$237$-declaration Lean~4.33.1 audit with axiom union exactly
+\texttt{propext}, \texttt{Classical.choice}, and \texttt{Quot.sound}.
+This count refers to that subbundle, not to subsequent addenda present in
+the repository. Its \nolinkurl{reproduction/} directory fixes the toolchain
+and dependency manifest, including Mathlib commit
+\nolinkurl{0df444a360eaa60ab8c11dca51a86af692955474}.
+The supplied patch applies to baseline commit
+\nolinkurl{7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2}.
+From the resulting \nolinkurl{formal/} directory, run these commands in order:
+\begin{quote}\small\ttfamily
+lake build TargetA.Period8ExactFiniteRadius\\
+lake env lean ExactRadiusAxiomAudit.lean
+\end{quote}
+
+\begin{samepage}
+The final declarations in \nolinkurl{TargetA/Period8ExactFiniteRadius.lean}
+are \nolinkurl{TargetA.period8_alpha_minus_exact_finite_radius} for the
+upper bound and equality in the raw graph's Hermitian eigenvalue list,
+\nolinkurl{TargetA.period8_alpha_minus_finite_radius_attained_index} for
+positive attainment, and \nolinkurl{TargetA.period8_finite_radius_radical}
+for the displayed radical. The subbundle includes their full sources,
+build and axiom-audit logs, source hashes, and verification summary.
+\par\end{samepage}
+
+The separate quartic identification used to name the conjectured constant,
+the finite-size asymptotic, the integer principal-minor certificate, and
+the Riccati/Schur and residue-completion arguments are not formalized by
+that checkpoint. They retain their stated analytic and exact-certificate
+evidence.
+
+\subsection{Provenance and remaining questions}
+
+The exact period-eight formula and the witness range are inherited
+project results; the present application to the revised conjecture and the
+common unequal-cell proof have their scope distinguished in the supplement's
+claim ledger. The new proof requires neither the older physical
+interface-edge calculation nor an IMS localization estimate or a count of
+localized modes. It does not change the status of historical equality
+certificates at smaller orders.
+
+The boundary argument suggests two distinct questions for the prescribed
+cells. One is quantitative: whether the sufficient length thresholds or
+the certified spectral caps can be improved. The two-cell obstructions at
+orders $60$ and $76$ show that the shorter-cell range requires care, and
+even the one-cell enclosure in \eqref{eq:supremum} determines neither the
+exact supremum nor convergence. The other question is structural: which
+changes to the cell endings still admit a common positive junction model?
+That would require new local analysis and does not follow from allowing
+the present cell lengths to vary independently.
+
+The unrestricted extremal problem remains to determine $\mu_N$ and its
+minimizing switching classes. A structural lower bound over arbitrary
+triangle-sign words would be needed to turn these explicit upper bounds
+into a global minimization theorem.
