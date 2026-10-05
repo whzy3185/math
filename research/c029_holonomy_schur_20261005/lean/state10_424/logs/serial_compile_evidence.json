@@ -1,0 +1,278 @@
+[
+  {
+    "start_utc": "2026-10-05T12:22:56Z",
+    "end_utc": "2026-10-05T12:24:50Z",
+    "exit_code": 0,
+    "wall_seconds": 114.0310280800004,
+    "user_cpu_seconds": 48.585535,
+    "system_cpu_seconds": 26.356303,
+    "child_max_rss_kB": 4998840,
+    "source_sha256": "d7c6bd4a91147b4f023cf23021033f5429c4b138313471a55e959137408cd6c1",
+    "setup_sha256": "898d013aee4b614621f2458a38a2db24d668bbd3429b752929b2f1b546215500",
+    "source_unchanged": true,
+    "setup_unchanged": true,
+    "project_imports_unchanged": true,
+    "outputs_first_seen_seconds": {
+      "olean": 101.94829266300076,
+      "ilean": 113.52989100700142,
+      "c": 113.52989100700142
+    },
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "step": 5,
+    "outputs": {
+      "olean": {
+        "bytes": 5653008,
+        "sha256": "99a5496084dfd37e8b663bd23e92df0ceb618583e00bb51b351da8b2ce12087a",
+        "fresh_after_start": true
+      },
+      "ilean": {
+        "bytes": 155323,
+        "sha256": "9473c6049c0e8f3df475b7325e31b722a95e25fdcb24ff9b23d2b882adcd65e0",
+        "fresh_after_start": true
+      },
+      "c": {
+        "bytes": 149305,
+        "sha256": "df8e93588f90a9f2c14f58fa966e0af8e2348a5fefc57674efaf1f10985e895a",
+        "fresh_after_start": true
+      }
+    },
+    "command_shape": "lean SOURCE -o FRESH_OLEAN -i FRESH_ILEAN -c FRESH_C --setup CHECKED_COMPILER_INPUT --json -j 1",
+    "raw_status_sha256": "08e6d161a5e281c88467bc673c87440932c94a3a0935f2a53e2b78b4c88a602f",
+    "raw_stdout_sha256": "066350ff186f8421315c190503830a4d7897f4cb33908f247f41b2d0d7c295e6",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "start_utc": "2026-10-05T12:59:38Z",
+    "end_utc": "2026-10-05T13:01:34Z",
+    "exit_code": 0,
+    "wall_seconds": 116.74514291400192,
+    "user_cpu_seconds": 52.37455,
+    "system_cpu_seconds": 24.573199,
+    "child_max_rss_kB": 5155832,
+    "source_sha256": "e59627daf046e4701fa2da3ec92285faf678875648aa782bd6004a87f74831b7",
+    "setup_sha256": "7527e12956787c3544eeda1b7cfad4ef267e32de3907eb6583e76863c4e0add9",
+    "source_unchanged": true,
+    "setup_unchanged": true,
+    "project_imports_unchanged": true,
+    "outputs_first_seen_seconds": {
+      "olean": 108.14526237800237,
+      "ilean": 116.492375283,
+      "c": 116.492375283
+    },
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "step": 6,
+    "outputs": {
+      "olean": {
+        "bytes": 7488088,
+        "sha256": "7d1a8fb92cb6b475c67f891e27713a62d8f20a98435dea31717f1bd6d84bac96",
+        "fresh_after_start": true
+      },
+      "ilean": {
+        "bytes": 156843,
+        "sha256": "539f31758ab7c389d753695c79bb45afdec3fd88db1bde270bac05ddb7bb9fbc",
+        "fresh_after_start": true
+      },
+      "c": {
+        "bytes": 170375,
+        "sha256": "a15dd18d067a6087e1b92238b4281c1c3efc1fc3bf4ca0b659d0e03ae9315441",
+        "fresh_after_start": true
+      }
+    },
+    "command_shape": "lean SOURCE -o FRESH_OLEAN -i FRESH_ILEAN -c FRESH_C --setup CHECKED_COMPILER_INPUT --json -j 1",
+    "raw_status_sha256": "1a540411feaff8d02ade756dba7fd38fd13478fe47015eb9647a49591de29f12",
+    "raw_stdout_sha256": "466928f452c6044827dd5a21bd815a710dded097712fed6c0ca33183b4c7470e",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "step": 7,
+    "start_utc": "2026-10-05T13:07:35Z",
+    "end_utc": "2026-10-05T13:10:05Z",
+    "exit_code": 0,
+    "wall_seconds": 149.80635564600016,
+    "user_cpu_seconds": 65.123948,
+    "system_cpu_seconds": 29.797292,
+    "sampled_max_rss_kB": 5063056,
+    "source_sha256": "96922cbf4bbc7d68d1832568e735b558b9f0dfe2179bbf3c4172572a4bb592f9",
+    "setup_sha256": "a689fa446efb1bfa88f6fc8eb00c36077feaefc468d7952a89193c40dcf11703",
+    "source_unchanged": true,
+    "setup_unchanged": true,
+    "project_imports_unchanged": true,
+    "outputs_first_seen_seconds": {
+      "olean": 138.48773356400125,
+      "ilean": 149.0293005559979,
+      "c": 149.0293005559979
+    },
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "outputs": {
+      "olean": {
+        "bytes": 7120784,
+        "sha256": "a94092b65aaad62f1164dbc54675d802e2445f34a31d743c596530df2ada1ab7",
+        "fresh_after_start": true
+      },
+      "ilean": {
+        "bytes": 162098,
+        "sha256": "c91197b192d8da82f76babf3d9b5c945facec0f5f673f8a268e60ef0e63dc739",
+        "fresh_after_start": true
+      },
+      "c": {
+        "bytes": 164351,
+        "sha256": "0efad2c6ef0f8e90c25a79ec2a8e5063db59d79bc46a28fb626701f46d2f34cf",
+        "fresh_after_start": true
+      }
+    },
+    "command_shape": "lean SOURCE -o FRESH_OLEAN -i FRESH_ILEAN -c FRESH_C --setup CHECKED_COMPILER_INPUT --json -j 1",
+    "raw_status_sha256": "592a271b8e0b13c2e942123f0ab2d1bb6a8d2a7395f6fdf405484513cd3675d9",
+    "raw_stdout_sha256": "e1e342e216fe02be1edd8a475b25337653391fe8dccc5fd2a17649c547ebc938",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "step": 8,
+    "start_utc": "2026-10-05T13:10:09Z",
+    "end_utc": "2026-10-05T13:12:08Z",
+    "exit_code": 0,
+    "wall_seconds": 118.9143295640024,
+    "user_cpu_seconds": 54.568895,
+    "system_cpu_seconds": 24.097151,
+    "sampled_max_rss_kB": 5012508,
+    "source_sha256": "f7b4debff406b03b8ef9a13c63912cc02efc1724600ff3699209db400488ad1a",
+    "setup_sha256": "2977e70d5d45685e810b732f0b914b13ae6446b26ed5051ffae3cc029972431d",
+    "source_unchanged": true,
+    "setup_unchanged": true,
+    "project_imports_unchanged": true,
+    "outputs_first_seen_seconds": {
+      "olean": 110.33873303400105,
+      "ilean": 118.66361036900344,
+      "c": 118.66361036900344
+    },
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "outputs": {
+      "olean": {
+        "bytes": 7536088,
+        "sha256": "42cbf4d0a0eae4dde62fc8d27bedeb64fd1e262f1100c918387d21d3588d5c2e",
+        "fresh_after_start": true
+      },
+      "ilean": {
+        "bytes": 160489,
+        "sha256": "ac8d3fbcdfbcef2d9492fa7abc549a07dd2f073ae5666d042d60c260f6de45a5",
+        "fresh_after_start": true
+      },
+      "c": {
+        "bytes": 171143,
+        "sha256": "0ce1876d8be7db83961b197199de9f0a9de9633f8ac5fb68d5b6dc771dfe6177",
+        "fresh_after_start": true
+      }
+    },
+    "command_shape": "lean SOURCE -o FRESH_OLEAN -i FRESH_ILEAN -c FRESH_C --setup CHECKED_COMPILER_INPUT --json -j 1",
+    "raw_status_sha256": "9c95508ee19e63871069f9d3cf239d08249c2c9069ca08b96486e4470d00d95b",
+    "raw_stdout_sha256": "806eb3043d37a8ec60436cb978a77ddf52ab2eec855c20f18da41dfbad0da79b",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "step": 9,
+    "start_utc": "2026-10-05T13:12:09Z",
+    "end_utc": "2026-10-05T13:14:18Z",
+    "exit_code": 0,
+    "wall_seconds": 129.24365906399908,
+    "user_cpu_seconds": 59.83394600000001,
+    "system_cpu_seconds": 26.546780000000005,
+    "sampled_max_rss_kB": 5060608,
+    "source_sha256": "f6cbc2737fe23deee0a87a9c6e5b132b8c6084bbc49625d1742fc71b2c8c3aeb",
+    "setup_sha256": "a0e823bf34586d52320854e56c3e53c39c19279b9367c4deef22f4be80e7c64f",
+    "source_unchanged": true,
+    "setup_unchanged": true,
+    "project_imports_unchanged": true,
+    "outputs_first_seen_seconds": {
+      "olean": 122.2095574720006,
+      "ilean": 128.73310426399985,
+      "c": 128.73310426399985
+    },
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "outputs": {
+      "olean": {
+        "bytes": 7983496,
+        "sha256": "1134089e8e4c752ca58ffa90889212c1ffdc894a9e3a4a552e32a0a8c62c0e87",
+        "fresh_after_start": true
+      },
+      "ilean": {
+        "bytes": 156847,
+        "sha256": "c9242a8c411bfbfa95cc6d89bf15d8b9a55295f93052a4359c47ab2b06c63d86",
+        "fresh_after_start": true
+      },
+      "c": {
+        "bytes": 164408,
+        "sha256": "e7aa8058b8388285df952864b7d0771f67c86988600eeca09bd401ccc3bd5f86",
+        "fresh_after_start": true
+      }
+    },
+    "command_shape": "lean SOURCE -o FRESH_OLEAN -i FRESH_ILEAN -c FRESH_C --setup CHECKED_COMPILER_INPUT --json -j 1",
+    "raw_status_sha256": "e99f00407035679f78c9135b297605679e688752a760f6ec3f904515f4ab0685",
+    "raw_stdout_sha256": "770a467b98b8a6313e1c3bc3b383af2324dc0f22d252a0f6b84932f8b82b0b33",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "step": 10,
+    "start_utc": "2026-10-05T13:14:20Z",
+    "end_utc": "2026-10-05T13:16:27Z",
+    "exit_code": 0,
+    "wall_seconds": 126.65240853700016,
+    "user_cpu_seconds": 56.82837799999999,
+    "system_cpu_seconds": 26.407109000000005,
+    "sampled_max_rss_kB": 5055744,
+    "source_sha256": "dc19dd0ea5a9fe6e12470b18099f1b19046280b672625753b398ad769ca87311",
+    "setup_sha256": "f8ee7f2f013bdf181911b42c56cfbb0131b3d7fe5cc8348b71a20707e96c7732",
+    "source_unchanged": true,
+    "setup_unchanged": true,
+    "project_imports_unchanged": true,
+    "outputs_first_seen_seconds": {
+      "olean": 119.88415360699946,
+      "ilean": 126.4015021510022,
+      "c": 126.4015021510022
+    },
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "outputs": {
+      "olean": {
+        "bytes": 5994336,
+        "sha256": "3d69a0702a59eebdc02f5cf245084bafa2e503df110ffba0fe6070c274253237",
+        "fresh_after_start": true
+      },
+      "ilean": {
+        "bytes": 158110,
+        "sha256": "91fd9e2c87a64bb4d4498f1f657a9b2f627dc511e07d51e06b651bb15a29e143",
+        "fresh_after_start": true
+      },
+      "c": {
+        "bytes": 166238,
+        "sha256": "f950fb40988b6201acee8a69b4c84fd3aee2f920f105cd9b36a24758d663613f",
+        "fresh_after_start": true
+      }
+    },
+    "command_shape": "lean SOURCE -o FRESH_OLEAN -i FRESH_ILEAN -c FRESH_C --setup CHECKED_COMPILER_INPUT --json -j 1",
+    "raw_status_sha256": "cc0be212742e4f8b7487ee75bd465c990409cb575cbd52acfbdbba0122c17b19",
+    "raw_stdout_sha256": "79a51a43aac02bb6cd8f2461edbc4d27c62671e0599c5dd59071837f215e752f",
+    "raw_stderr_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  }
+]
