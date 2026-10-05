@@ -1,0 +1,78 @@
+{
+  "title": "Hall bounds under the Mycielski construction and the extremizers of the sixth Mycielski graph",
+  "status": "FROZEN: independent manuscript integration PASS, actual compilation and all-page visual QA PASS",
+  "pages": 6,
+  "scope": "General upper and equality reductions analytic; local lower witness and census retain finite exact verification; novelty unconfirmed",
+  "dependencies": [
+    "../mycielski_k5_nine_profiles",
+    "../mycielski_strengthening"
+  ],
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2127,
+      "sha256": "789f59c3cad7575b5cfae429f835cfc0bceefc67b775b676a8ea0ed014dc6c8e"
+    },
+    {
+      "path": "mycielski_hall_v2.tex",
+      "bytes": 19319,
+      "sha256": "4bd347f83da23b8b7b120db7ba03f28065c33154af620e1434f2fcb73b11f161"
+    },
+    {
+      "path": "output/pdf/mycielski_hall_v2.pdf",
+      "bytes": 116894,
+      "sha256": "4a5a2455f82704298fbd5fa2b7f472503710710ac298ccf9da913136e2ec10fb"
+    },
+    {
+      "path": "chinese_abstract.md",
+      "bytes": 1154,
+      "sha256": "d03fb784836506b557567a9cbddd71c81eb6f6bf80adbc8431194fd5eeb2c3e8"
+    },
+    {
+      "path": "SOURCECHECK.md",
+      "bytes": 2990,
+      "sha256": "cb69505fd630e2be535cc4c78f4a12a96ebedafed06eec3e258f0e4615055d73"
+    },
+    {
+      "path": "VALIDATION.md",
+      "bytes": 1793,
+      "sha256": "1717f9c6998c492c789b53f09849b4be4729b968533a3086be873b22c354f7fb"
+    },
+    {
+      "path": "build.sh",
+      "bytes": 1251,
+      "sha256": "478b8a8b442fc27c510c138201a0ca80e361cc20a839ff66f2dc85d369feac4b"
+    }
+  ],
+  "companion_review": {
+    "directory": "../mycielski_paper_v2_review",
+    "files": [
+      {
+        "path": "INTEGRATION_REVIEW.md",
+        "bytes": 6620,
+        "sha256": "6ea055c070cf186cbc6b128c559bd7267cec449cd0e22b04eae2258ac47addf0"
+      },
+      {
+        "path": "check_integration.py",
+        "bytes": 4951,
+        "sha256": "b108fb598e9753a328e683c2ba72634508c9ddbf43838abbd305c007dd4e52c5"
+      },
+      {
+        "path": "integration_checks.json",
+        "bytes": 523,
+        "sha256": "64bc7c5ddd3d6687efcc7e46f8f2864cd688abb714f100044f34beb8e3502ad0"
+      },
+      {
+        "path": "source_manifest.json",
+        "bytes": 1752,
+        "sha256": "cf4d0329510461eb7c17687ca1bea085ca9b497ae2c38e17d7e650648f07ec4b"
+      },
+      {
+        "path": "SHA256SUMS",
+        "bytes": 352,
+        "sha256": "9b31964fe794c5c9f19dee532dfbdaeaca8aeef1906b968f87efd699c0cdf495"
+      }
+    ]
+  },
+  "excluded": "Compiled formats, caches, auxiliary files, logs and rendered page images"
+}

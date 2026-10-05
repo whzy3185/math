@@ -1,0 +1,415 @@
+\documentclass[11pt,letterpaper]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fontspec}
+\setmainfont{Latin Modern Roman}
+\newfontfamily\chinesefont{Noto Serif CJK SC}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs,array,enumitem}
+\usepackage[hidelinks,unicode]{hyperref}
+\setlength{\emergencystretch}{2em}
+\setlist{itemsep=2pt,topsep=5pt}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\newtheorem{lemma}[theorem]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\DeclareMathOperator{\Aut}{Aut}
+\newcommand{\abs}[1]{\lvert #1\rvert}
+\newcommand{\ind}{\mathcal I}
+\title{Hall bounds under the Mycielski construction\\
+and the extremizers of the sixth Mycielski graph}
+\author{}
+\date{5 October 2026}
+\begin{document}
+\maketitle
+\vspace{-1.5em}
+\begin{abstract}
+For every nonempty finite simple graph $G$ with $\chi_f(G)<3$, we prove
+$\rho(\mu(G))\le3$ and $\rho(\mu^2(G))\le10/3$. The proof uses fractional
+coloring, three distinguished vertices, and elementary independence
+bounds; no computation enters the upper inequalities. Equality in the
+second bound forces an induced subset of order twenty and independence
+number six containing all three distinguished vertices. An explicit
+fractional coloring of $M_4$ gives $\rho(M_6)\le10/3$; a small exact
+certificate for a twenty-vertex witness gives equality. The independently
+verified finite census consists of 1,990 maximizing subsets in 199 orbits
+under the full ambient group $D_5$. We separate the analytic upper and
+equality reductions from the finite witness and census checks. The
+strict fractional-coloring hypothesis is a sufficient condition used by
+the proof; its necessity is not asserted.
+\end{abstract}
+
+\section{Statements and scope}
+For a nonempty finite graph $H$, its Hall ratio is
+\[
+ \rho(H)=\max_{\varnothing\ne S\subseteq V(H)}
+ \frac{\abs S}{\alpha(H[S])}.
+\]
+We abbreviate $\alpha(H[S])$ to $\alpha(S)$ when the ambient graph is clear.
+The ordinary Mycielskian $\mu(G)$ contains original vertices $V(G)$, an
+independent clone layer $V(G)'$, and an apex $z$. Originals retain their
+edges, $u$ is adjacent to $v'$ exactly when $uv\in E(G)$, and the apex
+is adjacent to every clone.
+
+\begin{theorem}\label{thm:general}
+Let $G$ be a nonempty finite simple graph with $\chi_f(G)<3$. Then
+\begin{equation}\label{eq:main}
+ \rho(\mu(G))\le3,\qquad \rho(\mu^2(G))\le\frac{10}{3}.
+\end{equation}
+Any induced subset attaining $10/3$ in $\mu^2(G)$ has order $20$ and
+independence number $6$, and contains all three distinguished apex
+vertices of the two construction steps. In the four base layers defined
+below, it satisfies $p+r=11$ and $q+t=6$. Its final original and clone
+cardinalities are one of $(13,6),(14,5),(15,4)$.
+\end{theorem}
+
+We use $M_2=K_2$ and $M_{r+1}=\mu(M_r)$, giving orders $2,5,11,23,47$.
+An explicit fractional coloring of $M_4$ has weight $29/10<3$. Thus
+Theorem~\ref{thm:general} applies to $M_6=\mu^2(M_4)$.
+
+\begin{theorem}[Exact finite specialization]\label{thm:census}
+The graph $M_6$ has Hall ratio $10/3$. Exactly $1,990$ labelled subsets
+attain this value. They form $199$ orbits under $\Aut(M_6)\cong D_5$,
+each of size ten. The orbit counts by final original/clone/apex sizes are
+$109$ for $(13,6,1)$, $83$ for $(14,5,1)$, and $7$ for $(15,4,1)$.
+\end{theorem}
+
+The upper bound and the necessary equality conditions are analytic.
+The matching lower witness and the complete orbit count use exact finite
+verification, described in Sections~\ref{sec:M6} and~\ref{sec:census}.
+The orbits are those of embedded subsets under the ambient group; they
+are not asserted to be distinct abstract graph-isomorphism types.
+
+Cropper, Gy\'arf\'as and Lehel~\cite{CGL} establish the known Hall values
+through $M_5$ and unboundedness of the Mycielski sequence. Fractional
+coloring under this construction is classical~\cite{LPU}; the Hall-profile
+framework also predates this note~\cite{Barnett}. Steiner~\cite{Steiner}
+records the separate open question of boundedness of
+$\chi_f(M_r)/\rho(M_r)$. The present result does not resolve that
+asymptotic question. We make no first-occurrence claim for the general
+inequality or the finite census. The hypothesis $\chi_f(G)<3$ is sufficient
+for this proof; no necessity or boundary-threshold claim is made.
+
+\section{Fractional coloring and the four-layer model}
+A fractional coloring is a collection of nonnegative weights on
+independent sets such that every vertex has coverage at least one.
+Its total weight bounds the fractional chromatic number. Choose a
+fractional coloring of $G$ of total weight $c<3$.
+
+\begin{lemma}\label{lem:projection}
+If a graph $X$ admits a homomorphism to $G$, then
+\begin{equation}\label{eq:projection}
+ \abs{V(X)}\le c\,\alpha(X).
+\end{equation}
+\end{lemma}
+\begin{proof}
+Pull back the weighted independent sets along the homomorphism. They
+are independent in $X$ and cover every vertex with weight at least one.
+Summing the coverage gives
+$\abs{V(X)}\le\sum_I w_I\abs I\le c\alpha(X)$.
+This also holds when $X$ is empty.
+\end{proof}
+
+Write the vertices of $\mu^2(G)$ as four copies of the base and three
+special vertices:
+\[
+ P,\ Q,\ z,\ R,\ T,\ z',\ w.
+\]
+Here $P$ is the original $G$, $Q$ its first clone layer, and $z$ the first
+apex. The second-stage clones of $P,Q,z$ are $R,T,z'$, respectively;
+$w$ is the final apex. We use the same letters for the selected vertices
+in these layers, with sizes $p,q,r,t$.
+
+Every edge among $P,Q,R,T$ projects to an edge of $G$ by forgetting the
+layer. The special adjacencies are: $z$ is adjacent to all of $Q,T$;
+$z'$ is adjacent to all of $Q$ and to $w$; and $w$ is adjacent to all of
+$R,T,z'$. In particular,
+\begin{equation}\label{eq:blocks}
+ Q\cup T\text{ is independent},\qquad
+ \{z,z'\}\text{ is independent and has no neighbors in }P\cup R.
+\end{equation}
+These elementary facts supply the refined bound below.
+
+Since $\chi_f(G)<3$, the graph $G$ is triangle-free: a triangle would
+require coloring weight at least three. The Mycielski construction
+preserves triangle-freeness. A triangle containing the apex is impossible
+because its neighborhood is independent; a triangle containing a clone
+would project to a triangle in the base.
+
+\section{Proof of the general bounds and equality restrictions}
+\subsection{One construction step}
+Let $U$ be a nonempty induced subset of $\mu(G)$ with independence number $a$.
+Deleting its apex leaves a graph homomorphic to $G$, so
+\[
+ \abs U\le ca+1<3a+1.
+\]
+Integrality gives $\abs U\le3a$, proving $\rho(\mu(G))\le3$.
+
+\subsection{Two construction steps}
+Let $S$ be a nonempty induced subset of $\mu^2(G)$, set $k=\alpha(S)$, and put
+$Z=\{z,z',w\}$. Deleting these three vertices and applying
+Lemma~\ref{lem:projection} gives
+\begin{equation}\label{eq:large}
+ \abs S\le\lfloor ck\rfloor+3\le3k+2.
+\end{equation}
+For every integer $k\ge6$, $3k+2\le10k/3$, strictly when $k\ge7$.
+
+For $3\le k\le5$, distinguish two cases. If at most two vertices of $Z$
+are present, then
+\begin{equation}\label{eq:fewapices}
+ \abs S\le\lfloor ck\rfloor+2\le3k+1.
+\end{equation}
+If all three are present, set $X=P\cup R$ and $Y=Q\cup T$.
+By~\eqref{eq:blocks}, $\abs Y\le k$ and $\alpha(X)\le k-2$.
+Consequently
+\begin{equation}\label{eq:allapices}
+ \abs S\le\lfloor c(k-2)\rfloor+k+3\le4k-4.
+\end{equation}
+The resulting bounds for $k=3,4,5$ are $10,13,16$, respectively, all at
+most $10k/3$.
+
+The remaining cases use only triangle-freeness. Independence number one
+permits at most two vertices. Every triangle-free graph on six vertices
+has an independent triple: three neighbors of a vertex form one;
+otherwise that vertex has three nonneighbors, among which a nonedge
+together with the vertex gives one. Thus independence number two permits
+at most five vertices. This proves both inequalities in~\eqref{eq:main}.
+
+\subsection{Equality conditions}
+All cases are strict in ratio except possibly $k=3$ or $k=6$.
+A triangle-free graph on ten vertices contains an independent four-set:
+a vertex of degree at least four supplies one in its neighborhood;
+otherwise any vertex has at least six nonneighbors, whose independent
+triple can be enlarged by that vertex. Thus $k=3$ cannot attain $10/3$.
+Equality requires $k=6$ and $\abs S=20$.
+
+If at most two distinguished vertices were present, the same deletion
+argument would give $\abs S\le\lfloor6c\rfloor+2\le19$. Hence all of $z,z',w$ are
+selected. Equation~\eqref{eq:blocks} gives
+\[
+ \abs X\le\lfloor4c\rfloor\le11,\qquad \abs Y\le6.
+\]
+Since $\abs X+\abs Y=17$, both bounds are tight:
+\begin{equation}\label{eq:balance}
+ p+r=11,\qquad q+t=6.
+\end{equation}
+Moreover $\alpha(X)=4$, since $\abs X=11$ and $c<3$, while $Y$ is an
+independent six-set.
+
+Let $A$ be the final original part of $S$, an induced subset of $\mu(G)$,
+and $B$ its final clone-index set. The selected apex $w$ is nonadjacent to
+$A$, so $\alpha(A)\le5$. The one-step result gives $\abs A\le15$.
+Since $B'$ is independent, $\abs B\le6$, and
+$\abs A+\abs B=19$ implies $\abs A\ge13$. If $\alpha(A)\le4$, then the
+same one-step result would give $\abs A\le12$, a contradiction.
+Therefore $\alpha(A)=5$ and the three final layer sizes in
+Theorem~\ref{thm:general} follow.
+
+\section{The sixth Mycielski graph}\label{sec:M6}
+\subsection{An explicit coloring below three}
+There is no need to import an exact fractional chromatic value for this
+application. Let $C_5$ have its five independent pairs $I$. In
+$M_4=\mu(C_5)$, assign the following independent-set weights:
+\begin{center}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+Independent sets & Number & Weight per set\\
+\midrule
+$\{z\}\cup I$ & 5 & $1/5$\\
+$I\cup I'$ & 5 & $3/10$\\
+The full clone layer & 1 & $2/5$\\
+\bottomrule
+\end{tabular}
+\end{center}
+Every cycle vertex belongs to two independent pairs. Thus an original
+vertex has coverage $2(1/5+3/10)=1$, a clone has coverage
+$2(3/10)+2/5=1$, and the apex has coverage $5(1/5)=1$.
+The total weight is $29/10<3$. Theorem~\ref{thm:general} therefore proves
+\begin{equation}\label{eq:M6upper}
+ \rho(M_6)\le10/3.
+\end{equation}
+This elementary construction is consistent with the classical fractional
+coloring formula of Larsen, Propp and Ullman~\cite{LPU}.
+
+\subsection{A local exact certificate for attainment}
+At each construction step, label originals $0,\ldots,n-1$, clones
+$n,\ldots,2n-1$, and the apex $2n$. In $M_6$ take
+\begin{align*}
+ W=\{&0,1,2,3,4,5,6,7,11,12,15,19,21,22,\\
+     &26,32,33,41,45,46\}.
+\end{align*}
+The set $\{11,12,15,19,21,41\}=W\cap(Q\cup T)$ is independent of size six.
+An exact finite certificate proves $\alpha(M_6[W])\le6$.
+
+For completeness, the certificate uses only the recurrence
+\begin{equation}\label{eq:alpharec}
+ a(\varnothing)=0,\qquad
+ a(U)=\max\{a(U\setminus\{v\}),\ 1+a(U\setminus N[v])\},
+\end{equation}
+where $v$ is the least-labelled vertex of nonempty $U$. The two terms
+correspond to omitting or including $v$, so induction proves that
+$a(U)=\alpha(M_6[U])$. The supplied table contains 190 states, including
+the empty state and $W$, and gives $a(W)=6$. Every nonempty row is checked
+against its two strictly smaller child states. A separately implemented
+include/exclude computation also obtains six. No floating-point
+calculation or full $47$-vertex optimization is needed for this witness.
+
+Thus $\abs W/\alpha(W)=20/6=10/3$, proving equality in~\eqref{eq:M6upper}.
+The constant in the double-step bound is therefore attained within the
+stated class, at $G=M_4$. This attainment does not assert necessity of the
+strict hypothesis $\chi_f(G)<3$.
+
+\section{The complete finite census}\label{sec:census}
+The analytic equality restrictions reduce the census to final original
+sets $A\subseteq V(M_5)$ of orders $13,14,15$ with $\alpha(A)=5$, clone-index
+sets $B$ of size $19-\abs A$, and the final apex. Here $N(I)$ denotes the
+open neighborhood of $I$ in $M_5$. For such a pair,
+\begin{equation}\label{eq:partial}
+ \alpha\bigl(M_6[A\cup B'\cup\{w\}]\bigr)
+ =\max\left\{1+\alpha(A),
+ \max_{\substack{I\subseteq A\\ I\text{ independent}}}
+ (\abs I+\abs{B\setminus N(I)})\right\}.
+\end{equation}
+Indeed, an independent set using $w$ contains no clone; one avoiding $w$
+chooses independent originals $I$ and may take all available clones.
+Consequently the exact membership criterion is
+\begin{equation}\label{eq:membership}
+ \abs{B\setminus N(I)}\le6-\abs I
+ \quad\text{for every independent }I\subseteq A.
+\end{equation}
+This criterion does not by itself give a short derivation of the orbit
+counts below; those counts come from complete finite enumeration.
+
+\subsection{The ambient group}
+The initial $M_3$ is $C_5$, with cyclic order $(0,1,2,4,3)$ in the recursive
+labels. At every later stage the apex is the unique maximum-degree
+vertex. If the base order is $n$ and its maximum degree is $(n-1)/2$, the
+new original degrees are at most $n-1$, clone degrees at most $(n+1)/2$,
+and apex degree $n$; this property inducts from $C_5$.
+
+An automorphism fixes the apex and preserves the original and clone
+layers. Its original restriction is a base automorphism. The bases are
+open-neighborhood twin-free, beginning with $C_5$, so the clone
+permutation is uniquely forced by that restriction. Conversely, every
+base automorphism extends. Thus $\Aut(M_6)=D_5$, of order ten.
+The independent check obtains the ten cycle automorphisms by testing all
+120 permutations and then verifies their lifted adjacency preservation.
+
+\subsection{Two independently checked complete enumerations}
+The primary program computes $\alpha(A)$ on the $2^{23}$ base subsets
+using~\eqref{eq:alpharec}. It retains only the specified original sets
+and one representative under $D_5$, leaving 4,370 candidates.
+For each $A$, choose an independent five-set $I_0\subseteq A$ minimizing
+$\abs{N(I_0)}$. Equation~\eqref{eq:membership} requires at most one clone
+index outside $N(I_0)$. Thus enumerate exactly the $b=19-\abs A$ element
+sets $B$ consisting of either $b$ elements of $N(I_0)$, or $b-1$ elements
+of $N(I_0)$ and one outside. Test all remaining inequalities and
+canonicalize the full subset.
+
+This examines 50,504,405 filtered clone candidates. It accepts 200 pairs
+at canonical original sets, which reduce to 199 full-subset orbits.
+The last deduplication removes the action of an original-set stabilizer
+on clone choices.
+
+The independent implementation uses a maximum subset-zeta transform for
+the base independence values, and recursive capacity propagation
+of~\eqref{eq:membership} for clone choices. Its 184,588 search nodes
+produce exactly the same 199 canonical masks. Each pruning rule is
+checked for logical sufficiency. Every accepted subset is retested
+against the complete independently generated list of 857 maximal
+independent sets of $M_6$.
+
+All 1,990 labelled output sets also satisfy the new analytic restrictions:
+they contain all three distinguished vertices and have the split
+\eqref{eq:balance}. Their stabilizers are trivial. The resulting census is
+\begin{center}
+\setlength{\tabcolsep}{9pt}
+\begin{tabular}{@{}ccc rr@{}}
+\toprule
+Originals & Clones & Apex & Orbits & Labelled subsets\\
+\midrule
+13 & 6 & 1 & 109 & 1,090\\
+14 & 5 & 1 & 83 & 830\\
+15 & 4 & 1 & 7 & 70\\
+\midrule
+\multicolumn{3}{l}{Total} & 199 & 1,990\\
+\bottomrule
+\end{tabular}
+\end{center}
+The analytic reductions prove that no other sizes or layers are omitted;
+the exact searches establish the count inside the permitted classes.
+
+\section{Verification boundary and prior work}
+The proof of Theorem~\ref{thm:general}, the explicit $29/10$ coloring, and
+the necessary equality reductions are analytic. The lower witness has
+the small recurrence certificate~\eqref{eq:alpharec}; the census remains
+computer-assisted. The earlier 273-node upper-bound certificate and
+22-node equality-exclusion certificate are preserved as verification
+history, but are no longer premises of the proof.
+
+The source package includes the analytic note, the explicit fractional
+coloring, the 190-state witness table and its standard-library checker,
+and an independent audit. The earlier census programs, complete orbit
+data and independent capacity-propagation check are preserved separately.
+No generated format files, caches or page images are needed for the
+mathematical reproduction.
+
+The computation uses standard finite recurrences and enumeration.
+No improved general maximal-independent-set algorithm is claimed:
+Tsukiyama et al.~\cite{Tsukiyama} already give output-sensitive enumeration
+in $O(NMK)$ time for a graph with $N$ vertices, $M$ edges and $K$ maximal
+independent sets. That row-generation problem is distinct from the exact
+Hall optimization and extremizer census.
+
+A bounded current-source check examined the specific
+$\chi_f(G)<3$ one-step and two-step Hall statements, including
+Barnett's Chapter~4~\cite{Barnett}. It did not locate an equivalent
+statement in the inspected material. This is not an exhaustive priority
+review. The present wording is ``we prove'', not a first-ever claim.
+Neither the general bound nor the finite result resolves the asymptotic
+question discussed in~\cite{Steiner}.
+
+\section*{\chinesefont 中文摘要}
+\begingroup\chinesefont
+\XeTeXlinebreaklocale "zh"
+\XeTeXlinebreakskip=0pt plus 1pt
+对任意非空有限简单图 $G$，若 $\chi_f(G)<3$，则本文证明
+$\rho(\mu(G))\le3$ 及 $\rho(\mu^2(G))\le10/3$。上界证明只使用分数着色、
+三个特殊顶点的删除以及初等独立集论证，不依赖有限分支证书。
+第二个不等式取等号时，诱导顶点集必有 $20$ 个顶点、独立数 $6$，并包含
+全部三个特殊顶点。显式的 $29/10$ 分数着色使该定理适用于 $M_6$；一个
+$20$ 顶点见证的 $190$ 状态精确递归证书给出匹配下界。全部 $1\,990$ 个
+极值顶点集在环境图的自同构群 $D_5$ 下分成 $199$ 个轨道，轨道计数仍由
+两个独立的有限枚举程序验证。严格假设 $\chi_f(G)<3$ 是本证明采用的充分条件，
+未断言其必要性或阈值最优性；本文也不作首次发表或渐近问题已解决的声明。
+\endgroup
+
+\begin{thebibliography}{9}
+\bibitem{CGL}
+M.~Cropper, A.~Gy\'arf\'as and J.~Lehel,
+\emph{Hall ratio of the Mycielski graphs},
+Discrete Mathematics \textbf{306} (2006), 1988--1990.
+\href{https://doi.org/10.1016/j.disc.2005.09.020}{doi:10.1016/j.disc.2005.09.020}.
+\bibitem{LPU}
+M.~Larsen, J.~Propp and D.~Ullman,
+\emph{The fractional chromatic number of Mycielski's graphs},
+Journal of Graph Theory \textbf{19}(3) (1995), 411--416.
+\href{https://doi.org/10.1002/jgt.3190190313}{doi:10.1002/jgt.3190190313}.
+\bibitem{Barnett}
+J.~B.~Barnett,
+\emph{The Fractional Chromatic Number and the Hall Ratio},
+Ph.D. dissertation, Auburn University, 2016.
+\href{https://etd.auburn.edu/handle/10415/5316}{Auburn dissertation repository},
+Definition~2.1.1 and Chapter~4.
+\bibitem{Steiner}
+R.~Steiner,
+\emph{Fractional Chromatic Number Vs. Hall Ratio},
+Combinatorica \textbf{45} (2025), article~37.
+\href{https://doi.org/10.1007/s00493-025-00164-0}{doi:10.1007/s00493-025-00164-0}.
+\bibitem{Tsukiyama}
+S.~Tsukiyama, M.~Ide, H.~Ariyoshi and I.~Shirakawa,
+\emph{A New Algorithm for Generating All the Maximal Independent Sets},
+SIAM Journal on Computing \textbf{6}(3) (1977), 505--517.
+\href{https://doi.org/10.1137/0206036}{doi:10.1137/0206036}.
+\end{thebibliography}
+\end{document}

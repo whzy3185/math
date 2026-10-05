@@ -1,0 +1,1146 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=25mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype,needspace}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdftitle={Sharp boundary bounds and edit instability in uniquely dominated bipartite graphs},pdfauthor={}}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{definition}
+\newtheorem{definition}[theorem]{Definition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+\newcommand{\epn}{\operatorname{epn}}
+\newcommand{\e}{e}
+\newcommand{\ceil}[1]{\left\lceil#1\right\rceil}
+\newcommand{\floor}[1]{\left\lfloor#1\right\rfloor}
+\newcommand{\setminusone}[2]{#1\setminus\{#2\}}
+\setlength{\emergencystretch}{2em}
+\clubpenalty=10000 \widowpenalty=10000
+\title{Sharp boundary bounds and edit instability\\in uniquely dominated bipartite graphs}
+\author{}
+\date{5 October 2026\\\small Third version}
+\begin{document}
+\maketitle
+\begin{abstract}
+We determine the sharp edge bounds for bipartite graphs without isolated
+vertices that have a unique minimum dominating set of size $\gamma\ge2$ and
+order $3\gamma+1$ or $3\gamma+2$. The maxima are $\gamma(\gamma+7)/2$ and
+$\lceil\gamma^2/2\rceil+5\gamma$, respectively, and all equality graphs are
+classified. There is one equality class at the first order. At the second
+order there are three classes when $\gamma=2$, one for odd $\gamma\ge3$,
+and two for even $\gamma\ge4$.
+We then study edge-edit distance, minimized over all vertex relabellings,
+at order $3\gamma+1$. A graph with edge deficit $t$ is within $12\gamma t$
+edits of the unique extremal graph. Connected examples require
+$\Omega(\gamma t)$ edits for $1\le t\le\gamma/2-1$ when $\gamma$ is even.
+In particular, relative edge deficit can tend to zero while normalized
+edit distance stays bounded away from zero. The proofs are elementary,
+using private-neighbour replacements, local edge deficits, and explicit
+near-extremal constructions. Previously reported finite counterexamples
+and construction subfamilies are recovered and explicitly credited.
+\end{abstract}
+\noindent\textbf{Keywords:} unique minimum dominating set; bipartite graph;
+extremal size; private neighbour.
+\par\smallskip
+\noindent\textbf{2020 Mathematics Subject Classification:} 05C69, 05C35.
+
+\section{Introduction}
+
+All graphs in this paper are finite and simple. A set $D\subseteq V(G)$ is
+\emph{dominating} if every vertex outside $D$ has a neighbour in $D$.
+The domination number $\gamma(G)$ is the minimum cardinality of a dominating
+set. A graph has a \emph{unique minimum dominating set} if exactly one dominating
+set has cardinality $\gamma(G)$. Throughout, uniqueness refers to minimum
+cardinality, not to inclusion-minimality. Write $n(G)=|V(G)|$ and
+$\e(G)=|E(G)|$.
+
+Fischermann, Rautenbach and Volkmann~\cite{FRV} investigated the maximum size
+of graphs with a unique minimum dominating set. Fraboni and Shank~\cite{FS}
+subsequently settled their conjectured size bound when the domination number
+is two. Koch and Narayan~\cite{KN} considered the bipartite problem and proposed
+a bound depending on the order and the domination number. They proved their
+bound for domination number two and at order $n=3\gamma$.
+Erlbacher's public artifacts~\cite{E} already give the $13$-vertex, $22$-edge
+counterexample, an unbalanced family containing a $14$-vertex, $28$-edge
+example, and finite extremal computations. The results below recover those
+examples, determine the sharp maxima and equality classes at the next two
+orders, and examine their quantitative edit stability.
+Koch and Narayan also identify the unique extremal graph at
+$(n,\gamma)=(10,3)$ in their Figure~1 discussion.
+
+The order restriction is intrinsic. If $D$ is the unique minimum dominating
+set of a graph with no isolated vertices, every vertex of $D$ has at least two
+exterior private neighbours with respect to $D$. These neighbours are distinct
+for distinct members of $D$, and hence $n(G)\ge3\gamma(G)$. We recall the short
+argument in Lemma~\ref{lem:private}.
+
+For integers $\gamma\ge2$ and $r\in\{1,2\}$, let $\mathcal B_{\gamma,r}$ be the class of bipartite
+graphs with no isolated vertices, of order $3\gamma+r$, whose minimum
+dominating set is unique and has cardinality $\gamma$. Write
+$\mathcal B_\gamma=\mathcal B_{\gamma,1}$. No connectedness assumption is
+imposed in these definitions.
+
+\Needspace{10\baselineskip}
+\begin{theorem}\label{thm:main}
+For every integer $\gamma\ge2$,
+\[
+ \max_{G\in\mathcal B_\gamma}\e(G)=\frac{\gamma(\gamma+7)}2.
+\]
+The maximum is attained by a connected graph. For every $\gamma\ge2$, equality
+holds if and only if
+\[
+ G\cong H\bigl(\ceil{\gamma/2},\floor{\gamma/2}\bigr),
+\]
+where $H(p,q)$ is the graph defined in Section~\ref{sec:construction}.
+\end{theorem}
+
+\begin{theorem}\label{thm:two}
+For every integer $\gamma\ge2$,
+\[
+ \max_{G\in\mathcal B_{\gamma,2}}\e(G)
+   =\ceil{\frac{\gamma^2}{2}}+5\gamma.
+\]
+The equality graphs, up to isomorphism, are exactly
+\[
+\begin{cases}
+ H_2(1,1),\ F_0,\ F_1,&\gamma=2,\\
+ H_2(k+1,k),&\gamma=2k+1\ge3,\\
+ H_2(k,k),\ H_2(k+1,k-1),&\gamma=2k\ge4.
+\end{cases}
+\]
+Here $H_2$ is defined in Section~\ref{sec:construction}, and the two
+balanced eight-vertex exceptions $F_0,F_1$ in Section~\ref{sec:two-rigidity}.
+Every equality graph is connected.
+\end{theorem}
+
+For graphs $G,H$ of the same order, define
+\[
+ d_{\mathrm{edit}}(G,H)
+   =\min_{\phi:V(H)\to V(G)\ \mathrm{bijective}}
+       |E(G)\mathbin{\triangle}\phi(E(H))|.
+\]
+Each edge addition or deletion costs one. The bijection need not preserve
+the displayed bipartition or a named dominating set.
+
+\begin{theorem}\label{thm:stability}
+Let $\gamma\ge2$ and $G\in\mathcal B_{\gamma,1}$, let
+$H^*=H(\ceil{\gamma/2},\floor{\gamma/2})$, and put
+$t=\gamma(\gamma+7)/2-\e(G)$. Then
+\[
+ d_{\mathrm{edit}}(G,H^*)
+ \le \min\{\gamma(\gamma+7)-t,\ 12\gamma t\}.
+\]
+For every $k\ge2$ and $1\le s\le k-1$, there is a connected graph
+$G(k,s)\in\mathcal B_{2k,1}$ with exact deficit $t=s$ such that
+\[
+ s(k+1)\le d_{\mathrm{edit}}(G(k,s),H(k,k))\le s(2k+1).
+\]
+\end{theorem}
+
+Thus the dependence $\gamma t$ has the correct order for small absolute
+edge deficit. It cannot generally be replaced by $\gamma\sqrt t+t$.
+More strongly, the connected examples have relative edge deficit tending
+to zero but normalized edit distance bounded away from zero; the precise
+limits are given in Section~\ref{sec:obstruction}.
+
+
+At order $3\gamma+1$, Conjecture~1 of~\cite{KN} specializes to
+\begin{equation}\label{eq:sourcebound}
+ \e(G)\le 2\gamma+2ab+2a+1,
+ \qquad a=\ceil{\gamma/2},\quad b=\floor{\gamma/2}.
+\end{equation}
+The summation term in the conjecture is empty at this order. Since
+\begin{equation}\label{eq:gap}
+ \frac{\gamma(\gamma+7)}2-(2\gamma+2ab+2a+1)=b-1,
+\end{equation}
+Theorem~\ref{thm:main} has the following consequence.
+
+\begin{corollary}\label{cor:counter}
+For every $\gamma\ge4$, there is a connected bipartite graph on $3\gamma+1$
+vertices with a unique minimum dominating set of cardinality $\gamma$ that
+violates~\eqref{eq:sourcebound}. The excess is $\floor{\gamma/2}-1$.
+In particular, at $\gamma=4$ the extremal graph has $13$ vertices and $22$
+edges, whereas~\eqref{eq:sourcebound} gives $21$.
+\end{corollary}
+
+The additional vertex explains the change from the threshold case $n=3\gamma$.
+It may be adjacent to several members of the unique minimum dominating set.
+Our extremal graph uses this possibility. The proof of the upper bound keeps
+track of whether the additional vertex has one or several such neighbours;
+the equality argument then forces the whole construction.
+
+\section{The extremal constructions}\label{sec:construction}
+
+\begin{definition}\label{def:H}
+For integers $p,q\ge1$ and $r\in\{1,2\}$, let $H_r(p,q)$ have pairwise
+ distinct vertices
+\[
+ X=\{x_i:1\le i\le p\},\qquad Y=\{y_j:1\le j\le q\},
+\]
+\[
+ U_i=\{u_i^0,u_i^1\},\qquad V_j=\{v_j^0,v_j^1\},\qquad
+ Z=\{z_1,\ldots,z_r\}.
+\]
+Its edges are exactly $x_i u_i^\varepsilon$, $y_j v_j^\varepsilon$,
+$u_i^\varepsilon v_j^0$, $z_tu_i^\varepsilon$ and $z_ty_j$, for every
+admissible index and $\varepsilon\in\{0,1\}$. Write $H(p,q)=H_1(p,q)$,
+and write $z$ for its single member of $Z$.
+\end{definition}
+
+The graph is bipartite, with parts
+\begin{equation}\label{eq:parts}
+ X\cup\bigcup_jV_j\cup Z
+ \qquad\text{and}\qquad
+ Y\cup\bigcup_iU_i.
+\end{equation}
+It is connected: each $z_t$ meets all of $Y\cup\bigcup_iU_i$, each $x_i$
+meets $U_i$, and each member of $V_j$ meets $y_j$.
+
+\begin{proposition}\label{prop:H}
+The graph $H_r(p,q)$ has order $3(p+q)+r$, domination number $p+q$, and
+unique minimum dominating set $X\cup Y$. Its size is
+\begin{equation}\label{eq:Hcount}
+ \e(H_r(p,q))=2(p+q)+2pq+r(2p+q).
+\end{equation}
+\end{proposition}
+
+\begin{proof}
+The vertex and edge counts follow from the definition. Clearly
+$D=X\cup Y$ dominates. Every dominating set $K$ meets each closed
+neighbourhood $N[x_i]=\{x_i,u_i^0,u_i^1\}$ and each
+$N[v_j^1]=\{y_j,v_j^1\}$. These $p+q$ sets are pairwise disjoint, so
+$|K|\ge p+q$.
+
+If $|K|=p+q$, it chooses exactly one member of each of these sets and
+nothing else. Thus every member of $Z$, and every $v_j^0$, is absent.
+Choosing $u_i^\varepsilon$ instead of $x_i$ leaves its mate undominated:
+the mate's neighbours are $x_i$, the members of $Z$, and the vertices
+$v_j^0$. Hence all $x_i$ are selected and all $U_i$ vertices are absent.
+Choosing $v_j^1$ instead of $y_j$ now leaves $v_j^0$ undominated, forcing
+all $y_j$. Thus $K=D$.
+\end{proof}
+
+For $a=\ceil{\gamma/2}$ and $b=\floor{\gamma/2}$, direct calculation gives
+\begin{align}
+ \e(H(a,b))&=2ab+4a+3b=\frac{\gamma(\gamma+7)}2,\label{eq:attain}\\
+ \e(H_2(a,b))&=2ab+6a+4b
+     =\ceil{\frac{\gamma^2}{2}}+5\gamma.\label{eq:attain2}
+\end{align}
+These graphs supply the connected lower bounds for both theorems.
+
+The subfamily $H_2(p,1)$ is the two-extra-vertex case of Erlbacher's
+unbalanced-split construction~\cite{E}, after interchanging the names of
+the center sides. In particular, $H_2(3,1)$ is his $14$-vertex example.
+For $q>1$, each member of $Z$ meets several centers; this shared-center
+feature already occurs in his $13$-vertex counterexample, which is $H(2,2)$.
+We use these constructions to establish sharpness, without claiming
+priority for those previously reported examples or mechanisms.
+
+\section{Private neighbours and local replacements}
+
+For a dominating set $D$ and $d\in D$, define
+\[
+ \epn(d,D)=\{u\in V(G)\setminus D:N(u)\cap D=\{d\}\}.
+\]
+We use closed neighbourhoods only when square brackets are displayed.
+
+\Needspace{6\baselineskip}
+\begin{lemma}\label{lem:private}
+If $G$ has no isolated vertices and $D$ is its unique minimum dominating set,
+then $|\epn(d,D)|\ge2$ for every $d\in D$.
+\end{lemma}
+
+\begin{proof}
+If $\epn(d,D)=\{u\}$, the set $(D\setminus\{d\})\cup\{u\}$ dominates $G$:
+$u$ dominates itself and $d$, while every other vertex outside $D$ retains a
+neighbour in $D\setminus\{d\}$. This contradicts uniqueness.
+
+If $\epn(d,D)=\varnothing$ and $d$ has a neighbour in $D$, then
+$D\setminus\{d\}$ is a smaller dominating set. Otherwise $d$ has no neighbour
+in $D$. The no-isolate assumption gives a neighbour $u$ outside $D$, and
+$(D\setminus\{d\})\cup\{u\}$ is again a different dominating set of the same
+cardinality. All cases are impossible.
+\end{proof}
+
+The local lemmas below include every possible edge between the two centers.
+Their use is governed by the following replacement principle. If an induced
+subgraph $F$ contains $x,y\in D$ and all other members of $D$ lie outside $F$,
+and $D\setminus\{x,y\}$ dominates every vertex outside $F$, then any
+dominating set $S$ of $F$ of size at most two extends to
+$(D\setminus\{x,y\})\cup S$. Thus, whenever $\{x,y\}$ dominates $F$, it
+is its unique dominating set of size at most two. In each application we
+verify the outside-domination condition explicitly; cross-cell edges cannot
+obstruct the resulting domination.
+The six-vertex argument occurs in the proofs of Theorem~1 of~\cite{FRV} and
+Theorem~12 of~\cite{KN}; we recall its equality patterns.
+
+\begin{lemma}\label{lem:six}
+Let $F$ be a bipartite graph with parts $\{x\}\cup V$ and $\{y\}\cup U$,
+where $|U|=|V|=2$. Assume that $x$ is adjacent to both vertices of $U$ and
+$y$ to both vertices of $V$. If $\{x,y\}$ is the unique dominating set of
+cardinality at most two, then at most two edges occur among $xy$ and the
+$U$--$V$ edges. If exactly two occur, either $xy$ is absent and the
+$U$--$V$ edges form a two-edge star, or $xy$ is present and there is exactly
+one $U$--$V$ edge.
+\end{lemma}
+
+\begin{proof}
+Two disjoint $U$--$V$ edges give an alternative dominating pair: select
+opposite endpoints, one from each edge. If $xy$ is absent, three
+$U$--$V$ edges contain two disjoint edges. Thus there are at most two, and a
+two-edge configuration must be a star.
+
+Suppose $xy$ is present. Two $U$--$V$ edges either are disjoint or form a
+star. A star centered at $u\in U$ gives the dominating pair $\{x,u\}$;
+a star centered at $v\in V$ gives $\{y,v\}$. Consequently at most one
+$U$--$V$ edge can accompany $xy$.
+\end{proof}
+
+\begin{lemma}\label{lem:seven}
+Let $F$ have the same form as in Lemma~\ref{lem:six}, with $|U|=2$ and
+$|V|=s\in\{3,4\}$. If $\{x,y\}$ is its unique dominating set of size at
+most two, then at most $2s-2$ optional edges occur among $xy$ and $U$--$V$.
+\end{lemma}
+
+\begin{proof}
+If $xy$ is absent and there are at least $2s-1$ cross-edges, one $U$ row
+is full and the other has a neighbour $v$. The full row vertex $u$ and $v$
+form an alternative dominating pair. If $xy$ is present, a $V$ vertex
+adjacent to both members of $U$ gives the alternative $\{y,v\}$.
+Hence every column has at most one cross-edge, leaving at most
+$s+1\le2s-2$ optional edges in total.
+\end{proof}
+
+\begin{lemma}\label{lem:seven-equality}
+In Lemma~\ref{lem:seven} with $s=3$, equality holds exactly when $xy$ is
+absent and the cross-edges form a $K_{2,2}$ on $U$ and two members of $V$,
+leaving the third column empty.
+\end{lemma}
+
+\begin{proof}
+If $xy$ is present at equality, there are three cross-edges and no full
+column. Each column therefore contains one edge. If one row contains all
+three, $\{x,u\}$ dominates. Otherwise the row degrees are two and one;
+the degree-two row vertex together with the other row's neighbour dominates.
+Both contradict uniqueness.
+
+With $xy$ absent, four cross-edges have row degrees $(3,1)$ or $(2,2)$.
+A full row vertex and a neighbour of the other row rule out $(3,1)$.
+For $(2,2)$ with different row neighbourhoods, select $u_0$ and the unique
+member of $N(u_1)\cap V$ outside $N(u_0)$. They dominate the whole cell.
+Thus both rows meet the same two columns.
+
+Conversely, let $c$ be the empty column. A dominating pair must meet both
+disjoint sets $N[x]=\{x,u_0,u_1\}$ and $N[c]=\{c,y\}$, and selects nothing
+else. Choosing a $U$ vertex leaves its mate undominated, forcing $x$;
+then choosing $c$ leaves the active columns undominated, forcing $y$.
+No singleton can meet both disjoint sets.
+\end{proof}
+
+\begin{lemma}\label{lem:eight33}
+Let $F$ have the same form, now with $|U|=|V|=3$. If $\{x,y\}$ is its unique
+dominating set of size at most two, then at most six optional edges occur.
+\end{lemma}
+
+\begin{proof}
+Suppose at least seven optional edges occur. If $xy$ is absent, the $3$ by
+$3$ cross-edge matrix has at most two missing entries. A full row and a
+full column therefore exist; their vertices form an alternative dominating
+pair. If $xy$ is present, there are at least six cross-edges. A full row
+gives $\{x,u\}$, and a full column gives $\{y,v\}$. Otherwise every row and
+column has degree at most two. Six edges force every degree to equal two,
+so the missing entries form a perfect matching. The endpoints of any
+missing edge dominate both centers and every private vertex, again a
+contradiction.
+\end{proof}
+
+These elementary arguments give the optional-edge bounds $2,4,6,6$ for
+private-set sizes $(2,2),(2,3),(2,4),(3,3)$ respectively. The exact checks
+in Appendix~\ref{app:checks} are supplementary.
+
+\section{One residual vertex}\label{sec:upper}
+
+Let $G\in\mathcal B_\gamma$, and let $D$ be its unique minimum dominating set.
+By Lemma~\ref{lem:private}, we may select two exterior private neighbours for
+each vertex of $D$. The selected pairs are disjoint and account for $2\gamma$
+vertices. Since $n(G)=3\gamma+1$, exactly one further vertex $z$ remains.
+
+Choose the names of the bipartition classes so that $z\in A$, and write
+\[
+ D\cap A=\{x_1,\ldots,x_p\},\qquad
+ D\cap B=\{y_1,\ldots,y_q\},\qquad p+q=\gamma.
+\]
+Let $U_i\subseteq B$ be the selected private pair of $x_i$, and
+$V_j\subseteq A$ the selected private pair of $y_j$. Set
+\[
+ J=N(z)\cap D\subseteq\{y_1,\ldots,y_q\},\qquad \ell=|J|.
+\]
+Because $D$ dominates $z$, we have $\ell\ge1$, and in particular $q\ge1$.
+
+Privacy and bipartiteness give a complete list of possible edges:
+\begin{enumerate}
+\item the $2\gamma$ selected center-to-private edges;
+\item $x_iy_j$ and the edges between $U_i$ and $V_j$, for each pair $(i,j)$;
+\item the edges from $z$ to $J$ and to $\bigcup_iU_i$.
+\end{enumerate}
+In particular, edges inside $D$ have not been discarded: they are precisely
+the possible edges $x_iy_j$ in the second class.
+
+\subsection{The additional vertex has several dominators}
+
+Suppose $\ell\ge2$. For each $i,j$, consider the induced six-vertex graph
+\[
+ G[K_{ij}],\qquad K_{ij}=\{x_i,y_j\}\cup U_i\cup V_j.
+\]
+The set $D\setminus\{x_i,y_j\}$ dominates every vertex outside $K_{ij}$.
+Each selected private vertex outside the cell retains its own center;
+the vertex $z$ retains a neighbour in $J$ because only one $y$-center has
+been removed.
+
+If $G[K_{ij}]$ had a dominating set $S$ of cardinality at most two other
+than $\{x_i,y_j\}$, then
+\[
+ (D\setminus\{x_i,y_j\})\cup S
+\]
+would be a dominating set of $G$ of cardinality at most $\gamma$, distinct
+from $D$ when its cardinality is $\gamma$. This contradicts minimum
+cardinality or uniqueness. Thus Lemma~\ref{lem:six} applies to every cell.
+The optional edge sets of these cells are disjoint, and
+$\deg(z)\le2p+q$. Consequently
+\begin{equation}\label{eq:multiple}
+ \e(G)\le 2\gamma+2pq+2p+q.
+\end{equation}
+When $p=0$, the same bound follows directly from the edge list, with an
+empty sum over cells.
+
+\subsection{The additional vertex has one dominator}
+
+Suppose $J=\{y_{j_0}\}$. For every $j\ne j_0$, the preceding six-vertex
+replacement still applies, since $y_{j_0}$ is retained and dominates $z$.
+For each $i$ consider instead
+\[
+ L_i=\{x_i,y_{j_0}\}\cup U_i\cup V_{j_0}\cup\{z\}.
+\]
+In $G[L_i]$, the center $y_{j_0}$ has the three private vertices
+$V_{j_0}\cup\{z\}$. Every vertex outside $L_i$ is dominated by
+$D\setminus\{x_i,y_{j_0}\}$, so the same replacement argument proves that
+Lemma~\ref{lem:seven} applies.
+
+The optional edges of $G[L_i]$ are $x_i y_{j_0}$ and the edges from $U_i$
+to $V_{j_0}\cup\{z\}$. These edge sets are disjoint for different $i$.
+The edge $zy_{j_0}$ is counted once separately. Therefore
+\begin{align}
+ \e(G)&\le 2\gamma+1+2p(q-1)+4p\notag\\
+       &=2\gamma+1+2pq+2p\notag\\
+       &\le2\gamma+2pq+2p+q.\label{eq:single}
+\end{align}
+If $p=0$, only the $2\gamma$ fixed private edges and $zy_{j_0}$ occur,
+so the displayed inequalities remain valid.
+
+\subsection{Optimizing the bipartition}
+
+Put $d=p-q$. Since $p+q=\gamma$, both cases yield
+\begin{equation}\label{eq:opt}
+ \e(G)\le 2\gamma+2pq+2p+q
+ =\frac{\gamma(\gamma+7)}2-\frac{d(d-1)}2
+ \le\frac{\gamma(\gamma+7)}2.
+\end{equation}
+The final inequality holds because $d$ is an integer. Equality in the
+numerical optimization requires $d\in\{0,1\}$. The parity of $\gamma$
+then forces
+\begin{equation}\label{eq:balanced}
+ p=\ceil{\gamma/2},\qquad q=\floor{\gamma/2}.
+\end{equation}
+Together with~\eqref{eq:attain}, this proves the extremal-value assertion of
+Theorem~\ref{thm:main} for every $\gamma\ge2$.
+
+\section{Equality with one residual vertex}\label{sec:rigidity}
+
+\subsection{Domination number at least four}
+
+Suppose now that $\gamma\ge4$ and
+$\e(G)=\gamma(\gamma+7)/2$. Equation~\eqref{eq:balanced} gives
+$q=\floor{\gamma/2}\ge2$. The final inequality in~\eqref{eq:single}
+loses $q-1$ edges, so the case $\ell=1$ cannot give equality.
+Every inequality in~\eqref{eq:multiple} must therefore be an equality.
+It follows that $z$ is adjacent to every $y_j$ and to every vertex of
+$\bigcup_iU_i$, and each six-vertex cell has exactly two optional edges.
+
+We first show that $D$ is independent. If $x_iy_j$ were an edge, then
+\[
+ (D\setminus\{x_i\})\cup\{z\}
+\]
+would be a different dominating set of cardinality $\gamma$.
+Indeed, $x_i$ is dominated by the retained $y_j$, the pair $U_i$ is
+dominated by $z$, and every other private pair retains its center.
+Thus no edge $x_iy_j$ occurs.
+
+Lemma~\ref{lem:six} now shows that the two edges between $U_i$ and $V_j$
+form a star. This star cannot be centered at $u\in U_i$, because
+\[
+ (D\setminus\{x_i,y_j\})\cup\{u,z\}
+\]
+would dominate $G$. The vertex $u$ dominates $x_i$ and both members of
+$V_j$, while $z$ dominates $y_j$ and both members of $U_i$.
+All other private pairs retain their centers. Therefore both members of
+$U_i$ are adjacent to exactly one vertex of $V_j$; denote it by $v_j^{(i)}$.
+
+Fix $j$. Suppose that the selected vertex $v_j^{(i)}$ is not constant as
+$i$ varies. Choose one vertex $u_i\in U_i$ for every $i$, and define
+\[
+ K=\{z\}\cup\{u_i:1\le i\le p\}
+       \cup\bigl((D\cap B)\setminus\{y_j\}\bigr).
+\]
+Then $|K|=1+p+(q-1)=\gamma$. Every $x_i$ is dominated by $u_i$;
+every vertex in $\bigcup_iU_i$ and every $y$-center is dominated by $z$.
+The two vertices of $V_j$ are dominated because both possible choices of
+$v_j^{(i)}$ occur. Every other pair $V_\ell$ retains $y_\ell$.
+Hence $K$ is a second minimum dominating set, a contradiction.
+
+For each $j$, rename the members of $V_j$ so that their common selected
+vertex is $v_j^0$. The complete edge list is now exactly that of $H(p,q)$.
+Equation~\eqref{eq:balanced} proves the equality assertion in
+Theorem~\ref{thm:main} for $\gamma\ge4$.
+
+\subsection{Domination numbers two and three}
+
+At equality,~\eqref{eq:balanced} gives $q=1$ and $p=1$ or $2$.
+Write $y$ for the sole $Y$-center and put $W=V_1\cup\{z\}$. All three
+vertices of $W$ meet $y$. The graph has $2p+3$ fixed center/private edges,
+and its optional edges partition into the $p$ blocks $x_i y$ and $U_i$--$W$.
+Each seven-vertex cell is legitimate for replacement: every outside vertex
+retains its own center, while $z$ is inside the cell. Equality forces four
+optional edges in every block.
+
+Lemma~\ref{lem:seven-equality} forbids all center edges and makes each $U_i$
+complete to two of the three $W$ columns. For $p=1$ this is $H(1,1)$.
+For $p=2$, suppose the omitted columns differ. The active column pairs
+then cover $W$ and have one common member $w$. Choose $u_i\in U_i$.
+The set $\{u_1,u_2,w\}$ dominates: the $u_i$ cover $x_i$ and all columns
+between them, while $w$ covers both $U$ pairs and $y$. This is a different
+dominating triple, a contradiction. The omitted columns therefore coincide,
+and the graph is $H(2,1)$. This completes Theorem~\ref{thm:main} for all
+$\gamma\ge2$. As noted above, the latter finite equality graph was already
+identified in~\cite{KN}.
+
+\section{Two residual vertices}\label{sec:two}
+
+Let $G\in\mathcal B_{\gamma,2}$ and let $D$ be its unique minimum dominating
+set. Select two exterior private neighbours of each member of $D$, leaving
+two residual vertices $z,w$. Put
+\[
+ D\cap A=X=\{x_1,\ldots,x_p\},\qquad
+ D\cap B=Y=\{y_1,\ldots,y_q\},\qquad p+q=\gamma,
+\]
+and use $U_i\subseteq B$, $V_j\subseteq A$ for the selected private pairs.
+We prove the upper bound
+\[
+ M_2(\gamma)=\ceil{\frac{\gamma^2}{2}}+5\gamma.
+\]
+
+\subsection{Residual vertices in the same part}
+
+Orient the parts so that $z,w\in A$. Each has a nonempty $D$-neighbourhood
+contained in $Y$, hence $q\ge1$; $p=0$ is allowed. Call a residual vertex
+\emph{singleton-dominated} if it has one neighbour in $D$. Let $S\in\{0,1,2\}$
+be the number of such vertices, and let $r_j$ count those whose sole
+$D$-neighbour is $y_j$, so that $\sum_jr_j=S$.
+
+For each $i,j$, take the cell with centers $x_i,y_j$, private set $U_i$,
+and opposite private set $V_j$ together with the $r_j$ residuals owned by
+$y_j$. Every vertex outside this cell remains dominated by
+$D\setminus\{x_i,y_j\}$: selected private vertices retain their centers;
+singleton residuals outside have a different retained owner; residuals
+with at least two $D$-neighbours retain one, because only one $Y$-center
+is removed. Lemmas~\ref{lem:six} and~\ref{lem:seven} therefore bound its
+optional edges by $2+2r_j$.
+
+These optional edge sets are pairwise disjoint. In addition to the
+$2\gamma$ fixed selected-private incidences, count the $S$ singleton owner
+edges separately. Each of the remaining $2-S$ residuals has degree at most
+$2p+q$: it can meet only $Y$ and the $U$ vertices. There is no edge $zw$.
+Consequently
+\begin{align}
+ \e(G)&\le 2\gamma+S+2pq+2pS+(2-S)(2p+q)\notag\\
+       &=2\gamma+2pq+4p+2q-S(q-1)\notag\\
+       &\le 2pq+6p+4q.\label{eq:two-same}
+\end{align}
+This includes $p=0$, with no cells. For $d=p-q$, the final expression is
+\begin{equation}\label{eq:two-opt}
+ \frac{\gamma^2}{2}+5\gamma+\frac12-\frac{(d-1)^2}{2}.
+\end{equation}
+If $\gamma$ is even, $d$ is even and $(d-1)^2\ge1$; if $\gamma$ is odd,
+$(d-1)^2\ge0$. Thus~\eqref{eq:two-opt} is at most $M_2(\gamma)$.
+
+\subsection{Residual vertices in opposite parts}
+
+Suppose $z\in A$, $w\in B$, and write
+\[
+ J=N(z)\cap D\subseteq Y,\qquad K=N(w)\cap D\subseteq X.
+\]
+Both sets are nonempty, so $p,q\ge1$. The edge $zw$ is now possible and
+must be counted once.
+
+\paragraph{Both residuals have several dominators.}
+Suppose $|J|,|K|\ge2$. Each ordinary six-vertex cell is valid: both
+residuals retain a $D$-neighbour after one $X$-center and one $Y$-center
+are removed. The cell edges total at most $2pq$. The edges incident with
+$z$ other than $zw$ number at most $2p+q$, and those incident with $w$
+other than $zw$ number at most $2q+p$. Hence
+\begin{equation}\label{eq:two-multi}
+ \e(G)\le2\gamma+2pq+(2p+q)+(2q+p)+1=2pq+5\gamma+1.
+\end{equation}
+For odd $\gamma$, the inequality $2pq\le\floor{\gamma^2/2}$ gives the result.
+For even $\gamma$,~\eqref{eq:two-multi} is at most $M_2(\gamma)+1$.
+An actual violation would, by integrality, force equality throughout,
+$p=q$, and saturation of both residual degree bounds. In particular,
+$z$ meets every $Y$-center and every $U$ vertex, while $w$ meets every
+$X$-center and every $V$ vertex. For any $i,j$, the set
+\[
+ (D\setminus\{x_i,y_j\})\cup\{z,w\}
+\]
+then dominates. The removed centers are covered by $w,z$ respectively,
+$U_i$ by $z$, and $V_j$ by $w$; all other private pairs retain their centers.
+This second dominating $\gamma$-set excludes the only possible excess.
+
+\paragraph{Exactly one residual has one dominator.}
+Interchange sides if necessary so that $J=\{y_{j_0}\}$ and $|K|\ge2$.
+For $j\ne j_0$, use ordinary six-vertex cells. For $j=j_0$, include $z$
+and use a $(2,3)$ private cell. Outside every such cell, $w$ retains an
+$X$-neighbour; any residual not included keeps its owner. Thus the optional
+blocks contribute at most $2p(q-1)+4p$. Count $zy_{j_0}$ once, the other
+incidences of $w$ by $2q+p$, and $zw$ at most once. This gives
+\begin{equation}\label{eq:two-mixed}
+ \e(G)\le2\gamma+1+2p(q-1)+4p+(2q+p)+1
+       =2pq+5\gamma+2-q.
+\end{equation}
+If $q\ge2$, this is at most $M_2(\gamma)$. If $q=1$, then $p\ge2$ because
+$|K|\ge2$, so $\gamma\ge3$. The difference between $M_2(\gamma)$ and the
+right side is $\ceil{\gamma^2/2}-2\gamma+1$, which is zero at $\gamma=3$
+and positive for $\gamma\ge4$.
+
+\paragraph{Both residuals have one dominator.}
+Write $J=\{y_{j_0}\}$ and $K=\{x_{i_0}\}$. Partition optional edges using
+$(2,2)$ cells for $i\ne i_0,j\ne j_0$; $(3,2)$ cells including $w$ for
+$i=i_0,j\ne j_0$; $(2,3)$ cells including $z$ for $i\ne i_0,j=j_0$;
+and one $(3,3)$ cell containing both residuals for $i=i_0,j=j_0$.
+Every residual whose owner is removed is included in the cell, and every
+residual outside retains its owner. All selected private vertices outside
+also retain their centers. Thus all local uniqueness hypotheses hold.
+
+The edge $zw$ belongs only to the $(3,3)$ cell. The two residual owner
+edges are counted once each as fixed incidences, and the optional blocks
+are disjoint. The local bounds give
+\begin{align}
+ \e(G)&\le2\gamma+2+2(p-1)(q-1)+4(q-1)+4(p-1)+6\notag\\
+       &=2pq+4\gamma+2\notag\\
+       &\le\floor{\gamma^2/2}+4\gamma+2\le M_2(\gamma),\label{eq:two-single}
+\end{align}
+using $\gamma\ge2$. This covers the small case $p=q=1$ as well.
+Together with~\eqref{eq:attain2}, all cases prove the extremal value in
+Theorem~\ref{thm:two}.
+
+\subsection{Nonisomorphic equality graphs for even domination number}
+
+Let $\gamma=2k\ge4$. Both $H_2(k,k)$ and $H_2(k+1,k-1)$ attain the
+maximum by~\eqref{eq:Hcount}. Their bipartition size pairs are respectively
+$\{3k,3k+2\}$ and $\{3k+1,3k+1\}$. A connected bipartite graph has its
+bipartition determined up to interchange, so the graphs are nonisomorphic.
+The complete equality classification is proved next.
+
+\section{Equality with two residual vertices}\label{sec:two-rigidity}
+
+Assume $\e(G)=M_2(\gamma)$. We retain the private-pair notation of
+Section~\ref{sec:two}. No connectedness assumption is used in the classification.
+
+\subsection{Opposite-side residuals above domination number two}
+
+Suppose first that both residuals have several dominators. For odd $\gamma$,
+equality in~\eqref{eq:two-multi} forces a balanced split and saturation of
+all residual incidences. Replacing any $x_i,y_j$ by $z,w$ gives another
+dominating $\gamma$-set, as in the upper-bound proof.
+
+For even $\gamma$, equality requires $p=q=k\ge2$; any other split reduces
+$2pq$ by at least two and makes~\eqref{eq:two-multi} strictly smaller than
+$M_2(\gamma)$. There is exactly one total deficit in that bound. All
+cell deficits and residual-incidence deficits are nonnegative integers.
+Thus at most one of the allowable residual edges is missing.
+If it is incident with an $X$-center or one of its private vertices,
+choose a different $X$-center to remove; if it is incident with a
+$Y$-center or its private pair, choose a different $Y$-center. Such
+choices exist because $k\ge2$. If the deficit is a cell edge or $zw$,
+choose any pair. The set
+\[
+ (D\setminus\{x_i,y_j\})\cup\{z,w\}
+\]
+then dominates: the removed centers and their pairs have all needed
+residual incidences, and other private pairs retain their centers.
+A missing edge to a retained center or its pair is harmless. This again
+contradicts uniqueness.
+
+Suppose exactly one residual is singleton-dominated, with
+$J=\{y_{j_0}\}$ and $|K|\ge2$. The difference between the target and the
+right side of~\eqref{eq:two-mixed} is
+\[
+ \ceil{\gamma^2/2}-2pq+q-2.
+\]
+For $q\ge2$ this vanishes only at $p=q=2$: odd $\gamma$ contributes at
+least one in the first two terms, and even $\gamma$ requires $p=q$ and
+$q=2$. For $q=1$, it vanishes only at $\gamma=3,p=2$.
+In either possible split, the two special seven-cells on $x_1,y_{j_0}$
+and $x_2,y_{j_0}$ are saturated. By Lemma~\ref{lem:seven-equality}, each
+$U_i$ is complete to two members of $W=V_{j_0}\cup\{z\}$.
+Choose a common member $c$ of these two two-element subsets of a three-set.
+Saturation also makes $w$ adjacent to all $X$-centers, all $V$ vertices,
+and $z$. Hence
+\[
+ \{w,c\}\cup(Y\setminus\{y_{j_0}\})
+\]
+is a dominating set of size $q+1=\gamma-1$. The vertex $c$ covers both
+$U$ pairs and $y_{j_0}$; $w$ covers $X$, all $V$ and $z$; the other
+$Y$-centers are selected. This contradicts the domination number.
+
+Finally, if both residuals are singleton-dominated, the gap in
+\eqref{eq:two-single} is at least $\gamma-2>0$ for $\gamma\ge3$.
+Thus every equality graph with $\gamma\ge3$ has same-side residuals.
+These arguments apply to any selected exterior-private pairs, not a
+presumed favourable decomposition.
+
+\subsection{Same-side equality with at least two opposite centers}
+
+In~\eqref{eq:two-same}, equality forces $S=0$, complete residual
+incidences to every $Y$-center and every $U$ vertex, and two optional
+edges in every six-cell. A center edge $x_i y_j$ would allow replacing
+$x_i$ by $z$, so all center edges are absent. Each block is a two-edge
+star. A star centered at $u\in U_i$ would allow replacing $x_i,y_j$ by
+$u,z$; the other residual retains a $Y$-neighbour since $q\ge2$.
+Thus every block is a column star.
+
+For a fixed $j$, its chosen column cannot vary with $i$. Otherwise
+\[
+ \{z\}\cup\{u_i: u_i\in U_i,\ 1\le i\le p\}
+        \cup(Y\setminus\{y_j\})
+\]
+would be another dominating $\gamma$-set, by the argument in
+Section~\ref{sec:rigidity}. In this setting $w$ is also covered, since it
+retains a $Y$-neighbour. Relabelling the common column of each $V_j$ as
+$v_j^0$ gives precisely $H_2(p,q)$.
+
+Equality in~\eqref{eq:two-opt} requires $p-q=1$ for odd $\gamma$ and
+$p-q\in\{0,2\}$ for even $\gamma$. These are the splits stated in
+Theorem~\ref{thm:two}.
+
+\subsection{Same-side equality with one opposite center}
+
+The allowed splits now give $p=1,2,3$, corresponding to $\gamma=2,3,4$.
+Both residuals have the sole center $y$ as owner. Put
+$W=V_1\cup\{z,w\}$, of size four. Every $(2,4)$ cell must have six
+optional edges.
+
+Its equality pattern has no center edge and consists of $K_{2,3}$ on
+$U$ and three columns of $W$. Indeed, if $xy$ is present, uniqueness
+excludes a full column, leaving at most four cross-edges and five
+optional edges. With $xy$ absent, six cross-edges have row degrees
+$(4,2)$ or $(3,3)$. A full row and a neighbour of the other row exclude
+$(4,2)$. Different three-element row neighbourhoods give an alternative
+pair by selecting one row vertex and the other's neighbour outside that
+row. Thus the two rows have the same three neighbours. Conversely,
+the unused column and $x$ have disjoint closed neighbourhoods forcing
+the center pair, just as in Lemma~\ref{lem:seven-equality}.
+
+Let $c_i$ be the omitted column for $U_i$. If the omissions differ,
+the active columns cover $W$, and some column $c$ is active in every
+row because $p\le3<4$. Choosing one $u_i\in U_i$, the set
+$\{c,u_1,\ldots,u_p\}$ is another dominating $(p+1)$-set: it covers all
+centers, all $U$ vertices, and all of $W$. Hence the omitted column is
+common, and relabelling the three active columns gives $H_2(p,1)$.
+
+\subsection{The three equality graphs at domination number two}
+
+The remaining possibility has opposite-side residuals and $p=q=1$.
+The entire graph is the $(3,3)$ private cell. Write
+$U=\{u_0,u_1,u_2\}$ and $V=\{v_0,v_1,v_2\}$, with fixed edges $xU,yV$.
+There must be six optional edges.
+
+If $xy$ is absent, there are six cross-edges. With no full row or column,
+every row and column would have degree two, and a missing-edge pair
+would dominate. By symmetry assume a full row. There is no full column,
+or its vertex and the full-row vertex would dominate. The other three
+cross-edges occupy the three columns once each. Row degrees $(2,1)$
+give a dominating pair, so they must be $(3,0)$. This yields the graph
+$F_0$: no edge $xy$, and the six cross-edges $\{u_0,u_1\}\times V$.
+
+If $xy$ is present, the five cross-edges have no full row or column;
+the row and column degree lists are $(2,2,1)$. Their graph has maximum
+degree two, no isolates, six vertices and five edges. Its only component
+types are $P_6$ and $C_4\mathbin{\dot\cup}K_2$. In the path
+$u_0v_0u_1v_1u_2v_2$, the pair $\{u_2,v_0\}$ dominates the cell.
+Thus only the second type remains. This gives $F_1$: the edge $xy$,
+the four cross-edges $\{u_0,u_1\}\times\{v_0,v_1\}$, and $u_2v_2$.
+
+Both graphs have unique minimum dominating pair $\{x,y\}$. In $F_0$,
+a dominating pair meets the disjoint sets $N[u_2]=\{u_2,x\}$ and
+$N[y]=\{y,v_0,v_1,v_2\}$. Selecting $u_2$ leaves an active $U$ vertex
+or a $V$ vertex undominated, forcing $x$; a $V$ vertex instead of $y$
+then leaves the other $V$ vertices undominated. In $F_1$, a pair with
+one center other than $\{x,y\}$ cannot cover the opposite private set.
+A pair inside $U$ misses $y$, and one inside $V$ misses $x$.
+An alternative $\{u,v\}$ with $u\in U,v\in V$ would require both
+cross-degrees to be two and $uv$ to be a nonedge. All such degree-two
+vertices lie in the $C_4$ component, where every opposite pair is
+adjacent. A singleton cannot dominate a graph with these part sizes.
+
+Together with the same-side graph $H_2(1,1)$, these are exactly the
+three classes in Table~\ref{tab:exceptions}. The degree sequences
+separate $F_0,F_1$, and their balanced bipartitions distinguish them
+from $H_2(1,1)$. For larger even $\gamma$, the two listed $H_2$ graphs
+are nonisomorphic by Section~\ref{sec:two}. All listed graphs are
+connected and attain the bound, completing Theorem~\ref{thm:two}.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{lll}
+\toprule
+Graph & Bipartition sizes & Sorted degree sequence\\
+\midrule
+$H_2(1,1)$ & $3,5$ & $1,2,3,3,3,4,4,4$\\
+$F_0$ & $4,4$ & $1,3,3,3,3,3,4,4$\\
+$F_1$ & $4,4$ & $2,2,3,3,3,3,4,4$\\
+\bottomrule
+\end{tabular}
+\caption{The three eight-vertex equality graphs, each with twelve edges.}
+\label{tab:exceptions}
+\end{table}
+
+\section{Stability in terms of absolute edge deficit}\label{sec:stability}
+
+Let $G\in\mathcal B_{\gamma,1}$ and put
+$t=\gamma(\gamma+7)/2-\e(G)$. Theorem~\ref{thm:main} shows $t\ge0$;
+if $t=0$, its equality statement gives $d_{\mathrm{edit}}(G,H^*)=0$.
+Suppose henceforth $t\ge1$. Selecting two exterior private neighbours
+per center leaves $z\in A$, with $p,q,U_i,V_j$ as before.
+
+\subsection{An exact deficit decomposition}
+
+First suppose $z$ has at least two neighbours in $D$. Let $k_{ij}\le2$
+be the optional-edge count of the six-cell on $x_i,y_j$. Define
+\[
+ B=\frac{(p-q)(p-q-1)}2,\qquad
+ L=\sum_{i,j}(2-k_{ij}),\qquad R=2p+q-\deg(z).
+\]
+Each is a nonnegative integer. Complete edge accounting gives the exact
+identity
+\begin{equation}\label{eq:slack}
+ t=B+L+R.
+\end{equation}
+Here $B$ measures center-split imbalance, $L$ the cell deficits, and $R$
+the missing allowable residual incidences.
+
+For an intermediate template, allow $p=0$ and write $T(p,q)$ for the
+same adjacency rule as $H(p,q)$ with an empty $X$ collection when
+necessary. We still have $q\ge1$. The final balanced template has
+both center sides nonempty.
+
+Call row $i$ bad if $z$ misses a member of $U_i$, and column $j$ bad
+if $z$ misses $y_j$. Let their counts be $b_X,b_Y$, and let $R_U,R_Y$
+count the corresponding missing incidences. Then
+\[
+ b_X\le R_U,\qquad b_Y\le R_Y,\qquad R_U+R_Y=R.
+\]
+On a good row, no center edge $x_i y_j$ can occur: replacing $x_i$ by
+$z$ would cover its private pair and leave $x_i$ dominated by the
+retained $y_j$.
+
+A saturated block in a good row and good column is therefore a
+cross-edge star. It cannot be centered at $u\in U_i$, since replacing
+$x_i,y_j$ by $u,z$ would dominate. Thus it is a column star.
+The selected column is common to all good saturated rows at a fixed
+good $j$. Otherwise choose two good rows $i,h$ with opposite selections.
+For $u_i\in U_i,u_h\in U_h$, the set
+\[
+ (D\setminus\{x_i,x_h,y_j\})\cup\{z,u_i,u_h\}
+\]
+would be another dominating $\gamma$-set. The two selected private
+vertices cover their centers and both members of $V_j$, while $z$
+covers their private pairs and $y_j$; all other private pairs retain
+their centers. This proves coherence even in the presence of bad rows
+elsewhere.
+
+Choose that common column for each good $j$, or an arbitrary column
+when there is no good saturated row; choose arbitrary columns for bad
+$j$. These choices define a labelled $T(p,q)$. Its fixed private edges
+already agree with those of $G$. Add the $R$ missing residual incidences.
+Every block touching a bad row or column costs at most four edits,
+since each graph has at most two optional edges there. The same bound
+applies to each deficient good block, of which there are at most $L$.
+All remaining blocks agree. Thus
+\begin{align}
+ d_{\mathrm{edit}}(G,T(p,q))
+ &\le R+4L+4(qb_X+pb_Y)\notag\\
+ &\le (4\gamma+1)R+4L\notag\\
+ &\le (4\gamma+1)t.\label{eq:repair}
+\end{align}
+The displayed repair uses a common labelling, so allowing arbitrary
+bijections only reduces its cost. The argument includes $p=0$.
+
+\subsection{Balancing the template}
+
+Put $a=\ceil{\gamma/2}$, $b=\floor{\gamma/2}$ and $h=|p-a|$.
+Writing $p=a+m$ gives $B=2m^2-m$ for even $\gamma$ and $B=2m^2+m$ for
+odd $\gamma$. For integer $m$, both are at least $m^2$. Hence
+\begin{equation}\label{eq:imbalance-stability}
+ h^2\le B\le t.
+\end{equation}
+
+Move $h$ center/private triples to the other role, keeping the residual
+and all unchanged triples fixed. Keep selected-column labels on
+unchanged $Y$-triples. This is a bijection to $T(a,b)=H^*$, and the two
+templates agree on all edges whose endpoints both lie outside the
+moved triples.
+
+If $p>a$, a moved $X$-triple has degree sum $2q+6$ in the old template
+and $2a+5$ in its new $Y$-role. If $p<a$, a moved $Y$-triple has degree
+sum $2p+5$, and its new $X$-role has sum $2b+6$. In either case the sum
+of old and new degrees is $2\gamma-2h+11$. Counting each changed edge
+by an incident moved vertex, with repeated counting allowed for an
+upper bound, gives
+\begin{equation}\label{eq:balance-repair}
+ d_{\mathrm{edit}}(T(p,q),H^*)
+ \le h(2\gamma-2h+11)\le(2\gamma+11)\sqrt t.
+\end{equation}
+By the triangle inequality,~\eqref{eq:repair} and~\eqref{eq:balance-repair}
+yield
+\[
+ d_{\mathrm{edit}}(G,H^*)
+ \le(4\gamma+1)t+(2\gamma+11)\sqrt t
+ \le(6\gamma+12)t\le12\gamma t,
+\]
+using the integer condition $t\ge1$ and $\gamma\ge2$.
+
+\subsection{A residual vertex with one owner}
+
+If $z$ has one $D$-neighbour,~\eqref{eq:single} gives
+\[
+ t\ge B+q-1=\frac{(p-q-1)^2+\gamma-3}{2}
+      \ge\floor{\frac{\gamma-2}{2}},
+\]
+where the last step uses parity. For $\gamma=2,3$ and $t\ge1$, the
+trivial distance bound $d_{\mathrm{edit}}(G,H^*)\le\gamma(\gamma+7)$
+is at most $12\gamma t$. For $\gamma\ge4$, use
+\[
+ \gamma+7\le12\floor{\frac{\gamma-2}{2}}
+\]
+to obtain the same conclusion. This proves the linear-deficit bound
+for every graph in the class, without connectedness.
+The additional bound
+\[
+ d_{\mathrm{edit}}(G,H^*)\le\e(G)+\e(H^*)
+      =\gamma(\gamma+7)-t
+\]
+is immediate. Together they establish the upper assertion of
+Theorem~\ref{thm:stability}.
+
+\section{Connected obstructions to stronger edit stability}\label{sec:obstruction}
+
+Let $k\ge2$ and $1\le s\le k-1$. Starting from $H(k,k)$, modify each
+of the rows $i=1,\ldots,s$ by deleting the $k$ edges $u_i^0v_j^0$,
+adding the $k$ edges $x_i y_j$, and deleting $zu_i^0$. Call the result
+$G(k,s)$. The same private vertex loses both its selected-column edges
+and its residual incidence, becoming a leaf at $x_i$. Its mate $u_i^1$
+retains all its edges.
+
+Every change respects the original bipartition. Connectivity is
+preserved: $z$ meets all $y_j$, every unmodified $U$ vertex and every
+$u_i^1$; each $x_i$ meets $u_i^1$, each $V$ vertex meets its owner, and
+the modified leaves meet $x_i$. There are no isolated vertices.
+The order is $6k+1$ and the edge count is $2k^2+7k-s$.
+
+\subsection{The unique minimum dominating set}
+
+Every dominating set meets the following pairwise disjoint closed
+neighbourhoods:
+\[
+ \{x_i,u_i^0\}\quad(i\le s),\qquad
+ \{x_i,u_i^0,u_i^1\}\quad(i>s),\qquad
+ \{y_j,v_j^1\}\quad(1\le j\le k).
+\]
+They are respectively the closed neighbourhoods of the modified leaves,
+the unmodified $X$-centers, and the $V$ leaves. There are $2k$ of them,
+so every dominating set has at least $2k$ vertices. The set $D=X\cup Y$
+dominates and has that size.
+
+A dominating $2k$-set selects exactly one member of each forced set
+and nothing else. Thus $z$, all $v_j^0$, and all modified-row $u_i^1$
+are absent. In an unmodified row, selecting a $U$ vertex leaves its mate
+undominated. In a modified row, selecting $u_i^0$ instead of $x_i$
+leaves $u_i^1$ undominated, since its neighbours are $x_i,z$ and the
+$v_j^0$. Therefore every $x_i$ is selected. Selecting $v_j^1$ instead
+of $y_j$ then leaves $v_j^0$ undominated. Hence $D$ is the unique minimum
+dominating set, and $G(k,s)\in\mathcal B_{2k,1}$ has exact deficit $s$.
+
+\subsection{A degree lower bound for every vertex bijection}
+
+For any bijection between two graphs,
+\[
+ \sum_v\bigl|\deg_G(v)-\deg_H(\phi^{-1}(v))\bigr|
+ \le2|E(G)\mathbin{\triangle}\phi(E(H))|.
+\]
+\Needspace{7\baselineskip}
+The minimum absolute-difference sum between two degree multisets is
+achieved by pairing their sorted sequences. Indeed, for $a\le a'$ and
+$b\le b'$, uncrossing follows from
+\[
+ |a-b|+|a'-b'|\le|a-b'|+|a'-b|.
+\]
+Thus half the sorted degree $L^1$ distance is a lower bound on the
+edit distance under arbitrary relabelling.
+
+The degree groups of $H(k,k)$, as (degree, multiplicity), are
+\[
+ (1,k),\ (2,k),\ (3,k),\ (k+2,2k),\ (2k+1,k),\ (3k,1).
+\]
+For $G(k,s)$ they are
+\[
+ (1,k+s),\ (2,k-s),\ (3+s,k),\ (k+2,2k),\
+ (2k+1-s,k),\ (3k-s,1).
+\]
+These groups are nondecreasing for $1\le s\le k-1$; equalities between
+groups do not affect the sorted-position calculation. The $L^1$
+difference is $s+ks+ks+s=2s(k+1)$. Therefore
+\begin{equation}\label{eq:distance-obstruction}
+ s(k+1)\le d_{\mathrm{edit}}(G(k,s),H(k,k))\le s(2k+1).
+\end{equation}
+The upper bound is the explicit modification under the identity
+labelling: $s(k+1)$ deletions and $sk$ additions.
+This completes Theorem~\ref{thm:stability}.
+
+\subsection{Failure of square-root and dense edit stability}
+
+Take $k=s^2$ with $s\ge2$. The lower bound in
+\eqref{eq:distance-obstruction} is $s(s^2+1)$, whereas
+$\gamma\sqrt t+t=2s^2\sqrt s+s$. Their ratio tends to infinity.
+Hence no absolute constant can bound every graph in the class by
+$O(\gamma\sqrt t+t)$ edits.
+
+For a stronger asymptotic consequence, take $s=\floor{k/2}$.
+Then $s/(2k^2+7k)\to0$, so the relative edge deficit tends to zero, while
+\[
+ \liminf_{k\to\infty}
+ \frac{d_{\mathrm{edit}}(G(k,\floor{k/2}),H(k,k))}{(6k+1)^2}
+ \ge\frac1{72}.
+\]
+Thus near-optimal edge density does not imply dense edit-distance
+closeness, even for connected graphs. In contrast,
+Theorem~\ref{thm:stability} guarantees normalized edit closeness when
+$t=o(\gamma)$. A single missing residual incidence in the construction
+permits changes across an entire row of cells, explaining the linear
+rather than square-root dependence on the absolute deficit.
+
+\section{Source comparison and further questions}
+
+At order $3\gamma+1$, Theorem~\ref{thm:main} exceeds the conjectured bound
+by $b-1$, as in~\eqref{eq:gap}. At order $3\gamma+2$, the same conjecture
+specializes to $2\gamma+2ab+4a+2$. Its summation tail is again zero, both
+with the printed cutoff and its construction-consistent correction.
+Theorem~\ref{thm:two} exceeds this expression by
+\[
+ \bigl(2\gamma+2ab+4a+2b\bigr)
+       -\bigl(2\gamma+2ab+4a+2\bigr)=2(b-1).
+\]
+Thus the two sharp boundary families violate the proposed bound for every
+$\gamma\ge4$. The individual $13$-vertex and $14$-vertex counterexamples,
+and the cutoff issue, were already reported in~\cite{E}. Neither theorem
+claims a smallest counterexample over all orders.
+
+For comparison, the published unbalanced-family expression in~\cite{E}
+at two extra vertices is $2\gamma+2p'q'+2(2q'+1)$, with $p'+q'=\gamma$.
+When $p'=q,q'=p$, its count differs from~\eqref{eq:Hcount} by $2(q-1)$.
+At $\gamma=5$, its maximum over positive splits is $36$, whereas
+Theorem~\ref{thm:two} gives $38$, attained by $H_2(3,2)$. This compares
+the explicit formulas, without asserting priority over every other
+possible construction.
+
+Both boundary equality classes are now completely determined. Theorem~\ref{thm:stability}
+shows that exact rigidity does not imply dense edit stability. It remains
+useful to distinguish other metrics, such as removal of a small vertex set,
+or additional assumptions, such as independence of the unique minimum
+dominating set. No theorem for those variants is asserted here. Nor does
+the present local argument supply a general bound at orders $3\gamma+r$
+with $r\ge3$: the residual vertices' simultaneous domination obligations
+must still be retained.
+
+\appendix
+\section{Supplementary exact checks}\label{app:checks}
+
+Independent exact checkers enumerate all $1696$ optional-edge patterns
+on $xy$ and $U\times V$, testing every vertex subset of size at most two.
+Table~\ref{tab:cells} records their results. These computations supplement
+the analytic proofs.
+
+\begin{table}[htbp]
+\centering
+\begin{tabular}{rrrr}
+\toprule
+$(a,b)$ & Optional patterns & Admissible patterns & Maximum optional edges\\
+\midrule
+$(2,2)$ & 32 & 14 & 2\\
+$(2,3)$ & 128 & 58 & 4\\
+$(2,4)$ & 512 & 254 & 6\\
+$(3,3)$ & 1024 & 548 & 6\\
+\bottomrule
+\end{tabular}
+\caption{Admissibility means that $\{x,y\}$ is the only dominating set of size at most two.}
+\label{tab:cells}
+\end{table}
+
+The first-boundary low-$\gamma$ equality reduction was checked on all
+$128$ seven-vertex and $16\,384$ ten-vertex skeletons, including
+subextremal patterns. Each has three labelled equality patterns.
+For the second boundary, all $15$ maximum $(3,3)$ patterns form the
+two balanced eight-vertex classes, of labelled multiplicities $6$ and
+$9$, under independent full-graph isomorphism checks. Among the $164$
+reduced same-side patterns through $\gamma=5$, exactly $20$ survive,
+four at each tested split; those survivors map to the stated $H_2$
+representatives. The others have alternative dominating sets.
+All $9$ and $576$ mixed-owner candidates at $\gamma=3,4$ have the
+smaller dominating set used in the proof. These are reduced-skeleton
+checks, not unrestricted graph censuses or counts of isomorphism classes.
+
+All subsets were tested for the ten $H_2(p,q)$ graphs with
+$p,q\ge1$ and $2\le p+q\le5$; $H_1$ was checked through $\gamma=6$.
+Explicit isomorphisms recover the prior $13$- and $14$-vertex certificates
+in~\cite{E}. Stability checks independently verify domination, forced
+neighbourhoods, sorted degrees and $819$ balancing bijections through
+$\gamma=40$; reduced-graph checks also confirm the repair step.
+The accompanying package supplies the checkers, results, source hashes
+and independent audits. No Lean formalization is claimed.
+
+\begin{thebibliography}{9}
+\bibitem{FRV}
+M.~Fischermann, D.~Rautenbach and L.~Volkmann,
+\emph{Maximum graphs with a unique minimum dominating set},
+Discrete Mathematics \textbf{260} (2003), 197--203.
+
+\bibitem{FS}
+M.~Fraboni and N.~Shank,
+\emph{Maximum graphs with unique minimum dominating set of size two},
+Australasian Journal of Combinatorics \textbf{46} (2010), 91--99.
+\url{https://ajc.maths.uq.edu.au/pdf/46/ajc_v46_p091.pdf}.
+
+\bibitem{E}
+J.~Erlbacher,
+\emph{Demonstrandum---wave-1 verified artifacts: Koch--Narayan counterexample package},
+public research artifacts, 2026.
+\href{https://github.com/demonstrandum-research/artifacts/blob/94db9ed50d48a57aae5ccb72e6a95a2b8f8f39d3/problems/p2-factory/kills/koch-narayan/WRITEUP.md}{Pinned write-up, commit \texttt{94db9ed50d48} (13 June 2026)}.
+
+\bibitem{KN}
+G.~Koch and D.~Narayan,
+\emph{Maximal bipartite graphs with a unique minimum dominating set},
+arXiv:2511.01719v1, 3 November 2025.
+\url{https://arxiv.org/abs/2511.01719v1}.
+\end{thebibliography}
+\end{document}
