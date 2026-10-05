@@ -1,0 +1,61 @@
+{
+  "commands": [
+    {
+      "path": "check_domination_formula.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "mycielski_pilot/verify_structure.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "mycielski_pilot/check_exact_certificate.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "mycielski_pilot/audit/independent_check.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "unique_domination_pilot/check_counterexample_independent.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "unique_domination_pilot/check_local_cells.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "unique_domination_pilot/check_small_family.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "unique_domination_pilot/audit/independent_check.py",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "compile mycielski_profile.cpp",
+      "exit_code": 0,
+      "stderr": ""
+    },
+    {
+      "path": "run mycielski_profile",
+      "exit_code": 0,
+      "stdout_matches_saved_profile": true,
+      "stderr": ""
+    }
+  ],
+  "changed_certificate_files": [],
+  "all_passed": true,
+  "date": "2026-10-05",
+  "proof_scope": "Independent mathematical audits PASS; exact finite checks supplementary for general domination theorem and essential finite certificate for Mycielski Hall ratio.",
+  "publication_novelty": "not certified",
+  "formalization": "not Lean-formalized"
+}

@@ -1,0 +1,2725 @@
+[
+  {
+    "private_sizes": [
+      2,
+      2
+    ],
+    "n": 6,
+    "fixed_edges": [
+      [
+        "x",
+        "u0"
+      ],
+      [
+        "x",
+        "u1"
+      ],
+      [
+        "y",
+        "v0"
+      ],
+      [
+        "y",
+        "v1"
+      ]
+    ],
+    "free_edges_in_bit_order": [
+      [
+        "x",
+        "y"
+      ],
+      [
+        "u0",
+        "v0"
+      ],
+      [
+        "u0",
+        "v1"
+      ],
+      [
+        "u1",
+        "v0"
+      ],
+      [
+        "u1",
+        "v1"
+      ]
+    ],
+    "all_patterns": 32,
+    "unique_patterns": 14,
+    "max_free_edges": 2,
+    "maximal_masks": [
+      3,
+      5,
+      6,
+      9,
+      10,
+      17,
+      20,
+      24
+    ],
+    "patterns": [
+      {
+        "mask": 0,
+        "free_count": 0,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 1,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 2,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 3,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 4,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 5,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 6,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 7,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ]
+        ]
+      },
+      {
+        "mask": 8,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 9,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 10,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 11,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 12,
+        "free_count": 2,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 13,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 14,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 15,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 16,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 17,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 18,
+        "free_count": 2,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 19,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 20,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 21,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 22,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 23,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 24,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 25,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ]
+        ]
+      },
+      {
+        "mask": 26,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 27,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 28,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 29,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 30,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 31,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      }
+    ]
+  },
+  {
+    "private_sizes": [
+      2,
+      3
+    ],
+    "n": 7,
+    "fixed_edges": [
+      [
+        "x",
+        "u0"
+      ],
+      [
+        "x",
+        "u1"
+      ],
+      [
+        "y",
+        "v0"
+      ],
+      [
+        "y",
+        "v1"
+      ],
+      [
+        "y",
+        "v2"
+      ]
+    ],
+    "free_edges_in_bit_order": [
+      [
+        "x",
+        "y"
+      ],
+      [
+        "u0",
+        "v0"
+      ],
+      [
+        "u0",
+        "v1"
+      ],
+      [
+        "u0",
+        "v2"
+      ],
+      [
+        "u1",
+        "v0"
+      ],
+      [
+        "u1",
+        "v1"
+      ],
+      [
+        "u1",
+        "v2"
+      ]
+    ],
+    "all_patterns": 128,
+    "unique_patterns": 58,
+    "max_free_edges": 4,
+    "maximal_masks": [
+      54,
+      90,
+      108
+    ],
+    "patterns": [
+      {
+        "mask": 0,
+        "free_count": 0,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 1,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 2,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 3,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 4,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 5,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 6,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 7,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 8,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 9,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 10,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 11,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 12,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 13,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 14,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 15,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ]
+        ]
+      },
+      {
+        "mask": 16,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 17,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 18,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 19,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 20,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 21,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 22,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 23,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 24,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 25,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 26,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 27,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 28,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 29,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 30,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 31,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "u0",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 32,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 33,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 34,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 35,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 36,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 37,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 38,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 39,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 40,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 41,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 42,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 43,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 44,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 45,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 46,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 47,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u0",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 48,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 49,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 50,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 51,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 52,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 53,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 54,
+        "free_count": 4,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 55,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "y",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 56,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 57,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 58,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 59,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 60,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 61,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 62,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 63,
+        "free_count": 6,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 64,
+        "free_count": 1,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 65,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 66,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 67,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 68,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 69,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 70,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 71,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 72,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 73,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 74,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 75,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 76,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 77,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 78,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 79,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u0",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 80,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 81,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 82,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 83,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 84,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 85,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 86,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 87,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 88,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 89,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 90,
+        "free_count": 4,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 91,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "y",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 92,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 93,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 94,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 95,
+        "free_count": 6,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 96,
+        "free_count": 2,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 97,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 98,
+        "free_count": 3,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 99,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 100,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 101,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 102,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 103,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 104,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 105,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 106,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 107,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 108,
+        "free_count": 4,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 109,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "y",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 110,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 111,
+        "free_count": 6,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 112,
+        "free_count": 3,
+        "unique_xy": true,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ]
+        ]
+      },
+      {
+        "mask": 113,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ]
+        ]
+      },
+      {
+        "mask": 114,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 115,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "u1",
+            "v0"
+          ]
+        ]
+      },
+      {
+        "mask": 116,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 117,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 118,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 119,
+        "free_count": 6,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ]
+        ]
+      },
+      {
+        "mask": 120,
+        "free_count": 4,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 121,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 122,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 123,
+        "free_count": 6,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u1",
+            "v0"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 124,
+        "free_count": 5,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 125,
+        "free_count": 6,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 126,
+        "free_count": 6,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      },
+      {
+        "mask": 127,
+        "free_count": 7,
+        "unique_xy": false,
+        "dominating_sets_of_size_at_most_two": [
+          [
+            "x",
+            "y"
+          ],
+          [
+            "x",
+            "u0"
+          ],
+          [
+            "x",
+            "u1"
+          ],
+          [
+            "y",
+            "v0"
+          ],
+          [
+            "y",
+            "v1"
+          ],
+          [
+            "y",
+            "v2"
+          ],
+          [
+            "u0",
+            "v0"
+          ],
+          [
+            "u0",
+            "v1"
+          ],
+          [
+            "u0",
+            "v2"
+          ],
+          [
+            "u1",
+            "v0"
+          ],
+          [
+            "u1",
+            "v1"
+          ],
+          [
+            "u1",
+            "v2"
+          ]
+        ]
+      }
+    ]
+  }
+]

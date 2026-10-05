@@ -1,0 +1,61 @@
+PASS exact upper: alpha <= 1 implies |S| <= 3; nodes=1
+PASS exact upper: alpha <= 3 implies |S| <= 10; nodes=1
+PASS exact upper: alpha <= 4 implies |S| <= 13; nodes=1
+PASS exact upper: alpha <= 5 implies |S| <= 16; nodes=261
+PASS exact upper: alpha <= 6 implies |S| <= 20; nodes=1
+PASS exact upper: alpha <= 7 implies |S| <= 23; nodes=1
+PASS exact upper: alpha <= 8 implies |S| <= 26; nodes=1
+PASS exact upper: alpha <= 9 implies |S| <= 30; nodes=1
+PASS exact upper: alpha <= 10 implies |S| <= 33; nodes=1
+PASS exact upper: alpha <= 11 implies |S| <= 36; nodes=1
+PASS exact upper: alpha <= 12 implies |S| <= 40; nodes=1
+PASS exact upper: alpha <= 13 implies |S| <= 43; nodes=1
+PASS exact upper: alpha <= 14 implies |S| <= 46; nodes=1
+PASS: exact rho(M6)=10/3, matching upper certificate and 20-vertex alpha=6 witness
+{
+  "status": "PASS",
+  "exact_hall_ratio": [
+    10,
+    3
+  ],
+  "n": 47,
+  "maximal_independent_sets": 857,
+  "certificate_stats": {
+    "nodes": 273,
+    "dual": 143,
+    "split": 130
+  },
+  "witness_mask": 107765098387711,
+  "witness_vertices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    12,
+    15,
+    19,
+    21,
+    22,
+    26,
+    32,
+    33,
+    41,
+    45,
+    46
+  ],
+  "witness_independence_number": 6,
+  "maximum_independent_set_in_witness": [
+    0,
+    2,
+    5,
+    7,
+    11,
+    41
+  ],
+  "arithmetic": "Python integers and fractions.Fraction; no optimization library imported"
+}

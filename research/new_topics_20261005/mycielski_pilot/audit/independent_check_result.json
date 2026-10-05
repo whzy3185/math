@@ -1,0 +1,234 @@
+{
+  "status": "PASS",
+  "graph": "M6, M2=K2, original/clone/apex recursive labeling",
+  "vertex_count": 47,
+  "edge_count": 236,
+  "triangle_free": true,
+  "M5_independent_set_count": 7407,
+  "maximal_independent_set_count": 857,
+  "MIS_size_distribution": {
+    "5": 5,
+    "6": 10,
+    "7": 11,
+    "8": 16,
+    "9": 36,
+    "10": 50,
+    "11": 21,
+    "12": 27,
+    "13": 36,
+    "14": 53,
+    "15": 30,
+    "16": 161,
+    "17": 175,
+    "18": 117,
+    "19": 75,
+    "20": 31,
+    "21": 1,
+    "22": 1,
+    "23": 1
+  },
+  "alpha_M6": 23,
+  "witness_mask": 107765098387711,
+  "witness_vertices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    11,
+    12,
+    15,
+    19,
+    21,
+    22,
+    26,
+    32,
+    33,
+    41,
+    45,
+    46
+  ],
+  "witness_order": 20,
+  "witness_alpha": 6,
+  "witness_direct_alpha_replay": true,
+  "witness_independent_six": [
+    0,
+    2,
+    5,
+    7,
+    11,
+    41
+  ],
+  "Hall_ratio": "10/3",
+  "branch_tree_totals": {
+    "nodes": 273,
+    "dual": 143,
+    "split": 130
+  },
+  "per_k_certificates": {
+    "1": {
+      "forbidden_size": 4,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "969581/272890",
+      "minimum_strict_leaf_slack": "121979/272890"
+    },
+    "3": {
+      "forbidden_size": 11,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "2908743/272890",
+      "minimum_strict_leaf_slack": "93047/272890"
+    },
+    "4": {
+      "forbidden_size": 14,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "2027/145",
+      "minimum_strict_leaf_slack": "3/145"
+    },
+    "5": {
+      "forbidden_size": 17,
+      "node_counts": {
+        "nodes": 261,
+        "split": 130,
+        "dual": 131
+      },
+      "max_depth": 15,
+      "largest_leaf_upper_bound": "3620/213",
+      "minimum_strict_leaf_slack": "1/213"
+    },
+    "6": {
+      "forbidden_size": 21,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "102/5",
+      "minimum_strict_leaf_slack": "3/5"
+    },
+    "7": {
+      "forbidden_size": 24,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "233/10",
+      "minimum_strict_leaf_slack": "7/10"
+    },
+    "8": {
+      "forbidden_size": 27,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "131/5",
+      "minimum_strict_leaf_slack": "4/5"
+    },
+    "9": {
+      "forbidden_size": 31,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "291/10",
+      "minimum_strict_leaf_slack": "19/10"
+    },
+    "10": {
+      "forbidden_size": 34,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "32",
+      "minimum_strict_leaf_slack": "2"
+    },
+    "11": {
+      "forbidden_size": 37,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "67/2",
+      "minimum_strict_leaf_slack": "7/2"
+    },
+    "12": {
+      "forbidden_size": 41,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "35",
+      "minimum_strict_leaf_slack": "6"
+    },
+    "13": {
+      "forbidden_size": 44,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "73/2",
+      "minimum_strict_leaf_slack": "15/2"
+    },
+    "14": {
+      "forbidden_size": 47,
+      "node_counts": {
+        "nodes": 1,
+        "dual": 1
+      },
+      "max_depth": 0,
+      "largest_leaf_upper_bound": "38",
+      "minimum_strict_leaf_slack": "9"
+    }
+  },
+  "coverage_all_alpha_1_through_23": {
+    "1": "exact rational binary-tree certificate",
+    "2": "triangle-free six-vertex argument",
+    "3": "exact rational binary-tree certificate",
+    "4": "exact rational binary-tree certificate",
+    "5": "exact rational binary-tree certificate",
+    "6": "exact rational binary-tree certificate",
+    "7": "exact rational binary-tree certificate",
+    "8": "exact rational binary-tree certificate",
+    "9": "exact rational binary-tree certificate",
+    "10": "exact rational binary-tree certificate",
+    "11": "exact rational binary-tree certificate",
+    "12": "exact rational binary-tree certificate",
+    "13": "exact rational binary-tree certificate",
+    "14": "exact rational binary-tree certificate",
+    "15": "47/k <= 47/15 < 10/3",
+    "16": "47/k <= 47/15 < 10/3",
+    "17": "47/k <= 47/15 < 10/3",
+    "18": "47/k <= 47/15 < 10/3",
+    "19": "47/k <= 47/15 < 10/3",
+    "20": "47/k <= 47/15 < 10/3",
+    "21": "47/k <= 47/15 < 10/3",
+    "22": "47/k <= 47/15 < 10/3",
+    "23": "47/k <= 47/15 < 10/3"
+  },
+  "input_sha256": {
+    "m6_candidates.json": "ec7e4cb227149deed4445ac55dd9ab3823ba7223e388a21b74595791a7e5bfd3",
+    "upper_certificates.json": "cb1fea36320c5dd4bb206b50d404965a3758578fcb1f126852b88dad20f2e0ec"
+  },
+  "evidence_scope": "Exact finite computation and rational certificate; no literature novelty assertion and no numerical solver premise"
+}

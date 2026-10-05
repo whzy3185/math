@@ -1,0 +1,88 @@
+{
+  "status": "INDEPENDENT_MATHEMATICAL_AUDIT_PASS",
+  "date": "2026-10-05",
+  "proof_kind": "Elementary analytic proof; finite certificates supplementary",
+  "scope": "all gamma>=2 sharp bound at n=3gamma+1; equality uniqueness only gamma>=4",
+  "files": [
+    {
+      "file": "COUNTEREXAMPLE_FAMILY.md",
+      "sha256": "dd765e9b09d9e5f1ee5e8063b55e2afacc53f453004eef08d73f312dc126759f",
+      "bytes": 4921,
+      "source_sha256": "ff91d4049ed2963bf275f5a74d6ed85d20c17fee7b81bd325b672423677dd2a3",
+      "publication_edit": "Replace references to inspection-only or superseded local artifacts with source/audit descriptions; no mathematical change."
+    },
+    {
+      "file": "SHARP_BOUNDARY_THEOREM.md",
+      "sha256": "18ffadedf0b339bdb62485a3fc2ae13cba35ea91d44932a1d11fdf05472cdb58",
+      "bytes": 9515
+    },
+    {
+      "file": "STATUS.md",
+      "sha256": "6cb5976d2622145cdb24a9c49ae51aaa3e9ee5ed659ab1c77ef55cd1d4f52744",
+      "bytes": 1021,
+      "source_sha256": "4ef1d9e6ee7156a72508f11dfc8c5db034887a53a42e060aea4ad2bc579116e5",
+      "publication_edit": "Replace references to inspection-only or superseded local artifacts with source/audit descriptions; no mathematical change."
+    },
+    {
+      "file": "candidate13.json",
+      "sha256": "23eb690b23802ba18998656804a23b40b5d717aa361e4477cef38addd1179026",
+      "bytes": 1119
+    },
+    {
+      "file": "check_counterexample_independent.py",
+      "sha256": "ac5c5de13f3587946ded2db04f8e5ccf33cdb8cb930a81d6f34cbd8a55136658",
+      "bytes": 1595
+    },
+    {
+      "file": "independent_check_result.json",
+      "sha256": "9de2446e517a3f7f4697e9a45d02e2126c3fbcb43c30646748f8b84518470ce5",
+      "bytes": 456
+    },
+    {
+      "file": "check_local_cells.py",
+      "sha256": "3789120e26f342599b5dc904f56ed1e60aa8c9e5a2bf943c3c20c9fccb41dc17",
+      "bytes": 1284
+    },
+    {
+      "file": "local_cells_certificate.json",
+      "sha256": "5166ebc3a7766f4103a042fffc89589c93ceb1bc733919ddc7d8079858c427e5",
+      "bytes": 46841
+    },
+    {
+      "file": "check_small_family.py",
+      "sha256": "bec959b5ff3495b139e863d137021595e166e4ffd8efd99b06ccb35a543192c6",
+      "bytes": 1253
+    },
+    {
+      "file": "small_family_results.json",
+      "sha256": "547936557a79f884b4e962ed3ff0950eef13d7086e667ea06d45ea67f975d10a",
+      "bytes": 1120
+    },
+    {
+      "file": "audit/PROOF_AUDIT.md",
+      "sha256": "83196678d3fbf69cf10aeb929b9ca75680efe82061aa2c9ae1a822d4a99f7b19",
+      "bytes": 8713
+    },
+    {
+      "file": "audit/independent_check.py",
+      "sha256": "70bf1bb1d722fe310fc346365063a8d60afb0c364b64ac72767af72c3f98a711",
+      "bytes": 7693
+    },
+    {
+      "file": "audit/independent_check_result.json",
+      "sha256": "9ee584a8cc14b7c4b7ad7ca5120f07788b722e8061e952c7ee4715416de5098c",
+      "bytes": 2749
+    },
+    {
+      "file": "audit/independent_check_stdout.json",
+      "sha256": "9ee584a8cc14b7c4b7ad7ca5120f07788b722e8061e952c7ee4715416de5098c",
+      "bytes": 2749
+    },
+    {
+      "file": "audit/SHA256SUMS",
+      "sha256": "19d85a3d955dd2908ad8638599157db4dce95a27b32cb0ab97bd727e36ded60a",
+      "bytes": 360
+    }
+  ],
+  "frozen_utc": "2026-10-05T08:30:00Z"
+}
