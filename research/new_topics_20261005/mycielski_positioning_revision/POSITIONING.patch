@@ -1,0 +1,294 @@
+--- a/mycielski_manuscript/mycielski_hall_note.tex
++++ b/mycielski_manuscript/mycielski_hall_note.tex
+@@ -21,8 +21,8 @@
+ \newcommand{\V}{V}
+ \newcommand{\N}{N}
+ \newcommand{\abs}[1]{\lvert #1\rvert}
+-\title{Independent set compression and Hall extremizers\\
+-in the sixth Mycielski graph}
++\title{The exact Hall ratio and extremizers\\
++of the sixth Mycielski graph}
+ \author{}
+ \date{5 October 2026}
+ \begin{document}
+@@ -34,13 +34,14 @@
+ $M_{r+1}=\mu(M_r)$. Its Hall ratio is $10/3$. Exactly 1,990 induced vertex
+ subsets attain this value, forming 199 orbits under the full ambient
+ automorphism group, each of size ten. Every maximizer has twenty vertices,
+-independence number six, and contains the final apex. A general
+-neighborhood-union identity generates maximal independent sets of
+-$\mu(G)$ from independent sets of $G$. For $M_6$, this yields 857 constraints
+-from 7,407 independent sets of $M_5$. Exact rational certificates establish
+-the upper bound and equality reductions; two different exact algorithms
+-independently enumerate all extremizers. The accompanying programs and
+-certificates avoid enumerating all $2^{47}$ induced subsets.
++independence number six, and contains the final apex. The proof uses 857
++maximal-independent-set constraints, obtained independently by a recursive
++neighborhood description and by standard direct enumeration. Exact
++rational certificates establish the upper bound and equality reductions;
++two different exact algorithms independently enumerate all extremizers.
++The main results are the exact finite Hall value and complete census.
++The recursive description organizes the certificate data; no general
++algorithmic efficiency improvement is claimed.
+ \end{abstract}
+ 
+ \section{The finite result and its scope}
+@@ -88,11 +89,12 @@
+ formulation used below predates this calculation; see Barnett~\cite{Barnett}.
+ Steiner~\cite{Steiner} records that boundedness of
+ $\chi_f(M_r)/\rho(M_r)$ remains open. The present finite calculation does
+-not resolve that asymptotic question. This note records reproducible
+-results and complete proofs of the structural reductions; it makes no
+-claim that publication priority has been established.
+-
+-\section{Neighborhood compression for a general base graph}
++not resolve that asymptotic question. The main results recorded here are the exact finite Hall value and
++extremizer census. The structural identities are convenient proof lemmas,
++possibly already known; no first-proof claim is made for them, and
++publication priority for the finite results has not been established.
++
++\section{A recursive description of the certificate constraints}
+ Throughout this section, $G$ is a finite simple graph with $n\ge1$ vertices.
+ Let $\ind(G)$ contain all independent sets, including the empty set, and
+ write $i(G)=\abs{\ind(G)}$ and $\mi(G)$ for the number of maximal independent
+@@ -150,10 +152,22 @@
+ $d(G)\le i(G)$ and $\mi(G)\le i(G)$.
+ \end{proof}
+ 
+-This is a bound in the number of independent sets of the base graph.
+-It does not imply polynomial-time Hall optimization in the number of
+-vertices, or a polynomial bound on the size of a branch certificate.
+-For the present instance, exact enumeration gives
++\begin{remark}[Comparison with standard enumeration]\label{rem:positioning}
++Tsukiyama, Ide, Ariyoshi and Shirakawa~\cite{Tsukiyama} already enumerate
++all maximal independent sets of a graph with $N$ vertices, $M$ edges and
++$K$ outputs in $O(NMK)$ time and $O(N+M)$ space. Corollary~\ref{cor:complexity}
++is not an output-sensitive improvement. For an edgeless base on $n\ge1$
++vertices, $i(G)=2^n$, while $\mu(G)$ consists of $n$ isolated originals and
++$K_{1,n}$, and has exactly two maximal independent sets. The recursive
++implementation visits $2^n$ base sets; the standard enumeration bound on
++this graph is $O(n^2)$. The identity is therefore used only as a convenient
++recursive generator of certificate data. The independent $M_6$ audit also
++uses direct Bron--Kerbosch enumeration on the complement, without this
++identity. The standard bound concerns row generation, not the Hall binary optimization
++or the full extremizer census. No polynomial-time Hall optimization or
++small-certificate claim follows from the generator bound.
++\end{remark}
++For the present instance, the recursive description gives
+ \begin{equation}\label{eq:counts}
+  i(M_5)=7,407,\qquad d(M_5)=778,\qquad \mi(M_5)=79,
+  \qquad \mi(M_6)=857.
+@@ -215,7 +229,11 @@
+ splits on a free binary variable and checks both assignments. The
+ certificate therefore covers every subset. Checking the displayed
+ inequalities uses exact integer and rational arithmetic; numerical
+-optimization is used only to propose weights or branches.
++optimization is used only to propose weights or branches. Once the
++complete independent-set constraint system is established separately,
++the rational branch certificate can be checked in time polynomial in the
++combined explicit input and certificate bit length. This statement does
++not certify completeness of an arbitrary supplied constraint list.
+ 
+ \subsection{Upper bound and witness}
+ For $k\in\{1,3,4,\ldots,14\}$, the supplied certificate excludes
+@@ -276,8 +294,9 @@
+  \abs{B\setminus N(I)}\le6-\abs I
+  \qquad\text{for every independent }I\subseteq A.
+ \end{equation}
+-This is a complete neighborhood description of the three structural
+-families, not just a condition satisfied by the displayed witness.
++This is an exact membership criterion within three layer classes. The
++orbit counts come from the complete finite enumeration below; no shorter
++structural derivation of $109$, $83$ and $7$ is asserted.
+ 
+ \subsection{The full ambient automorphism group}
+ The graph $M_3$ is $C_5$, in cyclic order $(0,1,2,4,3)$. At each later
+@@ -365,10 +384,11 @@
+ 自同构群 $D_5$ 作用下，它们分成 $199$ 个轨道，每个轨道含 $10$ 个顶点集。
+ 每个极值集都有 $20$ 个顶点、独立数 $6$，并包含最后加入的顶点。按原顶点、
+ 复制顶点和最后顶点的数量划分，三类轨道数分别为 $109$、$83$ 和 $7$。
+-一般的邻域并集恒等式把 $\mu(G)$ 的极大独立集生成问题压缩到基图 $G$ 的
+-独立集枚举。对于本例，$M_5$ 的 $7\,407$ 个独立集生成 $M_6$ 的 $857$ 个
++邻域并集恒等式为证书数据提供方便的递归描述，但不声称带来优于已有通用
++极大独立集枚举算法的效率改进。对于本例，$M_5$ 的 $7\,407$ 个独立集生成 $M_6$ 的 $857$ 个
+ 极大独立集约束。精确有理数证书证明上界及等号情形的必要限制，两种不同的
+-整数算法独立完成全部极值集枚举，避免遍历 $2^{47}$ 个诱导顶点集。本文只陈述
++整数算法独立完成全部极值集枚举。本文的主要结果是精确 Hall 比和完整的有限
++极值集分类。本文只陈述
+ 可复核的有限结论，不声称已确立发表优先权，也不解决该图族的渐近问题。
+ 
+ \endgroup
+@@ -392,5 +412,10 @@
+ \emph{Fractional Chromatic Number Vs. Hall Ratio},
+ Combinatorica \textbf{45} (2025), article~37.
+ \href{https://doi.org/10.1007/s00493-025-00164-0}{doi:10.1007/s00493-025-00164-0}.
++\bibitem{Tsukiyama}
++S.~Tsukiyama, M.~Ide, H.~Ariyoshi and I.~Shirakawa,
++\emph{A New Algorithm for Generating All the Maximal Independent Sets},
++SIAM Journal on Computing \textbf{6}(3) (1977), 505--517.
++\href{https://doi.org/10.1137/0206036}{doi:10.1137/0206036}.
+ \end{thebibliography}
+ \end{document}
+--- a/mycielski_manuscript/chinese_abstract.md
++++ b/mycielski_manuscript/chinese_abstract.md
+@@ -2,4 +2,6 @@
+ 
+ 本文给出第六个 Mycielski 图的 Hall 比的计算机辅助精确证明。采用 M₂=K₂、Mᵣ₊₁=μ(Mᵣ) 的编号约定，M₆ 有 47 个顶点，且 ρ(M₆)=10/3。达到该比值的诱导顶点集恰有 1,990 个；在整个图的自同构群 D₅ 作用下，它们分成 199 个轨道，每个轨道含 10 个顶点集。每个极值集都有 20 个顶点、独立数 6，并包含最后加入的顶点。按原顶点、复制顶点和最后顶点的数量划分，三类分别为 (13,6,1)、(14,5,1) 和 (15,4,1)，对应的轨道数为 109、83 和 7。
+ 
+-一般的邻域并集恒等式把 μ(G) 的极大独立集生成问题压缩到基图 G 的独立集枚举。对于本例，M₅ 的 7,407 个独立集生成 M₆ 的 857 个极大独立集约束。精确有理数证书证明上界及等号情形的必要限制，两种不同的整数算法独立完成全部极值集枚举，避免遍历 2⁴⁷ 个诱导顶点集。所给轨道针对嵌入在 M₆ 中的顶点集，不等同于诱导子图的抽象同构类型分类。本文只陈述可复核的有限结论，不声称已确立发表优先权，也不解决该图族的渐近问题。
++邻域并集恒等式为证书数据提供方便的递归描述，但不声称带来优于已有通用极大独立集枚举算法的效率改进。Tsukiyama 等人在 1977 年已给出输出敏感的通用枚举算法。对于有 n 个顶点的无边基图，逐一枚举其独立集需访问 2ⁿ 个集合，而其 Mycielski 图只有两个极大独立集；因此这里的递归实现一般可能更慢。对于本例，M₅ 的 7,407 个独立集生成 M₆ 的 857 个极大独立集约束。精确有理数证书证明上界及等号情形的必要限制，两种不同的整数算法独立完成全部极值集枚举。本文的主要结果是精确 Hall 比和完整的有限极值集分类。所给轨道针对嵌入在 M₆ 中的顶点集，不等同于诱导子图的抽象同构类型分类。本文只陈述可复核的有限结论，不声称已确立发表优先权，也不解决该图族的渐近问题。
++
++算法比较的原始文献：S. Tsukiyama, M. Ide, H. Ariyoshi and I. Shirakawa, SIAM Journal on Computing 6(3) (1977), 505–517, https://doi.org/10.1137/0206036 。
+--- a/mycielski_manuscript/README.md
++++ b/mycielski_manuscript/README.md
+@@ -1,11 +1,11 @@
+ # Research note and Chinese abstract
+ 
+-The six-page note presents the general neighborhood-union compression theorem, the exact Hall ratio rho(M6)=10/3, and the complete classification of its equality subsets into 199 ambient-automorphism orbits. The proofs are explicitly computer-assisted where they use finite certificates and exact enumeration. No publication-priority, proof-assistant, or global asymptotic claim is made.
++The note foregrounds the exact Hall ratio rho(M6)=10/3 and the complete classification of its equality subsets into 199 ambient-automorphism orbits. A neighborhood-union identity is used as a convenient recursive description, with no claim of algorithmic improvement or priority; the note explicitly compares it with Tsukiyama et al. (1977) and gives an edgeless-base example where the recursive implementation is exponentially worse. The proofs are explicitly computer-assisted where they use finite certificates and exact enumeration. No publication-priority, proof-assistant, or global asymptotic claim is made.
+ 
+ Deliverables:
+ 
+ - `mycielski_hall_note.tex`: editable manuscript source
+-- `output/pdf/mycielski_hall_note.pdf`: compiled and visually verified six-page PDF, including a Chinese abstract
++- `output/pdf/mycielski_hall_note.pdf`: compiled and visually verified PDF, including a Chinese abstract
+ - `chinese_abstract.md`: standalone Chinese abstract with the layer counts and scope distinction
+ 
+ The independently audited mathematical programs and certificates remain in the sibling `mycielski_pilot` and `mycielski_strengthening` packages. They are not duplicated here.
+@@ -20,4 +20,4 @@
+ 
+ On a standard TeX installation, two XeLaTeX passes suffice. The build helper includes a workspace-local fallback for an incomplete TeX format database using an already installed TeX Live tree. It does not install packages or alter system configuration.
+ 
+-Generated format files, caches, auxiliary files, logs, and rendered page images are excluded from the publication manifest. The PDF has been compiled, its text extracted, and all six rendered pages visually inspected. See `VALIDATION.md`.
++Generated format files, caches, auxiliary files, logs, and rendered page images are excluded from the publication manifest. The PDF has been compiled, its text extracted, and all rendered pages visually inspected. See `VALIDATION.md`.
+--- a/mycielski_manuscript/VALIDATION.md
++++ b/mycielski_manuscript/VALIDATION.md
+@@ -1,15 +1,14 @@
+-# Manuscript validation
++# Positioning revision validation
+ 
+ Date: 5 October 2026.
+ 
+-- Actual XeLaTeX compilation completed with two final passes
+-- Six Letter-size PDF pages were generated
+-- The final compilation reports no overfull or underfull boxes, missing characters, undefined references, or LaTeX warnings
+-- Text extraction verifies the main theorem, 273 baseline certificate nodes, 22 strengthening nodes, 199 ambient orbits, and the Chinese abstract
+-- All six final pages were rendered with Poppler and visually inspected for clipping, overlap, broken mathematics, missing CJK glyphs, table layout, and page transitions
+-- A separate source review found the mathematical claims and Chinese abstract consistent with the independently audited proof packages
+-- General theorem hypotheses explicitly exclude the empty base graph
+-- The note distinguishes ambient-automorphism orbits from abstract induced-graph isomorphism types
+-- No publication novelty, proof-assistant formalization, or asymptotic resolution is claimed
++- The revised source was actually compiled with two XeLaTeX passes
++- The PDF has six Letter-size pages
++- The final log contains no overfull or underfull boxes, missing characters, undefined references, or LaTeX warnings
++- All six final pages were rendered and visually inspected
++- The added Tsukiyama reference and complexity statement were checked against the primary SIAM publisher record
++- The edgeless-base comparison separates the exponential base-independent-set loop from standard output-sensitive row generation
++- Hall-ratio optimization, the complete extremizer census, and constraint-list completeness are explicitly distinguished from row generation and rational branch-certificate checking
++- Mathematical statements, scripts, exact certificates, and orbit data are unchanged; this revision did not rerun those computations
+ 
+-The local TeX format database required a workspace-only fallback; the source and helper reproduce the successful route. This did not change any mathematical certificate or frozen proof package.
++The original published source and PDF were preserved. This directory is a proposed replacement overlay for the manuscript and accompanying positioning text.
+--- a/mycielski_manuscript/POSITIONING_REVISION.md
++++ b/mycielski_manuscript/POSITIONING_REVISION.md
+@@ -0,0 +1,16 @@
++# Positioning revision
++
++This revision preserves the mathematical results, exact certificates, programs, and complete extremizer data. It updates the presentation after comparison with established maximal-independent-set enumeration.
++
++Changes:
++
++- The title and abstract foreground the exact Hall ratio of M6 and the complete 199-orbit extremizer census
++- The neighborhood-union identity is presented as a convenient recursive description with no first-proof or general algorithmic-improvement claim
++- A new remark cites Tsukiyama, Ide, Ariyoshi and Shirakawa, SIAM Journal on Computing 6(3) (1977), 505–517, https://doi.org/10.1137/0206036
++- The remark records their O(N M K) output-sensitive enumeration bound and distinguishes row generation from Hall optimization or the extremizer census
++- For an edgeless n-vertex base, the recursive implementation visits 2^n independent sets although its Mycielskian has only two maximal independent sets; the standard bound on that graph is O(n^2)
++- The branch-certificate verification claim is explicitly conditional on a separately established complete constraint system
++- The three layer classes have an exact membership criterion; their counts 109, 83 and 7 remain results of complete finite enumeration, not a claimed short structural derivation
++- The Chinese abstract and supporting documentation follow the same positioning
++
++No mathematical certificate was changed or rerun for this wording-only revision. The PDF was rebuilt and visually reviewed. Publication novelty of the finite value and census remains unestablished.
+--- a/mycielski_strengthening/GENERAL_THEOREM.md
++++ b/mycielski_strengthening/GENERAL_THEOREM.md
+@@ -2,7 +2,7 @@
+ 
+ Let G be a finite simple graph with n>=1 vertices. Write μ(G) for its Mycielskian, with original vertices V, clones V', and apex z. Let I(G) be the family of all independent sets, including the empty set. Set i(G)=|I(G)| and let m(G) be the number of maximal independent sets.
+ 
+-This note proves the identities used by the finite certificate workflow. No publication-novelty claim is made for the identities or the underlying Hall-profile formulation.
++This note records identities used to organize the finite certificate workflow. They are convenient lemmas, possibly already known; no first-proof or algorithmic-improvement claim is made. The main finite results are the exact M6 Hall ratio and complete extremizer census, whose publication novelty remains unestablished.
+ 
+ ## Theorem 1: neighborhood-union compression
+ 
+@@ -40,7 +40,9 @@
+ 
+ Enumerate the independent sets of G, collect their distinct neighborhood unions, and recognize maximal independent sets by `I union N(I)=V`. Construct one K_N for each distinct union and one apex set for each maximal independent set. With adjacency represented by Boolean arrays, this requires `O(n^2 i(G))` elementary Boolean operations and `O(n^2+n i(G))` bits of working/output storage. Bitsets improve these bounds in practice.
+ 
+-This is a bound in the number of independent sets of the base graph, not in the number of all subsets of the doubled graph. It is not a polynomial-time claim in n, nor a polynomial-time claim for solving the resulting integer optimization problem.
++This is an implementation bound in the number of base independent sets, not an improvement on standard maximal-independent-set enumeration. Tsukiyama, Ide, Ariyoshi and Shirakawa (1977) already give O(N M K) time and O(N+M) space for a graph with N vertices, M edges and K maximal independent sets: https://doi.org/10.1137/0206036 .
++
++For an edgeless base G on n>=1 vertices, i(G)=2^n, whereas μ(G) consists of n isolated originals and the star K_(1,n), so it has exactly two maximal independent sets. The recursive implementation visits 2^n base independent sets; applying the standard output-sensitive bound to μ(G) takes O(n^2) time. Thus the recursive generator can be exponentially worse. Its role here is convenient family-specific certificate construction, not general algorithmic efficiency. The independent M6 audit also generates its constraints directly by Bron–Kerbosch on the complement. This comparison concerns constraint-row generation, not the Hall binary optimization or the complete extremizer census. No polynomial-time Hall-optimization claim follows.
+ 
+ For the 23-vertex M5, the exact counts are
+ 
+@@ -83,7 +85,7 @@
+ 3. The combination covers every free objective coefficient by at least one
+ 4. Its exact objective bound is strictly below the excluded integer cardinality
+ 
+-An exact checker verifies these statements using integers and rational numbers. It does not trust solver status or numerical tolerance. Verification is polynomial in the explicit certificate's bit length; there is no promised polynomial bound on the certificate size or its discovery time.
++An exact checker verifies these statements using integers and rational numbers. It does not trust solver status or numerical tolerance. Once the complete independent-set constraint system has been established separately, checking the rational branch certificate is polynomial in the combined explicit constraint-system and certificate bit length. This does not claim polynomial-time verification of the completeness of an arbitrary compressed MIS list. There is no promised polynomial bound on certificate size, discovery time, or the separate completeness argument.
+ 
+ The M6 example in the sibling pilot package illustrates this workflow with 47 binary variables, 857 independent-set rows, and a 273-node proof of Hall ratio 10/3. The strengthening package adds 22 nodes to isolate all equality cases.
+ 
+@@ -95,3 +97,5 @@
+ 
+ - Barnett, dissertation, Definition 2.1.1 and Chapter 4: https://etd.auburn.edu/bitstream/handle/10415/5316/Final%20Dissertation%20-%20Johnathan%20Barnett.pdf?isAllowed=y&sequence=2
+ - *The exponential growth of the packing chromatic number of iterated Mycielskians*: https://www.sciencedirect.com/science/article/abs/pii/S0166218X23003098
++
++- S. Tsukiyama, M. Ide, H. Ariyoshi and I. Shirakawa, *A New Algorithm for Generating All the Maximal Independent Sets*, SIAM Journal on Computing 6(3) (1977), 505–517: https://doi.org/10.1137/0206036
+--- a/mycielski_strengthening/README.md
++++ b/mycielski_strengthening/README.md
+@@ -1,10 +1,10 @@
+ # M6 Hall-ratio strengthening
+ 
+-The frozen pilot proves rho(M6)=10/3. This package strengthens it in two directions:
++The frozen pilot proves rho(M6)=10/3. The main result of this package is the complete finite extremizer census. Its proof also uses a convenient recursive identity:
+ 
+ 1. A general theorem for every nonempty finite graph G:
+    `m(μ(G))=m(G)+#{N_G(I):I independent in G}`,
+-   giving maximal-independent-set generation in `O(n² i(G))` elementary Boolean work
++   with an implementation bound of `O(n² i(G))` elementary Boolean work; this is not an improvement on standard output-sensitive enumeration and can be exponentially worse
+ 2. An exact classification of all M6 Hall maximizers: **1,990 labelled subsets in 199 ambient-automorphism orbits**, all with 20 vertices and independence number 6
+ 
+ The orbit counts by original/clone/apex layer sizes are:
+@@ -15,7 +15,7 @@
+ 
+ Every orbit has size 10 under Aut(M6)=D5. These are embedded-subset orbits, not claimed abstract graph-isomorphism classes.
+ 
+-Read `GENERAL_THEOREM.md` and `CLASSIFICATION.md` for complete proofs and `LITERATURE_SCOPE.md` for sources and limits. No publication-novelty or asymptotic claim is made.
++Read `GENERAL_THEOREM.md` and `CLASSIFICATION.md` for complete proofs and `LITERATURE_SCOPE.md` for sources and limits. No publication-novelty, general algorithmic-improvement, or asymptotic claim is made. `GENERAL_THEOREM.md` now includes the Tsukiyama et al. (1977) comparison and an explicit edgeless-base example.
+ 
+ ## Exact verification
+ 
+--- a/mycielski_strengthening/LITERATURE_SCOPE.md
++++ b/mycielski_strengthening/LITERATURE_SCOPE.md
+@@ -17,3 +17,9 @@
+ Additional searches for maximal independent sets of Mycielskians located prior work on whole-graph independence numbers. The primary publisher search result for *The exponential growth of the packing chromatic number of iterated Mycielskians* explicitly cites earlier independence formulas: https://www.sciencedirect.com/science/article/abs/pii/S0166218X23003098 . The full publisher page could not be opened in this pass (HTTP 403), so it is not treated as a completed full-text priority audit of the neighborhood-closure theorem.
+ 
+ Accordingly, this package claims proved identities, an exact reproducible finite value, and an exact finite extremizer classification. It does not claim that the general identities, profile formulation, value, or classification are publication-new.
++
++## Established maximal-independent-set enumeration
++
++S. Tsukiyama, M. Ide, H. Ariyoshi and I. Shirakawa, *A New Algorithm for Generating All the Maximal Independent Sets*, SIAM Journal on Computing 6(3) (1977), 505–517, https://doi.org/10.1137/0206036 . The primary publisher abstract explicitly gives O(N M K) time and O(N+M) space, where N, M and K count vertices, edges and maximal independent sets. Metadata and the abstract were directly verified on 5 October 2026.
++
++This established result precludes positioning the O(n² i(G)) base-independent-set construction as a general enumeration advance. On an edgeless n-vertex base it visits 2^n sets although μ(G) has just two maximal independent sets and the standard bound is polynomial. The identity remains a useful recursive description for the present certificate workflow. The finite exact Hall value and complete ambient-orbit census are the substantive results recorded here; their publication novelty remains unconfirmed. No direct-overlap claim about a 2014 hypergraph paper is made.
+--- a/mycielski_strengthening/CLASSIFICATION.md
++++ b/mycielski_strengthening/CLASSIFICATION.md
+@@ -52,7 +52,7 @@
+ 
+ for every independent I subseteq A.
+ 
+-These inequalities are a complete finite structural family description. Since alpha(A)=5 and the apex is present, their satisfaction ensures that the full induced independence number is exactly 6.
++These inequalities are an exact membership criterion within the three layer classes. They do not by themselves give a shorter structural derivation of the orbit counts 109, 83 and 7; those counts are established by the complete enumeration below. Since alpha(A)=5 and the apex is present, their satisfaction ensures that the full induced independence number is exactly 6.
+ 
+ Only independent sets with `|I|>6-|B|` need to be tested; the others satisfy the inequality automatically. In particular, an independent five-set I0 in A imposes the especially restrictive condition
+ 

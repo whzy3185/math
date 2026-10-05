@@ -2,7 +2,7 @@
 
 Let G be a finite simple graph with n>=1 vertices. Write μ(G) for its Mycielskian, with original vertices V, clones V', and apex z. Let I(G) be the family of all independent sets, including the empty set. Set i(G)=|I(G)| and let m(G) be the number of maximal independent sets.
 
-This note proves the identities used by the finite certificate workflow. No publication-novelty claim is made for the identities or the underlying Hall-profile formulation.
+This note records identities used to organize the finite certificate workflow. They are convenient lemmas, possibly already known; no first-proof or algorithmic-improvement claim is made. The main finite results are the exact M6 Hall ratio and complete extremizer census, whose publication novelty remains unestablished.
 
 ## Theorem 1: neighborhood-union compression
 
@@ -40,7 +40,9 @@ There are at most `i(G)+m(G)<=2i(G)` maximal independent sets of μ(G).
 
 Enumerate the independent sets of G, collect their distinct neighborhood unions, and recognize maximal independent sets by `I union N(I)=V`. Construct one K_N for each distinct union and one apex set for each maximal independent set. With adjacency represented by Boolean arrays, this requires `O(n^2 i(G))` elementary Boolean operations and `O(n^2+n i(G))` bits of working/output storage. Bitsets improve these bounds in practice.
 
-This is a bound in the number of independent sets of the base graph, not in the number of all subsets of the doubled graph. It is not a polynomial-time claim in n, nor a polynomial-time claim for solving the resulting integer optimization problem.
+This is an implementation bound in the number of base independent sets, not an improvement on standard maximal-independent-set enumeration. Tsukiyama, Ide, Ariyoshi and Shirakawa (1977) already give O(N M K) time and O(N+M) space for a graph with N vertices, M edges and K maximal independent sets: https://doi.org/10.1137/0206036 .
+
+For an edgeless base G on n>=1 vertices, i(G)=2^n, whereas μ(G) consists of n isolated originals and the star K_(1,n), so it has exactly two maximal independent sets. The recursive implementation visits 2^n base independent sets; applying the standard output-sensitive bound to μ(G) takes O(n^2) time. Thus the recursive generator can be exponentially worse. Its role here is convenient family-specific certificate construction, not general algorithmic efficiency. The independent M6 audit also generates its constraints directly by Bron–Kerbosch on the complement. This comparison concerns constraint-row generation, not the Hall binary optimization or the complete extremizer census. No polynomial-time Hall-optimization claim follows.
 
 For the 23-vertex M5, the exact counts are
 
@@ -83,7 +85,7 @@ To prove an upper bound on |S|, use these inequalities and `0<=x_v<=1`. Numerica
 3. The combination covers every free objective coefficient by at least one
 4. Its exact objective bound is strictly below the excluded integer cardinality
 
-An exact checker verifies these statements using integers and rational numbers. It does not trust solver status or numerical tolerance. Verification is polynomial in the explicit certificate's bit length; there is no promised polynomial bound on the certificate size or its discovery time.
+An exact checker verifies these statements using integers and rational numbers. It does not trust solver status or numerical tolerance. Once the complete independent-set constraint system has been established separately, checking the rational branch certificate is polynomial in the combined explicit constraint-system and certificate bit length. This does not claim polynomial-time verification of the completeness of an arbitrary compressed MIS list. There is no promised polynomial bound on certificate size, discovery time, or the separate completeness argument.
 
 The M6 example in the sibling pilot package illustrates this workflow with 47 binary variables, 857 independent-set rows, and a 273-node proof of Hall ratio 10/3. The strengthening package adds 22 nodes to isolate all equality cases.
 
@@ -95,3 +97,5 @@ Sources:
 
 - Barnett, dissertation, Definition 2.1.1 and Chapter 4: https://etd.auburn.edu/bitstream/handle/10415/5316/Final%20Dissertation%20-%20Johnathan%20Barnett.pdf?isAllowed=y&sequence=2
 - *The exponential growth of the packing chromatic number of iterated Mycielskians*: https://www.sciencedirect.com/science/article/abs/pii/S0166218X23003098
+
+- S. Tsukiyama, M. Ide, H. Ariyoshi and I. Shirakawa, *A New Algorithm for Generating All the Maximal Independent Sets*, SIAM Journal on Computing 6(3) (1977), 505–517: https://doi.org/10.1137/0206036

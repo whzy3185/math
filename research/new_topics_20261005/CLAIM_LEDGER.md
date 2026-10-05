@@ -41,3 +41,8 @@ The independent checker examines all128 seven-vertex and16,384 ten-vertex reduce
 For every γ>=2, the sharp edge maximum at n=3γ+2 is ceil(γ²/2)+5γ for finite simple bipartite graphs without isolates and with a unique minimum dominating γ-set. A complete elementary argument and independent audit prove the upper bound; connected graphs attain it. For even γ>=4 at least two nonisomorphic connected extremals attain equality. A complete second-boundary equality classification is still open in this package.
 
 The ten-page paper_v2 integrates D2–D4, completes first-boundary rigidity for all γ>=2, and preserves the previous seven-page article. The source's small finite cases, Erlbacher's n13/n14 counterexamples and shared-center construction mechanism are explicitly credited. The integrated proof and all ten rendered pages passed a separate review. No Lean, broad novelty or journal peer-review claim is added.
+
+
+## M3 Reviewed presentation and complexity qualification
+
+The revised six-page M6 note foregrounds the exact Hall ratio and complete finite census. It cites the classical Tsukiyama–Ide–Ariyoshi–Shirakawa maximal-independent-set enumeration bound and explains why enumerating all base independent sets is not a general algorithmic improvement. Rational branch-certificate verification is polynomial in explicit input/certificate bit length only given a separately established complete constraint system. The layer criterion is structural; its109/83/7 orbit counts still come from complete enumeration. This audited wording-only revision changes no mathematical data or code.

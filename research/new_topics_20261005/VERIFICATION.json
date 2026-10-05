@@ -110,8 +110,8 @@
     {
       "path": "mycielski_manuscript/output/pdf/mycielski_hall_note.pdf",
       "pages": 6,
-      "sha256": "551f206ce8108e7c1a518bb6afb8ab4bea00380ec192d36f76c12501080c59f7",
-      "validation": "two XeLaTeX passes; all pages inspected; publisher rechecked first/final pages"
+      "sha256": "dca206766623db21bc8c39180f0bf53d986750c689d8c16993c4089d15ba9b02",
+      "validation": "Wording/citation revision compiled and independently reviewed across all six pages; publisher rechecked first/final pages and all ten target hashes. Mathematical certificates unchanged."
     },
     {
       "path": "unique_domination_pilot/paper/manuscript.pdf",
@@ -168,5 +168,19 @@
       "audit/independent_results.json"
     ],
     "independent_reduced_skeleton_search": "Prior exact audit PASS; its C++ search was not rerun for this publication."
+  },
+  "historical_pdfs": [
+    {
+      "path": "mycielski_manuscript/output/pdf/mycielski_hall_note.pdf",
+      "pages": 6,
+      "sha256": "551f206ce8108e7c1a518bb6afb8ab4bea00380ec192d36f76c12501080c59f7",
+      "validation": "two XeLaTeX passes; all pages inspected; publisher rechecked first/final pages",
+      "commit": "59e7606a305f2a92cc5cf782751cdd32a9fdb5dd"
+    }
+  ],
+  "mycielski_positioning_revision": {
+    "status": "PASS",
+    "mathematical_code_and_data_changed": false,
+    "review": "mycielski_positioning_revision/audit/POSITIONING_REVIEW.md"
   }
 }

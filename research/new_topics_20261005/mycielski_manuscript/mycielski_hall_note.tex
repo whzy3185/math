@@ -21,8 +21,8 @@
 \newcommand{\V}{V}
 \newcommand{\N}{N}
 \newcommand{\abs}[1]{\lvert #1\rvert}
-\title{Independent set compression and Hall extremizers\\
-in the sixth Mycielski graph}
+\title{The exact Hall ratio and extremizers\\
+of the sixth Mycielski graph}
 \author{}
 \date{5 October 2026}
 \begin{document}
@@ -34,13 +34,14 @@ We give a computer-assisted determination of the Hall ratio of the
 $M_{r+1}=\mu(M_r)$. Its Hall ratio is $10/3$. Exactly 1,990 induced vertex
 subsets attain this value, forming 199 orbits under the full ambient
 automorphism group, each of size ten. Every maximizer has twenty vertices,
-independence number six, and contains the final apex. A general
-neighborhood-union identity generates maximal independent sets of
-$\mu(G)$ from independent sets of $G$. For $M_6$, this yields 857 constraints
-from 7,407 independent sets of $M_5$. Exact rational certificates establish
-the upper bound and equality reductions; two different exact algorithms
-independently enumerate all extremizers. The accompanying programs and
-certificates avoid enumerating all $2^{47}$ induced subsets.
+independence number six, and contains the final apex. The proof uses 857
+maximal-independent-set constraints, obtained independently by a recursive
+neighborhood description and by standard direct enumeration. Exact
+rational certificates establish the upper bound and equality reductions;
+two different exact algorithms independently enumerate all extremizers.
+The main results are the exact finite Hall value and complete census.
+The recursive description organizes the certificate data; no general
+algorithmic efficiency improvement is claimed.
 \end{abstract}
 
 \section{The finite result and its scope}
@@ -88,11 +89,12 @@ that the sequence of Hall ratios is unbounded. The cardinality-profile
 formulation used below predates this calculation; see Barnett~\cite{Barnett}.
 Steiner~\cite{Steiner} records that boundedness of
 $\chi_f(M_r)/\rho(M_r)$ remains open. The present finite calculation does
-not resolve that asymptotic question. This note records reproducible
-results and complete proofs of the structural reductions; it makes no
-claim that publication priority has been established.
+not resolve that asymptotic question. The main results recorded here are the exact finite Hall value and
+extremizer census. The structural identities are convenient proof lemmas,
+possibly already known; no first-proof claim is made for them, and
+publication priority for the finite results has not been established.
 
-\section{Neighborhood compression for a general base graph}
+\section{A recursive description of the certificate constraints}
 Throughout this section, $G$ is a finite simple graph with $n\ge1$ vertices.
 Let $\ind(G)$ contain all independent sets, including the empty set, and
 write $i(G)=\abs{\ind(G)}$ and $\mi(G)$ for the number of maximal independent
@@ -150,10 +152,22 @@ bounds; bitsets improve the implementation. Finally,
 $d(G)\le i(G)$ and $\mi(G)\le i(G)$.
 \end{proof}
 
-This is a bound in the number of independent sets of the base graph.
-It does not imply polynomial-time Hall optimization in the number of
-vertices, or a polynomial bound on the size of a branch certificate.
-For the present instance, exact enumeration gives
+\begin{remark}[Comparison with standard enumeration]\label{rem:positioning}
+Tsukiyama, Ide, Ariyoshi and Shirakawa~\cite{Tsukiyama} already enumerate
+all maximal independent sets of a graph with $N$ vertices, $M$ edges and
+$K$ outputs in $O(NMK)$ time and $O(N+M)$ space. Corollary~\ref{cor:complexity}
+is not an output-sensitive improvement. For an edgeless base on $n\ge1$
+vertices, $i(G)=2^n$, while $\mu(G)$ consists of $n$ isolated originals and
+$K_{1,n}$, and has exactly two maximal independent sets. The recursive
+implementation visits $2^n$ base sets; the standard enumeration bound on
+this graph is $O(n^2)$. The identity is therefore used only as a convenient
+recursive generator of certificate data. The independent $M_6$ audit also
+uses direct Bron--Kerbosch enumeration on the complement, without this
+identity. The standard bound concerns row generation, not the Hall binary optimization
+or the full extremizer census. No polynomial-time Hall optimization or
+small-certificate claim follows from the generator bound.
+\end{remark}
+For the present instance, the recursive description gives
 \begin{equation}\label{eq:counts}
  i(M_5)=7,407,\qquad d(M_5)=778,\qquad \mi(M_5)=79,
  \qquad \mi(M_6)=857.
@@ -215,7 +229,11 @@ that node contains no subset of order at least $T$. An internal node
 splits on a free binary variable and checks both assignments. The
 certificate therefore covers every subset. Checking the displayed
 inequalities uses exact integer and rational arithmetic; numerical
-optimization is used only to propose weights or branches.
+optimization is used only to propose weights or branches. Once the
+complete independent-set constraint system is established separately,
+the rational branch certificate can be checked in time polynomial in the
+combined explicit input and certificate bit length. This statement does
+not certify completeness of an arbitrary supplied constraint list.
 
 \subsection{Upper bound and witness}
 For $k\in\{1,3,4,\ldots,14\}$, the supplied certificate excludes
@@ -276,8 +294,9 @@ when
  \abs{B\setminus N(I)}\le6-\abs I
  \qquad\text{for every independent }I\subseteq A.
 \end{equation}
-This is a complete neighborhood description of the three structural
-families, not just a condition satisfied by the displayed witness.
+This is an exact membership criterion within three layer classes. The
+orbit counts come from the complete finite enumeration below; no shorter
+structural derivation of $109$, $83$ and $7$ is asserted.
 
 \subsection{The full ambient automorphism group}
 The graph $M_3$ is $C_5$, in cyclic order $(0,1,2,4,3)$. At each later
@@ -365,10 +384,11 @@ $\rho(M_6)=10/3$。达到该比值的诱导顶点集恰有 $1\,990$ 个；在整
 自同构群 $D_5$ 作用下，它们分成 $199$ 个轨道，每个轨道含 $10$ 个顶点集。
 每个极值集都有 $20$ 个顶点、独立数 $6$，并包含最后加入的顶点。按原顶点、
 复制顶点和最后顶点的数量划分，三类轨道数分别为 $109$、$83$ 和 $7$。
-一般的邻域并集恒等式把 $\mu(G)$ 的极大独立集生成问题压缩到基图 $G$ 的
-独立集枚举。对于本例，$M_5$ 的 $7\,407$ 个独立集生成 $M_6$ 的 $857$ 个
+邻域并集恒等式为证书数据提供方便的递归描述，但不声称带来优于已有通用
+极大独立集枚举算法的效率改进。对于本例，$M_5$ 的 $7\,407$ 个独立集生成 $M_6$ 的 $857$ 个
 极大独立集约束。精确有理数证书证明上界及等号情形的必要限制，两种不同的
-整数算法独立完成全部极值集枚举，避免遍历 $2^{47}$ 个诱导顶点集。本文只陈述
+整数算法独立完成全部极值集枚举。本文的主要结果是精确 Hall 比和完整的有限
+极值集分类。本文只陈述
 可复核的有限结论，不声称已确立发表优先权，也不解决该图族的渐近问题。
 
 \endgroup
@@ -392,5 +412,10 @@ R.~Steiner,
 \emph{Fractional Chromatic Number Vs. Hall Ratio},
 Combinatorica \textbf{45} (2025), article~37.
 \href{https://doi.org/10.1007/s00493-025-00164-0}{doi:10.1007/s00493-025-00164-0}.
+\bibitem{Tsukiyama}
+S.~Tsukiyama, M.~Ide, H.~Ariyoshi and I.~Shirakawa,
+\emph{A New Algorithm for Generating All the Maximal Independent Sets},
+SIAM Journal on Computing \textbf{6}(3) (1977), 505--517.
+\href{https://doi.org/10.1137/0206036}{doi:10.1137/0206036}.
 \end{thebibliography}
 \end{document}

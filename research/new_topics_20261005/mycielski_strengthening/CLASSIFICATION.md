@@ -52,7 +52,7 @@ For any independent I subseteq A, an apex-free independent set can contain I and
 
 for every independent I subseteq A.
 
-These inequalities are a complete finite structural family description. Since alpha(A)=5 and the apex is present, their satisfaction ensures that the full induced independence number is exactly 6.
+These inequalities are an exact membership criterion within the three layer classes. They do not by themselves give a shorter structural derivation of the orbit counts 109, 83 and 7; those counts are established by the complete enumeration below. Since alpha(A)=5 and the apex is present, their satisfaction ensures that the full induced independence number is exactly 6.
 
 Only independent sets with `|I|>6-|B|` need to be tested; the others satisfy the inequality automatically. In particular, an independent five-set I0 in A imposes the especially restrictive condition
 

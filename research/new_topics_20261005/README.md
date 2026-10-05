@@ -33,7 +33,7 @@ With `M2=K2` and ordinary Mycielski iteration, `M6` has 47 vertices and Hall rat
 
 The [complete classification supplement](mycielski_strengthening/CLASSIFICATION.md) now gives exactly1,990 labelled maximizing subsets in199 ambient-automorphism orbits, all of size20 and independence number6. The three original/clone/apex layer types have109,83,7 orbits. These are embedded-subset orbits, not abstract graph-isomorphism types. Two different exact enumerations reproduce the same complete list.
 
-Read the [six-page note including Chinese abstract](mycielski_manuscript/output/pdf/mycielski_hall_note.pdf), [general compression theorem](mycielski_strengthening/GENERAL_THEOREM.md), and [independent completeness audit](mycielski_strengthening/audit/PROOF_AUDIT.md). No all-order asymptotic or publication-novelty claim is made.
+Read the [revised six-page note including Chinese abstract](mycielski_manuscript/output/pdf/mycielski_hall_note.pdf), [general compression theorem](mycielski_strengthening/GENERAL_THEOREM.md), and [independent completeness audit](mycielski_strengthening/audit/PROOF_AUDIT.md). The [reviewed presentation correction](mycielski_positioning_revision/audit/POSITIONING_REVIEW.md) adds the classical output-sensitive enumeration comparison and makes branch-certificate complexity conditional on an independently established complete constraint system. No general algorithmic efficiency improvement, all-order asymptotic or publication-novelty claim is made.
 
 ## Source-led topic selection
 

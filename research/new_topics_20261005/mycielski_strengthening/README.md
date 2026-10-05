@@ -1,10 +1,10 @@
 # M6 Hall-ratio strengthening
 
-The frozen pilot proves rho(M6)=10/3. This package strengthens it in two directions:
+The frozen pilot proves rho(M6)=10/3. The main result of this package is the complete finite extremizer census. Its proof also uses a convenient recursive identity:
 
 1. A general theorem for every nonempty finite graph G:
    `m(μ(G))=m(G)+#{N_G(I):I independent in G}`,
-   giving maximal-independent-set generation in `O(n² i(G))` elementary Boolean work
+   with an implementation bound of `O(n² i(G))` elementary Boolean work; this is not an improvement on standard output-sensitive enumeration and can be exponentially worse
 2. An exact classification of all M6 Hall maximizers: **1,990 labelled subsets in 199 ambient-automorphism orbits**, all with 20 vertices and independence number 6
 
 The orbit counts by original/clone/apex layer sizes are:
@@ -15,7 +15,7 @@ The orbit counts by original/clone/apex layer sizes are:
 
 Every orbit has size 10 under Aut(M6)=D5. These are embedded-subset orbits, not claimed abstract graph-isomorphism classes.
 
-Read `GENERAL_THEOREM.md` and `CLASSIFICATION.md` for complete proofs and `LITERATURE_SCOPE.md` for sources and limits. No publication-novelty or asymptotic claim is made.
+Read `GENERAL_THEOREM.md` and `CLASSIFICATION.md` for complete proofs and `LITERATURE_SCOPE.md` for sources and limits. No publication-novelty, general algorithmic-improvement, or asymptotic claim is made. `GENERAL_THEOREM.md` now includes the Tsukiyama et al. (1977) comparison and an explicit edgeless-base example.
 
 ## Exact verification
 

@@ -17,3 +17,9 @@ Searches combining Mycielski, Hall ratio, 10/3, M6, 47, and 3.333 did not locate
 Additional searches for maximal independent sets of Mycielskians located prior work on whole-graph independence numbers. The primary publisher search result for *The exponential growth of the packing chromatic number of iterated Mycielskians* explicitly cites earlier independence formulas: https://www.sciencedirect.com/science/article/abs/pii/S0166218X23003098 . The full publisher page could not be opened in this pass (HTTP 403), so it is not treated as a completed full-text priority audit of the neighborhood-closure theorem.
 
 Accordingly, this package claims proved identities, an exact reproducible finite value, and an exact finite extremizer classification. It does not claim that the general identities, profile formulation, value, or classification are publication-new.
+
+## Established maximal-independent-set enumeration
+
+S. Tsukiyama, M. Ide, H. Ariyoshi and I. Shirakawa, *A New Algorithm for Generating All the Maximal Independent Sets*, SIAM Journal on Computing 6(3) (1977), 505–517, https://doi.org/10.1137/0206036 . The primary publisher abstract explicitly gives O(N M K) time and O(N+M) space, where N, M and K count vertices, edges and maximal independent sets. Metadata and the abstract were directly verified on 5 October 2026.
+
+This established result precludes positioning the O(n² i(G)) base-independent-set construction as a general enumeration advance. On an edgeless n-vertex base it visits 2^n sets although μ(G) has just two maximal independent sets and the standard bound is polynomial. The identity remains a useful recursive description for the present certificate workflow. The finite exact Hall value and complete ambient-orbit census are the substantive results recorded here; their publication novelty remains unconfirmed. No direct-overlap claim about a 2014 hypergraph paper is made.
