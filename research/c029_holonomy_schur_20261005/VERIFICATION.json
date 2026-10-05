@@ -41,7 +41,7 @@
     "sha256": "120f7a2830e4dc05edae5207acaf121f0948d88d599da1bc592844722683f0bf",
     "build": "two-pass pdflatex; no warnings; author inspected all pages; publication readback inspected first and final pages"
   },
-  "formal_status": "254 declarations audited; exact raw finite radius and global quartic largest-root alignment verified; local terminal Schur reduction verified under X.PosDef; full Schur families and unrestricted minima outside formal scope.",
+  "formal_status": "264 declarations audited; exact raw finite radius and global quartic largest-root alignment verified; local terminal Schur reduction verified under X.PosDef; full Schur families and unrestricted minima outside formal scope. Recorded seed datum margin verified, with recurrence/graph identification still pending.",
   "uniform_cap_supplement": {
     "commands": [
       {
@@ -392,5 +392,56 @@
       "infinite Schur-series tails",
       "all-length R2 positivity"
     ]
+  },
+  "r2_seed106": {
+    "status": "PASS",
+    "completed_utc": "2026-10-05T09:49:29Z",
+    "new_theorems": 10,
+    "audited_theorems": 264,
+    "axiom_union": [
+      "Classical.choice",
+      "Quot.sound",
+      "propext"
+    ],
+    "checks": {
+      "r2_seed106_attempt3": {
+        "command": "lake build TargetA.R2Seed106Certificate",
+        "exit_code": 0,
+        "start_utc": "2026-10-05T09:46:17Z",
+        "end_utc": "2026-10-05T09:48:03Z"
+      },
+      "fresh_r2_seed106_axioms": {
+        "command": "lake env lean R2Seed106AxiomAudit.lean",
+        "exit_code": 0,
+        "start_utc": "2026-10-05T09:48:26Z",
+        "end_utc": "2026-10-05T09:49:29Z"
+      }
+    },
+    "prior_checkpoint_required": "verified_r2_terminal (254 theorems), on verified_constant_alignment (246)",
+    "prior_checkpoint_unchanged": true,
+    "lean": "4.33.1",
+    "mathlib": "0df444a360eaa60ab8c11dca51a86af692955474",
+    "final_theorem": "TargetA.r2_seed106_margin_posDef",
+    "scope": "The explicitly recorded rational 6x6 seed matrix, cast to the reals, has strict positive-definite margin 1/50.",
+    "method": "Kernel-checked rational arithmetic for LDL equality and pivots; finite decisions for unit-lower-triangular facts; ring-homomorphism transport to real matrices; positive diagonal congruence.",
+    "not_assumed": [
+      "LDL equality",
+      "positive diagonal pivots",
+      "invertibility of the lower factor",
+      "positive margin"
+    ],
+    "still_unformalized": [
+      "the seed datum equals the recurrence core S26",
+      "raw graph to canonical block reduction",
+      "local contraction and response decay",
+      "infinite Schur-series tails",
+      "remaining finite R2 bases and all-length R2 positivity"
+    ]
+  },
+  "r2_seed106_publication_check": {
+    "source_certificate_sha256_match": true,
+    "core_and_pivots_match": true,
+    "exact_rational_ldl_replay": true,
+    "audit_records": 264
   }
 }

@@ -1,0 +1,22 @@
+START 2026-10-05T09:46:17Z
+COMMAND: lake build TargetA.R2Seed106Certificate
+⚠ [8706/8707] Replayed TargetA.R2TerminalSchur
+warning: TargetA/R2TerminalSchur.lean:59:2: Try this: 
+  letI̵
+
+The goal is a proposition, so `let` is preferred over `letI`.
+The difference between `let` and `letI` is that `letI` inlines the value.
+But this is not relevant for proofs because of proof irrelevance.
+
+Note: This linter can be disabled with `set_option linter.style.haveILetI false`
+⚠ [8707/8707] Built TargetA.R2Seed106Certificate (93s)
+warning: TargetA/R2Seed106Certificate.lean:84:58: This simp argument is unused:
+  Matrix.diagonal_apply
+
+Hint: Omit it from the simp argument list.
+  [apply] simp [f, RingHom.mapMatrix_apply, Matrix.map_apply, r2Seed106Diagonal, hij]
+
+Note: This linter can be disabled with `set_option linter.unusedSimpArgs false`
+Build completed successfully (8707 jobs).
+EXIT_CODE=0
+END 2026-10-05T09:48:03Z

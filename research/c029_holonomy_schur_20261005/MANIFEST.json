@@ -8,21 +8,21 @@
   "files": [
     {
       "path": "CHANGELOG.md",
-      "bytes": 4233,
-      "sha256": "00d933cba821ec0d5688a69fa4925733f52bad8ea129b279a693bf41810805fa",
-      "git_blob_sha": "c321d7b9e4840cdb8fc857a7374fc2d6128ffb90"
+      "bytes": 4672,
+      "sha256": "3b702c3345a90e0b7bf71beb7fb9e9650955c0c1fb8b90bd14e01c73a029e253",
+      "git_blob_sha": "ce2c8fac7e8f2ac7e8c77a84c661078e0e2f0f62"
     },
     {
       "path": "README.md",
-      "bytes": 9475,
-      "sha256": "12cff59c984890779043405510c6291358f43bac4456a893e3c563aeb115680c",
-      "git_blob_sha": "be5eba075019aa67db71c262c5ef6e7d76b660b8"
+      "bytes": 9719,
+      "sha256": "e052c73ee4c4d53f5ebfae8040cc4dd25b3cafc61ae502b72227f03fc43c5dc1",
+      "git_blob_sha": "f02718eec728f37a874b0185eb101e34f2955b78"
     },
     {
       "path": "VERIFICATION.json",
-      "bytes": 14393,
-      "sha256": "edc0b5396becacb36c6cc00ee186b158a4f4fae2f6b302a28ea02e9f7dd0e5c8",
-      "git_blob_sha": "700b9a1add66d4595aff256a7e519dd86897242a"
+      "bytes": 16407,
+      "sha256": "1f0fd245031d754f2d77ee53414403e0384392ed68378daea9e1e3d1deba659f",
+      "git_blob_sha": "422d824fc7ace047641360f94e66b5a0f8d6da44"
     },
     {
       "path": "certificates/analytic/INTEGRATION_HANDOFF.md",
@@ -428,9 +428,9 @@
     },
     {
       "path": "lean/CURRENT_STATUS.md",
-      "bytes": 1766,
-      "sha256": "73c11244932bf147a31c9a3f5c88d9170651a915be62d28307a2692ff450fc58",
-      "git_blob_sha": "7cb5236a0dc92be9f1bf63ed87e0abca357fe0a6"
+      "bytes": 2122,
+      "sha256": "e3a28c67d4556623cf39dc17205181eebfba3311b532f672966fc04ff9901f68",
+      "git_blob_sha": "bd7896c3422a668b8033866c2ac699fbf3148261"
     },
     {
       "path": "lean/SHA256SUMS",
@@ -749,6 +749,72 @@
       "bytes": 204,
       "sha256": "8c28405cb5b96817ff33454a8ac5408afdfc8bc0e5572ef70b9c240350e926ac",
       "git_blob_sha": "b8b41b5e4be4ef1fdfcc5b94ec846a57560156e5"
+    },
+    {
+      "path": "lean/r2_seed106/R2_SEED106_VERIFICATION_REPORT.md",
+      "bytes": 3799,
+      "sha256": "8a138e8cc17a45f2dd041da0cdf19a426ee41160911dd8fa5153e179dbe9b8bc",
+      "git_blob_sha": "8a99fca19718114ca99bdcbcc35f978758d2f53d"
+    },
+    {
+      "path": "lean/r2_seed106/SHA256SUMS",
+      "bytes": 951,
+      "sha256": "0bc22ae5012d03bb92a571549e8852a0223e142d1176f0ad8962151c1c86f60f",
+      "git_blob_sha": "d73cf5245de6d65eb7bcae829149c92b9ad2fc88"
+    },
+    {
+      "path": "lean/r2_seed106/data/seed106_ldl.json",
+      "bytes": 11317,
+      "sha256": "f36f2e5f7d8f548537a1c37e6d7ae1f6434ec2c71746591cb1ddce592d018a02",
+      "git_blob_sha": "faae2adb569d5629ffb37bda8ee158a1aed9c841"
+    },
+    {
+      "path": "lean/r2_seed106/data/source_provenance.json",
+      "bytes": 571,
+      "sha256": "4b5217dddfba1747e3fddafa4653add97f566973fbae7a68745de3ae6cd2467b",
+      "git_blob_sha": "502861a06f8d9e43f5edd526631de4fc48f0e110"
+    },
+    {
+      "path": "lean/r2_seed106/formal/R2Seed106AxiomAudit.lean",
+      "bytes": 14446,
+      "sha256": "f5a9c2159b71e418a845650cf839a8964367135a8ae33d3da3fee3b24ecd449e",
+      "git_blob_sha": "dde6cdf9cb9ee5ffc4e9ad1910e963754b3c4ab5"
+    },
+    {
+      "path": "lean/r2_seed106/formal/TargetA/R2Seed106Certificate.lean",
+      "bytes": 15297,
+      "sha256": "51df4cead7b26c96b0d807295a04ba8a6adcf11d844069bd58798282c4879556",
+      "git_blob_sha": "1af0a3e744bb43efc0b1af708bfea1a961a56fbe"
+    },
+    {
+      "path": "lean/r2_seed106/logs/fresh_r2_seed106_axioms.log",
+      "bytes": 26551,
+      "sha256": "cd25e64d822f61fb9edc12e12e2a16109dbb570844cc5bb43df72bcf0e36a90a",
+      "git_blob_sha": "5329906174254654fde6a82d0949c03101777fa1"
+    },
+    {
+      "path": "lean/r2_seed106/logs/r2_seed106_attempt3.log",
+      "bytes": 925,
+      "sha256": "752cd314cc5c544e3de27da6a0669bc7e6c34ef5e09ac8a45190267f9c14fe6c",
+      "git_blob_sha": "790845ba162df36e63202ef770b5be24a77f8aef"
+    },
+    {
+      "path": "lean/r2_seed106/r2_seed106_increment.patch",
+      "bytes": 30290,
+      "sha256": "3782c179b08676cfd0dc416847b92ae5a65890938cc92e101e20770329ae8249",
+      "git_blob_sha": "22f1ce6b3d683a594d9f3f8f97f353bda0238128"
+    },
+    {
+      "path": "lean/r2_seed106/source_sha256.json",
+      "bytes": 2493,
+      "sha256": "4c73436471a5136e85af47b3d2a3c78e5fad004d2dad12247b7fc0c897f4f671",
+      "git_blob_sha": "7f255fb65a122db4eb390c33ee777dadc4232019"
+    },
+    {
+      "path": "lean/r2_seed106/verification_summary.json",
+      "bytes": 1635,
+      "sha256": "3f55efdc325e3cd09359305f1e6e139fe31967195d4fdb66a4b1d88e6c38fdb1",
+      "git_blob_sha": "24750ceb61dcc56e58252fa8edf5e7e99da12462"
     },
     {
       "path": "lean/r2_terminal/R2_TERMINAL_VERIFICATION_REPORT.md",
@@ -1143,7 +1209,7 @@
   ],
   "first_snapshot_commit": "b0c8b51efa3e77cd4c0117ce3cb97ca126e3580d",
   "latest_supplement": "Linked246 and254 formal addenda after the preserved18-page integrated article",
-  "formal_extension_note": "254-declaration checkpoint: exact finite radius, largest-root alignment, and conditional local terminal-Schur reduction; reviewed article remains at237.",
+  "formal_extension_note": "264-declaration checkpoint including exact seed-datum positivity; recurrence/graph identification remains pending; reviewed article remains at237.",
   "formal_extension_files": [
     {
       "repository_path": "formal/AllAxiomAudit.lean",
@@ -1164,6 +1230,11 @@
       "repository_path": "formal/ExactRadiusAxiomAudit.lean",
       "sha256": "e0446e0dc1189bad4e4ffb94340f3ece81ddc84a1b910710fd7cc4ba8464ec80",
       "git_blob_sha": "1cc0cd8b8a11acde7628135e367cc9aafd164060"
+    },
+    {
+      "repository_path": "formal/R2Seed106AxiomAudit.lean",
+      "sha256": "f5a9c2159b71e418a845650cf839a8964367135a8ae33d3da3fee3b24ecd449e",
+      "git_blob_sha": "dde6cdf9cb9ee5ffc4e9ad1910e963754b3c4ab5"
     },
     {
       "repository_path": "formal/R2TerminalAxiomAudit.lean",
@@ -1224,6 +1295,11 @@
       "repository_path": "formal/TargetA/Period8SharpEdge.lean",
       "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612",
       "git_blob_sha": "4e29a3509bd786947e14ff8a030aafa0c12eb56b"
+    },
+    {
+      "repository_path": "formal/TargetA/R2Seed106Certificate.lean",
+      "sha256": "51df4cead7b26c96b0d807295a04ba8a6adcf11d844069bd58798282c4879556",
+      "git_blob_sha": "1af0a3e744bb43efc0b1af708bfea1a961a56fbe"
     },
     {
       "repository_path": "formal/TargetA/R2TerminalSchur.lean",

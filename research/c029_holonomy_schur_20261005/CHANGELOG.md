@@ -38,3 +38,10 @@ Added a separately reviewed integrated paper, preserving the earlier11-page snap
 - 246 declarations: identified the endpoint radical as the global largest real root of the conjecture quartic and transferred the strict raw negative-holonomy eigenvalue bound to that constant
 - 254 declarations: typed terminal Schur positivity and exact cross-term corrections under the explicit positive-pivot premise; full R2 formalization remains incomplete
 - Both builds and full standard-axiom audits passed; earlier source bundles and both reviewed PDFs are unchanged
+
+
+## Exact finite-seed formal certificate
+
+- 264 declarations audited: kernel-checked rational LDL factorization proves the recorded normalized 6-by-6 datum exceeds (1/50)I
+- Publication replay exactly matches the existing certificate matrix and six pivots, and rechecks the rational factorization
+- Identification with recurrence S26 and the raw graph remains outside this addendum; reviewed papers and previous checkpoints are unchanged

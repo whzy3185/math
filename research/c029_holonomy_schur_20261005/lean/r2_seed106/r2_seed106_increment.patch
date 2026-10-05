@@ -1,0 +1,404 @@
+--- /dev/null
++++ b/formal/TargetA/R2Seed106Certificate.lean
+@@ -0,0 +1,125 @@
++import TargetA.R2TerminalSchur
++
++namespace TargetA
++
++open scoped Matrix
++
++set_option maxRecDepth 10000
++
++/-- Exact normalized six-dimensional seed recorded for n=106. Its identification
++with the graph/orbit seed is outside this finite certificate module. -/
++def r2Seed106CoreQ : Matrix (Fin 6) (Fin 6) ℚ :=
++  !![(509169787229969389945559717724085422656253937693607030583113570581698630455419252090564652 / 223122270906569476413673908792934318976006271887198499075280860836762147842282569570612475 : ℚ), (-9826891811674330196417225954936667143049981543572677812137189602703529517525412977933800 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-8924887640610792568083926793159364614164321196362525212282383656675188052592059618761999 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), 0, (-9629201704734033497021824592275471298708588439960357876367582236359516247979643426522949 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (4917215610511414940189174454452917730796025419397689561824100076739733860811553031935650 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ);
++    (-9826891811674330196417225954936667143049981543572677812137189602703529517525412977933800 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (459155315704925795992504719952242719150126418986999173540549739271303855402720990723002152 / 223122270906569476413673908792934318976006271887198499075280860836762147842282569570612475 : ℚ), 0, (-8924887640610792568083926793159364614164321196362525212282383656675188052592059618761999 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-5315707395902945045009846054822689853267402991169979433543367860976107212292865531935650 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-5684292480102917304399311104439045365232440523578845969259609860798516397009055394587299 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ);
++    (-8924887640610792568083926793159364614164321196362525212282383656675188052592059618761999 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), 0, (459155315704925795992504719952242719150126418986999173540549739271303855402720990723002152 / 223122270906569476413673908792934318976006271887198499075280860836762147842282569570612475 : ℚ), (9826891811674330196417225954936667143049981543572677812137189602703529517525412977933800 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-5684292480102917304399311104439045365232440523578845969259609860798516397009055394587299 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (5315707395902945045009846054822689853267402991169979433543367860976107212292865531935650 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ);
++    0, (-8924887640610792568083926793159364614164321196362525212282383656675188052592059618761999 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (9826891811674330196417225954936667143049981543572677812137189602703529517525412977933800 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (509169787229969389945559717724085422656253937693607030583113570581698630455419252090564652 / 223122270906569476413673908792934318976006271887198499075280860836762147842282569570612475 : ℚ), (-4917215610511414940189174454452917730796025419397689561824100076739733860811553031935650 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-9629201704734033497021824592275471298708588439960357876367582236359516247979643426522949 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ);
++    (-9629201704734033497021824592275471298708588439960357876367582236359516247979643426522949 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-5315707395902945045009846054822689853267402991169979433543367860976107212292865531935650 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-5684292480102917304399311104439045365232440523578845969259609860798516397009055394587299 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-4917215610511414940189174454452917730796025419397689561824100076739733860811553031935650 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (703954984424936117822528158289345846685480612255658991529059658591291083373487452018409652 / 223122270906569476413673908792934318976006271887198499075280860836762147842282569570612475 : ℚ), 0;
++    (4917215610511414940189174454452917730796025419397689561824100076739733860811553031935650 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-5684292480102917304399311104439045365232440523578845969259609860798516397009055394587299 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (5315707395902945045009846054822689853267402991169979433543367860976107212292865531935650 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), (-9629201704734033497021824592275471298708588439960357876367582236359516247979643426522949 / 8924890836262779056546956351717372759040250875487939963011234433470485913691302782824499 : ℚ), 0, (703954984424936117822528158289345846685480612255658991529059658591291083373487452018409652 / 223122270906569476413673908792934318976006271887198499075280860836762147842282569570612475 : ℚ)]
++
++/-- Unit-lower-triangular factor of the seed after subtracting (1/50)I. -/
++def r2Seed106LowerQ : Matrix (Fin 6) (Fin 6) ℚ :=
++  !![1, 0, 0, 0, 0, 0;
++    (-32756306038914433988057419849788890476833271811908926040457298675678431725084709926446000 / 67294312241578400055638165273096898170231174967448408080214393781995118333143146759886987 : ℚ), 1, 0, 0, 0, 0;
++    (-89248876406107925680839267931593646141643211963625252122823836566751880525920596187619990 / 201882936724735200166914495819290694510693524902345224240643181345985354999429440279660961 : ℚ), (-2923463509187720992040611608170964157468775873031961211858605784841355900006912026557104465647055690253895449165102042229304523360548384832927567083591616959672507368699255540000 / 9020370838894552705898707314083026472609789019000219114400535330488148940993274745374577188041051961245250628008962183583617741241795978180205165778909054531506332996511224139507 : ℚ), 1, 0, 0, 0;
++    0, (-6005941756082666225390156767257549573283713363071965351545812120589139735364543781845996866609297570181499454620103693122550952199439462818669867195147048773926959342780902070130 / 9020370838894552705898707314083026472609789019000219114400535330488148940993274745374577188041051961245250628008962183583617741241795978180205165778909054531506332996511224139507 : ℚ), (98268918116743301964172259549366671430499815435726778121371896027035295175254129779338000 / 181877148114717762585692496710553613108242517419702081423617648821827444978350135732635961 : ℚ), 1, 0, 0;
++    (-32097339015780111656739415307584904329028628133201192921225274121198387493265478088409830 / 67294312241578400055638165273096898170231174967448408080214393781995118333143146759886987 : ℚ), (-6731339512354649773831623453384952897962961837742836001023905437479726236294642458632676417679199813440220159693865166746712596055793410765548297586174228918239526289543656405500 / 9020370838894552705898707314083026472609789019000219114400535330488148940993274745374577188041051961245250628008962183583617741241795978180205165778909054531506332996511224139507 : ℚ), (-399723094820967167710809394432943408718215861629187200780092093121527517382313139121573157130943492430123065338077890010597404590345393920821874943691447674509104186621897723146110 / 389145449480533531486957496989062453147485320402113042105148454610739766705365355247086102023837961129912077541593203281361189728211359040588442506766878427639529631978840532377919 : ℚ), (-907754287281968869412712245275002690478600728649572500063160538312390739623747931758338500 / 2139606066591074491188168637139029554750739505076254544579097186426922215384033627434817079 : ℚ), 1, 0;
++    (16390718701704716467297248181509725769320084731325631872747000255799112869371843439785500 / 67294312241578400055638165273096898170231174967448408080214393781995118333143146759886987 : ℚ), (-2214507336312624054299041985352256299256100271829111091464042508659283633104079667411804519997315024114547798479745477157520029646746699091937146387103910629745288111875456781130 / 9020370838894552705898707314083026472609789019000219114400535330488148940993274745374577188041051961245250628008962183583617741241795978180205165778909054531506332996511224139507 : ℚ), (194751248117712865397106657815062869202133888282301472169887477871083652297142273629792726231451982949868246006335554380493636033515705633763158819821927007365889441152057276278500 / 389145449480533531486957496989062453147485320402113042105148454610739766705365355247086102023837961129912077541593203281361189728211359040588442506766878427639529631978840532377919 : ℚ), (-3116023856798632604762452888242894757303915867715316159213293836344559128571092453746985010 / 2139606066591074491188168637139029554750739505076254544579097186426922215384033627434817079 : ℚ), 0, 1]
++
++def r2Seed106DiagonalQ : Fin 6 → ℚ :=
++  ![(201882936724735200166914495819290694510693524902345224240643181345985354999429440279660961 / 89248908362627790565469563517173727590402508754879399630112344334704859136913027828244990 : ℚ),
++    (9020370838894552705898707314083026472609789019000219114400535330488148940993274745374577188041051961245250628008962183583617741241795978180205165778909054531506332996511224139507 / 6005943906574692167139252188093103469828650407661035992672401598798082055491325802064874108198440964754700941949893337265594523659004504848219042790240450854164824790778948945130 : ℚ),
++    (389145449480533531486957496989062453147485320402113042105148454610739766705365355247086102023837961129912077541593203281361189728211359040588442506766878427639529631978840532377919 / 270611125166836581176961219422490794178293670570006573432016059914644468229798242361237315641231558837357518840268865507508532237253879345406154973367271635945189989895336724185210 : ℚ),
++    (2139606066591074491188168637139029554750739505076254544579097186426922215384033627434817079 / 1818771481147177625856924967105536131082425174197020814236176488218274449783501357326359610 : ℚ),
++    (1177374564919432672608667352833257694401079958811651820374342391115540022120509849525589381 / 21396060665910744911881686371390295547507395050762545445790971864269222153840336274348170790 : ℚ),
++    (1177374564919432672608667352833257694401079958811651820374342391115540022120509849525589381 / 21396060665910744911881686371390295547507395050762545445790971864269222153840336274348170790 : ℚ)]
++
++set_option maxHeartbeats 8000000 in
++/-- Finite rational equality verified by kernel-checked exact arithmetic. -/
++theorem r2_seed106_ldl_rat :
++    r2Seed106CoreQ - (1/50 : ℚ) • (1 : Matrix (Fin 6) (Fin 6) ℚ) =
++      r2Seed106LowerQ * Matrix.diagonal r2Seed106DiagonalQ * r2Seed106LowerQᵀ := by
++  ext i j
++  fin_cases i <;> fin_cases j <;>
++    norm_num [r2Seed106CoreQ, r2Seed106LowerQ, r2Seed106DiagonalQ,
++      Matrix.mul_apply, Matrix.vecMul, Matrix.mulVec, dotProduct, Fin.sum_univ_succ,
++      Matrix.diagonal_apply, Matrix.one_apply,
++      Matrix.cons_val_two, Matrix.cons_val_three, Matrix.cons_val_four,
++      Matrix.vecHead, Matrix.vecTail]
++
++set_option maxHeartbeats 2000000 in
++theorem r2_seed106_lower_rat : r2Seed106LowerQ.IsLowerTriangular := by decide
++
++set_option maxHeartbeats 2000000 in
++theorem r2_seed106_lower_diagonal_rat : ∀ i : Fin 6, r2Seed106LowerQ i i = 1 := by decide
++
++set_option maxHeartbeats 2000000 in
++theorem r2_seed106_diagonal_pos_rat : ∀ i : Fin 6, 0 < r2Seed106DiagonalQ i := by
++  intro i
++  fin_cases i <;> norm_num [r2Seed106DiagonalQ]
++
++noncomputable def r2Seed106Core : Matrix (Fin 6) (Fin 6) ℝ :=
++  r2Seed106CoreQ.map (Rat.castHom ℝ)
++
++noncomputable def r2Seed106Lower : Matrix (Fin 6) (Fin 6) ℝ :=
++  r2Seed106LowerQ.map (Rat.castHom ℝ)
++
++noncomputable def r2Seed106Diagonal (i : Fin 6) : ℝ := (r2Seed106DiagonalQ i : ℝ)
++
++/-- Transport the checked rational identity through the rational-to-real ring homomorphism. -/
++theorem r2_seed106_ldl_real :
++    r2Seed106Core - (1/50 : ℝ) • (1 : Matrix (Fin 6) (Fin 6) ℝ) =
++      r2Seed106Lower * Matrix.diagonal r2Seed106Diagonal * r2Seed106Lowerᵀ := by
++  let f : Matrix (Fin 6) (Fin 6) ℚ →+* Matrix (Fin 6) (Fin 6) ℝ :=
++    (Rat.castHom ℝ).mapMatrix
++  have h := congrArg f r2_seed106_ldl_rat
++  rw [map_sub, map_mul, map_mul] at h
++  have hm : f ((1/50 : ℚ) • (1 : Matrix (Fin 6) (Fin 6) ℚ)) =
++      (1/50 : ℝ) • (1 : Matrix (Fin 6) (Fin 6) ℝ) := by
++    ext i j
++    by_cases hij : i = j <;>
++      norm_num [f, RingHom.mapMatrix_apply, Matrix.map_apply, Matrix.one_apply, hij]
++  have hd : f (Matrix.diagonal r2Seed106DiagonalQ) = Matrix.diagonal r2Seed106Diagonal := by
++    ext i j
++    by_cases hij : i = j <;>
++      simp [f, RingHom.mapMatrix_apply, Matrix.map_apply, Matrix.diagonal_apply,
++        r2Seed106Diagonal, hij]
++  have ht : f r2Seed106LowerQᵀ = r2Seed106Lowerᵀ := rfl
++  rw [hm, hd, ht] at h
++  exact h
++
++theorem r2_seed106_diagonal_pos : ∀ i : Fin 6, 0 < r2Seed106Diagonal i := by
++  intro i
++  unfold r2Seed106Diagonal
++  exact_mod_cast (r2_seed106_diagonal_pos_rat i)
++
++theorem r2_seed106_lower_triangular : r2Seed106Lower.IsLowerTriangular := by
++  intro i j hij
++  change (r2Seed106LowerQ i j : ℝ) = 0
++  rw [r2_seed106_lower_rat hij]
++  norm_num
++
++theorem r2_seed106_lower_diagonal : ∀ i : Fin 6, r2Seed106Lower i i = 1 := by
++  intro i
++  change (r2Seed106LowerQ i i : ℝ) = 1
++  rw [r2_seed106_lower_diagonal_rat]
++  norm_num
++
++theorem r2_seed106_lower_det : r2Seed106Lower.det = 1 := by
++  rw [Matrix.det_of_isLowerTriangular _ r2_seed106_lower_triangular]
++  simp [r2_seed106_lower_diagonal]
++
++/-- Exact positive margin for the supplied normalized six-by-six n=106 seed data. -/
++theorem r2_seed106_margin_posDef :
++    (r2Seed106Core - (1/50 : ℝ) • (1 : Matrix (Fin 6) (Fin 6) ℝ)).PosDef := by
++  have hd : (Matrix.diagonal r2Seed106Diagonal).PosDef :=
++    Matrix.posDef_diagonal_iff.mpr r2_seed106_diagonal_pos
++  have hl : IsUnit r2Seed106Lower := by
++    rw [Matrix.isUnit_iff_isUnit_det, r2_seed106_lower_det]
++    exact isUnit_one
++  have hi : Function.Injective r2Seed106Lower.vecMul :=
++    Matrix.vecMul_injective_iff_isUnit.mpr hl
++  have hp := hd.mul_mul_conjTranspose_same (B := r2Seed106Lower) hi
++  rw [r2_seed106_ldl_real]
++  simpa only [Matrix.conjTranspose_eq_transpose_of_trivial] using hp
++
++end TargetA
+--- /dev/null
++++ b/formal/R2Seed106AxiomAudit.lean
+@@ -0,0 +1,273 @@
++import TargetA.AllTheorems
++import TargetA.Period8ConjectureConstant
++import TargetA.R2Seed106Certificate
++
++#print axioms TargetA.residueZero_mod
++#print axioms TargetA.residueZero_even
++#print axioms TargetA.residueZero_admissible
++#print axioms TargetA.dft_cellTranslation
++#print axioms TargetA.stdAddChar_pow_modulus
++#print axioms TargetA.cell_reindex_forward
++#print axioms TargetA.cell_reindex_unindex
++#print axioms TargetA.cell_unindex_next_one_interior
++#print axioms TargetA.cell_unindex_next_two_interior
++#print axioms TargetA.cell_unindex_next_one_seam
++#print axioms TargetA.cell_unindex_next_two_seam_six
++#print axioms TargetA.cell_unindex_next_two_seam_seven
++#print axioms TargetA.cell_unindex_next_one
++#print axioms TargetA.cell_unindex_next_two
++#print axioms TargetA.period8_forward_reindex_action
++#print axioms TargetA.period8_forward_reindex_actionC
++#print axioms TargetA.zmod_finEquiv_eq_natCast
++#print axioms TargetA.zmod_finEquiv_cyclic_next
++#print axioms TargetA.zmod_finEquiv_cyclic_prev
++#print axioms TargetA.cell_zmod_reindex_residue
++#print axioms TargetA.cyclic_next_prev
++#print axioms TargetA.cyclic_prev_next
++#print axioms TargetA.cyclic_next_eq_iff
++#print axioms TargetA.hamilton_gauge_matrix_eq_forward_add_transpose
++#print axioms TargetA.hamilton_gauge_forward_matrix_mulVec
++#print axioms TargetA.hamilton_gauge_forward_matrixC_mulVec
++#print axioms TargetA.hamilton_gauge_matrix_symmetric
++#print axioms TargetA.hamilton_gauge_matrix_zero_of_not_neighbour
++#print axioms TargetA.cyclic_next_one_ne_self
++#print axioms TargetA.cyclic_next_two_ne_self
++#print axioms TargetA.cyclic_next_one_then_one
++#print axioms TargetA.cyclic_next_one_ne_two
++#print axioms TargetA.hamilton_gauge_matrix_diagonal_zero
++#print axioms TargetA.period_eight_value_is_sign
++#print axioms TargetA.forward_step_one_is_sign
++#print axioms TargetA.forward_step_two_is_sign
++#print axioms TargetA.forward_step_one_periodic_holonomy
++#print axioms TargetA.forward_step_two_periodic_holonomy
++#print axioms TargetA.period_eight_repeat
++#print axioms TargetA.period8_target_lift_cell_value
++#print axioms TargetA.period8_target_tau_is_sign
++#print axioms TargetA.period8_target_lift_is_sign
++#print axioms TargetA.period8_target_lift_periodic
++#print axioms TargetA.period8_target_step_two_is_sign
++#print axioms TargetA.period8_target_step_one_is_sign
++#print axioms TargetA.period8_target_matrix_symmetric
++#print axioms TargetA.period8_target_matrix_isHermitian
++#print axioms TargetA.period8_target_matrix_diagonal_zero
++#print axioms TargetA.step_one_cut_rule
++#print axioms TargetA.step_two_cut_rule
++#print axioms TargetA.step_one_no_cut
++#print axioms TargetA.step_one_cut
++#print axioms TargetA.step_two_no_cut
++#print axioms TargetA.step_two_cut
++#print axioms TargetA.period_eight_fits_multiple
++#print axioms TargetA.period8_raw_to_cell_injective
++#print axioms TargetA.period8_raw_to_cell_intertwines
++#print axioms TargetA.zmod_finEquiv_cyclic_step
++#print axioms TargetA.period8_double_cell_shift_unindex
++#print axioms TargetA.period8_raw_half_shift_to_cell_antiperiodic
++#print axioms TargetA.period8_double_cover_antisector_eigen_square_lt_edge
++#print axioms TargetA.period8_antiperiodic_parameter_re_lt_two
++#print axioms TargetA.period8_antiperiodic_holonomy_root_lt_edge
++#print axioms TargetA.period8_antiperiodic_fiber_eigen_square_lt_edge
++#print axioms TargetA.period8_antiperiodic_nonzero_dft_holonomy
++#print axioms TargetA.period8_antiperiodic_cell_eigen_square_lt_edge
++#print axioms TargetA.period8_intra_as_forward_add_transpose
++#print axioms TargetA.period8_backward_is_forward_transpose
++#print axioms TargetA.period8_cell_action_fin_eq_forward_add_backward
++#print axioms TargetA.period8_forward_cell_operator_fin_apply
++#print axioms TargetA.period8_forward_reindex_actionC_eq_cell_operator
++#print axioms TargetA.period8_forward_cell_matrix_fin_mulVec
++#print axioms TargetA.period8_forward_cell_matrix_fin_transpose_mulVec
++#print axioms TargetA.period8_cell_matrix_fin_mulVec
++#print axioms TargetA.period8_reindexed_forward_matrix_mulVec
++#print axioms TargetA.period8_reindexed_forward_matrix_eq_cell_matrix
++#print axioms TargetA.period8_reindexed_matrix_eq_forward_add_transpose
++#print axioms TargetA.period8_reindexed_matrix_eq_cell_matrix
++#print axioms TargetA.period8_reindexed_matrix_mulVec
++#print axioms TargetA.period8_reindexed_forward_operator_eq
++#print axioms TargetA.period8_fiber_as_cell_symbol
++#print axioms TargetA.period8_cell_dft_translation
++#print axioms TargetA.period8_cell_dft_matrix
++#print axioms TargetA.cellEncode_rawToFinCell
++#print axioms TargetA.period8_reindexed_matrix_mulVec_raw
++#print axioms TargetA.period8_fin_cell_action_to_zmod
++#print axioms TargetA.exists_nonzero_period8_cell_dft
++#print axioms TargetA.period8_cell_dft_action
++#print axioms TargetA.period8_cell_eigen_dft_fiber
++#print axioms TargetA.period8_zmod_real_eigen_square_lt_bound
++#print axioms TargetA.period8_raw_real_eigen_square_lt_bound
++#print axioms TargetA.period8_target_eigenvalue_square_lt_bound
++#print axioms TargetA.period8_target_eigenvalue_beats_twisted
++#print axioms TargetA.period8_alpha_plus_main_theorem
++#print axioms TargetA.period8_chiral_determinant_complex
++#print axioms TargetA.period8_unit_conj_eq_inv
++#print axioms TargetA.period8_unit_of_pow_eq_one
++#print axioms TargetA.period8_xi_unit_from_holonomy
++#print axioms TargetA.period8_unit_parameter_real
++#print axioms TargetA.period8_unit_parameter_re_le_two
++#print axioms TargetA.period8_polynomialC_ofReal
++#print axioms TargetA.period8_complex_root_is_real_root
++#print axioms TargetA.period8_unit_complex_root_is_real_root
++#print axioms TargetA.period8_unit_complex_root_lt_bound
++#print axioms TargetA.period8_holonomy_root_lt_bound
++#print axioms TargetA.period8_squared_chiral_block
++#print axioms TargetA.period8_squared_block_annihilated
++#print axioms TargetA.period8_matrix_power_on_eigenvector
++#print axioms TargetA.period8_squared_block_eigen_root
++#print axioms TargetA.period8_squared_block_eigen_lt_bound
++#print axioms TargetA.period8_chiral_determinant
++#print axioms TargetA.period8_endpoint_quartic_factorization
++#print axioms TargetA.period8_conjecture_constant_square
++#print axioms TargetA.period8_conjecture_constant_nonneg
++#print axioms TargetA.period8_negative_argument_polynomial_pos
++#print axioms TargetA.period8_conjecture_constant_is_root
++#print axioms TargetA.period8_conjecture_constant_greatest_root
++#print axioms TargetA.period8_conjecture_constant_largest_real_root
++#print axioms TargetA.period8_alpha_minus_eigenvalue_abs_lt_conjecture_constant
++#print axioms TargetA.period8_conjecture28_strict_family
++#print axioms TargetA.period8_double_lift_low
++#print axioms TargetA.period8_double_lift_high
++#print axioms TargetA.period8_double_lift_injective
++#print axioms TargetA.period8_double_low_half_shift
++#print axioms TargetA.period8_double_high_half_shift
++#print axioms TargetA.period8_double_lift_antiperiodic
++#print axioms TargetA.period8_double_same_half_next
++#print axioms TargetA.period8_double_cross_half_next
++#print axioms TargetA.period8_double_signed_forward_entry
++#print axioms TargetA.period8_double_low_lift
++#print axioms TargetA.period8_double_high_lift
++#print axioms TargetA.period8_periodic_matrix_entry
++#print axioms TargetA.period8_double_matrix_same_blocks
++#print axioms TargetA.period8_double_matrix_cross_blocks
++#print axioms TargetA.period8_double_matrix_difference
++#print axioms TargetA.period8_sum_double
++#print axioms TargetA.period8_double_matrixC_difference
++#print axioms TargetA.period8_double_matrixC_same_blocks
++#print axioms TargetA.period8_double_matrixC_cross_blocks
++#print axioms TargetA.period8_double_action_low
++#print axioms TargetA.period8_double_action_high
++#print axioms TargetA.period8_double_lift_intertwines
++#print axioms TargetA.period8_double_lift_smul
++#print axioms TargetA.period8_alpha_minus_raw_eigen_square_lt_edge
++#print axioms TargetA.period8_alpha_minus_main_theorem
++#print axioms TargetA.period8_finite_top_pos
++#print axioms TargetA.period8_unit_parameter_eq_two_re
++#print axioms TargetA.period8_alpha_minus_raw_eigen_square_le_finite_top
++#print axioms TargetA.period8_alpha_minus_finite_radius_attained_vector
++#print axioms TargetA.period8_hermitian_eigenvector_has_index
++#print axioms TargetA.period8_alpha_minus_eigenvalue_square_le_finite_top
++#print axioms TargetA.period8_alpha_minus_finite_radius_attained_index
++#print axioms TargetA.period8_finite_radius_radical
++#print axioms TargetA.period8_alpha_minus_exact_finite_radius
++#print axioms TargetA.period8_polynomial_shift_identity
++#print axioms TargetA.period8_inner_discriminant_pos
++#print axioms TargetA.period8_inner_sqrt_ge_four
++#print axioms TargetA.period8_top_radicand_pos
++#print axioms TargetA.period8_top_root_gt_four
++#print axioms TargetA.period8_top_root_is_root
++#print axioms TargetA.period8_root_le_top_root
++#print axioms TargetA.period8_top_radicand_strict_mono
++#print axioms TargetA.period8_top_root_strict_mono
++#print axioms TargetA.period8_top_root_at_two
++#print axioms TargetA.period8_chiral_square
++#print axioms TargetA.period8_chiral_anticommutes
++#print axioms TargetA.period8_chiral_maps_plus_to_minus
++#print axioms TargetA.period8_chiral_basis_left_inverse
++#print axioms TargetA.period8_chiral_basis_right_inverse
++#print axioms TargetA.period8_xi_mul_inv_sq
++#print axioms TargetA.period8_inv_sq_mul_xi
++#print axioms TargetA.period8_xi_mul_inv
++#print axioms TargetA.period8_fiber_in_chiral_basis
++#print axioms TargetA.period8_fiber_similar_to_chiral_coordinates
++#print axioms TargetA.period8_complex_squared_block
++#print axioms TargetA.period8_complex_squared_block_annihilated
++#print axioms TargetA.period8_complex_matrix_power_on_eigenvector
++#print axioms TargetA.period8_complex_squared_block_eigen_root
++#print axioms TargetA.period8_top_project_embed
++#print axioms TargetA.period8_bottom_project_embed
++#print axioms TargetA.period8_top_project_bottom_embed
++#print axioms TargetA.period8_bottom_project_top_embed
++#print axioms TargetA.period8_embed_project_reconstruct
++#print axioms TargetA.period8_chiral_top_action
++#print axioms TargetA.period8_chiral_bottom_action
++#print axioms TargetA.period8_chiral_coordinate_action
++#print axioms TargetA.period8_chiral_top_equation
++#print axioms TargetA.period8_chiral_bottom_equation
++#print axioms TargetA.period8_chiral_top_nonzero
++#print axioms TargetA.period8_chiral_squared_top_eigen
++#print axioms TargetA.period8_chiral_eigen_square_root
++#print axioms TargetA.period8_fiber_inverse_intertwines
++#print axioms TargetA.period8_fiber_eigen_square_root
++#print axioms TargetA.period8_fiber_polynomialC_eq
++#print axioms TargetA.period8_fiber_real_eigen_square_lt_bound
++#print axioms TargetA.period8_fiber_isHermitian
++#print axioms TargetA.period8_squared_block_characteristic_det
++#print axioms TargetA.period8_root_gives_squared_block_eigenvector
++#print axioms TargetA.period8_squared_eigenvector_gives_chiral_eigenvector
++#print axioms TargetA.period8_polynomial_root_gives_fiber_eigenvector
++#print axioms TargetA.period8_unit_parameter_mem_interval
++#print axioms TargetA.period8_unit_fiber_eigen_square_le_top
++#print axioms TargetA.period8_unit_fiber_top_attained
++#print axioms TargetA.period8_std_char_re
++#print axioms TargetA.period8_nonzero_phase_re_le_first
++#print axioms TargetA.period8_antiperiodic_phase_re_le_first
++#print axioms TargetA.period8_first_phase_antiperiodic
++#print axioms TargetA.period8_first_phase_re
++#print axioms TargetA.period8_bound_positive
++#print axioms TargetA.period8_boundary_factorization
++#print axioms TargetA.period8_edge_is_boundary_root
++#print axioms TargetA.period8_at_two_positive
++#print axioms TargetA.period8_polynomial_monotone_in_flux
++#print axioms TargetA.period8_polynomial_positive
++#print axioms TargetA.period8_root_lt_bound
++#print axioms TargetA.period8_cell_to_raw_right_inverse
++#print axioms TargetA.period8_raw_to_cell_smul
++#print axioms TargetA.period8_cell_eigen_gives_raw_periodic_eigen
++#print axioms TargetA.period8_cell_antiperiodic_gives_raw_half_shift
++#print axioms TargetA.period8_half_shift_is_double_lift
++#print axioms TargetA.period8_antiperiodic_cell_eigen_gives_raw_minus_eigenvector
++#print axioms TargetA.period8_first_plane_wave_nonzero
++#print axioms TargetA.period8_first_plane_wave_action
++#print axioms TargetA.period8_first_plane_wave_antiperiodic
++#print axioms TargetA.period8_first_fiber_eigen_gives_raw_minus_eigenvector
++#print axioms TargetA.period8_edge_lt_bound
++#print axioms TargetA.period8_edge_ge_fifteen_halves
++#print axioms TargetA.period8_edge_quadratic
++#print axioms TargetA.period8_at_two_nonneg_of_edge_le
++#print axioms TargetA.period8_at_two_pos_of_edge_lt
++#print axioms TargetA.period8_flux_factor_pos
++#print axioms TargetA.period8_polynomial_ge_at_two_of_edge_le
++#print axioms TargetA.period8_polynomial_pos_of_edge_le_flux_lt
++#print axioms TargetA.period8_root_lt_edge
++#print axioms TargetA.period8_root_le_edge
++#print axioms TargetA.period8_edge_root_iff
++#print axioms TargetA.gapCharge_mod_four
++#print axioms TargetA.sector_after_gap
++#print axioms TargetA.r2_seed106_ldl_rat
++#print axioms TargetA.r2_seed106_lower_rat
++#print axioms TargetA.r2_seed106_lower_diagonal_rat
++#print axioms TargetA.r2_seed106_diagonal_pos_rat
++#print axioms TargetA.r2_seed106_ldl_real
++#print axioms TargetA.r2_seed106_diagonal_pos
++#print axioms TargetA.r2_seed106_lower_triangular
++#print axioms TargetA.r2_seed106_lower_diagonal
++#print axioms TargetA.r2_seed106_lower_det
++#print axioms TargetA.r2_seed106_margin_posDef
++#print axioms TargetA.r2_posDef_submatrix_equiv
++#print axioms TargetA.r2_strict_schur_criterion
++#print axioms TargetA.r2_terminal_posDef_iff
++#print axioms TargetA.r2_terminal_core_blocks
++#print axioms TargetA.r2_terminal_core_symmetric_blocks
++#print axioms TargetA.r2_terminal_cross_correction
++#print axioms TargetA.r2_terminal_H_corrections
++#print axioms TargetA.r2_terminal_EPlus_posDef_iff
++#print axioms TargetA.twisted_block_symmetric
++#print axioms TargetA.twisted_block_trace_zero
++#print axioms TargetA.twisted_block_characteristic
++#print axioms TargetA.sqrt_two_gt_141_over_100
++#print axioms TargetA.sqrt_two_add_sqrt_two_gt_923_over_500
++#print axioms TargetA.sqrt_two_add_nested_gt_1961_over_1000
++#print axioms TargetA.twisted_at_thirty_two_gt_bound
++#print axioms TargetA.twisted_multiple_of_eight_gt_bound
++#check TargetA.r2_seed106_ldl_rat
++#check TargetA.r2_seed106_diagonal_pos_rat
++#check TargetA.r2_seed106_lower_det
++#check TargetA.r2_seed106_margin_posDef
++#check TargetA.r2_terminal_EPlus_posDef_iff
