@@ -1,0 +1,128 @@
+\documentclass[11pt]{article}
+\usepackage[a4paper,margin=28mm]{geometry}
+\usepackage{amsmath,amssymb,amsthm,mathtools,booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern,microtype}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{xurl}
+\usepackage[hidelinks]{hyperref}
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{lemma}[theorem]{Lemma}
+\newtheorem{proposition}[theorem]{Proposition}
+\newtheorem{corollary}[theorem]{Corollary}
+\theoremstyle{remark}\newtheorem{remark}[theorem]{Remark}
+\newcommand{\R}{\mathbb R}
+\newcommand{\C}{\mathbb C}
+\newcommand{\Z}{\mathbb Z}
+\newcommand{\spec}{\operatorname{spec}}
+\newcommand{\diag}{\operatorname{diag}}
+\newcommand{\tr}{\operatorname{tr}}
+\newcommand{\norm}[1]{\left\lVert#1\right\rVert}
+\newcommand{\rstar}{r_*}
+\newcommand{\tw}{\rho_{\mathrm{tw}}}
+\newcommand{\cone}{c_1}
+\newcommand{\czero}{c_0}
+\newcommand{\etaedge}{\eta_*}
+\title{Uniform Schur bounds for unequal cells in signed cycle squares}
+\author{}
+\date{Revised research manuscript\quad 5 October 2026}
+\begin{document}
+\maketitle
+\begin{abstract}
+We prove spectral bounds for explicit signed cycle squares built from an
+arbitrary positive number of unequal prescribed cells. A four-dimensional
+Riccati recurrence with exact rational premises gives a common
+six-dimensional limiting boundary matrix, whose degree-two assembly error
+is independent of the number of cells. For either Hamilton holonomy,
+the construction satisfies a squared spectral-radius bound of
+$7.92$ when every cell has length at least $106$, and $7.90537$ when every
+cell has length at least $202$. The one-cell family satisfies the
+sharper bound at every admissible size, and its supremum lies in an interval
+of width $10^{-6}$. Exact finite bases complete explicit competitors to the
+twisted signing at orders $32,40$ and every even order at least $48$.
+This recovers the previously known witness range through a common analytic
+mechanism. We also present the exact period-eight holonomy calculation and
+its application to the revised global-optimality conjecture. Unrestricted
+minima and minimizing signings are not determined.
+\end{abstract}
+\input{sections/01_introduction}
+\input{sections/02_holonomy}
+\input{sections/03_period_eight}
+\input{sections/04_chain_reduction}
+\input{sections/05_uniform_estimates}
+\input{sections/06_cells}
+\input{sections/07_finite_completion}
+\input{sections/08_verification}
+
+\begin{thebibliography}{9}
+\small
+\bibitem{Suvagiya2026old}
+V. Suvagiya,
+\emph{Signed circulants at the Ramanujan bound},
+arXiv:2607.18334v1, 19 July 2026;
+withdrawn in version 2, 22 September 2026, and merged into
+\cite{Suvagiya2026}.
+\url{https://arxiv.org/abs/2607.18334}.
+
+\bibitem{Suvagiya2026}
+V. Suvagiya,
+\emph{Parity families and signed spectra: kernel averaging,
+near-Ramanujan bounds, and exact circulant models},
+arXiv:2607.17343v2, 22 September 2026,
+Theorem 26, Remark 27, and Conjecture 28.
+\url{https://arxiv.org/abs/2607.17343v2}.
+
+\bibitem{LuoRoy2026}
+Y. Luo and A. Roy,
+\emph{Homological spectral graph theory and weighted cycle counting},
+arXiv:2403.01550v4, 4 August 2026.
+\url{https://arxiv.org/abs/2403.01550v4}.
+
+\bibitem{ChenDamBu2024}
+L. Chen, E. R. van Dam, and C. Bu,
+Spectra of power hypergraphs and signed graphs via parity-closed walks,
+\emph{Journal of Combinatorial Theory, Series A} \textbf{207} (2024),
+105909.
+\url{https://doi.org/10.1016/j.jcta.2024.105909}.
+
+\bibitem{EarlierPeriodEight}
+Y. Zhao and J. Li,
+\emph{Half-Cell Flux and an Exactly Solvable Period-Eight Phase in Signed
+Cycle Squares}, unpublished project manuscript, Section 4,
+repository snapshot of 14 September 2026, commit
+\nolinkurl{085ea698475b7b32e0ae57457ec903a922248f69}.
+\href{https://github.com/whzy3185/math/blob/085ea698475b7b32e0ae57457ec903a922248f69/research/paper_strengthening/manuscript_period8_jgt/frontmatter_en.tex}{Title and author record};
+\href{https://github.com/whzy3185/math/blob/085ea698475b7b32e0ae57457ec903a922248f69/research/paper_strengthening/manuscript_period8_jgt/sections_en/04_period8_exact.tex}{exact period-eight source}.
+
+\bibitem{EarlierTargetA}
+\texttt{whzy3185/math} project,
+\emph{Finite Structured Counterexample Tail}, unpublished Target A
+proof package (no author line in the source), repository snapshot of
+1 September 2026, commit
+\nolinkurl{44ff33a89294056907d0b909d68a8db27371c4f0}.
+\href{https://github.com/whzy3185/math/blob/44ff33a89294056907d0b909d68a8db27371c4f0/research/proofs/task54/TARGET_A_FINITE_STRUCTURED_COUNTEREXAMPLE_TAIL.md}{Frozen construction and finite-tail source}.
+
+\bibitem{C029Supplement}
+\texttt{whzy3185/math} project,
+\emph{C029: holonomy and Schur-tail research increment},
+reproducibility supplement, 5 October 2026, commit
+\nolinkurl{12e3389c07cc5a632023a1f6b972f9baf450a6a0}.
+\href{https://github.com/whzy3185/math/tree/12e3389c07cc5a632023a1f6b972f9baf450a6a0/research/c029_holonomy_schur_20261005}{Frozen supplement};
+\href{https://github.com/whzy3185/math/archive/12e3389c07cc5a632023a1f6b972f9baf450a6a0.zip}{repository archive at the same commit}.
+
+\bibitem{BelardoBrunetti2024}
+F. Belardo and M. Brunetti,
+Limit points for the spectral radii of signed graphs,
+\emph{Discrete Mathematics} \textbf{347}(2) (2024), 113745.
+\url{https://doi.org/10.1016/j.disc.2023.113745}.
+
+\bibitem{KannanPragada2023}
+M. R. Kannan and S. Pragada,
+Signed spectral Tur\'an type theorems,
+\emph{Linear Algebra and its Applications} \textbf{663} (2023), 62--79.
+\url{https://doi.org/10.1016/j.laa.2023.01.002}.
+\href{https://arxiv.org/abs/2204.09870v3}{Author preprint, version 3}.
+
+\end{thebibliography}
+\end{document}

@@ -1,0 +1,223 @@
+\section{Uniform Riccati and boundary estimates}
+\label{sec:uniform}
+
+The finite premises must control both the interior pivots and their
+responses at the retained boundary. The column-weight estimate below
+contracts the Riccati map; the row-weight estimate then makes the boundary
+responses summable. The same analytic proof applies to either parameter
+column above.
+For a real symmetric matrix $U$, use the order-unit norm
+\[
+ |U|_P=\inf\{d\ge0:-dP\preceq U\preceq dP\}
+      =\norm{P^{-1/2}UP^{-1/2}}_2.
+\]
+On the closed ball $\mathcal K=\{X=X^T:|X-Z|_P\le\delta\}$,
+$P\prec2I$ gives $\norm{X-Z}_2\le2\delta=:e$.
+The center bounds imply $X\succ I/3$, $\norm{X^{-1}}_2\le3$, and
+\[
+ \norm{X^{-1}-Z^{-1}}_2\le6e.
+\]
+Since $\norm{E_\pm}_F^2=14$, putting $Y_X=F_+(X)$ yields
+\[
+ \norm{Y_X-Y}_2\le84e<1/6,\qquad
+ Y_X\succ I/3,\qquad
+ \norm{Y_X^{-1}-Y^{-1}}_2\le504e.
+\]
+For $T(X)=X^{-1}E_+Y_X^{-1}E_-$, a two-term product difference gives
+\begin{equation}
+ \norm{T(X)-T_Z}_2\le14(6\cdot3+2\cdot504)e=14364e.
+ \label{eq:Tperturb}
+\end{equation}
+The norm conversion factor from the Euclidean norm to either
+\[
+ \norm T_{P,\mathrm{col}}=\norm{P^{1/2}TP^{-1/2}}_2,
+ \qquad
+ \norm T_{Q,\mathrm{row}}=\norm{Q^{-1/2}TQ^{1/2}}_2
+\]
+is at most $\sqrt{20/9}<3/2$. Thus the perturbation in either norm is
+less than $43092\delta<10^{-4}$. Both parameter columns satisfy
+$\sqrt\kappa+10^{-4}<q$, and hence throughout the ball
+\begin{equation}
+ T(X)^TPT(X)\prec q^2P,\qquad T(X)QT(X)^T\prec q^2Q.
+ \label{eq:dual-contractions}
+\end{equation}
+
+The derivative is $D\Phi_X[U]=T(X)^TUT(X)$. The first inequality in
+\eqref{eq:dual-contractions} therefore bounds its order-unit norm by
+$\theta|U|_P$, where $\theta=q^2$. Integration along a line segment in
+$\mathcal K$ proves the same Lipschitz bound for $\Phi$. The center
+residual has order-unit norm below $\delta/36$. Both columns satisfy
+$1/36+\theta<1$, so
+\[
+ |\Phi(X)-Z|_P<\delta/36+\theta\delta<\delta.
+\]
+Banach's theorem gives a fixed point $X_*\in\mathcal K$. The actual
+even orbit starts at $Z$, whence
+\begin{equation}
+ \norm{X_{J+2s}-X_*}_2\le4\delta\theta^s\qquad(s\ge0).
+ \label{eq:pivot-decay}
+\end{equation}
+All these pivots and their intermediate odd partners exceed $I/3$.
+Together with Lemma~\ref{lem:finite-premises}, this proves positivity of
+every pivot at either energy.
+
+\subsection{Response decay and the limiting core}
+
+Two steps in \eqref{eq:recurrence} send $R$ to $RT(X)$ and $W$ to
+$T(X)^TW$. Their natural norms are
+\[
+ \norm{RQ^{1/2}}_2,\qquad \norm{Q^{1/2}W}_2.
+\]
+The second inequality in \eqref{eq:dual-contractions} contracts both
+by $q$. The table satisfies $a^2>(10/9)\zeta$; the response premises and
+$Q\succ(9/10)I$ give
+\begin{equation}
+ \norm{R_{J+2s}}_2,\ \norm{W_{J+2s}}_2<a q^s.
+ \label{eq:even-response}
+\end{equation}
+A one-step transfer has norm at most $3\sqrt{14}<12$. Consequently
+\begin{equation}
+ \norm{R_a}_2,\ \norm{W_a}_2\le bq^s
+ \quad\text{for }a\in\{J+2s,J+2s+1\}.
+ \label{eq:pair-response}
+\end{equation}
+The orientation $TQT^T$ is essential; a column-only estimate would not
+establish these two response bounds.
+
+Define absolutely convergent series along the actual open trajectory:
+\begin{align*}
+ G_\infty&=G_0-\sum_{a\ge0}R_aX_a^{-1}R_a^T,\\
+ H_\infty&=H_0-\sum_{a\ge0}W_a^TX_a^{-1}W_a,\\
+ C_\infty&=C_0-\sum_{a\ge0}R_aX_a^{-1}W_a.
+\end{align*}
+Convergence follows from \eqref{eq:pair-response} and
+$\norm{X_a^{-1}}_2\le3$ after the entrance. Set
+\begin{equation}
+ S_\infty=\begin{pmatrix}
+ G_\infty&C_\infty\\C_\infty^T&H_\infty-E_+^TX_*^{-1}E_+
+ \end{pmatrix}.
+ \label{eq:Sinfty}
+\end{equation}
+There is no replacement of every pivot in the sums by $X_*$.
+Common initial terms therefore cancel exactly when a finite core is
+compared with this limit.
+
+\begin{proposition}[Complete one-cell tail]\label{prop:tail}
+For even $\ell\ge J+2$, write $p=\ell-2=J+2s$. Then
+\begin{align}
+ \norm{S_\ell(c)-S_\infty}_2
+ &\le B_s,\notag\\
+ B_s&=\frac{24b^2q^{2s}}{1-q^2}+48aq^s+576\delta\theta^s
+      <\epsilon.\label{eq:Btail}
+\end{align}
+Furthermore $S_\infty\succ(\gamma-\epsilon)I_6$ and
+$S_\ell(c)\succ(\gamma-2\epsilon)I_6$.
+\end{proposition}
+\begin{proof}
+Each quadratic or mixed Schur suffix after $p$ is bounded by
+\[
+ T_s=\frac{6b^2q^{2s}}{1-q^2}.
+\]
+There are two single-block increments per pair, each at most
+$3b^2q^{2v}$; including the term at $p$ only enlarges the bound.
+The terminal corrections in \eqref{eq:single-core} have norms at most
+\[
+ \norm{R_pX_p^{-1}E_+}_2\le12a q^s,
+ \qquad
+ \norm{W_p^TX_p^{-1}E_++E_+^TX_p^{-1}W_p}_2\le24a q^s.
+\]
+The inverse identity and \eqref{eq:pivot-decay} give
+\[
+ \norm{X_p^{-1}-X_*^{-1}}_2\le36\delta\theta^s,
+ \qquad
+ \norm{E_+^T(X_p^{-1}-X_*^{-1})E_+}_2\le576\delta\theta^s.
+\]
+Thus the errors in the $G,C,H$ blocks are bounded respectively by
+$T_s$, $T_s+12aq^s$, and $T_s+24aq^s+576\delta\theta^s$.
+Using
+\[
+ \norm{\begin{pmatrix}U&V\\V^*&Z\end{pmatrix}}_2
+ \le\norm U_2+2\norm V_2+\norm Z_2
+\]
+proves \eqref{eq:Btail}. Its right side decreases with $s$, and exact
+rational arithmetic gives
+\begin{equation}
+ B_0=
+ \begin{cases}
+ 251089/156250000<1/500,&c=\czero,\\
+ 583333407/109375000000000000<10^{-8},&c=\cone.
+ \end{cases}
+ \label{eq:B0}
+\end{equation}
+Compare the certified seed $S_{J+2}(c)\succ\gamma I_6$ to the limit,
+and then the limit to any other finite core. These are two separate
+errors, giving the two stated lower bounds.
+\end{proof}
+
+The resulting core margins are $2/125$ and $49/50000000$, respectively.
+Schur congruence transfers positivity to the full matrix; it does not
+transfer these numbers as Euclidean eigenvalue gaps of the full matrix.
+
+\subsection{Every unit complex phase}
+\label{sec:phase}
+
+For $h=8j+2$ and $|z|=1$, let $A_h(z)$ be the Hermitian cell operator
+induced by
+\[
+ (Au)_i=u_{i-1}+u_{i+1}+\tau_{i-2}u_{i-2}+\tau_i u_{i+2},
+ \qquad u_{i+h}=zu_i,\qquad \tau=w_j\text{ periodically extended}.
+\]
+At $h\ge18$, the two wrap blocks of $cI-A_h(z)^2$ are
+$C_0(z)=\bar z C_0$ and $W_0(z)=\bar z W_0$; all other initial blocks
+are unchanged. This follows directly from the two-walk paths, each wrap
+path crossing the cut once in the negative direction.
+The Hermitian Schur recurrence gives
+\[
+ X_p(z)=X_p,\ R_p(z)=R_p,\ G_p(z)=G_p,\ H_p(z)=H_p,
+ \quad C_p(z)=\bar z C_p,\ W_p(z)=\bar z W_p.
+\]
+Invariance of $H_p$ uses conjugate transpose and $|z|=1$.
+The physical terminal coupling remains $E=E_+$, so it is added to
+$\bar zW_p$, not multiplied by the phase. Put
+\begin{align*}
+ g_p&=G_p-R_pX_p^{-1}R_p^T,&
+ c_p&=C_p-R_pX_p^{-1}W_p,\\
+ h_p&=H_p-W_p^TX_p^{-1}W_p-E^TX_p^{-1}E,&
+ u_p&=R_pX_p^{-1}E,\qquad v_p=W_p^TX_p^{-1}E.
+\end{align*}
+The exact terminal core and its unitary conjugate are
+\begin{align}
+ S_\ell(z)&=\begin{pmatrix}
+ g_p&\bar z c_p-u_p\\ *&h_p-zv_p-\bar z v_p^T
+ \end{pmatrix},\notag\\
+ U_z^*S_\ell(z)U_z&=\begin{pmatrix}
+ g_p&c_p-zu_p\\ *&h_p-zv_p-\bar z v_p^T
+ \end{pmatrix},\quad U_z=\diag(I_2,zI_4).
+ \label{eq:phase-core}
+\end{align}
+The lower-left blocks are conjugate transposes. The limit of
+\eqref{eq:phase-core} is the same $S_\infty$ for every phase. Moreover,
+all the finite tail estimates in Proposition~\ref{prop:tail} are unchanged
+by the factors $z$, giving a uniform bound before taking any limit.
+
+\begin{corollary}\label{cor:phase}
+For every $|z|=1$,
+\[
+ h\ge106\Longrightarrow\rho(A_h(z))^2<\czero,
+ \qquad h\ge202\Longrightarrow\rho(A_h(z))^2<\cone,
+\]
+where $h\equiv2\pmod8$ and the word is $w_{(h-2)/8}$.
+For any number of identical cells and either holonomy, the corresponding
+finite signing obeys the same applicable bound.
+\end{corollary}
+\begin{proof}
+The uniformly positive pivots and phase core imply $cI-A_h(z)^2\succ0$.
+For $r$ identical cells with total holonomy $\alpha$, the maps
+\[
+ (F_zv)_{ah+s}=r^{-1/2}z^a v_s\qquad(z^r=\alpha)
+\]
+give an orthogonal decomposition of the full graph into the $A_h(z)$
+fibers, by the same finite geometric-sum argument as
+Lemma~\ref{lem:bloch}. The seam identity is precisely $z^r=\alpha$.
+Every fiber is bounded, so the full radius is bounded.
+\end{proof}

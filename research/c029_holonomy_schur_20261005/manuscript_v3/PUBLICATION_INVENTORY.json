@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "title": "Uniform Schur bounds for unequal cells in signed cycle squares",
+  "revision": "v3",
+  "date": "2026-10-05",
+  "pages": 20,
+  "pdf_sha256": "ab94f1fd9c19f3ee60d927cafeb4066fe11eaf96161d485681ecae448dad179a",
+  "formal_checkpoint_audit_targets": 237,
+  "formal_scope": "Exact-radius checkpoint only; the full Schur/finite-completion proof is not claimed Lean verified. Later formal additions are separate.",
+  "computational_suite_entry_points": 13,
+  "raw_certificate_python_files": 14,
+  "source_provenance": {
+    "supplement_commit": "12e3389c07cc5a632023a1f6b972f9baf450a6a0",
+    "formal_baseline_commit": "7b6a351cc5f8f83f5527b7fc547f0a865ea50cf2",
+    "formal_subbundle": "lean/exact_radius",
+    "axiom_audit_target_count": 237
+  },
+  "source_changes": [
+    {
+      "path": "supplement/certificates/unequal_cells/verify_unequal_cells.py",
+      "upstream_sha256": "842bdb021805f664f2249999cc1403e3150175f6e1126d338492a7b9deb542a1",
+      "supplied_sha256": "ad5bef2724a90032e7e4457577c53743eb5f46e712f0b6ecdc84e7635378a78d",
+      "description": "Requires both stated order-60 and order-76 strict obstructions in the final conjunction and stores their exact pivot prefixes."
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8AntiperiodicBridge.lean",
+      "upstream_sha256": "0a8da5e9dbad5dc636c75b1c76c32cbed27c26a7e19ee7533eaf8cebb81ef9f7",
+      "supplied_sha256": "725d0d290a260ec4a5fefeabf1691976f5b8c9808aa3a3a75ec989a07378c9c5",
+      "description": "One redundant evidential qualifier removed from a non-executable introductory comment. No formal definition, statement, or proof token changed."
+    }
+  ],
+  "inventory_scope": "All selected payload files; this inventory and SHA256SUMS are excluded from the files array to avoid self-reference.",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 1951,
+      "sha256": "bc247b4833ddb48cc5973a0f8396be3088d9888ccb7f5046dab807c27020ec1f"
+    },
+    {
+      "path": "REPRODUCTION.md",
+      "bytes": 3382,
+      "sha256": "ad511a3eee658905eb0a1e778f1f9241105fdedd3e92d9647e066074d449540b"
+    },
+    {
+      "path": "build_environment.sh",
+      "bytes": 828,
+      "sha256": "49a6c402bec88de6b2963d1fae456a8561441c1a78c2c6db90ead23f0a8f2c09"
+    },
+    {
+      "path": "manuscript.pdf",
+      "bytes": 429350,
+      "sha256": "ab94f1fd9c19f3ee60d927cafeb4066fe11eaf96161d485681ecae448dad179a"
+    },
+    {
+      "path": "manuscript.tex",
+      "bytes": 5607,
+      "sha256": "a277326a62ee35d56ce3ffd5eb4087a0d427e773d86db8c7ddd0e3a76bd885c0"
+    },
+    {
+      "path": "sections/01_introduction.tex",
+      "bytes": 8325,
+      "sha256": "fa0a0588cb86029a09b2d524cdc5a5b9ddac69c8b756e568e621aab16e0a5bc0"
+    },
+    {
+      "path": "sections/02_holonomy.tex",
+      "bytes": 3249,
+      "sha256": "b005799cd7a43470e883dfce974b3175d82fe20d59bc0c35632c6cebe55e295b"
+    },
+    {
+      "path": "sections/03_period_eight.tex",
+      "bytes": 5488,
+      "sha256": "e20b2c130f2dd820741e74111913b99f73947aec89b4b8751c3c96968c675e38"
+    },
+    {
+      "path": "sections/04_chain_reduction.tex",
+      "bytes": 6326,
+      "sha256": "ead746e499c82d1493e295b18242b704003f10dce2d3bc572a3b104ea257b399"
+    },
+    {
+      "path": "sections/05_uniform_estimates.tex",
+      "bytes": 8021,
+      "sha256": "94d55af4adbd4c1fe1e2ff6d334c5304642300267eedd86f12d0409fde4bf0ec"
+    },
+    {
+      "path": "sections/06_cells.tex",
+      "bytes": 6923,
+      "sha256": "9c0cbc549f19ba9708edcc3c9f98facc97ff6eeafc06d7731657499d1c9db5b9"
+    },
+    {
+      "path": "sections/07_finite_completion.tex",
+      "bytes": 6989,
+      "sha256": "b2fc50e03966591efcf00565b77bad4081ddb0669435c453ebde01a908c92ecc"
+    },
+    {
+      "path": "sections/08_verification.tex",
+      "bytes": 8456,
+      "sha256": "cf6ae1a6fae371917703051f6282d02e802e456df0176fbbe22a1a9c640dcfed"
+    },
+    {
+      "path": "sections/boundary_figure.tex",
+      "bytes": 1907,
+      "sha256": "8123390ea2fccc56211ead7dc9c7b4fc0b42178f86bcfefe9f8d423c9cb63036"
+    },
+    {
+      "path": "supplement/certificates/analytic/verify_r2_certificate.py",
+      "bytes": 7630,
+      "sha256": "9bfe38f1ef4d69528544d296554a1ff9e356f41a74f244daec650f8e74c62b97"
+    },
+    {
+      "path": "supplement/certificates/audit/replay_antiperiodic.py",
+      "bytes": 2540,
+      "sha256": "d45851cecf75b99af27cfda54ea1605b3c93bff652dc9a9e58af7bb8ab997cb2"
+    },
+    {
+      "path": "supplement/certificates/audit/replay_direct_graph_seed.py",
+      "bytes": 4152,
+      "sha256": "4e0a3335b3560d53391e5c6902cb00ec102e7a175e10bc5d377c176c5551792e"
+    },
+    {
+      "path": "supplement/certificates/audit/replay_local_from_direct_graph.py",
+      "bytes": 2378,
+      "sha256": "31552b6299996d7b92af9edac9d8628eb80831ab08abe474d729b2d4b1adfd34"
+    },
+    {
+      "path": "supplement/certificates/new_conjecture/verify_antiperiodic_counterexample.py",
+      "bytes": 5891,
+      "sha256": "c93e9ae6b550dab4f42e2193f14ef35ad553ac925a9155b843bfd865c3dcecfb"
+    },
+    {
+      "path": "supplement/certificates/r4_pilot/audit/replay_r4_phase.py",
+      "bytes": 7004,
+      "sha256": "da25d13fa429d4f4dff2f8a56cb9ea709a67eab424073689c2db390fbb83b78a"
+    },
+    {
+      "path": "supplement/certificates/r4_pilot/verify_r4_pilot.py",
+      "bytes": 6666,
+      "sha256": "99d15f9497d4297aa3db1e5bdcfafa59fdb4e1acabf6646c0b2e4c8e41e6170d"
+    },
+    {
+      "path": "supplement/certificates/r6_completion/audit/replay_r6.py",
+      "bytes": 4465,
+      "sha256": "f07de9f32d184c78d977fbfc8089046666e6743cdf0dcdf8c189d0d0e22291ed"
+    },
+    {
+      "path": "supplement/certificates/r6_completion/verify_r6_completion.py",
+      "bytes": 3920,
+      "sha256": "1dbb6f69b8b8475766c62086be4a53f991e465d2b7c8db719c4d8a536acef0e2"
+    },
+    {
+      "path": "supplement/certificates/strengthening/audit/replay_stronger_cap.py",
+      "bytes": 6157,
+      "sha256": "fa9de14a93a7e9a356660213fd034f5ebc522edb36e4b93b35619a495c8370b0"
+    },
+    {
+      "path": "supplement/certificates/strengthening/verify_uniform_cap.py",
+      "bytes": 9315,
+      "sha256": "e9d6af6966f16439329c26fa91f7f4c8de84346e5371d9bae981e01055c09ab2"
+    },
+    {
+      "path": "supplement/certificates/unequal_cells/assembly.py",
+      "bytes": 4068,
+      "sha256": "75dcf4274217c5bcc16c94e957e5dbd28f5dc9d316a7f2c2bf6e1cf5800709b3"
+    },
+    {
+      "path": "supplement/certificates/unequal_cells/audit/independent_assembly.py",
+      "bytes": 8614,
+      "sha256": "08bf22f7802cc25a8ffd7de7fe177f73fbe157e610d65261019560a7cdabc6f3"
+    },
+    {
+      "path": "supplement/certificates/unequal_cells/verify_unequal_cells.py",
+      "bytes": 4657,
+      "sha256": "ad5bef2724a90032e7e4457577c53743eb5f46e712f0b6ecdc84e7635378a78d"
+    },
+    {
+      "path": "supplement/formal/ExactRadiusAxiomAudit.lean",
+      "bytes": 13189,
+      "sha256": "e0446e0dc1189bad4e4ffb94340f3ece81ddc84a1b910710fd7cc4ba8464ec80"
+    },
+    {
+      "path": "supplement/formal/TargetA/AllTheorems.lean",
+      "bytes": 297,
+      "sha256": "563305f8569a9a72a934c3bd725f42ca45fc7184ec497654e59ac78b071f89ba"
+    },
+    {
+      "path": "supplement/formal/TargetA/Definitions.lean",
+      "bytes": 557,
+      "sha256": "57e1474341337231cf8aeedb7cfddbf137c6005da4432162e9fdccf2f1c127c0"
+    },
+    {
+      "path": "supplement/formal/TargetA/FiniteBloch.lean",
+      "bytes": 8895,
+      "sha256": "7ef127215488d195c936f341ff752a7026857685783ba2d9e69cf56910237e61"
+    },
+    {
+      "path": "supplement/formal/TargetA/HamiltonGauge.lean",
+      "bytes": 12031,
+      "sha256": "ad9c2ce1b2fac081e803fe5cd227de85ceba0ef75e4426817c9dd1d49c30b57f"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8AntiperiodicBridge.lean",
+      "bytes": 4473,
+      "sha256": "725d0d290a260ec4a5fefeabf1691976f5b8c9808aa3a3a75ec989a07378c9c5"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8AntiperiodicCells.lean",
+      "bytes": 4595,
+      "sha256": "4c89bd2dc1c0216a0aa2ae04b205ad44c5f6203eef1d16f8012656a4b0566707"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8BlochAction.lean",
+      "bytes": 22790,
+      "sha256": "5d9e5d545591920c38a13312e41add49d59e66e0b7c5193c9c5f411a4f8b6e9c"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8ChiralBlock.lean",
+      "bytes": 9131,
+      "sha256": "28a13da079382b773f9f95313db69d331abcc3e8c014e0e678db7fe4c908cf3c"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8DoubleCover.lean",
+      "bytes": 14526,
+      "sha256": "1695e3ca392be8a726e59ac0ae0833b1624145abd849c665be57628526ef861e"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8ExactFiniteRadius.lean",
+      "bytes": 7538,
+      "sha256": "097d607cbfd4cf199f1900865bc198174214d9ab867e437c4ed764bf5a6a9b03"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8ExactRoot.lean",
+      "bytes": 4140,
+      "sha256": "0f9a6a39a5b598ad56504ff1964e6d5b8a5cf1dfe6178c6cebae0755caca0ad4"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8Fiber.lean",
+      "bytes": 21328,
+      "sha256": "6fd6d51b87f98a65487f7175d20ac92547fda9d62508adf65e81578ab283824f"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8FiberAttainment.lean",
+      "bytes": 7720,
+      "sha256": "0fde8baf09d1936f5df7a96041877e44d465f89bf02f7375a27c1c408a824205"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8PhaseMaximum.lean",
+      "bytes": 3919,
+      "sha256": "d8697f0fa8f52706e869cc5e486859617ada5769edfacf0ea297e86664ce8b67"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8Polynomial.lean",
+      "bytes": 3995,
+      "sha256": "e4fdd7a952a88962d0f71558cd4cd18dc3ebab4022d57950b0166c101ee44bc8"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8ReverseBloch.lean",
+      "bytes": 6686,
+      "sha256": "f42abe0bb70bc25d5dae48fe23f472d313422f8b760596db9e91cfb5433c1c9a"
+    },
+    {
+      "path": "supplement/formal/TargetA/Period8SharpEdge.lean",
+      "bytes": 4277,
+      "sha256": "dda8a10fd3e999841c631293140582935b4fdbaea800023630325bdafc4a1612"
+    },
+    {
+      "path": "supplement/formal/TargetA/PhaseSlip.lean",
+      "bytes": 341,
+      "sha256": "307c2f65dc2dad57fef04df13963325f8dcfeb175037e4673a8831ce33294022"
+    },
+    {
+      "path": "supplement/formal/TargetA/TwistedBlock.lean",
+      "bytes": 804,
+      "sha256": "d9518c5d2e8b1b6df66fee7275669a77477a928b7068f1dff329803faf694f47"
+    },
+    {
+      "path": "supplement/formal/TargetA/TwistedThreshold.lean",
+      "bytes": 2874,
+      "sha256": "6bd420efd661bc2b67a66826ca47ea1c6ca41c656b1d20b194d4c54d155addac"
+    },
+    {
+      "path": "supplement/formal/TargetA.lean",
+      "bytes": 27,
+      "sha256": "fa655f28cf0f974a4fc6638ea97b49f14181ca8a6cb6786e79830a8b00843f2c"
+    },
+    {
+      "path": "supplement/formal/lake-manifest.json",
+      "bytes": 3121,
+      "sha256": "bcf1b2418e4dbd801c48073899e6596885ad82ad71972d1cd21578926294fa85"
+    },
+    {
+      "path": "supplement/formal/lakefile.lean",
+      "bytes": 193,
+      "sha256": "cbc44c2ebb703d667340b02483a2240be472667aca43c6ec7fd9a198c566fba7"
+    },
+    {
+      "path": "supplement/formal/lean-toolchain",
+      "bytes": 25,
+      "sha256": "3aac669c7a910ec2389f4e4f921b605adf6ebf2d1e0c9b9cd0be4d33f3f5db71"
+    },
+    {
+      "path": "supplement/requirements.txt",
+      "bytes": 14,
+      "sha256": "25f9f1fb1988b230147a1d3092d34e09c069eb7a6c6d6df46b3973b9f2d36efc"
+    },
+    {
+      "path": "supplement/run_checks.py",
+      "bytes": 1140,
+      "sha256": "52aa6307b8b896b8a14b1f6288b7fe0cdf31ec2b3a96554532bcb62a0710c857"
+    }
+  ]
+}

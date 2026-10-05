@@ -1,0 +1,180 @@
+\section{Introduction and main results}
+
+For $N\ge8$, the cycle square $C_N(1,2)$ has vertex set $\Z/N\Z$ and
+edges $\{i,i+1\}$ and $\{i,i+2\}$. A real signing assigns $\pm1$ to each
+edge. For its symmetric adjacency matrix $A$, write
+\[
+ \rho(A)=\max\{|\lambda|:\lambda\in\spec(A)\},
+ \qquad \mu_N=\min_\sigma\rho(A_\sigma).
+\]
+The minimization controls both spectral edges. The benchmark in the
+original twisted-optimality question \cite{Suvagiya2026old} is
+\begin{equation}
+ \tw(N)^2=4+2\cos\frac{2\pi}{N}+2\cos\frac{4\pi}{N}
+ \qquad(N\text{ even},\ N\ge8).
+ \label{eq:twisted}
+\end{equation}
+
+We seek an explicit family whose spectral bound survives two changes at
+once: its cells may have different lengths, and their number is unrestricted.
+A fixed-period calculation alone does not cover this setting. Our main
+result follows by eliminating each cell interior, retaining its boundary
+coordinates, and controlling the assembled cyclic boundary matrix with an
+error independent of the number of cells. The cells are built from the
+period-eight word
+\begin{equation}
+ t=(1,1,-1,1,-1,-1,1,-1),\qquad
+ w_j=t^j\mathbin{\|}(1,-1),\qquad h_j=8j+2\quad(j\ge1).
+ \label{eq:word}
+\end{equation}
+Here $\|$ denotes concatenation. Appending $(1,-1)$ adds two vertices to
+the period-eight bulk, so that $r$ such cells give order $2r$ modulo eight.
+In the associated quadrilateral signs $Q_u=\tau_u\tau_{u+1}$, the positive
+positions are separated by four within a cell and by six across a boundary.
+Thus the prescribed cells insert one length-six gap per cell into the
+length-four pattern, while retaining arbitrarily long period-eight stretches.
+The precise words, rather than the gap count alone, are the hypotheses.
+
+For a length-$N$ triangle-sign word
+$\tau$ and $\alpha\in\{\pm1\}$, define $A_N(\tau,\alpha)$ by the edge signs
+\begin{equation}
+ a_i=\begin{cases}1&i<N-1,\\\alpha&i=N-1,\end{cases}
+ \quad
+ \sigma\{i,i+1\}=a_i,\qquad
+ \sigma\{i,i+2\}=\tau_i a_i a_{i+1},
+ \label{eq:gauge-definition}
+\end{equation}
+with cyclic indices. The triangle signs are $\tau_i$, and the
+Hamilton-cycle sign product is $\alpha$.
+The two rational caps below are certified upper thresholds for these
+constructions, rather than proposed values of the unrestricted minimum:
+define
+\[
+ \czero=\frac{198}{25}=7.92,\qquad
+ \cone=\frac{790537}{100000}=7.90537.
+\]
+
+\begin{theorem}[Unequal-cell bound]\label{thm:cells}
+Let $r\ge1$, $j_0,\ldots,j_{r-1}\ge1$, and
+$\tau=w_{j_0}\|\cdots\|w_{j_{r-1}}$, of total length $N$.
+For either holonomy $\alpha$,
+\begin{align}
+ \min_i h_{j_i}\ge106&\quad\Longrightarrow\quad
+       \rho(A_N(\tau,\alpha))^2<\czero,\label{eq:cell-cap0}\\
+ \min_i h_{j_i}\ge202&\quad\Longrightarrow\quad
+       \rho(A_N(\tau,\alpha))^2<\cone.\label{eq:cell-cap1}
+\end{align}
+The constants do not depend on $r$, and the lengths need not be equal.
+\end{theorem}
+
+The allowed cell words are part of the hypotheses. The theorem does not
+cover arbitrary signings or arbitrary arrangements of local defects.
+Its proof retains six coordinates at each cell boundary and eliminates the
+four-site interior chains exactly. A common positive limiting core and a
+quadratic-form estimate with two chain incidences per boundary control the
+resulting $6r$-dimensional cyclic matrix. The two chain incidences at every boundary, rather than the total number
+of cells, determine the error estimate.
+
+The single-cell family permits a sharper finite completion.
+\begin{theorem}[One-cell bound]\label{thm:one-cell}
+For every $k\ge1$,
+\[
+ \rho(A_{8k+2}(w_k,+1))^2<\cone.
+\]
+Moreover,
+\begin{equation}
+ \frac{7905369}{1000000}
+ <\sup_{k\ge1}\rho(A_{8k+2}(w_k,+1))^2
+ \le\frac{790537}{100000}.
+ \label{eq:supremum}
+\end{equation}
+\end{theorem}
+The interval in \eqref{eq:supremum} has width $10^{-6}$. Its upper endpoint
+is non-strict; no convergence, monotonicity, or exact supremum is asserted.
+
+To cover each nonzero even residue modulo eight, put
+\[
+ W_{k,r}=\mathop{\|}_{a=0}^{r-1}w_{\lfloor(k+a)/r\rfloor},
+ \qquad r\in\{1,2,3\},\ k\ge6.
+\]
+The cell parameters sum to $k$, so the word has length $8k+2r$.
+\begin{theorem}[Explicit finite competitors]\label{thm:witnesses}
+For $r\in\{1,2,3\}$ and $k\ge6$, the matrix
+\[
+ B_{k,r}=A_{8k+2r}(W_{k,r},(-1)^{r+1})
+\]
+satisfies
+\begin{equation}
+ \rho(B_{k,r})^2<\czero<\tw(8k+2r)^2.
+ \label{eq:nonzero-witnesses}
+\end{equation}
+For $r=1$ the stronger cap $\cone$ holds. Together with the period-eight
+family, these constructions prove
+\[
+ \mu_N<\tw(N)
+ \quad\text{for }N\in\{32,40\}\cup\{N\ge48:N\text{ even}\}.
+\]
+\end{theorem}
+
+The period-eight predecessor \cite{EarlierPeriodEight} already supplies the
+orders $32$ and $40$, and the earlier Target A package
+\cite{EarlierTargetA} supplies every even order at least $48$.
+These are unpublished project predecessors. The contribution here is a
+common analytic mechanism, sharper quantitative bounds, and a finite
+completion with directly specified signings. For odd $k$ in residue four, and for
+$3\nmid k$ in residue six, our placements need not be the older balanced-gap
+placements. Their finite certificates are recomputed for the words above.
+We do not reprove the universal lower bounds at complementary smaller
+orders, determine $\mu_N$ when the twisted signing fails, or classify
+minimizing signings.
+
+The literature target has also changed. The original preprint
+\cite{Suvagiya2026old} was withdrawn and merged into
+\cite{Suvagiya2026}. Its revised Theorem 26 supplies the positive-holonomy
+period-eight value
+\begin{equation}
+ \etaedge=4+\sqrt{10+2\sqrt5},\qquad \rstar=\sqrt{\etaedge},
+ \label{eq:rstar}
+\end{equation}
+for $N=8m$, $m\ge4$, while Conjecture 28 proposes $\mu_{8m}=\rstar$
+throughout that range. The exact negative-holonomy formula from the earlier
+project manuscript \cite{EarlierPeriodEight} is strictly smaller at every
+finite size. We provide its full proof and apply it to that revised claim.
+This application is distinct from a priority claim for the inherited formula.
+
+Schur complements and contractive Riccati recurrences are standard matrix
+tools. The contribution here is their quantitative assembly for the stated
+cells: a common limiting core controls unequal chains, and the retained
+matrix has two chain incidences per boundary. Related signed-spectral
+results concern different questions. Belardo and Brunetti
+\cite[Theorem 1.3 and Lemma 3.8]{BelardoBrunetti2024} determine limit points
+of signed adjacency spectral radii and use a Schur-complement calculation
+for an auxiliary family. Our one-cell enclosure does not identify a new
+limit point or prove convergence. Kannan and Pragada
+\cite[Theorem 3.3]{KannanPragada2023} bound the largest adjacency eigenvalue
+using edge count, frustration index, and balanced clique number. Here the
+input is the prescribed triangle-sign word and its boundary response; the
+result controls both spectral edges uniformly in cell length and count.
+
+The use of holonomy belongs to the established character approach to
+spectral graph theory; Luo and Roy \cite[Theorems 3.6 and 3.13]{LuoRoy2026}
+study character families and endpoint attainment. Those results do not
+supply the fixed-support minimum here. Likewise, signed moments averaged
+over all signings, as in Chen, van Dam, and Bu
+\cite[Theorem 3.1]{ChenDamBu2024}, are not pointwise lower bounds for every
+signing. Our estimates instead arise from an explicit fiber calculation
+and exact positive-definiteness tests after a uniform analytic reduction.
+The latter proofs are finite-certificate-assisted, with independent exact
+replays; their finite checks are specified in Section~\ref{sec:finite} and
+located in the frozen supplement \cite{C029Supplement}.
+
+The proof has two tracks. Sections~\ref{sec:holonomy}--\ref{sec:period8}
+give the exact period-eight calculation and its application to the revised
+conjecture; this track is independent of the Schur estimates.
+Sections~\ref{sec:chain}--\ref{sec:cells} prove
+Theorem~\ref{thm:cells}: positivity of $cI-A^2$ is reduced to a fixed
+four-dimensional recurrence, two finite rational premise sets control its
+tail, and the six-coordinate boundary matrices assemble with degree two.
+Section~\ref{sec:finite} then completes the bounded ranges needed for the
+one-cell specialization and the all-residue competitors.
+Figure~\ref{fig:boundary} displays the local-to-global reduction.

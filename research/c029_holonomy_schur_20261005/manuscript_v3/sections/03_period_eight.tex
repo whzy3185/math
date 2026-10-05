@@ -1,0 +1,163 @@
+\section{The exact antiperiodic spectrum}\label{sec:period8}
+
+Let $A_m^\pm=A_{8m}(t^m,\pm1)$ and set
+\[
+ R(s)=\sqrt{4+\sqrt{8+s+\sqrt{26-3s}}}\qquad(-2\le s\le2).
+\]
+\begin{theorem}\label{thm:period8}
+For every $m\ge1$,
+\begin{equation}
+ \rho(A_m^+)^2=\etaedge,
+ \qquad \rho(A_m^-)=R\!\left(2\cos\frac\pi m\right)<\sqrt{\etaedge}.
+ \label{eq:main}
+\end{equation}
+Among signings with the prescribed labeled triangle signs $t^m$, the
+negative-holonomy class is the unique minimizing switching class.
+\end{theorem}
+The exact formula is recorded in the earlier period-eight manuscript
+\cite{EarlierPeriodEight}; we include its proof to keep the present
+argument self-contained.
+
+\begin{lemma}\label{lem:poly}
+For $|z|=1$ and $s=z+z^{-1}$,
+\begin{align}
+ \det(xI_8-H(z))=P(x,s)
+  &:=x^8-16x^6+80x^4-128x^2+38 \notag\\
+  &\quad+s(-2x^4+16x^2-13)+s^2.
+ \label{eq:poly}
+\end{align}
+Its eight roots, with all signs independently chosen, are
+\begin{equation}
+ \pm\sqrt{4\pm\sqrt{8+s\pm\sqrt{26-3s}}}.
+ \label{eq:all-roots}
+\end{equation}
+They are all real, nonzero, and distinct for every $-2\le s\le2$.
+\end{lemma}
+\begin{proof}
+Expanding the determinant of \eqref{eq:fiber} as a Laurent polynomial
+in $z$ gives
+\[
+ x^8-16x^6+80x^4-128x^2+40
+ +(z+z^{-1})(-2x^4+16x^2-13)+(z^2+z^{-2}).
+\]
+Using $z^2+z^{-2}=s^2-2$ proves \eqref{eq:poly}.
+This is a finite polynomial identity and can also be checked by the exact
+symbolic determinant in the accompanying verifier.
+
+Put $y=x^2$. A translation gives
+\begin{equation}
+ P(x,s)=(y-4)^4-(16+2s)(y-4)^2+s^2+19s+38.
+ \label{eq:centered}
+\end{equation}
+Solving this as a quadratic in $(y-4)^2$ gives
+\[
+ u_\pm(s)=8+s\pm\sqrt{26-3s}.
+\]
+The function $s^2+19s+38$ is increasing on $[-2,2]$ and has value $4$
+at $-2$. Since $8+s>0$, the identity
+\[
+ (8+s)^2-(26-3s)=s^2+19s+38\ge4
+\]
+proves $u_->0$. Also $u_+>u_-$, and
+\[
+ u_+'(s)=1-\frac3{2\sqrt{26-3s}}>0,
+ \qquad u_+(s)\le10+2\sqrt5<16.
+\]
+Consequently
+\[
+ 0<4-\sqrt{u_+}<4-\sqrt{u_-}
+   <4+\sqrt{u_-}<4+\sqrt{u_+}.
+\]
+These are the four distinct positive roots in $y$. Taking their positive
+and negative square roots gives exactly \eqref{eq:all-roots}.
+\end{proof}
+
+\begin{proof}[Proof of Theorem~\ref{thm:period8}]
+Lemma~\ref{lem:poly} implies
+\[
+ \rho(H(z))=R(s),\qquad s=z+z^{-1}.
+\]
+The derivative computation in that lemma and strict monotonicity of the
+outer square roots show that $R$ increases strictly on $[-2,2]$.
+For positive holonomy, the grid $z^m=1$ contains $z=1$, so its maximal
+value of $s$ is $2$. For negative holonomy, the grid is
+\[
+ z_j=\exp\!\left(\frac{(2j+1)\pi\mathrm i}{m}\right),
+ \qquad 0\le j<m,
+\]
+and its maximal value of $s$ is $2\cos(\pi/m)$. Lemma~\ref{lem:bloch}
+therefore proves both equalities in \eqref{eq:main}.
+For every finite $m\ge1$, $\cos(\pi/m)<1$, which proves the strict
+inequality. Lemma~\ref{lem:gauge} shows that these are exactly the two
+switching classes for the prescribed triangle signs, so the strict
+comparison proves the stated constrained uniqueness. Since $A_m^-$ is
+an admissible real signing, the same value is an upper bound for the unrestricted minimum.
+\end{proof}
+
+To identify $\sqrt{\etaedge}$ with the algebraic number used in the revised
+conjecture, put
+\[
+ f(x)=x^4-2x^3-6x^2+12x-4.
+\]
+An exact expansion gives $P(x,2)=f(x)f(-x)$. On $x\ge\sqrt6$,
+\[
+ f''(x)=12(x^2-x-1)>0,\qquad
+ f'(\sqrt6)=12\sqrt6-24>0,\qquad f(\sqrt6)=-4.
+\]
+Hence $f$ has exactly one root on that ray. For $x>\sqrt6$,
+$f(-x)-f(x)=4x(x^2-6)>0$. The largest positive root of $P(x,2)$ is
+$R(2)>\sqrt6$. It must be a root of $f$, because $f(-R(2))=0$ would
+force $f(R(2))<0$ and then a still larger positive root of $f$, contrary
+to maximality. Thus $R(2)$ is the largest real root of $f$.
+
+\begin{corollary}\label{cor:asymptotic}
+The negative-holonomy radii increase strictly to $\rstar$ as $m$ increases,
+and
+\begin{equation}
+ \rstar-\rho(A_m^-)
+ =\frac{\pi^2}{4\rstar\sqrt{10+2\sqrt5}}
+   \left(1-\frac3{4\sqrt5}\right)m^{-2}+O(m^{-4}).
+ \label{eq:asymptotic}
+\end{equation}
+\end{corollary}
+\begin{proof}
+The sequence $2\cos(\pi/m)$ increases strictly to $2$, and $R$ is strictly
+increasing and smooth near $2$. Since
+\[
+ 2\cos(\pi/m)=2-\pi^2m^{-2}+O(m^{-4}),
+ \qquad
+ R'(2)=\frac{1-3/(4\sqrt5)}{4\rstar\sqrt{10+2\sqrt5}},
+\]
+Taylor's theorem proves \eqref{eq:asymptotic}.
+\end{proof}
+
+There is no parity exception: when $m$ is odd, the allowed phase $z=-1$
+has $s=-2$ and cannot recover the omitted maximum at $s=2$.
+At $m=1$ the single fiber is $H(-1)$, with
+$\rho(A_1^-)=\sqrt{6+\sqrt2}$.
+
+
+\begin{corollary}\label{cor:conjecture}
+For every $m\ge4$, $\mu_{8m}<\sqrt{\etaedge}$. Thus Conjecture 28 of
+\cite{Suvagiya2026} is false as stated.
+\end{corollary}
+\begin{proof}
+The matrix $A_m^-$ is a real signing of the same graph, and
+Theorem~\ref{thm:period8} gives its strictly smaller radius. As shown above,
+$\sqrt{\etaedge}$ is the largest real root of the quartic used in that
+conjecture. The minimum in the conjecture ranges over both holonomies.
+\end{proof}
+
+At $m=4$, the exact value is
+\[
+ \rho(A_4^-)=\sqrt{4+\sqrt{8+\sqrt2+\sqrt{26-3\sqrt2}}}
+             =2.7842697993\ldots.
+\]
+A separate full-graph integer certificate checks that all leading principal
+minors of $279I_{32}\pm100A_4^-$ are positive. Sylvester's criterion gives
+$\rho(A_4^-)<2.79$. Exact evaluations
+\[
+ f(279/100)=-6766519/10^8<0,\qquad f(14/5)=76/625>0
+\]
+and the monotonicity of $f$ above show $2.79<\sqrt{\etaedge}<2.8$.
+This finite check is independent of the all-$m$ fiber proof.
